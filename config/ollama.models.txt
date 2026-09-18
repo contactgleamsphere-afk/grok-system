@@ -1,0 +1,6 @@
+# Suggested first pulls (adjust to RAM/VRAM)
+# Chat (pick one):
+#   llama3.2:3b
+#   llama3.1:8b
+# Embeddings:
+#   nomic-embed-text

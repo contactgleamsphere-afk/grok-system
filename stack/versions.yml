@@ -1,0 +1,42 @@
+# Pinned references for reproducible installs (tags/commits to be locked after first successful host install)
+# Format: owner/repo: suggested track — verify release before pinning SHA
+
+inference:
+  ollama/ollama: latest-stable  # MIT
+  ggml-org/llama.cpp: master-stable  # MIT
+  mudler/LocalAI: optional-alt  # MIT
+  vllm-project/vllm: optional-gpu  # Apache-2.0
+
+harness:
+  HKUDS/nanobot: main  # MIT — primary
+  OpenHands/OpenHands: main  # MIT — after Docker
+  openinterpreter/openinterpreter: main  # Apache-2.0
+
+coding:
+  Aider-AI/aider: main  # Apache-2.0
+  cline/cline: main  # Apache-2.0
+  continuedev/continue: main  # Apache-2.0
+
+browser:
+  browser-use/browser-use: main  # MIT
+  microsoft/playwright-mcp: main  # Apache-2.0
+
+mcp:
+  modelcontextprotocol/servers: main  # mixed — audit each server
+
+memory_rag:
+  Mintplex-Labs/anything-llm: main  # MIT
+  mem0ai/mem0: main  # Apache-2.0 — local LLM/embed only
+  letta-ai/letta: main  # Apache-2.0
+  qdrant/qdrant: main  # Apache-2.0
+  chroma-core/chroma: main  # Apache-2.0
+
+orchestration:
+  langchain-ai/langgraph: main  # MIT
+  crewAIInc/crewAI: main  # MIT — disable telemetry
+  assafelovic/gpt-researcher: main  # Apache-2.0
+  deepset-ai/haystack: main  # Apache-2.0
+
+rejected_as_core:
+  open-webui/open-webui: branding-licence
+  voideditor/void: archived

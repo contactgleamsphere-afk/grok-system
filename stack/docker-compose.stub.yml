@@ -1,0 +1,12 @@
+# STUB ONLY — do not expect this to run until Docker exists on the host
+# and image tags are pinned in versions.yml.
+#
+# services (planned):
+#   ollama:
+#   qdrant:
+#   nanobot:        # or run bare-metal
+#   anythingllm:    # optional
+#
+# This file intentionally has no runnable service definitions yet.
+version: "3.8"
+services: {}

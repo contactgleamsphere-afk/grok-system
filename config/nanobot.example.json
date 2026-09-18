@@ -1,0 +1,17 @@
+{
+  "_comment": "Example only — point providers at local Ollama. No cloud keys required for v1.",
+  "providers": {
+    "ollama": {
+      "baseUrl": "http://127.0.0.1:11434/v1",
+      "apiKey": "ollama"
+    }
+  },
+  "tools": {
+    "mcpServers": {
+      "filesystem": {
+        "command": "npx",
+        "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/workspace"]
+      }
+    }
+  }
+}
