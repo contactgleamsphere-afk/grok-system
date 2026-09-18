@@ -1,4 +1,4 @@
-<!-- generated from registry/bots.json by core/factory/registry.py — edit the JSON, not this file -->
+<!-- generated from registry/bots.json — edit the JSON, not this file -->
 # bots
 
 | id | name | purpose | status | model_policy | tools | permissions | workspace | version | schedules | tests | verified | notes | updated |

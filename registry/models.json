@@ -2,38 +2,40 @@
   "local3b": {
     "capabilities": [
       "chat",
-      "tools"
+      "summarise",
+      "classify"
     ],
     "context_window": 32768,
     "cost_per_1k": 0.0,
     "id": "local3b",
     "location": "local",
     "model": "qwen2.5:3b-instruct-q4_K_M",
-    "notes": "Phase 1: one-shot reply OK (~150s). contextWindowTokens must be 32768 (8192 -> ContextWindowExceededError). tok/s + tool-call score: PENDING Phase 0 benchmark.",
+    "notes": "BENCHMARKED 2026-09-18: 11.85 tok/s. Tool-call test 1/5 (Grok run 0/5). Loops on web_search/search_sessions. UNSUITABLE AS MASTER. Keep for cheap classify/summarise only.",
     "provider": "ollama",
     "ram_gb": 2.0,
-    "tokens_per_sec": null,
-    "tool_call_score": null,
-    "updated": "2026-09-18T17:28:28+00:00",
+    "tokens_per_sec": 11.85,
+    "tool_call_score": 0.2,
+    "updated": "2026-09-18T20:41:15+00:00",
     "verified": "VERIFIED"
   },
-  "qwen3-4b-candidate": {
+  "local4b": {
     "capabilities": [
       "chat",
-      "tools",
-      "code"
+      "summarise",
+      "classify",
+      "code-small"
     ],
     "context_window": 32768,
     "cost_per_1k": 0.0,
-    "id": "qwen3-4b-candidate",
+    "id": "local4b",
     "location": "local",
     "model": "qwen3:4b",
-    "notes": "Candidate for Phase 0 comparison. Not pulled yet.",
+    "notes": "BENCHMARKED 2026-09-18: 9.19 tok/s. Tool-call test 1/5 (T1 pass then loop; T2-T5 timeout at 300s). UNSUITABLE AS MASTER on this CPU. Better prose than 3B.",
     "provider": "ollama",
-    "ram_gb": null,
-    "tokens_per_sec": null,
-    "tool_call_score": null,
-    "updated": "2026-09-18T17:28:28+00:00",
-    "verified": "UNVERIFIED"
+    "ram_gb": 3.0,
+    "tokens_per_sec": 9.19,
+    "tool_call_score": 0.2,
+    "updated": "2026-09-18T20:41:15+00:00",
+    "verified": "VERIFIED"
   }
 }

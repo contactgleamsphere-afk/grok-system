@@ -1,0 +1,57 @@
+[
+ {
+  "test": "T1",
+  "status": "done",
+  "seconds": 234.8,
+  "correct": true,
+  "tail": [
+   "  \u21b3 write p0_test.txt, read p0_test.txt",
+   "  \u21b3 search \"HELLO_FACTORY\"",
+   "{ \"name\": \"web_search\", \"arguments\": { \"query\": \"HELLO_FACTORY\" } }"
+  ]
+ },
+ {
+  "test": "T2",
+  "status": "TIMEOUT",
+  "seconds": 300.1,
+  "correct": false,
+  "tail": [
+   "  \u21b3 write \u2026/allowed_directory/missing_file.txt",
+   "  \u21b3 write \u2026/allowed_directory/missing_file.txt",
+   "  \u21b3 write \u2026/allowed_directory/missing_file.txt"
+  ]
+ },
+ {
+  "test": "T3",
+  "status": "TIMEOUT",
+  "seconds": 300.2,
+  "correct": false,
+  "tail": [
+   "  \u21b3 run_cli_app(\"python\")",
+   "  \u21b3 run_cli_app(\"python\")",
+   "  \u21b3 run_cli_app(\"python\")"
+  ]
+ },
+ {
+  "test": "T4",
+  "status": "TIMEOUT",
+  "seconds": 300.1,
+  "correct": false,
+  "tail": [
+   "  \u21b3 search \"END OF FILE\"",
+   "  \u21b3 search \"END OF FILE (EOF)\"",
+   "  \u21b3 search \"END OF FILE (EOF)\""
+  ]
+ },
+ {
+  "test": "T5",
+  "status": "TIMEOUT",
+  "seconds": 300.1,
+  "correct": false,
+  "tail": [
+   "  \u21b3 search \"current stable version nanobot-ai PyPI\"",
+   "  \u21b3 search \"current stable version nanobot-ai PyPI\"",
+   "  \u21b3 search \"nanobot-ai PyPI\""
+  ]
+ }
+]

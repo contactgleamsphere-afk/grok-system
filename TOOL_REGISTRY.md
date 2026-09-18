@@ -1,4 +1,4 @@
-<!-- generated from registry/tools.json by core/factory/registry.py — edit the JSON, not this file -->
+<!-- generated from registry/tools.json — edit the JSON, not this file -->
 # tools
 
 | id | kind | provides | risk | scope | verified | notes | updated |

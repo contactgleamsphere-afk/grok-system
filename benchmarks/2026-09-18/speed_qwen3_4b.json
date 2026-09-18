@@ -1,0 +1,1 @@
+{"model": "qwen3:4b", "eval_tok_s": 9.19, "prompt_tok_s": 22.1, "total_s": 27.0, "wall_s": 27.0, "free_mb_before": 6038, "free_mb_after": 3055}

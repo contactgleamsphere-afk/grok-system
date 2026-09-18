@@ -1,0 +1,610 @@
+{
+  "agents": {
+    "defaults": {
+      "workspace": "C:\\AI\\Factory\\workspace",
+      "modelPreset": "local3b",
+      "model": "anthropic/claude-opus-4-5",
+      "provider": "auto",
+      "maxTokens": 8192,
+      "contextWindowTokens": 200000,
+      "temperature": 0.1,
+      "fallbackModels": [],
+      "maxToolIterations": 25,
+      "maxConcurrentSubagents": 4,
+      "maxToolResultChars": 16000,
+      "providerRetryMode": "standard",
+      "toolHintMaxLength": 40,
+      "reasoningEffort": null,
+      "timezone": "Europe/London",
+      "timezoneMode": "auto",
+      "botName": "MASTER-001",
+      "botIcon": "\u00f0\u0178\u0090\u02c6",
+      "unifiedSession": false,
+      "disabledSkills": [],
+      "idleCompactAfterMinutes": 15,
+      "idleCompactCheckIntervalSeconds": 60,
+      "dream": {
+        "enabled": true,
+        "intervalH": 2,
+        "modelOverride": null
+      }
+    }
+  },
+  "channels": {
+    "sendProgress": true,
+    "sendToolHints": true,
+    "showReasoning": true,
+    "extractDocumentText": true,
+    "sendMaxRetries": 3,
+    "transcriptionProvider": "groq",
+    "transcriptionLanguage": null,
+    "websocket": {
+      "enabled": true,
+      "host": "127.0.0.1",
+      "port": 8765,
+      "unixSocketPath": "",
+      "path": "/",
+      "publicWsUrl": "",
+      "token": "",
+      "tokenIssuePath": "",
+      "tokenIssueSecret": "<redacted-local-only>",
+      "tokenTtlS": 300,
+      "websocketRequiresToken": true,
+      "allowFrom": [
+        "127.0.0.1",
+        "::1"
+      ],
+      "streaming": true,
+      "maxMessageBytes": 37748736,
+      "pingIntervalS": 20.0,
+      "pingTimeoutS": 20.0,
+      "sslCertfile": "",
+      "sslKeyfile": ""
+    }
+  },
+  "transcription": {
+    "enabled": true,
+    "provider": null,
+    "model": null,
+    "language": null,
+    "maxDurationSec": 120,
+    "maxUploadMb": 25
+  },
+  "providers": {
+    "custom": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "azureOpenai": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "bedrock": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null,
+      "region": null,
+      "profile": null
+    },
+    "anthropic": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "openai": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "openrouter": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "orcarouter": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "assemblyai": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "huggingface": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "skywork": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "deepseek": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "groq": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "zhipu": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "dashscope": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "modelscope": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "vllm": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "ollama": {
+      "apiKey": null,
+      "apiBase": "http://127.0.0.1:11434/v1",
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "lmStudio": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "atomicChat": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "ovms": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "gemini": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "moonshot": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "kimiCoding": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "minimax": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "minimaxAnthropic": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "mistral": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "stepfun": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "xiaomiMimo": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "longcat": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "antLing": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "aihubmix": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "siliconflow": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "edenai": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "novita": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "volcengine": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "volcengineCodingPlan": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "byteplus": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "byteplusCodingPlan": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "qianfan": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "nvidia": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "opencode": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "opencodeZen": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    },
+    "opencodeGo": {
+      "apiKey": null,
+      "apiBase": null,
+      "apiType": "auto",
+      "extraHeaders": null,
+      "extraBody": null,
+      "extraQuery": null,
+      "proxy": null,
+      "thinkingStyle": null
+    }
+  },
+  "api": {
+    "host": "127.0.0.1",
+    "port": 8900,
+    "timeout": 120.0,
+    "apiKey": ""
+  },
+  "gateway": {
+    "host": "127.0.0.1",
+    "port": 18790,
+    "restartMode": "auto",
+    "heartbeat": {
+      "enabled": true,
+      "intervalS": 1800
+    }
+  },
+  "tools": {
+    "web": {
+      "enable": true,
+      "proxy": null,
+      "userAgent": null,
+      "search": {
+        "provider": "duckduckgo",
+        "apiKey": "",
+        "baseUrl": "",
+        "maxResults": 5,
+        "timeout": 30
+      },
+      "fetch": {
+        "useJinaReader": true
+      }
+    },
+    "exec": {
+      "enable": true,
+      "timeout": 120,
+      "pathPrepend": "",
+      "pathAppend": "",
+      "sandbox": "",
+      "sandboxRoBinds": [],
+      "sandboxRwBinds": [],
+      "allowedEnvKeys": [],
+      "allowPatterns": [],
+      "denyPatterns": [
+        "(?i)\\bformat\\b",
+        "(?i)\\bdiskpart\\b",
+        "(?i)Remove-Item.*-Recurse.*(C:\\\\|\\\\Users|\\\\Windows)",
+        "(?i)\\brd\\s+/s\\b",
+        "(?i)\\bdel\\s+/s\\b",
+        "(?i)\\breg\\s+(add|delete)\\b",
+        "(?i)netsh\\s+advfirewall",
+        "(?i)Set-ExecutionPolicy",
+        "(?i)\\bshutdown\\b",
+        "(?i)Stop-Computer|Restart-Computer",
+        "(?i)\\bnet\\s+user\\b",
+        "(?i)Invoke-Expression|\\biex\\b.*http"
+      ]
+    },
+    "file": {
+      "enable": true
+    },
+    "cliApps": {
+      "enable": true,
+      "installTimeout": 300,
+      "runTimeout": 60,
+      "catalogTtlSeconds": 3600
+    },
+    "my": {
+      "enable": true,
+      "allowSet": false
+    },
+    "imageGeneration": {
+      "enabled": false,
+      "provider": "openrouter",
+      "model": "openai/gpt-5.4-image-2",
+      "defaultAspectRatio": "1:1",
+      "defaultImageSize": "1K",
+      "maxImagesPerTurn": 4,
+      "saveDir": "generated"
+    },
+    "maxSessionMessagesPerMinute": 6,
+    "restrictToWorkspace": true,
+    "webuiAllowLocalServiceAccess": true,
+    "webuiAllowRemotePackageInstall": false,
+    "mcpServers": {},
+    "ssrfWhitelist": []
+  },
+  "modelPresets": {
+    "local3b": {
+      "model": "qwen2.5:3b-instruct-q4_K_M",
+      "provider": "ollama",
+      "maxTokens": 1024,
+      "contextWindowTokens": 32768,
+      "temperature": 0.2,
+      "reasoningEffort": null
+    },
+    "local4b": {
+      "model": "qwen3:4b",
+      "provider": "ollama",
+      "maxTokens": 2048,
+      "contextWindowTokens": 32768,
+      "temperature": 0.2,
+      "reasoningEffort": null
+    }
+  }
+}

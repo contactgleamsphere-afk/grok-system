@@ -8,3 +8,8 @@
 - Added scripts/windows/install-phase1.ps1; docs/phases/PHASE0 + PHASE2 prompts.
 - Fixed config/nanobot.example.json (`baseUrl` → `apiBase`, added presets/guards).
 - Grok scaffold (docs/, stack/) retained as research reference.
+## 2026-09-18 (evening)
+- Laptop SSH access established (cloudflared quick tunnel + key auth); persistent scheduled task added.
+- Phase 0 executed: live audit, RAM profile, speed + tool-call benchmarks for qwen2.5:3b and qwen3:4b (both 1/5).
+- Config hardened (see TEST_RESULTS). Master 001 identity deployed to workspace.
+- qwen3:4b pulled. Registries updated with measured numbers. D-007..D-009.

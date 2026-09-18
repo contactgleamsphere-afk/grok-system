@@ -5,10 +5,10 @@ _Last updated: 2026-09-18 — by Arena agent (architect/builder). Source of trut
 ## Phase table
 | Phase | Name | Status | Evidence |
 |---|---|---|---|
-| 0 | Discovery, baseline, tool-call test | **NEXT (laptop)** | prompt: docs/phases/PHASE0-discovery-prompt.md |
+| 0 | Discovery, baseline, tool-call test | ✅ DONE (Arena over SSH) | TEST_RESULTS.md, benchmarks/2026-09-18 |
 | 1 | Foundation: nanobot 0.3.5 + Ollama + qwen2.5:3b | ✅ VERIFIED | owner report 2026-09-18: `PHASE1_OK`, WebUI 127.0.0.1:8765 |
-| 2 | Core: registries, router, bot-spec contract, Master identity | 🟡 code VERIFIED in sandbox (19 tests); laptop deploy PENDING | core/, registry/, config/laptop/ |
-| 3 | Model router wired to real endpoints (benchmark-driven) | pending Phase 0 numbers | |
+| 2 | Core: registries, router, bot-spec contract, Master identity, security hardening | ✅ identity deployed + config hardened on laptop; core code tested in sandbox | config/laptop/config.current.json |
+| 3 | Model router: remote free-tier Master lane + local cheap lanes | **NEXT — BLOCKED on owner signups (see below)** | D-007 |
 | 4 | Tool layer / MCP | pending | |
 | 5 | Memory | pending | |
 | 6 | Coding agent | pending | |
@@ -23,7 +23,9 @@ _Last updated: 2026-09-18 — by Arena agent (architect/builder). Source of trut
 - One-shot reply ≈150 s on 3B (CPU).
 - nanobot built-in tools registered: exec, read_file, write_file, web_search (others INFERRED).
 - GitHub: account contactgleamsphere-afk; repos `grok-system` (public, this) and `capability-audit-probe` (private, bootstrap artefact).
-- Arena sandbox has GitHub access via fine-grained PAT (expires 2026-10-18). No laptop access yet.
+- Arena sandbox has GitHub access (PAT exp 2026-10-18) AND laptop SSH access via cloudflared tunnel (key auth, user joshp).
+- Models on laptop: qwen2.5:3b (11.85 tok/s), qwen3:4b (9.19 tok/s). Both 1/5 on tool tests.
+- nanobot status shows OAuth logins present for OpenAI Codex, xAI Grok, GitHub Copilot (owner's accounts; docs say OAuth providers are not valid automatic fallbacks).
 - core/ tests: 19/19 pass (Python 3.13 sandbox). Not yet run on laptop Python 3.11.
 
 ## INFERRED
@@ -36,8 +38,8 @@ _Last updated: 2026-09-18 — by Arena agent (architect/builder). Source of trut
 - What consumes ~10 GB RAM at idle.
 
 ## BLOCKED
-- Laptop-side execution by Arena agent: needs tunnel (Tailscale) — owner action.
-- Nothing else.
+- Phase 3 Master lane: needs owner to create free-tier API key(s) — human signup, cannot be automated legitimately.
+- Port 3000 JARVIS X service: owner decision.
 
 ## Known debt
 - GitHub PAT previously exposed in a Grok chat → rotate/revoke the old one.
