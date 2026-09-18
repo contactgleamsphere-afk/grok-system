@@ -1,0 +1,9 @@
+# RECOVERY — rebuild from zero on a Windows machine
+1. Install Python 3.11+, Git, Ollama. `ollama pull qwen2.5:3b-instruct-q4_K_M`.
+2. `git clone https://github.com/contactgleamsphere-afk/grok-system C:\AI\Factory\repo`
+3. Run `scripts\windows\install-phase1.ps1` (creates C:\AI\Factory venv, installs nanobot-ai==0.3.5, writes config).
+   - Ensure config.json is UTF-8 **without BOM** and `contextWindowTokens` = 32768.
+4. Copy `config\laptop\SOUL.md` and `AGENTS.md` into `C:\AI\Factory\workspace\`.
+5. `nanobot status` → `nanobot agent -m "Reply with exactly: PHASE1_OK"` → `nanobot webui`.
+6. Registries live in `registry\*.json`; regenerate markdown with `python -c "..."` (see core/factory/registry.py `to_markdown`).
+7. Run `python -m pytest core\tests -q` to confirm the core package works on this Python.

@@ -1,0 +1,160 @@
+import json
+import sys
+from pathlib import Path
+
+import pytest
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from factory.registry import Registry, ModelEntry, ToolEntry, BotEntry, RegistryError
+from factory.router import (ModelRouter, RouterConfig, RateLimited, Unavailable,
+                            BadRequest, AuthError)
+from factory.botspec import validate_spec
+
+
+# ---------------- fixtures ----------------
+@pytest.fixture
+def reg(tmp_path):
+    r = Registry(tmp_path)
+    r.upsert("models", ModelEntry("local3b", "ollama", "qwen2.5:3b-instruct-q4_K_M",
+                                  ["chat", "tools"], 32768, tokens_per_sec=8, tool_call_score=0.4, verified="VERIFIED"))
+    r.upsert("models", ModelEntry("deep", "ollama", "qwen3:8b",
+                                  ["chat", "tools", "code"], 32768, tokens_per_sec=3, tool_call_score=0.8))
+    r.upsert("models", ModelEntry("remote", "openrouter", "some/free-model",
+                                  ["chat", "tools", "code", "vision"], 128000, location="remote",
+                                  cost_per_1k=0.0, tokens_per_sec=40, tool_call_score=0.9))
+    r.upsert("tools", ToolEntry("read_file", "builtin", ["filesystem"], risk="low", scope="workspace-only"))
+    r.upsert("tools", ToolEntry("exec", "builtin", ["shell"], risk="high", scope="workspace-only"))
+    r.upsert("tools", ToolEntry("web_search", "builtin", ["web_search"], risk="low"))
+    return r
+
+
+class FakeClock:
+    t = 1000.0
+    def __call__(self): return self.t
+    def advance(self, s): self.t += s
+
+
+# ---------------- registry ----------------
+def test_registry_roundtrip_and_markdown(reg):
+    assert reg.get("models", "local3b").provider == "ollama"
+    assert len(reg.all("tools")) == 3
+    md = reg.to_markdown("models")
+    assert "| local3b |" in md or "local3b" in md
+
+def test_registry_rejects_bad_states(reg):
+    with pytest.raises(RegistryError):
+        reg.upsert("models", ModelEntry("x", "ollama", "m", ["chat"], 1000, verified="MAYBE"))
+    with pytest.raises(RegistryError):
+        reg.upsert("tools", ToolEntry("t", "magic", ["x"]))
+    with pytest.raises(RegistryError):
+        reg.upsert("bots", BotEntry("9", "b", "p", "flying", {"primary": "a"}, [], [], "ws"))
+
+def test_registry_corrupt_file_is_reported_not_swallowed(tmp_path):
+    (tmp_path / "models.json").write_text("{not json", encoding="utf-8")
+    with pytest.raises(RegistryError, match="corrupt"):
+        Registry(tmp_path).load("models")
+
+def test_registry_atomic_write_leaves_no_tmp(reg, tmp_path):
+    assert not [p for p in tmp_path.iterdir() if p.suffix == ".tmp"]
+    assert json.loads((tmp_path / "models.json").read_text())["deep"]["model"] == "qwen3:8b"
+
+
+# ---------------- router: selection ----------------
+def test_router_prefers_local_then_tool_score(reg):
+    r = ModelRouter(reg.all("models"), transport=lambda m, p, **k: "ok")
+    order = [m.id for m in r.candidates({"tools"})]
+    assert order[:2] == ["deep", "local3b"]      # local first; deep has higher tool score
+    assert order[-1] == "remote"
+
+def test_router_filters_capability_and_context(reg):
+    r = ModelRouter(reg.all("models"), transport=lambda m, p, **k: "ok")
+    assert [m.id for m in r.candidates({"vision"})] == ["remote"]
+    assert [m.id for m in r.candidates(set(), min_context=100000)] == ["remote"]
+    with pytest.raises(Unavailable, match="no model satisfies"):
+        r.run("hi", required={"video"})
+
+
+# ---------------- router: fallback + recovery ----------------
+def test_fallback_on_rate_limit_then_success(reg):
+    calls = []
+    def transport(m, p, **k):
+        calls.append(m.id)
+        if m.id == "deep":
+            raise RateLimited("429")
+        return f"answer from {m.id}"
+    r = ModelRouter(reg.all("models"), transport)
+    res = r.run("hi", required={"tools"})
+    assert res.model_id == "local3b"
+    assert res.attempts == [("deep", "RateLimited"), ("local3b", "ok")]
+
+def test_cooldown_removes_flapping_model_then_recovers(reg):
+    clk = FakeClock()
+    def transport(m, p, **k):
+        if m.id == "deep":
+            raise Unavailable("connection refused")
+        return "ok"
+    r = ModelRouter(reg.all("models"), transport, RouterConfig(failure_threshold=2, cooldown_s=60), clock=clk)
+    r.run("a", required={"tools"}); r.run("b", required={"tools"})
+    assert r.status()["deep"]["available"] is False           # in cooldown after 2 failures
+    assert [m.id for m in r.candidates({"tools"})][0] == "local3b"
+    clk.advance(61)
+    assert r.status()["deep"]["available"] is True             # recovered
+
+def test_non_retryable_error_does_not_fall_through(reg):
+    def transport(m, p, **k):
+        raise BadRequest("context length exceeded")
+    r = ModelRouter(reg.all("models"), transport)
+    with pytest.raises(BadRequest):
+        r.run("huge prompt")
+
+def test_all_fail_raises_with_attempt_trail(reg):
+    def transport(m, p, **k):
+        raise AuthError("invalid key")
+    r = ModelRouter(reg.all("models"), transport)
+    with pytest.raises(Unavailable, match="all 3 attempts failed"):
+        r.run("hi")
+
+def test_preferred_model_is_tried_first(reg):
+    seen = []
+    r = ModelRouter(reg.all("models"), lambda m, p, **k: seen.append(m.id) or "ok")
+    r.run("hi", preferred="remote")
+    assert seen == ["remote"]
+
+
+# ---------------- botspec: security + malformed input ----------------
+def good_spec():
+    return {
+        "id": "002", "name": "research-scout", "purpose": "Daily competitor research and change alerts",
+        "instructions": "Search the web every morning, summarise changes, write report to workspace.",
+        "model_policy": {"primary": "local3b", "fallbacks": ["deep"]},
+        "tools": ["web_search", "read_file"], "permissions": ["net:search", "fs:read"],
+        "tests": ["produces report file"], "schedules": ["0 7 * * *"],
+    }
+
+def test_botspec_valid(reg):
+    assert validate_spec(good_spec(), reg) == []
+
+def test_botspec_high_risk_tool_needs_permission(reg):
+    s = good_spec(); s["tools"].append("exec")
+    probs = validate_spec(s, reg)
+    assert any("high-risk" in p and "shell:workspace" in p for p in probs)
+    s["permissions"].append("shell:workspace")
+    assert validate_spec(s, reg) == []
+
+def test_botspec_blocks_system_shell_and_unknowns(reg):
+    s = good_spec(); s["permissions"] += ["shell:system", "root"]
+    probs = validate_spec(s, reg)
+    assert any("shell:system" in p for p in probs)
+    assert any("unknown permissions" in p for p in probs)
+
+def test_botspec_unknown_model_tool_and_bad_cron(reg):
+    s = good_spec(); s["model_policy"]["primary"] = "gpt-9"; s["tools"].append("nuke"); s["schedules"] = ["daily"]
+    probs = validate_spec(s, reg)
+    assert len([p for p in probs if "not in model registry" in p]) == 1
+    assert any("'nuke' not in tool registry" in p for p in probs)
+    assert any("5-field cron" in p for p in probs)
+
+@pytest.mark.parametrize("bad", [None, [], "spec", {"id": "1"}])
+def test_botspec_malformed_inputs_do_not_crash(reg, bad):
+    probs = validate_spec(bad, reg)
+    assert probs and all(isinstance(p, str) for p in probs)

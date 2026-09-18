@@ -2,7 +2,19 @@
 
 Free, open-source, self-hosted **Grok-like** multi-agent AI system.
 
-**Status:** architecture + research scaffold (2026-09-18). Runtime installs happen on *your* host — not on a paid bot platform.
+**Status (2026-09-18):** Phase 1 VERIFIED on laptop (nanobot 0.3.5 + Ollama + qwen2.5:3b). Core package (`core/factory`) with registries, model router and bot-spec validator — 19 tests passing. See **BUILD_STATE.md** for what is actually true right now.
+
+## Layout (current)
+```
+core/factory/     registry.py · router.py · botspec.py   (CORE layer, tested)
+core/tests/       pytest suite
+registry/         models.json · tools.json · bots.json   (machine-readable truth)
+*_REGISTRY.md     generated from registry/ — do not hand-edit
+config/laptop/    SOUL.md · AGENTS.md (Master 001 identity)
+scripts/windows/  install-phase1.ps1
+docs/phases/      per-phase execution prompts
+BUILD_STATE.md · DECISIONS.md · CHANGELOG.md · TEST_RESULTS.md · RECOVERY.md · COMPONENT_REGISTRY.md
+```
 
 ## Goals
 

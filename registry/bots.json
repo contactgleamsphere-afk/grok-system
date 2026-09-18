@@ -1,0 +1,35 @@
+{
+  "001": {
+    "id": "001",
+    "model_policy": {
+      "fallbacks": [],
+      "primary": "local3b"
+    },
+    "name": "master",
+    "notes": "Identity files SOUL.md/AGENTS.md in config/laptop/ \u2014 not yet deployed to workspace.",
+    "permissions": [
+      "fs:read",
+      "fs:write",
+      "shell:workspace",
+      "net:search",
+      "net:fetch"
+    ],
+    "purpose": "Orchestrates the AI Factory; creates and supervises other bots",
+    "schedules": [],
+    "status": "building",
+    "tests": [
+      "nanobot agent -m \"Reply with exactly: PHASE1_OK\" -> PHASE1_OK"
+    ],
+    "tools": [
+      "exec",
+      "read_file",
+      "write_file",
+      "web_search",
+      "web_fetch"
+    ],
+    "updated": "2026-09-18T17:28:28+00:00",
+    "verified": "VERIFIED",
+    "version": "0.1.0",
+    "workspace": "C:\\AI\\Factory\\workspace"
+  }
+}

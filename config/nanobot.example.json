@@ -1,17 +1,9 @@
 {
-  "_comment": "Example only — point providers at local Ollama. No cloud keys required for v1.",
-  "providers": {
-    "ollama": {
-      "baseUrl": "http://127.0.0.1:11434/v1",
-      "apiKey": "ollama"
-    }
+  "_comment": "Example only. Verified against nanobot 0.3.5 docs: provider key is apiBase (not baseUrl). Ollama needs no apiKey.",
+  "providers": { "ollama": { "apiBase": "http://127.0.0.1:11434/v1" } },
+  "modelPresets": {
+    "local3b": { "provider": "ollama", "model": "qwen2.5:3b-instruct-q4_K_M", "maxTokens": 2048, "contextWindowTokens": 32768, "temperature": 0.2 }
   },
-  "tools": {
-    "mcpServers": {
-      "filesystem": {
-        "command": "npx",
-        "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/workspace"]
-      }
-    }
-  }
+  "agents": { "defaults": { "modelPreset": "local3b", "fallbackModels": [] } },
+  "tools": { "restrictToWorkspace": true, "exec": { "enable": true, "timeout": 120 }, "web": { "search": { "provider": "duckduckgo" } } }
 }

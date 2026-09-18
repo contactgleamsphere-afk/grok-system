@@ -1,0 +1,62 @@
+{
+  "exec": {
+    "id": "exec",
+    "kind": "builtin",
+    "notes": "nanobot 0.3.5 built-in; reported registered in Phase 1 WebUI",
+    "provides": [
+      "shell"
+    ],
+    "risk": "high",
+    "scope": "workspace-only (restrictToWorkspace; NO OS sandbox on Windows)",
+    "updated": "2026-09-18T17:28:28+00:00",
+    "verified": "VERIFIED"
+  },
+  "read_file": {
+    "id": "read_file",
+    "kind": "builtin",
+    "notes": "nanobot 0.3.5 built-in; reported registered in Phase 1 WebUI",
+    "provides": [
+      "filesystem"
+    ],
+    "risk": "low",
+    "scope": "workspace-only",
+    "updated": "2026-09-18T17:28:28+00:00",
+    "verified": "VERIFIED"
+  },
+  "web_fetch": {
+    "id": "web_fetch",
+    "kind": "builtin",
+    "notes": "nanobot 0.3.5 built-in; reported registered in Phase 1 WebUI",
+    "provides": [
+      "net_fetch"
+    ],
+    "risk": "low",
+    "scope": "SSRF guard on",
+    "updated": "2026-09-18T17:28:28+00:00",
+    "verified": "INFERRED"
+  },
+  "web_search": {
+    "id": "web_search",
+    "kind": "builtin",
+    "notes": "nanobot 0.3.5 built-in; reported registered in Phase 1 WebUI",
+    "provides": [
+      "web_search"
+    ],
+    "risk": "low",
+    "scope": "duckduckgo, keyless",
+    "updated": "2026-09-18T17:28:28+00:00",
+    "verified": "VERIFIED"
+  },
+  "write_file": {
+    "id": "write_file",
+    "kind": "builtin",
+    "notes": "nanobot 0.3.5 built-in; reported registered in Phase 1 WebUI",
+    "provides": [
+      "filesystem"
+    ],
+    "risk": "medium",
+    "scope": "workspace-only",
+    "updated": "2026-09-18T17:28:28+00:00",
+    "verified": "VERIFIED"
+  }
+}
