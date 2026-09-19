@@ -94,3 +94,27 @@ Live config now: primary **groq-qwen27b**, fallbacks [groq-gptoss120b, groq-gpto
 - `patch_fallback_413.py` extended again: Groq `failed_generation` / "Parsing failed. The model generated output…" (gpt-oss-20b emitting malformed tool JSON) is now fallbackable — it killed a run in 30 s.
 - Final T2 attempt 17:49: log shows **D-017 working exactly as designed** — `quota-aware retry: 'qwen/qwen3.8-27b' daily quota exhausted, rotating lane` → `'openai/gpt-oss-120b' daily quota exhausted, rotating lane` → local qwen3:4b → timeout. gpt-oss-20b (the last Groq model with budget) then hit its own 200k TPD during the run. **All three Groq models are TPD-exhausted for the rolling day.** No further laptop LLM runs today (D-019).
 - Bot 002 remains `testing` 1/2. Not a code failure: the pipeline, least-privilege, template override, lane rotation and failover are all VERIFIED in logs; only remote token budget is missing.
+
+## 2026-09-19 18:00–19:00 — Lanes set (Gemini + OpenRouter) → bot 002 VERIFIED 2/2
+**Lane probes (laptop, tools/lanes.py, lanes2.py; echo tool-call test):**
+| lane | model | tool calls | latency | notes |
+|---|---|---|---|---|
+| gemini-flash | gemini-3.6-flash | 5/5 | 1.3–2.4 s | gemini-2.5-* → 404 "no longer available to new users" |
+| gemini-lite | gemini-3.5-flash-lite | 5/5 | 0.8–1.4 s | |
+| or-deepseek | deepseek/deepseek-v4-flash-0731:free | 5/5 | 2.6–4.1 s | OpenRouter free = 50 req/day account-wide |
+| or-qwen27b | qwen/qwen3.8-27b:free | 2/2 | 8–40 s | backup only |
+| (rejected) | thinkingmachines/inkling*:free | 403 | | "agentic harnesses only" |
+| (rejected) | nvidia/nemotron-3.5-lightning:free, nex-n2.5-mini:free | timeout 60 s | | |
+| (rejected) | google/gemma-4-26b-a4b-it:free | 429 upstream | | |
+| groq llama-3.3-70b-versatile | | model_not_found | | does not exist on this account (4th confirmation) |
+
+`nanobot status --config C:\AI\Factory\config.json`: Config ✓, Gemini ✓, OpenRouter ✓, Custom ✓, Ollama ✓ (Groq key via ${GROQ_API_KEY}). Bug fixed on the way: PS5 `Set-Content -Encoding UTF8` writes a BOM → nanobot "Invalid configuration"; now written with UTF8Encoding($false).
+
+**Bot 002 runs (each = one run, run-bot-tests.ps1):**
+1. 18:0x chain still Groq-only (runner rebuilt cfg from bundle) → T2 TIMEOUT. Fix: chain must live in the spec, not a hand-edited botcfg.
+2. 18:2x chain groq>gemini>or>gemini-lite>groq>local → T2 **completed in 257 s** (first time) but answered 0.2.1: pypi.org/pypi/…/json (1557 chars limit) truncated before `info.version`; bot looped fetch→read on the same URL until nanobot's repeated-lookup guard blocked it.
+3. Fix (spec-level, factory rebuild): instruct PyPI lookups via `https://pypi.org/rss/project/<name>/releases.xml`, never repeat identical tool calls, read truncated result file once. maxToolResultChars 1500→4000 in live config.
+4. 18:59 **T1 PASS 29 s, T2 PASS 84 s → SCORE 2/2. Bot 002 status → active, VERIFIED.**
+   At run time Groq gpt-oss-20b TPD = 198,433/200,000 (429) and OpenRouter free = 66/50 used → the passing run was executed by the **Gemini lanes via failover**, i.e. cross-provider failover VERIFIED end-to-end under real quota exhaustion.
+
+Runner upgrades: exports GEMINI/OPENROUTER keys into the job, `-Only N` to run one test, per-test transcripts saved to `C:\AI\Factory\run\logs\bot<id>-t<n>-<hhmmss>.log`.

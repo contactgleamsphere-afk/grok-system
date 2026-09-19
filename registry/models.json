@@ -9,14 +9,17 @@
     "cost_per_1k": 0.0,
     "id": "gemini-flash",
     "location": "remote",
-    "model": "gemini-2.5-flash",
-    "notes": "STAGED \u2014 needs GEMINI_API_KEY (AI Studio, no card).",
+    "model": "gemini-3.6-flash",
+    "notes": "STAGED \u2014 needs GEMINI_API_KEY (AI Studio, no card). VERIFIED 2026-09-19: OpenAI-compat endpoint, 5/5 tool calls, 1.3-2.4s. gemini-2.5-* return 404 for new users.",
     "provider": "gemini",
     "ram_gb": null,
     "tokens_per_sec": null,
-    "tool_call_score": null,
+    "tool_call_score": 1.0,
     "updated": "2026-09-19T15:10:45+00:00",
-    "verified": "UNVERIFIED"
+    "verified": "VERIFIED",
+    "limits": {
+      "rpd_note": "AI Studio free tier; per-model RPD low on newest models - RESEARCH-REQUIRED exact numbers"
+    }
   },
   "groq-gptoss120b": {
     "capabilities": [
@@ -116,24 +119,6 @@
     "updated": "2026-09-18T20:41:15+00:00",
     "verified": "VERIFIED"
   },
-  "or-free-auto": {
-    "capabilities": [
-      "chat",
-      "tools"
-    ],
-    "context_window": 32768,
-    "cost_per_1k": 0.0,
-    "id": "or-free-auto",
-    "location": "remote",
-    "model": "openrouter/free",
-    "notes": "STAGED \u2014 needs OPENROUTER_API_KEY. Auto-routes across :free models; breadth fallback.",
-    "provider": "openrouter",
-    "ram_gb": null,
-    "tokens_per_sec": null,
-    "tool_call_score": null,
-    "updated": "2026-09-19T15:10:45+00:00",
-    "verified": "UNVERIFIED"
-  },
   "ovh-gptoss20b": {
     "capabilities": [
       "chat",
@@ -190,5 +175,71 @@
     "tool_call_score": null,
     "updated": "2026-09-19T05:27:14+00:00",
     "verified": "BLOCKED"
+  },
+  "gemini-lite": {
+    "capabilities": [
+      "chat",
+      "tools",
+      "vision"
+    ],
+    "context_window": 32768,
+    "cost_per_1k": 0.0,
+    "id": "gemini-lite",
+    "location": "remote",
+    "model": "gemini-3.5-flash-lite",
+    "notes": "VERIFIED 2026-09-19: 5/5 tool calls, 0.8-1.4s. Cheapest Gemini lane.",
+    "provider": "gemini",
+    "ram_gb": null,
+    "tokens_per_sec": null,
+    "tool_call_score": 1.0,
+    "updated": "2026-09-19T15:10:45+00:00",
+    "verified": "VERIFIED",
+    "limits": {
+      "rpd_note": "AI Studio free tier; per-model RPD low on newest models - RESEARCH-REQUIRED exact numbers"
+    }
+  },
+  "or-deepseek": {
+    "capabilities": [
+      "chat",
+      "tools"
+    ],
+    "context_window": 32768,
+    "cost_per_1k": 0.0,
+    "id": "or-deepseek",
+    "location": "remote",
+    "model": "deepseek/deepseek-v4-flash-0731:free",
+    "notes": "VERIFIED 2026-09-19: 5/5 tool calls, 2.6-4.1s. OpenRouter free tier 50 req/day shared across :free models (key endpoint reports used/limit).",
+    "provider": "openrouter",
+    "ram_gb": null,
+    "tokens_per_sec": null,
+    "tool_call_score": 1.0,
+    "updated": "2026-09-19T15:10:45+00:00",
+    "verified": "VERIFIED",
+    "limits": {
+      "rpd": 50,
+      "rpd_scope": "account-wide across all :free models"
+    }
+  },
+  "or-qwen27b": {
+    "capabilities": [
+      "chat",
+      "tools"
+    ],
+    "context_window": 32768,
+    "cost_per_1k": 0.0,
+    "id": "or-qwen27b",
+    "location": "remote",
+    "model": "qwen/qwen3.8-27b:free",
+    "notes": "VERIFIED 2026-09-19: 2/2 tool calls but slow/variable (8-40s). Backup only.",
+    "provider": "openrouter",
+    "ram_gb": null,
+    "tokens_per_sec": null,
+    "tool_call_score": 1.0,
+    "updated": "2026-09-19T15:10:45+00:00",
+    "verified": "VERIFIED",
+    "limits": {
+      "rpd": 50,
+      "rpd_scope": "account-wide across all :free models"
+    }
   }
 }

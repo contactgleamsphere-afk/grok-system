@@ -19,3 +19,6 @@ Get-ChildItem C:\AI\Factory\.venv\Lib\site-packages\nanobot -Recurse -Directory 
 nanobot status --config C:\AI\Factory\config.json
 ```
 Env vars that must exist for the user: GROQ_API_KEY, AIFACTORY_DISABLED_TOOLS (see TEST_RESULTS 2026-09-19).
+
+## Lanes (2026-09-19)
+Keys are User env vars on the laptop: GROQ_API_KEY, GEMINI_API_KEY, OPENROUTER_API_KEY. config.json references them as `${VAR}`; never paste keys into config. Re-add lanes after a config reset: `powershell -File C:\AI\Factory\tools\addlanes.ps1` then strip BOM (see cfgfix.ps1 pattern) and `nanobot status --config C:\AI\Factory\config.json`.

@@ -22,3 +22,9 @@
 | D-018 | 2026-09-19 | Factory bots get exactly the nanobot tools their permissions grant (AIFACTORY_DISABLED_TOOLS from nanobot.patch.json); owner-level tools (spawn, message, cron, sessions, cli apps) are never granted to factory bots | least privilege; verified "Registered 3 tools" | never |
 | D-019 | 2026-09-19 | Groq free tier (8k TPM + 200k TPD per model) is a *development* lane, not a production Master. Stop spending it on repeated benchmarks; run heavy loops at most once per change. Add OpenRouter + Gemini lanes (owner keys) and make the router spread load across providers by remaining daily budget | measured TPD exhaustion killed bot 002 T2 after the loop itself was proven | when a lane with ≥1M tokens/day exists |
 | D-020 | 2026-09-19 | Per-step token diet for small-TPM lanes: identity+tool-contract prompt must drop below ~1.5k tokens (currently ~3.2k) — implement as a nanobot template override in the bot bundle, not a code patch | 4.5k tokens/step → 2 steps/min on 8k TPM | after implemented |
+
+## D-021 — Bot test chains must span ≥2 remote providers + local (2026-09-19)
+Status: ACCEPTED, VERIFIED. Evidence: bot 002 T2 passed only after Gemini/OpenRouter lanes were added; on the passing run both Groq (TPD) and OpenRouter (RPD 50) were exhausted and Gemini carried it. The factory router puts the primary on the cheapest lane and orders fallbacks by provider diversity, local last. Daily budgets known so far: Groq 200k tok/model, OpenRouter 50 req/account (all :free), Gemini free tier RPD per model RESEARCH-REQUIRED (not hit today).
+
+## D-022 — Task-shaped instructions beat bigger context (2026-09-19)
+The 0.2.1 wrong answer was a truncation/looping problem, not a model problem. Fix chosen: teach the bot the smallest reliable source (PyPI RSS) and forbid repeated identical tool calls, rather than raising context/maxTokens (which burns quota). Applies to all factory bot specs: prefer compact machine endpoints over HTML pages.

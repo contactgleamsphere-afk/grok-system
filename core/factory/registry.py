@@ -41,6 +41,7 @@ class ModelEntry:
     tool_call_score: float | None = None   # 0..1 from measured tests
     verified: str = "UNVERIFIED"
     notes: str = ""
+    limits: dict = field(default_factory=dict)   # e.g. {"rpm":30,"tpm":8000,"tpd":200000,"rpd":50,"rpd_scope":"account"}
     updated: str = field(default_factory=_now)
 
     def validate(self) -> None:

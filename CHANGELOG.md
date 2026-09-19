@@ -33,3 +33,7 @@
 - D-017 quota-aware retry patch (tools/patch_quota_retry.py); patch scripts made order-independent/idempotent; tool_use_failed now fallbackable. Measured Groq 200k TPD/model → D-019/D-020. bot 002 spec chain rotated (gpt-oss-20b first). tools/groq_tpd_probe.py.
 ## 2026-09-19 (late)
 - D-020 template override patch + lean tool_contract in every bot bundle (BotFactory writes templates/, nanobot.patch.json exports AIFACTORY_TEMPLATE_DIR; run-bot-tests.ps1 honours it). failed_generation fallbackable. 24/24 tests.
+## 2026-09-19 (evening) — lanes + bot 002 VERIFIED
+- Gemini (gemini-3.6-flash, gemini-3.5-flash-lite) and OpenRouter (deepseek-v4-flash:free, qwen3.8-27b:free) lanes added to laptop config + registry/models.json with measured tool-call scores; ModelEntry gains `limits` dict.
+- Bot 002 research-scout chain now spans 3 providers + local; spec instructions hardened (PyPI RSS, no repeated tool calls). Bot 002 = **active / VERIFIED 2/2**.
+- run-bot-tests.ps1: keys for all lanes, `-Only`, saved transcripts. Config writes BOM-free.

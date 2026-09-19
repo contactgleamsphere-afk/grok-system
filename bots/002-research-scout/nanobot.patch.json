@@ -3,8 +3,10 @@
     "defaults": {
       "modelPreset": "groq-gptoss20b",
       "fallbackModels": [
+        "gemini-flash",
+        "or-deepseek",
+        "gemini-lite",
         "groq-qwen27b",
-        "groq-gptoss120b",
         "local4b"
       ]
     }
