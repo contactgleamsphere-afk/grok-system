@@ -30,7 +30,7 @@ Status: ACCEPTED, VERIFIED. Evidence: bot 002 T2 passed only after Gemini/OpenRo
 The 0.2.1 wrong answer was a truncation/looping problem, not a model problem. Fix chosen: teach the bot the smallest reliable source (PyPI RSS) and forbid repeated identical tool calls, rather than raising context/maxTokens (which burns quota). Applies to all factory bot specs: prefer compact machine endpoints over HTML pages.
 
 ## D-023 — Every bot with shell/write gets a mandatory escape test (2026-09-19)
-Status: ACCEPTED. Factory specs granting fs:write or shell:* must include an acceptance test that attempts to leave the workspace and expects CONFINED; the transcript must show the tool calls were issued and refused by the runtime. Bot 003 is the reference. Follow-up: make BotFactory inject this test automatically when those permissions are present.
+Status: ACCEPTED. Factory specs granting fs:write or shell:* must include an acceptance test that attempts to leave the workspace and expects CONFINED; the transcript must show the tool calls were issued and refused by the runtime. Bot 003 is the reference. Implemented 2026-09-19: `BotFactory.with_mandatory_tests` injects it automatically (unit-tested).
 
 ## D-024 — Gemini free tier = 20 requests/day/model/project → stack several Gemini models as separate lanes (2026-09-19)
 Status: ACCEPTED (limit measured live from 429 quotaId). One bot run ≈ 8–15 LLM calls, so a single Gemini model covers ~2 runs/day. Factory chains therefore list 3–4 distinct Gemini models; D-017 rotation on 429 moves to the next bucket. OpenRouter's 50 req/day is account-wide and enforcement lags, so it sits after Gemini. Local is always last.

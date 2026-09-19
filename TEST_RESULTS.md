@@ -146,3 +146,5 @@ Bot 003 → active, VERIFIED. Caveat stands (SECURITY.md): restrictToWorkspace i
    - **C PASS (32 s)**: Groq `Invalid API Key` → Gemini (apiBase 127.0.0.1:9) `Connection error` after 4 retries → `Fallback 'deepseek/deepseek-v4-flash-0731:free' succeeded` → `XP_OK`.
    - **D UNVERIFIED (BLOCKED)**: all three remote lanes unreachable → local4b. Started 3×; each time the cloudflare tunnel died while qwen3:4b loaded (laptop saturated), then the tunnel stayed down ~12 min with no new URL. A/B on 2026-09-19 19:4x already proved Groq→local4b on the same path; D is the 3-hop version and remains to be re-run.
 6. Bot 002 T2 single run: NOT run this turn — tunnel down. Last verified 2/2 at 18:59 on a chain of the same shape.
+
+## 2026-09-19 21:0x — laptop tunnel still down (DNS: no such host, no new URL in run/tunnel.txt for >45 min). Failover D and bot 002 T2 remain OPEN. Offline Phase 4 work: D-023 auto-injection + 3 factory failure-mode unit tests, 28/28 pass.

@@ -65,7 +65,7 @@
       "web_fetch",
       "read_file"
     ],
-    "updated": "2026-09-19T19:06:30+00:00",
+    "updated": "2026-09-19T19:39:44+00:00",
     "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "/home/user/grok-system/bots/002-research-scout"
@@ -104,7 +104,7 @@
       "read_file",
       "exec"
     ],
-    "updated": "2026-09-19T19:06:30+00:00",
+    "updated": "2026-09-19T19:39:44+00:00",
     "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "/home/user/grok-system/bots/003-code-smith"

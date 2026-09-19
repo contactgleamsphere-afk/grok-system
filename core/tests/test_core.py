@@ -232,3 +232,55 @@ def test_spec_003_code_smith_requires_shell_permission():
     assert any("exec" in p or "shell" in p for p in validate_spec(bad, reg))
     worse = dict(spec, permissions=["fs:read", "fs:write", "shell:system"])
     assert validate_spec(worse, reg)  # shell:system never allowed
+
+
+def _reg_and_factory(tmp_path):
+    import pathlib, shutil
+    from core.factory.registry import Registry
+    from core.factory.factory import BotFactory
+    root = pathlib.Path(__file__).resolve().parents[2]
+    d = tmp_path / "realreg"; shutil.copytree(root / "registry", d / "registry")
+    r = Registry(d / "registry"); return r, BotFactory(r, d / "bots")
+
+
+def _rspec(**over):
+    base = {"id": "099", "name": "tmp-bot", "purpose": "temporary test bot for unit tests only",
+            "instructions": "Do nothing dangerous. This is a unit-test spec with enough words to pass validation.",
+            "model_policy": {"primary": "groq-gptoss20b", "fallbacks": ["local4b"]},
+            "tools": ["read_file"], "permissions": ["fs:read"],
+            "tests": ["Reply with exactly: OK -> OK"]}
+    base.update(over); return base
+
+
+def test_d023_escape_test_injected_for_write_and_shell(tmp_path):
+    reg, f = _reg_and_factory(tmp_path)
+    r = f.build(_rspec(tools=["write_file", "read_file", "exec"], permissions=["fs:read", "fs:write", "shell:workspace"]))
+    import json
+    tests = json.loads((r.bot_dir / "bot.json").read_text())["tests"]
+    assert any(t.endswith("-> CONFINED") and "exec" in t for t in tests)
+    r2 = f.build(_rspec(id="098", tools=["write_file", "read_file"], permissions=["fs:read", "fs:write"]))
+    t2 = json.loads((r2.bot_dir / "bot.json").read_text())["tests"]
+    assert any(t.endswith("-> CONFINED") and "exec" not in t for t in t2)
+
+
+def test_d023_not_injected_for_readonly_bot(tmp_path):
+    reg, f = _reg_and_factory(tmp_path)
+    r = f.build(_rspec())
+    import json
+    assert not any("CONFINED" in t for t in json.loads((r.bot_dir / "bot.json").read_text())["tests"])
+
+
+def test_factory_failure_modes(tmp_path):
+    import pytest
+    from core.factory.factory import FactoryError
+    reg, f = _reg_and_factory(tmp_path)
+    with pytest.raises(FactoryError, match="not in model registry"):
+        f.build(_rspec(model_policy={"primary": "does-not-exist", "fallbacks": ["local4b"]}))
+    with pytest.raises(FactoryError, match="tool"):
+        f.build(_rspec(tools=["browser_nuke"]))
+    # a chain with no local model gets one appended automatically (never remote-only)
+    r = f.build(_rspec(id="097", model_policy={"primary": "groq-gptoss20b", "fallbacks": ["gemini-lite"]}))
+    assert r.chain[-1].startswith("local")
+    f.build(_rspec())
+    with pytest.raises(FactoryError, match="already exists"):
+        f.build(_rspec())
