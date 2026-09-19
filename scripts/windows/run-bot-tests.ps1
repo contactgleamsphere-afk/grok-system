@@ -25,7 +25,7 @@ foreach($t in $bot.tests){
   $total++
   if($t -match '^(.*)->(.*)$'){ $prompt=$Matches[1].Trim(); $expect=$Matches[2].Trim() } else { $prompt=$t.Trim(); $expect='' }
   $sid="bot$($bot.id)-t$idx-$(Get-Date -Format HHmmss)"; $t0=Get-Date
-  $job=Start-Job -ScriptBlock { param($nb,$m,$s,$c,$w,$k,$d,$td,$gk,$ok) $env:GROQ_API_KEY=$k; $env:GEMINI_API_KEY=$gk; $env:OPENROUTER_API_KEY=$ok; $env:AIFACTORY_DISABLED_TOOLS=$d; $env:AIFACTORY_TEMPLATE_DIR=$td; & $nb agent -m $m -s $s --classic --no-markdown --config $c --workspace $w 2>&1 | Out-String } -ArgumentList 'C:\AI\Factory\.venv\Scripts\nanobot.exe',$prompt,$sid,$botCfg,$BotDir,$env:GROQ_API_KEY,$env:AIFACTORY_DISABLED_TOOLS,$env:AIFACTORY_TEMPLATE_DIR,$env:GEMINI_API_KEY,$env:OPENROUTER_API_KEY
+  $job=Start-Job -ScriptBlock { param($nb,$m,$s,$c,$w,$k,$d,$td,$gk,$ok) $env:GROQ_API_KEY=$k; $env:GEMINI_API_KEY=$gk; $env:OPENROUTER_API_KEY=$ok; $env:AIFACTORY_DISABLED_TOOLS=$d; $env:AIFACTORY_TEMPLATE_DIR=$td; & $nb agent -m ($m -replace '"','\"') -s $s --classic --no-markdown --config $c --workspace $w 2>&1 | Out-String } -ArgumentList 'C:\AI\Factory\.venv\Scripts\nanobot.exe',$prompt,$sid,$botCfg,$BotDir,$env:GROQ_API_KEY,$env:AIFACTORY_DISABLED_TOOLS,$env:AIFACTORY_TEMPLATE_DIR,$env:GEMINI_API_KEY,$env:OPENROUTER_API_KEY
   if(Wait-Job $job -Timeout $Cap){ $out=(Receive-Job $job|Out-String); $status='done' } else { Stop-Job $job; $out=(Receive-Job $job|Out-String); $status='TIMEOUT'; Get-Process nanobot -ErrorAction SilentlyContinue|Stop-Process -Force }
   Remove-Job $job -Force
   New-Item -ItemType Directory -Force "C:\AI\Factory\run\logs" | Out-Null; Set-Content "C:\AI\Factory\run\logs\$sid.log" $out

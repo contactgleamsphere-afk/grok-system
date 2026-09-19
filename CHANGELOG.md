@@ -38,3 +38,4 @@
 - Bot 002 research-scout chain now spans 3 providers + local; spec instructions hardened (PyPI RSS, no repeated tool calls). Bot 002 = **active / VERIFIED 2/2**.
 - run-bot-tests.ps1: keys for all lanes, `-Only`, saved transcripts. Config writes BOM-free.
 - 19:5x Groq re-bench 5/5 both models (fresh TPD); isolated failover test A+B PASS; bench UA fix; failover-test.ps1 now uses scratch config.
+- 20:3x Bot 003 code-smith (write_file/read_file/exec, shell:workspace) built by factory, VERIFIED 4/4 incl. workspace-escape security test. Runner escapes quotes in test prompts.

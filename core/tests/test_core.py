@@ -219,3 +219,16 @@ def test_factory_test_results_flip_status(reg, tmp_path):
 
 def test_parse_tests():
     assert parse_tests(['Say hi -> hi', 'no arrow']) == [("Say hi", "hi"), ("no arrow", "")]
+
+
+def test_spec_003_code_smith_requires_shell_permission():
+    import json, pathlib
+    from core.factory.botspec import validate_spec
+    from core.factory.registry import Registry
+    reg = Registry(pathlib.Path(__file__).resolve().parents[2] / "registry")
+    spec = json.loads((pathlib.Path(__file__).resolve().parents[2] / "specs" / "003-code-smith.json").read_text())
+    assert validate_spec(spec, reg) == []
+    bad = dict(spec, permissions=["fs:read", "fs:write"])   # exec without shell:workspace
+    assert any("exec" in p or "shell" in p for p in validate_spec(bad, reg))
+    worse = dict(spec, permissions=["fs:read", "fs:write", "shell:system"])
+    assert validate_spec(worse, reg)  # shell:system never allowed

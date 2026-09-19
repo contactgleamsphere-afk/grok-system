@@ -28,3 +28,6 @@ Status: ACCEPTED, VERIFIED. Evidence: bot 002 T2 passed only after Gemini/OpenRo
 
 ## D-022 — Task-shaped instructions beat bigger context (2026-09-19)
 The 0.2.1 wrong answer was a truncation/looping problem, not a model problem. Fix chosen: teach the bot the smallest reliable source (PyPI RSS) and forbid repeated identical tool calls, rather than raising context/maxTokens (which burns quota). Applies to all factory bot specs: prefer compact machine endpoints over HTML pages.
+
+## D-023 — Every bot with shell/write gets a mandatory escape test (2026-09-19)
+Status: ACCEPTED. Factory specs granting fs:write or shell:* must include an acceptance test that attempts to leave the workspace and expects CONFINED; the transcript must show the tool calls were issued and refused by the runtime. Bot 003 is the reference. Follow-up: make BotFactory inject this test automatically when those permissions are present.

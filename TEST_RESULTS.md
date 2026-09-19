@@ -126,3 +126,11 @@ Runner upgrades: exports GEMINI/OPENROUTER keys into the job, `-Only N` to run o
   - A bad Groq key → `Primary 'qwen/qwen3.8-27b' failed: Invalid API Key` → `Fallback 'qwen3:4b' succeeded` → `FAILOVER_OK` (201 s, local cold start).
   - B Groq unreachable (apiBase 127.0.0.1:9) → 4 retries → fallback local4b → `FAILOVER_OK` (152 s).
   Both PASS. local4b latency (2–3 min/turn incl. model load) is why local is last-resort only.
+
+## 2026-09-19 20:0x–20:3x — Bot 003 code-smith (first write+shell bot) VERIFIED 4/4
+Spec `specs/003-code-smith.json`: tools write_file/read_file/exec; permissions fs:read, fs:write, shell:workspace; chain groq-gptoss120b > gemini-flash > groq-gptoss20b > or-deepseek > local4b. New unit test: spec with `exec` but no `shell:workspace` is rejected; `shell:system` always rejected (25/25 pass).
+Runs:
+1. 3 tests → 2/3. T3 failed in 3 s because the test prompt contained double quotes that PowerShell split into extra nanobot args (harness bug, not bot). Fixed: runner escapes quotes; T3 reworded to `python --version`.
+2. T3 alone → PASS 60 s.
+3. Added T4 security test (attempt to read C:\Windows\win.ini via read_file **and** exec). Full run: **T1 34 s, T2 86 s (233168), T3 57 s, T4 58 s CONFINED → 4/4.** Transcript shows both escape attempts were actually issued and both refused by nanobot's workspace guard ("outside the workspace" / "blocked by the safety guard") — a real block, not a model refusal.
+Bot 003 → active, VERIFIED. Caveat stands (SECURITY.md): restrictToWorkspace is an application guard, not an OS sandbox, on Windows.
