@@ -158,3 +158,62 @@ def test_botspec_unknown_model_tool_and_bad_cron(reg):
 def test_botspec_malformed_inputs_do_not_crash(reg, bad):
     probs = validate_spec(bad, reg)
     assert probs and all(isinstance(p, str) for p in probs)
+
+
+# ---------------- Phase 4: BotFactory ----------------
+from factory.factory import BotFactory, FactoryError, parse_tests
+
+
+def _spec(**over):
+    s = {"id": "002", "name": "research-scout", "purpose": "Find and summarise free AI infrastructure offers",
+         "instructions": "Search the web for free-tier AI compute; report provider, limits, signup requirement, source URL.",
+         "model_policy": {"primary": "remote", "fallbacks": ["deep"]},
+         "tools": ["web_search", "read_file"], "permissions": ["net:search", "fs:read"],
+         "tests": ['Reply with exactly: SCOUT_OK -> SCOUT_OK']}
+    s.update(over); return s
+
+
+def test_factory_builds_bundle(reg, tmp_path):
+    f = BotFactory(reg, tmp_path / "bots")
+    r = f.build(_spec())
+    assert r.chain == ["remote", "deep"]           # deep is local -> no extra local appended
+    for name in ("SOUL.md", "AGENTS.md", "bot.json", "nanobot.patch.json", "TESTS.md", "RECOVERY.md", "memory/MEMORY.md"):
+        assert (r.bot_dir / name).exists(), name
+    patch = json.loads((r.bot_dir / "nanobot.patch.json").read_text())
+    assert patch["agents"]["defaults"]["modelPreset"] == "remote"
+    disabled = patch["env"]["AIFACTORY_DISABLED_TOOLS"].split(",")
+    assert "exec" in disabled and "write_file" in disabled and "web_fetch" in disabled   # not granted
+    assert "web_search" not in disabled and "read_file" not in disabled                 # granted
+    assert "spawn" in disabled and "message" in disabled                                # never granted
+    bot = reg.get("bots", "002"); assert bot.status == "building" and bot.verified == "UNVERIFIED"
+
+
+def test_factory_rejects_invalid_and_duplicates(reg, tmp_path):
+    f = BotFactory(reg, tmp_path / "bots")
+    with pytest.raises(FactoryError):
+        f.build(_spec(tools=["exec"], permissions=["fs:read"]))   # high-risk tool without shell:workspace
+    f.build(_spec())
+    with pytest.raises(FactoryError):
+        f.build(_spec())                                           # duplicate id
+    f.build(_spec(), overwrite=True)                               # explicit overwrite ok
+
+
+def test_factory_chain_drops_blocked_and_appends_local(reg, tmp_path):
+    m = reg.get("models", "remote"); m.verified = "BLOCKED"; reg.upsert("models", m)
+    f = BotFactory(reg, tmp_path / "bots")
+    r = f.build(_spec(model_policy={"primary": "remote", "fallbacks": []}))
+    assert r.chain == ["deep"]                                     # BLOCKED dropped, best local appended
+    with pytest.raises(FactoryError):
+        m2 = reg.get("models", "deep"); m2.verified = "BLOCKED"; reg.upsert("models", m2)
+        m3 = reg.get("models", "local3b"); m3.verified = "BLOCKED"; reg.upsert("models", m3)
+        f.build(_spec(id="003", name="x-bot", model_policy={"primary": "remote", "fallbacks": []}))
+
+
+def test_factory_test_results_flip_status(reg, tmp_path):
+    f = BotFactory(reg, tmp_path / "bots"); f.build(_spec())
+    e = f.record_test_result("002", 1, 2, "one failed"); assert e.status == "testing" and e.verified == "UNVERIFIED"
+    e = f.record_test_result("002", 2, 2, "all good");   assert e.status == "active" and e.verified == "VERIFIED"
+
+
+def test_parse_tests():
+    assert parse_tests(['Say hi -> hi', 'no arrow']) == [("Say hi", "hi"), ("no arrow", "")]

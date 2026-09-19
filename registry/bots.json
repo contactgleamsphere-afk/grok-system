@@ -31,5 +31,38 @@
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\workspace"
+  },
+  "002": {
+    "id": "002",
+    "model_policy": {
+      "fallbacks": [
+        "groq-gptoss120b",
+        "local4b"
+      ],
+      "primary": "groq-qwen27b"
+    },
+    "name": "research-scout",
+    "notes": "tests 1/2: T1 SCOUT_OK PASS 12s; T2 multi-step web research TIMEOUT (Groq 8k TPM -> 429 -> falls to local4b which cannot finish in 480s). See TEST_RESULTS 2026-09-19 16:xx",
+    "permissions": [
+      "net:search",
+      "net:fetch",
+      "fs:read"
+    ],
+    "purpose": "Find, verify and summarise free-tier AI infrastructure (LLM APIs, compute, hosting) that the Factory could use legitimately.",
+    "schedules": [],
+    "status": "testing",
+    "tests": [
+      "Reply with exactly: SCOUT_OK -> SCOUT_OK",
+      "Use web search to find the current stable version of the Python package nanobot-ai on PyPI and reply with only the version number. -> 0.3.5"
+    ],
+    "tools": [
+      "web_search",
+      "web_fetch",
+      "read_file"
+    ],
+    "updated": "2026-09-19T15:51:26+00:00",
+    "verified": "UNVERIFIED",
+    "version": "0.1.0",
+    "workspace": "/home/user/grok-system/bots/002-research-scout"
   }
 }

@@ -27,3 +27,5 @@
 - Removed groq-llama70b (404 on account). Added groq-qwen27b, groq-gptoss20b presets.
 - nanobot patches: Groq strip reasoning_content; 413 → fallbackable; AIFACTORY_DISABLED_TOOLS env. Config slimmed for 8k TPM.
 - New tools: groqprobe.py, groq_limits.py, session_dump.py, patch_*.py; scripts: set-primary.ps1, groq-tpm-fit.ps1, phase3-groq-failover-test.ps1. apply-keyed-lanes.ps1 made ASCII-only (PS5.1 parse bug on em-dash).
+## 2026-09-19 (evening) — Phase 4 MVP
+- core/factory/factory.py (BotFactory), tools/factory_cli.py, specs/002-research-scout.json, bots/002-research-scout bundle, scripts/windows/run-bot-tests.ps1. 24/24 tests. BOT_REGISTRY regenerated (002 = testing).
