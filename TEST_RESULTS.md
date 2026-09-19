@@ -118,3 +118,11 @@ Live config now: primary **groq-qwen27b**, fallbacks [groq-gptoss120b, groq-gpto
    At run time Groq gpt-oss-20b TPD = 198,433/200,000 (429) and OpenRouter free = 66/50 used → the passing run was executed by the **Gemini lanes via failover**, i.e. cross-provider failover VERIFIED end-to-end under real quota exhaustion.
 
 Runner upgrades: exports GEMINI/OPENROUTER keys into the job, `-Only N` to run one test, per-test transcripts saved to `C:\AI\Factory\run\logs\bot<id>-t<n>-<hhmmss>.log`.
+
+## 2026-09-19 19:40–19:55 — Groq re-bench (fresh TPD) + isolated failover test
+- Groq TPD reset confirmed (rl.py OK on gpt-oss-120b / gpt-oss-20b). `llama-3.3-70b-versatile` → model_not_found (5th confirmation; not on this account).
+- `tools/groq_bench5.py` (5× echo tool-call, exact-arg check): **gpt-oss-120b 5/5, 0.46–0.75 s; gpt-oss-20b 5/5, 0.29–1.63 s**. Gotcha found+fixed: Groq edge returns 403 for Python's default urllib User-Agent → bench sets `User-Agent: aifactory-bench/1.0`.
+- `scripts/windows/failover-test.ps1` (runs on a scratch copy `run\failover-test.json`, production config untouched):
+  - A bad Groq key → `Primary 'qwen/qwen3.8-27b' failed: Invalid API Key` → `Fallback 'qwen3:4b' succeeded` → `FAILOVER_OK` (201 s, local cold start).
+  - B Groq unreachable (apiBase 127.0.0.1:9) → 4 retries → fallback local4b → `FAILOVER_OK` (152 s).
+  Both PASS. local4b latency (2–3 min/turn incl. model load) is why local is last-resort only.
