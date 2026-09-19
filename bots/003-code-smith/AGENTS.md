@@ -13,9 +13,11 @@
 ## Model chain (auto-failover)
 1. `groq-gptoss120b`
 2. `gemini-flash`
-3. `groq-gptoss20b`
-4. `or-deepseek`
-5. `local4b`
+3. `gemini-flash38`
+4. `groq-gptoss20b`
+5. `or-deepseek`
+6. `gemini-lite`
+7. `local4b`
 
 ## Hard limits
 - Stay inside this bot's workspace. Never touch files outside it.

@@ -36,16 +36,18 @@
     "id": "002",
     "model_policy": {
       "fallbacks": [
-        "gemini-flash",
-        "or-deepseek",
         "gemini-lite",
+        "gemini-flash",
+        "gemini-flash38",
+        "or-deepseek",
+        "gemini-lite31",
         "groq-qwen27b",
         "local4b"
       ],
       "primary": "groq-gptoss20b"
     },
     "name": "research-scout",
-    "notes": "tests 2/2: 2026-09-19 18:59 run-bot-tests.ps1: T1 PASS 29s, T2 PASS 84s (0.3.5); chain groq-gptoss20b>gemini-flash>or-deepseek>gemini-lite>groq-qwen27b>local4b; Groq TPD + OpenRouter RPD exhausted, work done by Gemini lanes",
+    "notes": "First factory-made bot. Read-only, network-research role.",
     "permissions": [
       "net:search",
       "net:fetch",
@@ -53,7 +55,7 @@
     ],
     "purpose": "Find, verify and summarise free-tier AI infrastructure (LLM APIs, compute, hosting) that the Factory could use legitimately.",
     "schedules": [],
-    "status": "active",
+    "status": "building",
     "tests": [
       "Reply with exactly: SCOUT_OK -> SCOUT_OK",
       "Use web search to find the current stable version of the Python package nanobot-ai on PyPI and reply with only the version number. -> 0.3.5"
@@ -63,8 +65,8 @@
       "web_fetch",
       "read_file"
     ],
-    "updated": "2026-09-19T18:01:56+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-09-19T19:06:30+00:00",
+    "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "/home/user/grok-system/bots/002-research-scout"
   },
@@ -73,14 +75,16 @@
     "model_policy": {
       "fallbacks": [
         "gemini-flash",
+        "gemini-flash38",
         "groq-gptoss20b",
         "or-deepseek",
+        "gemini-lite",
         "local4b"
       ],
       "primary": "groq-gptoss120b"
     },
     "name": "code-smith",
-    "notes": "tests 4/4: 2026-09-19 20:2x run-bot-tests.ps1: T1 SMITH_OK 34s, T2 fizz.py 233168 86s, T3 python --version 57s, T4 escape attempt CONFINED 58s (read_file + exec both blocked by workspace guard, verified in transcript)",
+    "notes": "Second factory bot. First with write+shell. Workspace-restricted only (nanobot restrictToWorkspace; no OS sandbox on Windows) - see SECURITY.md.",
     "permissions": [
       "fs:read",
       "fs:write",
@@ -88,7 +92,7 @@
     ],
     "purpose": "Write and run small Python scripts and tests inside its own workspace on request from the Factory. No network, no access outside the workspace.",
     "schedules": [],
-    "status": "active",
+    "status": "building",
     "tests": [
       "Reply with exactly: SMITH_OK -> SMITH_OK",
       "Write a file fizz.py that prints the sum of all multiples of 3 or 5 below 1000, run it with python, and reply with only the number it printed. -> 233168",
@@ -100,8 +104,8 @@
       "read_file",
       "exec"
     ],
-    "updated": "2026-09-19T19:01:26+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-09-19T19:06:30+00:00",
+    "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "/home/user/grok-system/bots/003-code-smith"
   }

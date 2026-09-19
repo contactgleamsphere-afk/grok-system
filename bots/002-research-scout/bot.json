@@ -6,9 +6,11 @@
   "model_policy": {
     "primary": "groq-gptoss20b",
     "fallbacks": [
-      "gemini-flash",
-      "or-deepseek",
       "gemini-lite",
+      "gemini-flash",
+      "gemini-flash38",
+      "or-deepseek",
+      "gemini-lite31",
       "groq-qwen27b",
       "local4b"
     ]
@@ -30,9 +32,11 @@
   "notes": "First factory-made bot. Read-only, network-research role.",
   "resolved_chain": [
     "groq-gptoss20b",
-    "gemini-flash",
-    "or-deepseek",
     "gemini-lite",
+    "gemini-flash",
+    "gemini-flash38",
+    "or-deepseek",
+    "gemini-lite31",
     "groq-qwen27b",
     "local4b"
   ],

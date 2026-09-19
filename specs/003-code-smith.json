@@ -7,8 +7,10 @@
     "primary": "groq-gptoss120b",
     "fallbacks": [
       "gemini-flash",
+      "gemini-flash38",
       "groq-gptoss20b",
       "or-deepseek",
+      "gemini-lite",
       "local4b"
     ]
   },

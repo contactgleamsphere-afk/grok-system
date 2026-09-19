@@ -39,3 +39,4 @@
 - run-bot-tests.ps1: keys for all lanes, `-Only`, saved transcripts. Config writes BOM-free.
 - 19:5x Groq re-bench 5/5 both models (fresh TPD); isolated failover test A+B PASS; bench UA fix; failover-test.ps1 now uses scratch config.
 - 20:3x Bot 003 code-smith (write_file/read_file/exec, shell:workspace) built by factory, VERIFIED 4/4 incl. workspace-escape security test. Runner escapes quotes in test prompts.
+- 20:4x Gemini model discovery by live probe (7 tool-capable models, RPD=20/model/project measured); presets gemini-flash→3.7-flash, +flash38/lite31/gemma26b; chains rebuilt; cross-provider failover C PASS (Groq→Gemini→OpenRouter); D blocked by tunnel outage.

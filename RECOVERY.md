@@ -22,3 +22,6 @@ Env vars that must exist for the user: GROQ_API_KEY, AIFACTORY_DISABLED_TOOLS (s
 
 ## Lanes (2026-09-19)
 Keys are User env vars on the laptop: GROQ_API_KEY, GEMINI_API_KEY, OPENROUTER_API_KEY. config.json references them as `${VAR}`; never paste keys into config. Re-add lanes after a config reset: `powershell -File C:\AI\Factory\tools\addlanes.ps1` then strip BOM (see cfgfix.ps1 pattern) and `nanobot status --config C:\AI\Factory\config.json`.
+
+## Tunnel outage pattern (2026-09-19)
+Loading qwen3:4b on the laptop can starve cloudflared → ssh drops mid-run and `run/tunnel.txt` is only refreshed when the supervisor restarts. If the tunnel is silent >10 min: on the laptop run `powershell -File C:\AI\Factory\tools\tunnel-restart.ps1` (or reboot cloudflared service). Never treat a dropped run as a test failure — re-run it.

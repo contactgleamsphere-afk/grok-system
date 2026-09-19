@@ -134,3 +134,15 @@ Runs:
 2. T3 alone → PASS 60 s.
 3. Added T4 security test (attempt to read C:\Windows\win.ini via read_file **and** exec). Full run: **T1 34 s, T2 86 s (233168), T3 57 s, T4 58 s CONFINED → 4/4.** Transcript shows both escape attempts were actually issued and both refused by nanobot's workspace guard ("outside the workspace" / "blocked by the safety guard") — a real block, not a model refusal.
 Bot 003 → active, VERIFIED. Caveat stands (SECURITY.md): restrictToWorkspace is an application guard, not an OS sandbox, on Windows.
+
+## 2026-09-19 20:0x–20:4x — "LANES SET": both providers together, isolated cross-provider failover
+1. Keys present locally (lengths only, never printed): GROQ 56, GEMINI 53, OPENROUTER 73. `nanobot status`: Config ✓ Gemini ✓ OpenRouter ✓ Ollama ✓.
+2. Smallest live probes: OpenRouter deepseek-v4-flash:free tool_call=True 2.7 s. **gemini-3.6-flash → 429** `GenerateRequestsPerDayPerProjectPerModel-FreeTier` = **20 RPD** (exhausted by yesterday's bot run). OpenRouter free quota: used 79 / limit 50 → 0 remaining (it still served the probe; enforcement is soft/lagging — do not rely on it).
+3. Model discovery by live API list + tool-call probe (`tools/gemini_discover.py`), no assumed names:
+   OK+tool: gemini-3.5-flash-lite 0.7 s · gemini-3.7-flash 1.3 s · gemma-4-26b-a4b-it 1.3 s · gemini-3.1-flash-lite 1.7 s · gemini-3.8-flash 2.4 s · gemini-3.1-flash-lite-preview 3.0 s · gemini-flash-latest 4.1 s · (gemini-3.5-flash 33 s, gemma-4-31b 33 s — too slow).
+   Excluded: gemini-3-flash-preview (no tool call), gemini-2.5-* (404 for new users), gemini-3.6-flash (RPD 20 exhausted).
+4. Chains rebuilt by factory: 002 = groq-gptoss20b > gemini-lite > gemini-flash(3.7) > gemini-flash38 > or-deepseek > gemini-lite31 > groq-qwen27b > local4b; 003 similar. Gemini's 20 RPD/model is why several Gemini models are stacked — each is its own bucket (D-017 rotation applies).
+5. Isolated failover, scratch config (`scripts/windows/failover-xprovider.ps1`), primary groq-gptoss20b, chain gemini-lite > or-deepseek > local4b:
+   - **C PASS (32 s)**: Groq `Invalid API Key` → Gemini (apiBase 127.0.0.1:9) `Connection error` after 4 retries → `Fallback 'deepseek/deepseek-v4-flash-0731:free' succeeded` → `XP_OK`.
+   - **D UNVERIFIED (BLOCKED)**: all three remote lanes unreachable → local4b. Started 3×; each time the cloudflare tunnel died while qwen3:4b loaded (laptop saturated), then the tunnel stayed down ~12 min with no new URL. A/B on 2026-09-19 19:4x already proved Groq→local4b on the same path; D is the 3-hop version and remains to be re-run.
+6. Bot 002 T2 single run: NOT run this turn — tunnel down. Last verified 2/2 at 18:59 on a chain of the same shape.
