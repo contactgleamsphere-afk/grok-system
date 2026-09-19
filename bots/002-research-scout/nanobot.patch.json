@@ -10,6 +10,7 @@
     }
   },
   "env": {
-    "AIFACTORY_DISABLED_TOOLS": "apply_patch,create_goal,cron,edit_file,exec,exec_session,find_files,grep,list_dir,list_exec_sessions,list_sessions,message,my,read_session,run_cli_app,search_sessions,send_session_message,spawn,update_goal,write_file"
+    "AIFACTORY_DISABLED_TOOLS": "apply_patch,create_goal,cron,edit_file,exec,exec_session,find_files,grep,list_dir,list_exec_sessions,list_sessions,message,my,read_session,run_cli_app,search_sessions,send_session_message,spawn,update_goal,write_file",
+    "AIFACTORY_TEMPLATE_DIR": "/home/user/grok-system/bots/002-research-scout/templates"
   }
 }

@@ -31,3 +31,5 @@
 - core/factory/factory.py (BotFactory), tools/factory_cli.py, specs/002-research-scout.json, bots/002-research-scout bundle, scripts/windows/run-bot-tests.ps1. 24/24 tests. BOT_REGISTRY regenerated (002 = testing).
 ## 2026-09-19 (night)
 - D-017 quota-aware retry patch (tools/patch_quota_retry.py); patch scripts made order-independent/idempotent; tool_use_failed now fallbackable. Measured Groq 200k TPD/model → D-019/D-020. bot 002 spec chain rotated (gpt-oss-20b first). tools/groq_tpd_probe.py.
+## 2026-09-19 (late)
+- D-020 template override patch + lean tool_contract in every bot bundle (BotFactory writes templates/, nanobot.patch.json exports AIFACTORY_TEMPLATE_DIR; run-bot-tests.ps1 honours it). failed_generation fallbackable. 24/24 tests.

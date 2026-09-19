@@ -14,13 +14,14 @@ $cfg.agents.defaults.maxToolResultChars=1500
 New-Item -ItemType Directory -Force C:\AI\Factory\run\botcfg | Out-Null; $botCfg="C:\AI\Factory\run\botcfg\$($bot.id).json"
 [IO.File]::WriteAllText($botCfg,($cfg|ConvertTo-Json -Depth 20),(New-Object Text.UTF8Encoding($false)))
 $env:AIFACTORY_DISABLED_TOOLS=$patch.env.AIFACTORY_DISABLED_TOOLS
+$env:AIFACTORY_TEMPLATE_DIR="$BotDir\templates"
 "bot $($bot.id) $($bot.name)  chain=$($patch.agents.defaults.modelPreset),$($patch.agents.defaults.fallbackModels -join ',')"
 $pass=0; $total=0; $ev=@()
 foreach($t in $bot.tests){
   $total++
   if($t -match '^(.*)->(.*)$'){ $prompt=$Matches[1].Trim(); $expect=$Matches[2].Trim() } else { $prompt=$t.Trim(); $expect='' }
   $sid="bot$($bot.id)-t$total-$(Get-Date -Format HHmmss)"; $t0=Get-Date
-  $job=Start-Job -ScriptBlock { param($nb,$m,$s,$c,$w,$k,$d) $env:GROQ_API_KEY=$k; $env:AIFACTORY_DISABLED_TOOLS=$d; & $nb agent -m $m -s $s --classic --no-markdown --config $c --workspace $w 2>&1 | Out-String } -ArgumentList 'C:\AI\Factory\.venv\Scripts\nanobot.exe',$prompt,$sid,$botCfg,$BotDir,$env:GROQ_API_KEY,$env:AIFACTORY_DISABLED_TOOLS
+  $job=Start-Job -ScriptBlock { param($nb,$m,$s,$c,$w,$k,$d,$td) $env:GROQ_API_KEY=$k; $env:AIFACTORY_DISABLED_TOOLS=$d; $env:AIFACTORY_TEMPLATE_DIR=$td; & $nb agent -m $m -s $s --classic --no-markdown --config $c --workspace $w 2>&1 | Out-String } -ArgumentList 'C:\AI\Factory\.venv\Scripts\nanobot.exe',$prompt,$sid,$botCfg,$BotDir,$env:GROQ_API_KEY,$env:AIFACTORY_DISABLED_TOOLS,$env:AIFACTORY_TEMPLATE_DIR
   if(Wait-Job $job -Timeout $Cap){ $out=(Receive-Job $job|Out-String); $status='done' } else { Stop-Job $job; $out=(Receive-Job $job|Out-String); $status='TIMEOUT'; Get-Process nanobot -ErrorAction SilentlyContinue|Stop-Process -Force }
   Remove-Job $job -Force
   $el=[int]((Get-Date)-$t0).TotalSeconds

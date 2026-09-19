@@ -177,7 +177,7 @@ def test_factory_builds_bundle(reg, tmp_path):
     f = BotFactory(reg, tmp_path / "bots")
     r = f.build(_spec())
     assert r.chain == ["remote", "deep"]           # deep is local -> no extra local appended
-    for name in ("SOUL.md", "AGENTS.md", "bot.json", "nanobot.patch.json", "TESTS.md", "RECOVERY.md", "memory/MEMORY.md"):
+    for name in ("SOUL.md", "AGENTS.md", "bot.json", "nanobot.patch.json", "TESTS.md", "RECOVERY.md", "memory/MEMORY.md", "templates/agent/tool_contract.md"):
         assert (r.bot_dir / name).exists(), name
     patch = json.loads((r.bot_dir / "nanobot.patch.json").read_text())
     assert patch["agents"]["defaults"]["modelPreset"] == "remote"
@@ -185,6 +185,8 @@ def test_factory_builds_bundle(reg, tmp_path):
     assert "exec" in disabled and "write_file" in disabled and "web_fetch" in disabled   # not granted
     assert "web_search" not in disabled and "read_file" not in disabled                 # granted
     assert "spawn" in disabled and "message" in disabled                                # never granted
+    assert patch["env"]["AIFACTORY_TEMPLATE_DIR"].endswith("templates")
+    assert len((r.bot_dir / "templates/agent/tool_contract.md").read_text()) < 1200      # lean contract (D-020)
     bot = reg.get("bots", "002"); assert bot.status == "building" and bot.verified == "UNVERIFIED"
 
 

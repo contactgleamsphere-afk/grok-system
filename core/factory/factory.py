@@ -47,6 +47,9 @@ _ALWAYS_DISABLED = [
 ]
 
 
+_LEAN_TOOL_CONTRACT = (Path(__file__).parent / "templates" / "agent" / "tool_contract.md").read_text(encoding="utf-8")
+
+
 class FactoryError(ValueError):
     pass
 
@@ -87,12 +90,16 @@ class BotFactory:
             "bot.json": json.dumps({**spec, "resolved_chain": chain, "disabled_tools": disabled}, indent=2),
             "nanobot.patch.json": json.dumps({
                 "agents": {"defaults": {"modelPreset": chain[0], "fallbackModels": chain[1:]}},
-                "env": {"AIFACTORY_DISABLED_TOOLS": ",".join(disabled)},
+                "env": {"AIFACTORY_DISABLED_TOOLS": ",".join(disabled),
+                        "AIFACTORY_TEMPLATE_DIR": str(bot_dir / "templates")},
             }, indent=2),
             "TESTS.md": self._tests(spec),
             "RECOVERY.md": self._recovery(spec, bot_dir),
             "memory/MEMORY.md": "# Long-term memory\n",
+            # D-020: lean prompt templates for small-TPM lanes (used via AIFACTORY_TEMPLATE_DIR)
+            "templates/agent/tool_contract.md": _LEAN_TOOL_CONTRACT,
         }
+        (bot_dir / "templates" / "agent").mkdir(parents=True, exist_ok=True)
         for rel, content in files.items():
             (bot_dir / rel).write_text(content, encoding="utf-8")
 

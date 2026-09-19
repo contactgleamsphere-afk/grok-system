@@ -29,7 +29,7 @@ _Last updated: 2026-09-18 — by Arena agent (architect/builder). Source of trut
 - core/ tests: 19/19 pass (Python 3.13 sandbox). Not yet run on laptop Python 3.11.
 
 ## PHASE 4 (Bot Factory) — IN PROGRESS, MVP VERIFIED
-- BotFactory core + CLI + laptop runner work end-to-end; bot 002 research-scout built, deployed, least-privilege tool set enforced, T1 PASS ×6; T2 (7-step web research) BLOCKED by Groq free-tier throughput: 8k TPM + **200k tokens/day per model** (measured; two of three models exhausted today). D-017 quota-aware routing implemented & verified in logs; D-019/D-020 next.
+- BotFactory core + CLI + laptop runner work end-to-end; bot 002 research-scout built, deployed, least-privilege tool set enforced, T1 PASS ×6; T2 (7-step web research) BLOCKED by Groq free-tier throughput: 8k TPM + **200k tokens/day per model** (measured; two of three models exhausted today). D-017 quota-aware routing and D-020 lean templates implemented & verified in logs. All 3 Groq models TPD-exhausted 2026-09-19 evening → no further LLM runs today. Next laptop run: bot 002 T2 once, after quota reset or new lanes.
 
 ## VERIFIED (added 2026-09-19 16:xx) — PHASE 3 COMPLETE
 - Master lane = Groq (key as user env var). groq-qwen27b 4/5 agent bench (T5 passes at 275 s standalone); groq-gptoss120b 4/5. Failover on bad key and on network failure → local4b PASS. Chain: groq-qwen27b → groq-gptoss120b → groq-gptoss20b → local4b.
