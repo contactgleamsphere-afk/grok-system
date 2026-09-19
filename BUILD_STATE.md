@@ -8,7 +8,7 @@ _Last updated: 2026-09-18 — by Arena agent (architect/builder). Source of trut
 | 0 | Discovery, baseline, tool-call test | ✅ DONE (Arena over SSH) | TEST_RESULTS.md, benchmarks/2026-09-18 |
 | 1 | Foundation: nanobot 0.3.5 + Ollama + qwen2.5:3b | ✅ VERIFIED | owner report 2026-09-18: `PHASE1_OK`, WebUI 127.0.0.1:8765 |
 | 2 | Core: registries, router, bot-spec contract, Master identity, security hardening | ✅ identity deployed + config hardened on laptop; core code tested in sandbox | config/laptop/config.current.json |
-| 3 | Model router: remote free-tier Master lane + local cheap lanes | **NEXT — BLOCKED on owner signups (see below)** | D-007 |
+| 3 | Model router: keyed free-tier Master lane + OVH anon + local | 🟡 IN PROGRESS — OVH lanes live; keyed lanes staged; **failover test not yet passed** | docs/FREE_PROVIDERS_2026-09-19.md, D-010 |
 | 4 | Tool layer / MCP | pending | |
 | 5 | Memory | pending | |
 | 6 | Coding agent | pending | |
@@ -38,7 +38,8 @@ _Last updated: 2026-09-18 — by Arena agent (architect/builder). Source of trut
 - What consumes ~10 GB RAM at idle.
 
 ## BLOCKED
-- Phase 3 Master lane: needs owner to create free-tier API key(s) — human signup, cannot be automated legitimately.
+- Phase 3 Master lane: needs free-tier keys set as laptop env vars GROQ_API_KEY / OPENROUTER_API_KEY / GEMINI_API_KEY (owner signup; then run scripts/windows/apply-keyed-lanes.ps1). Verified: no keyless provider sustains agent loops.
+- Laptop tunnel dropped at ~03:2x 2026-09-19; supervisor did not republish within 3 min. Needs diagnosis on reconnect.
 - Port 3000 JARVIS X service: owner decision.
 
 ## Known debt

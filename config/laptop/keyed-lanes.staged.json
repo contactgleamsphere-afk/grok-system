@@ -1,0 +1,8 @@
+{ "providers": { "groq": {"apiKey":"${GROQ_API_KEY}"}, "openrouter": {"apiKey":"${OPENROUTER_API_KEY}"}, "gemini": {"apiKey":"${GEMINI_API_KEY}"} },
+  "modelPresets": {
+    "groq-llama70b":  {"model":"llama-3.3-70b-versatile","provider":"groq","maxTokens":2048,"contextWindowTokens":32768,"temperature":0.2},
+    "groq-gptoss120b":{"model":"openai/gpt-oss-120b","provider":"groq","maxTokens":2048,"contextWindowTokens":32768,"temperature":0.2},
+    "or-free-auto":   {"model":"openrouter/free","provider":"openrouter","maxTokens":2048,"contextWindowTokens":32768,"temperature":0.2},
+    "gemini-flash":   {"model":"gemini-2.5-flash","provider":"gemini","maxTokens":2048,"contextWindowTokens":32768,"temperature":0.2} },
+  "agents": { "defaults": { "modelPreset": "groq-llama70b",
+    "fallbackModels": ["groq-gptoss120b","or-free-auto","gemini-flash","ovh-gptoss20b","ovh-mistral24b","local4b"] } } }

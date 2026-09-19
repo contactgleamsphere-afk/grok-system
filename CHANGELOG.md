@@ -13,3 +13,8 @@
 - Phase 0 executed: live audit, RAM profile, speed + tool-call benchmarks for qwen2.5:3b and qwen3:4b (both 1/5).
 - Config hardened (see TEST_RESULTS). Master 001 identity deployed to workspace.
 - qwen3:4b pulled. Registries updated with measured numbers. D-007..D-009.
+## 2026-09-19
+- Tunnel supervisor (auto-restart + URL publish to run/tunnel.txt) deployed as scheduled task; sleep-on-AC disabled; reconnect helper scripts/laptop-ssh.sh.
+- Provider research + live probes: GitHub Models dead; OVH anonymous passes single-shot tool calls; wired ovh-gptoss20b/ovh-mistral24b/ovh-llama70b presets; production chain = ovh → local4b.
+- Agent bench on ovh-gptoss20b: 0/5 (429 starvation). D-010: keyed lanes staged (Groq/OpenRouter/Gemini) via ${ENV} placeholders; apply-keyed-lanes.ps1.
+- Failover test scripted; not yet passed (config validation, then tunnel drop).

@@ -20,3 +20,9 @@ Conclusion (D-007): no local model on this hardware can act as MASTER. Local mod
 
 ## 2026-09-18 — Security hardening applied (config sha 6105B7… → 69445C…)
 restrictToWorkspace=true; maxToolIterations 200→25; exec.timeout 60→120 with 12 denyPatterns (format/diskpart/recursive delete of system paths/reg/netsh/shutdown/net user/iex-from-http); websocket allowFrom * → 127.0.0.1,::1; identity SOUL.md/AGENTS.md deployed; phase0_test.txt removed. Backup: C:\AI\Factory\config.json.bak-*.
+
+## 2026-09-19 — Phase 3 provider probes + agent bench
+See docs/FREE_PROVIDERS_2026-09-19.md. Key numbers: OVH gpt-oss-20b single-shot tool_call PASS 1.0 s; nanobot agent bench on same 0/5 (429 starvation). GitHub Models 410. Failover test (broken-primary → ovh → local4b) was staged in `scripts/windows/phase3-failover-test.ps1`; first attempt aborted by nanobot config validation (env-var placeholders for unset keys are hard errors — fixed by staging keyed lanes separately); second attempt interrupted by tunnel drop. **Failover test = NOT YET PASSED.**
+
+## 2026-09-19 — Tunnel
+Supervisor deployed and verified: published `https://cleanup-operational-rim-precise.trycloudflare.com` to run/tunnel.txt at 03:07:33; SSH reconnected through it. Then the tunnel dropped at ~03:2x and did not republish for >3 min → supervisor restart path or laptop sleep/network is suspect. Sleep-on-AC disabled via powercfg during this session.
