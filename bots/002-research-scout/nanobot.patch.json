@@ -1,8 +1,9 @@
 {
   "agents": {
     "defaults": {
-      "modelPreset": "groq-qwen27b",
+      "modelPreset": "groq-gptoss20b",
       "fallbackModels": [
+        "groq-qwen27b",
         "groq-gptoss120b",
         "local4b"
       ]

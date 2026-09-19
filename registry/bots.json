@@ -36,13 +36,14 @@
     "id": "002",
     "model_policy": {
       "fallbacks": [
+        "groq-qwen27b",
         "groq-gptoss120b",
         "local4b"
       ],
-      "primary": "groq-qwen27b"
+      "primary": "groq-gptoss20b"
     },
     "name": "research-scout",
-    "notes": "tests 1/2: T1 SCOUT_OK PASS 12s; T2 multi-step web research TIMEOUT (Groq 8k TPM -> 429 -> falls to local4b which cannot finish in 480s). See TEST_RESULTS 2026-09-19 16:xx",
+    "notes": "tests 1/2: T1 SCOUT_OK PASS x6; T2 web-research blocked: Groq free tier TPD 200k/model/day exhausted by the day's benchmarks (qwen27b 196k, gpt-oss-120b 198k used); gpt-oss-20b alone at 8k TPM cannot finish a 7-step task in 480s",
     "permissions": [
       "net:search",
       "net:fetch",
@@ -60,7 +61,7 @@
       "web_fetch",
       "read_file"
     ],
-    "updated": "2026-09-19T15:51:26+00:00",
+    "updated": "2026-09-19T16:35:21+00:00",
     "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "/home/user/grok-system/bots/002-research-scout"

@@ -11,9 +11,10 @@
 - fs:read
 
 ## Model chain (auto-failover)
-1. `groq-qwen27b`
-2. `groq-gptoss120b`
-3. `local4b`
+1. `groq-gptoss20b`
+2. `groq-qwen27b`
+3. `groq-gptoss120b`
+4. `local4b`
 
 ## Hard limits
 - Stay inside this bot's workspace. Never touch files outside it.

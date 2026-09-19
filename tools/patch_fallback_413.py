@@ -15,6 +15,9 @@ new='''        # AI-Factory patch (2026-09-19): Groq reports per-minute token ca
         # That is a quota condition, not a bad request -> fall back.
         if status == 413 or "rate_limit" in code or "rate_limit" in text[:400]:
             return True
+        # model emitted an invalid/hallucinated tool call -> another model may do better
+        if "tool_use_failed" in code or "tool call validation failed" in text[:400]:
+            return True
         if kind in _NON_FALLBACK_ERROR_KINDS:
             return False
         if any(
@@ -24,6 +27,13 @@ new='''        # AI-Factory patch (2026-09-19): Groq reports per-minute token ca
         ):
             return False
         if status in {401, 403}:'''
-if new in s: print("already patched")
+if "tool call validation failed" in s: print("already patched")
+elif "AI-Factory patch (2026-09-19): Groq reports" in s:
+    s=s.replace('''        if status == 413 or "rate_limit" in code or "rate_limit" in text[:400]:
+            return True''', '''        if status == 413 or "rate_limit" in code or "rate_limit" in text[:400]:
+            return True
+        # model emitted an invalid/hallucinated tool call -> another model may do better
+        if "tool_use_failed" in code or "tool call validation failed" in text[:400]:
+            return True'''); p.write_text(s,encoding="utf-8"); print("extended 413 patch with tool_use_failed")
 elif old in s: shutil.copy(p,str(p)+".orig-0.3.5"); p.write_text(s.replace(old,new),encoding="utf-8"); print("patched fallback_provider")
 else: print("PATTERN NOT FOUND"); raise SystemExit(1)

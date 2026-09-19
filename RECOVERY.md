@@ -13,6 +13,7 @@
 python C:\AI\Factory\tools\patch_groq_reasoning.py
 python C:\AI\Factory\tools\patch_fallback_413.py
 python C:\AI\Factory\tools\patch_disabled_tools.py
+python C:\AI\Factory\tools\patch_quota_retry.py
 Get-ChildItem C:\AI\Factory\.venv\Lib\site-packages\nanobot -Recurse -Directory -Filter __pycache__ | Remove-Item -Recurse -Force
 nanobot status --config C:\AI\Factory\config.json
 ```

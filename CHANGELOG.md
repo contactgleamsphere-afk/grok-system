@@ -29,3 +29,5 @@
 - New tools: groqprobe.py, groq_limits.py, session_dump.py, patch_*.py; scripts: set-primary.ps1, groq-tpm-fit.ps1, phase3-groq-failover-test.ps1. apply-keyed-lanes.ps1 made ASCII-only (PS5.1 parse bug on em-dash).
 ## 2026-09-19 (evening) — Phase 4 MVP
 - core/factory/factory.py (BotFactory), tools/factory_cli.py, specs/002-research-scout.json, bots/002-research-scout bundle, scripts/windows/run-bot-tests.ps1. 24/24 tests. BOT_REGISTRY regenerated (002 = testing).
+## 2026-09-19 (night)
+- D-017 quota-aware retry patch (tools/patch_quota_retry.py); patch scripts made order-independent/idempotent; tool_use_failed now fallbackable. Measured Groq 200k TPD/model → D-019/D-020. bot 002 spec chain rotated (gpt-oss-20b first). tools/groq_tpd_probe.py.
