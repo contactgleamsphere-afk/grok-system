@@ -45,3 +45,32 @@ Verification: kill-test `Stop-Process cloudflared` at 06:18:15 → `restart: clo
 
 ## 2026-09-19 — core unit tests re-run (sandbox)
 `pytest core/tests -q` → 19 passed in 0.08 s.
+
+## 2026-09-19 14:00–16:10 — Phase 3 Groq Master lane (laptop, nanobot 0.3.5)
+Key present as user env var only (never in chat/git). Direct probes (`tools/groqprobe.py`, `tools/groq_limits.py`):
+- Groq blocks Python-urllib default User-Agent with Cloudflare 1010 (403) — any UA string fixes it. nanobot's client is unaffected.
+- `llama-3.3-70b-versatile` **does not exist** on this account (404) → preset removed. Available tool-capable: `qwen/qwen3.8-27b`, `openai/gpt-oss-120b`, `openai/gpt-oss-20b`. `groq/compound*` reject tools.
+- Free-tier limits from response headers: **1000 RPD, 8000 TPM** per model (compound: 250 RPD / 70k TPM).
+- Single-shot tool_call: qwen3.8-27b 0.4 s, gpt-oss-120b 0.5 s, gpt-oss-20b 1.5 s — all PASS.
+
+Bugs found and fixed to make agent loops work (all patches are files in `tools/patch_*.py`, originals kept as `*.orig-0.3.5`):
+1. Groq 400 `property 'reasoning_content' is unsupported` on assistant history → `patch_groq_reasoning.py` sets `strip_history_reasoning_content=True` on Groq's ProviderSpec (nanobot already had the flag for Mistral).
+2. Groq reports TPM overflow as HTTP **413 / invalid_request_error / rate_limit_exceeded**; nanobot classified that as non-fallbackable and the turn died → `patch_fallback_413.py` treats 413/`rate_limit` as fallbackable.
+3. Prompt too fat for 8k TPM (23 tools ≈ 3.2k tokens + 3.2k system prompt + tool results): `patch_disabled_tools.py` adds env `AIFACTORY_DISABLED_TOOLS` (set to message,apply_patch,exec_session,list_exec_sessions,cron,create_goal,update_goal,my,spawn,list_sessions,read_session,search_sessions,send_session_message,run_cli_app → 9 tools registered); cliApps disabled; `useJinaReader=false`; `maxToolResultChars=2500`; Groq presets `contextWindowTokens=8200`, `maxTokens=768` so nanobot's own compaction fires before Groq 413s (7000 was too small: ContextWindowExceededError 5252/4952). `reasoningEffort=low`.
+4. bench.py now uses a fresh `-s bench-*` session per test and `--classic` (the shared CLI session carried 70 stale messages incl. qwen3 reasoning_content).
+
+Agent bench (`tools/bench_toolcalls.py`, 300 s cap/test):
+| preset | T1 | T2 | T3 | T4 | T5 | score |
+|---|---|---|---|---|---|---|
+| groq-gptoss120b (before fixes) | ✗ 12s err | ✓ | ✗ | ✗ | ✗ | 1/5 |
+| groq-gptoss120b (after) | ✓ 60s | ✓ 85s | ✓ 69s | ✓ 148s | ✗ timeout | **4/5** |
+| groq-qwen27b run 1 | ✓ 55s | ✓ 48s | ✓ 96s | ✓ 152s | ✗ timeout | **4/5** |
+| groq-qwen27b run 2 (final config) | ✓ 133s | ✓ 98s | ✓ 98s | ✓ 200s | ✗ timeout | **4/5** |
+| local4b (Phase 0) | | | | | | 1/5 |
+T5 standalone (final config): **PASS `0.3.5` in 275 s** — the run shows compaction ("Memory archive … requesting checkpoint") and mid-task failover qwen27b→gpt-oss-120b on 413 working as designed. Bottleneck is Groq's 8000 TPM: most wall time is `retrying in 41–56s` waits. Verdict: Groq lane = 4/5 with T5 passing outside the cap ⇒ Master lane VERIFIED but throughput-limited.
+
+Failover (`scripts/windows/phase3-groq-failover-test.ps1`):
+- A: invalid Groq key → `Primary failed: Invalid API Key` → `Fallback qwen3:4b succeeded` → `FAILOVER_OK` (159 s). PASS
+- B: Groq apiBase unreachable → 4 connection retries → local4b → `FAILOVER_OK` (136 s). PASS
+- Restored chain sanity: `GROQ_OK` in 12 s. PASS
+Live config now: primary **groq-qwen27b**, fallbacks [groq-gptoss120b, groq-gptoss20b, local4b]. Backups `config.json.bak-keyed-*`, `.bak-p7-*`.

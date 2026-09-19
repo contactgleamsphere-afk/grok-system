@@ -28,6 +28,11 @@ _Last updated: 2026-09-18 — by Arena agent (architect/builder). Source of trut
 - nanobot status shows OAuth logins present for OpenAI Codex, xAI Grok, GitHub Copilot (owner's accounts; docs say OAuth providers are not valid automatic fallbacks).
 - core/ tests: 19/19 pass (Python 3.13 sandbox). Not yet run on laptop Python 3.11.
 
+## VERIFIED (added 2026-09-19 16:xx) — PHASE 3 COMPLETE
+- Master lane = Groq (key as user env var). groq-qwen27b 4/5 agent bench (T5 passes at 275 s standalone); groq-gptoss120b 4/5. Failover on bad key and on network failure → local4b PASS. Chain: groq-qwen27b → groq-gptoss120b → groq-gptoss20b → local4b.
+- Groq free tier = 8000 TPM/model: prompt slimmed (9 tools), presets ctx 8200/max 768, compaction verified firing.
+- nanobot 0.3.5 patched (3 patches, reproducible via tools/patch_*.py; originals kept). Upstream-able.
+
 ## VERIFIED (added 2026-09-19 06:xx)
 - Failover: broken-primary → dead remote → local4b answers (`FAILOVER_OK`, 76 s). Phase 3 failover criterion met.
 - Tunnel supervisor v2 self-heals (kill test) and republishes; sandbox self-discovers URL via run/tunnel.txt.
@@ -43,7 +48,7 @@ _Last updated: 2026-09-18 — by Arena agent (architect/builder). Source of trut
 - What consumes ~10 GB RAM at idle.
 
 ## BLOCKED
-- Phase 3 Master lane: needs free-tier keys set as laptop env vars GROQ_API_KEY / OPENROUTER_API_KEY / GEMINI_API_KEY (owner signup; then run scripts/windows/apply-keyed-lanes.ps1). Verified 2026-09-19 06:2x: NO keyless provider remains (OVH anonymous now 403). Until a key exists the Master runs on local4b only (slow: ~70–100 s per turn on CPU).
+- Optional extra lanes: OPENROUTER_API_KEY / GEMINI_API_KEY not set (staged in config.keyed-lanes.staged.json; apply-keyed-lanes.ps1 picks them up automatically).
 - Port 3000 JARVIS X service: owner decision.
 
 ## Known debt

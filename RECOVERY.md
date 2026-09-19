@@ -7,3 +7,13 @@
 5. `nanobot status` → `nanobot agent -m "Reply with exactly: PHASE1_OK"` → `nanobot webui`.
 6. Registries live in `registry\*.json`; regenerate markdown with `python -c "..."` (see core/factory/registry.py `to_markdown`).
 7. Run `python -m pytest core\tests -q` to confirm the core package works on this Python.
+
+## Re-apply nanobot patches after upgrade (2026-09-19)
+```powershell
+python C:\AI\Factory\tools\patch_groq_reasoning.py
+python C:\AI\Factory\tools\patch_fallback_413.py
+python C:\AI\Factory\tools\patch_disabled_tools.py
+Get-ChildItem C:\AI\Factory\.venv\Lib\site-packages\nanobot -Recurse -Directory -Filter __pycache__ | Remove-Item -Recurse -Force
+nanobot status --config C:\AI\Factory\config.json
+```
+Env vars that must exist for the user: GROQ_API_KEY, AIFACTORY_DISABLED_TOOLS (see TEST_RESULTS 2026-09-19).

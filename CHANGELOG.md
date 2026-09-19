@@ -22,3 +22,8 @@
 - Tunnel supervisor v2: health-checked restart (zombie 'Tunnel not found' loop was the 03:25 outage), `SL` alias bug fixed, task hardened (RestartCount/StartWhenAvailable/stderr capture). Kill-test + self-discovery PASS.
 - Phase 3 failover test PASSED (broken → ovh(403) → local4b, FAILOVER_OK). OVH anonymous now 403 → ovh-* marked BLOCKED; live config primary local4b.
 - Added tools/bench_toolcalls.py (from laptop), tools/lastcalls.py, tools/ovhprobe.py. core tests 19/19.
+## 2026-09-19 (afternoon) — Phase 3 complete
+- Groq keyed Master lane live (groq-qwen27b primary; gpt-oss-120b/20b fallbacks; local4b last). Agent bench 4/5 ×3 runs; T5 passes standalone; failover A/B PASS.
+- Removed groq-llama70b (404 on account). Added groq-qwen27b, groq-gptoss20b presets.
+- nanobot patches: Groq strip reasoning_content; 413 → fallbackable; AIFACTORY_DISABLED_TOOLS env. Config slimmed for 8k TPM.
+- New tools: groqprobe.py, groq_limits.py, session_dump.py, patch_*.py; scripts: set-primary.ps1, groq-tpm-fit.ps1, phase3-groq-failover-test.ps1. apply-keyed-lanes.ps1 made ASCII-only (PS5.1 parse bug on em-dash).

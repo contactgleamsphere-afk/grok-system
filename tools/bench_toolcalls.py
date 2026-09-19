@@ -1,4 +1,8 @@
-import json, time, urllib.request, sys, subprocess, pathlib, re
+import json, time, urllib.request, sys, subprocess, pathlib, re, os
+for _k in ("GROQ_API_KEY","OPENROUTER_API_KEY","GEMINI_API_KEY"):
+    if not os.environ.get(_k):
+        _v=subprocess.run(["powershell","-NoProfile","-Command",f"[Environment]::GetEnvironmentVariable('{_k}','User')"],capture_output=True,text=True).stdout.strip()
+        if _v: os.environ[_k]=_v
 OUT = pathlib.Path(r"C:\AI\Factory\run\bench"); OUT.mkdir(parents=True, exist_ok=True)
 NB = r"C:\AI\Factory\.venv\Scripts\nanobot.exe"; CFG=r"C:\AI\Factory\config.json"; WS=r"C:\AI\Factory\workspace"
 def ollama(model, prompt, num_predict=200):
@@ -17,7 +21,7 @@ def toolcalls(preset, cap=300):
     for tid,pr in tests:
         t=time.time()
         try:
-            r=subprocess.run([NB,"agent","-m",f"/model {preset}\n{pr}" if False else pr,"--config",CFG,"--workspace",WS],capture_output=True,text=True,encoding="utf-8",errors="replace",timeout=cap)
+            r=subprocess.run([NB,"agent","-m",pr,"-s",f"bench-{preset}-{int(time.time())}","--classic","--no-markdown","--config",CFG,"--workspace",WS],capture_output=True,text=True,encoding="utf-8",errors="replace",timeout=cap)
             out=r.stdout; status="done"
         except subprocess.TimeoutExpired as e:
             out=(e.stdout or b"").decode("utf-8","replace") if isinstance(e.stdout,bytes) else (e.stdout or ""); status="TIMEOUT"
