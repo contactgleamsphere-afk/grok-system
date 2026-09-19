@@ -28,6 +28,11 @@ _Last updated: 2026-09-18 — by Arena agent (architect/builder). Source of trut
 - nanobot status shows OAuth logins present for OpenAI Codex, xAI Grok, GitHub Copilot (owner's accounts; docs say OAuth providers are not valid automatic fallbacks).
 - core/ tests: 19/19 pass (Python 3.13 sandbox). Not yet run on laptop Python 3.11.
 
+## VERIFIED (added 2026-09-19 06:xx)
+- Failover: broken-primary → dead remote → local4b answers (`FAILOVER_OK`, 76 s). Phase 3 failover criterion met.
+- Tunnel supervisor v2 self-heals (kill test) and republishes; sandbox self-discovers URL via run/tunnel.txt.
+- Laptop config live: primary local4b, fallback [ovh-gptoss20b]; keyed lanes staged in config.keyed-lanes.staged.json.
+
 ## INFERRED
 - 7B/8B Q4 runs on the laptop but slowly and RAM-tight.
 - nanobot on Windows runs `exec` without OS sandbox (docs state this; not observed).
@@ -38,8 +43,7 @@ _Last updated: 2026-09-18 — by Arena agent (architect/builder). Source of trut
 - What consumes ~10 GB RAM at idle.
 
 ## BLOCKED
-- Phase 3 Master lane: needs free-tier keys set as laptop env vars GROQ_API_KEY / OPENROUTER_API_KEY / GEMINI_API_KEY (owner signup; then run scripts/windows/apply-keyed-lanes.ps1). Verified: no keyless provider sustains agent loops.
-- Laptop tunnel dropped at ~03:2x 2026-09-19; supervisor did not republish within 3 min. Needs diagnosis on reconnect.
+- Phase 3 Master lane: needs free-tier keys set as laptop env vars GROQ_API_KEY / OPENROUTER_API_KEY / GEMINI_API_KEY (owner signup; then run scripts/windows/apply-keyed-lanes.ps1). Verified 2026-09-19 06:2x: NO keyless provider remains (OVH anonymous now 403). Until a key exists the Master runs on local4b only (slow: ~70–100 s per turn on CPU).
 - Port 3000 JARVIS X service: owner decision.
 
 ## Known debt

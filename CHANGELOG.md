@@ -18,3 +18,7 @@
 - Provider research + live probes: GitHub Models dead; OVH anonymous passes single-shot tool calls; wired ovh-gptoss20b/ovh-mistral24b/ovh-llama70b presets; production chain = ovh → local4b.
 - Agent bench on ovh-gptoss20b: 0/5 (429 starvation). D-010: keyed lanes staged (Groq/OpenRouter/Gemini) via ${ENV} placeholders; apply-keyed-lanes.ps1.
 - Failover test scripted; not yet passed (config validation, then tunnel drop).
+## 2026-09-19 (06:xx)
+- Tunnel supervisor v2: health-checked restart (zombie 'Tunnel not found' loop was the 03:25 outage), `SL` alias bug fixed, task hardened (RestartCount/StartWhenAvailable/stderr capture). Kill-test + self-discovery PASS.
+- Phase 3 failover test PASSED (broken → ovh(403) → local4b, FAILOVER_OK). OVH anonymous now 403 → ovh-* marked BLOCKED; live config primary local4b.
+- Added tools/bench_toolcalls.py (from laptop), tools/lastcalls.py, tools/ovhprobe.py. core tests 19/19.

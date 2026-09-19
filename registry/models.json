@@ -126,13 +126,13 @@
     "id": "ovh-gptoss20b",
     "location": "remote",
     "model": "gpt-oss-20b",
-    "notes": "OVH anonymous endpoint. Single-shot tool_call PASS (1.0s). nanobot 5-test agent bench 0/5 \u2014 429 starvation inside multi-step loops. EMERGENCY FALLBACK ONLY (D-010).",
+    "notes": "OVH anonymous endpoint. Single-shot tool_call PASS (1.0s). nanobot 5-test agent bench 0/5 \u2014 429 starvation inside multi-step loops. EMERGENCY FALLBACK ONLY (D-010). 2026-09-19 06:2x: anonymous access now returns HTTP 403 \"authentication failed\" from BOTH laptop and sandbox IPs \u2014 OVH closed keyless use (or IP-banned). Needs OVH account token to revive.",
     "provider": "custom",
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 0.0,
-    "updated": "2026-09-19T02:50:32+00:00",
-    "verified": "VERIFIED"
+    "updated": "2026-09-19T05:27:14+00:00",
+    "verified": "BLOCKED"
   },
   "ovh-llama70b": {
     "capabilities": [
@@ -144,13 +144,13 @@
     "id": "ovh-llama70b",
     "location": "remote",
     "model": "Meta-Llama-3_3-70B-Instruct",
-    "notes": "OVH anonymous; exists in catalog; 429 on every probe attempt.",
+    "notes": "OVH anonymous; exists in catalog; 429 on every probe attempt. 2026-09-19 06:2x: anonymous access now returns HTTP 403 \"authentication failed\" from BOTH laptop and sandbox IPs \u2014 OVH closed keyless use (or IP-banned). Needs OVH account token to revive.",
     "provider": "custom",
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": null,
-    "updated": "2026-09-19T02:50:32+00:00",
-    "verified": "INFERRED"
+    "updated": "2026-09-19T05:27:14+00:00",
+    "verified": "BLOCKED"
   },
   "ovh-mistral24b": {
     "capabilities": [
@@ -163,12 +163,12 @@
     "id": "ovh-mistral24b",
     "location": "remote",
     "model": "Mistral-Small-3.2-24B-Instruct-2506",
-    "notes": "OVH anonymous. Single-shot tool_call PASS 1.1s. Agent bench not run (rate limits).",
+    "notes": "OVH anonymous. Single-shot tool_call PASS 1.1s. Agent bench not run (rate limits). 2026-09-19 06:2x: anonymous access now returns HTTP 403 \"authentication failed\" from BOTH laptop and sandbox IPs \u2014 OVH closed keyless use (or IP-banned). Needs OVH account token to revive.",
     "provider": "custom",
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": null,
-    "updated": "2026-09-19T02:50:32+00:00",
-    "verified": "VERIFIED"
+    "updated": "2026-09-19T05:27:14+00:00",
+    "verified": "BLOCKED"
   }
 }
