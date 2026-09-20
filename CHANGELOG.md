@@ -45,3 +45,4 @@
 - Bot 003 re-verified 4/4 on new chain; BotFactory rebuild now demotes to `testing` and preserves prior verification in notes instead of silently resetting to `building`.
 - 2026-09-20 14:1x **Bot 004 changelog-writer created by the factory from a plain-English objective**, 4/4 VERIFIED; factory_pipeline.py (create/test/spec); runner matches final line only (closes false-PASS hole); repo mirrored to laptop C:\AI\Factory\repo via tools/repo-sync.ps1.
 - 2026-09-20 13:5x **MASTER 001 built bot 005 csv-quality-auditor from a chat objective via exec → factory pipeline** (4/4 VERIFIED, artefacts inspected). Master wrapper compacts output (8k-context safe); runner archives per-test artefacts.
+- factory_monitor.py + nightly task: automatic re-verification of active bots with demotion on failure (MONITOR.md). First live run clean (004, 005).

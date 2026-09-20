@@ -174,3 +174,6 @@ Run 1 — chat to MASTER 001: *"Build a new bot from this objective using the bo
 Artefact inspection (not just token match): T2 input `id,name,age / 1,Alice,30 / 2,Bob, / 3,Charlie,25 / 2,Bob,` → quality_report.md = Total 4, Duplicate 1, Empty id 0 / name 0 / age 2 — **correct**. T3 (no duplicates, one empty) → Duplicate 0, col2 empty 1 — correct. Runner now archives per-test artefacts under run/artefacts/<sid>/ so this inspection is repeatable.
 Run 2 — master asked to re-test 005 and list bots: two exec calls, coherent final reply, no overflow (145 s). Re-test: T1 13 s, T2 17 s → 1, T3 51 s → 0, T4 CONFINED 16 s → 4/4.
 Full regression: unit suite 30/30; pipeline `test` 002 2/2, 003 4/4, 004 4/4 (earlier this session, unchanged bundles), 005 4/4. History of 002/003/004 preserved.
+
+## 2026-09-20 14:1x — factory_monitor first live run
+`run-monitor.ps1 --only 004,005` (laptop): 004 4/4 (197 s), 005 4/4 (386 s), no regressions, MONITOR.md rows written, registry unchanged. Scheduled daily 03:30 as Windows task "AIFactory Monitor" (user-level). Unit test proves demotion active→testing on failure and MONITOR.md logging.
