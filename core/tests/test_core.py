@@ -310,6 +310,6 @@ def test_pipeline_objective_to_spec_with_fake_llm(tmp_path, monkeypatch):
     monkeypatch.setattr(fp, "chat", lambda msgs, max_tokens=1200: (next(answers), "fake:lane"))
     spec, lane = fp.objective_to_spec("count words", reg, "099")
     assert lane == "fake:lane" and spec["id"] == "099" and spec["tools"] == ["read_file"]
-    assert fp.next_id(reg) == "004"          # after 001..003 in the real registry copy
+    assert fp.next_id(reg) == f"{max(int(b.id) for b in reg.all(\"bots\")) + 1:03d}"
     r = f.build(spec)
     assert (r.bot_dir / "bot.json").exists() and r.chain[-1] == "local4b"

@@ -8,3 +8,11 @@ sessions/
 *.env
 .env*
 secrets/
+
+# nanobot runtime state inside bot workspaces
+bots/*/.git/
+bots/*/.nanobot/
+bots/*/HEARTBEAT.md
+bots/*/USER.md
+bots/*/prompts/
+bots/*/skills/
