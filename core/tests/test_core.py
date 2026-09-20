@@ -293,3 +293,23 @@ def test_rebuild_demotes_to_testing_and_keeps_history(tmp_path):
     f.build(_rspec(), overwrite=True)
     e = reg.get("bots", "099")
     assert e.status == "testing" and e.verified == "UNVERIFIED" and "previous: active/VERIFIED" in e.notes
+
+
+def test_pipeline_objective_to_spec_with_fake_llm(tmp_path, monkeypatch):
+    import json, sys, pathlib, importlib
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[2] / "tools"))
+    fp = importlib.import_module("factory_pipeline")
+    reg, f = _reg_and_factory(tmp_path)
+    good = {"id": "999", "name": "unit-tally", "purpose": "count words in text given by the user, for unit tests",
+            "instructions": "You count words. When given text, reply with only the integer number of whitespace-separated words. Never use tools other than read_file. Never guess; count precisely.",
+            "model_policy": {"primary": "groq-gptoss120b", "fallbacks": ["gemini-flash", "local4b"]},
+            "tools": ["read_file"], "permissions": ["fs:read"],
+            "tests": ["Reply with exactly: TALLY_OK -> TALLY_OK", "How many words: the quick brown fox -> 4"], "notes": "unit"}
+    bad = dict(good, tools=["exec"], permissions=["fs:read"])            # first answer: exec without shell perm
+    answers = iter(["garbage not json", json.dumps(bad), json.dumps(good)])
+    monkeypatch.setattr(fp, "chat", lambda msgs, max_tokens=1200: (next(answers), "fake:lane"))
+    spec, lane = fp.objective_to_spec("count words", reg, "099")
+    assert lane == "fake:lane" and spec["id"] == "099" and spec["tools"] == ["read_file"]
+    assert fp.next_id(reg) == "004"          # after 001..003 in the real registry copy
+    r = f.build(spec)
+    assert (r.bot_dir / "bot.json").exists() and r.chain[-1] == "local4b"
