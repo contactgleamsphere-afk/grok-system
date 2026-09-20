@@ -23,7 +23,7 @@ foreach($t in $bot.tests){
   $idx++
   if($Only -and $idx -ne $Only){ continue }
   $total++
-  if($t -match '^(.*)->(.*)$'){ $prompt=$Matches[1].Trim(); $expect=$Matches[2].Trim() } else { $prompt=$t.Trim(); $expect='' }
+  $i=$t.LastIndexOf('->'); if($i -ge 0){ $prompt=$t.Substring(0,$i).Trim(); $expect=$t.Substring($i+2).Trim() } else { $prompt=$t.Trim(); $expect='' }
   $sid="bot$($bot.id)-t$idx-$(Get-Date -Format HHmmss)"; $t0=Get-Date
   $job=Start-Job -ScriptBlock { param($nb,$m,$s,$c,$w,$k,$d,$td,$gk,$ok) $env:GROQ_API_KEY=$k; $env:GEMINI_API_KEY=$gk; $env:OPENROUTER_API_KEY=$ok; $env:AIFACTORY_DISABLED_TOOLS=$d; $env:AIFACTORY_TEMPLATE_DIR=$td; & $nb agent -m ($m -replace '"','\"') -s $s --classic --no-markdown --config $c --workspace $w 2>&1 | Out-String } -ArgumentList 'C:\AI\Factory\.venv\Scripts\nanobot.exe',$prompt,$sid,$botCfg,$BotDir,$env:GROQ_API_KEY,$env:AIFACTORY_DISABLED_TOOLS,$env:AIFACTORY_TEMPLATE_DIR,$env:GEMINI_API_KEY,$env:OPENROUTER_API_KEY
   if(Wait-Job $job -Timeout $Cap){ $out=(Receive-Job $job|Out-String); $status='done' } else { Stop-Job $job; $out=(Receive-Job $job|Out-String); $status='TIMEOUT'; Get-Process nanobot -ErrorAction SilentlyContinue|Stop-Process -Force }
@@ -31,7 +31,8 @@ foreach($t in $bot.tests){
   New-Item -ItemType Directory -Force "C:\AI\Factory\run\logs" | Out-Null; Set-Content "C:\AI\Factory\run\logs\$sid.log" $out
   $el=[int]((Get-Date)-$t0).TotalSeconds
   $last=(($out.Trim() -split "`n") | Where-Object { $_ -notmatch '^\s*✻' -and $_.Trim() } | Select -Last 1)
-  $ok = ($status -eq 'done') -and ( ($expect -eq '' -and $last) -or ($expect -ne '' -and $out -match [regex]::Escape($expect)) )
+  $lastClean=("$last".Trim() -replace '^(RESULT|ANSWER|OUTPUT)\s*[:=]\s*','')
+  $ok = ($status -eq 'done') -and ( ($expect -eq '' -and $last) -or ($expect -ne '' -and ($lastClean -eq $expect -or $lastClean -match ('(^|\s)' + [regex]::Escape($expect) + '(\s|$)'))) )
   if($ok){ $pass++ }
   $line="T$idx $(if($ok){'PASS'}else{'FAIL'}) ${el}s [$status] expect='$expect' last='$($("$last".Trim()))'"; $line; $ev+=$line
 }

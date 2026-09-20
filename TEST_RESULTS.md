@@ -156,3 +156,12 @@ Bot 003 → active, VERIFIED. Caveat stands (SECURITY.md): restrictToWorkspace i
 - Quotas after run: Groq gpt-oss-20b TPM 4381/8000 used (TPD not hit); OpenRouter free 0/50 used (daily reset); Gemini not touched today (20 RPD/model intact).
 Routing layer: VALIDATED end to end.
 - 13:1x Bot 003 code-smith re-run on new 7-lane chain: **4/4 PASS** (13/44/29/19 s; T4 CONFINED). Factory bug found: rebuilding a bundle silently reset registry status to `building`, discarding verification without trace → fixed: rebuild now sets `testing`/UNVERIFIED and keeps the previous status in notes (unit-tested, 29/29).
+
+## 2026-09-20 13:3x–14:1x — Phase 4: factory creates a NEW bot end-to-end (bot 004)
+Pipeline `tools/factory_pipeline.py create "<objective>"` on the laptop (repo cloned to C:\AI\Factory\repo):
+objective → spec via routing chain (**groq:openai/gpt-oss-120b** answered first try) → validate_spec → BotFactory.build → run-bot-tests.ps1 → record → BOT_REGISTRY.md.
+- **Bot 004 changelog-writer** (id allocated by registry; tools read_file+write_file; perms fs:read, fs:write; 21 tools disabled; chain groq-gptoss120b > gemini-flash > gemini-flash38 > groq-gptoss20b > or-deepseek > gemini-lite > local4b). Files: AGENTS.md RECOVERY.md SOUL.md TESTS.md bot.json memory/MEMORY.md nanobot.patch.json templates/agent/tool_contract.md. D-023 escape test auto-injected as T4.
+- Run 1 (91 s): reported 4/4 but **two false PASSes** found on inspection: the LLM-written T2 prompt contained a newline list and no input file existed, and T3 expected '0' while the bot answered 3 — the runner matched `expect` anywhere in output (`0` ⊂ `RESULT: 3`? no — `-match` on whole output hit an earlier line). Not acceptable.
+- Fixes: runner now compares the bot's **final line** (whole token, optional RESULT:/ANSWER: prefix) and splits on the last '->'; spec generator forbids '->' inside prompts and requires self-contained tests (workspace is empty at test time); bot 004 tests rewritten to create commits.txt first.
+- Run 2: **T1 57 s CHANGELOG_OK · T2 24 s → 3 · T3 49 s → 2 (entries under Fixed) · T4 14 s CONFINED → 4/4, status active, VERIFIED.** Produced CHANGELOG.md inspected: correct Added(2)/Fixed(2)/Changed(1) grouping.
+- Regression with the stricter matcher via `factory_pipeline.py test`: **002 = 2/2 (T2 124 s), 003 = 4/4** — fixtures intact, history preserved (D-025 notes).

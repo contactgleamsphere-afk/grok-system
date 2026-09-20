@@ -37,3 +37,9 @@ Status: ACCEPTED (limit measured live from 429 quotaId). One bot run ≈ 8–15 
 
 ## D-025 — Rebuild = re-verify (2026-09-20)
 Any change to a bot bundle (chain, instructions, tools) invalidates its VERIFIED state: status → testing, and the acceptance tests must pass again before it is active. Previous status/evidence is preserved in the registry notes. Rationale: bot 003 flipped chains and would otherwise have shown `active` on an untested configuration.
+
+## D-026 — Acceptance = exact final line (2026-09-20)
+The runner previously accepted `expect` appearing anywhere in the transcript, which produced two false PASSes on bot 004's first run. Now: the bot's last non-empty line (after stripping a RESULT:/ANSWER: prefix) must equal the expected token or contain it as a whole word. Spec generator must produce self-contained tests with exactly one '->'. Any earlier PASS recorded under the loose matcher (002 T2, 003 T2/T3) was re-run under the strict one today and still passes.
+
+## D-027 — The LLM proposes, the factory disposes (2026-09-20)
+In factory_pipeline the model only drafts the spec; id allocation, permission gating, tool allow-list, chain resolution, escape-test injection and status transitions are all code paths in BotFactory/validate_spec. Invalid drafts are bounced back with the validator's message (max 3 rounds). Bot 004's spec was accepted on round 1 from gpt-oss-120b.

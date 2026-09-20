@@ -28,3 +28,6 @@ Loading qwen3:4b on the laptop can starve cloudflared → ssh drops mid-run and 
 
 Pre-warm the local model before any test that may fall back to it (prevents the cloudflared starvation above):
 `Invoke-RestMethod -Method Post http://127.0.0.1:11434/api/generate -Body (@{model='qwen3:4b';prompt='hi';stream=$false;keep_alive='30m';options=@{num_predict=4}}|ConvertTo-Json) -ContentType 'application/json'`
+
+## Laptop repo mirror
+`C:\AI\Factory\repo` = clone of GitHub main (no token stored; refresh with `tools\repo-sync.ps1`). The pipeline reads/writes `repo\registry` and `repo\specs`; after a laptop run copy `registry\bots.json` + new `specs\*.json` + `bots\<id>` back into the main repo and commit.
