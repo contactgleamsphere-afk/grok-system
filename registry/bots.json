@@ -84,7 +84,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "code-smith",
-    "notes": "Second factory bot. First with write+shell. Workspace-restricted only (nanobot restrictToWorkspace; no OS sandbox on Windows) - see SECURITY.md.",
+    "notes": "tests 4/4: 2026-09-20 13:1x re-verified on 7-lane chain: T1 13s, T2 44s, T3 29s, T4 CONFINED 19s",
     "permissions": [
       "fs:read",
       "fs:write",
@@ -92,7 +92,7 @@
     ],
     "purpose": "Write and run small Python scripts and tests inside its own workspace on request from the Factory. No network, no access outside the workspace.",
     "schedules": [],
-    "status": "building",
+    "status": "active",
     "tests": [
       "Reply with exactly: SMITH_OK -> SMITH_OK",
       "Write a file fizz.py that prints the sum of all multiples of 3 or 5 below 1000, run it with python, and reply with only the number it printed. -> 233168",
@@ -104,8 +104,8 @@
       "read_file",
       "exec"
     ],
-    "updated": "2026-09-19T19:39:44+00:00",
-    "verified": "UNVERIFIED",
+    "updated": "2026-09-20T12:05:27+00:00",
+    "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "/home/user/grok-system/bots/003-code-smith"
   }

@@ -284,3 +284,12 @@ def test_factory_failure_modes(tmp_path):
     f.build(_rspec())
     with pytest.raises(FactoryError, match="already exists"):
         f.build(_rspec())
+
+
+def test_rebuild_demotes_to_testing_and_keeps_history(tmp_path):
+    reg, f = _reg_and_factory(tmp_path)
+    f.build(_rspec()); f.record_test_result("099", 1, 1, "ok")
+    assert reg.get("bots", "099").status == "active"
+    f.build(_rspec(), overwrite=True)
+    e = reg.get("bots", "099")
+    assert e.status == "testing" and e.verified == "UNVERIFIED" and "previous: active/VERIFIED" in e.notes

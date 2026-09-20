@@ -155,3 +155,4 @@ Bot 003 → active, VERIFIED. Caveat stands (SECURITY.md): restrictToWorkspace i
 - **Bot 002 T2, single run: PASS 114 s → 0.3.5.** Chain groq-gptoss20b > gemini-lite > gemini-flash(3.7) > gemini-flash38 > or-deepseek > gemini-lite31 > groq-qwen27b > local4b. Transcript: zero fallbacks — primary Groq did the entire task (Groq TPD fresh; only TPM waits). Bot 002 remains active/VERIFIED 2/2.
 - Quotas after run: Groq gpt-oss-20b TPM 4381/8000 used (TPD not hit); OpenRouter free 0/50 used (daily reset); Gemini not touched today (20 RPD/model intact).
 Routing layer: VALIDATED end to end.
+- 13:1x Bot 003 code-smith re-run on new 7-lane chain: **4/4 PASS** (13/44/29/19 s; T4 CONFINED). Factory bug found: rebuilding a bundle silently reset registry status to `building`, discarding verification without trace → fixed: rebuild now sets `testing`/UNVERIFIED and keeps the previous status in notes (unit-tested, 29/29).
