@@ -313,3 +313,18 @@ def test_pipeline_objective_to_spec_with_fake_llm(tmp_path, monkeypatch):
     assert fp.next_id(reg) == f"{max(int(b.id) for b in reg.all('bots')) + 1:03d}"
     r = f.build(spec)
     assert (r.bot_dir / "bot.json").exists() and r.chain[-1] == "local4b"
+
+
+def test_monitor_demotes_failed_bot_and_keeps_passing(tmp_path, monkeypatch):
+    import sys, pathlib, importlib, json
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[2] / "tools"))
+    fm = importlib.import_module("factory_monitor"); fp = importlib.import_module("factory_pipeline")
+    reg, f = _reg_and_factory(tmp_path)
+    monkeypatch.setattr(fm, "ROOT", reg.root.parent); monkeypatch.setattr(fp, "WIN", False)
+    f.build(_rspec(id="097", name="pass-bot")); f.record_test_result("097", 1, 1, "ok")
+    f.build(_rspec(id="098", name="fail-bot")); f.record_test_result("098", 1, 1, "ok")
+    fake = lambda bot_dir: {"pass": 0 if "fail-bot" in str(bot_dir) else 1, "total": 1, "evidence": "fake"}
+    out = fm.monitor(only={"097", "098"}, runner=fake)
+    assert out["ok"] is False and out["regressed"] == ["098"]
+    assert reg.get("bots", "097").status == "active" and reg.get("bots", "098").status == "testing"
+    assert "098 fail-bot" in (reg.root.parent / "MONITOR.md").read_text()
