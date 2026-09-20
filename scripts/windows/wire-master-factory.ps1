@@ -1,4 +1,5 @@
 # 1) factory wrapper into the master's workspace
+New-Item -ItemType Directory -Force C:\AI\Factory\workspace\tools | Out-Null
 Copy-Item C:\AI\Factory\repo\config\laptop\workspace\tools\factory.py C:\AI\Factory\workspace\tools\factory.py -Force
 # 2) exec may pass the lane keys to children (secrets stay in env, never in files)
 $p='C:\AI\Factory\config.json'; $c=Get-Content $p -Raw | ConvertFrom-Json

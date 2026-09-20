@@ -21,7 +21,17 @@ def main(a):
     missing = [k for k in ("GROQ_API_KEY", "GEMINI_API_KEY", "OPENROUTER_API_KEY") if not env.get(k)]
     if missing: print(json.dumps({"ok": False, "error": f"lane keys not visible to exec: {missing} (config tools.exec.allowedEnvKeys)"})); return 1
     r = subprocess.run([sys.executable, str(PIPE), *a[1:]], env=env, cwd=str(REPO), capture_output=True, text=True, timeout=3600)
-    sys.stdout.write(r.stdout[-6000:]); sys.stderr.write(r.stderr[-1500:])
+    # Compact summary only: the master runs on small-context lanes (8k). Full JSON is kept on disk.
+    log = REPO / "run"; log.mkdir(exist_ok=True)
+    (log / f"factory-{a[1]}-{(a[2] if len(a) > 2 else 'x')[:20].replace(' ', '_')}.json").write_text(r.stdout + r.stderr, encoding="utf-8")
+    try:
+        d = json.loads(r.stdout[r.stdout.rfind("{\n \"bot_id\"") if "{\n \"bot_id\"" in r.stdout else r.stdout.rfind("{"):])
+        keys = ("ok", "bot_id", "name", "spec_lane", "chain", "files", "tests", "pass", "total", "status", "verified", "error")
+        out = {k: d[k] for k in keys if k in d}
+        if "spec" in d: out["tools"] = d["spec"].get("tools"); out["permissions"] = d["spec"].get("permissions")
+        print(json.dumps(out)[:900])
+    except Exception:
+        print((r.stdout + r.stderr)[-700:])
     return r.returncode
 
 if __name__ == "__main__": sys.exit(main(sys.argv))

@@ -29,6 +29,9 @@ foreach($t in $bot.tests){
   if(Wait-Job $job -Timeout $Cap){ $out=(Receive-Job $job|Out-String); $status='done' } else { Stop-Job $job; $out=(Receive-Job $job|Out-String); $status='TIMEOUT'; Get-Process nanobot -ErrorAction SilentlyContinue|Stop-Process -Force }
   Remove-Job $job -Force
   New-Item -ItemType Directory -Force "C:\AI\Factory\run\logs" | Out-Null; Set-Content "C:\AI\Factory\run\logs\$sid.log" $out
+  # keep artefacts produced by this test for inspection (workspace files, excluding bundle/runtime)
+  $art="C:\AI\Factory\run\artefacts\$sid"; New-Item -ItemType Directory -Force $art | Out-Null
+  Get-ChildItem $BotDir -File | ? { $_.Name -notmatch '^(AGENTS|SOUL|TESTS|RECOVERY|TEST_RESULTS|HEARTBEAT|USER)\.md$|^bot\.json$|^nanobot\.patch\.json$|^\.gitignore$' } | % { Copy-Item $_.FullName $art -Force; Remove-Item $_.FullName -Force }
   $el=[int]((Get-Date)-$t0).TotalSeconds
   $last=(($out.Trim() -split "`n") | Where-Object { $_ -notmatch '^\s*✻' -and $_.Trim() } | Select -Last 1)
   $lastClean=("$last".Trim() -replace '^(RESULT|ANSWER|OUTPUT)\s*[:=]\s*','')

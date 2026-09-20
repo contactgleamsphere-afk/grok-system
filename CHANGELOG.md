@@ -44,3 +44,4 @@
 - 2026-09-20 13:0x failover D PASS (3 remote lanes down → local4b); bot 002 T2 PASS 114 s on the new 8-lane chain; routing layer validated. Ollama pre-warm added to RECOVERY.
 - Bot 003 re-verified 4/4 on new chain; BotFactory rebuild now demotes to `testing` and preserves prior verification in notes instead of silently resetting to `building`.
 - 2026-09-20 14:1x **Bot 004 changelog-writer created by the factory from a plain-English objective**, 4/4 VERIFIED; factory_pipeline.py (create/test/spec); runner matches final line only (closes false-PASS hole); repo mirrored to laptop C:\AI\Factory\repo via tools/repo-sync.ps1.
+- 2026-09-20 13:5x **MASTER 001 built bot 005 csv-quality-auditor from a chat objective via exec → factory pipeline** (4/4 VERIFIED, artefacts inspected). Master wrapper compacts output (8k-context safe); runner archives per-test artefacts.

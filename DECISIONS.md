@@ -43,3 +43,6 @@ The runner previously accepted `expect` appearing anywhere in the transcript, wh
 
 ## D-027 — The LLM proposes, the factory disposes (2026-09-20)
 In factory_pipeline the model only drafts the spec; id allocation, permission gating, tool allow-list, chain resolution, escape-test injection and status transitions are all code paths in BotFactory/validate_spec. Invalid drafts are bounced back with the validator's message (max 3 rounds). Bot 004's spec was accepted on round 1 from gpt-oss-120b.
+
+## D-028 — Master orchestrates, pipeline owns the bots (2026-09-20)
+MASTER 001 may only create/test bots through `tools/factory.py` (exec). It never writes bundles, specs or registry entries directly (AGENTS.md rule + files live outside its workspace). Tool output to the master must be a compact summary (<1 kB) because master lanes have 8k context; full results are persisted to disk. Proven with bot 005.

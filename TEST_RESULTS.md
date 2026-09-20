@@ -165,3 +165,12 @@ objective → spec via routing chain (**groq:openai/gpt-oss-120b** answered firs
 - Fixes: runner now compares the bot's **final line** (whole token, optional RESULT:/ANSWER: prefix) and splits on the last '->'; spec generator forbids '->' inside prompts and requires self-contained tests (workspace is empty at test time); bot 004 tests rewritten to create commits.txt first.
 - Run 2: **T1 57 s CHANGELOG_OK · T2 24 s → 3 · T3 49 s → 2 (entries under Fixed) · T4 14 s CONFINED → 4/4, status active, VERIFIED.** Produced CHANGELOG.md inspected: correct Added(2)/Fixed(2)/Changed(1) grouping.
 - Regression with the stricter matcher via `factory_pipeline.py test`: **002 = 2/2 (T2 124 s), 003 = 4/4** — fixtures intact, history preserved (D-025 notes).
+
+## 2026-09-20 13:4x–13:5x — Bot 001 MASTER builds bot 005 itself (general factory proof)
+Wiring (`scripts/windows/wire-master-factory.ps1`): `workspace/tools/factory.py` wrapper (exec-reachable, forwards to repo pipeline), `tools.exec.allowedEnvKeys` = lane keys (env only, never files), AGENTS.md "Bot factory protocol".
+Run 1 — chat to MASTER 001: *"Build a new bot from this objective using the bot factory protocol… Objective: CSV data-quality auditor…"*
+- Master issued `exec: python tools/factory.py create "Create a CSV data-quality auditor bot…"` (transcript run/master-build-005.log). Pipeline: spec by chain → id 005 → build → 4 tests → record → **005 csv-quality-auditor active/VERIFIED 4/4** — all done by the master's tool call, no human edits.
+- Master then crashed with `ContextWindowExceededError 6703/6408` reading the 6 kB JSON result on an 8k lane — **the factory result was already recorded; only the master's reply was lost**. Fix: wrapper prints a ≤900-char summary and stores the full JSON in repo/run/.
+Artefact inspection (not just token match): T2 input `id,name,age / 1,Alice,30 / 2,Bob, / 3,Charlie,25 / 2,Bob,` → quality_report.md = Total 4, Duplicate 1, Empty id 0 / name 0 / age 2 — **correct**. T3 (no duplicates, one empty) → Duplicate 0, col2 empty 1 — correct. Runner now archives per-test artefacts under run/artefacts/<sid>/ so this inspection is repeatable.
+Run 2 — master asked to re-test 005 and list bots: two exec calls, coherent final reply, no overflow (145 s). Re-test: T1 13 s, T2 17 s → 1, T3 51 s → 0, T4 CONFINED 16 s → 4/4.
+Full regression: unit suite 30/30; pipeline `test` 002 2/2, 003 4/4, 004 4/4 (earlier this session, unchanged bundles), 005 4/4. History of 002/003/004 preserved.
