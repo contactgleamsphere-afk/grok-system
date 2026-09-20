@@ -148,3 +148,10 @@ Bot 003 → active, VERIFIED. Caveat stands (SECURITY.md): restrictToWorkspace i
 6. Bot 002 T2 single run: NOT run this turn — tunnel down. Last verified 2/2 at 18:59 on a chain of the same shape.
 
 ## 2026-09-19 21:0x — laptop tunnel still down (DNS: no such host, no new URL in run/tunnel.txt for >45 min). Failover D and bot 002 T2 remain OPEN. Offline Phase 4 work: D-023 auto-injection + 3 factory failure-mode unit tests, 28/28 pass.
+
+## 2026-09-20 12:5x–13:0x — tunnel back; open items closed
+- Keys present (GEMINI, OPENROUTER) re-confirmed without printing. qwen3:4b pre-warmed via Ollama keep_alive (18 s) so local load no longer starves cloudflared.
+- **Failover D PASS (226 s)** — scratch config, chain groq-gptoss20b > gemini-lite > or-deepseek > local4b with Groq key invalid and Gemini+OpenRouter apiBase pointed at 127.0.0.1:9: `Invalid API Key` → Gemini `Connection error` (4 retries) → OpenRouter `Connection error` (4 retries) → `Fallback 'qwen3:4b' succeeded` → `XP_OK`. Together with C (2026-09-19) every hop of Groq → Gemini → OpenRouter → local4b is now exercised in isolation.
+- **Bot 002 T2, single run: PASS 114 s → 0.3.5.** Chain groq-gptoss20b > gemini-lite > gemini-flash(3.7) > gemini-flash38 > or-deepseek > gemini-lite31 > groq-qwen27b > local4b. Transcript: zero fallbacks — primary Groq did the entire task (Groq TPD fresh; only TPM waits). Bot 002 remains active/VERIFIED 2/2.
+- Quotas after run: Groq gpt-oss-20b TPM 4381/8000 used (TPD not hit); OpenRouter free 0/50 used (daily reset); Gemini not touched today (20 RPD/model intact).
+Routing layer: VALIDATED end to end.

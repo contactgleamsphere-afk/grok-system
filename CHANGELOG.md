@@ -41,3 +41,4 @@
 - 20:3x Bot 003 code-smith (write_file/read_file/exec, shell:workspace) built by factory, VERIFIED 4/4 incl. workspace-escape security test. Runner escapes quotes in test prompts.
 - 20:4x Gemini model discovery by live probe (7 tool-capable models, RPD=20/model/project measured); presets gemini-flash→3.7-flash, +flash38/lite31/gemma26b; chains rebuilt; cross-provider failover C PASS (Groq→Gemini→OpenRouter); D blocked by tunnel outage.
 - D-023 implemented: BotFactory.with_mandatory_tests auto-injects the workspace-escape test for any spec with fs:write/shell:*; factory failure-mode tests (unknown model, unknown tool, remote-only chain gets local appended, duplicate id). 28/28.
+- 2026-09-20 13:0x failover D PASS (3 remote lanes down → local4b); bot 002 T2 PASS 114 s on the new 8-lane chain; routing layer validated. Ollama pre-warm added to RECOVERY.

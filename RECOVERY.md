@@ -25,3 +25,6 @@ Keys are User env vars on the laptop: GROQ_API_KEY, GEMINI_API_KEY, OPENROUTER_A
 
 ## Tunnel outage pattern (2026-09-19)
 Loading qwen3:4b on the laptop can starve cloudflared → ssh drops mid-run and `run/tunnel.txt` is only refreshed when the supervisor restarts. If the tunnel is silent >10 min: on the laptop run `powershell -File C:\AI\Factory\tools\tunnel-restart.ps1` (or reboot cloudflared service). Never treat a dropped run as a test failure — re-run it.
+
+Pre-warm the local model before any test that may fall back to it (prevents the cloudflared starvation above):
+`Invoke-RestMethod -Method Post http://127.0.0.1:11434/api/generate -Body (@{model='qwen3:4b';prompt='hi';stream=$false;keep_alive='30m';options=@{num_predict=4}}|ConvertTo-Json) -ContentType 'application/json'`
