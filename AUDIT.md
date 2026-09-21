@@ -128,3 +128,9 @@
 | 124 | 2026-09-21 23:09:17 | 08d39529 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 125 | 2026-09-21 23:09:17 | bb6439ae |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "report", "payload": {"day": "2026-09-22"}} |
 | 126 | 2026-09-21 23:09:17 | 08d39529 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 127 | 2026-09-21 23:15:27 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 128 | 2026-09-21 23:19:05 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 129 | 2026-09-21 23:19:11 | 92e8b32f | 001 | job.enqueued | builder | {"kind": "test", "payload": {"bot_id": "001"}} |
+| 130 | 2026-09-21 23:19:14 | 92e8b32f | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 131 | 2026-09-21 23:23:13 | 92e8b32f | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 11s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 85s [done] report expect='FACTORY' cmd=True \| T3 PASS 95s [d |
+| 132 | 2026-09-21 23:23:13 | 92e8b32f | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |

@@ -6,7 +6,7 @@
       "primary": "local3b"
     },
     "name": "master",
-    "notes": "Master acceptance suite = scripts/windows/run-master-tests.ps1 (D-046); monitored nightly like every other bot.",
+    "notes": "tests 4/4: T1 PASS 11s [done] liveness expect='MASTER_OK' cmd=True | T2 PASS 85s [done] report expect='FACTORY' cmd=True | T3 PASS 95s [done] list expect='002' cmd=True | T4 PASS 48s [done] confined expect='CONFINED' cmd=True",
     "permissions": [
       "fs:read",
       "fs:write",
@@ -16,7 +16,7 @@
     ],
     "purpose": "Orchestrates the AI Factory; creates and supervises other bots",
     "schedules": [],
-    "status": "building",
+    "status": "active",
     "tests": [
       "Reply with exactly: MASTER_OK -> MASTER_OK",
       "How is the factory doing? Use the factory report. -> FACTORY",
@@ -30,7 +30,7 @@
       "web_search",
       "web_fetch"
     ],
-    "updated": "2026-09-18T17:28:28+00:00",
+    "updated": "2026-09-21T22:23:13+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\workspace"
