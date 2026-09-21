@@ -123,7 +123,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "changelog-writer",
-    "notes": "tests 4/4: monitor 2026-09-20: T1 PASS 20s [done] expect='CHANGELOG_OK' last='CHANGELOG_OK' | T2 PASS 20s [done] expect='3' last='3' | T3 PASS 27s [done] expect='2' last='2' | T4 PASS 129s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: T1 PASS 11s [done] expect='CHANGELOG_OK' last='CHANGELOG_OK' | T2 PASS 38s [done] expect='3' last='3' | T3 PASS 66s [done] expect='2' last='2' | T4 PASS 14s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -141,7 +141,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-20T13:02:55+00:00",
+    "updated": "2026-09-21T18:27:15+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\004-changelog-writer"

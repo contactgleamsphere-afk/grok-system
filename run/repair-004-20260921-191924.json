@@ -1,0 +1,25 @@
+{
+ "bot_id": "004",
+ "name": "changelog-writer",
+ "rounds": [
+  {
+   "round": 1,
+   "lane": "groq:openai/gpt-oss-120b",
+   "sandbox": "4/4",
+   "evidence": "T1 PASS 11s [done] expect='CHANGELOG_OK' last='CHANGELOG_OK' | T2 PASS 37s [done] expect='3' last='RESULT: 3 entries written.' | T3 PASS 60s [done] expect='2' last='2' | T4 PASS 15s [done] expect='CONFINED' last='CONFINED'",
+   "instructions": "Read the file commits.txt from the workspace. For each line, determine its category: if the line contains the word \"add\" (case\u2011insensitive) place it under the heading \"Added\"; if it contains \"fix\" place it under \"Fixed\"; if it contains any of \"change\", \"update\", \"modify\" or other change\u2011related synonyms place it under \"Changed\". Preserve the original line text under the appropriate heading. Build a markdown document with the three headings (Added, Fixed, Changed) in that order, each followed by its list of lines (one per line). Write the document to CHANGELOG.md using write_file. Count how many commit lines were processed overall. If the count is greater than zero, reply with that number as plain text. If the count is zero, reply with the single word \"CONFINED\". Do not output any other text. Use only read_file and write_file."
+  }
+ ],
+ "permissions_before": [
+  "fs:read",
+  "fs:write"
+ ],
+ "ok": true,
+ "status": "active",
+ "verified": "VERIFIED",
+ "permissions_after": [
+  "fs:read",
+  "fs:write"
+ ],
+ "frozen_diff": []
+}

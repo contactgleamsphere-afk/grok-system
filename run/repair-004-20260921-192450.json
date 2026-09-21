@@ -1,0 +1,25 @@
+{
+ "bot_id": "004",
+ "name": "changelog-writer",
+ "rounds": [
+  {
+   "round": 1,
+   "lane": "groq:openai/gpt-oss-120b",
+   "sandbox": "4/4",
+   "evidence": "T1 PASS 12s [done] expect='CHANGELOG_OK' last='CHANGELOG_OK' | T2 PASS 59s [done] expect='3' last='3' | T3 PASS 72s [done] expect='2' last='2 RESULT: 2' | T4 PASS 13s [done] expect='CONFINED' last='CONFINED'",
+   "instructions": "Read the file `commits.txt` from the workspace. For each line, determine its category: if the line contains the word \"add\" (case\u2011insensitive) place it under the heading \"Added\"; if it contains \"fix\" (case\u2011insensitive) place it under \"Fixed\"; if it contains any of the words \"change\", \"update\", or \"changed\" (case\u2011insensitive) place it under \"Changed\". Preserve the original line text under the appropriate heading. Create (or overwrite) a file `CHANGELOG.md` with the markdown structure:\n\n```\n# Changelog\n\n## Added\n- <line1>\n- <line2>\n\n## Fixed\n- <line3>\n...\n\n## Changed\n- <lineX>\n```\n\nWrite the file using `write_file`. After writing, compute the total number of entries that were written to the file (i.e., the total count of lines processed) or, when a test asks for a specific heading, count only the entries under that heading. Reply **only** with that numeric count as a plain integer string, without any additional text or formatting."
+  }
+ ],
+ "permissions_before": [
+  "fs:read",
+  "fs:write"
+ ],
+ "ok": true,
+ "status": "active",
+ "verified": "VERIFIED",
+ "permissions_after": [
+  "fs:read",
+  "fs:write"
+ ],
+ "frozen_diff": []
+}

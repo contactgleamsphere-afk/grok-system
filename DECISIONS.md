@@ -46,3 +46,9 @@ In factory_pipeline the model only drafts the spec; id allocation, permission ga
 
 ## D-028 — Master orchestrates, pipeline owns the bots (2026-09-20)
 MASTER 001 may only create/test bots through `tools/factory.py` (exec). It never writes bundles, specs or registry entries directly (AGENTS.md rule + files live outside its workspace). Tool output to the master must be a compact summary (<1 kB) because master lanes have 8k context; full results are persisted to disk. Proven with bot 005.
+
+## D-029 — Repair may change instructions only; sandbox first; fail closed (2026-09-21)
+`factory_repair.py` runs only on `testing` bots. The chain rewrites `instructions`; id/name/tools/permissions/model_policy/tests are frozen and diffed as JSON — any change rejects the candidate. Candidates are built into `<bot>-repair` with a copied registry and must pass every test there before the production spec/bundle is replaced and status returns to active via record_test_result. On any error the bot stays `testing`.
+
+## D-030 — Repairs may not echo test answers (2026-09-21)
+Live evidence: the first accepted repair had folded "reply CONFINED when count is zero" into the bot's behaviour. Regenerated instructions are rejected if they contain any non-numeric expected token or the words CONFINED/ESCAPED; the rejection reason is fed back to the next round. Passing tests is necessary, not sufficient — artefacts and the instruction text are inspected.
