@@ -365,10 +365,9 @@
       "health": {
         "failures": 0,
         "last_outcome": "ok",
-        "last_probe": "2026-09-21T23:30:09",
-        "latency_s": 1.52,
-        "ok": true,
-        "probation": 1
+        "last_probe": "2026-09-21T23:31:11",
+        "latency_s": 2.78,
+        "ok": true
       },
       "rpd_scope": "openrouter free tier shared 50/day"
     },
@@ -378,9 +377,9 @@
     "provider": "openrouter",
     "ram_gb": null,
     "tokens_per_sec": null,
-    "tool_call_score": 0.76,
-    "updated": "2026-09-21T23:30:11+00:00",
-    "verified": "INFERRED"
+    "tool_call_score": 0.808,
+    "updated": "2026-09-21T23:31:14+00:00",
+    "verified": "VERIFIED"
   },
   "or-nex-n25-pro": {
     "capabilities": [
@@ -394,10 +393,9 @@
       "health": {
         "failures": 0,
         "last_outcome": "ok",
-        "last_probe": "2026-09-21T23:30:09",
-        "latency_s": 1.83,
-        "ok": true,
-        "probation": 1
+        "last_probe": "2026-09-21T23:31:11",
+        "latency_s": 1.53,
+        "ok": true
       },
       "rpd_scope": "openrouter free tier shared 50/day"
     },
@@ -407,9 +405,9 @@
     "provider": "openrouter",
     "ram_gb": null,
     "tokens_per_sec": null,
-    "tool_call_score": 0.76,
-    "updated": "2026-09-21T23:30:12+00:00",
-    "verified": "INFERRED"
+    "tool_call_score": 0.808,
+    "updated": "2026-09-21T23:31:16+00:00",
+    "verified": "VERIFIED"
   },
   "or-qwen27b": {
     "capabilities": [

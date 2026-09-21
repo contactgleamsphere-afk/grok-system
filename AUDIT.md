@@ -145,3 +145,8 @@
 | 141 | 2026-09-22 00:30:06 | acde44a1 |  | job.enqueued | builder | {"kind": "probe", "payload": {"only": ["or-ling-30-flash-vl", "or-nex-n25-pro"], "hour": "2026-09-22T00"}} |
 | 142 | 2026-09-22 00:30:09 | acde44a1 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 143 | 2026-09-22 00:30:12 | acde44a1 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 144 | 2026-09-22 00:31:07 | d5446b51 |  | job.enqueued | builder | {"kind": "probe", "payload": {"only": ["or-ling-30-flash-vl", "or-nex-n25-pro"], "hour": "2026-09-22T00"}} |
+| 145 | 2026-09-22 00:31:11 | d5446b51 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 146 | 2026-09-22 00:31:16 | d5446b51 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "or-ling-30-flash-vl", "outcome": "ok", "before": "INFERRED", "after": "VERIFIED", "detail": null} |
+| 147 | 2026-09-22 00:31:16 | d5446b51 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "or-nex-n25-pro", "outcome": "ok", "before": "INFERRED", "after": "VERIFIED", "detail": null} |
+| 148 | 2026-09-22 00:31:16 | d5446b51 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
