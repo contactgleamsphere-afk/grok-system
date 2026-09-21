@@ -142,3 +142,6 @@
 | 138 | 2026-09-22 00:27:40 | 67adfc9d |  | lane.discovered | svc-LAPTOP-LRE6PSA8 | {"model": "nex-agi/nex-n2.5-pro:free", "reason": "probe 1.46s loop 3.9s", "provider": "openrouter"} |
 | 139 | 2026-09-22 00:27:40 | 67adfc9d |  | config.presets | svc-LAPTOP-LRE6PSA8 | {"added": ["or-ling-30-flash-vl", "or-nex-n25-pro"]} |
 | 140 | 2026-09-22 00:27:40 | 67adfc9d |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 141 | 2026-09-22 00:30:06 | acde44a1 |  | job.enqueued | builder | {"kind": "probe", "payload": {"only": ["or-ling-30-flash-vl", "or-nex-n25-pro"], "hour": "2026-09-22T00"}} |
+| 142 | 2026-09-22 00:30:09 | acde44a1 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 143 | 2026-09-22 00:30:12 | acde44a1 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |

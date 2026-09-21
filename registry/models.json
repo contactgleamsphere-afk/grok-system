@@ -363,11 +363,12 @@
     "id": "or-ling-30-flash-vl",
     "limits": {
       "health": {
+        "failures": 0,
         "last_outcome": "ok",
-        "last_probe": "2026-09-21T23:27:32",
-        "latency_s": 2.53,
+        "last_probe": "2026-09-21T23:30:09",
+        "latency_s": 1.52,
         "ok": true,
-        "probation": 2
+        "probation": 1
       },
       "rpd_scope": "openrouter free tier shared 50/day"
     },
@@ -377,8 +378,8 @@
     "provider": "openrouter",
     "ram_gb": null,
     "tokens_per_sec": null,
-    "tool_call_score": 0.7,
-    "updated": "2026-09-21T23:27:32+00:00",
+    "tool_call_score": 0.76,
+    "updated": "2026-09-21T23:30:11+00:00",
     "verified": "INFERRED"
   },
   "or-nex-n25-pro": {
@@ -391,11 +392,12 @@
     "id": "or-nex-n25-pro",
     "limits": {
       "health": {
+        "failures": 0,
         "last_outcome": "ok",
-        "last_probe": "2026-09-21T23:27:40",
-        "latency_s": 1.46,
+        "last_probe": "2026-09-21T23:30:09",
+        "latency_s": 1.83,
         "ok": true,
-        "probation": 2
+        "probation": 1
       },
       "rpd_scope": "openrouter free tier shared 50/day"
     },
@@ -405,8 +407,8 @@
     "provider": "openrouter",
     "ram_gb": null,
     "tokens_per_sec": null,
-    "tool_call_score": 0.7,
-    "updated": "2026-09-21T23:27:40+00:00",
+    "tool_call_score": 0.76,
+    "updated": "2026-09-21T23:30:12+00:00",
     "verified": "INFERRED"
   },
   "or-qwen27b": {
