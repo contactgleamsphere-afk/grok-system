@@ -7,6 +7,8 @@ if(Test-Path $lock){
   if($old -and (Get-Process -Id $old -ErrorAction SilentlyContinue)){ exit 0 }   # supervisor already alive
 }
 Set-Content $lock $PID
+New-Item -ItemType Directory -Force C:\AI\Factory\run\logs | Out-Null
+Start-Transcript -Path "C:\AI\Factory\run\logs\supervisor-$PID.txt" -Force | Out-Null
 try {
   # D-038: the local tail lane must exist whenever the factory runs
   try { Invoke-WebRequest -UseBasicParsing http://127.0.0.1:11434/api/tags -TimeoutSec 3 | Out-Null } catch {
@@ -20,4 +22,4 @@ try {
     & python tools\factory_worker.py run --worker "svc-$env:COMPUTERNAME" *>> $log
     Start-Sleep 3   # worker exits on code change (D-039) -> relaunch with fresh modules
   }
-} finally { if((Get-Content $lock -ErrorAction SilentlyContinue) -eq "$PID"){ Remove-Item $lock -Force -ErrorAction SilentlyContinue } }
+} finally { Stop-Transcript | Out-Null; if((Get-Content $lock -ErrorAction SilentlyContinue) -eq "$PID"){ Remove-Item $lock -Force -ErrorAction SilentlyContinue } }
