@@ -1,0 +1,22 @@
+{
+ "verdicts": {
+  "openrouter:inclusionai/ling-3.0-flash-vl:free": {
+   "verdict": "approved",
+   "reason": "probe 2.53s loop 5.02s",
+   "ts": 1790033243.8181138,
+   "date": "2026-09-22"
+  },
+  "openrouter:nex-agi/nex-n2.5-mini:free": {
+   "verdict": "rejected",
+   "reason": "loop: did not call add",
+   "ts": 1790033243.8181138,
+   "date": "2026-09-22"
+  },
+  "openrouter:nex-agi/nex-n2.5-pro:free": {
+   "verdict": "approved",
+   "reason": "probe 1.46s loop 3.9s",
+   "ts": 1790033243.8181138,
+   "date": "2026-09-22"
+  }
+ }
+}

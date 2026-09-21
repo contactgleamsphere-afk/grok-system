@@ -353,6 +353,62 @@
     "updated": "2026-09-21T20:43:59+00:00",
     "verified": "BLOCKED"
   },
+  "or-ling-30-flash-vl": {
+    "capabilities": [
+      "chat",
+      "tools"
+    ],
+    "context_window": 131072,
+    "cost_per_1k": 0.0,
+    "id": "or-ling-30-flash-vl",
+    "limits": {
+      "health": {
+        "last_outcome": "ok",
+        "last_probe": "2026-09-21T23:27:32",
+        "latency_s": 2.53,
+        "ok": true,
+        "probation": 2
+      },
+      "rpd_scope": "openrouter free tier shared 50/day"
+    },
+    "location": "remote",
+    "model": "inclusionai/ling-3.0-flash-vl:free",
+    "notes": "DISCOVERED 2026-09-22 by factory_discover: probe 2.53s, loop 5.02s. Probation: 2 clean hourly probes -> VERIFIED.",
+    "provider": "openrouter",
+    "ram_gb": null,
+    "tokens_per_sec": null,
+    "tool_call_score": 0.7,
+    "updated": "2026-09-21T23:27:32+00:00",
+    "verified": "INFERRED"
+  },
+  "or-nex-n25-pro": {
+    "capabilities": [
+      "chat",
+      "tools"
+    ],
+    "context_window": 131072,
+    "cost_per_1k": 0.0,
+    "id": "or-nex-n25-pro",
+    "limits": {
+      "health": {
+        "last_outcome": "ok",
+        "last_probe": "2026-09-21T23:27:40",
+        "latency_s": 1.46,
+        "ok": true,
+        "probation": 2
+      },
+      "rpd_scope": "openrouter free tier shared 50/day"
+    },
+    "location": "remote",
+    "model": "nex-agi/nex-n2.5-pro:free",
+    "notes": "DISCOVERED 2026-09-22 by factory_discover: probe 1.46s, loop 3.9s. Probation: 2 clean hourly probes -> VERIFIED.",
+    "provider": "openrouter",
+    "ram_gb": null,
+    "tokens_per_sec": null,
+    "tool_call_score": 0.7,
+    "updated": "2026-09-21T23:27:40+00:00",
+    "verified": "INFERRED"
+  },
   "or-qwen27b": {
     "capabilities": [
       "chat",

@@ -134,3 +134,11 @@
 | 130 | 2026-09-21 23:19:14 | 92e8b32f | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 131 | 2026-09-21 23:23:13 | 92e8b32f | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 11s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 85s [done] report expect='FACTORY' cmd=True \| T3 PASS 95s [d |
 | 132 | 2026-09-21 23:23:13 | 92e8b32f | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
+| 133 | 2026-09-22 00:26:15 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 134 | 2026-09-22 00:27:22 | 67adfc9d |  | job.enqueued | builder | {"kind": "discover", "payload": {"provider": "openrouter", "day": "2026-09-22", "trigger": "manual"}} |
+| 135 | 2026-09-22 00:27:23 | 67adfc9d |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 136 | 2026-09-22 00:27:40 | 67adfc9d |  | lane.discovered | svc-LAPTOP-LRE6PSA8 | {"model": "inclusionai/ling-3.0-flash-vl:free", "reason": "probe 2.53s loop 5.02s", "provider": "openrouter"} |
+| 137 | 2026-09-22 00:27:40 | 67adfc9d |  | lane.rejected | svc-LAPTOP-LRE6PSA8 | {"model": "nex-agi/nex-n2.5-mini:free", "reason": "loop: did not call add", "provider": "openrouter"} |
+| 138 | 2026-09-22 00:27:40 | 67adfc9d |  | lane.discovered | svc-LAPTOP-LRE6PSA8 | {"model": "nex-agi/nex-n2.5-pro:free", "reason": "probe 1.46s loop 3.9s", "provider": "openrouter"} |
+| 139 | 2026-09-22 00:27:40 | 67adfc9d |  | config.presets | svc-LAPTOP-LRE6PSA8 | {"added": ["or-ling-30-flash-vl", "or-nex-n25-pro"]} |
+| 140 | 2026-09-22 00:27:40 | 67adfc9d |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
