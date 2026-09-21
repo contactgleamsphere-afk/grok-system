@@ -8,19 +8,8 @@ if($c.agents.defaults.botIcon.Length -gt 8){ $c.agents.defaults.botIcon='*' }
 $c.tools.exec.allowedEnvKeys=@('GROQ_API_KEY','GEMINI_API_KEY','OPENROUTER_API_KEY','AIFACTORY_REPO','PYTHONIOENCODING','PATH','SYSTEMROOT','TEMP','TMP','USERPROFILE','APPDATA','LOCALAPPDATA')
 $c.tools.exec.timeout=1800
 [IO.File]::WriteAllText($p,($c|ConvertTo-Json -Depth 20),(New-Object Text.UTF8Encoding($false)))
-# 3) AGENTS.md: how the master builds bots (general rule, no bot names)
-$a=Get-Content C:\AI\Factory\workspace\AGENTS.md -Raw
-if($a -notmatch 'factory.py report'){ $a = ($a -split '## Bot factory protocol')[0]
-$a += @"
-
-## Bot factory protocol (Phase 4)
-When the owner asks you to create/build a bot from an objective, do NOT write the bot yourself. Run, via exec from the workspace root:
-    python tools/factory.py create "<the owner's objective, verbatim>"
-It returns JSON: bot_id, name, tools, files, tests, pass/total, status, verified. Report those fields exactly. If ok is false, report the error verbatim and stop.
-To re-test a bot: python tools/factory.py test <bot_id>.  To list bots: python tools/factory.py list.
-For several bots, or when the owner says "queue"/"in the background": python tools/factory.py queue create "<objective>" (one call per objective), then python tools/factory.py jobs to report job ids/states. A background worker processes the queue; python tools/factory.py audit <bot_id> shows the lifecycle. When the owner asks how the factory is doing / what needs attention: python tools/factory.py report.
-Never edit files under C:\AI\Factory\bots or C:\AI\Factory\repo by hand; the pipeline owns them.
-"@
-[IO.File]::WriteAllText('C:\AI\Factory\workspace\AGENTS.md',$a,(New-Object Text.UTF8Encoding($false)))
-}
-"master wired: allowedEnvKeys=$($c.tools.exec.allowedEnvKeys.Count) timeout=$($c.tools.exec.timeout)"
+# 3) AGENTS.md: canonical lean copy from the repo (D-045) — never appended to, always replaced
+Copy-Item C:\AI\Factory\repo\config\laptop\workspace\AGENTS.md C:\AI\Factory\workspace\AGENTS.md -Force
+# Strip mojibake from SOUL/USER (same encoding bug as botIcon)
+foreach($f in 'SOUL.md','USER.md'){ $q="C:\AI\Factory\workspace\$f"; if(Test-Path $q){ $t=Get-Content $q -Raw -Encoding UTF8; $t2=($t -replace '[\u00C2\u00C3\u00E2][\u0080-\u00BF\u20AC\u2122\u201A\u2039\u0153\u017E\u02C6\u2013\u2014\u2018\u2019\u201C\u201D\u2022\u2026]+','-'); if($t2 -ne $t){ [IO.File]::WriteAllText($q,$t2,(New-Object Text.UTF8Encoding($false))) } } }
+"master wired: allowedEnvKeys=$($c.tools.exec.allowedEnvKeys.Count) timeout=$($c.tools.exec.timeout) AGENTS=$((Get-Item C:\AI\Factory\workspace\AGENTS.md).Length)B"

@@ -94,3 +94,6 @@ Lease is 5 min; a heartbeat thread renews it every 60 s while the handler runs. 
 
 ## D-044 — The factory reports on itself (2026-09-21)
 `tools/factory_report.py` builds one snapshot (bots, queue, 24h jobs, lane health, "needs attention", recent audit). A daily self-rescheduling `report` job writes `STATUS.md` (committed with state); Master 001 answers "how is the factory doing?" with `factory.py report`. Attention items = paused jobs, non-active bots, BLOCKED lanes with reasons — exactly the list the owner needs to decide anything.
+
+## D-045 — Master prompt is a lean, versioned artefact (2026-09-21)
+Master 001's AGENTS.md had grown to 3.5 KB of stale Phase-0 rules plus mojibake, and the report exec output pushed an 8k-context lane over budget. AGENTS.md is now `config/laptop/workspace/AGENTS.md` in the repo (≈1.2 KB, factory commands + rules only) and the wire script replaces the workspace copy rather than appending. Tool output to the master is capped (`report --brief` ≤ 900 chars).
