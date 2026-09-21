@@ -106,3 +106,16 @@ Master 001's AGENTS.md had grown to 3.5 KB of stale Phase-0 rules plus mojibake,
 
 ## D-048 — nanobot presets mirror the registry (2026-09-22)
 `tools/factory_presets.py` adds a preset for every non-BLOCKED remote registry model and removes presets for BLOCKED or unknown models (config.json backed up first; providers/keys untouched). Runs after every discover and after any probe that changed a lane, so the runtime can never route to a dead lane.
+
+## D-049 — Failover proof under a BLOCKED primary (2026-09-22) — VERIFIED
+Bot 010 `dedupe-failover-probe` was built from 009's spec with `model_policy.primary = or-deepseek` (BLOCKED) and
+fallbacks `or-nex-n25-pro, groq-gptoss20b, local4b`. `BotFactory.resolve_chain` dropped the BLOCKED lane at build
+time and `factory_chain.py` re-resolved live at test time → chain `or-nex-n25-pro > groq-gptoss20b > local4b`
+(source=live). Acceptance run 9dac2656: T1/T3/T4 PASS, T2 FAIL. The failure is lane *quality*, not failover: the
+discovered lane `or-nex-n25-pro` talked itself out of writing the fixture file and answered `RESULT: ERROR`, while
+009 passes the identical test 4/4 on groq. Consequences:
+1. Passing the two-turn tool-loop sandbox (D-047) proves *capability*, not *task quality*. Discovered lanes stay
+   at the tail of `default_fallbacks()` (provider order groq→gemini→openrouter) — unchanged, now evidence-backed.
+2. Next capability: `benchmark` job kind — run a fixed mini-suite (the 009 tests) per lane and store
+   `quality_score` in the registry so `default_fallbacks()` can order by it instead of provider order.
+3. Bot 010 is kept as the standing failover regression fixture (status `testing`, UNVERIFIED by design).

@@ -1,4 +1,9 @@
 # CHANGELOG
+
+## 2026-09-22 — discovery pipeline live, presets mirror, failover proof
+- D-047 `discover` job: OpenRouter free catalogue → filter → real probe + tool loop → probation. Live run added `or-ling-30-flash-vl`, `or-nex-n25-pro` (both VERIFIED after 2 clean probes); `nex-n2.5-mini` rejected; `or-deepseek` retired from presets.
+- D-048 `factory_presets.py`: nanobot `modelPresets` mirrors the registry (17 presets), pruned stale `or-deepseek` and `broken-primary`.
+- D-049 bot 010 failover fixture: BLOCKED primary dropped live, 3/4 on fallback lane; documents lane-quality gap → `benchmark` job is next.
 ## 2026-09-18
 - Phase 1 verified on laptop (owner report).
 - Added core/factory: registry.py, router.py, botspec.py + 19 tests (all pass).

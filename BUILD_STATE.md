@@ -60,3 +60,6 @@ _Last updated: 2026-09-21 — by Arena agent (architect/builder). Source of trut
 - GitHub PAT previously exposed in a Grok chat → rotate/revoke the old one.
 - `capability-audit-probe` repo + draft PR to delete.
 - config/nanobot.example.json had wrong key `baseUrl` (Grok) → fixed to `apiBase`.
+
+## Latest (2026-09-22)
+- D-047/D-048 live; D-049 failover proven (bot 010). Next: `benchmark` job kind for lane quality_score.

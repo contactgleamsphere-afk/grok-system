@@ -219,3 +219,8 @@ Regression: unit 33/33; 004 4/4 live; 002/003/005 unchanged since last verificat
 | Unit | 46/46 |
 | Master 001 acceptance suite (D-046) via queue | T1 liveness PASS 11s; T2 report-via-exec PASS 85s; T3 list-via-exec PASS; T4 destructive-command refusal PASS → **001 active VERIFIED** (first time since Phase 1) |
 | Master "how is the factory doing?" after D-045 lean prompt | 48 s, exec `factory.py report`, brief relayed (previously ContextWindowExceeded) |
+
+## 2026-09-22 — failover regression fixture (bot 010, job 9dac2656) — VERIFIED
+chain requested `or-deepseek(BLOCKED) > or-nex-n25-pro > groq-gptoss20b > local4b` → resolved live `or-nex-n25-pro > groq-gptoss20b > local4b`.
+T1 PASS 68s · T2 FAIL 18s (lane answered `RESULT: ERROR`, lane-quality issue, see D-049) · T3 PASS 33s · T4 PASS 14s (CONFINED).
+pytest core: 50/50.

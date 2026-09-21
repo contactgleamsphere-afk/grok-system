@@ -16,3 +16,10 @@ _generated 2026-09-19 from registry/models.json_
 | gemini-lite | gemini | gemini-3.5-flash-lite | remote | 1.0 | VERIFIED | {"rpd_note": "AI Studio free tier; per-model RPD low on newest models - RESEARCH-REQUIRED exact numbers"} | VERIFIED 2026-09-19: 5/5 tool calls, 0.8-1.4s. Cheapest Gemini lane. |
 | or-deepseek | openrouter | deepseek/deepseek-v4-flash-0731:free | remote | 1.0 | VERIFIED | {"rpd": 50, "rpd_scope": "account-wide across all :free models"} | VERIFIED 2026-09-19: 5/5 tool calls, 2.6-4.1s. OpenRouter free tier 50 req/day shared across :free models (key endpoint reports used/limit). |
 | or-qwen27b | openrouter | qwen/qwen3.8-27b:free | remote | 1.0 | VERIFIED | {"rpd": 50, "rpd_scope": "account-wide across all :free models"} | VERIFIED 2026-09-19: 2/2 tool calls but slow/variable (8-40s). Backup only. |
+
+### 2026-09-22 discovery additions (D-047)
+| lane | model | probe | notes |
+|---|---|---|---|
+| or-nex-n25-pro | nex-agi/nex-n2.5-pro:free | VERIFIED (1.5 s, tool loop ok) | quality gap on 010 T2 (refused file write) — tail of fallbacks until benchmarked |
+| or-ling-30-flash-vl | inclusionai/ling-3.0-flash-vl:free | VERIFIED (2.8 s, tool loop ok) | vision-capable; not yet used by any bot |
+| or-deepseek | — | BLOCKED, removed from nanobot presets | retired |
