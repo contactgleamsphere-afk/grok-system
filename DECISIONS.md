@@ -64,3 +64,9 @@ Every job failure is classified `transient|quota|model|logic|security` (core/fac
 
 ## D-034 — One execution path: the queue (2026-09-21)
 Master 001, the nightly task and the owner CLI all enqueue; only `factory_worker.py` executes (leases, heartbeats, retries, audit). The worker runs as a Windows scheduled task ("AIFactory Worker": at logon + every 15 min if not alive; lock file run/worker.lock). Master wrapper: `factory.py queue create|test|repair|monitor`, `jobs`, `audit`.
+
+## D-035 — Config hygiene is a test dependency (2026-09-21)
+Root cause of bot 007's first 1/4: `agents.defaults.botIcon` in config.json had been re-encoded on every PowerShell round-trip until it was a 22,736-char mojibake string, silently consuming most of the 8,200-token context budget of every small-TPM lane (ContextWindowExceededError). Fix: clamped to `*`, wire script re-clamps, all PowerShell config reads use `-Encoding UTF8`. Rule: config.json size is monitored (>60 KB = alarm) and bot tests read it fresh.
+
+## D-036 — One automatic re-test, then repair (2026-09-21)
+A freshly created bot that misses on its first run is re-tested exactly once by the queue (lanes time out, quotas rotate). If the re-test also misses, a repair job is enqueued (fail-closed, D-029/D-032). No unbounded retry loops: create → test → repair is the whole chain, each step audited.
