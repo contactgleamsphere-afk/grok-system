@@ -49,6 +49,17 @@ def markdown(r: dict) -> str:
     return "\n".join(out) + "\n"
 
 
+def brief(r: dict) -> str:
+    """<=900 chars for small-context masters (D-044): counts, attention items, last 3 jobs. Full detail is in STATUS.md."""
+    lines = [f"FACTORY {r['generated'][:16]}: bots {r['bots']['active']}/{r['bots']['total']} active; queue {json.dumps(r['queue'])}; "
+             f"healthy lanes {len(r['healthy_lanes'])}."]
+    lines += ["ATTENTION: " + ("; ".join(a[:90] for a in r["attention"][:5]) if r["attention"] else "nothing")]
+    last = r["jobs_24h"][-3:]
+    lines += ["LAST JOBS: " + "; ".join(f"{j['kind']} {j['bot'] or j['objective'][:30] or ''} -> {j['state']}" for j in last)]
+    lines += ["Full report: STATUS.md"]
+    return "\n".join(lines)[:900]
+
+
 if __name__ == "__main__":
     r = build()
-    print(markdown(r) if "--md" in sys.argv else json.dumps(r, indent=1))
+    print(markdown(r) if "--md" in sys.argv else brief(r) if "--brief" in sys.argv else json.dumps(r, indent=1))

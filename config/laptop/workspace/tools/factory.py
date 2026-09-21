@@ -21,8 +21,8 @@ def main(a):
         for k, v in sorted(b.items()): print(f"{k} {v['name']:20s} {v['status']:9s} {v['verified']:10s} tools={','.join(v['tools'])}")
         return 0
     if a[1] == "report":
-        r = subprocess.run([sys.executable, str(REPO / "tools" / "factory_report.py"), "--md"], env=env, cwd=str(REPO), capture_output=True, text=True, timeout=120)
-        print((r.stdout + r.stderr)[:3500]); return r.returncode
+        r = subprocess.run([sys.executable, str(REPO / "tools" / "factory_report.py"), "--brief"], env=env, cwd=str(REPO), capture_output=True, text=True, timeout=120)
+        print((r.stdout + r.stderr)[:1000]); return r.returncode
     if a[1] in ("queue", "jobs", "audit"):
         w = REPO / "tools" / "factory_worker.py"
         if a[1] == "queue":
