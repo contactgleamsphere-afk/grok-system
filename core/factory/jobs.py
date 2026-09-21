@@ -19,6 +19,11 @@ RETRY_POLICY = {"transient": (3, 60), "quota": (6, 900), "model": (3, 30), "logi
 
 def classify_failure(msg: str) -> str:
     m = (msg or "").lower()
+    # explicit class prefix wins: "RuntimeError: transient: ..." / "security: ..." / "quota: ..."
+    import re as _re
+    mm = _re.match(r"^(?:\w+error:\s*)?(transient|quota|model|logic|security)\s*:", m)
+    if mm:
+        return mm.group(1)
     if m.startswith("security") or any(k in m for k in ("frozen fields changed", "reward hacking", "hard-code test answers", "escaped", "boundary expansion", "credential material",
                             "permission", "outside the workspace", "shell:system")):
         return "security"

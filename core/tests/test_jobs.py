@@ -88,3 +88,10 @@ def test_not_before_delays_claim(tmp_path):
     st = JobStore(tmp_path / "j.sqlite3")
     st.enqueue("probe", {"only": [], "hour": "x"}, not_before=_t.time() + 3600)
     assert st.claim("w", 60) is None
+
+
+def test_classify_explicit_prefix():
+    from factory.jobs import classify_failure
+    assert classify_failure("RuntimeError: transient: probe found no healthy remote lane") == "transient"
+    assert classify_failure("RuntimeError: logic: config.json unhealthy") == "logic"
+    assert classify_failure("SecurityViolation: create: spec requested permissions beyond job allowance") == "security"

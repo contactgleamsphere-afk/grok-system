@@ -83,10 +83,10 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
         for r in res["changed"]:
             store.audit("model.health", job_id=jid, actor=worker, model=r["id"], outcome=r["outcome"],
                         before=r["before"], after=r["after"], detail=r.get("detail"))
-        if not res["healthy"]:
+        if not res["healthy"] and not p.get("only"):
             raise RuntimeError("transient: probe found no healthy remote lane")
         nxt = (datetime.datetime.now() + datetime.timedelta(hours=1))
-        store.enqueue("probe", {"only": [], "hour": nxt.strftime("%Y-%m-%dT%H")}, priority=1, parent=jid, actor=worker,
+        if not p.get("only"): store.enqueue("probe", {"only": [], "hour": nxt.strftime("%Y-%m-%dT%H")}, priority=1, parent=jid, actor=worker,
                       not_before=time.time() + 3600)
         return {"probed": res["probed"], "healthy": res["healthy"], "changed": [(c["id"], c["after"]) for c in res["changed"]]}
     if kind == "monitor":
