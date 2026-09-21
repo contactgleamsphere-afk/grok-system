@@ -189,3 +189,15 @@ Full regression: unit suite 30/30; pipeline `test` 002 2/2, 003 4/4, 004 4/4 (ea
 **Independent verification of the repaired production bot:** `factory_pipeline.py test 004` → 4/4 (T2 38 s → 3); artefact CHANGELOG.md = `# Changelog / ## Added - add new login / ## Fixed - fix crash on start / ## Changed - update documentation` — correct.
 Registry lifecycle for 004 (notes): 4/4 → monitor 3/4 (testing) → repair round 1 4/4 (active). 002/003/005 untouched.
 Regression: unit 33/33; 004 4/4 live; 002/003/005 unchanged since last verification.
+
+## 2026-09-21 — Job queue / worker (laptop, live)
+| Test | Result |
+|---|---|
+| Unit core/tests (jobs, guard, classifier) | 37/37 PASS |
+| Queue create → bot 006 json-to-markdown-table | 4/4 VERIFIED; perms fs:read,fs:write; artefact table.md correct |
+| Idempotency: duplicate `test 005` enqueued | deduped (audit `job.dedup`) |
+| Recovery: worker w2 killed (Stop-Process) mid-monitor | job stayed leased; w3 could not steal it; `release` → w4 completed it (002 2/2, 003 4/4) |
+| Autonomous loop: fault injected in 004 → `monitor --only 004` | 2/4 → demoted → repair job auto-enqueued → 2 candidates rejected by reward-hack guard → paused class=logic |
+| After prompt fix + `resume --all` | repair round 1 groq:gpt-oss-120b sandbox 4/4 → promoted active; `frozen_diff: []`; production bot.json fault gone (grep) |
+| Master 001 chat → `factory.py queue create` ×2 | jobs efc687cf / bbafb536 queued from chat in 174 s; picked up by scheduled service without intervention |
+| Failure found | second "006" minted after repo-sync hard-reset dropped registry entry → D-033 fix, collision cleaned, job re-queued |

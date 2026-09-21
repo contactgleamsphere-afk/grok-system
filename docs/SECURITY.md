@@ -20,3 +20,8 @@
 
 - Prefer package managers / verified releases over `curl | sh` when possible.
 - If an installer script is unavoidable, fetch, read, then run.
+
+## Boundary guard + job isolation (2026-09-21, D-031/D-032)
+- Every create/repair result is diffed against the previous registry entry; any expansion of permissions, tools, net/shell, model_policy, re-enabled tools, or credential-looking strings in the bundle → `security` class → job paused, production untouched. Unit-tested (core/tests/test_jobs.py, test_guard).
+- Repair model never sees expected test answers (prevents reward hacking); candidates that still echo answers are rejected before sandboxing.
+- The worker runs with the owner's user env only; keys are read from User env at start, never written to the queue DB or audit (payloads contain objectives/ids only).

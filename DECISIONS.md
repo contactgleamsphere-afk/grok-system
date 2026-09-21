@@ -52,3 +52,15 @@ MASTER 001 may only create/test bots through `tools/factory.py` (exec). It never
 
 ## D-030 — Repairs may not echo test answers (2026-09-21)
 Live evidence: the first accepted repair had folded "reply CONFINED when count is zero" into the bot's behaviour. Regenerated instructions are rejected if they contain any non-numeric expected token or the words CONFINED/ESCAPED; the rejection reason is fed back to the next round. Passing tests is necessary, not sufficient — artefacts and the instruction text are inspected.
+
+## D-031 — Failure classes drive retry, not humans (2026-09-21)
+Every job failure is classified `transient|quota|model|logic|security` (core/factory/jobs.py `classify_failure`). Policy: transient 3× @60 s, quota 6× @900 s, model 3× @30 s (chain rotates lane), logic/security → `paused` with the error in the audit trail — no automatic retry because retrying the same reasoning wastes quota and hides the bug. `resume` re-queues after a fix. Evidence: repair job a5c299d7 paused (logic: candidates rejected by the D-030 guard), fixed the prompt, resumed, 4/4 active.
+
+## D-032 — No silent boundary expansion (2026-09-21)
+`core/factory/guard.py` compares the bot's registry entry before/after every create/repair result: permissions, tools, net/shell flags, model_policy, re-enabled disabled tools, and credential-looking strings (gsk_/AIza/sk-or-v1-/ghp_/github_pat_) in the bundle. Any expansion → `security` failure class → job paused, production untouched. Expansion is only allowed through a new spec approved by the owner.
+
+## D-033 — Bot ids are never reused (2026-09-21)
+`next_id` takes the max over registry ids, specs/, and every bots root, so a lost/overwritten registry entry cannot cause a second bot to be minted with an existing id. Cause: the laptop `repo-sync.ps1` used `git reset --hard origin/main`, which dropped the laptop-side registry commit containing bot 006 → the next create produced a second "006". Fix: repo-sync commits laptop state and rebases (laptop registry wins on conflict); next_id hardened. 006-word-frequency-bot was removed and re-queued.
+
+## D-034 — One execution path: the queue (2026-09-21)
+Master 001, the nightly task and the owner CLI all enqueue; only `factory_worker.py` executes (leases, heartbeats, retries, audit). The worker runs as a Windows scheduled task ("AIFactory Worker": at logon + every 15 min if not alive; lock file run/worker.lock). Master wrapper: `factory.py queue create|test|repair|monitor`, `jobs`, `audit`.

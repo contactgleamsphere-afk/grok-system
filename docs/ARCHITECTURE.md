@@ -56,3 +56,16 @@ Host: laptop or VPS (Docker recommended for sandboxes)
 3. **v2** — MCP tools + browser-use + AnythingLLM RAG
 4. **v3** — OpenHands Docker sandbox + Letta/mem0 + research lane
 5. **v4** — Self-improvement loop (skill discovery, repo evaluation pipeline)
+
+## Factory execution path (2026-09-21)
+```
+owner CLI / master 001 chat / nightly task  ──add──▶  run/jobs.sqlite3 (JobStore: lease, idem, priority, retry, audit)
+                                                              │ claim (lease 40 min, heartbeat)
+                                                 factory_worker.py (scheduled task, single instance via run/worker.lock)
+                                                              ├─ create  → factory_pipeline.cmd_create → guard
+                                                              ├─ test    → factory_pipeline.cmd_test
+                                                              ├─ monitor → factory_monitor → demoted? enqueue repair (prio 2)
+                                                              └─ repair  → factory_repair (instructions only, sandbox) → guard
+                                             failure → classify (transient/quota/model/logic/security) → retry or pause
+                                             every event → audit table → AUDIT.md
+```
