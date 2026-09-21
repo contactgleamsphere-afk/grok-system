@@ -52,10 +52,16 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
         store.audit("bot.created", job_id=jid, bot_id=res["bot_id"], actor=worker, name=res["name"], tools=spec["tools"],
                     permissions=spec["permissions"], chain=res.get("chain"), lane=res.get("spec_lane"))
         store.audit("bot.tested", job_id=jid, bot_id=res["bot_id"], actor=worker, result=res.get("tests"), status=res.get("status"))
+        if res.get("status") != "active":
+            # D-036: a fresh bot that misses on first run gets exactly one automatic re-test (flaky lanes / timeouts);
+            # if the re-test also fails the test handler escalates to repair, which fails closed.
+            store.enqueue("test", {"bot_id": res["bot_id"], "retest_of": jid}, priority=3, parent=jid, actor=worker)
         return res
     if kind == "test":
         before = _spec_of(p["bot_id"]); res = fp.cmd_test(p["bot_id"])
         store.audit("bot.tested", job_id=jid, bot_id=p["bot_id"], actor=worker, result=res["tests"], status=res["status"])
+        if res["status"] != "active" and p.get("retest_of"):
+            store.enqueue("repair", {"bot_id": p["bot_id"], "max_rounds": 2}, priority=2, parent=jid, actor=worker)
         return res
     if kind == "repair":
         before = _spec_of(p["bot_id"])
@@ -125,11 +131,11 @@ def main(a: list[str]) -> int:
         for j in store.list(): print(f"{j['id'][:8]} {j['kind']:8s} {j['state']:9s} att={j['attempts']} cls={j['failure_class'] or '-':9s} {json.dumps(j['payload'])[:70]}")
         return 0
     if cmd == "resume":
-        ids = [j["id"] for j in store.list(["paused", "failed"])] if (len(a) < 3 or a[2] == "--all") else [a[2]]
+        ids = [j["id"] for j in store.list(["paused", "failed"])] if (len(a) < 3 or a[2] == "--all") else [store.resolve(a[2])]
         for i in ids: store.resume(i)
         print(json.dumps({"resumed": [i[:8] for i in ids]})); return 0
-    if cmd == "cancel": print(json.dumps(store.cancel(a[2])["state"])); return 0
-    if cmd == "release": print(json.dumps(store.release(a[2], uncount="--uncount" in a)["state"])); return 0
+    if cmd == "cancel": print(json.dumps(store.cancel(store.resolve(a[2]))["state"])); return 0
+    if cmd == "release": print(json.dumps(store.release(store.resolve(a[2]), uncount="--uncount" in a)["state"])); return 0
     if cmd == "audit":
         for r in reversed(store.audit_rows(40, a[2] if len(a) > 2 else None)):
             print(f"{datetime.datetime.fromtimestamp(r['ts']):%H:%M:%S} {r['event']:20s} job={str(r['job_id'])[:8]} bot={r['bot_id'] or '-'} {r['detail'][:110]}")

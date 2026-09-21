@@ -94,6 +94,12 @@ class JobStore:
         self.audit("job.enqueued", job_id=jid, bot_id=payload.get("bot_id"), actor=actor, kind=kind, payload=payload)
         return self.get(jid)
 
+    def resolve(self, prefix: str) -> str:
+        """Accept an 8-char job id prefix (as printed by `jobs`) or a full id."""
+        rows = self.db.execute("SELECT id FROM jobs WHERE id LIKE ?", (prefix + "%",)).fetchall()
+        if len(rows) != 1: raise KeyError(f"job id {prefix!r} matches {len(rows)} jobs")
+        return rows[0][0]
+
     def get(self, jid: str) -> dict:
         r = self.db.execute("SELECT * FROM jobs WHERE id=?", (jid,)).fetchone()
         cols = [c[1] for c in self.db.execute("PRAGMA table_info(jobs)")]

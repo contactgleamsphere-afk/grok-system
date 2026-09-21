@@ -64,3 +64,12 @@ def test_guard_blocks_silent_expansion_and_credentials():
     assert "model_policy_changed" in d
     with pytest.raises(SecurityViolation):   # model policy change is not silent-allowed either through the worker path
         assert_no_silent_expansion(before, {**before, "permissions": ["fs:read", "fs:write"]})
+
+
+def test_resolve_prefix(tmp_path):
+    from factory.jobs import JobStore
+    st = JobStore(tmp_path / "j.sqlite3")
+    j = st.enqueue("test", {"bot_id": "001"})
+    assert st.resolve(j["id"][:8]) == j["id"]
+    import pytest
+    with pytest.raises(KeyError): st.resolve("zzzzzzzz")
