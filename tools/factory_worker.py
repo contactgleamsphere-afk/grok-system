@@ -4,6 +4,7 @@
   python tools/factory_worker.py add create "<objective>" [--priority 3]
   python tools/factory_worker.py add test|repair <bot_id>
   python tools/factory_worker.py add monitor
+  python tools/factory_worker.py add bench [--lanes a,b] [--stale-only] [--max N]   # D-050 lane quality
   python tools/factory_worker.py status | jobs | resume <job_id> | cancel <job_id> | release <job_id> [--uncount] | audit [bot_id]
 
 Autonomous loop (capability 1): a `create` job that ends VERIFIED enqueues nothing more (monitor covers it);
@@ -26,6 +27,7 @@ import factory_monitor as fm                                           # noqa: E
 import factory_probe as fpr                                            # noqa: E402
 import factory_report as frp                                           # noqa: E402
 import factory_discover as fdc                                         # noqa: E402
+import factory_bench as fbn
 
 DB = ROOT / "run" / "jobs.sqlite3"
 LEASE = 300          # D-043: short lease + heartbeat every 60 s -> a dead worker is detected within 5 min
@@ -108,11 +110,21 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
         if res.get("added"):
             store.audit("config.presets", job_id=jid, actor=worker, added=res["added"])
             _sync_presets()
+            store.enqueue("bench", {"lanes": res["added"], "day": datetime.date.today().isoformat()}, priority=4, parent=jid, actor=worker)
         return {k: res.get(k) for k in ("skipped", "healthy_before", "catalog", "evaluated", "added")}
+    if kind == "bench":
+        # D-050: pinned single-lane quality score on the reference suite; ranks default_fallbacks()
+        res = fbn.run(p.get("lanes") or None, p.get("ref", fbn.REF_BOT), bool(p.get("stale_only")), int(p.get("max", 3)))
+        for r in res["results"]:
+            store.audit("lane.benchmarked", job_id=jid, actor=worker, lane=r["lane"], result=f"{r['pass']}/{r['total']}", secs=r["secs"])
+        for r in res["errors"]:
+            store.audit("lane.bench_error", job_id=jid, actor=worker, lane=r["lane"], error=r["error"])
+        return {"benchmarked": [(r["lane"], f"{r['pass']}/{r['total']}") for r in res["results"]], "errors": res["errors"], "rank": res["rank"][:8]}
     if kind == "report":
         r = frp.build(); (ROOT / "STATUS.md").write_text(frp.markdown(r), encoding="utf-8")
         nxt = datetime.datetime.now() + datetime.timedelta(days=1)
         store.enqueue("report", {"day": nxt.strftime("%Y-%m-%d")}, priority=6, parent=jid, actor=worker, not_before=time.time() + 86400)
+        store.enqueue("bench", {"stale_only": True, "max": 2, "day": datetime.date.today().isoformat()}, priority=7, parent=jid, actor=worker)
         return {"bots_active": r["bots"]["active"], "attention": r["attention"][:10], "healthy_lanes": r["healthy_lanes"]}
     if kind == "monitor":
         # D-035 pre-flight: a bloated config makes every test fail for the wrong reason — refuse to demote on it
@@ -223,6 +235,9 @@ def main(a: list[str]) -> int:
             j = store.enqueue("probe", {"only": only, "hour": datetime.datetime.now().strftime("%Y-%m-%dT%H")}, priority=1, actor=opt("--actor", "owner"))
         elif kind == "discover":
             j = store.enqueue("discover", {"provider": opt("--provider", "openrouter"), "day": str(datetime.date.today()), "trigger": "manual"}, priority=2, actor=opt("--actor", "owner"))
+        elif kind == "bench":
+            lanes = [x for x in opt("--lanes", "").split(",") if x]
+            j = store.enqueue("bench", {"lanes": lanes, "stale_only": "--stale-only" in a, "max": int(opt("--max", 3)), "day": str(datetime.date.today()), "t": int(time.time())}, priority=4, actor=opt("--actor", "owner"))
         elif kind == "report":
             j = store.enqueue("report", {"day": str(datetime.date.today())}, priority=6, actor=opt("--actor", "owner"))
         elif kind == "monitor":

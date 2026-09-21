@@ -120,11 +120,17 @@ OBJECTIVE: {objective}"""
 
 
 def default_fallbacks(reg: Registry) -> list[str]:
-    """Healthy, tool-capable remote presets (not the primary) in provider order, then the best local model."""
+    """Healthy, tool-capable remote presets (not the primary), benchmark-ranked (D-050), then the best local model."""
     order = {"groq": 0, "gemini": 1, "openrouter": 2}
     rem = [m for m in reg.all("models") if m.verified != "BLOCKED" and m.location == "remote" and m.provider in order
            and "tools" in (m.capabilities or []) and m.id != "groq-gptoss120b"]
-    rem.sort(key=lambda m: (order[m.provider], -(m.tool_call_score or 0)))
+    # D-050: benchmarked lanes first, best score first (ties: faster), then un-benchmarked lanes in provider order
+    def _key(m):
+        b = (m.limits or {}).get("bench") or {}
+        if b.get("total"):
+            return (0, -(b["pass"] / b["total"]), b.get("secs", 9e9))
+        return (1, order[m.provider], -(m.tool_call_score or 0))
+    rem.sort(key=_key)
     loc = [m for m in reg.all("models") if m.location == "local" and m.verified != "BLOCKED"]
     loc.sort(key=lambda m: -(m.tool_call_score or 0))
     return [m.id for m in rem][:5] + ([loc[0].id] if loc else [])
@@ -180,13 +186,13 @@ def run_master_tests(cap: int = 240) -> dict:
     return {"pass": int(m.group(1)) if m else 0, "total": int(m.group(2)) if m else 4, "evidence": ev[:900], "raw": raw}
 
 
-def run_tests(bot_dir: pathlib.Path, cap: int = 300) -> dict:
+def run_tests(bot_dir: pathlib.Path, cap: int = 300, lane: str | None = None) -> dict:
     if bot_dir.name.startswith("001-"):
         return run_master_tests()
     if not WIN or not RUNNER.exists():
         raise RuntimeError("acceptance tests run on the laptop only (run-bot-tests.ps1 missing)")
     cmd = ["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(RUNNER),
-           "-BotDir", str(bot_dir), "-Cap", str(cap)]
+           "-BotDir", str(bot_dir), "-Cap", str(cap)] + (["-Lane", lane] if lane else [])
     out = subprocess.run(cmd, capture_output=True, text=True, timeout=cap * 6 + 120).stdout
     m = re.search(r"RESULTJSON (\{.*\})", out)
     if not m:
