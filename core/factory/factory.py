@@ -148,9 +148,13 @@ class BotFactory:
         """primary + fallbacks, dropping BLOCKED models, always ending in a local model if one exists."""
         models = {m.id: m for m in self.registry.all("models")}
         chain: list[str] = []
+        import time as _t
+        now = _t.time()
         for mid in [model_policy["primary"], *model_policy.get("fallbacks", [])]:
             m = models.get(mid)
             if m is None or m.verified == "BLOCKED" or mid in chain:
+                continue
+            if float((m.limits or {}).get("health", {}).get("quota_until", 0) or 0) > now:   # D-037: quota-cooled lane
                 continue
             chain.append(mid)
         if not any(models[c].location == "local" for c in chain):

@@ -23,6 +23,7 @@ from factory.factory import FactoryError                              # noqa: E4
 import factory_pipeline as fp                                          # noqa: E402
 import factory_repair as fr                                            # noqa: E402
 import factory_monitor as fm                                           # noqa: E402
+import factory_probe as fpr                                            # noqa: E402
 
 DB = ROOT / "run" / "jobs.sqlite3"
 LEASE = 2400
@@ -77,6 +78,14 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
         else:
             raise FactoryError(res.get("error") or "repair produced no passing candidate")
         return res
+    if kind == "probe":
+        res = fpr.run(set(p["only"]) if p.get("only") else None)
+        for r in res["changed"]:
+            store.audit("model.health", job_id=jid, actor=worker, model=r["id"], outcome=r["outcome"],
+                        before=r["before"], after=r["after"], detail=r.get("detail"))
+        if not res["healthy"]:
+            raise RuntimeError("transient: probe found no healthy remote lane")
+        return {"probed": res["probed"], "healthy": res["healthy"], "changed": [(c["id"], c["after"]) for c in res["changed"]]}
     if kind == "monitor":
         # D-035 pre-flight: a bloated config makes every test fail for the wrong reason — refuse to demote on it
         cfg_path = pathlib.Path(r"C:\AI\Factory\config.json")
@@ -129,6 +138,9 @@ def main(a: list[str]) -> int:
         kind = a[2]
         if kind == "create": j = store.enqueue("create", {"objective": a[3]}, priority=int(opt("--priority", 5)), actor=opt("--actor", "owner"))
         elif kind in ("test", "repair"): j = store.enqueue(kind, {"bot_id": a[3]}, priority=int(opt("--priority", 4)), actor=opt("--actor", "owner"))
+        elif kind == "probe":
+            only = [x for x in opt("--only", "").split(",") if x]
+            j = store.enqueue("probe", {"only": only, "hour": datetime.datetime.now().strftime("%Y-%m-%dT%H")}, priority=1, actor=opt("--actor", "owner"))
         elif kind == "monitor":
             only = [x.strip().zfill(3) for x in str(opt("--only", "")).split(",") if x.strip()] or None   # zfill: shells turn 002 into 2
             j = store.enqueue("monitor", {"only": only, "day": str(datetime.date.today())}, priority=3, actor=opt("--actor", "owner"))

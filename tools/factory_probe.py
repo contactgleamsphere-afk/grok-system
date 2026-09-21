@@ -1,0 +1,127 @@
+"""Lane health probe (D-037): a real, minimal tool-call request against every keyed remote model in the registry.
+
+  python tools/factory_probe.py [--only gemini-flash,or-deepseek] [--dry-run]
+
+For each model: send one chat request that MUST produce a tool call (function `ping`). Outcome classes:
+  ok           -> verified stays/returns to VERIFIED, health.ok=True, latency recorded
+  quota (429)  -> health.quota_until = now + 15 min (chains skip it until then; not BLOCKED, quota is temporary)
+  gone (404 / "no longer available" / "decommissioned") -> verified=BLOCKED  (the chain drops it)
+  auth (401/403 non-quota) -> BLOCKED + note "key/auth"  (owner action; audited)
+  error (5xx / timeout)    -> health.failures += 1; BLOCKED after 3 consecutive failures
+  no_tool_call             -> tool_call_score decays; BLOCKED if < 0.3
+A model that was BLOCKED by the probe and passes again is restored to VERIFIED automatically (self-healing lanes).
+Local (ollama) models are pinged via /api/tags only. Results are returned as a dict for the worker's audit trail.
+"""
+from __future__ import annotations
+import json, os, sys, time, pathlib, urllib.request, urllib.error
+ROOT = pathlib.Path(os.environ.get("AIFACTORY_REPO", pathlib.Path(__file__).resolve().parents[1]))
+sys.path.insert(0, str(ROOT / "core"))
+from factory.registry import Registry  # noqa: E402
+
+BASES = {
+    "groq": ("https://api.groq.com/openai/v1", "GROQ_API_KEY"),
+    "gemini": ("https://generativelanguage.googleapis.com/v1beta/openai", "GEMINI_API_KEY"),
+    "openrouter": ("https://openrouter.ai/api/v1", "OPENROUTER_API_KEY"),
+}
+QUOTA_COOLDOWN_S = 900
+GONE_MARKERS = ("no longer available", "decommissioned", "not found", "does not exist", "has been retired")
+TOOL = {"type": "function", "function": {"name": "ping", "description": "Reply to a liveness check.",
+                                         "parameters": {"type": "object", "properties": {"ok": {"type": "boolean"}}, "required": ["ok"]}}}
+
+
+def probe_remote(base: str, key: str, model: str, timeout: int = 45) -> dict:
+    body = {"model": model, "messages": [{"role": "user", "content": "Call the ping tool with ok=true. Do not answer in text."}],
+            "tools": [TOOL], "tool_choice": "auto", "max_tokens": 64, "temperature": 0}
+    if "gpt-oss" in model: body["reasoning_effort"] = "low"
+    req = urllib.request.Request(f"{base}/chat/completions", data=json.dumps(body).encode(),
+                                 headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json", "User-Agent": "aifactory-probe/1.0"})
+    t0 = time.time()
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            d = json.load(r)
+        msg = d["choices"][0]["message"]
+        called = bool(msg.get("tool_calls")) and msg["tool_calls"][0]["function"]["name"] == "ping"
+        return {"outcome": "ok" if called else "no_tool_call", "latency_s": round(time.time() - t0, 2)}
+    except urllib.error.HTTPError as e:
+        txt = e.read()[:300].decode(errors="replace").lower()
+        if e.code == 429 or "quota" in txt or "rate limit" in txt:
+            return {"outcome": "quota", "http": e.code, "detail": txt[:160]}
+        if e.code == 404 or any(m in txt for m in GONE_MARKERS):
+            return {"outcome": "gone", "http": e.code, "detail": txt[:160]}
+        if e.code in (401, 403):
+            return {"outcome": "auth", "http": e.code, "detail": txt[:160]}
+        return {"outcome": "error", "http": e.code, "detail": txt[:160]}
+    except Exception as e:
+        return {"outcome": "error", "detail": type(e).__name__}
+
+
+def probe_local(model: str, timeout: int = 5) -> dict:
+    try:
+        with urllib.request.urlopen("http://127.0.0.1:11434/api/tags", timeout=timeout) as r:
+            names = [m["name"] for m in json.load(r).get("models", [])]
+        return {"outcome": "ok" if model in names else "gone", "detail": "ollama up" if model in names else f"{model} not pulled"}
+    except Exception as e:
+        return {"outcome": "error", "detail": f"ollama down: {type(e).__name__}"}
+
+
+def apply(entry, res: dict, now: float) -> tuple[str, str]:
+    """Mutate the registry entry from a probe result. Returns (before_verified, after_verified)."""
+    before = entry.verified
+    h = dict(entry.limits.get("health", {}))
+    h["last_probe"] = time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime(now)); h["last_outcome"] = res["outcome"]
+    o = res["outcome"]
+    if o == "ok":
+        h["failures"] = 0; h["ok"] = True; h.pop("quota_until", None); h["latency_s"] = res.get("latency_s")
+        if before == "BLOCKED" and h.get("blocked_by") == "probe":
+            entry.verified = "VERIFIED"; h.pop("blocked_by", None)   # self-heal
+        entry.tool_call_score = min(1.0, (entry.tool_call_score or 0.5) * 0.8 + 0.2)
+    elif o == "quota":
+        h["ok"] = False; h["quota_until"] = now + QUOTA_COOLDOWN_S
+    elif o in ("gone", "auth"):
+        h["ok"] = False; h["blocked_by"] = "probe"; h["reason"] = f"{o}: {res.get('detail', '')}"[:200]
+        entry.verified = "BLOCKED"
+    elif o == "error":
+        h["failures"] = int(h.get("failures", 0)) + 1; h["ok"] = False
+        if h["failures"] >= 3:
+            h["blocked_by"] = "probe"; h["reason"] = f"3 consecutive errors: {res.get('detail', '')}"[:200]; entry.verified = "BLOCKED"
+    elif o == "no_tool_call":
+        entry.tool_call_score = round((entry.tool_call_score or 1.0) * 0.6, 2); h["ok"] = False
+        if entry.tool_call_score < 0.3:
+            h["blocked_by"] = "probe"; h["reason"] = "tool_call_score decayed below 0.3"; entry.verified = "BLOCKED"
+    entry.limits = {**entry.limits, "health": h}
+    return before, entry.verified
+
+
+def run(only: set[str] | None = None, dry_run: bool = False, prober_remote=probe_remote, prober_local=probe_local) -> dict:
+    reg = Registry(ROOT / "registry"); now = time.time(); rows = []
+    for e in reg.all("models"):
+        if only and e.id not in only: continue
+        if e.provider in BASES:
+            base, keyvar = BASES[e.provider]; key = os.environ.get(keyvar)
+            if not key:
+                rows.append({"id": e.id, "outcome": "skipped", "detail": f"{keyvar} not set"}); continue
+            res = prober_remote(base, key, e.model)
+        elif e.provider == "ollama":
+            res = prober_local(e.model)
+        else:
+            rows.append({"id": e.id, "outcome": "skipped", "detail": f"provider {e.provider} has no prober"}); continue
+        before, after = apply(e, res, now)
+        if not dry_run: reg.upsert("models", e)
+        rows.append({"id": e.id, "model": e.model, **res, "before": before, "after": after})
+    changed = [r for r in rows if r.get("before") != r.get("after")]
+    return {"probed": len(rows), "rows": rows, "changed": changed,
+            "healthy": [r["id"] for r in rows if r.get("outcome") == "ok"]}
+
+
+def main(argv: list[str]) -> int:
+    only = None
+    if "--only" in argv: only = set(argv[argv.index("--only") + 1].split(","))
+    out = run(only, "--dry-run" in argv)
+    for r in out["rows"]:
+        print(f"{r['id']:<16} {r.get('outcome'):<12} {r.get('before','-'):<10}->{r.get('after','-'):<10} {r.get('latency_s', r.get('detail',''))}")
+    print(json.dumps({"probed": out["probed"], "healthy": out["healthy"], "changed": [(c["id"], c["after"]) for c in out["changed"]]}))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))
