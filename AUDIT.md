@@ -155,3 +155,10 @@
 | 151 | 2026-09-22 00:33:34 | 9dac2656 | 010 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 152 | 2026-09-22 00:35:49 | 9dac2656 | 010 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 68s [done] expect='X_OK' last='X_OK' \| T2 FAIL 18s [done] expect='3' last='RESULT: ERROR' \| T3 PASS 33s [done] expect= |
 | 153 | 2026-09-22 00:35:49 | 9dac2656 | 010 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "010", "status": "testing", "verified": "UNVERIFIED"}} |
+| 154 | 2026-09-22 00:49:18 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 155 | 2026-09-22 00:49:40 | e1c354b2 |  | job.enqueued | builder | {"kind": "bench", "payload": {"lanes": ["or-nex-n25-pro", "or-ling-30-flash-vl", "groq-gptoss20b"], "stale_only": false, "max": 3, "day": "2 |
+| 156 | 2026-09-22 00:49:42 | e1c354b2 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 157 | 2026-09-22 00:56:23 | e1c354b2 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-nex-n25-pro", "result": "4/4", "secs": 87} |
+| 158 | 2026-09-22 00:56:23 | e1c354b2 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-ling-30-flash-vl", "result": "4/4", "secs": 14} |
+| 159 | 2026-09-22 00:56:23 | e1c354b2 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "groq-gptoss20b", "result": "4/4", "secs": 21} |
+| 160 | 2026-09-22 00:56:23 | e1c354b2 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |

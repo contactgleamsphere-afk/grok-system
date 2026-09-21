@@ -220,6 +220,13 @@
     "cost_per_1k": 0.0,
     "id": "groq-gptoss20b",
     "limits": {
+      "bench": {
+        "at": "2026-09-22T00:56:23",
+        "pass": 4,
+        "ref": "009",
+        "secs": 21,
+        "total": 4
+      },
       "health": {
         "failures": 0,
         "last_outcome": "ok",
@@ -235,7 +242,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-21T20:43:57+00:00",
+    "updated": "2026-09-21T23:56:23+00:00",
     "verified": "VERIFIED"
   },
   "groq-qwen27b": {
@@ -362,6 +369,13 @@
     "cost_per_1k": 0.0,
     "id": "or-ling-30-flash-vl",
     "limits": {
+      "bench": {
+        "at": "2026-09-22T00:54:32",
+        "pass": 4,
+        "ref": "009",
+        "secs": 14,
+        "total": 4
+      },
       "health": {
         "failures": 0,
         "last_outcome": "ok",
@@ -378,7 +392,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 0.808,
-    "updated": "2026-09-21T23:31:14+00:00",
+    "updated": "2026-09-21T23:54:32+00:00",
     "verified": "VERIFIED"
   },
   "or-nex-n25-pro": {
@@ -390,6 +404,13 @@
     "cost_per_1k": 0.0,
     "id": "or-nex-n25-pro",
     "limits": {
+      "bench": {
+        "at": "2026-09-22T00:53:26",
+        "pass": 4,
+        "ref": "009",
+        "secs": 87,
+        "total": 4
+      },
       "health": {
         "failures": 0,
         "last_outcome": "ok",
@@ -406,7 +427,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 0.808,
-    "updated": "2026-09-21T23:31:16+00:00",
+    "updated": "2026-09-21T23:53:26+00:00",
     "verified": "VERIFIED"
   },
   "or-qwen27b": {
