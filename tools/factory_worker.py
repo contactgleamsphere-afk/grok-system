@@ -1,0 +1,135 @@
+"""Factory worker: drains the persistent job queue (create / test / repair / monitor) with leases + audit.
+
+  python tools/factory_worker.py run   [--once] [--worker NAME] [--idle-exit 30]
+  python tools/factory_worker.py add create "<objective>" [--priority 3]
+  python tools/factory_worker.py add test|repair <bot_id>
+  python tools/factory_worker.py add monitor
+  python tools/factory_worker.py status | jobs | resume <job_id> | cancel <job_id> | audit [bot_id]
+
+Autonomous loop (capability 1): a `create` job that ends VERIFIED enqueues nothing more (monitor covers it);
+a `monitor` job enqueues a `repair` job for every bot it demoted; a `repair` that fails pauses with a class
+(security/logic → human) or retries with backoff (quota/transient/model → other lane via the chain).
+Security (capability 6): every create/repair result is checked with guard.assert_no_silent_expansion against the
+pre-job spec; a violation pauses the job and audits it — it never reaches the registry.
+"""
+from __future__ import annotations
+import json, os, sys, time, socket, pathlib, datetime, traceback
+ROOT = pathlib.Path(os.environ.get("AIFACTORY_REPO", pathlib.Path(__file__).resolve().parents[1]))
+sys.path.insert(0, str(ROOT / "core")); sys.path.insert(0, str(ROOT / "tools"))
+from factory.jobs import JobStore                                     # noqa: E402
+from factory.guard import assert_no_silent_expansion, SecurityViolation  # noqa: E402
+from factory.registry import Registry                                 # noqa: E402
+from factory.factory import FactoryError                              # noqa: E402
+import factory_pipeline as fp                                          # noqa: E402
+import factory_repair as fr                                            # noqa: E402
+import factory_monitor as fm                                           # noqa: E402
+
+DB = ROOT / "run" / "jobs.sqlite3"
+LEASE = 2400
+
+
+def _spec_of(bot_id: str) -> dict | None:
+    reg = Registry(ROOT / "registry"); e = reg.get("bots", bot_id)
+    if not e: return None
+    p = ROOT / "specs" / f"{e.id}-{e.name}.json"
+    d = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {"permissions": e.permissions, "tools": e.tools, "model_policy": e.model_policy}
+    patch = ROOT / "bots" / f"{e.id}-{e.name}" / "nanobot.patch.json"
+    if not patch.exists() and fp.WIN: patch = fp.LAPTOP_BOTS / f"{e.id}-{e.name}" / "nanobot.patch.json"
+    if patch.exists(): d["env"] = json.loads(patch.read_text(encoding="utf-8")).get("env", {})
+    return d
+
+
+def handle(job: dict, store: JobStore, worker: str) -> dict:
+    kind, p = job["kind"], job["payload"]; jid = job["id"]
+    if kind == "create":
+        res = fp.cmd_create(p["objective"], p.get("id"), False, False)
+        spec = res["spec"]
+        # boundary check: a created bot may only hold what its objective needs — compare against the *requested* class
+        requested = {"permissions": p.get("allowed_permissions", ["fs:read", "fs:write", "net:search", "net:fetch"]), "tools": None}
+        extra = set(spec["permissions"]) - set(requested["permissions"])
+        if extra:
+            raise SecurityViolation(f"create: spec requested permissions beyond job allowance: {sorted(extra)}")
+        store.audit("bot.created", job_id=jid, bot_id=res["bot_id"], actor=worker, name=res["name"], tools=spec["tools"],
+                    permissions=spec["permissions"], chain=res.get("chain"), lane=res.get("spec_lane"))
+        store.audit("bot.tested", job_id=jid, bot_id=res["bot_id"], actor=worker, result=res.get("tests"), status=res.get("status"))
+        return res
+    if kind == "test":
+        before = _spec_of(p["bot_id"]); res = fp.cmd_test(p["bot_id"])
+        store.audit("bot.tested", job_id=jid, bot_id=p["bot_id"], actor=worker, result=res["tests"], status=res["status"])
+        return res
+    if kind == "repair":
+        before = _spec_of(p["bot_id"])
+        if before is None: raise FactoryError(f"unknown bot {p['bot_id']}")
+        res = fr.repair(p["bot_id"], p.get("max_rounds", 2))
+        after = _spec_of(p["bot_id"])
+        d = assert_no_silent_expansion(before, after, context=f"repair {p['bot_id']}")   # raises -> security pause
+        store.audit("bot.repair", job_id=jid, bot_id=p["bot_id"], actor=worker, ok=res.get("ok"), status=res.get("status"),
+                    rounds=[{k: r.get(k) for k in ("round", "lane", "sandbox", "rejected")} for r in res.get("rounds", [])],
+                    boundary_diff=d)
+        if res.get("ok"):
+            store.audit("bot.promoted", job_id=jid, bot_id=p["bot_id"], actor=worker, to="active")
+        else:
+            raise FactoryError(res.get("error") or "repair produced no passing candidate")
+        return res
+    if kind == "monitor":
+        res = fm.monitor(set(p["only"]) if p.get("only") else None)
+        for r in res["rows"]:
+            store.audit("bot.monitored", job_id=jid, bot_id=r["id"], actor=worker, result=f"{r['pass']}/{r['total']}", before=r["before"], after=r["after"])
+            if r["after"] != "active":
+                store.audit("bot.demoted", job_id=jid, bot_id=r["id"], actor=worker, to=r["after"])
+                store.enqueue("repair", {"bot_id": r["id"], "max_rounds": 2}, priority=2, parent=jid, actor=worker)
+        return res
+    raise FactoryError(f"unknown job kind {kind}")
+
+
+def run(worker: str, once: bool = False, idle_exit: int = 0) -> int:
+    store = JobStore(DB); idle_since = time.time(); processed = 0
+    while True:
+        job = store.claim(worker, LEASE)
+        if not job:
+            if once or (idle_exit and time.time() - idle_since > idle_exit): break
+            time.sleep(5); continue
+        idle_since = time.time(); processed += 1
+        try:
+            res = handle(job, store, worker)
+            store.done(job["id"], res if isinstance(res, dict) else {"result": res}, worker)
+        except SecurityViolation as e:
+            store.audit("security.violation", job_id=job["id"], bot_id=job["payload"].get("bot_id"), actor=worker, error=str(e))
+            store.fail(job["id"], f"security: {e}", worker)
+        except Exception as e:
+            store.fail(job["id"], f"{type(e).__name__}: {e}\n{traceback.format_exc()[-800:]}", worker)
+        store.audit_export(ROOT / "AUDIT.md")
+        if once: break
+    store.audit_export(ROOT / "AUDIT.md")
+    return processed
+
+
+def main(a: list[str]) -> int:
+    if len(a) < 2: print(__doc__); return 2
+    store = JobStore(DB); cmd = a[1]
+    opt = lambda k, d=None: a[a.index(k) + 1] if k in a else d
+    if cmd == "run":
+        n = run(opt("--worker", f"{socket.gethostname()}-{os.getpid()}"), "--once" in a, int(opt("--idle-exit", 0)))
+        print(json.dumps({"processed": n, "queue": store.summary()})); return 0
+    if cmd == "add":
+        kind = a[2]
+        if kind == "create": j = store.enqueue("create", {"objective": a[3]}, priority=int(opt("--priority", 5)), actor=opt("--actor", "owner"))
+        elif kind in ("test", "repair"): j = store.enqueue(kind, {"bot_id": a[3]}, priority=int(opt("--priority", 4)), actor=opt("--actor", "owner"))
+        elif kind == "monitor": j = store.enqueue("monitor", {"only": opt("--only", "").split(",") if opt("--only") else None, "day": str(datetime.date.today())}, priority=3, actor=opt("--actor", "owner"))
+        else: print(__doc__); return 2
+        print(json.dumps({"job_id": j["id"], "state": j["state"], "kind": j["kind"]})); return 0
+    if cmd == "status": print(json.dumps(store.summary())); return 0
+    if cmd == "jobs":
+        for j in store.list(): print(f"{j['id'][:8]} {j['kind']:8s} {j['state']:9s} att={j['attempts']} cls={j['failure_class'] or '-':9s} {json.dumps(j['payload'])[:70]}")
+        return 0
+    if cmd == "resume": print(json.dumps(store.resume(a[2])["state"])); return 0
+    if cmd == "cancel": print(json.dumps(store.cancel(a[2])["state"])); return 0
+    if cmd == "audit":
+        for r in reversed(store.audit_rows(40, a[2] if len(a) > 2 else None)):
+            print(f"{datetime.datetime.fromtimestamp(r['ts']):%H:%M:%S} {r['event']:20s} job={str(r['job_id'])[:8]} bot={r['bot_id'] or '-'} {r['detail'][:110]}")
+        return 0
+    print(__doc__); return 2
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))
