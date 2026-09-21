@@ -201,3 +201,7 @@ Regression: unit 33/33; 004 4/4 live; 002/003/005 unchanged since last verificat
 | After prompt fix + `resume --all` | repair round 1 groq:gpt-oss-120b sandbox 4/4 → promoted active; `frozen_diff: []`; production bot.json fault gone (grep) |
 | Master 001 chat → `factory.py queue create` ×2 | jobs efc687cf / bbafb536 queued from chat in 174 s; picked up by scheduled service without intervention |
 | Failure found | second "006" minted after repo-sync hard-reset dropped registry entry → D-033 fix, collision cleaned, job re-queued |
+| Bot 007 todo-extractor (after D-035 config fix) | test job 74c74bee 4/4 → active VERIFIED; independent re-test c12a1af9 4/4 |
+| Bot 008 word-frequency-bot (queued by builder, built by service) | create 3/4 (T1 timeout) → D-036 re-test 5e4217a5 4/4 → active VERIFIED |
+| Monitor 006,007,008 via queue with config-hygiene pre-flight | 4/4, 4/4, 4/4 — all stay active (MONITOR.md 21:12) |
+| Root-cause found by the queue's evidence | config.json botIcon = 22,736-char mojibake → ContextWindowExceededError on every 8k-budget lane (D-035); fixed, guarded, unit-tested (39/39) |
