@@ -70,3 +70,12 @@ Root cause of bot 007's first 1/4: `agents.defaults.botIcon` in config.json had 
 
 ## D-036 — One automatic re-test, then repair (2026-09-21)
 A freshly created bot that misses on its first run is re-tested exactly once by the queue (lanes time out, quotas rotate). If the re-test also misses, a repair job is enqueued (fail-closed, D-029/D-032). No unbounded retry loops: create → test → repair is the whole chain, each step audited.
+
+## D-037 — Lanes are probed, not assumed (2026-09-21)
+`tools/factory_probe.py` sends one real tool-call request per keyed remote model every hour (self-rescheduling `probe` job, priority 1). Outcomes: ok → VERIFIED (self-heals a probe-BLOCKED lane); 429 → 15-min quota cooldown that `resolve_chain` skips; 404/"no longer available"/auth → BLOCKED with reason; 3 consecutive errors → BLOCKED; no tool call → score decay. Every change is a `model.health` audit row. First live run: `or-deepseek` (`deepseek-v4-flash-0731:free`) has been withdrawn from the free tier → BLOCKED automatically; gemini-flash/flash38 on quota cooldown; 7 healthy lanes.
+
+## D-038 — Local tail lane is part of the service (2026-09-21)
+The worker supervisor starts Ollama if 127.0.0.1:11434 is down, so every chain always ends in a model that cannot be rate-limited or withdrawn.
+
+## D-039 — Long-lived workers never run stale code (2026-09-21)
+Found live: a service worker started at 19:55 kept failing `probe` jobs with "unknown job kind" for 40 minutes after the code shipped. The worker now snapshots the mtimes of all factory modules and exits between jobs when any changes (`worker.restart` audit row); `run-worker.ps1` is a supervisor loop that relaunches it. Also: `Get-Process ... CommandLine` is empty in Windows PowerShell 5 — process discovery must use `Get-CimInstance Win32_Process`.

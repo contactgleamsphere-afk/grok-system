@@ -80,3 +80,11 @@ def test_config_hygiene():
     assert config_hygiene({"agents": {"defaults": {"botIcon": "*"}}}, 10_000) == []
     probs = config_hygiene({"agents": {"defaults": {"botIcon": "x" * 22_736}}}, 92_000)
     assert len(probs) == 3 and any("botIcon" in x for x in probs)
+
+
+def test_not_before_delays_claim(tmp_path):
+    from factory.jobs import JobStore
+    import time as _t
+    st = JobStore(tmp_path / "j.sqlite3")
+    st.enqueue("probe", {"only": [], "hour": "x"}, not_before=_t.time() + 3600)
+    assert st.claim("w", 60) is None

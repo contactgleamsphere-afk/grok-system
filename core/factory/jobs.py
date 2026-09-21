@@ -79,7 +79,7 @@ class JobStore:
         return f"{kind}:" + hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()[:16]
 
     def enqueue(self, kind: str, payload: dict, *, priority: int = 5, max_attempts: int = 3,
-                idem: str | None = None, parent: str | None = None, actor: str = "factory") -> dict:
+                idem: str | None = None, parent: str | None = None, actor: str = "factory", not_before: float = 0.0) -> dict:
         idem = idem or self.idem_key(kind, payload)
         row = self.db.execute("SELECT id,state FROM jobs WHERE idem=?", (idem,)).fetchone()
         if row and row[1] in ("queued", "running", "paused"):
@@ -88,9 +88,9 @@ class JobStore:
         if row:   # finished earlier -> new job with a fresh idem suffix (explicit re-run)
             idem = f"{idem}:{int(time.time())}"
         jid = uuid.uuid4().hex; now = time.time()
-        self.db.execute("INSERT INTO jobs(id,kind,payload,idem,state,priority,max_attempts,created,updated,parent) "
-                        "VALUES(?,?,?,?,'queued',?,?,?,?,?)",
-                        (jid, kind, json.dumps(payload), idem, priority, max_attempts, now, now, parent))
+        self.db.execute("INSERT INTO jobs(id,kind,payload,idem,state,priority,max_attempts,created,updated,parent,not_before) "
+                        "VALUES(?,?,?,?,'queued',?,?,?,?,?,?)",
+                        (jid, kind, json.dumps(payload), idem, priority, max_attempts, now, now, parent, not_before))
         self.audit("job.enqueued", job_id=jid, bot_id=payload.get("bot_id"), actor=actor, kind=kind, payload=payload)
         return self.get(jid)
 
