@@ -123,13 +123,17 @@ def _commit_state(kind: str, jid8: str) -> None:
     sync/reset. Local commit only; the push is done by the sync script (network may be down). Never raises."""
     import subprocess
     try:
-        g = lambda *a: subprocess.run(["git", *a], cwd=str(ROOT), capture_output=True, text=True, timeout=60)
+        env = {**os.environ, "GIT_TERMINAL_PROMPT": "0", "GCM_INTERACTIVE": "Never", "GIT_ASKPASS": "echo"}
+        g = lambda *a: subprocess.run(["git", *a], cwd=str(ROOT), capture_output=True, text=True, timeout=60, env=env)
         g("add", "-A", "--", *STATE_PATHS)
         if g("diff", "--cached", "--quiet").returncode != 0:
             g("-c", "user.name=AI Factory Worker", "-c", "user.email=contactgleamsphere-afk+worker@users.noreply.github.com",
               "commit", "-q", "-m", f"state: after {kind} job {jid8}")
-            if os.environ.get("GITHUB_TOKEN"):                       # push when we can; failure is not a job failure
-                g("fetch", "-q", "origin"); g("rebase", "-q", "origin/main"); g("push", "-q", "origin", "HEAD:main")
+            tok = os.environ.get("GITHUB_TOKEN")
+            if tok:   # push with the token in the URL and every credential helper disabled -> can never block on a GUI prompt
+                url = f"https://x-access-token:{tok}@github.com/contactgleamsphere-afk/grok-system.git"
+                nh = ["-c", "credential.helper=", "-c", "core.askPass=", "-c", "credential.interactive=never"]
+                g(*nh, "fetch", "-q", url, "main"); g("rebase", "-q", "FETCH_HEAD"); g(*nh, "push", "-q", url, "HEAD:main")
     except Exception:
         pass
 
