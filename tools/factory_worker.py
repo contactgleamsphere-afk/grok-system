@@ -24,6 +24,7 @@ import factory_pipeline as fp                                          # noqa: E
 import factory_repair as fr                                            # noqa: E402
 import factory_monitor as fm                                           # noqa: E402
 import factory_probe as fpr                                            # noqa: E402
+import factory_report as frp                                           # noqa: E402
 
 DB = ROOT / "run" / "jobs.sqlite3"
 LEASE = 300          # D-043: short lease + heartbeat every 60 s -> a dead worker is detected within 5 min
@@ -89,6 +90,11 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
         if not p.get("only"): store.enqueue("probe", {"only": [], "hour": nxt.strftime("%Y-%m-%dT%H")}, priority=1, parent=jid, actor=worker,
                       not_before=time.time() + 3600)
         return {"probed": res["probed"], "healthy": res["healthy"], "changed": [(c["id"], c["after"]) for c in res["changed"]]}
+    if kind == "report":
+        r = frp.build(); (ROOT / "STATUS.md").write_text(frp.markdown(r), encoding="utf-8")
+        nxt = datetime.datetime.now() + datetime.timedelta(days=1)
+        store.enqueue("report", {"day": nxt.strftime("%Y-%m-%d")}, priority=6, parent=jid, actor=worker, not_before=time.time() + 86400)
+        return {"bots_active": r["bots"]["active"], "attention": r["attention"][:10], "healthy_lanes": r["healthy_lanes"]}
     if kind == "monitor":
         # D-035 pre-flight: a bloated config makes every test fail for the wrong reason — refuse to demote on it
         cfg_path = pathlib.Path(r"C:\AI\Factory\config.json")
@@ -115,7 +121,7 @@ def _code_stamp() -> float:
     return max((f.stat().st_mtime for f in CODE_FILES if f.exists()), default=0.0)
 
 
-STATE_PATHS = ["registry", "specs", "AUDIT.md", "MONITOR.md", "BOT_REGISTRY.md"]
+STATE_PATHS = ["registry", "specs", "AUDIT.md", "MONITOR.md", "BOT_REGISTRY.md", "STATUS.md"]
 
 
 def _commit_state(kind: str, jid8: str) -> None:
@@ -189,6 +195,8 @@ def main(a: list[str]) -> int:
         elif kind == "probe":
             only = [x for x in opt("--only", "").split(",") if x]
             j = store.enqueue("probe", {"only": only, "hour": datetime.datetime.now().strftime("%Y-%m-%dT%H")}, priority=1, actor=opt("--actor", "owner"))
+        elif kind == "report":
+            j = store.enqueue("report", {"day": str(datetime.date.today())}, priority=6, actor=opt("--actor", "owner"))
         elif kind == "monitor":
             only = [x.strip().zfill(3) for x in str(opt("--only", "")).split(",") if x.strip()] or None   # zfill: shells turn 002 into 2
             j = store.enqueue("monitor", {"only": only, "day": str(datetime.date.today())}, priority=3, actor=opt("--actor", "owner"))

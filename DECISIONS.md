@@ -91,3 +91,6 @@ Builder lanes (`factory_pipeline.chat`) and the default fallback policy written 
 
 ## D-043 — Liveness by heartbeat, not by long leases (2026-09-21)
 Lease is 5 min; a heartbeat thread renews it every 60 s while the handler runs. A worker that dies (session teardown, crash, reboot) frees its job within 5 min instead of 40, and a healthy worker can hold a job indefinitely. Found live: `test 006` sat "running" for 30 min after its worker was torn down with the SSH session.
+
+## D-044 — The factory reports on itself (2026-09-21)
+`tools/factory_report.py` builds one snapshot (bots, queue, 24h jobs, lane health, "needs attention", recent audit). A daily self-rescheduling `report` job writes `STATUS.md` (committed with state); Master 001 answers "how is the factory doing?" with `factory.py report`. Attention items = paused jobs, non-active bots, BLOCKED lanes with reasons — exactly the list the owner needs to decide anything.

@@ -2,7 +2,7 @@
 
     python tools/factory.py create "<plain-English objective>"   # synchronous (blocks ~2-5 min)
     python tools/factory.py queue create "<objective>" | test <id> | repair <id> | monitor [ids]   # async via job queue
-    python tools/factory.py jobs | audit [bot_id]
+    python tools/factory.py jobs | audit [bot_id] | report
     python tools/factory.py test <bot_id>
     python tools/factory.py list
 
@@ -20,6 +20,9 @@ def main(a):
         b = json.loads((REPO / "registry" / "bots.json").read_text(encoding="utf-8"))
         for k, v in sorted(b.items()): print(f"{k} {v['name']:20s} {v['status']:9s} {v['verified']:10s} tools={','.join(v['tools'])}")
         return 0
+    if a[1] == "report":
+        r = subprocess.run([sys.executable, str(REPO / "tools" / "factory_report.py"), "--md"], env=env, cwd=str(REPO), capture_output=True, text=True, timeout=120)
+        print((r.stdout + r.stderr)[:3500]); return r.returncode
     if a[1] in ("queue", "jobs", "audit"):
         w = REPO / "tools" / "factory_worker.py"
         if a[1] == "queue":

@@ -108,3 +108,18 @@ def test_heartbeat_extends_lease_and_expiry_requeues(tmp_path):
     st.db.execute("UPDATE jobs SET lease_until=? WHERE id=?", (_t.time() - 1, j["id"])); st.db.commit()
     j2 = st.claim("w2", 60)                                # expired -> requeued and claimed by w2
     assert j2 and j2["id"] == j["id"] and j2["lease_owner"] == "w2"
+
+
+def test_report_builds(tmp_path, monkeypatch):
+    monkeypatch.setenv("AIFACTORY_REPO", str(tmp_path)); (tmp_path / "registry").mkdir(); (tmp_path / "run").mkdir()
+    from factory.registry import Registry, ModelEntry, BotEntry
+    import sys as _s; _s.path.insert(0, str(pathlib.Path(__file__).resolve().parents[2] / "tools"))
+    r = Registry(tmp_path / "registry")
+    r.upsert("models", ModelEntry(id="a", provider="groq", model="m", capabilities=["tools"], context_window=8000, location="remote", verified="BLOCKED",
+                                  limits={"health": {"reason": "gone: 404"}}))
+    import importlib, factory_report as frp; importlib.reload(frp)
+    from factory.jobs import JobStore
+    st = JobStore(tmp_path / "run" / "jobs.sqlite3"); st.enqueue("test", {"bot_id": "001"}); j = st.claim("w", 60); st.fail(j["id"], "logic: boom", "w")
+    rep = frp.build()
+    assert rep["queue"].get("paused") == 1 and any("BLOCKED" in a for a in rep["attention"]) and any("paused" in a for a in rep["attention"])
+    assert "# FACTORY STATUS" in frp.markdown(rep)
