@@ -83,6 +83,9 @@ def apply(entry, res: dict, now: float) -> tuple[str, str]:
     elif o in ("gone", "auth"):
         h["ok"] = False; h["blocked_by"] = "probe"; h["reason"] = f"{o}: {res.get('detail', '')}"[:200]
         entry.verified = "BLOCKED"
+    if entry.verified == "INFERRED" and "probation" in h and o in ("gone", "auth", "error", "no_tool_call"):
+        # D-047: a probation lane gets no second chances — one failure and it is BLOCKED (and pruned by presets sync)
+        h["ok"] = False; h["blocked_by"] = "probe"; h["reason"] = f"failed probation: {o}"; entry.verified = "BLOCKED"
     elif o == "error":
         h["failures"] = int(h.get("failures", 0)) + 1; h["ok"] = False
         if h["failures"] >= 3:

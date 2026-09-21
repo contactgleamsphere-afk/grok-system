@@ -100,3 +100,9 @@ Master 001's AGENTS.md had grown to 3.5 KB of stale Phase-0 rules plus mojibake,
 
 ## D-046 — Master 001 is verified like any other bot (2026-09-21)
 001 sat in `building` since Phase 1 with a one-line liveness test. It now has a real acceptance suite (`run-master-tests.ps1`: liveness, report via exec, list via exec, refusal of a destructive out-of-workspace command) driven by `factory.py test 001` / the monitor, and its status follows the same active/testing rule as factory bots.
+
+## D-047 — Lanes are discovered by evidence, on probation (2026-09-22)
+`tools/factory_discover.py`: DISCOVER (provider catalogue) → EVALUATE (tool calling, ≥16k ctx, not known, not recently rejected — `registry/discovery.json` ledger) → SANDBOX (real tool-call probe + real two-turn tool loop) → INTEGRATE as `INFERRED` with probation=2 → VERIFIED after two clean hourly probes; one failure during probation = BLOCKED. Auto-approval only for the lane class already in use (same provider/key/free tier); anything needing sign-up is `needs_owner` in STATUS.md. Triggered by the probe when a lane goes BLOCKED or fewer than 5 remote lanes are healthy. First live run: 21 free OpenRouter models → 18 eligible → 2 approved (ling-3.0-flash-vl, nex-n2.5-pro), 1 rejected (nex-n2.5-mini failed the loop), audited as `lane.discovered` / `lane.rejected`.
+
+## D-048 — nanobot presets mirror the registry (2026-09-22)
+`tools/factory_presets.py` adds a preset for every non-BLOCKED remote registry model and removes presets for BLOCKED or unknown models (config.json backed up first; providers/keys untouched). Runs after every discover and after any probe that changed a lane, so the runtime can never route to a dead lane.

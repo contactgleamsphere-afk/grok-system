@@ -17,6 +17,10 @@ def sync(config_path: pathlib.Path = CONFIG, dry_run: bool = False) -> tuple[lis
     c = json.loads(config_path.read_text(encoding="utf-8"))
     presets = c.setdefault("modelPresets", {})
     added, removed = [], []
+    known = {m.id for m in reg.all("models")}
+    for pid in list(presets):        # presets not backed by any registry entry are stale (e.g. old failover-test stubs)
+        if pid not in known and presets[pid].get("provider") in ("groq", "gemini", "openrouter", "custom"):
+            presets.pop(pid); removed.append(pid)
     for m in reg.all("models"):
         if m.provider not in ("groq", "gemini", "openrouter"): continue
         if m.verified == "BLOCKED":

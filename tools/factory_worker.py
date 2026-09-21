@@ -85,6 +85,7 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
         for r in res["changed"]:
             store.audit("model.health", job_id=jid, actor=worker, model=r["id"], outcome=r["outcome"],
                         before=r["before"], after=r["after"], detail=r.get("detail"))
+        if res["changed"]: _sync_presets()          # BLOCKED lanes leave nanobot config immediately
         if not res["healthy"] and not p.get("only"):
             raise RuntimeError("transient: probe found no healthy remote lane")
         # D-047: a lane went BLOCKED, or the healthy remote pool is thin -> discover replacements (dedup by day)

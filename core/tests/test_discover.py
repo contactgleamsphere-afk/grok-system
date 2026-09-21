@@ -49,3 +49,12 @@ def test_presets_sync_adds_and_removes(tmp_path, monkeypatch):
     added, removed = fps.sync(cfg)
     c = json.loads(cfg.read_text())
     assert added == ["or-new"] and removed == ["or-old"] and "or-new" in c["modelPresets"] and c["providers"]["openrouter"]["apiKey"] == "${K}"
+
+
+def test_probation_lane_blocked_on_first_failure(tmp_path, monkeypatch):
+    reg, fd = _setup(tmp_path, monkeypatch)
+    reg.upsert("models", ModelEntry(id="or-p", provider="openrouter", model="p/x:free", capabilities=["chat", "tools"], context_window=32000, location="remote",
+                                    verified="INFERRED", limits={"health": {"probation": 2}}))
+    import factory_probe as fp
+    fp.run(only={"or-p"}, prober_remote=lambda *a: {"outcome": "error", "detail": "timeout"})
+    assert Registry(tmp_path / "registry").get("models", "or-p").verified == "BLOCKED"
