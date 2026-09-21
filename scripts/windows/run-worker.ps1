@@ -9,5 +9,8 @@ try { Invoke-WebRequest -UseBasicParsing http://127.0.0.1:11434/api/tags -Timeou
   $ol = "$env:LOCALAPPDATA\Programs\Ollama\ollama.exe"; if(Test-Path $ol){ Start-Process $ol -ArgumentList 'serve' -WindowStyle Hidden; Start-Sleep 6 }
 }
 cd C:\AI\Factory\repo
-python tools\factory_worker.py run --worker "svc-$env:COMPUTERNAME" 2>&1 | Out-File -Append "C:\AI\Factory\run\worker-$(Get-Date -Format yyyyMMdd).log"
+while($true){
+  python tools\factory_worker.py run --worker "svc-$env:COMPUTERNAME" 2>&1 | Out-File -Append "C:\AI\Factory\run\worker-$(Get-Date -Format yyyyMMdd).log"
+  Start-Sleep 3   # worker exits on code change (D-039) -> relaunch with fresh modules
+}
 Remove-Item $lock -Force -ErrorAction SilentlyContinue
