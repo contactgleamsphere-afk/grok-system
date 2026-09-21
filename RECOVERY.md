@@ -31,3 +31,10 @@ Pre-warm the local model before any test that may fall back to it (prevents the 
 
 ## Laptop repo mirror
 `C:\AI\Factory\repo` = clone of GitHub main (no token stored; refresh with `tools\repo-sync.ps1`). The pipeline reads/writes `repo\registry` and `repo\specs`; after a laptop run copy `registry\bots.json` + new `specs\*.json` + `bots\<id>` back into the main repo and commit.
+
+## Factory worker service (2026-09-21)
+- Start/restart ONLY via `schtasks /Run /TN "AIFactory Worker"` (detached). Processes launched with `Start-Process` from an SSH/PowerShell session die when that session ends — this looked like "worker vanished" three times today.
+- Find processes with `Get-CimInstance Win32_Process | ? { $_.CommandLine -match 'factory_worker' }` (Get-Process has no CommandLine in PS 5).
+- Kill + relaunch: stop those PIDs, `Remove-Item C:\AI\Factory\run\worker.lock`, then `schtasks /Run`.
+- Orphaned running jobs recover by lease expiry (40 min) or `factory_worker.py release <id8> --uncount`.
+- Logs: `C:\AI\Factory\run\logs\worker-<date>-<pid>.log`; audit: `factory_worker.py audit`.
