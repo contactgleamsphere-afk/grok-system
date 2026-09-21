@@ -95,7 +95,14 @@ OBJECTIVE: {objective}"""
 
 
 def next_id(reg: Registry) -> str:
+    """Highest id seen anywhere (registry, specs/, bots roots) + 1 — ids are never reused even if a registry
+    entry is lost (D-033)."""
     ids = [int(b.id) for b in reg.all("bots") if b.id.isdigit()]
+    for root in (ROOT / "specs", ROOT / "bots", LAPTOP_BOTS if WIN else None):
+        if root and root.exists():
+            for p in root.iterdir():
+                m = re.match(r"(\d{3})-", p.name)
+                if m: ids.append(int(m.group(1)))
     return f"{(max(ids) + 1) if ids else 1:03d}"
 
 
