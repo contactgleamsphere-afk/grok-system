@@ -79,3 +79,6 @@ The worker supervisor starts Ollama if 127.0.0.1:11434 is down, so every chain a
 
 ## D-039 — Long-lived workers never run stale code (2026-09-21)
 Found live: a service worker started at 19:55 kept failing `probe` jobs with "unknown job kind" for 40 minutes after the code shipped. The worker now snapshots the mtimes of all factory modules and exits between jobs when any changes (`worker.restart` audit row); `run-worker.ps1` is a supervisor loop that relaunches it. Also: `Get-Process ... CommandLine` is empty in Windows PowerShell 5 — process discovery must use `Get-CimInstance Win32_Process`.
+
+## D-040 — Deployed bots follow lane health at run time (2026-09-21)
+Bundles keep their frozen `resolved_chain` for reproducibility, but the test/monitor runner re-resolves `model_policy` against the live registry on every run (`tools/factory_chain.py`), so a lane the probe BLOCKED (e.g. or-deepseek) or quota-cooled is skipped by every bot immediately, without rewriting bundles or re-verifying. Falls back to the frozen chain if resolution fails.

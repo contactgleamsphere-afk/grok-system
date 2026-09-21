@@ -41,3 +41,14 @@ def test_probe_error_blocks_after_three(tmp_path, monkeypatch):
     for n in range(3):
         fp.run(only={"a"}, prober_remote=lambda *a: {"outcome": "error", "detail": "timeout"})
     assert Registry(tmp_path / "registry").get("models", "a").verified == "BLOCKED"
+
+
+def test_live_chain_drops_blocked(tmp_path, monkeypatch):
+    monkeypatch.setenv("AIFACTORY_REPO", str(tmp_path)); (tmp_path / "registry").mkdir()
+    reg = _reg(tmp_path / "registry")
+    b = reg.get("models", "b"); b.verified = "BLOCKED"; reg.upsert("models", b)
+    bot = tmp_path / "bots" / "009-x"; bot.mkdir(parents=True)
+    (bot / "bot.json").write_text(json.dumps({"model_policy": {"primary": "a", "fallbacks": ["b", "c"]}, "resolved_chain": ["a", "b", "c", "l"]}))
+    import importlib, factory_chain as fc; importlib.reload(fc)
+    out = fc.live_chain(bot)
+    assert out["source"] == "live" and out["primary"] == "a" and out["fallbacks"] == ["c", "l"]

@@ -9,15 +9,18 @@ $bot=Get-Content "$BotDir\bot.json" -Raw -Encoding UTF8|ConvertFrom-Json
 $patch=Get-Content "$BotDir\nanobot.patch.json" -Raw -Encoding UTF8|ConvertFrom-Json
 # per-bot config = live config + bot's model chain (tool set via env for this process only)
 $cfg=Get-Content C:\AI\Factory\config.json -Raw -Encoding UTF8|ConvertFrom-Json
-$cfg.agents.defaults.modelPreset=$patch.agents.defaults.modelPreset
-$cfg.agents.defaults.fallbackModels=@($patch.agents.defaults.fallbackModels)
+# D-040: chain is re-resolved against the live registry (lane health) every run; frozen chain is the fallback
+$env:AIFACTORY_REPO='C:\AI\Factory\repo'
+$live = python C:\AI\Factory\repo\tools\factory_chain.py $BotDir | ConvertFrom-Json
+if($live -and $live.primary){ $cfg.agents.defaults.modelPreset=$live.primary; $cfg.agents.defaults.fallbackModels=@($live.fallbacks) }
+else { $cfg.agents.defaults.modelPreset=$patch.agents.defaults.modelPreset; $cfg.agents.defaults.fallbackModels=@($patch.agents.defaults.fallbackModels) }
 # small-TPM lanes: keep tool results tiny so compaction never has to hard-fail
 $cfg.agents.defaults.maxToolResultChars=1500
 New-Item -ItemType Directory -Force C:\AI\Factory\run\botcfg | Out-Null; $botCfg="C:\AI\Factory\run\botcfg\$($bot.id).json"
 [IO.File]::WriteAllText($botCfg,($cfg|ConvertTo-Json -Depth 20),(New-Object Text.UTF8Encoding($false)))
 $env:AIFACTORY_DISABLED_TOOLS=$patch.env.AIFACTORY_DISABLED_TOOLS
 $env:AIFACTORY_TEMPLATE_DIR="$BotDir\templates"
-"bot $($bot.id) $($bot.name)  chain=$($patch.agents.defaults.modelPreset),$($patch.agents.defaults.fallbackModels -join ',')"
+"bot $($bot.id) $($bot.name)  chain=$($cfg.agents.defaults.modelPreset),$($cfg.agents.defaults.fallbackModels -join ',') [$($live.source)]"
 $pass=0; $total=0; $idx=0; $ev=@()
 foreach($t in $bot.tests){
   $idx++
