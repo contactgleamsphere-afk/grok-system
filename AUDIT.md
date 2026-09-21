@@ -150,3 +150,8 @@
 | 146 | 2026-09-22 00:31:16 | d5446b51 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "or-ling-30-flash-vl", "outcome": "ok", "before": "INFERRED", "after": "VERIFIED", "detail": null} |
 | 147 | 2026-09-22 00:31:16 | d5446b51 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "or-nex-n25-pro", "outcome": "ok", "before": "INFERRED", "after": "VERIFIED", "detail": null} |
 | 148 | 2026-09-22 00:31:16 | d5446b51 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 149 | 2026-09-22 00:32:31 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 150 | 2026-09-22 00:33:32 | 9dac2656 | 010 | job.enqueued | builder | {"kind": "test", "payload": {"bot_id": "010"}} |
+| 151 | 2026-09-22 00:33:34 | 9dac2656 | 010 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 152 | 2026-09-22 00:35:49 | 9dac2656 | 010 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 68s [done] expect='X_OK' last='X_OK' \| T2 FAIL 18s [done] expect='3' last='RESULT: ERROR' \| T3 PASS 33s [done] expect= |
+| 153 | 2026-09-22 00:35:49 | 9dac2656 | 010 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "010", "status": "testing", "verified": "UNVERIFIED"}} |
