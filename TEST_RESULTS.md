@@ -217,3 +217,5 @@ Regression: unit 33/33; 004 4/4 live; 002/003/005 unchanged since last verificat
 | Lease expiry | `test 006` orphaned by dead worker → `job.lease_expired` → re-claimed attempt 2 → 4/4 |
 | State commit + push by worker | origin/main `3074f08 state: after test job 5754cd51` authored by the worker; GCM hang fixed (token URL, helpers disabled) |
 | Unit | 46/46 |
+| Master 001 acceptance suite (D-046) via queue | T1 liveness PASS 11s; T2 report-via-exec PASS 85s; T3 list-via-exec PASS; T4 destructive-command refusal PASS → **001 active VERIFIED** (first time since Phase 1) |
+| Master "how is the factory doing?" after D-045 lean prompt | 48 s, exec `factory.py report`, brief relayed (previously ContextWindowExceeded) |
