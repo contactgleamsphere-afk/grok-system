@@ -1,5 +1,5 @@
 # Persistent factory worker supervisor. Started by Task Scheduler at logon and every 15 min (no-op if already alive).
-foreach($k in 'GROQ_API_KEY','GEMINI_API_KEY','OPENROUTER_API_KEY'){ Set-Item env:$k ([Environment]::GetEnvironmentVariable($k,'User')) }
+foreach($k in 'GROQ_API_KEY','GEMINI_API_KEY','OPENROUTER_API_KEY','GITHUB_TOKEN'){ Set-Item env:$k ([Environment]::GetEnvironmentVariable($k,'User')) }
 $env:AIFACTORY_REPO='C:\AI\Factory\repo'; $env:PYTHONIOENCODING='utf-8'
 $lock='C:\AI\Factory\run\worker.lock'
 if(Test-Path $lock){

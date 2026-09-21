@@ -128,6 +128,8 @@ def _commit_state(kind: str, jid8: str) -> None:
         if g("diff", "--cached", "--quiet").returncode != 0:
             g("-c", "user.name=AI Factory Worker", "-c", "user.email=contactgleamsphere-afk+worker@users.noreply.github.com",
               "commit", "-q", "-m", f"state: after {kind} job {jid8}")
+            if os.environ.get("GITHUB_TOKEN"):                       # push when we can; failure is not a job failure
+                g("fetch", "-q", "origin"); g("rebase", "-q", "origin/main"); g("push", "-q", "origin", "HEAD:main")
     except Exception:
         pass
 

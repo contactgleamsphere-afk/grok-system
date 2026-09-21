@@ -25,3 +25,4 @@
 - Every create/repair result is diffed against the previous registry entry; any expansion of permissions, tools, net/shell, model_policy, re-enabled tools, or credential-looking strings in the bundle → `security` class → job paused, production untouched. Unit-tested (core/tests/test_jobs.py, test_guard).
 - Repair model never sees expected test answers (prevents reward hacking); candidates that still echo answers are rejected before sandboxing.
 - The worker runs with the owner's user env only; keys are read from User env at start, never written to the queue DB or audit (payloads contain objectives/ids only).
+- 2026-09-21: `GITHUB_TOKEN` lives in the owner's Windows **User** environment only (never in repo/config); git on the laptop uses an inline credential helper that reads it from env. The worker pushes state commits with it. Rotate via GitHub → the helper picks up the new value on next start.
