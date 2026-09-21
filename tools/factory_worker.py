@@ -105,9 +105,20 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
     raise FactoryError(f"unknown job kind {kind}")
 
 
+CODE_FILES = [pathlib.Path(__file__), *sorted((ROOT / "core" / "factory").glob("*.py")), *sorted((ROOT / "tools").glob("factory_*.py"))]
+
+
+def _code_stamp() -> float:
+    return max((f.stat().st_mtime for f in CODE_FILES if f.exists()), default=0.0)
+
+
 def run(worker: str, once: bool = False, idle_exit: int = 0) -> int:
-    store = JobStore(DB); idle_since = time.time(); processed = 0
+    store = JobStore(DB); idle_since = time.time(); processed = 0; stamp = _code_stamp()
     while True:
+        # D-039: a long-lived worker must never run stale code — exit between jobs when any factory module changed;
+        # the supervisor loop (run-worker.ps1) relaunches it with fresh modules.
+        if _code_stamp() != stamp:
+            store.audit("worker.restart", actor=worker, reason="code changed on disk"); return processed
         job = store.claim(worker, LEASE)
         if not job:
             if once or (idle_exit and time.time() - idle_since > idle_exit): break
