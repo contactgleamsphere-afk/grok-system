@@ -2,7 +2,9 @@
 New-Item -ItemType Directory -Force C:\AI\Factory\workspace\tools | Out-Null
 Copy-Item C:\AI\Factory\repo\config\laptop\workspace\tools\factory.py C:\AI\Factory\workspace\tools\factory.py -Force
 # 2) exec may pass the lane keys to children (secrets stay in env, never in files)
-$p='C:\AI\Factory\config.json'; $c=Get-Content $p -Raw | ConvertFrom-Json
+$p='C:\AI\Factory\config.json'; $c=Get-Content $p -Raw -Encoding UTF8 | ConvertFrom-Json
+# D-035: botIcon must stay a single glyph; a previous encoding bug doubled it each run until it ate the model context budget
+if($c.agents.defaults.botIcon.Length -gt 8){ $c.agents.defaults.botIcon='*' }
 $c.tools.exec.allowedEnvKeys=@('GROQ_API_KEY','GEMINI_API_KEY','OPENROUTER_API_KEY','AIFACTORY_REPO','PYTHONIOENCODING','PATH','SYSTEMROOT','TEMP','TMP','USERPROFILE','APPDATA','LOCALAPPDATA')
 $c.tools.exec.timeout=1800
 [IO.File]::WriteAllText($p,($c|ConvertTo-Json -Depth 20),(New-Object Text.UTF8Encoding($false)))
