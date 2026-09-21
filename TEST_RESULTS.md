@@ -205,3 +205,15 @@ Regression: unit 33/33; 004 4/4 live; 002/003/005 unchanged since last verificat
 | Bot 008 word-frequency-bot (queued by builder, built by service) | create 3/4 (T1 timeout) → D-036 re-test 5e4217a5 4/4 → active VERIFIED |
 | Monitor 006,007,008 via queue with config-hygiene pre-flight | 4/4, 4/4, 4/4 — all stay active (MONITOR.md 21:12) |
 | Root-cause found by the queue's evidence | config.json botIcon = 22,736-char mojibake → ContextWindowExceededError on every 8k-budget lane (D-035); fixed, guarded, unit-tested (39/39) |
+
+## 2026-09-21 — lane health / service (laptop, live)
+| Test | Result |
+|---|---|
+| Probe all 16 registry models (real tool-call) | 8 healthy; or-deepseek 404 "unavailable for free" → BLOCKED; gemini-flash/flash38 429 → 15-min cooldown; local lanes ok after Ollama auto-start |
+| Live chain for bot 006 after probe | frozen [120b, gemini-flash, flash38, 20b, or-deepseek, lite, local4b] → live [120b, 20b, lite, local4b] |
+| Create via queue with health-derived fallbacks (bot 009) | spec fallbacks [20b, qwen27b, gemini-flash, flash38, gemma26b, local3b] (no or-deepseek); 4/4 active VERIFIED; re-test 4/4 |
+| Worker survives builder session teardown | previously died with SSH session; now launched only by Task Scheduler (IgnoreNew, no time limit) — alive across 3 sessions |
+| Stale-code restart | `worker.restart` audit rows at 21:41 and 23:03; new PID picked up jobs within 3 s |
+| Lease expiry | `test 006` orphaned by dead worker → `job.lease_expired` → re-claimed attempt 2 → 4/4 |
+| State commit + push by worker | origin/main `3074f08 state: after test job 5754cd51` authored by the worker; GCM hang fixed (token URL, helpers disabled) |
+| Unit | 46/46 |
