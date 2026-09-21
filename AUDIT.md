@@ -114,3 +114,7 @@
 | 110 | 2026-09-21 22:24:30 | 043bd1f8 | 009 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "line-dedupe-bot", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["groq-gptoss120b", "groq |
 | 111 | 2026-09-21 22:24:30 | 043bd1f8 | 009 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] expect='X_OK' last='X_OK' \| T2 PASS 16s [done] expect='3' last='3' \| T3 PASS 29s [done] expect='1' last='1' |
 | 112 | 2026-09-21 22:24:30 | 043bd1f8 | 009 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "009", "name": "line-dedupe-bot", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
+| 113 | 2026-09-21 22:46:14 | e0c940c2 |  | job.lease_expired | svc-LAPTOP-LRE6PSA8 | {} |
+| 114 | 2026-09-21 22:46:14 | e0c940c2 | 006 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 2} |
+| 115 | 2026-09-21 22:51:22 | e0c940c2 | 006 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 35s [done] expect='2' last='RESULT: 2' \| T3 PASS 133s [done] expect='0' |
+| 116 | 2026-09-21 22:51:22 | e0c940c2 | 006 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "006", "status": "active", "verified": "VERIFIED"}} |

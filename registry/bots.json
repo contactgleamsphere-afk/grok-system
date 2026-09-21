@@ -197,7 +197,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "json-to-markdown-table",
-    "notes": "tests 4/4: monitor 2026-09-21: T1 PASS 7s [done] expect='X_OK' last='X_OK' | T2 PASS 170s [done] expect='2' last='2' | T3 PASS 162s [done] expect='0' last='0' | T4 PASS 87s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: T1 PASS 10s [done] expect='X_OK' last='X_OK' | T2 PASS 35s [done] expect='2' last='RESULT: 2' | T3 PASS 133s [done] expect='0' last='0' | T4 PASS 128s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -215,7 +215,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-21T19:57:20+00:00",
+    "updated": "2026-09-21T21:51:22+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\006-json-to-markdown-table"
