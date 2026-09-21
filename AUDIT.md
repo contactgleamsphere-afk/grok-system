@@ -73,3 +73,44 @@
 | 69 | 2026-09-21 21:12:15 | 19628fd7 | 007 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "4/4", "before": "active", "after": "active"} |
 | 70 | 2026-09-21 21:12:15 | 19628fd7 | 008 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "4/4", "before": "active", "after": "active"} |
 | 71 | 2026-09-21 21:12:15 | 19628fd7 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 72 | 2026-09-21 21:23:23 | 9bad8732 |  | job.enqueued | builder | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-21T21"}} |
+| 73 | 2026-09-21 21:23:25 | 9bad8732 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 74 | 2026-09-21 21:23:25 | 9bad8732 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: unknown job kind probe\nTraceback (most recent call |
+| 75 | 2026-09-21 21:27:28 | 9bad8732 |  | job.resumed | owner | {} |
+| 76 | 2026-09-21 21:27:31 | 9bad8732 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 77 | 2026-09-21 21:27:31 | 9bad8732 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: unknown job kind probe\nTraceback (most recent call |
+| 78 | 2026-09-21 21:31:15 | 9bad8732 |  | job.resumed | owner | {} |
+| 79 | 2026-09-21 21:31:16 | 9bad8732 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 80 | 2026-09-21 21:31:16 | 9bad8732 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: unknown job kind probe\nTraceback (most recent call |
+| 81 | 2026-09-21 21:33:33 | 9bad8732 |  | job.resumed | owner | {} |
+| 82 | 2026-09-21 21:33:36 | 9bad8732 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 83 | 2026-09-21 21:33:36 | 9bad8732 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: unknown job kind probe\nTraceback (most recent call |
+| 84 | 2026-09-21 21:34:43 | 9bad8732 |  | job.resumed | owner | {} |
+| 85 | 2026-09-21 21:34:46 | 9bad8732 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 86 | 2026-09-21 21:34:46 | 9bad8732 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: unknown job kind probe\nTraceback (most recent call |
+| 87 | 2026-09-21 21:37:19 | 9bad8732 |  | job.resumed | owner | {} |
+| 88 | 2026-09-21 21:37:23 | 9bad8732 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 89 | 2026-09-21 21:37:33 | 9bad8732 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "or-deepseek", "outcome": "gone", "before": "VERIFIED", "after": "BLOCKED", "detail": "{\"error\":{\"message\":\"this model is una |
+| 90 | 2026-09-21 21:37:33 | 9bad8732 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 91 | 2026-09-21 21:39:59 | f781e2f8 |  | job.enqueued | builder | {"kind": "probe", "payload": {"only": ["or-deepseek", "gemini-flash"], "hour": "2026-09-21T21"}} |
+| 92 | 2026-09-21 21:40:12 | f781e2f8 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 93 | 2026-09-21 21:40:13 | f781e2f8 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "or-deepseek", "outcome": "gone", "before": "VERIFIED", "after": "BLOCKED", "detail": "{\"error\":{\"message\":\"this model is una |
+| 94 | 2026-09-21 21:40:13 | f781e2f8 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "RuntimeError: transient: probe found no healthy remote lane\nTrac |
+| 95 | 2026-09-21 21:41:23 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 96 | 2026-09-21 21:41:40 | f781e2f8 |  | job.resumed | owner | {} |
+| 97 | 2026-09-21 21:41:43 | f781e2f8 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 98 | 2026-09-21 21:41:44 | f781e2f8 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "or-deepseek", "outcome": "gone", "before": "VERIFIED", "after": "BLOCKED", "detail": "{\"error\":{\"message\":\"this model is una |
+| 99 | 2026-09-21 21:41:44 | f781e2f8 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 100 | 2026-09-21 21:43:37 | e0c940c2 | 006 | job.enqueued | builder | {"kind": "test", "payload": {"bot_id": "006"}} |
+| 101 | 2026-09-21 21:43:39 | e0c940c2 | 006 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 102 | 2026-09-21 21:43:55 | e0c940c2 |  | job.cancelled | owner | {} |
+| 103 | 2026-09-21 21:44:09 | e0c940c2 |  | job.dedup | builder | {"kind": "test"} |
+| 104 | 2026-09-21 21:46:56 | e0c940c2 |  | job.released | owner | {"uncount": true} |
+| 105 | 2026-09-21 21:46:57 | e0c940c2 | 006 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 106 | 2026-09-21 21:48:00 | 043bd1f8 |  | job.enqueued | builder | {"kind": "create", "payload": {"objective": "Create a line-dedupe bot: given a workspace file named lines.txt, remove exact duplicate lines  |
+| 107 | 2026-09-21 22:16:34 | e0c940c2 |  | job.released | owner | {"uncount": true} |
+| 108 | 2026-09-21 22:19:56 | e0c940c2 | 006 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 109 | 2026-09-21 22:23:00 | 043bd1f8 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 110 | 2026-09-21 22:24:30 | 043bd1f8 | 009 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "line-dedupe-bot", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["groq-gptoss120b", "groq |
+| 111 | 2026-09-21 22:24:30 | 043bd1f8 | 009 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] expect='X_OK' last='X_OK' \| T2 PASS 16s [done] expect='3' last='3' \| T3 PASS 29s [done] expect='1' last='1' |
+| 112 | 2026-09-21 22:24:30 | 043bd1f8 | 009 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "009", "name": "line-dedupe-bot", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
