@@ -53,3 +53,28 @@ def assert_no_silent_expansion(before: dict, after: dict, *, allow_expansion: bo
     if widening:
         raise SecurityViolation(f"{context}: silent boundary expansion {json.dumps(widening)}")
     return d
+
+
+# D-035: runtime config hygiene — silent bloat in config.json eats the model context budget of every bot test.
+CONFIG_MAX_BYTES = 60_000
+CONFIG_MAX_STR = 2_000
+
+
+def config_hygiene(config: dict, size_bytes: int) -> list[str]:
+    """Return a list of problems (empty = healthy). Pure function; caller supplies the parsed config and file size."""
+    problems = []
+    if size_bytes > CONFIG_MAX_BYTES:
+        problems.append(f"config.json is {size_bytes} bytes (> {CONFIG_MAX_BYTES})")
+
+    def walk(o, path=""):
+        if isinstance(o, dict):
+            for k, v in o.items(): walk(v, f"{path}/{k}")
+        elif isinstance(o, list):
+            for i, v in enumerate(o): walk(v, f"{path}[{i}]")
+        elif isinstance(o, str) and len(o) > CONFIG_MAX_STR:
+            problems.append(f"{path} is a {len(o)}-char string (> {CONFIG_MAX_STR}); mojibake/bloat?")
+    walk(config)
+    icon = (config.get("agents", {}).get("defaults", {}) or {}).get("botIcon", "")
+    if len(icon) > 8:
+        problems.append(f"agents.defaults.botIcon is {len(icon)} chars (should be one glyph)")
+    return problems

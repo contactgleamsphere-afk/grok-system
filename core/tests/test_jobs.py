@@ -73,3 +73,10 @@ def test_resolve_prefix(tmp_path):
     assert st.resolve(j["id"][:8]) == j["id"]
     import pytest
     with pytest.raises(KeyError): st.resolve("zzzzzzzz")
+
+
+def test_config_hygiene():
+    from factory.guard import config_hygiene
+    assert config_hygiene({"agents": {"defaults": {"botIcon": "*"}}}, 10_000) == []
+    probs = config_hygiene({"agents": {"defaults": {"botIcon": "x" * 22_736}}}, 92_000)
+    assert len(probs) == 3 and any("botIcon" in x for x in probs)

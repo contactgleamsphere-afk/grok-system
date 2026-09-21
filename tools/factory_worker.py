@@ -78,6 +78,14 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
             raise FactoryError(res.get("error") or "repair produced no passing candidate")
         return res
     if kind == "monitor":
+        # D-035 pre-flight: a bloated config makes every test fail for the wrong reason — refuse to demote on it
+        cfg_path = pathlib.Path(r"C:\AI\Factory\config.json")
+        if cfg_path.exists():
+            from factory.guard import config_hygiene
+            probs = config_hygiene(json.loads(cfg_path.read_bytes().decode("utf-8")), cfg_path.stat().st_size)
+            if probs:
+                store.audit("config.unhealthy", job_id=jid, actor=worker, problems=probs)
+                raise RuntimeError("logic: config.json unhealthy, monitor aborted before demoting anyone: " + "; ".join(probs))
         res = fm.monitor(set(p["only"]) if p.get("only") else None)
         for r in res["rows"]:
             store.audit("bot.monitored", job_id=jid, bot_id=r["id"], actor=worker, result=f"{r['pass']}/{r['total']}", before=r["before"], after=r["after"])
