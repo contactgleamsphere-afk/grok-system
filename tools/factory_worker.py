@@ -25,6 +25,7 @@ import factory_repair as fr                                            # noqa: E
 import factory_monitor as fm                                           # noqa: E402
 import factory_probe as fpr                                            # noqa: E402
 import factory_report as frp                                           # noqa: E402
+import factory_discover as fdc                                         # noqa: E402
 
 DB = ROOT / "run" / "jobs.sqlite3"
 LEASE = 300          # D-043: short lease + heartbeat every 60 s -> a dead worker is detected within 5 min
@@ -86,10 +87,27 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
                         before=r["before"], after=r["after"], detail=r.get("detail"))
         if not res["healthy"] and not p.get("only"):
             raise RuntimeError("transient: probe found no healthy remote lane")
+        # D-047: a lane went BLOCKED, or the healthy remote pool is thin -> discover replacements (dedup by day)
+        remote_ok = [r for r in res["rows"] if r.get("outcome") == "ok" and r["id"] not in ("local3b", "local4b")]
+        newly_blocked = [c for c in res["changed"] if c["after"] == "BLOCKED"]
+        if not p.get("only") and (newly_blocked or len(remote_ok) < fdc.MIN_HEALTHY):
+            store.enqueue("discover", {"provider": "openrouter", "day": datetime.date.today().isoformat(),
+                                       "trigger": "blocked:" + ",".join(c["id"] for c in newly_blocked) if newly_blocked else f"healthy={len(remote_ok)}"},
+                          priority=2, parent=jid, actor=worker)
         nxt = (datetime.datetime.now() + datetime.timedelta(hours=1))
         if not p.get("only"): store.enqueue("probe", {"only": [], "hour": nxt.strftime("%Y-%m-%dT%H")}, priority=1, parent=jid, actor=worker,
                       not_before=time.time() + 3600)
         return {"probed": res["probed"], "healthy": res["healthy"], "changed": [(c["id"], c["after"]) for c in res["changed"]]}
+    if kind == "discover":
+        res = fdc.run(p.get("provider", "openrouter"), int(p.get("max", 2)))
+        for v in res.get("verdicts", []):
+            if v["verdict"] in ("approved", "rejected"):
+                store.audit("lane.discovered" if v["verdict"] == "approved" else "lane.rejected", job_id=jid, actor=worker,
+                            model=v["model"], reason=v["reason"], provider=res.get("provider"))
+        if res.get("added"):
+            store.audit("config.presets", job_id=jid, actor=worker, added=res["added"])
+            _sync_presets()
+        return {k: res.get(k) for k in ("skipped", "healthy_before", "catalog", "evaluated", "added")}
     if kind == "report":
         r = frp.build(); (ROOT / "STATUS.md").write_text(frp.markdown(r), encoding="utf-8")
         nxt = datetime.datetime.now() + datetime.timedelta(days=1)
@@ -119,6 +137,13 @@ CODE_FILES = [pathlib.Path(__file__), *sorted((ROOT / "core" / "factory").glob("
 
 def _code_stamp() -> float:
     return max((f.stat().st_mtime for f in CODE_FILES if f.exists()), default=0.0)
+
+
+def _sync_presets() -> None:
+    """D-048: nanobot modelPresets mirror the registry for every non-BLOCKED remote model (config.json is the runtime)."""
+    import factory_presets
+    try: factory_presets.sync()
+    except Exception as e: JobStore(DB).audit("config.presets_error", actor="worker", error=str(e)[:200])
 
 
 STATE_PATHS = ["registry", "specs", "AUDIT.md", "MONITOR.md", "BOT_REGISTRY.md", "STATUS.md"]
@@ -195,6 +220,8 @@ def main(a: list[str]) -> int:
         elif kind == "probe":
             only = [x for x in opt("--only", "").split(",") if x]
             j = store.enqueue("probe", {"only": only, "hour": datetime.datetime.now().strftime("%Y-%m-%dT%H")}, priority=1, actor=opt("--actor", "owner"))
+        elif kind == "discover":
+            j = store.enqueue("discover", {"provider": opt("--provider", "openrouter"), "day": str(datetime.date.today()), "trigger": "manual"}, priority=2, actor=opt("--actor", "owner"))
         elif kind == "report":
             j = store.enqueue("report", {"day": str(datetime.date.today())}, priority=6, actor=opt("--actor", "owner"))
         elif kind == "monitor":

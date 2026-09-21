@@ -74,6 +74,9 @@ def apply(entry, res: dict, now: float) -> tuple[str, str]:
         h["failures"] = 0; h["ok"] = True; h.pop("quota_until", None); h["latency_s"] = res.get("latency_s")
         if before == "BLOCKED" and h.get("blocked_by") == "probe":
             entry.verified = "VERIFIED"; h.pop("blocked_by", None)   # self-heal
+        if before == "INFERRED" and "probation" in h:                # D-047 probation: N clean probes -> VERIFIED
+            h["probation"] = int(h["probation"]) - 1
+            if h["probation"] <= 0: entry.verified = "VERIFIED"; h.pop("probation", None)
         entry.tool_call_score = min(1.0, (entry.tool_call_score or 0.5) * 0.8 + 0.2)
     elif o == "quota":
         h["ok"] = False; h["quota_until"] = now + QUOTA_COOLDOWN_S
