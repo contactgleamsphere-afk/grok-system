@@ -25,7 +25,7 @@ from factory.factory import BotFactory, FactoryError       # noqa: E402
 
 WIN = os.name == "nt"
 LAPTOP_BOTS = pathlib.Path(r"C:\AI\Factory\bots")
-RUNNER = pathlib.Path(r"C:\AI\Factory\tools\run-bot-tests.ps1")
+RUNNER = ROOT / "scripts" / "windows" / "run-bot-tests.ps1"   # D-050: the repo copy is the only copy (hand-synced duplicate in C:\AI\Factory\tools archived)
 
 # ---------------------------------------------------------------- LLM lane (OpenAI-compatible, chain order)
 LANES = [  # (name, base, env key, model) — mirrors registry order: Groq -> Gemini -> OpenRouter -> local
