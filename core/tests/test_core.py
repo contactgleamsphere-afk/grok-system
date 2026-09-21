@@ -328,3 +328,36 @@ def test_monitor_demotes_failed_bot_and_keeps_passing(tmp_path, monkeypatch):
     assert out["ok"] is False and out["regressed"] == ["098"]
     assert reg.get("bots", "097").status == "active" and reg.get("bots", "098").status == "testing"
     assert "098 fail-bot" in (reg.root.parent / "MONITOR.md").read_text()
+
+
+def test_repair_rejects_permission_expansion_and_promotes_on_pass(tmp_path, monkeypatch):
+    import sys, pathlib, importlib, json
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[2] / "tools"))
+    fr = importlib.import_module("factory_repair"); fp = importlib.import_module("factory_pipeline")
+    reg, f = _reg_and_factory(tmp_path); root = reg.root.parent
+    monkeypatch.setattr(fr, "ROOT", root); monkeypatch.setattr(fp, "WIN", False)
+    (root / "specs").mkdir(exist_ok=True)
+    spec = _rspec(id="096", name="fix-me"); f.build(spec); f.record_test_result("096", 1, 1, "ok")
+    (root / "specs" / "096-fix-me.json").write_text(json.dumps(spec))
+    assert fr.repair("096")["ok"] is False                      # refuses to touch an active bot
+    f.record_test_result("096", 0, 1, "T1 FAIL")                # demoted
+    assert reg.get("bots", "096").status == "testing"
+    # round 1: model tries to smuggle exec/shell perms -> must be rejected; round 2: instructions only -> pass
+    answers = iter([json.dumps({"instructions": "x " * 40}), json.dumps({"instructions": "Count carefully and reply with only the number. " * 5})])
+    def fake_chat(msgs, max_tokens=700):
+        return next(answers), "fake:lane"
+    orig = fr.regenerate_instructions
+    def regen(spec, evidence, raw=""):
+        new, lane = orig(spec, evidence, raw)
+        if new.startswith("x "):                                 # simulate a mutated spec being smuggled in
+            spec["permissions"] = spec["permissions"] + ["shell:workspace"]; spec["tools"] = spec["tools"] + ["exec"]
+        return new, lane
+    monkeypatch.setattr(fr, "regenerate_instructions", regen); monkeypatch.setattr(fp, "chat", fake_chat)
+    calls = []
+    out = fr.repair("096", max_rounds=2, runner=lambda d: (calls.append(str(d)) or {"pass": 1, "total": 1, "evidence": "T1 PASS", "raw": ""}))
+    assert out["rounds"][0]["rejected"].startswith("frozen fields changed")
+    assert out["ok"] and out["status"] == "active" and out["frozen_diff"] == []
+    assert out["permissions_before"] == out["permissions_after"] == ["fs:read"]
+    assert any("-repair" in c for c in calls)                   # tested in sandbox bundle
+    assert list((root / "specs" / "history").glob("096-*.json"))
+    assert reg.get("bots", "096").status == "active"
