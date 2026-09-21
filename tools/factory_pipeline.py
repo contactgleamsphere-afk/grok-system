@@ -37,10 +37,35 @@ LANES = [  # (name, base, env key, model) — mirrors registry order: Groq -> Ge
 ]
 
 
+_LANE_BASES = {"groq": ("https://api.groq.com/openai/v1", "GROQ_API_KEY"),
+               "gemini": ("https://generativelanguage.googleapis.com/v1beta/openai", "GEMINI_API_KEY"),
+               "openrouter": ("https://openrouter.ai/api/v1", "OPENROUTER_API_KEY"),
+               "ollama": ("http://127.0.0.1:11434/v1", None)}
+
+
+def live_lanes() -> list[tuple[str, str, str | None, str]]:
+    """D-042: builder lanes come from the registry + probe health (BLOCKED dropped, quota-cooled skipped), ranked
+    groq -> gemini -> openrouter -> local by measured latency. Falls back to the static LANES if the registry is unreadable."""
+    try:
+        reg = Registry(ROOT / "registry"); now = time.time(); order = {"groq": 0, "gemini": 1, "openrouter": 2, "ollama": 3}
+        cands = []
+        for m in reg.all("models"):
+            if m.provider not in _LANE_BASES or m.verified == "BLOCKED" or "tools" not in (m.capabilities or []): continue
+            h = (m.limits or {}).get("health", {})
+            if float(h.get("quota_until", 0) or 0) > now: continue
+            if h.get("last_outcome") in ("no_tool_call",): continue
+            cands.append((order[m.provider], float(h.get("latency_s") or 5.0), m))
+        cands.sort(key=lambda x: (x[0], x[1]))
+        lanes = [(m.provider, _LANE_BASES[m.provider][0], _LANE_BASES[m.provider][1], m.model) for _, _, m in cands]
+        return lanes or LANES
+    except Exception:
+        return LANES
+
+
 def chat(messages: list[dict], max_tokens: int = 1200) -> tuple[str, str]:
-    """Try each lane in order; return (text, lane_label). Quota/auth/connection errors rotate (D-017)."""
+    """Try each live lane in order; return (text, lane_label). Quota/auth/connection errors rotate (D-017/D-042)."""
     errors = []
-    for name, base, keyvar, model in LANES:
+    for name, base, keyvar, model in live_lanes():
         key = os.environ.get(keyvar) if keyvar else "ollama"
         if not key:
             errors.append(f"{name}:{model} no key"); continue
@@ -78,7 +103,7 @@ Rules:
 - Least privilege: request only the tools the objective needs. Tool -> permission mapping:
   read_file -> fs:read ; write_file -> fs:write ; exec -> shell:workspace ; web_search -> net:search ; web_fetch -> net:fetch
 - model_policy.primary and fallbacks must be preset ids from the catalog. Use primary "{primary}" and
-  fallbacks ["gemini-flash","gemini-flash38","groq-gptoss20b","or-deepseek","gemini-lite","local4b"] unless the objective needs something else.
+  fallbacks {fallbacks} unless the objective needs something else.
 - tests: 2 to 3 acceptance tests, each a string "prompt -> expected". The prompt itself must NOT contain the
   characters "->" and must be self-contained: the workspace is EMPTY at test time, so if the bot needs an input file
   the prompt must first tell it to create that file with write_file (e.g. "First write commits.txt containing ...
@@ -94,6 +119,17 @@ Return ONLY the JSON object with keys: id, name, purpose, instructions, model_po
 OBJECTIVE: {objective}"""
 
 
+def default_fallbacks(reg: Registry) -> list[str]:
+    """Healthy, tool-capable remote presets (not the primary) in provider order, then the best local model."""
+    order = {"groq": 0, "gemini": 1, "openrouter": 2}
+    rem = [m for m in reg.all("models") if m.verified != "BLOCKED" and m.location == "remote" and m.provider in order
+           and "tools" in (m.capabilities or []) and m.id != "groq-gptoss120b"]
+    rem.sort(key=lambda m: (order[m.provider], -(m.tool_call_score or 0)))
+    loc = [m for m in reg.all("models") if m.location == "local" and m.verified != "BLOCKED"]
+    loc.sort(key=lambda m: -(m.tool_call_score or 0))
+    return [m.id for m in rem][:5] + ([loc[0].id] if loc else [])
+
+
 def next_id(reg: Registry) -> str:
     """Highest id seen anywhere (registry, specs/, bots roots) + 1 — ids are never reused even if a registry
     entry is lost (D-033)."""
@@ -107,7 +143,7 @@ def next_id(reg: Registry) -> str:
 
 
 def objective_to_spec(objective: str, reg: Registry, bot_id: str, attempts: int = 3) -> tuple[dict, str]:
-    msgs = [{"role": "user", "content": SPEC_PROMPT.format(primary="groq-gptoss120b", bot_id=bot_id,
+    msgs = [{"role": "user", "content": SPEC_PROMPT.format(primary="groq-gptoss120b", bot_id=bot_id, fallbacks=json.dumps(default_fallbacks(reg)),
                                                            catalog=_catalog(reg), objective=objective)}]
     last_err = ""
     for i in range(attempts):

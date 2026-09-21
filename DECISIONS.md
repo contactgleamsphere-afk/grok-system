@@ -85,3 +85,6 @@ Bundles keep their frozen `resolved_chain` for reproducibility, but the test/mon
 
 ## D-041 — Runtime state is committed by the worker (2026-09-21)
 Twice today a `git reset --hard` erased laptop-generated truth (registry entry → duplicate bot id; probe results). The worker now commits `registry/ specs/ AUDIT.md MONITOR.md BOT_REGISTRY.md` locally after every job ("state: after <kind> job <id>"); `repo-sync.ps1` rebases and pushes, never resets. Rule for the builder too: never `reset --hard` the laptop repo — sync via repo-sync.
+
+## D-042 — Nothing hard-codes a model list any more (2026-09-21)
+Builder lanes (`factory_pipeline.chat`) and the default fallback policy written into new specs are derived from the registry + probe health at call time. Adding, blocking or restoring a lane is a registry change, never a code change.

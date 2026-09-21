@@ -52,3 +52,14 @@ def test_live_chain_drops_blocked(tmp_path, monkeypatch):
     import importlib, factory_chain as fc; importlib.reload(fc)
     out = fc.live_chain(bot)
     assert out["source"] == "live" and out["primary"] == "a" and out["fallbacks"] == ["c", "l"]
+
+
+def test_live_lanes_and_default_fallbacks_follow_health(tmp_path, monkeypatch):
+    monkeypatch.setenv("AIFACTORY_REPO", str(tmp_path)); (tmp_path / "registry").mkdir()
+    reg = _reg(tmp_path / "registry")
+    b = reg.get("models", "b"); b.verified = "BLOCKED"; reg.upsert("models", b)
+    c = reg.get("models", "c"); c.limits = {"health": {"quota_until": 9e12}}; reg.upsert("models", c)
+    import importlib, factory_pipeline as fp; importlib.reload(fp)
+    lanes = fp.live_lanes()
+    assert [m for _, _, _, m in lanes] == ["m-a", "m-l"]
+    assert fp.default_fallbacks(Registry(tmp_path / "registry")) == ["a", "c", "l"]   # quota-cooled c still a valid *policy* member
