@@ -82,3 +82,6 @@ Found live: a service worker started at 19:55 kept failing `probe` jobs with "un
 
 ## D-040 — Deployed bots follow lane health at run time (2026-09-21)
 Bundles keep their frozen `resolved_chain` for reproducibility, but the test/monitor runner re-resolves `model_policy` against the live registry on every run (`tools/factory_chain.py`), so a lane the probe BLOCKED (e.g. or-deepseek) or quota-cooled is skipped by every bot immediately, without rewriting bundles or re-verifying. Falls back to the frozen chain if resolution fails.
+
+## D-041 — Runtime state is committed by the worker (2026-09-21)
+Twice today a `git reset --hard` erased laptop-generated truth (registry entry → duplicate bot id; probe results). The worker now commits `registry/ specs/ AUDIT.md MONITOR.md BOT_REGISTRY.md` locally after every job ("state: after <kind> job <id>"); `repo-sync.ps1` rebases and pushes, never resets. Rule for the builder too: never `reset --hard` the laptop repo — sync via repo-sync.

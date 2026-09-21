@@ -115,6 +115,23 @@ def _code_stamp() -> float:
     return max((f.stat().st_mtime for f in CODE_FILES if f.exists()), default=0.0)
 
 
+STATE_PATHS = ["registry", "specs", "AUDIT.md", "MONITOR.md", "BOT_REGISTRY.md"]
+
+
+def _commit_state(kind: str, jid8: str) -> None:
+    """D-041: factory state (registry, specs, audit) is committed to git after every job so it can never be lost by a
+    sync/reset. Local commit only; the push is done by the sync script (network may be down). Never raises."""
+    import subprocess
+    try:
+        g = lambda *a: subprocess.run(["git", *a], cwd=str(ROOT), capture_output=True, text=True, timeout=60)
+        g("add", "-A", "--", *STATE_PATHS)
+        if g("diff", "--cached", "--quiet").returncode != 0:
+            g("-c", "user.name=AI Factory Worker", "-c", "user.email=contactgleamsphere-afk+worker@users.noreply.github.com",
+              "commit", "-q", "-m", f"state: after {kind} job {jid8}")
+    except Exception:
+        pass
+
+
 def run(worker: str, once: bool = False, idle_exit: int = 0) -> int:
     store = JobStore(DB); idle_since = time.time(); processed = 0; stamp = _code_stamp()
     while True:
@@ -136,6 +153,7 @@ def run(worker: str, once: bool = False, idle_exit: int = 0) -> int:
         except Exception as e:
             store.fail(job["id"], f"{type(e).__name__}: {e}\n{traceback.format_exc()[-800:]}", worker)
         store.audit_export(ROOT / "AUDIT.md")
+        _commit_state(job["kind"], job["id"][:8])
         if once: break
     store.audit_export(ROOT / "AUDIT.md")
     return processed
