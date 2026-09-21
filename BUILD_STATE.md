@@ -47,6 +47,7 @@ _Last updated: 2026-09-21 — by Arena agent (architect/builder). Source of trut
 - nanobot on Windows runs `exec` without OS sandbox (docs state this; not observed).
 
 ## UNVERIFIED
+- Full-reboot survival of the job queue is INFERRED only (SQLite WAL + leases + lease-expiry proven with killed workers; worker task starts at logon, tunnel at boot as SYSTEM). A real reboot test needs owner consent (laptop in use).
 - qwen2.5:3b tool-calling reliability (Phase 0 measures it).
 - qwen3:4b availability/perf on this CPU.
 - What consumes ~10 GB RAM at idle.
