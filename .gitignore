@@ -16,3 +16,10 @@ bots/*/HEARTBEAT.md
 bots/*/USER.md
 bots/*/prompts/
 bots/*/skills/
+
+# job queue + per-run scratch (laptop-local runtime state; AUDIT.md is the exported record)
+run/jobs.sqlite3*
+run/repair-registry/
+run/factory-test-*.json
+run/botcfg/
+run/worker.lock
