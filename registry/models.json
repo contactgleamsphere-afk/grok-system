@@ -8,6 +8,17 @@
     "context_window": 32768,
     "cost_per_1k": 0.0,
     "id": "gemini-flash",
+    "limits": {
+      "health": {
+        "last_outcome": "quota",
+        "last_probe": "2026-09-21T20:43:55",
+        "ok": false,
+        "quota_until": 1790024335.9706395
+      },
+      "latency_s": "1.3",
+      "rpd": 20,
+      "rpd_scope": "per model per project (quotaId GenerateRequestsPerDayPerProjectPerModel-FreeTier, seen live 2026-09-20)"
+    },
     "location": "remote",
     "model": "gemini-3.7-flash",
     "notes": "VERIFIED tool call 2026-09-20 (replaces gemini-3.6-flash which hit its 20 RPD).",
@@ -15,13 +26,160 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-19T15:10:45+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-09-21T20:43:56+00:00",
+    "verified": "VERIFIED"
+  },
+  "gemini-flash36": {
+    "capabilities": [
+      "chat",
+      "tools",
+      "vision"
+    ],
+    "context_window": 32768,
+    "cost_per_1k": 0.0,
+    "id": "gemini-flash36",
     "limits": {
+      "health": {
+        "last_outcome": "no_tool_call",
+        "last_probe": "2026-09-21T20:43:55",
+        "ok": false
+      },
+      "latency_s": "1.3-2.4",
       "rpd": 20,
-      "rpd_scope": "per model per project (quotaId GenerateRequestsPerDayPerProjectPerModel-FreeTier, seen live 2026-09-20)",
-      "latency_s": "1.3"
-    }
+      "rpd_scope": "per model per project (quotaId GenerateRequestsPerDayPerProjectPerModel-FreeTier, seen live 2026-09-20)"
+    },
+    "location": "remote",
+    "model": "gemini-3.6-flash",
+    "notes": "VERIFIED 5/5 on 2026-09-19; 429 RPD=20 exhausted on 2026-09-20 after one bot run. Rotate. gemini-3-flash-preview returned no tool call -> excluded. gemini-3.5-flash & gemma-4-31b work but 33 s latency -> excluded.",
+    "provider": "gemini",
+    "ram_gb": null,
+    "tokens_per_sec": null,
+    "tool_call_score": 0.6,
+    "updated": "2026-09-21T20:44:09+00:00",
+    "verified": "VERIFIED"
+  },
+  "gemini-flash38": {
+    "capabilities": [
+      "chat",
+      "tools",
+      "vision"
+    ],
+    "context_window": 32768,
+    "cost_per_1k": 0.0,
+    "id": "gemini-flash38",
+    "limits": {
+      "health": {
+        "last_outcome": "quota",
+        "last_probe": "2026-09-21T20:43:55",
+        "ok": false,
+        "quota_until": 1790024335.9706395
+      },
+      "latency_s": "2.4",
+      "rpd": 20,
+      "rpd_scope": "per model per project (quotaId GenerateRequestsPerDayPerProjectPerModel-FreeTier, seen live 2026-09-20)"
+    },
+    "location": "remote",
+    "model": "gemini-3.8-flash",
+    "notes": "VERIFIED tool call 2026-09-20.",
+    "provider": "gemini",
+    "ram_gb": null,
+    "tokens_per_sec": null,
+    "tool_call_score": 1.0,
+    "updated": "2026-09-21T20:44:00+00:00",
+    "verified": "VERIFIED"
+  },
+  "gemini-gemma26b": {
+    "capabilities": [
+      "chat",
+      "tools",
+      "vision"
+    ],
+    "context_window": 32768,
+    "cost_per_1k": 0.0,
+    "id": "gemini-gemma26b",
+    "limits": {
+      "health": {
+        "failures": 0,
+        "last_outcome": "ok",
+        "last_probe": "2026-09-21T20:43:55",
+        "latency_s": 1.02,
+        "ok": true
+      },
+      "latency_s": "1.3",
+      "rpd": 20,
+      "rpd_scope": "per model per project (quotaId GenerateRequestsPerDayPerProjectPerModel-FreeTier, seen live 2026-09-20)"
+    },
+    "location": "remote",
+    "model": "gemma-4-26b-a4b-it",
+    "notes": "VERIFIED tool call 2026-09-20 via Gemini API (OpenRouter copy of same model was 429).",
+    "provider": "gemini",
+    "ram_gb": null,
+    "tokens_per_sec": null,
+    "tool_call_score": 1.0,
+    "updated": "2026-09-21T20:44:03+00:00",
+    "verified": "VERIFIED"
+  },
+  "gemini-lite": {
+    "capabilities": [
+      "chat",
+      "tools",
+      "vision"
+    ],
+    "context_window": 32768,
+    "cost_per_1k": 0.0,
+    "id": "gemini-lite",
+    "limits": {
+      "health": {
+        "failures": 0,
+        "last_outcome": "ok",
+        "last_probe": "2026-09-21T20:43:55",
+        "latency_s": 0.74,
+        "ok": true
+      },
+      "latency_s": "0.7-1.4",
+      "rpd": 20,
+      "rpd_scope": "per model per project (quotaId GenerateRequestsPerDayPerProjectPerModel-FreeTier, seen live 2026-09-20)"
+    },
+    "location": "remote",
+    "model": "gemini-3.5-flash-lite",
+    "notes": "VERIFIED tool calls; fastest Gemini lane.",
+    "provider": "gemini",
+    "ram_gb": null,
+    "tokens_per_sec": null,
+    "tool_call_score": 1.0,
+    "updated": "2026-09-21T20:43:58+00:00",
+    "verified": "VERIFIED"
+  },
+  "gemini-lite31": {
+    "capabilities": [
+      "chat",
+      "tools",
+      "vision"
+    ],
+    "context_window": 32768,
+    "cost_per_1k": 0.0,
+    "id": "gemini-lite31",
+    "limits": {
+      "health": {
+        "failures": 0,
+        "last_outcome": "ok",
+        "last_probe": "2026-09-21T20:43:55",
+        "latency_s": 1.47,
+        "ok": true
+      },
+      "latency_s": "1.7",
+      "rpd": 20,
+      "rpd_scope": "per model per project (quotaId GenerateRequestsPerDayPerProjectPerModel-FreeTier, seen live 2026-09-20)"
+    },
+    "location": "remote",
+    "model": "gemini-3.1-flash-lite",
+    "notes": "VERIFIED tool call 2026-09-20.",
+    "provider": "gemini",
+    "ram_gb": null,
+    "tokens_per_sec": null,
+    "tool_call_score": 1.0,
+    "updated": "2026-09-21T20:44:01+00:00",
+    "verified": "VERIFIED"
   },
   "groq-gptoss120b": {
     "capabilities": [
@@ -33,6 +191,15 @@
     "context_window": 131072,
     "cost_per_1k": 0.0,
     "id": "groq-gptoss120b",
+    "limits": {
+      "health": {
+        "failures": 0,
+        "last_outcome": "ok",
+        "last_probe": "2026-09-21T20:43:55",
+        "latency_s": 0.61,
+        "ok": true
+      }
+    },
     "location": "remote",
     "model": "openai/gpt-oss-120b",
     "notes": "Groq free tier. Tool call PASS 0.5s. Agent bench 4/5 (T1-T4 60-148s, T5 timeout). Same 8000 TPM cap. Fallback #1. DAILY CAP measured 2026-09-19: 200,000 tokens/day/model (TPD) on free tier; ~45 agent steps/day/model. Reset is rolling. Re-bench 2026-09-19 19:4x: 5/5 0.46-0.75s (fresh TPD).",
@@ -40,7 +207,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-19T15:10:45+00:00",
+    "updated": "2026-09-21T20:43:57+00:00",
     "verified": "VERIFIED"
   },
   "groq-gptoss20b": {
@@ -52,6 +219,15 @@
     "context_window": 131072,
     "cost_per_1k": 0.0,
     "id": "groq-gptoss20b",
+    "limits": {
+      "health": {
+        "failures": 0,
+        "last_outcome": "ok",
+        "last_probe": "2026-09-21T20:43:55",
+        "latency_s": 0.54,
+        "ok": true
+      }
+    },
     "location": "remote",
     "model": "openai/gpt-oss-20b",
     "notes": "Groq free tier. Tool call PASS 1.5s. Seen once returning malformed tool-call JSON (tool_use_failed). Fallback #2. Agent bench not run. DAILY CAP measured 2026-09-19: 200,000 tokens/day/model (TPD) on free tier; ~45 agent steps/day/model. Reset is rolling. Re-bench 2026-09-19 19:4x: 5/5 0.29-1.63s (fresh TPD).",
@@ -59,7 +235,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-19T15:10:45+00:00",
+    "updated": "2026-09-21T20:43:57+00:00",
     "verified": "VERIFIED"
   },
   "groq-qwen27b": {
@@ -72,14 +248,23 @@
     "context_window": 131042,
     "cost_per_1k": 0.0,
     "id": "groq-qwen27b",
+    "limits": {
+      "health": {
+        "failures": 0,
+        "last_outcome": "ok",
+        "last_probe": "2026-09-21T20:43:55",
+        "latency_s": 0.42,
+        "ok": true
+      }
+    },
     "location": "remote",
     "model": "qwen/qwen3.8-27b",
     "notes": "Groq free tier. Tool call PASS 0.4s. nanobot 5-test agent bench 4/5 twice (T5 web-research passes standalone in 275s; times out at 300s cap in bench). Free-tier limits measured: 1000 RPD, **8000 TPM** -> preset contextWindowTokens=8200/maxTokens=768 so nanobot compacts before Groq 413s. PRIMARY Master lane (D-015). DAILY CAP measured 2026-09-19: 200,000 tokens/day/model (TPD) on free tier; ~45 agent steps/day/model. Reset is rolling.",
     "provider": "groq",
     "ram_gb": null,
     "tokens_per_sec": null,
-    "tool_call_score": 0.8,
-    "updated": "2026-09-19T15:10:45+00:00",
+    "tool_call_score": 0.8400000000000001,
+    "updated": "2026-09-21T20:43:58+00:00",
     "verified": "VERIFIED"
   },
   "local3b": {
@@ -91,14 +276,23 @@
     "context_window": 32768,
     "cost_per_1k": 0.0,
     "id": "local3b",
+    "limits": {
+      "health": {
+        "failures": 0,
+        "last_outcome": "ok",
+        "last_probe": "2026-09-21T20:43:55",
+        "latency_s": null,
+        "ok": true
+      }
+    },
     "location": "local",
     "model": "qwen2.5:3b-instruct-q4_K_M",
     "notes": "BENCHMARKED 2026-09-18: 11.85 tok/s. Tool-call test 1/5 (Grok run 0/5). Loops on web_search/search_sessions. UNSUITABLE AS MASTER. Keep for cheap classify/summarise only.",
     "provider": "ollama",
     "ram_gb": 2.0,
     "tokens_per_sec": 11.85,
-    "tool_call_score": 0.2,
-    "updated": "2026-09-18T20:41:15+00:00",
+    "tool_call_score": 0.36000000000000004,
+    "updated": "2026-09-21T20:43:58+00:00",
     "verified": "VERIFIED"
   },
   "local4b": {
@@ -111,14 +305,80 @@
     "context_window": 32768,
     "cost_per_1k": 0.0,
     "id": "local4b",
+    "limits": {
+      "health": {
+        "failures": 0,
+        "last_outcome": "ok",
+        "last_probe": "2026-09-21T20:43:55",
+        "latency_s": null,
+        "ok": true
+      }
+    },
     "location": "local",
     "model": "qwen3:4b",
     "notes": "BENCHMARKED 2026-09-18: 9.19 tok/s. Tool-call test 1/5 (T1 pass then loop; T2-T5 timeout at 300s). UNSUITABLE AS MASTER on this CPU. Better prose than 3B.",
     "provider": "ollama",
     "ram_gb": 3.0,
     "tokens_per_sec": 9.19,
-    "tool_call_score": 0.2,
-    "updated": "2026-09-18T20:41:15+00:00",
+    "tool_call_score": 0.36000000000000004,
+    "updated": "2026-09-21T20:43:58+00:00",
+    "verified": "VERIFIED"
+  },
+  "or-deepseek": {
+    "capabilities": [
+      "chat",
+      "tools"
+    ],
+    "context_window": 32768,
+    "cost_per_1k": 0.0,
+    "id": "or-deepseek",
+    "limits": {
+      "health": {
+        "blocked_by": "probe",
+        "last_outcome": "gone",
+        "last_probe": "2026-09-21T20:43:55",
+        "ok": false,
+        "reason": "gone: {\"error\":{\"message\":\"this model is unavailable for free. the paid version is available now - use this slug instead: deepseek/deepseek-v4-flash-0731\",\"code\":404}"
+      },
+      "rpd": 50,
+      "rpd_scope": "account-wide across all :free models"
+    },
+    "location": "remote",
+    "model": "deepseek/deepseek-v4-flash-0731:free",
+    "notes": "VERIFIED 2026-09-19: 5/5 tool calls, 2.6-4.1s. OpenRouter free tier 50 req/day shared across :free models (key endpoint reports used/limit).",
+    "provider": "openrouter",
+    "ram_gb": null,
+    "tokens_per_sec": null,
+    "tool_call_score": 1.0,
+    "updated": "2026-09-21T20:43:59+00:00",
+    "verified": "BLOCKED"
+  },
+  "or-qwen27b": {
+    "capabilities": [
+      "chat",
+      "tools"
+    ],
+    "context_window": 32768,
+    "cost_per_1k": 0.0,
+    "id": "or-qwen27b",
+    "limits": {
+      "health": {
+        "last_outcome": "quota",
+        "last_probe": "2026-09-21T20:43:55",
+        "ok": false,
+        "quota_until": 1790024335.9706395
+      },
+      "rpd": 50,
+      "rpd_scope": "account-wide across all :free models"
+    },
+    "location": "remote",
+    "model": "qwen/qwen3.8-27b:free",
+    "notes": "VERIFIED 2026-09-19: 2/2 tool calls but slow/variable (8-40s). Backup only.",
+    "provider": "openrouter",
+    "ram_gb": null,
+    "tokens_per_sec": null,
+    "tool_call_score": 1.0,
+    "updated": "2026-09-21T20:44:00+00:00",
     "verified": "VERIFIED"
   },
   "ovh-gptoss20b": {
@@ -177,169 +437,5 @@
     "tool_call_score": null,
     "updated": "2026-09-19T05:27:14+00:00",
     "verified": "BLOCKED"
-  },
-  "gemini-lite": {
-    "capabilities": [
-      "chat",
-      "tools",
-      "vision"
-    ],
-    "context_window": 32768,
-    "cost_per_1k": 0.0,
-    "id": "gemini-lite",
-    "location": "remote",
-    "model": "gemini-3.5-flash-lite",
-    "notes": "VERIFIED tool calls; fastest Gemini lane.",
-    "provider": "gemini",
-    "ram_gb": null,
-    "tokens_per_sec": null,
-    "tool_call_score": 1.0,
-    "updated": "2026-09-19T15:10:45+00:00",
-    "verified": "VERIFIED",
-    "limits": {
-      "rpd": 20,
-      "rpd_scope": "per model per project (quotaId GenerateRequestsPerDayPerProjectPerModel-FreeTier, seen live 2026-09-20)",
-      "latency_s": "0.7-1.4"
-    }
-  },
-  "or-deepseek": {
-    "capabilities": [
-      "chat",
-      "tools"
-    ],
-    "context_window": 32768,
-    "cost_per_1k": 0.0,
-    "id": "or-deepseek",
-    "location": "remote",
-    "model": "deepseek/deepseek-v4-flash-0731:free",
-    "notes": "VERIFIED 2026-09-19: 5/5 tool calls, 2.6-4.1s. OpenRouter free tier 50 req/day shared across :free models (key endpoint reports used/limit).",
-    "provider": "openrouter",
-    "ram_gb": null,
-    "tokens_per_sec": null,
-    "tool_call_score": 1.0,
-    "updated": "2026-09-19T15:10:45+00:00",
-    "verified": "VERIFIED",
-    "limits": {
-      "rpd": 50,
-      "rpd_scope": "account-wide across all :free models"
-    }
-  },
-  "or-qwen27b": {
-    "capabilities": [
-      "chat",
-      "tools"
-    ],
-    "context_window": 32768,
-    "cost_per_1k": 0.0,
-    "id": "or-qwen27b",
-    "location": "remote",
-    "model": "qwen/qwen3.8-27b:free",
-    "notes": "VERIFIED 2026-09-19: 2/2 tool calls but slow/variable (8-40s). Backup only.",
-    "provider": "openrouter",
-    "ram_gb": null,
-    "tokens_per_sec": null,
-    "tool_call_score": 1.0,
-    "updated": "2026-09-19T15:10:45+00:00",
-    "verified": "VERIFIED",
-    "limits": {
-      "rpd": 50,
-      "rpd_scope": "account-wide across all :free models"
-    }
-  },
-  "gemini-flash38": {
-    "capabilities": [
-      "chat",
-      "tools",
-      "vision"
-    ],
-    "context_window": 32768,
-    "cost_per_1k": 0.0,
-    "id": "gemini-flash38",
-    "location": "remote",
-    "model": "gemini-3.8-flash",
-    "notes": "VERIFIED tool call 2026-09-20.",
-    "provider": "gemini",
-    "ram_gb": null,
-    "tokens_per_sec": null,
-    "tool_call_score": 1.0,
-    "updated": "2026-09-19T15:10:45+00:00",
-    "verified": "VERIFIED",
-    "limits": {
-      "rpd": 20,
-      "rpd_scope": "per model per project (quotaId GenerateRequestsPerDayPerProjectPerModel-FreeTier, seen live 2026-09-20)",
-      "latency_s": "2.4"
-    }
-  },
-  "gemini-lite31": {
-    "capabilities": [
-      "chat",
-      "tools",
-      "vision"
-    ],
-    "context_window": 32768,
-    "cost_per_1k": 0.0,
-    "id": "gemini-lite31",
-    "location": "remote",
-    "model": "gemini-3.1-flash-lite",
-    "notes": "VERIFIED tool call 2026-09-20.",
-    "provider": "gemini",
-    "ram_gb": null,
-    "tokens_per_sec": null,
-    "tool_call_score": 1.0,
-    "updated": "2026-09-19T15:10:45+00:00",
-    "verified": "VERIFIED",
-    "limits": {
-      "rpd": 20,
-      "rpd_scope": "per model per project (quotaId GenerateRequestsPerDayPerProjectPerModel-FreeTier, seen live 2026-09-20)",
-      "latency_s": "1.7"
-    }
-  },
-  "gemini-gemma26b": {
-    "capabilities": [
-      "chat",
-      "tools",
-      "vision"
-    ],
-    "context_window": 32768,
-    "cost_per_1k": 0.0,
-    "id": "gemini-gemma26b",
-    "location": "remote",
-    "model": "gemma-4-26b-a4b-it",
-    "notes": "VERIFIED tool call 2026-09-20 via Gemini API (OpenRouter copy of same model was 429).",
-    "provider": "gemini",
-    "ram_gb": null,
-    "tokens_per_sec": null,
-    "tool_call_score": 1.0,
-    "updated": "2026-09-19T15:10:45+00:00",
-    "verified": "VERIFIED",
-    "limits": {
-      "rpd": 20,
-      "rpd_scope": "per model per project (quotaId GenerateRequestsPerDayPerProjectPerModel-FreeTier, seen live 2026-09-20)",
-      "latency_s": "1.3"
-    }
-  },
-  "gemini-flash36": {
-    "capabilities": [
-      "chat",
-      "tools",
-      "vision"
-    ],
-    "context_window": 32768,
-    "cost_per_1k": 0.0,
-    "id": "gemini-flash36",
-    "location": "remote",
-    "model": "gemini-3.6-flash",
-    "notes": "VERIFIED 5/5 on 2026-09-19; 429 RPD=20 exhausted on 2026-09-20 after one bot run. Rotate. gemini-3-flash-preview returned no tool call -> excluded. gemini-3.5-flash & gemma-4-31b work but 33 s latency -> excluded.",
-    "provider": "gemini",
-    "ram_gb": null,
-    "tokens_per_sec": null,
-    "tool_call_score": 1.0,
-    "updated": "2026-09-19T15:10:45+00:00",
-    "verified": "VERIFIED",
-    "limits": {
-      "rpd": 20,
-      "rpd_scope": "per model per project (quotaId GenerateRequestsPerDayPerProjectPerModel-FreeTier, seen live 2026-09-20)",
-      "latency_s": "1.3-2.4"
-    }
   }
 }
