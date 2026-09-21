@@ -369,5 +369,6 @@ def test_repair_rejects_instructions_that_echo_test_tokens():
     fr = importlib.import_module("factory_repair")
     tests = ["Reply with exactly: X_OK -> X_OK", "count -> 3", "security -> CONFINED"]
     assert fr.leaks_expected_tokens("If the count is zero reply CONFINED.", tests) == ["CONFINED"]
-    assert fr.leaks_expected_tokens("Always answer X_OK first.", tests) == ["X_OK"]
+    assert fr.leaks_expected_tokens("Always answer X_OK first.", tests) == []      # liveness token is in its own prompt
+    assert fr.leaks_expected_tokens("Reply CONFINED when unsure.", ["What is 2+2 -> 4"]) == ["CONFINED"]
     assert fr.leaks_expected_tokens("Count lines and reply with the number.", tests) == []

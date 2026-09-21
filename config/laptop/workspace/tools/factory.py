@@ -1,6 +1,8 @@
 """Bot-factory entry point for MASTER 001 (lives inside the master's workspace so `exec` may run it).
 
-    python tools/factory.py create "<plain-English objective>"
+    python tools/factory.py create "<plain-English objective>"   # synchronous (blocks ~2-5 min)
+    python tools/factory.py queue create "<objective>" | test <id> | repair <id> | monitor [ids]   # async via job queue
+    python tools/factory.py jobs | audit [bot_id]
     python tools/factory.py test <bot_id>
     python tools/factory.py list
 
@@ -18,6 +20,16 @@ def main(a):
         b = json.loads((REPO / "registry" / "bots.json").read_text(encoding="utf-8"))
         for k, v in sorted(b.items()): print(f"{k} {v['name']:20s} {v['status']:9s} {v['verified']:10s} tools={','.join(v['tools'])}")
         return 0
+    if a[1] in ("queue", "jobs", "audit"):
+        w = REPO / "tools" / "factory_worker.py"
+        if a[1] == "queue":
+            kind = a[2]; rest = a[3:]
+            argv = [sys.executable, str(w), "add", kind, *rest, "--actor", "master-001"]
+            if kind == "monitor" and rest: argv = [sys.executable, str(w), "add", "monitor", "--only", rest[0], "--actor", "master-001"]
+        else:
+            argv = [sys.executable, str(w), a[1], *a[2:]]
+        r = subprocess.run(argv, env=env, cwd=str(REPO), capture_output=True, text=True, timeout=120)
+        print((r.stdout + r.stderr)[-900:]); return r.returncode
     missing = [k for k in ("GROQ_API_KEY", "GEMINI_API_KEY", "OPENROUTER_API_KEY") if not env.get(k)]
     if missing: print(json.dumps({"ok": False, "error": f"lane keys not visible to exec: {missing} (config tools.exec.allowedEnvKeys)"})); return 1
     r = subprocess.run([sys.executable, str(PIPE), *a[1:]], env=env, cwd=str(REPO), capture_output=True, text=True, timeout=3600)

@@ -4,7 +4,7 @@
   python tools/factory_worker.py add create "<objective>" [--priority 3]
   python tools/factory_worker.py add test|repair <bot_id>
   python tools/factory_worker.py add monitor
-  python tools/factory_worker.py status | jobs | resume <job_id> | cancel <job_id> | audit [bot_id]
+  python tools/factory_worker.py status | jobs | resume <job_id> | cancel <job_id> | release <job_id> [--uncount] | audit [bot_id]
 
 Autonomous loop (capability 1): a `create` job that ends VERIFIED enqueues nothing more (monitor covers it);
 a `monitor` job enqueues a `repair` job for every bot it demoted; a `repair` that fails pauses with a class
@@ -115,15 +115,21 @@ def main(a: list[str]) -> int:
         kind = a[2]
         if kind == "create": j = store.enqueue("create", {"objective": a[3]}, priority=int(opt("--priority", 5)), actor=opt("--actor", "owner"))
         elif kind in ("test", "repair"): j = store.enqueue(kind, {"bot_id": a[3]}, priority=int(opt("--priority", 4)), actor=opt("--actor", "owner"))
-        elif kind == "monitor": j = store.enqueue("monitor", {"only": opt("--only", "").split(",") if opt("--only") else None, "day": str(datetime.date.today())}, priority=3, actor=opt("--actor", "owner"))
+        elif kind == "monitor":
+            only = [x.strip().zfill(3) for x in str(opt("--only", "")).split(",") if x.strip()] or None   # zfill: shells turn 002 into 2
+            j = store.enqueue("monitor", {"only": only, "day": str(datetime.date.today())}, priority=3, actor=opt("--actor", "owner"))
         else: print(__doc__); return 2
         print(json.dumps({"job_id": j["id"], "state": j["state"], "kind": j["kind"]})); return 0
     if cmd == "status": print(json.dumps(store.summary())); return 0
     if cmd == "jobs":
         for j in store.list(): print(f"{j['id'][:8]} {j['kind']:8s} {j['state']:9s} att={j['attempts']} cls={j['failure_class'] or '-':9s} {json.dumps(j['payload'])[:70]}")
         return 0
-    if cmd == "resume": print(json.dumps(store.resume(a[2])["state"])); return 0
+    if cmd == "resume":
+        ids = [j["id"] for j in store.list(["paused", "failed"])] if (len(a) < 3 or a[2] == "--all") else [a[2]]
+        for i in ids: store.resume(i)
+        print(json.dumps({"resumed": [i[:8] for i in ids]})); return 0
     if cmd == "cancel": print(json.dumps(store.cancel(a[2])["state"])); return 0
+    if cmd == "release": print(json.dumps(store.release(a[2], uncount="--uncount" in a)["state"])); return 0
     if cmd == "audit":
         for r in reversed(store.audit_rows(40, a[2] if len(a) > 2 else None)):
             print(f"{datetime.datetime.fromtimestamp(r['ts']):%H:%M:%S} {r['event']:20s} job={str(r['job_id'])[:8]} bot={r['bot_id'] or '-'} {r['detail'][:110]}")

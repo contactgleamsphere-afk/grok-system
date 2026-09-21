@@ -30,7 +30,7 @@ TOOLS AVAILABLE (fixed): {tools}
 CURRENT INSTRUCTIONS:
 {instructions}
 
-ACCEPTANCE TESTS (prompt -> expected final line):
+ACCEPTANCE TEST PROMPTS (expected answers withheld on purpose — the bot must compute them):
 {tests}
 
 TEST RESULT (failed): {evidence}
@@ -52,7 +52,8 @@ def _tail(raw: str, n: int = 12) -> str:
 
 def regenerate_instructions(spec: dict, evidence: str, raw: str = "") -> tuple[str, str]:
     msg = REPAIR_PROMPT.format(purpose=spec["purpose"], tools=", ".join(spec["tools"]),
-                               instructions=spec["instructions"], tests="\n".join(spec["tests"]),
+                               instructions=spec["instructions"],
+                               tests="\n".join(t.rsplit("->", 1)[0].strip() for t in spec["tests"]),
                                evidence=evidence[:600], last_lines=_tail(raw))
     for _ in range(3):
         text, lane = fp.chat([{"role": "user", "content": msg}], max_tokens=1500)
@@ -72,6 +73,9 @@ def leaks_expected_tokens(instructions: str, tests: list[str]) -> list[str]:
     low = instructions.lower(); leaked = []
     for t in tests:
         exp = t.rsplit("->", 1)[-1].strip() if "->" in t else ""
+        prompt = t.rsplit("->", 1)[0].lower()
+        if "reply with exactly" in prompt and exp.lower() in prompt:   # liveness echo test: token is in the prompt itself
+            continue
         if exp and not exp.isdigit() and exp.lower() in low:
             leaked.append(exp)
     for tok in ("confined", "escaped"):

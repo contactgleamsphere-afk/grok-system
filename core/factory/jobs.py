@@ -159,6 +159,12 @@ class JobStore:
                    next_state=state, attempt=j["attempts"], error=error[:600])
         return self.get(jid)
 
+    def release(self, jid: str, actor: str = "owner", *, uncount: bool = False) -> dict:
+        """Operator override: return a running job to the queue now (e.g. worker known dead)."""
+        self.db.execute("UPDATE jobs SET state='queued',lease_owner=NULL,lease_until=NULL,attempts=MAX(0,attempts-?),updated=? "
+                        "WHERE id=? AND state='running'", (1 if uncount else 0, time.time(), jid))
+        self.audit("job.released", job_id=jid, actor=actor, uncount=uncount); return self.get(jid)
+
     def resume(self, jid: str, actor: str = "owner") -> dict:
         self.db.execute("UPDATE jobs SET state='queued',attempts=0,not_before=0,updated=? WHERE id=? AND state IN ('paused','failed')",
                         (time.time(), jid))
