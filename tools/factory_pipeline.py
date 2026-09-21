@@ -45,13 +45,17 @@ def chat(messages: list[dict], max_tokens: int = 1200) -> tuple[str, str]:
         if not key:
             errors.append(f"{name}:{model} no key"); continue
         body = {"model": model, "messages": messages, "temperature": 0.1, "max_tokens": max_tokens}
+        if name == "groq" and "gpt-oss" in model: body["reasoning_effort"] = "low"
         req = urllib.request.Request(f"{base}/chat/completions", data=json.dumps(body).encode(),
                                      headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json",
                                               "User-Agent": "aifactory-pipeline/1.0"})
         try:
             with urllib.request.urlopen(req, timeout=180 if name == "ollama" else 90) as r:
                 d = json.load(r)
-            return d["choices"][0]["message"]["content"] or "", f"{name}:{model}"
+            text = d["choices"][0]["message"].get("content") or ""
+            if not text.strip():   # reasoning models can burn the whole budget and return empty content -> rotate lane
+                errors.append(f"{name}:{model} empty content (finish={d['choices'][0].get('finish_reason')})"); continue
+            return text, f"{name}:{model}"
         except urllib.error.HTTPError as e:
             errors.append(f"{name}:{model} HTTP {e.code} {e.read()[:120].decode(errors='replace')}")
         except Exception as e:  # connection / timeout

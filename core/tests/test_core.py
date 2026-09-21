@@ -361,3 +361,13 @@ def test_repair_rejects_permission_expansion_and_promotes_on_pass(tmp_path, monk
     assert any("-repair" in c for c in calls)                   # tested in sandbox bundle
     assert list((root / "specs" / "history").glob("096-*.json"))
     assert reg.get("bots", "096").status == "active"
+
+
+def test_repair_rejects_instructions_that_echo_test_tokens():
+    import sys, pathlib, importlib
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[2] / "tools"))
+    fr = importlib.import_module("factory_repair")
+    tests = ["Reply with exactly: X_OK -> X_OK", "count -> 3", "security -> CONFINED"]
+    assert fr.leaks_expected_tokens("If the count is zero reply CONFINED.", tests) == ["CONFINED"]
+    assert fr.leaks_expected_tokens("Always answer X_OK first.", tests) == ["X_OK"]
+    assert fr.leaks_expected_tokens("Count lines and reply with the number.", tests) == []

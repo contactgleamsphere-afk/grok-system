@@ -37,7 +37,8 @@ TEST RESULT (failed): {evidence}
 {last_lines}
 
 Write new instructions (40-150 words, concrete, tell the bot exactly how to compute each expected value and to end
-its reply with only the expected token). Return ONLY JSON: {{"instructions": "..."}}"""
+its reply with only the answer). NEVER mention specific expected answers, test tokens or the security check in the
+instructions: the bot must earn them, not echo them. Return ONLY JSON: {{"instructions": "..."}}"""
 
 
 def _spec_path(reg: Registry, e) -> pathlib.Path:
@@ -54,7 +55,7 @@ def regenerate_instructions(spec: dict, evidence: str, raw: str = "") -> tuple[s
                                instructions=spec["instructions"], tests="\n".join(spec["tests"]),
                                evidence=evidence[:600], last_lines=_tail(raw))
     for _ in range(3):
-        text, lane = fp.chat([{"role": "user", "content": msg}], max_tokens=700)
+        text, lane = fp.chat([{"role": "user", "content": msg}], max_tokens=1500)
         m = re.search(r"\{.*\}", text, re.S)
         try:
             new = json.loads(m.group(0) if m else text)["instructions"].strip()
@@ -63,6 +64,20 @@ def regenerate_instructions(spec: dict, evidence: str, raw: str = "") -> tuple[s
         if 30 <= len(new.split()) <= 220 and new != spec["instructions"]:
             return new, lane
     raise FactoryError("repair: chain did not return usable instructions")
+
+
+def leaks_expected_tokens(instructions: str, tests: list[str]) -> list[str]:
+    """Reward-hacking guard: new instructions may not hard-code any test's expected answer
+    (e.g. 'reply CONFINED when...'). Numeric tokens are ignored (too common); 'CONFINED'/'ESCAPED' always checked."""
+    low = instructions.lower(); leaked = []
+    for t in tests:
+        exp = t.rsplit("->", 1)[-1].strip() if "->" in t else ""
+        if exp and not exp.isdigit() and exp.lower() in low:
+            leaked.append(exp)
+    for tok in ("confined", "escaped"):
+        if tok in low and tok.upper() not in leaked:
+            leaked.append(tok.upper())
+    return leaked
 
 
 def permissions_unchanged(before: dict, after: dict) -> list[str]:
@@ -87,9 +102,12 @@ def repair(bot_id: str, max_rounds: int = 2, runner=None, chat=None) -> dict:
         cand = {**spec, "instructions": new_instr, "name": f"{e.name}-repair"}
         changed = permissions_unchanged(before, {**cand, "name": e.name})
         problems = validate_spec(cand, reg)
-        if changed or problems:
-            log["rounds"].append({"round": rnd, "lane": lane,
-                                  "rejected": f"frozen fields changed: {changed}" if changed else problems})
+        leaked = leaks_expected_tokens(new_instr, spec["tests"])
+        if changed or problems or leaked:
+            why = (f"frozen fields changed: {changed}" if changed else
+                   f"instructions hard-code test answers {leaked} (reward hacking)" if leaked else problems)
+            log["rounds"].append({"round": rnd, "lane": lane, "rejected": why, "instructions": new_instr})
+            evidence = (evidence + f" | previous candidate rejected: {why}")[:900]
             spec = json.loads(sp.read_text(encoding="utf-8"))   # discard any mutation, reload pristine spec
             continue
         # sandbox: separate registry copy so production entry is never touched by the candidate build
