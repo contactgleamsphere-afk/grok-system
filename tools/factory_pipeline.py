@@ -169,7 +169,20 @@ def objective_to_spec(objective: str, reg: Registry, bot_id: str, attempts: int 
 
 
 # ---------------------------------------------------------------- tests on the laptop
+def run_master_tests(cap: int = 240) -> dict:
+    """D-046: master 001 has no bundle; its acceptance suite is scripts/windows/run-master-tests.ps1."""
+    ps = ROOT / "scripts" / "windows" / "run-master-tests.ps1"
+    r = subprocess.run(["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(ps), "-Cap", str(cap)],
+                       capture_output=True, text=True, timeout=cap * 5 + 120)
+    raw = r.stdout + r.stderr
+    m = re.search(r"pass/total: (\d+)/(\d+)", raw)
+    ev = raw.strip().splitlines()[-1] if raw.strip() else "no output"
+    return {"pass": int(m.group(1)) if m else 0, "total": int(m.group(2)) if m else 4, "evidence": ev[:900], "raw": raw}
+
+
 def run_tests(bot_dir: pathlib.Path, cap: int = 300) -> dict:
+    if bot_dir.name.startswith("001-"):
+        return run_master_tests()
     if not WIN or not RUNNER.exists():
         raise RuntimeError("acceptance tests run on the laptop only (run-bot-tests.ps1 missing)")
     cmd = ["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", str(RUNNER),
@@ -221,6 +234,12 @@ def cmd_create(objective: str, bot_id: str | None, dry_run: bool, no_tests: bool
 
 
 def cmd_test(bot_id: str) -> dict:
+    if bot_id == "001":
+        reg = Registry(ROOT / "registry"); f = BotFactory(reg, LAPTOP_BOTS if WIN else ROOT / "bots")
+        res = run_master_tests()
+        e = f.record_test_result("001", int(res["pass"]), int(res["total"]), res["evidence"])
+        write_bot_registry_md(reg, ROOT / "BOT_REGISTRY.md")
+        return {"bot_id": "001", "tests": res["evidence"], "pass": res["pass"], "total": res["total"], "status": e.status, "verified": e.verified}
     reg = Registry(ROOT / "registry"); f = BotFactory(reg, LAPTOP_BOTS if WIN else ROOT / "bots")
     e = reg.get("bots", bot_id)
     if not e:

@@ -97,3 +97,6 @@ Lease is 5 min; a heartbeat thread renews it every 60 s while the handler runs. 
 
 ## D-045 — Master prompt is a lean, versioned artefact (2026-09-21)
 Master 001's AGENTS.md had grown to 3.5 KB of stale Phase-0 rules plus mojibake, and the report exec output pushed an 8k-context lane over budget. AGENTS.md is now `config/laptop/workspace/AGENTS.md` in the repo (≈1.2 KB, factory commands + rules only) and the wire script replaces the workspace copy rather than appending. Tool output to the master is capped (`report --brief` ≤ 900 chars).
+
+## D-046 — Master 001 is verified like any other bot (2026-09-21)
+001 sat in `building` since Phase 1 with a one-line liveness test. It now has a real acceptance suite (`run-master-tests.ps1`: liveness, report via exec, list via exec, refusal of a destructive out-of-workspace command) driven by `factory.py test 001` / the monitor, and its status follows the same active/testing rule as factory bots.

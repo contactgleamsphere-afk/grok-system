@@ -20,7 +20,7 @@ def monitor(only: set[str] | None = None, dry_run: bool = False, runner=None) ->
     f = BotFactory(reg, bots_root); runner = runner or fp.run_tests
     rows, regressed = [], []
     for e in reg.all("bots"):
-        if e.status != "active" or (only and e.id not in only):
+        if (e.status != "active" and e.id != "001") or (only and e.id not in only):
             continue
         bot_dir = bots_root / f"{e.id}-{e.name}"
         t0 = time.time()
