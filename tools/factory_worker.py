@@ -26,7 +26,7 @@ import factory_monitor as fm                                           # noqa: E
 import factory_probe as fpr                                            # noqa: E402
 
 DB = ROOT / "run" / "jobs.sqlite3"
-LEASE = 2400
+LEASE = 300          # D-043: short lease + heartbeat every 60 s -> a dead worker is detected within 5 min
 
 
 def _spec_of(bot_id: str) -> dict | None:
@@ -146,6 +146,15 @@ def run(worker: str, once: bool = False, idle_exit: int = 0) -> int:
             if once or (idle_exit and time.time() - idle_since > idle_exit): break
             time.sleep(5); continue
         idle_since = time.time(); processed += 1
+        import threading
+        stop = threading.Event()
+
+        def _beat():
+            hb = JobStore(DB)                      # own connection: sqlite objects are not thread-safe
+            while not stop.wait(60):
+                try: hb.heartbeat(job["id"], worker, LEASE)
+                except Exception: pass
+        threading.Thread(target=_beat, daemon=True).start()
         try:
             res = handle(job, store, worker)
             store.done(job["id"], res if isinstance(res, dict) else {"result": res}, worker)
@@ -154,6 +163,7 @@ def run(worker: str, once: bool = False, idle_exit: int = 0) -> int:
             store.fail(job["id"], f"security: {e}", worker)
         except Exception as e:
             store.fail(job["id"], f"{type(e).__name__}: {e}\n{traceback.format_exc()[-800:]}", worker)
+        stop.set()
         store.audit_export(ROOT / "AUDIT.md")
         _commit_state(job["kind"], job["id"][:8])
         if once: break

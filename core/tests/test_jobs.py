@@ -95,3 +95,16 @@ def test_classify_explicit_prefix():
     assert classify_failure("RuntimeError: transient: probe found no healthy remote lane") == "transient"
     assert classify_failure("RuntimeError: logic: config.json unhealthy") == "logic"
     assert classify_failure("SecurityViolation: create: spec requested permissions beyond job allowance") == "security"
+
+
+def test_heartbeat_extends_lease_and_expiry_requeues(tmp_path):
+    from factory.jobs import JobStore
+    import time as _t
+    st = JobStore(tmp_path / "j.sqlite3")
+    st.enqueue("test", {"bot_id": "001"})
+    j = st.claim("w1", 1)
+    st.heartbeat(j["id"], "w1", 600)
+    assert st.claim("w2", 1) is None                      # lease extended, w2 cannot steal
+    st.db.execute("UPDATE jobs SET lease_until=? WHERE id=?", (_t.time() - 1, j["id"])); st.db.commit()
+    j2 = st.claim("w2", 60)                                # expired -> requeued and claimed by w2
+    assert j2 and j2["id"] == j["id"] and j2["lease_owner"] == "w2"

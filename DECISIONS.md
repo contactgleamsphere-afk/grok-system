@@ -88,3 +88,6 @@ Twice today a `git reset --hard` erased laptop-generated truth (registry entry �
 
 ## D-042 — Nothing hard-codes a model list any more (2026-09-21)
 Builder lanes (`factory_pipeline.chat`) and the default fallback policy written into new specs are derived from the registry + probe health at call time. Adding, blocking or restoring a lane is a registry change, never a code change.
+
+## D-043 — Liveness by heartbeat, not by long leases (2026-09-21)
+Lease is 5 min; a heartbeat thread renews it every 60 s while the handler runs. A worker that dies (session teardown, crash, reboot) frees its job within 5 min instead of 40, and a healthy worker can hold a job indefinitely. Found live: `test 006` sat "running" for 30 min after its worker was torn down with the SSH session.
