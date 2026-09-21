@@ -118,3 +118,8 @@
 | 114 | 2026-09-21 22:46:14 | e0c940c2 | 006 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 2} |
 | 115 | 2026-09-21 22:51:22 | e0c940c2 | 006 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 35s [done] expect='2' last='RESULT: 2' \| T3 PASS 133s [done] expect='0' |
 | 116 | 2026-09-21 22:51:22 | e0c940c2 | 006 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "006", "status": "active", "verified": "VERIFIED"}} |
+| 117 | 2026-09-21 23:03:49 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 118 | 2026-09-21 23:04:10 | 5754cd51 | 009 | job.enqueued | builder | {"kind": "test", "payload": {"bot_id": "009"}} |
+| 119 | 2026-09-21 23:04:13 | 5754cd51 | 009 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 120 | 2026-09-21 23:06:01 | 5754cd51 | 009 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 29s [done] expect='3' last='3' \| T3 PASS 44s [done] expect='1' last='RE |
+| 121 | 2026-09-21 23:06:01 | 5754cd51 | 009 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "009", "status": "active", "verified": "VERIFIED"}} |
