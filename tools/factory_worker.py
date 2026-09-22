@@ -1,6 +1,6 @@
 """Factory worker: drains the persistent job queue (create / test / repair / monitor) with leases + audit.
 
-  python tools/factory_worker.py run   [--once] [--worker NAME] [--idle-exit 30] [--fast-lane]   # D-079: --fast-lane = run/test/tick/probe/report only
+  python tools/factory_worker.py run   [--once] [--worker NAME] [--idle-exit 30] [--fast-lane] [--respawn]   # D-079: --fast-lane = run/test/tick/probe/report only
   python tools/factory_worker.py add create "<objective>" [--priority 3]
   python tools/factory_worker.py add plan "<multi-part objective>" [--max 4]     # D-053: decompose -> N creates
   python tools/factory_worker.py add test|repair|rearchitect <bot_id>
@@ -432,6 +432,18 @@ def ensure_recurring(store: "JobStore", worker: str) -> list[str]:
 FAST_KINDS = ("run", "test", "tick", "probe", "report", "discover")   # D-079: minutes, not tens of minutes
 
 
+def _respawn() -> None:
+    """D-081b: `--respawn` workers relaunch themselves with fresh modules on a code change instead of relying on the
+    supervisor loop (which only iterates when the slow worker exits — so the fast lane used to vanish for the length of
+    a create/repair after every push)."""
+    if "--respawn" not in sys.argv: return
+    import subprocess
+    flags = 0x00000008 | 0x00000200 if os.name == "nt" else 0          # DETACHED_PROCESS | CREATE_NEW_PROCESS_GROUP
+    try: subprocess.Popen([sys.executable, *sys.argv], cwd=str(ROOT), creationflags=flags, close_fds=True,
+                          stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    except Exception: pass
+
+
 def run(worker: str, once: bool = False, idle_exit: int = 0, kinds: tuple[str, ...] | None = None) -> int:
     store = JobStore(DB); idle_since = time.time(); processed = 0; stamp = _code_stamp()
     if not once: ensure_recurring(store, worker)
@@ -444,7 +456,7 @@ def run(worker: str, once: bool = False, idle_exit: int = 0, kinds: tuple[str, .
         # D-039: a long-lived worker must never run stale code — exit between jobs when any factory module changed;
         # the supervisor loop (run-worker.ps1) relaunches it with fresh modules.
         if _code_stamp() != stamp:
-            store.audit("worker.restart", actor=worker, reason="code changed on disk"); return processed
+            store.audit("worker.restart", actor=worker, reason="code changed on disk"); _respawn(); return processed
         job = store.claim(worker, LEASE, kinds=kinds)
         if not job:
             if once or (idle_exit and time.time() - idle_since > idle_exit): break
