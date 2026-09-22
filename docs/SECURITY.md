@@ -26,3 +26,8 @@
 - Repair model never sees expected test answers (prevents reward hacking); candidates that still echo answers are rejected before sandboxing.
 - The worker runs with the owner's user env only; keys are read from User env at start, never written to the queue DB or audit (payloads contain objectives/ids only).
 - 2026-09-21: `GITHUB_TOKEN` lives in the owner's Windows **User** environment only (never in repo/config); git on the laptop uses an inline credential helper that reads it from env. The worker pushes state commits with it. Rotate via GitHub → the helper picks up the new value on next start.
+
+## Permission allowance (D-054, 2026-09-22)
+- Every `create`/`plan`/`rearchitect` job carries an allowance; default `fs:read, fs:write, net:search, net:fetch`. `shell:workspace` requires an explicit owner `--allow`; `shell:system` is never grantable.
+- The gate runs before any file is written. Over-reach → `security` pause + `security.violation` audit; nothing is built.
+- Incident: bot 015 was built with shell before this gate existed → retired to `bots/_retired`, BLOCKED.
