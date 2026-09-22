@@ -370,3 +370,11 @@ that were quota-exhausted and every test burned 60–70 s per model call on 429 
 Fixes: (1) a probe enqueues its successor BEFORE probing; (2) on every worker start `ensure_recurring` re-seeds
 probe/tick/report if no queued/running successor exists (idempotent per hour/day). The bots were never broken —
 which is exactly what D-075 now assumes for pure timeouts.
+
+## D-079 — Two workers: slow + fast lane, per-bot exclusion (2026-09-22) — VERIFIED (unit) / live pending
+One worker meant a 30-minute create/repair blocked every owner run, schedule and hourly probe behind it (today the
+probe chain waited 40 min behind a repair). The supervisor now also starts a `--fast-lane` worker that only claims
+run/test/tick/probe/report/discover. Safety: `JobStore.claim` never hands out a job for a bot that another running
+job already holds (atomic in the same BEGIN IMMEDIATE), so bundle/registry writes for one bot stay serialized; the
+git state commit/rebase/push is serialized by `run/git-state.lock`. Registry JSON writes are whole-file, so
+different-bot concurrency is safe.

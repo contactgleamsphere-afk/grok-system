@@ -152,6 +152,9 @@ class JobStore:
         args: list = [now]
         if kinds:
             k = list(kinds); q += " AND kind IN (%s)" % ",".join("?" * len(k)); args += k
+        # D-079: two workers may run concurrently, but never on the same bot (bundle/registry entry) at once
+        q += (" AND (json_extract(payload,'$.bot_id') IS NULL OR json_extract(payload,'$.bot_id') NOT IN "
+              "(SELECT json_extract(payload,'$.bot_id') FROM jobs WHERE state='running' AND json_extract(payload,'$.bot_id') IS NOT NULL))")
         q += " ORDER BY priority, created LIMIT 1"
         with self.db:   # BEGIN IMMEDIATE-style atomic claim
             self.db.execute("BEGIN IMMEDIATE")

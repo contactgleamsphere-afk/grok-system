@@ -19,6 +19,10 @@ try {
     # one log file per supervisor process -> no sharing violations between overlapping instances
     $log = "C:\AI\Factory\run\logs\worker-$(Get-Date -Format yyyyMMdd)-$PID.log"
     New-Item -ItemType Directory -Force C:\AI\Factory\run\logs | Out-Null
+    # D-079: a second worker serves only short job kinds so owner runs / schedules / probes are never stuck behind a
+    # 30-minute create/repair. Per-bot exclusion is enforced in JobStore.claim, so both can never touch the same bot.
+    $fast = Get-CimInstance Win32_Process -Filter "name='python.exe'" | Where-Object { $_.CommandLine -like '*factory_worker.py run*--fast-lane*' }
+    if(-not $fast){ Start-Process python -ArgumentList 'tools\factory_worker.py','run','--worker',"fast-$env:COMPUTERNAME",'--fast-lane' -WorkingDirectory C:\AI\Factory\repo -WindowStyle Hidden -RedirectStandardOutput "C:\AI\Factory\run\logs\fast-$(Get-Date -Format yyyyMMdd)-$PID.log" -RedirectStandardError "C:\AI\Factory\run\logs\fast-$(Get-Date -Format yyyyMMdd)-$PID.err" }
     & python tools\factory_worker.py run --worker "svc-$env:COMPUTERNAME" *>> $log
     Start-Sleep 3   # worker exits on code change (D-039) -> relaunch with fresh modules
   }

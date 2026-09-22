@@ -1,6 +1,6 @@
 """Factory worker: drains the persistent job queue (create / test / repair / monitor) with leases + audit.
 
-  python tools/factory_worker.py run   [--once] [--worker NAME] [--idle-exit 30]
+  python tools/factory_worker.py run   [--once] [--worker NAME] [--idle-exit 30] [--fast-lane]   # D-079: --fast-lane = run/test/tick/probe/report only
   python tools/factory_worker.py add create "<objective>" [--priority 3]
   python tools/factory_worker.py add plan "<multi-part objective>" [--max 4]     # D-053: decompose -> N creates
   python tools/factory_worker.py add test|repair|rearchitect <bot_id>
@@ -342,6 +342,17 @@ def _commit_state(kind: str, jid8: str) -> None:
     """D-041: factory state (registry, specs, audit) is committed to git after every job so it can never be lost by a
     sync/reset. Local commit only; the push is done by the sync script (network may be down). Never raises."""
     import subprocess
+    lock = ROOT / "run" / "git-state.lock"              # D-079: two workers must never rebase/push at the same time
+    for _ in range(120):
+        try:
+            fd = os.open(str(lock), os.O_CREAT | os.O_EXCL | os.O_WRONLY); os.write(fd, str(os.getpid()).encode()); os.close(fd); break
+        except FileExistsError:
+            try:
+                if time.time() - lock.stat().st_mtime > 300: lock.unlink()     # stale lock from a killed worker
+            except Exception: pass
+            time.sleep(1)
+    else:
+        return
     try:
         env = {**os.environ, "GIT_TERMINAL_PROMPT": "0", "GCM_INTERACTIVE": "Never", "GIT_ASKPASS": "echo"}
         g = lambda *a: subprocess.run(["git", *a], cwd=str(ROOT), capture_output=True, text=True, timeout=60, env=env)
@@ -356,6 +367,9 @@ def _commit_state(kind: str, jid8: str) -> None:
                 g(*nh, "fetch", "-q", url, "main"); g("rebase", "-q", "FETCH_HEAD"); g(*nh, "push", "-q", url, "HEAD:main")
     except Exception:
         pass
+    finally:
+        try: lock.unlink()
+        except Exception: pass
 
 
 def _keep_awake(on: bool) -> None:
@@ -415,7 +429,10 @@ def ensure_recurring(store: "JobStore", worker: str) -> list[str]:
     return seeded
 
 
-def run(worker: str, once: bool = False, idle_exit: int = 0) -> int:
+FAST_KINDS = ("run", "test", "tick", "probe", "report", "discover")   # D-079: minutes, not tens of minutes
+
+
+def run(worker: str, once: bool = False, idle_exit: int = 0, kinds: tuple[str, ...] | None = None) -> int:
     store = JobStore(DB); idle_since = time.time(); processed = 0; stamp = _code_stamp()
     if not once: ensure_recurring(store, worker)
     if not once and not _self_test_gate(store, worker):
@@ -428,7 +445,7 @@ def run(worker: str, once: bool = False, idle_exit: int = 0) -> int:
         # the supervisor loop (run-worker.ps1) relaunches it with fresh modules.
         if _code_stamp() != stamp:
             store.audit("worker.restart", actor=worker, reason="code changed on disk"); return processed
-        job = store.claim(worker, LEASE)
+        job = store.claim(worker, LEASE, kinds=kinds)
         if not job:
             if once or (idle_exit and time.time() - idle_since > idle_exit): break
             time.sleep(5); continue
@@ -464,7 +481,8 @@ def main(a: list[str]) -> int:
     store = JobStore(DB); cmd = a[1]
     opt = lambda k, d=None: a[a.index(k) + 1] if k in a else d
     if cmd == "run":
-        n = run(opt("--worker", f"{socket.gethostname()}-{os.getpid()}"), "--once" in a, int(opt("--idle-exit", 0)))
+        n = run(opt("--worker", f"{socket.gethostname()}-{os.getpid()}"), "--once" in a, int(opt("--idle-exit", 0)),
+                kinds=FAST_KINDS if "--fast-lane" in a else None)   # D-079: second worker serves short jobs only
         print(json.dumps({"processed": n, "queue": store.summary()})); return 0
     if cmd == "add":
         kind = a[2]

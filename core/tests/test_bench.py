@@ -476,3 +476,20 @@ def test_d077_recurring_chains_reseeded_and_probe_chains_before_running(tmp_path
     st.fail(c["id"], "boom", "w")
     probes = [j for j in st.list() if j["kind"] == "probe"]
     assert len(probes) == 2 and any(j["state"] == "queued" and j["not_before"] > time.time() + 3000 for j in probes)
+
+
+def test_d079_claim_never_gives_two_workers_the_same_bot(tmp_path):
+    """D-079: with per-bot exclusion, a second worker skips jobs for a bot another worker is running, but takes other work;
+    kinds filter serves the fast lane."""
+    from factory.jobs import JobStore
+    st = JobStore(tmp_path / "jobs.sqlite3")
+    a = st.enqueue("repair", {"bot_id": "004", "max_rounds": 2}, priority=2)
+    b = st.enqueue("test", {"bot_id": "004"}, priority=3)
+    c = st.enqueue("run", {"bot_id": "018", "task": "x", "t": 1}, priority=4)
+    d = st.enqueue("create", {"objective": "o"}, priority=5)
+    j1 = st.claim("w1", 300); assert j1["id"] == a["id"]
+    j2 = st.claim("w2", 300, kinds=("run", "test", "tick")); assert j2["id"] == c["id"]      # 004 test skipped (bot busy), 018 run taken
+    j3 = st.claim("w3", 300, kinds=("run", "test", "tick")); assert j3 is None                # nothing left in fast kinds that isn't bot-locked
+    j4 = st.claim("w4", 300); assert j4["id"] == d["id"]                                        # slow worker still takes the create
+    st.done(j1["id"], {}, "w1")
+    j5 = st.claim("w2", 300, kinds=("test",)); assert j5["id"] == b["id"]                       # 004 free again
