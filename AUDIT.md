@@ -383,3 +383,9 @@
 | 379 | 2026-09-22 07:28:02 | 3173de79 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 380 | 2026-09-22 07:32:48 | 3173de79 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "5/5", "before": "testing", "after": "active", "inconclusive": false, "quota": 0} |
 | 381 | 2026-09-22 07:32:48 | 3173de79 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 382 | 2026-09-22 07:57:50 | 854ab0a2 |  | job.enqueued | builder | {"kind": "run", "payload": {"plan": "25a47cdb", "in": "C:\\AI\\Factory\\run\\runs\\_in-logtriage", "cap": 300, "t": 1790060269}} |
+| 383 | 2026-09-22 07:57:53 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 384 | 2026-09-22 07:57:57 | 854ab0a2 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 385 | 2026-09-22 08:00:15 | 854ab0a2 | 013 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"plan": "25a47cdb", "step": 1, "ok": true, "produced": ["errors.txt"], "missing": [], "secs": 63, "reply": "6", "chain": "groq-gptoss120b"} |
+| 386 | 2026-09-22 08:00:15 | 854ab0a2 | 014 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"plan": "25a47cdb", "step": 2, "ok": true, "produced": ["summary.txt"], "missing": [], "secs": 70, "reply": "RESULT: summary.txt created wi |
+| 387 | 2026-09-22 08:00:15 | 854ab0a2 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"name": "run:plan 25a47cdb", "status": "ok app.log,errors.txt,summary.txt"}} |
