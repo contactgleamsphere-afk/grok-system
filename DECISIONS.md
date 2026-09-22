@@ -470,3 +470,8 @@ tamper-evident in git, not just present.
 D-080/D-088 covered 429s seen by bot test runs; the builder's own `chat()` (architect, planner, repair rewrite, insight)
 just rotated to the next lane and left the registry unaware. Now every HTTP 429/413/rate_limit/RESOURCE_EXHAUSTED in
 `chat()` runs the same parse (retry-after, daily vs minute) and `mark_quota()` — one rule, two entry points.
+
+## D-093 — spec_consistency catches shell-needing tests (2026-09-22) — VERIFIED (unit + 22 existing specs clean)
+Bot 019 failed CAPABILITY_MISSING because its tests said "run pytest" while tools were read/write only; repair is
+tool-frozen so it could never recover. `_SHELL_HINT` (run/execute pytest|python|npm|git|docker|…) now rejects such a
+spec at architect time unless `exec` + `shell:workspace` are granted, and `exec` without `shell:workspace` is rejected.

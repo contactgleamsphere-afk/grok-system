@@ -213,6 +213,9 @@ def next_id(reg: Registry) -> str:
 _WRITE_HINT = re.compile(r"\b(first\s+)?(write|create|save|make)\s+(a\s+|the\s+)?(file\s+)?[\w.-]+\.(txt|csv|json|md|log|tsv|yaml|yml|xml|html)\b", re.I)
 
 
+_SHELL_HINT = re.compile(r"\b(run|execute|invoke|call)\s+(the\s+)?(pytest|python\s+-m|python3?\s+\S+\.py|pip|npm|npx|node|git|docker|make|bash|sh|powershell|curl|wget)\b|\b(pytest|npm test|git (status|log|diff|commit))\b", re.I)
+
+
 def spec_consistency(spec: dict) -> list[str]:
     """D-052: a spec whose tests need a capability the tool list does not grant can never pass and repair cannot
     fix it (tools are frozen). Catch it at architect time so the architect, not the repairer, corrects it.
@@ -234,7 +237,12 @@ def spec_consistency(spec: dict) -> list[str]:
             problems.append(f"test asks the bot to read a file but tools lack read_file: {prompt[:60]!r}")
         if re.search(r"\b(search the web|look up online|fetch (the )?url|https?://)", prompt, re.I) and not (tools & {"web_search", "web_fetch"}):
             problems.append(f"test needs the web but tools lack web_search/web_fetch: {prompt[:60]!r}")
+        # D-093 (bot 019 class): shell verbs / binaries need exec + shell:workspace; bare 'run pytest/npm/git ...' can never
+        # be satisfied by a read/write-only bot and the runtime has no pytest/node/git on PATH for bots anyway.
+        if _SHELL_HINT.search(prompt) and "exec" not in tools:
+            problems.append(f"test needs a shell command but tools lack exec: {prompt[:60]!r} (needs exec + shell:workspace, or restate the test as a file computation)")
     if "write_file" in tools and "fs:write" not in perms: problems.append("write_file requires permission fs:write")
+    if "exec" in tools and "shell:workspace" not in perms: problems.append("exec requires permission shell:workspace")
     if "read_file" in tools and "fs:read" not in perms: problems.append("read_file requires permission fs:read")
     return problems
 

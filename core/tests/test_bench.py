@@ -626,3 +626,16 @@ def test_d092_builder_chat_429_cools_lane(tmp_path, monkeypatch):
     fp._cool_from_error("gemini", "gemini-b", "429 RESOURCE_EXHAUSTED ... 'retryDelay': '37s'")
     hb = reg.get("models", "gemini-b").limits["health"]
     assert hb["quota_kind"] == "tpm" and 60 <= hb["quota_until"] - time.time() <= 70
+
+
+def test_d093_spec_consistency_flags_shell_tests_without_exec(tmp_path, monkeypatch):
+    """D-093: 'run pytest ...' style tests are rejected at architect time unless the spec grants exec+shell:workspace."""
+    _reg(tmp_path, monkeypatch)
+    import factory_pipeline as fp
+    base = {"tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"]}
+    bad = dict(base, tests=["Run pytest in the workspace and report the number of passed tests -> 3"])
+    assert any("lack exec" in p for p in fp.spec_consistency(bad))
+    ok = dict(base, tests=["Read a.txt and count the lines -> 3"])
+    assert fp.spec_consistency(ok) == []
+    with_exec = {"tools": ["exec"], "permissions": ["fs:read"], "tests": ["Run pytest -> 3"]}
+    assert fp.spec_consistency(with_exec) == ["exec requires permission shell:workspace"]
