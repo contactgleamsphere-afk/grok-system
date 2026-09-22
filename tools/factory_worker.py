@@ -203,6 +203,9 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
             store.enqueue("test", {"bot_id": p["bot_id"], "retest_of": jid, "rearchitected": True, **_carry(p)}, priority=3, parent=jid, actor=worker)
         return {k: res.get(k) for k in ("bot_id", "spec_lane", "pass", "total", "status", "boundary_diff")}
     if kind == "probe":
+        if not p.get("only"):   # D-077: chain the next hourly probe FIRST so a failing probe can never end the chain
+            nxt = (datetime.datetime.now() + datetime.timedelta(hours=1))
+            store.enqueue("probe", {"only": [], "hour": nxt.strftime("%Y-%m-%dT%H")}, priority=1, parent=jid, actor=worker, not_before=time.time() + 3600)
         res = fpr.run(set(p["only"]) if p.get("only") else None)
         for r in res["changed"]:
             store.audit("model.health", job_id=jid, actor=worker, model=r["id"], outcome=r["outcome"],
@@ -220,9 +223,6 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
             # D-069: free-first scout — also try the other 2026 free providers; without a key each yields a needs_owner notice
             for prov in ("openrouter", "cerebras", "nvidia", "mistral"):
                 store.enqueue("discover", {"provider": prov, "day": datetime.date.today().isoformat(), "trigger": trig}, priority=2, parent=jid, actor=worker)
-        nxt = (datetime.datetime.now() + datetime.timedelta(hours=1))
-        if not p.get("only"): store.enqueue("probe", {"only": [], "hour": nxt.strftime("%Y-%m-%dT%H")}, priority=1, parent=jid, actor=worker,
-                      not_before=time.time() + 3600)
         return {"probed": res["probed"], "healthy": res["healthy"], "changed": [(c["id"], c["after"]) for c in res["changed"]], "retired": [r["id"] for r in res.get("retired", [])]}
     if kind == "discover":
         res = fdc.run(p.get("provider", "openrouter"), int(p.get("max", 2)))
@@ -390,8 +390,30 @@ def _self_test_gate(store: "JobStore", worker: str) -> bool:
     return ok
 
 
+RECURRING = {   # D-077: self-chaining jobs that must always have exactly one live successor
+    "probe":  lambda: ({"only": [], "hour": datetime.datetime.now().strftime("%Y-%m-%dT%H")}, 1),
+    "tick":   lambda: ({"hour": datetime.datetime.now().strftime("%Y-%m-%dT%H")}, 1),
+    "report": lambda: ({"day": datetime.date.today().isoformat()}, 6),
+}
+
+
+def ensure_recurring(store: "JobStore", worker: str) -> list[str]:
+    """D-077: the hourly probe chain silently died on 21 Sep (a probe failed as `logic`, so its successor was never
+    enqueued) and lane health went 22 h stale — bots then spent whole test budgets on quota-exhausted lanes. On every
+    worker start, re-seed any recurring chain that has no queued/running successor. Idempotent (idem key per hour/day)."""
+    live = {j["kind"] for j in store.list(["queued", "running"])}
+    seeded = []
+    for kind, mk in RECURRING.items():
+        if kind in live: continue
+        payload, prio = mk()
+        store.enqueue(kind, payload, priority=prio, actor=worker); seeded.append(kind)
+    if seeded: store.audit("worker.reseeded", actor=worker, kinds=seeded)
+    return seeded
+
+
 def run(worker: str, once: bool = False, idle_exit: int = 0) -> int:
     store = JobStore(DB); idle_since = time.time(); processed = 0; stamp = _code_stamp()
+    if not once: ensure_recurring(store, worker)
     if not once and not _self_test_gate(store, worker):
         store.audit("worker.blocked_by_tests", actor=worker, reason="core/tests red on current code; refusing to process jobs until code changes")
         # wait for a code change (repo-sync/push), then let the supervisor relaunch us

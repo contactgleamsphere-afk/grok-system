@@ -362,3 +362,11 @@ holds owner/master-created schedules for ACTIVE bots; an hourly self-chaining `t
 schedule, idempotent per (schedule, slot) so a restart or a slept laptop never double-runs and catches up exactly once.
 Own 5-field cron parser in core/factory/cron.py (no dependency). Master: "every morning run 018 on orders" →
 `factory.py schedule add 018 "0 7 * * *" --task … --in orders`. Same inbox-name contract as `queue run` (D-064).
+
+## D-077 — Recurring chains can't die (2026-09-22) — VERIFIED (unit) / live pending
+Root cause of today's timeouts on bots 003/004/005: the hourly probe chain ended on 21 Sep 21:xx when a probe job
+failed (`logic`) before enqueuing its successor; lane health went ~22 h stale, so chains still listed Gemini lanes
+that were quota-exhausted and every test burned 60–70 s per model call on 429 retries before reaching a live lane.
+Fixes: (1) a probe enqueues its successor BEFORE probing; (2) on every worker start `ensure_recurring` re-seeds
+probe/tick/report if no queued/running successor exists (idempotent per hour/day). The bots were never broken —
+which is exactly what D-075 now assumes for pure timeouts.

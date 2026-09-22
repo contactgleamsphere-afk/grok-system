@@ -1,5 +1,5 @@
 import json
-import datetime, sys, pathlib
+import datetime, sys, pathlib, time
 import pytest
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "core")); sys.path.insert(0, str(ROOT / "tools"))
@@ -454,3 +454,23 @@ def test_d076_schedules_fire_once_per_slot_and_catch_up_once(tmp_path, monkeypat
     assert fs.tick(st, now=t0 + datetime.timedelta(hours=20))["fired"] == []
     ev = [r["event"] for r in st.audit_rows(20)]
     assert ev.count("schedule.fired") == 2
+
+
+def test_d077_recurring_chains_reseeded_and_probe_chains_before_running(tmp_path, monkeypatch):
+    """D-077: worker start re-seeds probe/tick/report when no successor is live; a probe enqueues its successor BEFORE
+    probing so a failing probe cannot end the hourly chain."""
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    import importlib, factory_worker as fw; importlib.reload(fw)
+    from factory.jobs import JobStore
+    monkeypatch.setattr(fw, "ROOT", tmp_path)
+    st = JobStore(tmp_path / "run" / "jobs.sqlite3"); monkeypatch.setattr(fw, "DB", tmp_path / "run" / "jobs.sqlite3")
+    assert sorted(fw.ensure_recurring(st, "w")) == ["probe", "report", "tick"]
+    assert fw.ensure_recurring(st, "w") == []                                   # idempotent: successors are live
+    # probe that blows up must still leave a queued successor
+    monkeypatch.setattr(fw.fpr, "run", lambda only=None: (_ for _ in ()).throw(RuntimeError("boom")))
+    pj = next(j for j in st.list(["queued"]) if j["kind"] == "probe"); c = st.claim("w", 300)
+    while c and c["kind"] != "probe": st.done(c["id"], {}, "w"); c = st.claim("w", 300)
+    with pytest.raises(RuntimeError): fw.handle(c, st, "w")
+    st.fail(c["id"], "boom", "w")
+    probes = [j for j in st.list() if j["kind"] == "probe"]
+    assert len(probes) == 2 and any(j["state"] == "queued" and j["not_before"] > time.time() + 3000 for j in probes)
