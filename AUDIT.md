@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 269 | 2026-09-22 03:16:41 | 1bb54312 | 016 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 14s [done] expect='X_OK' last='X_OK' \| T2 PASS 94s [done] expect='2' last='RESULT: 2' \| T3 PASS 53s [done] expect='0'  |
-| 270 | 2026-09-22 03:16:41 | 1bb54312 | 016 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "016", "name": "workspace-tidy-counter", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
 | 271 | 2026-09-22 03:51:46 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 272 | 2026-09-22 03:51:48 | b59e7101 |  | job.enqueued | builder | {"kind": "monitor", "payload": {"only": null, "day": "2026-09-22"}} |
 | 273 | 2026-09-22 03:51:50 | b59e7101 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +400,5 @@
 | 666 | 2026-09-22 21:18:00 | 9e271e81 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-09-22", "trigger": "healthy=0"}} |
 | 667 | 2026-09-22 21:18:00 | 72cfc51f |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-09-22", "trigger": "healthy=0"}} |
 | 668 | 2026-09-22 21:18:00 | 096d9bb8 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["local3b", "local4b"], "changed": []}} |
+| 669 | 2026-09-22 21:18:15 | 615d5d9f |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 670 | 2026-09-22 21:18:15 | 615d5d9f |  | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 1, "error": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>\no |
