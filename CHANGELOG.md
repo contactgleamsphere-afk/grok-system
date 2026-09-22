@@ -75,3 +75,4 @@
 - D-069: providers cerebras/nvidia/mistral; needs_owner notices in STATUS.md; probe fans out discover; retire lanes gone ≥3 days.
 - D-070 master approve; D-071 keep-awake; D-072 monitor fan-out (per-bot test jobs). 72 tests.
 - D-076 schedules (cron/tick), D-077 recurring-chain resilience, D-073/075 test-literal + timeout rules. 76 tests.
+- D-078 demote→repair, D-079 fast-lane second worker + per-bot claim exclusion + git-state lock, D-080 event-driven lane cooldown (QUOTAHIT). Master acceptance 7 tests. 78 tests.

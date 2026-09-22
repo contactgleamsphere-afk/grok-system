@@ -302,3 +302,20 @@ Chat → job fbeb65ad → bot 018 (4/4) → auto run ca31fcf3 → totals.csv cor
 ## D-076 schedules — 2026-09-22 (live)
 - master tool `schedule add 018 "*/5 * * * *" --task … --in orders` → sid 5539cff4; `add tick` → `schedule.fired` 18:35 (job aba5e667) and 18:40 (job f42e8c49); both `bot.ran ok=true produced=[totals.csv]` (83 s / 102 s, lane groq-gptoss120b); totals.csv UK 370.25 / DE 1510.50 / US 2480.00 each time. Re-tick within a slot fired nothing (idempotent). PASS.
 - demo schedule replaced by a daily 07:00 one (registry/schedules.json, git-tracked). Tick self-chains hourly (job 83f56639 → …).
+
+## D-077 recurring-chain resilience — 2026-09-22 (live)
+- root cause proven (tm10.py): bot 003 turns took ~72 s each = 429 retries on quota-exhausted gemini-flash/flash38 before falling to gemini-lite; lane health was 22 h stale because the probe chain died 21 Sep 21:xx.
+- `add probe --priority 0` → 322482f0 done 19:16, successor 60d56672 enqueued BEFORE probing, ran 20:1x, chained 096d9bb8 for 21h — chain alive. 003 re-tested 5/5 → active.
+
+## D-078 demote→repair — 2026-09-22 (live)
+- 004 failed builder test 6283e61b (T2/T3 wrong literal) → previously no repair queued; after D-078 `add repair 004` (349607da) = same path a demotion now takes automatically.
+
+## D-079 fast lane — 2026-09-22 (live)
+- unit `test_d079_claim_never_gives_two_workers_the_same_bot` (bot-locked test skipped, other bot's run taken, slow create still claimable, lock released on done) — PASS.
+- live: supervisor started `fast-LAPTOP…` (--fast-lane) next to `svc-…`; 001 test 8f4db119 (7/7 PASS 20:17: liveness, report, list, lanes, confined, schedules cron=, noselfapprove NEEDS_OWNER) ran while 004 repair 349607da held the slow worker; probe 60d56672 ran on the fast lane instead of waiting.
+- both workers selftest 78/78 after the D-080 push (independent code-stamp restart).
+
+## D-080 event-driven cooldown — 2026-09-22
+- unit `test_d080_quota_hit_during_test_cools_lane_immediately` — PASS (78/78).
+- PowerShell regex checked against the real Groq 429 text ("try again in 11m14.352s" → secs 704, model openai/gpt-oss-120b) and a Gemini RESOURCE_EXHAUSTED/retryDelay sample (→ 67 s) on the laptop.
+- trigger: 004 repair round 1 scored 1/4 on groq-gptoss120b because its 200k TPD cap was hit (probe 40 min earlier said ok). Repair 349607da resumed on the new code — result recorded in BOT_REGISTRY/audit.
