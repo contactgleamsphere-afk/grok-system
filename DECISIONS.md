@@ -244,3 +244,17 @@ Bot 001 is hand-wired (`config/laptop/workspace`, no spec). The monitor demoted 
 and the chain enqueued a repair that crashed on the missing spec. Now: a demoted 001 gets `monitor --only 001` 30 min
 later; repair refuses spec-less bots with a clean `logic` error. Persistent master failure surfaces in the daily
 report for the owner rather than being auto-rewritten.
+
+## D-061 — Re-architect allowance = default ∪ the bot's already-granted permissions (2026-09-22) — VERIFIED
+016 (built under an explicit `shell:workspace` grant) failed a monitor test, repair paused (`logic`: tests need
+write_file), rearchitect then paused as `security` because the rearchitect job carried only the default allowance.
+A grant given at create time is part of the bot's approved boundary; rearchitect may keep it (never widen beyond
+it). Live: resumed → rearchitected within `[exec]/[shell:workspace]` → 4/4 → active.
+
+## D-062 — The master's chain follows the factory routing policy (2026-09-22) — VERIFIED (config) / monitor pending
+Root cause of 001's 1/5: `config.json` had a hand-wired chain `groq-qwen27b → groq-gptoss120b → groq-gptoss20b →
+local4b`. When Groq's daily quota for qwen ended, every master call spent minutes rotating inside one provider and
+the local 4B tail timed out under the 240 s cap. `factory_presets.sync()` now also writes `agents.defaults.modelPreset`
+and `fallbackModels` from `default_primary()`/`default_fallbacks()` (bench-ranked, budget-aware, cross-provider, local
+tail) and is re-run after every probe and bench. Live result: `groq-gptoss120b → or-ling-30-flash-vl → or-nex-n25-pro
+→ gemini-gemma26b → groq-qwen27b → groq-gptoss20b → local3b`; config hygiene still healthy (40 KB).
