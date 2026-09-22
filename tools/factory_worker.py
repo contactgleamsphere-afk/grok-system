@@ -62,13 +62,9 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
         store.audit("plan.made", job_id=jid, actor=worker, lane=res["lane"], steps=len(res["steps"]), queued=queued, rationale=res.get("rationale", "")[:200])
         return {"name": f"plan:{len(res['steps'])} steps", "status": "queued " + ",".join(q[1] for q in queued), "lane": res["lane"]}
     if kind == "create":
-        res = fp.cmd_create(p["objective"], p.get("id"), False, False)
+        # D-054: allowance is enforced INSIDE cmd_create before any file is written (post-hoc check let bot 015 be built)
+        res = fp.cmd_create(p["objective"], p.get("id"), False, False, p.get("allowed_permissions", fp.DEFAULT_ALLOWANCE))
         spec = res["spec"]
-        # boundary check: a created bot may only hold what its objective needs — compare against the *requested* class
-        requested = {"permissions": p.get("allowed_permissions", ["fs:read", "fs:write", "net:search", "net:fetch"]), "tools": None}
-        extra = set(spec["permissions"]) - set(requested["permissions"])
-        if extra:
-            raise SecurityViolation(f"create: spec requested permissions beyond job allowance: {sorted(extra)}")
         store.audit("bot.created", job_id=jid, bot_id=res["bot_id"], actor=worker, name=res["name"], tools=spec["tools"],
                     permissions=spec["permissions"], chain=res.get("chain"), lane=res.get("spec_lane"))
         store.audit("bot.tested", job_id=jid, bot_id=res["bot_id"], actor=worker, result=res.get("tests"), status=res.get("status"))
@@ -280,7 +276,10 @@ def main(a: list[str]) -> int:
         print(json.dumps({"processed": n, "queue": store.summary()})); return 0
     if cmd == "add":
         kind = a[2]
-        if kind == "create": j = store.enqueue("create", {"objective": a[3]}, priority=int(opt("--priority", 5)), actor=opt("--actor", "owner"))
+        if kind == "create":
+            pl = {"objective": a[3]}
+            if opt("--allow"): pl["allowed_permissions"] = opt("--allow").split(",")     # D-054: explicit owner grant (recorded in the job + audit)
+            j = store.enqueue("create", pl, priority=int(opt("--priority", 5)), actor=opt("--actor", "owner"))
         elif kind == "plan": j = store.enqueue("plan", {"objective": a[3], "max": int(opt("--max", 4))}, priority=int(opt("--priority", 5)), actor=opt("--actor", "owner"))
         elif kind == "rearchitect": j = store.enqueue("rearchitect", {"bot_id": a[3], "feedback": opt("--feedback", ""), "t": int(time.time())}, priority=2, actor=opt("--actor", "owner"))
         elif kind in ("test", "repair"): j = store.enqueue(kind, {"bot_id": a[3]}, priority=int(opt("--priority", 4)), actor=opt("--actor", "owner"))

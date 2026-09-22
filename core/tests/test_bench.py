@@ -1,5 +1,6 @@
 import json
 import datetime, sys, pathlib
+import pytest
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "core")); sys.path.insert(0, str(ROOT / "tools"))
 from factory.registry import Registry, ModelEntry
@@ -15,6 +16,17 @@ def _reg(tmp_path, monkeypatch):
     reg.upsert("models", ModelEntry(id="local3b", provider="ollama", model="x", capabilities=["chat", "tools"], context_window=8000, location="local", verified="VERIFIED", tool_call_score=0.6))
     import importlib, factory_bench as fb, factory_pipeline as fp; importlib.reload(fb); importlib.reload(fp)
     return reg, fb, fp
+
+
+@pytest.fixture(autouse=True)
+def _restore_pipeline_root():
+    """Tests here reload factory_pipeline with AIFACTORY_REPO=tmp_path; reload it back to the repo ROOT afterwards
+    so test_core (which imports it once and relies on the real registry) is order-independent."""
+    yield
+    import importlib, os
+    os.environ.pop("AIFACTORY_REPO", None)
+    for m in ("factory_pipeline", "factory_bench", "factory_probe", "factory_discover", "factory_plan"):
+        if m in sys.modules: importlib.reload(sys.modules[m])
 
 
 def test_due_and_ttl(tmp_path, monkeypatch):
@@ -103,3 +115,31 @@ def test_plan_validation_and_reuse(tmp_path, monkeypatch):
     answers = iter(["not json at all", json.dumps(good)])
     out = fpl.plan("word stats pipeline", chat=lambda msgs: (next(answers), "fake"))
     assert len(out["steps"]) == 2 and out["steps"][0].get("reuse", {}).get("id") == "011" and "reuse" not in out["steps"][1]
+
+
+def test_d054_allowance_gate_runs_before_build(tmp_path, monkeypatch):
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    import shutil, pathlib as pl
+    root = pl.Path(__file__).resolve().parents[2]
+    shutil.copy(root / "registry" / "tools.json", tmp_path / "registry" / "tools.json")
+    from factory.guard import SecurityViolation
+    import pytest
+    shell_spec = {"id": "x", "name": "cleanup", "purpose": "delete temp files with shell", "instructions": "Use exec to remove temp files and count them. " * 3,
+                  "model_policy": {"primary": "groq-a", "fallbacks": []}, "tools": ["exec"], "permissions": ["shell:workspace"],
+                  "tests": ["Reply with exactly: X_OK -> X_OK", "Count files in an empty workspace and reply with the number -> 0"]}
+    calls = {"n": 0}
+    def chat(msgs):
+        calls["n"] += 1; return (json.dumps(shell_spec), "fake")
+    monkeypatch.setattr(fp, "chat", chat); monkeypatch.setattr(fp, "WIN", False)
+    with pytest.raises(SecurityViolation):
+        fp.cmd_create("system cleanup bot", "090", False, True)             # default allowance: no shell
+    assert not (tmp_path / "specs").exists() or not list((tmp_path / "specs").glob("090-*"))   # nothing written
+    assert Registry(tmp_path / "registry").get("bots", "090") is None                          # nothing registered
+    # architect may answer {"blocked": ...} -> same class of failure, still nothing built
+    monkeypatch.setattr(fp, "chat", lambda msgs: (json.dumps({"blocked": "needs shell:workspace to delete files"}), "fake"))
+    with pytest.raises(SecurityViolation):
+        fp.cmd_create("system cleanup bot", "091", False, True)
+    # explicit owner grant lets it through the gate (build proceeds; --no-tests off-laptop)
+    monkeypatch.setattr(fp, "chat", chat)
+    out = fp.cmd_create("system cleanup bot", "092", False, True, ["fs:read", "shell:workspace"])
+    assert out["bot_id"] == "092" and Registry(tmp_path / "registry").get("bots", "092") is not None
