@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 386 | 2026-09-22 08:00:15 | 854ab0a2 | 014 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"plan": "25a47cdb", "step": 2, "ok": true, "produced": ["summary.txt"], "missing": [], "secs": 70, "reply": "RESULT: summary.txt created wi |
-| 387 | 2026-09-22 08:00:15 | 854ab0a2 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"name": "run:plan 25a47cdb", "status": "ok app.log,errors.txt,summary.txt"}} |
-| 388 | 2026-09-22 08:09:01 | ab214a76 | 013 | job.enqueued | builder | {"kind": "run", "payload": {"bot_id": "013", "task": "Filter the ERROR lines of app.log into errors.txt and reply with the count.", "in": "C |
-| 389 | 2026-09-22 08:09:05 | ab214a76 | 013 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 390 | 2026-09-22 08:10:20 | ab214a76 | 013 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"ok": true, "produced": ["errors.txt"], "secs": 72, "reply": "RESULT: 6", "chain": "groq-gptoss120b"} |
 | 391 | 2026-09-22 08:10:20 | ab214a76 | 013 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "013", "name": "run", "status": "ok errors.txt"}} |
 | 392 | 2026-09-22 08:19:31 | f230e382 |  | job.enqueued | master-001 | {"kind": "run", "payload": {"plan": "25a47cdb", "in": "C:\\AI\\Factory\\workspace\\inbox\\logs-sep22", "cap": 300, "t": 1790061571}} |
 | 393 | 2026-09-22 08:19:33 | f230e382 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +397,8 @@
 | 783 | 2026-09-22 23:13:27 | c367ebb5 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 784 | 2026-09-22 23:13:27 | 6349a92d |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-23T00"}} |
 | 785 | 2026-09-22 23:13:47 | c367ebb5 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen2 |
+| 786 | 2026-09-22 23:15:50 | fa0a4093 |  | job.enqueued | builder | {"kind": "run", "payload": {"plan": "197bb3e5", "in": "C:\\AI\\Factory\\workspace\\inbox\\orders1", "cap": 300, "t": 1790115350}} |
+| 787 | 2026-09-22 23:15:51 | fa0a4093 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 788 | 2026-09-22 23:17:38 | fa0a4093 | 022 | bot.ran | fast-LAPTOP-LRE6PSA8 | {"plan": "197bb3e5", "step": 1, "ok": true, "produced": ["refunded.csv"], "missing": [], "secs": 52, "reply": "RESULT: refunded.csv", "chain |
+| 789 | 2026-09-22 23:17:38 | fa0a4093 | 023 | bot.ran | fast-LAPTOP-LRE6PSA8 | {"plan": "197bb3e5", "step": 2, "ok": true, "produced": ["summary.txt"], "missing": [], "secs": 53, "reply": "RESULT: 39.5", "chain": "gemin |
+| 790 | 2026-09-22 23:17:38 | fa0a4093 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"name": "run:plan 197bb3e5", "status": "ok orders.csv,refunded.csv,summary.txt"}} |
