@@ -664,3 +664,22 @@ def test_d095_live_lanes_prefer_best_benchmarked(tmp_path, monkeypatch):
     for mid in ("or-c", "gemini-b"):                             # only weak + local left -> weak lane is used as last resort
         e = reg.get("models", mid); e.verified = "BLOCKED"; reg.upsert("models", e)
     assert [m for _, _, _, m in fp.live_lanes()] == ["groq-a", "x"]
+
+
+def test_d097_reuse_matches_original_objective_not_only_purpose(tmp_path, monkeypatch):
+    """D-097: the planner reuses bot 022 for a step that restates its ORIGINAL objective even though the purpose is 4 words;
+    an unrelated step is not matched (false reuse hands the owner the wrong bot)."""
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    from factory.registry import BotEntry
+    (tmp_path / "specs").mkdir()
+    (tmp_path / "specs" / "022-csv-refund-filter.json").write_text(json.dumps({
+        "id": "022", "name": "csv-refund-filter", "objective": "Read orders.csv, filter rows where the 'status' column is 'refunded', and write the resulting rows to refunded.csv."}))
+    reg.upsert("bots", BotEntry(id="022", name="csv-refund-filter", purpose="Filter refunded orders from CSV", status="active",
+                                model_policy={"primary": "groq-a", "fallbacks": []}, tools=[], permissions=[], workspace="w", verified="VERIFIED"))
+    import importlib, factory_plan as fpl; importlib.reload(fpl)
+    ex = fpl._existing(reg)
+    assert ex[0]["objective"].startswith("Read orders.csv")
+    hit = fpl._similar("Read orders.csv and filter the rows whose status column is refunded, writing them to refunded.csv", ex)
+    assert hit and hit["id"] == "022"
+    assert fpl._similar("Count the number of lines in an email text file and report it", ex) is None
+    assert fpl._similar("Read refunded.csv, sum the amount column and write summary.txt", ex) is None

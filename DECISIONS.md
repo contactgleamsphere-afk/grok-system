@@ -494,3 +494,10 @@ Rule: bench < 50% over ≥ 8 scored tests (two full reference runs) ⇒ `is_weak
 already excluded from primary (≥ 0.9). Not retired: still probed and benchmarked, so they re-enter automatically when
 the window recovers. Existing bots' chains are untouched (history preserved; monitor/repair will re-resolve live).
 This replaces the open "replace groq-qwen27b in repair rotations" item with a measured, reversible rule.
+
+## D-097 — Plan reuse matches the bot's original objective (2026-09-22) — VERIFIED (unit)
+`_similar()` compared a step only to the architect's short `purpose` ("Filter refunded orders from CSV"), so a step
+restating what a bot was built for scored 0.48 and a duplicate bot got built. Now `_existing()` also carries
+`spec.objective` (back-filled into 7 older specs from their notes, line endings preserved) and reuse fires on sequence
+ratio ≥ 0.75 OR content-word Jaccard ≥ 0.6 against purpose or objective. Thresholds stay strict — a false reuse gives
+the owner the wrong bot; a missed reuse costs one build.

@@ -36,17 +36,48 @@ Return ONLY JSON: {{"steps": [{{"objective": "...", "produces": ["file.txt"], "c
 OWNER OBJECTIVE: {objective}"""
 
 
+_STOP = {"the", "and", "with", "then", "from", "that", "this", "file", "files", "bot", "into", "for", "each", "write",
+         "read", "given", "workspace", "report", "return", "only", "all", "its", "their", "using", "use", "them", "one", "it"}
+
+
 def _existing(reg: Registry) -> list[dict]:
-    return [{"id": b.id, "name": b.name, "purpose": b.purpose} for b in reg.all("bots") if b.status == "active" and b.id != "001"]
+    """Active bots with their original objective (spec.objective, falling back to the notes' 'objective:' tail) so
+    reuse matching sees what the bot was BUILT FOR, not only the architect's 4-word purpose."""
+    out = []
+    for b in reg.all("bots"):
+        if b.status != "active" or b.id == "001": continue
+        obj = ""
+        sp = ROOT / "specs" / f"{b.id}-{b.name}.json"
+        try:
+            d = json.loads(sp.read_text(encoding="utf-8")); obj = d.get("objective") or ""
+            if not obj and "objective:" in (d.get("notes") or ""): obj = d["notes"].rsplit("objective:", 1)[1].strip()
+        except Exception:
+            pass
+        out.append({"id": b.id, "name": b.name, "purpose": b.purpose, "objective": obj})
+    return out
+
+
+def _toks(s: str) -> set[str]:
+    return {w for w in re.sub(r"\W+", " ", s.lower()).split() if len(w) > 2 and w not in _STOP}
+
+
+REUSE_SEQ, REUSE_JACCARD = 0.75, 0.6
 
 
 def _similar(step: str, existing: list[dict]) -> dict | None:
-    s = re.sub(r"\W+", " ", step.lower())
+    """D-053/D-097: a step is a REUSE of an active bot when its text closely matches the bot's purpose or original
+    objective (sequence ratio >= 0.75) or shares most of its content words (Jaccard >= 0.6). Thresholds are strict on
+    purpose: a false reuse silently hands the owner the wrong bot, a missed reuse only costs one build."""
+    s = re.sub(r"\W+", " ", step.lower()); st = _toks(step)
+    best = None
     for b in existing:
-        ratio = difflib.SequenceMatcher(None, s, re.sub(r"\W+", " ", b["purpose"].lower())).ratio()
-        if ratio >= 0.75:
-            return {**b, "similarity": round(ratio, 2)}
-    return None
+        cands = [b.get("purpose") or "", b.get("objective") or ""]
+        seq = max(difflib.SequenceMatcher(None, s, re.sub(r"\W+", " ", c.lower())).ratio() for c in cands if c)
+        bt = _toks(" ".join(cands)); jac = len(st & bt) / max(1, len(st | bt))
+        score = max(seq, jac)
+        if (seq >= REUSE_SEQ or jac >= REUSE_JACCARD) and (best is None or score > best["similarity"]):
+            best = {**b, "similarity": round(score, 2)}
+    return best
 
 
 def validate_plan(plan: dict, existing: list[dict], max_steps: int = MAX_STEPS) -> list[str]:
