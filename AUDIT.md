@@ -2,16 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 311 | 2026-09-22 05:21:46 | b59e7101 | 013 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "4/4", "before": "active", "after": "active", "inconclusive": false, "quota": 0} |
-| 312 | 2026-09-22 05:21:46 | b59e7101 | 014 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "4/4", "before": "active", "after": "active", "inconclusive": false, "quota": 0} |
-| 313 | 2026-09-22 05:21:46 | b59e7101 | 016 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "3/4", "before": "active", "after": "testing", "inconclusive": false, "quota": 0} |
-| 314 | 2026-09-22 05:21:46 | b59e7101 | 016 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 315 | 2026-09-22 05:21:46 | dffdd22d | 016 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "016", "max_rounds": 2}} |
-| 316 | 2026-09-22 05:21:46 | b59e7101 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 317 | 2026-09-22 05:21:52 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 318 | 2026-09-22 05:21:56 | 04f8c4f9 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 319 | 2026-09-22 05:21:56 | 04f8c4f9 | 001 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FileNotFoundError: [Errno 2] No such file or directory: 'C:\\\\AI |
-| 320 | 2026-09-22 05:22:02 | ac855168 | 003 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 321 | 2026-09-22 05:34:09 | 04f8c4f9 |  | job.cancelled | owner | {} |
 | 322 | 2026-09-22 05:34:10 | d2db2ed1 |  | job.enqueued | builder | {"kind": "monitor", "payload": {"only": ["001"], "day": "2026-09-22"}} |
 | 323 | 2026-09-22 05:36:31 | ac855168 | 003 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": "4/4", "rejected": null}], "boundary_ |
@@ -402,3 +392,13 @@
 | 708 | 2026-09-22 21:53:22 | 349607da | 004 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": "4/4", "rejected": null}], "boundary_ |
 | 709 | 2026-09-22 21:53:22 | 349607da | 004 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 710 | 2026-09-22 21:53:22 | 349607da | 004 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "004", "name": "changelog-writer", "status": "active", "verified": "VERIFIED"}} |
+| 711 | 2026-09-22 21:53:25 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 712 | 2026-09-22 21:53:27 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 713 | 2026-09-22 21:53:29 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 714 | 2026-09-22 21:53:40 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["82 passed in 9.83s"]} |
+| 715 | 2026-09-22 21:53:40 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["82 passed in 10.35s"]} |
+| 716 | 2026-09-22 21:55:42 | 135e45ff |  | job.enqueued | master-001 | {"kind": "create", "payload": {"objective": "reads a text file and counts how many lines contain a valid email address, replying with only t |
+| 717 | 2026-09-22 21:55:45 | 135e45ff |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 718 | 2026-09-22 21:55:47 | 135e45ff | 021 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "email-line-counter", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["groq-gptoss120b", "o |
+| 719 | 2026-09-22 21:59:57 | 135e45ff | 021 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 52s [done] expect='X_OK' last='X_OK' \| T2 PASS 72s [done] expect='2' last='RESULT: 2' \| T3 PASS 68s [done] expect='1'  |
+| 720 | 2026-09-22 21:59:57 | 135e45ff | 021 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "021", "name": "email-line-counter", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
