@@ -252,7 +252,10 @@ def cmd_test(bot_id: str) -> dict:
         raise FactoryError(f"unknown bot {bot_id}")
     bot_dir = (LAPTOP_BOTS if WIN else ROOT / "bots") / f"{e.id}-{e.name}"
     res = run_tests(bot_dir)
-    e = f.record_test_result(bot_id, int(res["pass"]), int(res["total"]), res["evidence"])
+    p, t, q = int(res["pass"]), int(res["total"]), int(res.get("quota", 0) or 0)
+    if p < t and q and p + q >= t:      # D-051: every failure was a 429 -> inconclusive, status untouched
+        return {"bot_id": bot_id, "tests": res["evidence"], "status": e.status, "verified": e.verified, "inconclusive": True, "quota": q}
+    e = f.record_test_result(bot_id, p, t, res["evidence"])
     write_bot_registry_md(reg, ROOT / "BOT_REGISTRY.md")
     return {"bot_id": bot_id, "tests": res["evidence"], "status": e.status, "verified": e.verified}
 

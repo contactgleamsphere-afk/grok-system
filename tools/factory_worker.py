@@ -64,7 +64,12 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
         return res
     if kind == "test":
         before = _spec_of(p["bot_id"]); res = fp.cmd_test(p["bot_id"])
-        store.audit("bot.tested", job_id=jid, bot_id=p["bot_id"], actor=worker, result=res["tests"], status=res["status"])
+        store.audit("bot.tested", job_id=jid, bot_id=p["bot_id"], actor=worker, result=res["tests"], status=res["status"],
+                    inconclusive=bool(res.get("inconclusive")), quota=res.get("quota", 0))
+        if res.get("inconclusive"):     # D-051: lanes were rate-limited, not the bot's fault -> same test again in 2h, no repair
+            store.enqueue("test", {"bot_id": p["bot_id"], "retest_of": p.get("retest_of") or jid, "after_quota": jid},
+                          priority=3, parent=jid, actor=worker, not_before=time.time() + 7200)
+            return res
         if res["status"] != "active" and p.get("retest_of"):
             store.enqueue("repair", {"bot_id": p["bot_id"], "max_rounds": 2}, priority=2, parent=jid, actor=worker)
         return res
