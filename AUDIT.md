@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 199 | 2026-09-22 01:52:37 | f5cf590e | 012 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 2} |
-| 200 | 2026-09-22 01:53:24 | f5cf590e | 012 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 FAIL 17s [done] expect='60' last='RESULT: CAPABILITY_MISSING: write_file' \|  |
-| 201 | 2026-09-22 01:53:24 | 8359fbe8 | 012 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "012", "max_rounds": 2}} |
-| 202 | 2026-09-22 01:53:24 | f5cf590e | 012 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "012", "status": "testing", "verified": "UNVERIFIED"}} |
 | 203 | 2026-09-22 01:53:27 | 8359fbe8 | 012 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 204 | 2026-09-22 01:54:17 | 8359fbe8 | 012 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "model", "next_state": "queued", "attempt": 1, "error": "FactoryError: repair: chain did not return usable instructions\n  |
 | 205 | 2026-09-22 01:54:50 | 8359fbe8 | 012 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 2} |
@@ -402,3 +398,7 @@
 | 596 | 2026-09-22 19:18:47 | 6283e61b | 004 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 597 | 2026-09-22 19:22:03 | 6283e61b | 004 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 37s [done] expect='CHANGELOG_OK' last='CHANGELOG_OK' \| T2 FAIL 56s [done] expect='3' last='RESULT: Created commits.txt, |
 | 598 | 2026-09-22 19:22:03 | 6283e61b | 004 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "004", "status": "testing", "verified": "UNVERIFIED"}} |
+| 599 | 2026-09-22 19:22:07 | 35f1001a | 009 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 600 | 2026-09-22 19:25:02 | 35f1001a | 009 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 73s [done] expect='3' last='RESULT: Wrote lines.txt (5 lines), deduped to |
+| 601 | 2026-09-22 19:25:02 | 35f1001a | 009 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 73s [done] expect='3' last='RESULT: Wrote lines.txt (5 lines), deduped to |
+| 602 | 2026-09-22 19:25:02 | 35f1001a | 009 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "009", "status": "active", "verified": "VERIFIED"}} |

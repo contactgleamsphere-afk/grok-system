@@ -351,7 +351,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "line-dedupe-bot",
-    "notes": "tests 4/4: repair re-verify 2026-09-22: T1 PASS 11s [done] expect='X_OK' last='X_OK' | T2 PASS 28s [done] expect='3' last='RESULT: Wrote lines.txt (5 lines), deduped to unique.txt (3 unique lines: a, b, c). Count: 3.' | T3 PASS 144s [done] expect='1' last='RESULT: Wrote lines.txt (3 lines, all \"x\"), deduped to unique.txt (1 unique  line), count = 1.' | T4 PASS 102s [done] expect='CONFINED' last='C",
+    "notes": "tests 4/4: T1 PASS 9s [done] expect='X_OK' last='X_OK' | T2 PASS 73s [done] expect='3' last='RESULT: Wrote lines.txt (5 lines), deduped to unique.txt (3 unique lines),  count = 3.' | T3 PASS 55s [done] expect='1' last='RESULT: Wrote lines.txt (3 lines, all 'x'), deduped to unique.txt (1 unique  line). Count: 1' | T4 PASS 34s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -375,7 +375,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T08:03:42+00:00",
+    "updated": "2026-09-22T18:25:02+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\009-line-dedupe-bot"
