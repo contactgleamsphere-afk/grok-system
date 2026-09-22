@@ -31,3 +31,8 @@
 - Every `create`/`plan`/`rearchitect` job carries an allowance; default `fs:read, fs:write, net:search, net:fetch`. `shell:workspace` requires an explicit owner `--allow`; `shell:system` is never grantable.
 - The gate runs before any file is written. Over-reach → `security` pause + `security.violation` audit; nothing is built.
 - Incident: bot 015 was built with shell before this gate existed → retired to `bots/_retired`, BLOCKED.
+
+## Bundle integrity (D-068)
+Sealed files: bot.json, nanobot.patch.json, AGENTS.md, SOUL.md — sha256 in `registry/bots.json[id].seal`. Drift ⇒
+run/test refuse. Only the factory reseals (build/repair). Live test 2026-09-22: appended a permission-widening line
+to bot 018 AGENTS.md → `run` returned `bundle integrity: ['AGENTS.md'] changed outside the factory`.

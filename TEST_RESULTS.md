@@ -279,3 +279,8 @@ Worker SIGKILLed 30 s into 017's test phase; supervisor relaunched; attempt 2 re
 
 ## 2026-09-22 — D-066 one-message factory loop — VERIFIED
 Chat → job fbeb65ad → bot 018 (4/4) → auto run ca31fcf3 → totals.csv correct to the penny on the owner's 7-row CSV. ~14 min end to end. pytest 67/67.
+
+## D-068 bundle seal — 2026-09-22
+- unit `test_d068_bundle_seal_detects_tamper`: seal recorded at build, drift on AGENTS.md edit, memory edit ignored, rebuild reseals, legacy = `<unsealed>` — PASS (69/69)
+- live laptop (se1.py): 16 legacy bots sealed; bot 018 tampered → run refused with integrity error; restored → drift [] — PASS
+- regression: worker run of 018 after restore, job 0c438fbd — result recorded below
