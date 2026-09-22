@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 278 | 2026-09-22 05:07:34 | c959e323 |  | job.cancelled | owner | {} |
-| 279 | 2026-09-22 05:07:34 | e826d8e4 |  | job.cancelled | owner | {} |
 | 280 | 2026-09-22 05:07:35 | 66005b63 |  | job.cancelled | owner | {} |
 | 281 | 2026-09-22 05:07:35 | 2013c930 |  | job.cancelled | owner | {} |
 | 282 | 2026-09-22 05:21:46 | b59e7101 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "3/5", "before": "active", "after": "testing", "inconclusive": false, "quota": 0} |
@@ -402,3 +400,5 @@
 | 675 | 2026-09-22 21:18:17 | 72cfc51f |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 676 | 2026-09-22 21:18:17 | 72cfc51f |  | owner.needed | fast-LAPTOP-LRE6PSA8 | {"provider": "mistral", "reason": "set MISTRAL_API_KEY (User env) after signing up: https://console.mistral.ai (Experiment free tier)"} |
 | 677 | 2026-09-22 21:18:17 | 72cfc51f |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 678 | 2026-09-22 21:19:42 | 615d5d9f |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 2} |
+| 679 | 2026-09-22 21:19:42 | 615d5d9f |  | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 2, "error": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>\no |
