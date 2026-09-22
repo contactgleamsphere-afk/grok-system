@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "C:\AI\Factory\repo\tools\factory_pipeline.py", line 412, in <module>
+    sys.exit(main(sys.argv))
+             ^^^^^^^^^^^^^^
+  File "C:\AI\Factory\repo\tools\factory_pipeline.py", line 396, in main
+    out = cmd_create(arg, opt("--id"), "--dry-run" in argv, "--no-tests" in argv, allow)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\AI\Factory\repo\tools\factory_pipeline.py", line 308, in cmd_create
+    spec, lane = objective_to_spec(objective, reg, bot_id, allowed_permissions=allowed_permissions)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\AI\Factory\repo\tools\factory_pipeline.py", line 235, in objective_to_spec
+    raise SecurityViolation(f"architect: objective needs permissions outside the allowance {allowed}: {str(spec['blocked'])[:200]}")
+factory.guard.SecurityViolation: architect: objective needs permissions outside the allowance ['fs:read', 'fs:write', 'net:search', 'net:fetch']: The objective requires the 'shell:workspace' permission to execute the 'dir' command, which is not included in the provided allowance.
