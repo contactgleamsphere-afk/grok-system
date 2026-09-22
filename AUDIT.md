@@ -2,16 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 252 | 2026-09-22 02:59:56 |  | 015 | bot.retired | builder | {"reason": "D-054 over-privileged (shell) without owner grant", "bundle": "C:\\AI\\Factory\\bots\\_retired\\015-system-cleanup"} |
-| 253 | 2026-09-22 02:59:57 | f78710c5 |  | job.cancelled | owner | {} |
-| 254 | 2026-09-22 02:59:57 | 7e8fe2ef |  | job.enqueued | builder | {"kind": "create", "payload": {"objective": "Create a system-cleanup bot that uses exec to run PowerShell commands to delete temporary files |
-| 255 | 2026-09-22 02:59:58 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 256 | 2026-09-22 03:00:01 | 7e8fe2ef |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 257 | 2026-09-22 03:00:03 | 7e8fe2ef |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect: objective needs permissions outside the allowance ['fs:read', 'fs:write', 'net:search', 'net:fetch']: shell:workspace  |
-| 258 | 2026-09-22 03:00:03 | 7e8fe2ef |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: architect: objective needs permissions outside the a |
-| 259 | 2026-09-22 03:04:41 | 7e8fe2ef |  | job.payload_patched | owner | {"patch": {"allowed_permissions": ["fs:read", "shell:workspace"]}} |
-| 260 | 2026-09-22 03:04:41 | 7e8fe2ef |  | job.resumed | owner | {} |
-| 261 | 2026-09-22 03:04:42 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 262 | 2026-09-22 03:04:46 | 7e8fe2ef |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 263 | 2026-09-22 03:04:46 | 7e8fe2ef |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect: objective needs permissions outside the allowance ['fs:read', 'shell:workspace']: The objective requires deleting file |
 | 264 | 2026-09-22 03:04:46 | 7e8fe2ef |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: architect: objective needs permissions outside the a |
@@ -402,3 +392,13 @@
 | 649 | 2026-09-22 20:17:18 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 650 | 2026-09-22 20:17:52 | 8f4db119 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 29s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 66s [done] report expect='FACTORY' cmd=True \| T3 PASS 62s [d |
 | 651 | 2026-09-22 20:17:52 | 8f4db119 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 7, "total": 7, "status": "active", "verified": "VERIFIED"}} |
+| 652 | 2026-09-22 20:32:16 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 653 | 2026-09-22 20:32:17 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 654 | 2026-09-22 20:32:30 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["78 passed, 1 warning in 7.63s"]} |
+| 655 | 2026-09-22 20:32:30 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["78 passed in 7.63s"]} |
+| 656 | 2026-09-22 20:33:16 | 349607da |  | job.resumed | builder | {} |
+| 657 | 2026-09-22 20:33:20 | 349607da | 004 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 658 | 2026-09-22 20:43:26 | 349607da |  | job.lease_expired | fast-LAPTOP-LRE6PSA8 | {} |
+| 659 | 2026-09-22 20:43:26 | fd8c14fb |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 660 | 2026-09-22 20:43:26 | 60e46601 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-22T21"}} |
+| 661 | 2026-09-22 20:43:26 | fd8c14fb |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
