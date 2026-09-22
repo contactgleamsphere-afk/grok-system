@@ -2,12 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1 | 2026-09-21 19:39:01 | 0a39c2e1 |  | job.enqueued | owner | {"kind": "create", "payload": {"objective": "Create a JSON-to-Markdown table bot: given a workspace file named records.json containing a JSO |
-| 2 | 2026-09-21 19:39:02 | 31ffc26e | 005 | job.enqueued | owner | {"kind": "test", "payload": {"bot_id": "005"}} |
-| 3 | 2026-09-21 19:39:04 | fe3b6a6b |  | job.enqueued | owner | {"kind": "monitor", "payload": {"only": ["2", "3"], "day": "2026-09-21"}} |
-| 4 | 2026-09-21 19:39:05 | 31ffc26e |  | job.dedup | owner | {"kind": "test"} |
-| 5 | 2026-09-21 19:39:07 | 0a39c2e1 |  | job.claimed | w1 | {"attempt": 1} |
-| 6 | 2026-09-21 19:40:14 | 0a39c2e1 | 006 | bot.created | w1 | {"name": "json-to-markdown-table", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["groq-gptoss120b" |
 | 7 | 2026-09-21 19:40:14 | 0a39c2e1 | 006 | bot.tested | w1 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 15s [done] expect='2' last='RESULT: 2' \| T3 PASS 24s [done] expect='0'  |
 | 8 | 2026-09-21 19:40:14 | 0a39c2e1 | 006 | job.done | w1 | {"summary": {"bot_id": "006", "name": "json-to-markdown-table", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
 | 9 | 2026-09-21 19:40:47 | fe3b6a6b |  | job.cancelled | owner | {} |
@@ -398,3 +392,13 @@
 | 394 | 2026-09-22 08:21:31 | f230e382 | 013 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"plan": "25a47cdb", "step": 1, "ok": true, "produced": ["errors.txt"], "missing": [], "secs": 48, "reply": "RESULT: 6", "chain": "groq-gpto |
 | 395 | 2026-09-22 08:21:31 | f230e382 | 014 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"plan": "25a47cdb", "step": 2, "ok": true, "produced": ["summary.txt"], "missing": [], "secs": 68, "reply": "RESULT: Analysis complete. sum |
 | 396 | 2026-09-22 08:21:31 | f230e382 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"name": "run:plan 25a47cdb", "status": "ok app.log,errors.txt,summary.txt"}} |
+| 397 | 2026-09-22 08:30:00 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 398 | 2026-09-22 08:30:00 | 1c4af272 |  | job.enqueued | builder | {"kind": "create", "payload": {"objective": "Create a bot that reads names.txt (one name per line) and writes sorted.txt with the names sort |
+| 399 | 2026-09-22 08:30:04 | 1c4af272 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 400 | 2026-09-22 08:30:06 | 1c4af272 | 017 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "name-sorter", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["groq-gptoss120b", "or-ling- |
+| 401 | 2026-09-22 08:30:50 | 1c4af272 |  | job.lease_expired | svc-LAPTOP-LRE6PSA8 | {} |
+| 402 | 2026-09-22 08:30:50 | 1c4af272 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 2} |
+| 403 | 2026-09-22 08:30:50 | 1c4af272 | 017 | job.resumed_at | svc-LAPTOP-LRE6PSA8 | {"stage": "test", "reason": "bot already built by earlier attempt"} |
+| 404 | 2026-09-22 08:38:54 | 1c4af272 | 017 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 28s [done] expect='X_OK' last='X_OK' \| T2 PASS 97s [done] expect='3' last='RESULT: 3' \| T3 FAIL 307s [TIMEOUT] expect= |
+| 405 | 2026-09-22 08:38:54 | 28cfb1d6 | 017 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "017", "retest_of": "1c4af2721f574d5b878f5ca7e20882f1"}} |
+| 406 | 2026-09-22 08:38:54 | 1c4af272 | 017 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "017", "name": "name-sorter", "status": "testing", "verified": "UNVERIFIED"}} |
