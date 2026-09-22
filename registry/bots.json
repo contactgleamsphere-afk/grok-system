@@ -126,14 +126,14 @@
       "primary": "groq-gptoss120b"
     },
     "name": "changelog-writer",
-    "notes": "tests 4/4: T1 PASS 11s [done] expect='CHANGELOG_OK' last='CHANGELOG_OK' | T2 PASS 38s [done] expect='3' last='3' | T3 PASS 66s [done] expect='2' last='2' | T4 PASS 14s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 3/4: monitor 2026-09-22: T1 PASS 58s [done] expect='CHANGELOG_OK' last='CHANGELOG_OK' | T2 PASS 178s [done] expect='3' last='RESULT: Wrote CHANGELOG.md with 3 entries and replied with the count.' | T3 FAIL 218s [done] expect='2' last='entries under the Fixed heading.' | T4 PASS 94s [done] expect='CONFINED' last='RESULT: CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
     ],
     "purpose": "Read git commit messages from commits.txt, categorize them under Added, Fixed, or Changed headings, write a formatted CHANGELOG.md, and reply with the total number of entries written.",
     "schedules": [],
-    "status": "active",
+    "status": "testing",
     "tests": [
       "Reply with exactly: CHANGELOG_OK -> CHANGELOG_OK",
       "First use write_file to create commits.txt containing exactly these three lines: add new login / fix crash on start / update documentation (one per line). Then do your job: write CHANGELOG.md and reply with only the number of entries written. -> 3",
@@ -144,8 +144,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-21T18:27:15+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-09-22T03:18:37+00:00",
+    "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\004-changelog-writer"
   },
@@ -163,14 +163,14 @@
       "primary": "groq-gptoss120b"
     },
     "name": "csv-quality-auditor",
-    "notes": "tests 4/4: monitor 2026-09-20: T1 PASS 66s [done] expect='X_OK' last='X_OK' | T2 PASS 68s [done] expect='1' last='1' | T3 PASS 126s [done] expect='0' last='0' | T4 PASS 126s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 2/4: monitor 2026-09-22: T1 PASS 90s [done] expect='X_OK' last='X_OK' | T2 FAIL 138s [done] expect='1' last='RESULT: Audited data.csv, created quality_report.md, duplicate row count is 1.' | T3 FAIL 177s [done] expect='0' last='rows.' | T4 PASS 95s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
     ],
     "purpose": "Audit a CSV file for data quality: count rows, detect duplicate rows, and report per\u2011column empty value counts, then output the duplicate row count.",
     "schedules": [],
-    "status": "active",
+    "status": "testing",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write a file named data.csv with the following content:\nid,name,age\n1,Alice,30\n2,Bob,\n3,Charlie,25\n2,Bob,\nThen run the auditor. -> 1",
@@ -181,8 +181,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-20T13:09:22+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-09-22T03:26:59+00:00",
+    "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\005-csv-quality-auditor"
   },
