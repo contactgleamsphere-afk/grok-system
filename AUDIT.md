@@ -321,3 +321,9 @@
 | 317 | 2026-09-22 05:21:52 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 318 | 2026-09-22 05:21:56 | 04f8c4f9 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 319 | 2026-09-22 05:21:56 | 04f8c4f9 | 001 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FileNotFoundError: [Errno 2] No such file or directory: 'C:\\\\AI |
+| 320 | 2026-09-22 05:22:02 | ac855168 | 003 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 321 | 2026-09-22 05:34:09 | 04f8c4f9 |  | job.cancelled | owner | {} |
+| 322 | 2026-09-22 05:34:10 | d2db2ed1 |  | job.enqueued | builder | {"kind": "monitor", "payload": {"only": ["001"], "day": "2026-09-22"}} |
+| 323 | 2026-09-22 05:36:31 | ac855168 | 003 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": "4/4", "rejected": null}], "boundary_ |
+| 324 | 2026-09-22 05:36:31 | ac855168 | 003 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 325 | 2026-09-22 05:36:31 | ac855168 | 003 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "003", "name": "code-smith", "status": "active", "verified": "VERIFIED"}} |
