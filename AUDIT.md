@@ -185,3 +185,9 @@
 | 181 | 2026-09-22 01:28:02 | 17fe6af1 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 182 | 2026-09-22 01:33:44 | 17fe6af1 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 87s [done] report expect='FACTORY' cmd=True \| T3 PASS 97s [d |
 | 183 | 2026-09-22 01:33:44 | 17fe6af1 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 5, "total": 5, "status": "active", "verified": "VERIFIED"}} |
+| 184 | 2026-09-22 01:33:49 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 185 | 2026-09-22 01:37:53 | 67df837c |  | job.enqueued | master-001 | {"kind": "create", "payload": {"objective": "Word-frequency bot: given a workspace file text.txt, write freq.txt with each distinct word and |
+| 186 | 2026-09-22 01:37:54 | 67df837c |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 187 | 2026-09-22 01:39:20 | 67df837c | 011 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "word-frequency-counter", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["groq-gptoss120b" |
+| 188 | 2026-09-22 01:39:20 | 67df837c | 011 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 10s [done] expect='2' last='2' \| T3 PASS 36s [done] expect='3' last='3' |
+| 189 | 2026-09-22 01:39:20 | 67df837c | 011 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "011", "name": "word-frequency-counter", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
