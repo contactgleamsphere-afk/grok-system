@@ -452,3 +452,9 @@ lanes stay usable until their own caps.
 modified it → `git rebase` refused with "unstaged changes" → repo-sync's conflict branch ran `reset --hard
 origin/main`, silently discarding any uncommitted registry edit on the laptop (observed: the D-086 counter reset had to
 be applied twice). Fix: file untracked; repo-sync auto-stashes (incl. untracked) around the rebase and restores after.
+
+## D-090 — Bench never runs on a cooling/BLOCKED lane (2026-09-22) — VERIFIED (unit)
+The nightly `bench --stale-only` picked lanes by score age only; a lane in a daily-cap cooldown produced a 20-minute
+inconclusive run (gemini-lite 1/4 in 618 s today). `factory_bench.run()` now drops BLOCKED and `quota_until` lanes up
+front (`skipped_cooling` in the result) so the reference bot's time and the shared provider budget go to lanes that
+can actually be scored.

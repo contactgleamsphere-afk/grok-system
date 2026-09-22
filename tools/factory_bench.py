@@ -111,8 +111,12 @@ def run(lanes: list[str] | None = None, ref: str = REF_BOT, stale_only: bool = F
     else:
         todo = [m.id for m in models.values() if m.id not in LOCAL and due(m)] if stale_only else \
                [m.id for m in models.values() if m.id not in LOCAL and m.location == "remote" and m.verified != "BLOCKED"]
-    todo = todo[:max_lanes]
-    out = {"ref": ref, "results": [], "errors": []}
+    # D-090: never benchmark a lane that is BLOCKED or inside a quota cooldown — the run can only produce an inconclusive
+    # score while spending the reference bot's time (and the shared provider budget). Defer to the next nightly pass.
+    import time as _t; now = _t.time()
+    skipped = [l for l in todo if models[l].verified == "BLOCKED" or float(((models[l].limits or {}).get("health") or {}).get("quota_until", 0) or 0) > now]
+    todo = [l for l in todo if l not in skipped][:max_lanes]
+    out = {"ref": ref, "results": [], "errors": [], "skipped_cooling": skipped}
     for i, lane in enumerate(todo):
         if i and runner is None:
             import time; time.sleep(BENCH_GAP_S)     # D-051: don't let the sweep itself trip per-minute limits on shared providers

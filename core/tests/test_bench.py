@@ -586,3 +586,13 @@ def test_d088_daily_cap_cooldown_survives_tiny_probe_success(tmp_path, monkeypat
     # probe's own quota detection with daily text
     ec = reg.get("models", "or-c"); fpr.apply(ec, {"outcome": "quota", "detail": "rate limit exceeded: free-models-per-day"}, now)
     assert ec.limits["health"]["quota_until"] == now + 3600 and ec.limits["health"]["quota_kind"] == "tpd"
+
+
+def test_d090_bench_skips_blocked_and_cooling_lanes(tmp_path, monkeypatch):
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    reg.upsert("bots", BotEntry(id="009", name="ref", purpose="o", status="active", model_policy={"primary": "groq-a", "fallbacks": []}, tools=[], permissions=[], workspace="w", verified="VERIFIED"))
+    e = reg.get("models", "groq-a"); e.limits = {"health": {"quota_until": time.time() + 3000, "quota_kind": "tpd"}}; reg.upsert("models", e)
+    e = reg.get("models", "or-c"); e.verified = "BLOCKED"; reg.upsert("models", e)
+    ran = []
+    out = fb.run(["groq-a", "gemini-b", "or-c"], runner=lambda d, l: (ran.append(l) or {"pass": 4, "total": 4, "secs": 10, "evidence": "ok"}))
+    assert ran == ["gemini-b"] and sorted(out["skipped_cooling"]) == ["groq-a", "or-c"]
