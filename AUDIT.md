@@ -249,3 +249,7 @@
 | 245 | 2026-09-22 02:43:48 | e43a9934 | 013 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [{"round": 1, "lane": "groq:qwen/qwen3.8-27b", "sandbox": "4/4", "rejected": null}], "boundary_di |
 | 246 | 2026-09-22 02:43:48 | e43a9934 | 013 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 247 | 2026-09-22 02:43:48 | e43a9934 | 013 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "013", "name": "log-error-filter", "status": "active", "verified": "VERIFIED"}} |
+| 248 | 2026-09-22 02:52:46 | f78710c5 |  | job.enqueued | builder | {"kind": "create", "payload": {"objective": "Create a system-cleanup bot that uses exec to run PowerShell commands to delete temporary files |
+| 249 | 2026-09-22 02:52:48 | f78710c5 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 250 | 2026-09-22 02:56:23 | f78710c5 |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "create: spec requested permissions beyond job allowance: ['shell:workspace']"} |
+| 251 | 2026-09-22 02:56:23 | f78710c5 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: create: spec requested permissions beyond job allowa |
