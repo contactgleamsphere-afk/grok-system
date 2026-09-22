@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 196 | 2026-09-22 01:47:31 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 197 | 2026-09-22 01:47:35 | f5cf590e | 012 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 198 | 2026-09-22 01:52:37 | f5cf590e |  | job.lease_expired | svc-LAPTOP-LRE6PSA8 | {} |
 | 199 | 2026-09-22 01:52:37 | f5cf590e | 012 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 2} |
 | 200 | 2026-09-22 01:53:24 | f5cf590e | 012 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 FAIL 17s [done] expect='60' last='RESULT: CAPABILITY_MISSING: write_file' \|  |
 | 201 | 2026-09-22 01:53:24 | 8359fbe8 | 012 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "012", "max_rounds": 2}} |
@@ -402,3 +399,6 @@
 | 593 | 2026-09-22 19:16:15 | bebb31a3 | 003 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 594 | 2026-09-22 19:18:43 | bebb31a3 | 003 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 29s [done] expect='SMITH_OK' last='RESULT: SMITH_OK' \| T2 PASS 41s [done] expect='233168' last='RESULT: 233168' \| T3 P |
 | 595 | 2026-09-22 19:18:43 | bebb31a3 | 003 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "003", "status": "active", "verified": "VERIFIED"}} |
+| 596 | 2026-09-22 19:18:47 | 6283e61b | 004 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 597 | 2026-09-22 19:22:03 | 6283e61b | 004 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 37s [done] expect='CHANGELOG_OK' last='CHANGELOG_OK' \| T2 FAIL 56s [done] expect='3' last='RESULT: Created commits.txt, |
+| 598 | 2026-09-22 19:22:03 | 6283e61b | 004 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "004", "status": "testing", "verified": "UNVERIFIED"}} |

@@ -138,7 +138,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "changelog-writer",
-    "notes": "tests 3/4: monitor 2026-09-22: T1 PASS 42s [done] expect='CHANGELOG_OK' last='CHANGELOG_OK' | T2 FAIL 304s [TIMEOUT] expect='3' last='' | T3 PASS 120s [done] expect='2' last='2' | T4 PASS 216s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 2/4: T1 PASS 37s [done] expect='CHANGELOG_OK' last='CHANGELOG_OK' | T2 FAIL 56s [done] expect='3' last='RESULT: Created commits.txt, generated CHANGELOG.md, and replied with the total number of entries written.' | T3 FAIL 68s [done] expect='2' last='RESULT: Successfully created commits.txt, generated CHANGELOG.md, and reported  the number of entries under the Fixed heading.' | T4 PASS 33s [d",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -162,7 +162,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T15:23:55+00:00",
+    "updated": "2026-09-22T18:22:03+00:00",
     "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\004-changelog-writer"
