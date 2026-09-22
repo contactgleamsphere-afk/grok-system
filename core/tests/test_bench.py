@@ -657,6 +657,10 @@ def test_d095_live_lanes_prefer_best_benchmarked(tmp_path, monkeypatch):
     reg, fb, fp = _reg(tmp_path, monkeypatch)
     fb.record(reg, "groq-a", 2, 4, 100)                     # weak: 50% is not < 0.5 -> tier 0 but low rate
     fb.record(reg, "or-c", 4, 4, 60)                        # best measured
-    e = reg.get("models", "groq-a"); e.limits["bench"] = {"pass": 1, "total": 4, "secs": 100, "at": "2026-09-22T00:00:00"}; reg.upsert("models", e)
+    e = reg.get("models", "groq-a"); e.limits["bench"] = {"pass": 2, "total": 8, "secs": 100, "at": "2026-09-22T00:00:00"}; reg.upsert("models", e)
     order = [m for _, _, _, m in fp.live_lanes()]
-    assert order == ["or-c", "gemini-b", "groq-a", "x"], order   # measured-good, un-benchmarked, weak, local
+    assert order == ["or-c", "gemini-b", "x"], order            # measured-good, un-benchmarked, local; weak groq-a excluded (D-096)
+    assert "groq-a" not in fp.default_fallbacks(reg, "or-c") and fp.is_weak(reg.get("models", "groq-a"))
+    for mid in ("or-c", "gemini-b"):                             # only weak + local left -> weak lane is used as last resort
+        e = reg.get("models", mid); e.verified = "BLOCKED"; reg.upsert("models", e)
+    assert [m for _, _, _, m in fp.live_lanes()] == ["groq-a", "x"]

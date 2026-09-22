@@ -487,3 +487,10 @@ repair calls went to groq-qwen27b (bench 2/4) before or-ling (4/4) and gpt-oss-1
 by pass-rate then latency, tier 1 = un-benchmarked (old provider order), tier 2 = weak (<0.5 on ≥4 tests) as last
 resort, local last. Cooling/BLOCKED still excluded. Bench data (D-050/D-090) now steers the builder itself, not only
 the bots' chains.
+
+## D-096 — Weak lanes auto-excluded from new chains (2026-09-22) — VERIFIED (unit)
+Rule: bench < 50% over ≥ 8 scored tests (two full reference runs) ⇒ `is_weak()`. Weak lanes are dropped from
+`default_fallbacks()` (new bots), `live_lanes()` (architect/planner/repair) unless nothing better is live, and were
+already excluded from primary (≥ 0.9). Not retired: still probed and benchmarked, so they re-enter automatically when
+the window recovers. Existing bots' chains are untouched (history preserved; monitor/repair will re-resolve live).
+This replaces the open "replace groq-qwen27b in repair rotations" item with a measured, reversible rule.

@@ -65,9 +65,11 @@ def live_lanes() -> list[tuple[str, str, str | None, str]]:
             # D-095: builder work (architect/planner/repair/insight) goes to the best MEASURED lane first, not the first
             # provider alphabetically. Tiers: 0 = bench >= 0.75, 1 = un-benchmarked (provider order), 2 = weak (< 0.5 on
             # >= 4 tests) — still usable as a last resort, never first. Local lanes always last.
-            tier = 3 if m.provider == "ollama" else (2 if (rate is not None and rate < 0.5 and b["total"] >= 4) else (1 if rate is None else 0))
+            tier = 3 if m.provider == "ollama" else (2 if is_weak(m) else (1 if rate is None else 0))
             cands.append(((tier, -(rate or 0), order[m.provider], float(h.get("latency_s") or 5.0)), m))
         cands.sort(key=lambda x: x[0])
+        if any(c[0][0] < 2 for c in cands):                          # D-096: weak lanes only when nothing better is live
+            cands = [c for c in cands if c[0][0] != 2]
         lanes = [(m.provider, _LANE_BASES[m.provider][0], _LANE_BASES[m.provider][1], m.model) for _, m in cands]
         return lanes or LANES
     except Exception:
@@ -194,11 +196,22 @@ def default_primary(reg: Registry) -> str:
     return LEGACY_PRIMARY
 
 
+WEAK_RATE, WEAK_MIN_TESTS = 0.5, 8      # D-096: < 50% over at least two full reference runs (4 tests each)
+
+
+def is_weak(m) -> bool:
+    """D-096: a lane whose measured quality is < WEAK_RATE over >= WEAK_MIN_TESTS scored tests. Weak lanes are not
+    retired — they keep being probed and benchmarked and re-enter chains as soon as their window recovers — but new
+    bots' fallback chains and the primary choice exclude them. Existing bots keep their chains (history preserved)."""
+    b = (m.limits or {}).get("bench") or {}
+    return bool(b.get("total")) and b["total"] >= WEAK_MIN_TESTS and (b["pass"] / b["total"]) < WEAK_RATE
+
+
 def default_fallbacks(reg: Registry, primary: str | None = None) -> list[str]:
     """Ranked remote lanes minus the primary, then the best local model."""
     primary = primary or default_primary(reg)
     order = {"groq": 0, "gemini": 1, "openrouter": 2}
-    rem = [m for m in ranked_remote(reg) if m.id != primary]
+    rem = [m for m in ranked_remote(reg) if m.id != primary and not is_weak(m)]   # D-096
     loc = [m for m in reg.all("models") if m.location == "local" and m.verified != "BLOCKED"]
     loc.sort(key=lambda m: -(m.tool_call_score or 0))
     return [m.id for m in rem][:5] + ([loc[0].id] if loc else [])

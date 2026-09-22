@@ -93,12 +93,12 @@ def propose(ev: dict) -> list[dict]:
     if f.get("capability_missing", 0) >= 1:
         P.append({"kind": "architect", "severity": "high" if f["capability_missing"] >= 2 else "low",
                   "evidence": f"{f['capability_missing']} CAPABILITY_MISSING failures ({ev['fail_examples']['capability_missing'][:2]})",
-                  "suggestion": "spec_consistency (D-052) covers write/read/web hints; extend its patterns with the verbs seen in these prompts.",
+                  "suggestion": "spec_consistency (D-052/D-093) covers write/read/web/shell hints; if these prompts use other verbs, extend its patterns.",
                   "auto_actionable": None})
     if f.get("wrong_answer", 0) / total_f > 0.5 and f.get("wrong_answer", 0) >= 4:
         P.append({"kind": "quality", "severity": "medium",
                   "evidence": f"{f['wrong_answer']} genuinely wrong answers of {total_f} failures",
-                  "suggestion": "Most failures are reasoning quality, not plumbing. Prefer bench-ranked lanes as PRIMARY (currently primary is fixed to groq-gptoss120b) — decision needed: make primary = top bench lane per build.",
+                  "suggestion": "Most failures are reasoning quality, not plumbing. Primary and builder lanes are already bench-ranked (D-050/D-095); check whether the weak lanes below are still in chains.",
                   "auto_actionable": None})
     if ev["unbenched_lanes"]:
         P.append({"kind": "lanes", "severity": "low", "evidence": f"lanes without a quality score: {ev['unbenched_lanes']}",
@@ -106,7 +106,7 @@ def propose(ev: dict) -> list[dict]:
                   "auto_actionable": {"kind": "bench", "payload": {"lanes": ev["unbenched_lanes"][:3], "day": datetime.date.today().isoformat(), "trigger": "insight"}}})
     if ev["weak_lanes"]:
         P.append({"kind": "lanes", "severity": "low", "evidence": f"lanes scoring <75% on the reference suite: {ev['weak_lanes']}",
-                  "suggestion": "They already sit at the tail of the chain; if a lane stays <50% over 3 windows, retire it from presets (decision).",
+                  "suggestion": "They sit at the tail of the chain; lanes <50% over a full window are auto-demoted from chains by D-096 (see registry notes).",
                   "auto_actionable": None})
     r = ev["repairs"]
     if r["total"] >= 2 and r["ok"] / r["total"] < 0.5:
