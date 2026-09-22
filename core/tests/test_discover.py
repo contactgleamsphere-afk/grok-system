@@ -83,3 +83,19 @@ def test_d084_quota_during_discovery_defers_instead_of_rejecting(tmp_path, monke
     (tmp_path / "registry" / "discovery.json").write_text(json.dumps(led))
     out3 = fd.run("openrouter", 5, fetch=lambda url: CATALOG, prober=lambda b, k, m: {"outcome": "ok", "latency_s": 1.0}, looper=looper)
     assert "or-good" in out3["added"]
+
+
+def test_d086_whole_sweep_error_is_network_outage_not_lane_health(tmp_path, monkeypatch):
+    """D-086: every remote lane erroring in one sweep (>=2 providers) = local network down; health must not change."""
+    reg, fd = _setup(tmp_path, monkeypatch)
+    monkeypatch.setenv("GROQ_API_KEY", "x"); monkeypatch.setenv("GEMINI_API_KEY", "x")
+    reg.upsert("models", ModelEntry(id="g1", provider="groq", model="a", capabilities=["chat", "tools"], context_window=32000, location="remote", verified="VERIFIED", limits={"health": {"ok": True, "failures": 0, "last_outcome": "ok"}}))
+    reg.upsert("models", ModelEntry(id="m1", provider="gemini", model="b", capabilities=["chat", "tools"], context_window=32000, location="remote", verified="VERIFIED", limits={"health": {"ok": True, "failures": 2, "last_outcome": "ok"}}))
+    import factory_probe as fp
+    out = fp.run(only={"g1", "m1"}, prober_remote=lambda *a: {"outcome": "error", "detail": "URLError"})
+    assert out["network_down"] is True and out["changed"] == []
+    m = Registry(tmp_path / "registry").get("models", "m1")
+    assert m.limits["health"]["failures"] == 2 and m.verified == "VERIFIED"        # would have been BLOCKED at 3
+    # a single provider erroring is still a real signal
+    out2 = fp.run(only={"g1", "m1"}, prober_remote=lambda base, key, model: {"outcome": "error", "detail": "500"} if model == "b" else {"outcome": "ok", "latency_s": 1})
+    assert not out2.get("network_down") and Registry(tmp_path / "registry").get("models", "m1").verified == "BLOCKED"

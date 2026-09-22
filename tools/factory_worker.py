@@ -210,6 +210,10 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
             nxt = (datetime.datetime.now() + datetime.timedelta(hours=1))
             store.enqueue("probe", {"only": [], "hour": nxt.strftime("%Y-%m-%dT%H")}, priority=1, parent=jid, actor=worker, not_before=time.time() + 3600)
         res = fpr.run(set(p["only"]) if p.get("only") else None)
+        if res.get("network_down"):                   # D-086: our outage, not theirs — re-probe in 10 min, touch nothing
+            store.audit("probe.network_down", job_id=jid, actor=worker, detail=res["detail"])
+            store.enqueue("probe", {"only": [], "hour": p.get("hour", "") + "-retry", "retry_of": jid}, priority=0, parent=jid, actor=worker, not_before=time.time() + 600)
+            return {"probed": res["probed"], "network_down": True, "detail": res["detail"]}
         for r in res["changed"]:
             store.audit("model.health", job_id=jid, actor=worker, model=r["id"], outcome=r["outcome"],
                         before=r["before"], after=r["after"], detail=r.get("detail"))

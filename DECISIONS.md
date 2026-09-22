@@ -424,3 +424,10 @@ discover re-tries them once the cap rolls over.
 ## D-085 — Bench: timeouts scored as availability (2026-09-22) — VERIFIED (unit)
 `factory_bench.record()` only discounted 429s; a TIMEOUT test (D-075 already treats it as availability for bot status)
 still counted as a quality failure against the lane. Now `timeouts` is passed through and summed with `quota`.
+
+## D-086 — Whole-sweep error = local outage (2026-09-22) — VERIFIED (unit + live evidence)
+Probe 60d56672 at 20:17Z (laptop entering standby, Wi-Fi in "Adaptive Connected Standby") returned `error` for all
+13 remote lanes across 3 providers and incremented every `failures` counter; two lanes reached 2 of the 3 that
+trigger BLOCKED. Thirteen providers do not fail simultaneously — we do. `factory_probe.run()` now detects an
+all-remote-error sweep spanning ≥2 providers, records nothing, and the worker re-queues a probe in 10 min
+(`probe.network_down`). Counters from that sweep reset to 0.

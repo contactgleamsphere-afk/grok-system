@@ -109,7 +109,7 @@ def apply(entry, res: dict, now: float) -> tuple[str, str]:
 
 
 def run(only: set[str] | None = None, dry_run: bool = False, prober_remote=probe_remote, prober_local=probe_local) -> dict:
-    reg = Registry(ROOT / "registry"); now = time.time(); rows = []
+    reg = Registry(ROOT / "registry"); now = time.time(); rows = []; pending = []
     for e in reg.all("models"):
         if only and e.id not in only: continue
         if e.provider in BASES:
@@ -121,6 +121,16 @@ def run(only: set[str] | None = None, dry_run: bool = False, prober_remote=probe
             res = prober_local(e.model)
         else:
             rows.append({"id": e.id, "outcome": "skipped", "detail": f"provider {e.provider} has no prober"}); continue
+        pending.append((e, res))
+    # D-086: if EVERY remote lane errored in the same sweep (>=2 providers), the fault is on our side (Wi-Fi dropping into
+    # standby, captive portal, DNS) — not 18 providers failing at once. Record nothing against the lanes.
+    remote = [(e, r) for e, r in pending if e.location == "remote"]
+    provs = {e.provider for e, _ in remote}
+    if remote and len(provs) >= 2 and all(r["outcome"] == "error" for _, r in remote):
+        return {"probed": len(pending), "rows": [{"id": e.id, "model": e.model, **r, "before": e.verified, "after": e.verified} for e, r in pending],
+                "changed": [], "retired": [], "healthy": [], "network_down": True,
+                "detail": f"all {len(remote)} remote lanes across {len(provs)} providers errored in one sweep -> local network outage, health untouched"}
+    for e, res in pending:
         before, after = apply(e, res, now)
         if not dry_run: reg.upsert("models", e)
         rows.append({"id": e.id, "model": e.model, **res, "before": before, "after": after})
