@@ -347,3 +347,8 @@ Chat → job fbeb65ad → bot 018 (4/4) → auto run ca31fcf3 → totals.csv cor
 - Concurrently on the fast lane: nightly report 23:09, bench (gemini-flash36 2/4, gemini-lite31 4/4; cooling Groq lanes skipped per D-090), probe 23:13 (9 healthy). Neither waited for the creates.
 - D-092 unit `test_d092_builder_chat_429_cools_lane` — PASS (88/88; laptop self-test 88 passed).
 - D-091 live: `audit-verify` ok rows 752 hashed 0 (chain starts with the next export).
+
+## D-093/D-094 live — 2026-09-22 23:25–23:32
+- `add create --objective ...` (mis-typed) enqueued objective="--objective" → architect call wasted → D-094 added; re-tested: refused at enqueue.
+- "Run pytest in the workspace and report how many tests passed" under default allowance → `security.violation` ("shell:workspace is needed"), job paused after 2 s — no doomed bot built (bot 019 class closed).
+- Same objective with owner grant `--allow fs:read,fs:write,shell:workspace` → bot 024 pytest-runner-bot (tools write_file/read_file/exec), T2 wrote test_dummy.py and ran pytest via exec → `2`; 3/3 VERIFIED in 48 s on gemini-lite31.
