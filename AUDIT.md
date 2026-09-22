@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 436 | 2026-09-22 15:29:06 | 123271bb |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 437 | 2026-09-22 15:29:07 | 123271bb |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect: objective needs permissions outside the allowance ['fs:read', 'fs:write', 'net:search', 'net:fetch']: The objective re |
-| 438 | 2026-09-22 15:29:07 | 123271bb |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: architect: objective needs permissions outside the a |
-| 439 | 2026-09-22 15:29:14 | 6f50b9fd |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 2} |
 | 440 | 2026-09-22 15:30:47 | 123271bb |  | job.payload_patched | owner | {"patch": {"allowed_permissions": ["fs:read", "fs:write", "shell:workspace"]}} |
 | 441 | 2026-09-22 15:30:47 | 123271bb |  | job.resumed | owner | {} |
 | 442 | 2026-09-22 15:38:02 | c5bb159c |  | job.enqueued | nightly-task | {"kind": "monitor", "payload": {"only": null, "day": "2026-09-22"}} |
@@ -402,3 +398,7 @@
 | 833 | 2026-09-22 23:46:56 | 9d375361 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "create", "payload": {"objective": "Read summary.txt and write its content in uppercase to summary_upper.txt.", "plan": "593061c979 |
 | 834 | 2026-09-22 23:46:56 | 593061c9 |  | plan.made | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini:gemini-3.1-flash-lite", "steps": 3, "queued": [[3, "9d375361"]], "rationale": "The objective requires a three-step pipeline |
 | 835 | 2026-09-22 23:46:56 | 593061c9 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"name": "plan:3 steps", "status": "queued 9d375361"}} |
+| 836 | 2026-09-22 23:47:00 | 9d375361 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 837 | 2026-09-22 23:47:06 | 9d375361 | 025 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "text-transformer", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["gemini-lite31", "gemin |
+| 838 | 2026-09-22 23:48:09 | 9d375361 | 025 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='LIVENESS_OK' last='LIVENESS_OK' \| T2 PASS 38s [done] expect='HELLO WORLD' last='RESULT: HELLO WORLD' |
+| 839 | 2026-09-22 23:48:09 | 9d375361 | 025 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "025", "name": "text-transformer", "pass": 3, "total": 3, "status": "active", "verified": "VERIFIED"}} |
