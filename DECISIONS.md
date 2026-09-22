@@ -132,3 +132,16 @@ chained from the daily `report`; scores expire after 14 days. One failing lane n
 hand-synced duplicate in `C:\AI\Factory\tools` was archived (single source of truth).
 Rejected: benchmarking with fallbacks enabled (score would be the chain's, not the lane's); a bespoke benchmark
 prompt set (the acceptance suite already exercises echo, two tool loops and a sandbox-escape refusal).
+
+## D-051 — Quota failures are availability, not quality (2026-09-22) — VERIFIED
+Bench sweep a8c013ad scored groq-gptoss20b 2/4 and or-qwen27b 0/4; the logs were pure 429s (Groq per-minute
+limit tripped by the sweep itself; OpenRouter free upstream rate-limited). Scoring that as quality would have
+reordered the fallback chain on noise, and the nightly monitor would have demoted a healthy bot and sent it to
+repair — which rewrites instructions that were never wrong. Decision:
+1. `run-bot-tests.ps1` counts failures whose log matches a 429/rate-limit/RESOURCE_EXHAUSTED pattern as `quota`.
+2. Bench: quota-failed tests are removed from the scored total; a run where every failure was quota is recorded
+   as `bench_last_inconclusive` and never enters the rolling window. 75 s pause between lanes in a sweep.
+3. Monitor: if every failure was quota → row is `inconclusive`, status unchanged, no repair; a re-monitor of just
+   those bots is queued for +2 h. One genuine failure still demotes.
+4. `factory_bench.py --forget <lane>` drops a window polluted before this rule existed (used on the two lanes).
+Rejected: retrying the failing test in-place inside the runner (would double the load on an already limited lane).

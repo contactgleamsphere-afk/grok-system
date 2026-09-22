@@ -18,17 +18,25 @@ import factory_pipeline as fp                    # noqa: E402
 def monitor(only: set[str] | None = None, dry_run: bool = False, runner=None) -> dict:
     reg = Registry(ROOT / "registry"); bots_root = fp.LAPTOP_BOTS if fp.WIN else ROOT / "bots"
     f = BotFactory(reg, bots_root); runner = runner or fp.run_tests
-    rows, regressed = [], []
+    rows, regressed, inconclusive = [], [], []
     for e in reg.all("bots"):
         if (e.status != "active" and e.id != "001") or (only and e.id not in only):
             continue
         bot_dir = bots_root / f"{e.id}-{e.name}"
         t0 = time.time()
+        quota = 0
         try:
-            res = runner(bot_dir); p, t = int(res["pass"]), int(res["total"]); ev = res["evidence"]
+            res = runner(bot_dir); p, t = int(res["pass"]), int(res["total"]); ev = res["evidence"]; quota = int(res.get("quota", 0) or 0)
         except Exception as ex:                       # runner crash = failure, never silent
             p, t, ev = 0, len(e.tests), f"runner error: {ex}"
         before = e.status
+        # D-051: every failure was a 429/quota -> the lanes were unavailable, the bot is not broken. Do not demote
+        # (a demotion would trigger a repair that rewrites a healthy bot's instructions); report inconclusive.
+        if p < t and quota and p + quota >= t:
+            rows.append({"id": e.id, "name": e.name, "pass": p, "total": t, "quota": quota, "before": before, "after": before,
+                         "inconclusive": True, "seconds": int(time.time() - t0)})
+            inconclusive.append(e.id)
+            continue
         if not dry_run:
             e2 = f.record_test_result(e.id, p, t, f"monitor {datetime.date.today()}: {ev}")
             after = e2.status
@@ -44,9 +52,9 @@ def monitor(only: set[str] | None = None, dry_run: bool = False, runner=None) ->
         head = "# MONITOR — nightly re-verification of active bots\n\n| date | bot | pass | status | s |\n|---|---|---|---|---|\n"
         body = md.read_text(encoding="utf-8") if md.exists() else head
         for r in rows:
-            body += f"| {datetime.datetime.now():%Y-%m-%d %H:%M} | {r['id']} {r['name']} | {r['pass']}/{r['total']} | {r['before']}→{r['after']} | {r['seconds']} |\n"
+            body += f"| {datetime.datetime.now():%Y-%m-%d %H:%M} | {r['id']} {r['name']} | {r['pass']}/{r['total']}{' (quota, inconclusive)' if r.get('inconclusive') else ''} | {r['before']}→{r['after']} | {r['seconds']} |\n"
         md.write_text(body, encoding="utf-8")
-    return {"ok": not regressed, "regressed": regressed, "rows": rows}
+    return {"ok": not regressed, "regressed": regressed, "inconclusive": inconclusive, "rows": rows}
 
 
 if __name__ == "__main__":

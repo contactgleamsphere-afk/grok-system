@@ -330,6 +330,22 @@ def test_monitor_demotes_failed_bot_and_keeps_passing(tmp_path, monkeypatch):
     assert "098 fail-bot" in (reg.root.parent / "MONITOR.md").read_text()
 
 
+def test_monitor_quota_failures_are_inconclusive_not_demotions(tmp_path, monkeypatch):
+    import sys, pathlib, importlib
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[2] / "tools"))
+    fm = importlib.import_module("factory_monitor"); fp = importlib.import_module("factory_pipeline")
+    reg, f = _reg_and_factory(tmp_path)
+    monkeypatch.setattr(fm, "ROOT", reg.root.parent); monkeypatch.setattr(fp, "WIN", False)
+    f.build(_rspec(id="095", name="quota-bot")); f.record_test_result("095", 1, 1, "ok")
+    fake = lambda bot_dir: {"pass": 0, "total": 2, "quota": 2, "evidence": "429s"}      # all failures were rate limits
+    out = fm.monitor(only={"095"}, runner=fake)
+    assert out["ok"] is True and out["inconclusive"] == ["095"] and out["rows"][0]["inconclusive"]
+    assert reg.get("bots", "095").status == "active"                                    # NOT demoted, no repair
+    fake2 = lambda bot_dir: {"pass": 0, "total": 2, "quota": 1, "evidence": "1 real fail"}   # one genuine failure -> demote
+    out = fm.monitor(only={"095"}, runner=fake2)
+    assert out["regressed"] == ["095"] and reg.get("bots", "095").status == "testing"
+
+
 def test_repair_rejects_permission_expansion_and_promotes_on_pass(tmp_path, monkeypatch):
     import sys, pathlib, importlib, json
     sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[2] / "tools"))

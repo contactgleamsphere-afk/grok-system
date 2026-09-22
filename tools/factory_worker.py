@@ -137,10 +137,16 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
                 raise RuntimeError("logic: config.json unhealthy, monitor aborted before demoting anyone: " + "; ".join(probs))
         res = fm.monitor(set(p["only"]) if p.get("only") else None)
         for r in res["rows"]:
-            store.audit("bot.monitored", job_id=jid, bot_id=r["id"], actor=worker, result=f"{r['pass']}/{r['total']}", before=r["before"], after=r["after"])
+            store.audit("bot.monitored", job_id=jid, bot_id=r["id"], actor=worker, result=f"{r['pass']}/{r['total']}", before=r["before"], after=r["after"],
+                        inconclusive=bool(r.get("inconclusive")), quota=r.get("quota", 0))
+            if r.get("inconclusive"):
+                continue
             if r["after"] != "active":
                 store.audit("bot.demoted", job_id=jid, bot_id=r["id"], actor=worker, to=r["after"])
                 store.enqueue("repair", {"bot_id": r["id"], "max_rounds": 2}, priority=2, parent=jid, actor=worker)
+        if res.get("inconclusive"):
+            store.enqueue("monitor", {"only": res["inconclusive"], "day": datetime.date.today().isoformat(), "retry_of": jid},
+                          priority=3, parent=jid, actor=worker, not_before=time.time() + 7200)
         return res
     raise FactoryError(f"unknown job kind {kind}")
 
