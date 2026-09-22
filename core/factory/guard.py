@@ -101,3 +101,5 @@ def bundle_drift(bot_dir, seal: dict | None) -> list[str]:
         return ["<unsealed>"]
     now = bundle_seal(bot_dir)
     return [k for k in SEALED_FILES if now.get(k) != seal.get(k)]
+
+# D-074 gate proof touch
