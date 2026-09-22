@@ -65,6 +65,13 @@ def main(a):
         if a[1] == "queue":
             kind = a[2]; rest = a[3:]
             argv = [sys.executable, str(w), "add", kind, *rest, "--actor", "master-001"]
+            if kind == "run" and "--in" in rest:
+                # D-064: the master only ever names an inbox folder (its own workspace, never an outside path — the exec
+                # guard rightly refuses those). inbox/<name> -> absolute path for the worker.
+                i = rest.index("--in"); name = pathlib.Path(rest[i + 1]).name
+                inbox = pathlib.Path(__file__).resolve().parents[1] / "inbox" / name
+                if not inbox.is_dir(): print(f"inbox folder '{name}' not found under workspace/inbox; available: {[d.name for d in (inbox.parent).glob('*') if d.is_dir()] if inbox.parent.exists() else []}"); return 1
+                argv[argv.index("--in") + 1] = str(inbox)
             if kind == "monitor" and rest: argv = [sys.executable, str(w), "add", "monitor", "--only", rest[0], "--actor", "master-001"]
         else:
             argv = [sys.executable, str(w), a[1], *a[2:]]
