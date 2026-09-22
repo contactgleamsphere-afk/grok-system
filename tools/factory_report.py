@@ -28,6 +28,11 @@ def build() -> dict:
             for k, v in json.loads(led.read_text(encoding="utf-8")).get("verdicts", {}).items():   # D-069: was reading the wrong level
                 if v.get("verdict") == "needs_owner": owner.append(f"ACTION REQUIRED (owner): {k} — {v.get('reason', '')[:140]}")
         except Exception: pass
+    st = ROOT / "run" / "selftest.json"          # D-074
+    try:
+        stj = json.loads(st.read_text(encoding="utf-8"))
+        if not stj.get("ok"): owner.append(f"WORKER BLOCKED: core/tests red on current code ({stj.get('tail')}) — fix and push; nothing is processed until then")
+    except Exception: pass
     bench = sorted([(m.id, (m.limits or {}).get("bench")) for m in reg.all("models") if (m.limits or {}).get("bench", {}).get("total")],
                    key=lambda x: (-(x[1]["pass"] / x[1]["total"]), x[1].get("secs", 9e9)))
     jobs = store.list()

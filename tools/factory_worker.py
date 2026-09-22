@@ -359,8 +359,36 @@ def _keep_awake(on: bool) -> None:
         pass
 
 
+def _self_test_gate(store: "JobStore", worker: str) -> bool:
+    """D-074: a long-lived worker must not run code whose own regression suite is red (a bad push would otherwise
+    demote/repair real bots with broken logic). Runs core/tests once per code stamp; result cached in run/selftest.json.
+    Skips gracefully when pytest is absent (sandbox CI still covers it)."""
+    import subprocess
+    cache = ROOT / "run" / "selftest.json"; stamp = _code_stamp()
+    try:
+        c = json.loads(cache.read_text(encoding="utf-8"))
+        if c.get("stamp") == stamp: return bool(c.get("ok"))
+    except Exception:
+        pass
+    try:
+        r = subprocess.run([sys.executable, "-m", "pytest", str(ROOT / "core" / "tests"), "-q", "-p", "no:cacheprovider", "-x"],
+                           cwd=str(ROOT), capture_output=True, text=True, timeout=600, env={**os.environ, "AIFACTORY_REPO": str(ROOT)})
+        if "No module named pytest" in (r.stderr or ""): ok, tail = True, "pytest not installed - skipped"
+        else: ok, tail = r.returncode == 0, (r.stdout or r.stderr).strip().splitlines()[-1:] 
+    except Exception as e:
+        ok, tail = True, f"selftest error {type(e).__name__} - skipped"
+    cache.parent.mkdir(exist_ok=True); cache.write_text(json.dumps({"stamp": stamp, "ok": ok, "tail": tail, "at": time.strftime("%Y-%m-%dT%H:%M:%S")}), encoding="utf-8")
+    store.audit("worker.selftest", actor=worker, ok=ok, tail=tail)
+    return ok
+
+
 def run(worker: str, once: bool = False, idle_exit: int = 0) -> int:
     store = JobStore(DB); idle_since = time.time(); processed = 0; stamp = _code_stamp()
+    if not once and not _self_test_gate(store, worker):
+        store.audit("worker.blocked_by_tests", actor=worker, reason="core/tests red on current code; refusing to process jobs until code changes")
+        # wait for a code change (repo-sync/push), then let the supervisor relaunch us
+        while _code_stamp() == stamp: time.sleep(30)
+        return 0
     while True:
         # D-039: a long-lived worker must never run stale code — exit between jobs when any factory module changed;
         # the supervisor loop (run-worker.ps1) relaunches it with fresh modules.
