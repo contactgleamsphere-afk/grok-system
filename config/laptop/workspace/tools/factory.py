@@ -2,7 +2,8 @@
 
     python tools/factory.py create "<plain-English objective>"   # synchronous (blocks ~2-5 min)
     python tools/factory.py queue create "<objective>" | test <id> | repair <id> | monitor [ids]   # async via job queue
-    python tools/factory.py jobs | audit [bot_id] | report
+    python tools/factory.py queue probe | discover | bench        # model-lane health / new free lanes / quality scores
+    python tools/factory.py jobs | audit [bot_id] | report | lanes
     python tools/factory.py test <bot_id>
     python tools/factory.py list
 
@@ -19,6 +20,18 @@ def main(a):
     if a[1] == "list":
         b = json.loads((REPO / "registry" / "bots.json").read_text(encoding="utf-8"))
         for k, v in sorted(b.items()): print(f"{k} {v['name']:20s} {v['status']:9s} {v['verified']:10s} tools={','.join(v['tools'])}")
+        return 0
+    if a[1] == "lanes":
+        # model lanes: health + benchmark rank (D-050). Compact: the master runs on small-context lanes.
+        m = json.loads((REPO / "registry" / "models.json").read_text(encoding="utf-8"))
+        rows = []
+        for k, v in m.items():
+            if v.get("location") != "remote": continue
+            h = (v.get("limits") or {}).get("health") or {}; b = (v.get("limits") or {}).get("bench") or {}
+            rows.append((k, v["verified"], "ok" if h.get("ok", True) else h.get("last_outcome", "?"), f"{b['pass']}/{b['total']}" if b.get("total") else "-", b.get("secs")))
+        rows.sort(key=lambda r: (r[1] == "BLOCKED", -(int(r[3].split("/")[0]) / int(r[3].split("/")[1])) if r[3] != "-" else 1))
+        print("LANES lane verified health bench secs")
+        for r in rows: print(" ".join(str(x) for x in r))
         return 0
     if a[1] == "report":
         r = subprocess.run([sys.executable, str(REPO / "tools" / "factory_report.py"), "--brief"], env=env, cwd=str(REPO), capture_output=True, text=True, timeout=120)

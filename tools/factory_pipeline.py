@@ -183,7 +183,7 @@ def run_master_tests(cap: int = 240) -> dict:
     raw = r.stdout + r.stderr
     m = re.search(r"pass/total: (\d+)/(\d+)", raw)
     ev = raw.strip().splitlines()[-1] if raw.strip() else "no output"
-    return {"pass": int(m.group(1)) if m else 0, "total": int(m.group(2)) if m else 4, "evidence": ev[:900], "raw": raw}
+    return {"pass": int(m.group(1)) if m else 0, "total": int(m.group(2)) if m else 5, "evidence": ev[:900], "raw": raw}
 
 
 def run_tests(bot_dir: pathlib.Path, cap: int = 300, lane: str | None = None) -> dict:
