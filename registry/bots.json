@@ -236,14 +236,14 @@
       "primary": "groq-gptoss120b"
     },
     "name": "todo-extractor",
-    "notes": "tests 3/4: monitor 2026-09-22: T1 FAIL 180s [done] expect='X_OK' last='RESULT: Extracted 3 TODO/FIXME items into todos.md.' | T2 PASS 186s [done] expect='2' last='RESULT: Extracted 2 items (TODO/FIXME) from notes.txt to todos.md.' | T3 PASS 180s [done] expect='0' last='RESULT: 0' | T4 PASS 95s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: repair re-verify 2026-09-22: T1 PASS 54s [done] expect='X_OK' last='X_OK' | T2 PASS 175s [done] expect='2' last='RESULT: Extracted 2 TODO/FIXME items from notes.txt to todos.md.' | T3 PASS 175s [done] expect='0' last='RESULT: Extracted 0 items from notes.txt and wrote todos.md.' | T4 PASS 95s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
     ],
     "purpose": "Extract TODO and FIXME lines from notes.txt, write them with line numbers to todos.md, and output the count of items found.",
     "schedules": [],
-    "status": "testing",
+    "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write notes.txt containing \"Line one\\nTODO fix bug\\nSome text\\nFIXME adjust UI\\nEnd\" then run the extractor -> 2",
@@ -254,8 +254,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T03:46:06+00:00",
-    "verified": "UNVERIFIED",
+    "updated": "2026-09-22T05:11:06+00:00",
+    "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\007-todo-extractor"
   },
