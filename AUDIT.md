@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 122 | 2026-09-21 23:09:04 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 123 | 2026-09-21 23:09:13 | 08d39529 |  | job.enqueued | builder | {"kind": "report", "payload": {"day": "2026-09-21"}} |
-| 124 | 2026-09-21 23:09:17 | 08d39529 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 125 | 2026-09-21 23:09:17 | bb6439ae |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "report", "payload": {"day": "2026-09-22"}} |
-| 126 | 2026-09-21 23:09:17 | 08d39529 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 127 | 2026-09-21 23:15:27 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 128 | 2026-09-21 23:19:05 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 129 | 2026-09-21 23:19:11 | 92e8b32f | 001 | job.enqueued | builder | {"kind": "test", "payload": {"bot_id": "001"}} |
@@ -402,3 +397,8 @@
 | 519 | 2026-09-22 17:15:32 | 9a315c7a | 005 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 520 | 2026-09-22 17:15:32 | 16d02341 | 005 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "005", "max_rounds": 2}} |
 | 521 | 2026-09-22 17:15:32 | 9a315c7a | 005 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "005", "status": "testing", "verified": "UNVERIFIED"}} |
+| 522 | 2026-09-22 17:15:36 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 523 | 2026-09-22 17:15:48 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["73 passed in 5.97s"]} |
+| 524 | 2026-09-22 17:15:49 | 7bfeca2a | 019 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 525 | 2026-09-22 17:15:49 | 7bfeca2a | 019 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [], "boundary_diff": {}} |
+| 526 | 2026-09-22 17:15:49 | 7bfeca2a | 019 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: logic: spec/tests inconsistent, repair cannot chang |
