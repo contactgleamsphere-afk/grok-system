@@ -424,3 +424,8 @@
 {"seq": 424, "ts": 1790064256.875, "job": "0c438fbdd78448ceabd59741461fc410", "bot": "018", "event": "job.claimed", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"attempt": 1}}
 {"seq": 425, "ts": 1790064320.715, "job": "0c438fbdd78448ceabd59741461fc410", "bot": "018", "event": "bot.ran", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"ok": true, "produced": ["totals.csv"], "secs": 62, "reply": "RESULT: totals.csv", "chain": "groq-gptoss120b"}}
 {"seq": 426, "ts": 1790064320.735, "job": "0c438fbdd78448ceabd59741461fc410", "bot": "018", "event": "job.done", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"summary": {"bot_id": "018", "name": "run", "status": "ok totals.csv"}}}
+{"seq": 427, "ts": 1790064389.842, "job": null, "bot": null, "event": "worker.restart", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"reason": "code changed on disk"}}
+{"seq": 428, "ts": 1790064509.139, "job": "ad28565563bf434cb292544e1050856a", "bot": null, "event": "job.enqueued", "actor": "owner", "detail": {"kind": "probe", "payload": {"only": ["or-deepseek"], "hour": "2026-09-22T09"}}}
+{"seq": 429, "ts": 1790064509.439, "job": null, "bot": null, "event": "worker.restart", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"reason": "code changed on disk"}}
+{"seq": 430, "ts": 1790064513.85, "job": "ad28565563bf434cb292544e1050856a", "bot": null, "event": "job.claimed", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"attempt": 1}}
+{"seq": 431, "ts": 1790064514.418, "job": "ad28565563bf434cb292544e1050856a", "bot": null, "event": "job.done", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"summary": {"healthy": [], "changed": []}}}

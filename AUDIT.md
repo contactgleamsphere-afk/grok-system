@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 27 | 2026-09-21 19:50:00 | 009ae02a |  | job.done | w5 | {"summary": {}} |
-| 28 | 2026-09-21 19:50:00 | a5c299d7 | 004 | job.claimed | w5 | {"attempt": 1} |
-| 29 | 2026-09-21 19:50:15 | a5c299d7 | 004 | bot.repair | w5 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "gemini:gemini-3.5-flash-lite", "sandbox": null, "rejected": "instruction |
-| 30 | 2026-09-21 19:50:15 | a5c299d7 | 004 | job.failed | w5 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
-| 31 | 2026-09-21 19:51:25 | a5c299d7 |  | job.resumed | owner | {} |
 | 32 | 2026-09-21 19:51:57 | a5c299d7 |  | job.resumed | owner | {} |
 | 33 | 2026-09-21 19:51:58 | a5c299d7 | 004 | job.claimed | w6 | {"attempt": 1} |
 | 34 | 2026-09-21 19:54:53 | a5c299d7 | 004 | bot.repair | w6 | {"ok": true, "status": "active", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-120b", "sandbox": "4/4", "rejected": null}], "boundary |
@@ -402,3 +397,8 @@
 | 424 | 2026-09-22 09:04:16 | 0c438fbd | 018 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 425 | 2026-09-22 09:05:20 | 0c438fbd | 018 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"ok": true, "produced": ["totals.csv"], "secs": 62, "reply": "RESULT: totals.csv", "chain": "groq-gptoss120b"} |
 | 426 | 2026-09-22 09:05:20 | 0c438fbd | 018 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "name": "run", "status": "ok totals.csv"}} |
+| 427 | 2026-09-22 09:06:29 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 428 | 2026-09-22 09:08:29 | ad285655 |  | job.enqueued | owner | {"kind": "probe", "payload": {"only": ["or-deepseek"], "hour": "2026-09-22T09"}} |
+| 429 | 2026-09-22 09:08:29 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 430 | 2026-09-22 09:08:33 | ad285655 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 431 | 2026-09-22 09:08:34 | ad285655 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": [], "changed": []}} |

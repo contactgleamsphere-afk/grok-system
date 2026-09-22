@@ -369,8 +369,9 @@
     "limits": {
       "health": {
         "blocked_by": "probe",
+        "first_gone": "2026-09-22T08:08:33",
         "last_outcome": "gone",
-        "last_probe": "2026-09-21T20:43:55",
+        "last_probe": "2026-09-22T08:08:33",
         "ok": false,
         "reason": "gone: {\"error\":{\"message\":\"this model is unavailable for free. the paid version is available now - use this slug instead: deepseek/deepseek-v4-flash-0731\",\"code\":404}"
       },
@@ -384,7 +385,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-21T20:43:59+00:00",
+    "updated": "2026-09-22T08:08:34+00:00",
     "verified": "BLOCKED"
   },
   "or-ling-30-flash-vl": {
