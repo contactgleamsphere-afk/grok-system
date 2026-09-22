@@ -399,11 +399,14 @@
       ],
       "health": {
         "failures": 0,
-        "last_outcome": "ok",
+        "last_outcome": "quota",
         "last_probe": "2026-09-22T22:13:27",
         "latency_s": 0.5,
         "note": "D-086: 20:17Z sweep discarded (local network outage)",
-        "ok": true
+        "ok": false,
+        "quota_kind": "tpm",
+        "quota_seen": "2026-09-22T22:28:40",
+        "quota_until": 1790117020.2804146
       }
     },
     "location": "remote",
@@ -413,7 +416,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 0.9344640000000002,
-    "updated": "2026-09-22T22:13:47+00:00",
+    "updated": "2026-09-22T22:28:40+00:00",
     "verified": "VERIFIED"
   },
   "local3b": {
