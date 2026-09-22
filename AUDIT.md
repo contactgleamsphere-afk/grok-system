@@ -327,3 +327,8 @@
 | 323 | 2026-09-22 05:36:31 | ac855168 | 003 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": "4/4", "rejected": null}], "boundary_ |
 | 324 | 2026-09-22 05:36:31 | ac855168 | 003 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 325 | 2026-09-22 05:36:31 | ac855168 | 003 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "003", "name": "code-smith", "status": "active", "verified": "VERIFIED"}} |
+| 326 | 2026-09-22 05:36:35 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 327 | 2026-09-22 05:36:40 | 3f313b96 | 004 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 328 | 2026-09-22 05:47:04 | 3f313b96 | 004 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
+| 329 | 2026-09-22 05:47:04 | 3f313b96 | 004 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 330 | 2026-09-22 05:47:04 | 3f313b96 | 004 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "004", "status": "active"}} |
