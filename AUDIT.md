@@ -2,12 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 408 | 2026-09-22 08:43:11 | fbeb65ad |  | job.enqueued | master-001 | {"kind": "create", "payload": {"objective": "reads orders.csv and writes totals.csv with one row per country and the total amount for that c |
-| 409 | 2026-09-22 08:43:24 | 28cfb1d6 | 017 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 102s [done] expect='3' last='RESULT: 3' \| T3 PASS 91s [done] expect='3'  |
-| 410 | 2026-09-22 08:43:24 | 28cfb1d6 | 017 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "017", "status": "active", "verified": "VERIFIED"}} |
-| 411 | 2026-09-22 08:43:28 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 412 | 2026-09-22 08:43:33 | fbeb65ad |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 413 | 2026-09-22 08:43:34 | fbeb65ad | 018 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "csv-country-totals", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["groq-gptoss120b", "o |
 | 414 | 2026-09-22 08:47:50 | fbeb65ad | 018 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 27s [done] expect='X_OK' last='X_OK' \| T2 PASS 90s [done] expect='30' last='RESULT: 30' \| T3 PASS 88s [done] expect='2 |
 | 415 | 2026-09-22 08:47:50 | ca31fcf3 | 018 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "run", "payload": {"bot_id": "018", "task": "reads orders.csv and writes totals.csv with one row per country and the total amount f |
 | 416 | 2026-09-22 08:47:50 | fbeb65ad | 018 | deliver.run_queued | svc-LAPTOP-LRE6PSA8 | {} |
@@ -402,3 +396,9 @@
 | 805 | 2026-09-22 23:28:39 | 8216dd6e |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 806 | 2026-09-22 23:28:41 | 8216dd6e |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect: objective needs permissions outside the allowance ['fs:read', 'fs:write', 'net:search', 'net:fetch']: shell:workspace  |
 | 807 | 2026-09-22 23:28:41 | 8216dd6e |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: architect: objective needs permissions outside the a |
+| 808 | 2026-09-22 23:31:27 | 8216dd6e |  | job.cancelled | owner | {} |
+| 809 | 2026-09-22 23:31:27 | c73bd54a |  | job.enqueued | owner | {"kind": "create", "payload": {"objective": "Given a Python test file test_x.py in the workspace, run it with 'python -m pytest -q test_x.py |
+| 810 | 2026-09-22 23:31:31 | c73bd54a |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 811 | 2026-09-22 23:31:34 | c73bd54a | 024 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "pytest-runner-bot", "tools": ["write_file", "read_file", "exec"], "permissions": ["fs:read", "fs:write", "shell:workspace"], "chai |
+| 812 | 2026-09-22 23:32:19 | c73bd54a | 024 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 17s [done] expect='2' last='RESULT: 2' \| T3 PASS 17s [done] expect='CON |
+| 813 | 2026-09-22 23:32:19 | c73bd54a | 024 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "024", "name": "pytest-runner-bot", "pass": 3, "total": 3, "status": "active", "verified": "VERIFIED"}} |
