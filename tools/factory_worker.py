@@ -40,6 +40,11 @@ DB = ROOT / "run" / "jobs.sqlite3"
 LEASE = 300          # D-043: short lease + heartbeat every 60 s -> a dead worker is detected within 5 min
 
 
+def reg_status(bot_id: str) -> str | None:
+    from factory.registry import Registry
+    e = Registry(ROOT / "registry").get("bots", bot_id); return e.status if e else None
+
+
 def _spec_of(bot_id: str) -> dict | None:
     reg = Registry(ROOT / "registry"); e = reg.get("bots", bot_id)
     if not e: return None
@@ -67,11 +72,19 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
         store.audit("plan.made", job_id=jid, actor=worker, lane=res["lane"], steps=len(res["steps"]), queued=queued, rationale=res.get("rationale", "")[:200])
         return {"name": f"plan:{len(res['steps'])} steps", "status": "queued " + ",".join(q[1] for q in queued), "lane": res["lane"]}
     if kind == "create":
-        # D-054: allowance is enforced INSIDE cmd_create before any file is written (post-hoc check let bot 015 be built)
-        res = fp.cmd_create(p["objective"], p.get("id"), False, False, p.get("allowed_permissions", fp.DEFAULT_ALLOWANCE))
-        spec = res["spec"]
-        store.audit("bot.created", job_id=jid, bot_id=res["bot_id"], actor=worker, name=res["name"], tools=spec["tools"],
-                    permissions=spec["permissions"], chain=res.get("chain"), lane=res.get("spec_lane"))
+        # D-065 crash-resume: if an earlier attempt of THIS job already registered a bot (crash between build and
+        # test verdict), do not build a second one — pick up at the test stage. Identity comes from our own audit.
+        prev = next((r["bot_id"] for r in store.audit_rows(2000) if r["job_id"] == jid and r["event"] == "bot.created" and r["bot_id"]), None)
+        if prev and reg_status(prev) in ("building", "testing"):
+            store.audit("job.resumed_at", job_id=jid, bot_id=prev, actor=worker, stage="test", reason="bot already built by earlier attempt")
+            res = fp.cmd_test(prev); res.update({"bot_id": prev, "name": _spec_of(prev).get("name") if _spec_of(prev) else prev})
+        else:
+            # D-054: allowance is enforced INSIDE cmd_create before any file is written (post-hoc check let bot 015 be built)
+            def _built(rep):
+                store.audit("bot.created", job_id=jid, bot_id=rep["bot_id"], actor=worker, name=rep["name"], tools=rep["spec"]["tools"],
+                            permissions=rep["spec"]["permissions"], chain=rep.get("chain"), lane=rep.get("spec_lane"))
+            res = fp.cmd_create(p["objective"], p.get("id"), False, False, p.get("allowed_permissions", fp.DEFAULT_ALLOWANCE), on_built=_built)
+        spec = res.get("spec") or _spec_of(res["bot_id"]) or {}
         store.audit("bot.tested", job_id=jid, bot_id=res["bot_id"], actor=worker, result=res.get("tests"), status=res.get("status"))
         if res.get("status") != "active":
             # D-036: a fresh bot that misses on first run gets exactly one automatic re-test (flaky lanes / timeouts);

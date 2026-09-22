@@ -260,3 +260,25 @@ def test_d063_run_plan_chains_outputs_and_fails_on_missing_declared_output(tmp_p
     assert rep["steps"][0]["ok"] and (tmp_path / "out" / "1-013" / "errors.txt").read_text() == "ERROR x\nERROR y"
     assert not rep["ok"] and rep["steps"][1]["missing_outputs"] == ["summary.txt"]                             # no silent success
     assert (tmp_path / "out" / "RUN.json").exists()
+
+
+def test_d065_create_resumes_at_test_stage_after_crash(tmp_path, monkeypatch):
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    import importlib, shutil, factory_worker as fw; importlib.reload(fw)
+    from factory.jobs import JobStore
+    from factory.registry import BotEntry
+    shutil.copy(ROOT / "registry" / "tools.json", tmp_path / "registry" / "tools.json"); reg = Registry(tmp_path / "registry")
+    st = JobStore(tmp_path / "run" / "jobs.sqlite3"); monkeypatch.setattr(fw, "DB", tmp_path / "run" / "jobs.sqlite3")
+    j = st.enqueue("create", {"objective": "count words"})
+    # attempt 1 built bot 077 and then died before a verdict: registry says 'testing', audit has bot.created for this job
+    reg.upsert("bots", BotEntry(id="077", name="wc", purpose="count words", status="testing", verified="UNVERIFIED", tools=["read_file"],
+                                permissions=["fs:read"], model_policy={"primary": "groq-a", "fallbacks": []}, workspace="x", tests=["a -> b"], notes=""))
+    st.audit("bot.created", job_id=j["id"], bot_id="077", actor="w1", name="wc")
+    created = {"n": 0}
+    monkeypatch.setattr(fp, "cmd_create", lambda *a, **k: created.__setitem__("n", created["n"] + 1))
+    monkeypatch.setattr(fp, "cmd_test", lambda bid: {"bot_id": bid, "tests": "T1 PASS", "pass": 1, "total": 1, "status": "active", "verified": "VERIFIED"})
+    monkeypatch.setattr(fw, "_spec_of", lambda bid: {"name": "wc", "tools": ["read_file"], "permissions": ["fs:read"]})
+    claimed = st.claim("w2", 300)
+    res = fw.handle(claimed, st, "w2")
+    assert created["n"] == 0 and res["bot_id"] == "077" and res["status"] == "active"                  # no second bot
+    assert "job.resumed_at" in [r["event"] for r in st.audit_rows(20)]

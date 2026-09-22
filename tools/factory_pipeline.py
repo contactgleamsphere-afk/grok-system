@@ -298,7 +298,7 @@ def enforce_allowance(spec: dict, allowed_permissions: list[str] | None, context
         raise SecurityViolation(f"{context}: spec requests permissions beyond the job allowance {sorted(allowed)}: {extra}")
 
 
-def cmd_create(objective: str, bot_id: str | None, dry_run: bool, no_tests: bool, allowed_permissions: list[str] | None = None) -> dict:
+def cmd_create(objective: str, bot_id: str | None, dry_run: bool, no_tests: bool, allowed_permissions: list[str] | None = None, on_built=None) -> dict:
     reg = Registry(ROOT / "registry"); bots_root = LAPTOP_BOTS if WIN else ROOT / "bots"
     f = BotFactory(reg, bots_root)
     bot_id = bot_id or next_id(reg)
@@ -315,6 +315,7 @@ def cmd_create(objective: str, bot_id: str | None, dry_run: bool, no_tests: bool
     (ROOT / "specs" / f"{bot_id}-{spec['name']}.json").write_text(json.dumps(spec, indent=2), encoding="utf-8")
     r = f.build(spec)
     report.update({"bot_dir": str(r.bot_dir), "files": r.files, "chain": r.chain, "disabled_tools": len(r.disabled_tools)})
+    if on_built: on_built(report)          # D-065: caller records identity before the (long) test phase
     if no_tests or not WIN:
         report["status"] = reg.get("bots", bot_id).status
         return report
