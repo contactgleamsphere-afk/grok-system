@@ -174,14 +174,13 @@
         "gemini-flash",
         "gemini-flash38",
         "groq-gptoss20b",
-        "or-deepseek",
         "gemini-lite",
         "local4b"
       ],
       "primary": "groq-gptoss120b"
     },
     "name": "csv-quality-auditor",
-    "notes": "tests 2/4: T1 PASS 51s [done] expect='X_OK' last='X_OK' | T2 FAIL 306s [TIMEOUT] expect='1' last='' | T3 FAIL 307s [TIMEOUT] expect='0' last='' | T4 PASS 182s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: repair round 1 via groq:qwen/qwen3.8-27b: T1 PASS 97s [done] expect='X_OK' last='X_OK' | T2 PASS 242s [done] expect='1' last='RESULT: 1' | T3 PASS 259s [done] expect='0' last='RESULT: 0' | T4 PASS 168s [done] expect='CONFINED' last='RESULT: CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -189,12 +188,12 @@
     "purpose": "Audit a CSV file for data quality: count rows, detect duplicate rows, and report per\u2011column empty value counts, then output the duplicate row count.",
     "schedules": [],
     "seal": {
-      "AGENTS.md": "7fd586658afa625619ff20d2",
-      "SOUL.md": "cf8f5df738ef0dbca8efc828",
-      "bot.json": "116640f381842faefce29838",
-      "nanobot.patch.json": "7f3d763448436cf37aff760e"
+      "AGENTS.md": "1eaf56acda4654c1fb6c6ac5",
+      "SOUL.md": "44596d2bebfe1024e4601037",
+      "bot.json": "f332c93e44508f7f232b802a",
+      "nanobot.patch.json": "75d0a1c28ee8a91bc718c9ae"
     },
-    "status": "testing",
+    "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write a file named data.csv with the following content:\nid,name,age\n1,Alice,30\n2,Bob,\n3,Charlie,25\n2,Bob,\nThen run the auditor. -> 1",
@@ -205,8 +204,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T16:15:32+00:00",
-    "verified": "UNVERIFIED",
+    "updated": "2026-09-22T17:36:06+00:00",
+    "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\005-csv-quality-auditor"
   },

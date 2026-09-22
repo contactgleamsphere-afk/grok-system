@@ -1,0 +1,14 @@
+{
+  "5539cff4": {
+    "actor": "master-001",
+    "bot_id": "018",
+    "created": "2026-09-22T18:24:27",
+    "cron": "*/5 * * * *",
+    "enabled": true,
+    "in": "C:\\AI\\Factory\\workspace\\inbox\\orders",
+    "last_fire": null,
+    "next": "2026-09-22T18:25",
+    "runs": 0,
+    "task": "Sum order totals per country into totals.csv"
+  }
+}

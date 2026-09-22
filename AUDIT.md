@@ -2,13 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 142 | 2026-09-22 00:30:09 | acde44a1 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 143 | 2026-09-22 00:30:12 | acde44a1 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 144 | 2026-09-22 00:31:07 | d5446b51 |  | job.enqueued | builder | {"kind": "probe", "payload": {"only": ["or-ling-30-flash-vl", "or-nex-n25-pro"], "hour": "2026-09-22T00"}} |
-| 145 | 2026-09-22 00:31:11 | d5446b51 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 146 | 2026-09-22 00:31:16 | d5446b51 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "or-ling-30-flash-vl", "outcome": "ok", "before": "INFERRED", "after": "VERIFIED", "detail": null} |
-| 147 | 2026-09-22 00:31:16 | d5446b51 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "or-nex-n25-pro", "outcome": "ok", "before": "INFERRED", "after": "VERIFIED", "detail": null} |
-| 148 | 2026-09-22 00:31:16 | d5446b51 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 149 | 2026-09-22 00:32:31 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 150 | 2026-09-22 00:33:32 | 9dac2656 | 010 | job.enqueued | builder | {"kind": "test", "payload": {"bot_id": "010"}} |
 | 151 | 2026-09-22 00:33:34 | 9dac2656 | 010 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +395,10 @@
 | 539 | 2026-09-22 18:07:53 | b7916bd1 | 006 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 286s [done] expect='2' last='RESULT: Converted records.json to table.md  |
 | 540 | 2026-09-22 18:07:53 | b7916bd1 | 006 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 286s [done] expect='2' last='RESULT: Converted records.json to table.md  |
 | 541 | 2026-09-22 18:07:53 | b7916bd1 | 006 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "006", "status": "active", "verified": "VERIFIED"}} |
+| 542 | 2026-09-22 18:07:57 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 543 | 2026-09-22 18:08:10 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["74 passed in 6.33s"]} |
+| 544 | 2026-09-22 18:08:10 | 16d02341 | 005 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 545 | 2026-09-22 18:24:32 | 0ff585a0 |  | job.enqueued | owner | {"kind": "tick", "payload": {"hour": "2026-09-22T18"}} |
+| 546 | 2026-09-22 18:36:06 | 16d02341 | 005 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [{"round": 1, "lane": "groq:qwen/qwen3.8-27b", "sandbox": "4/4", "rejected": null}], "boundary_di |
+| 547 | 2026-09-22 18:36:06 | 16d02341 | 005 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 548 | 2026-09-22 18:36:06 | 16d02341 | 005 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "005", "name": "csv-quality-auditor", "status": "active", "verified": "VERIFIED"}} |
