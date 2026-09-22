@@ -301,3 +301,11 @@ both the worker and repo-sync; `proposals/` is committed the same way. 421 event
 the repo. Found and fixed on the way: `C:\AI\Factory\tools\repo-sync.ps1` was a stale hand-copy that silently
 ignored new state paths — it is now a 4-line shim that runs the repo's script (one source of truth, same rule as
 D-050 for the test runner).
+
+## D-068 — Bundle integrity seal (2026-09-22) — VERIFIED
+Bot behaviour is defined by four files in its bundle (bot.json, nanobot.patch.json, AGENTS.md, SOUL.md). Until now
+anything on the laptop could edit them and the bot would still run as "active/VERIFIED". Now `BotFactory.build`
+records a sha256 seal of those files in the registry entry (git-tracked, so a laptop-side edit cannot also fix the
+seal); `run` and `test` refuse a drifted bundle with an explicit error; rebuild/repair (which go through build) reseal.
+memory/ and templates/ are deliberately unsealed (bots learn). Legacy entries were sealed once in place (16 bots);
+an entry with no seal is reported `<unsealed>` but not blocked, so old registries keep working.
