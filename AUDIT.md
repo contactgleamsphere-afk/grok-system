@@ -2,13 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 262 | 2026-09-22 03:04:46 | 7e8fe2ef |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 263 | 2026-09-22 03:04:46 | 7e8fe2ef |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect: objective needs permissions outside the allowance ['fs:read', 'shell:workspace']: The objective requires deleting file |
-| 264 | 2026-09-22 03:04:46 | 7e8fe2ef |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: architect: objective needs permissions outside the a |
-| 265 | 2026-09-22 03:12:31 | 7e8fe2ef |  | job.cancelled | owner | {} |
-| 266 | 2026-09-22 03:12:32 | 1bb54312 |  | job.enqueued | owner | {"kind": "create", "payload": {"objective": "Create a workspace-tidy bot that uses exec (PowerShell) to count the .tmp files inside its own  |
-| 267 | 2026-09-22 03:12:36 | 1bb54312 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 268 | 2026-09-22 03:16:41 | 1bb54312 | 016 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "workspace-tidy-counter", "tools": ["exec"], "permissions": ["shell:workspace"], "chain": ["groq-gptoss120b", "or-ling-30-flash-vl" |
 | 269 | 2026-09-22 03:16:41 | 1bb54312 | 016 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 14s [done] expect='X_OK' last='X_OK' \| T2 PASS 94s [done] expect='2' last='RESULT: 2' \| T3 PASS 53s [done] expect='0'  |
 | 270 | 2026-09-22 03:16:41 | 1bb54312 | 016 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "016", "name": "workspace-tidy-counter", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
 | 271 | 2026-09-22 03:51:46 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
@@ -402,3 +395,10 @@
 | 659 | 2026-09-22 20:43:26 | fd8c14fb |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 660 | 2026-09-22 20:43:26 | 60e46601 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-22T21"}} |
 | 661 | 2026-09-22 20:43:26 | fd8c14fb |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 662 | 2026-09-22 21:17:57 | 096d9bb8 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 663 | 2026-09-22 21:17:57 | f462fb6b |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-22T22"}} |
+| 664 | 2026-09-22 21:18:00 | 615d5d9f |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "openrouter", "day": "2026-09-22", "trigger": "healthy=0"}} |
+| 665 | 2026-09-22 21:18:00 | aeb98a0c |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "cerebras", "day": "2026-09-22", "trigger": "healthy=0"}} |
+| 666 | 2026-09-22 21:18:00 | 9e271e81 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-09-22", "trigger": "healthy=0"}} |
+| 667 | 2026-09-22 21:18:00 | 72cfc51f |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-09-22", "trigger": "healthy=0"}} |
+| 668 | 2026-09-22 21:18:00 | 096d9bb8 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["local3b", "local4b"], "changed": []}} |
