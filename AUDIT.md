@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 61 | 2026-09-21 20:32:30 | 5e4217a5 | 008 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 62 | 2026-09-21 20:38:29 | c12a1af9 | 007 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 7s [done] expect='X_OK' last='X_OK' \| T2 PASS 169s [done] expect='2' last='2' \| T3 PASS 169s [done] expect='0' last='0 |
-| 63 | 2026-09-21 20:38:29 | c12a1af9 | 007 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "007", "status": "active", "verified": "VERIFIED"}} |
-| 64 | 2026-09-21 20:40:22 | 5e4217a5 | 008 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 47s [done] expect='X_OK' last='X_OK' \| T2 PASS 169s [done] expect='apple' last='apple' \| T3 PASS 169s [done] expect='d |
 | 65 | 2026-09-21 20:40:22 | 5e4217a5 | 008 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "008", "status": "active", "verified": "VERIFIED"}} |
 | 66 | 2026-09-21 20:50:12 | 19628fd7 |  | job.enqueued | builder | {"kind": "monitor", "payload": {"only": ["006", "007", "008"], "day": "2026-09-21"}} |
 | 67 | 2026-09-21 20:50:14 | 19628fd7 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +398,7 @@
 | 458 | 2026-09-22 16:28:26 | 8e53c5b9 | 019 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 41s [done] expect='X_OK' last='X_OK' \| T2 FAIL 124s [done] expect='Status: PASS' last='SUMMARY_WRITTEN' \| T3 PASS 84s  |
 | 459 | 2026-09-22 16:28:26 | 1d7ee2ef | 019 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "019", "max_rounds": 2, "rearchitected": false}} |
 | 460 | 2026-09-22 16:28:26 | 8e53c5b9 | 019 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "019", "status": "testing", "verified": "UNVERIFIED"}} |
+| 461 | 2026-09-22 16:28:33 | c5bb159c |  | job.lease_expired | svc-LAPTOP-LRE6PSA8 | {} |
+| 462 | 2026-09-22 16:28:33 | 1d7ee2ef | 019 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 463 | 2026-09-22 16:32:53 | 1d7ee2ef | 019 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:qwen/qwen3.8-27b", "sandbox": null, "rejected": "instructions hard- |
+| 464 | 2026-09-22 16:32:53 | 1d7ee2ef | 019 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
