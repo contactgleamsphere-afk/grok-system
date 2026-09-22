@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 18 | 2026-09-21 19:45:42 | 7c69d3cf |  | job.done | w4 | {"summary": {}} |
-| 19 | 2026-09-21 19:45:42 | 31ffc26e | 005 | job.claimed | w4 | {"attempt": 1} |
-| 20 | 2026-09-21 19:47:49 | 31ffc26e | 005 | bot.tested | w4 | {"result": "T1 PASS 11s [done] expect='X_OK' last='X_OK' \| T2 PASS 47s [done] expect='1' last='RESULT: 1' \| T3 PASS 56s [done] expect='0'  |
 | 21 | 2026-09-21 19:47:49 | 31ffc26e | 005 | job.done | w4 | {"summary": {"bot_id": "005", "status": "active", "verified": "VERIFIED"}} |
 | 22 | 2026-09-21 19:48:28 | 009ae02a |  | job.enqueued | owner | {"kind": "monitor", "payload": {"only": ["004"], "day": "2026-09-21"}} |
 | 23 | 2026-09-21 19:48:30 | 009ae02a |  | job.claimed | w5 | {"attempt": 1} |
@@ -402,3 +399,6 @@
 | 415 | 2026-09-22 08:47:50 | ca31fcf3 | 018 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "run", "payload": {"bot_id": "018", "task": "reads orders.csv and writes totals.csv with one row per country and the total amount f |
 | 416 | 2026-09-22 08:47:50 | fbeb65ad | 018 | deliver.run_queued | svc-LAPTOP-LRE6PSA8 | {} |
 | 417 | 2026-09-22 08:47:50 | fbeb65ad | 018 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "name": "csv-country-totals", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
+| 418 | 2026-09-22 08:47:53 | ca31fcf3 | 018 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 419 | 2026-09-22 08:49:12 | ca31fcf3 | 018 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"ok": true, "produced": ["totals.csv"], "secs": 78, "reply": "RESULT: totals.csv", "chain": "groq-gptoss120b"} |
+| 420 | 2026-09-22 08:49:12 | ca31fcf3 | 018 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "name": "run", "status": "ok totals.csv"}} |
