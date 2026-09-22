@@ -334,6 +334,19 @@ def _commit_state(kind: str, jid8: str) -> None:
         pass
 
 
+def _keep_awake(on: bool) -> None:
+    """D-071: the laptop uses Modern Standby (S0 idle) and drifted into it twice today mid-job (bench 6f50b9fd lease
+    expired, tunnel down 15 min). While a job is in flight the worker holds a system-required execution request
+    (the same API media players use); released between jobs so an idle machine can still sleep."""
+    if os.name != "nt": return
+    try:
+        import ctypes
+        ES_CONTINUOUS, ES_SYSTEM_REQUIRED, ES_AWAYMODE_REQUIRED = 0x80000000, 0x00000001, 0x00000040
+        ctypes.windll.kernel32.SetThreadExecutionState(ES_CONTINUOUS | ES_SYSTEM_REQUIRED | ES_AWAYMODE_REQUIRED if on else ES_CONTINUOUS)
+    except Exception:
+        pass
+
+
 def run(worker: str, once: bool = False, idle_exit: int = 0) -> int:
     store = JobStore(DB); idle_since = time.time(); processed = 0; stamp = _code_stamp()
     while True:
@@ -355,6 +368,7 @@ def run(worker: str, once: bool = False, idle_exit: int = 0) -> int:
                 try: hb.heartbeat(job["id"], worker, LEASE)
                 except Exception: pass
         threading.Thread(target=_beat, daemon=True).start()
+        _keep_awake(True)
         try:
             res = handle(job, store, worker)
             store.done(job["id"], res if isinstance(res, dict) else {"result": res}, worker)
@@ -363,7 +377,7 @@ def run(worker: str, once: bool = False, idle_exit: int = 0) -> int:
             store.fail(job["id"], f"security: {e}", worker)
         except Exception as e:
             store.fail(job["id"], f"{type(e).__name__}: {e}\n{traceback.format_exc()[-800:]}", worker)
-        stop.set()
+        stop.set(); _keep_awake(False)
         store.audit_export(ROOT / "AUDIT.md"); store.audit_sync_jsonl(ROOT / "audit")      # D-067 durable trail
         _commit_state(job["kind"], job["id"][:8])
         if once: break
