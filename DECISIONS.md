@@ -284,3 +284,12 @@ while the half-built one sat in `testing`. Now `bot.created` is audited the mome
 callback inside `cmd_create`), and a re-claimed create first looks for its own `bot.created` — if that bot is
 `building/testing` it resumes with `cmd_test` and audits `job.resumed_at`. Live kill test (job 1c4af272): worker
 killed mid-test → lease expired → attempt 2 → `job.resumed_at stage=test` → 017 tested, registry still 17 bots, no 018.
+
+## D-066 — Deliver: objective + files → built, verified, run, result — one message (2026-09-22) — VERIFIED live
+`--then-run <inbox>` on `create`/`plan` is carried through every descendant (retest, repair, rearchitect) via
+`_carry()`. `_maybe_deliver()` fires whenever a bot turns active and enqueues the `run` — for a plan only once every
+step's bot is active (idempotent by idem key), for a single-bot objective immediately with the objective as task.
+Live, in master chat: "I put orders.csv in inbox/orders. I need a bot that … Build it and then run it on my file."
+→ `queue create "…" --then-run orders` (job fbeb65ad) → bot 018 csv-country-totals built, 4/4, active → child run
+ca31fcf3 → `totals.csv` = UK 370.25 / DE 1510.50 / US 2480.00 (exact). The full loop objective → plan → create →
+test → verify → register → run → deliver (→ monitor → repair) is closed with no human in it.

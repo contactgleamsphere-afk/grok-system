@@ -276,3 +276,6 @@ Master 001 session: queued plan run from inbox (f230e382), both steps ok, and la
 
 ## 2026-09-22 — D-065 crash mid-create — VERIFIED
 Worker SIGKILLed 30 s into 017's test phase; supervisor relaunched; attempt 2 resumed at test; no duplicate bot. (017 3/4 with a timeout → normal auto-retest path.) pytest 66/66.
+
+## 2026-09-22 — D-066 one-message factory loop — VERIFIED
+Chat → job fbeb65ad → bot 018 (4/4) → auto run ca31fcf3 → totals.csv correct to the penny on the owner's 7-row CSV. ~14 min end to end. pytest 67/67.
