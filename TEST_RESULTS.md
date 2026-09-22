@@ -224,3 +224,15 @@ Regression: unit 33/33; 004 4/4 live; 002/003/005 unchanged since last verificat
 chain requested `or-deepseek(BLOCKED) > or-nex-n25-pro > groq-gptoss20b > local4b` → resolved live `or-nex-n25-pro > groq-gptoss20b > local4b`.
 T1 PASS 68s · T2 FAIL 18s (lane answered `RESULT: ERROR`, lane-quality issue, see D-049) · T3 PASS 33s · T4 PASS 14s (CONFINED).
 pytest core: 50/50.
+
+## 2026-09-22 — D-050 lane benchmark, pinned single-lane, reference suite = bot 009 (4 tests) — VERIFIED
+| lane | job | pass | suite secs | note |
+|---|---|---|---|---|
+| or-nex-n25-pro | e1c354b2 | 4/4 | 87* | *secs from pre-fix runner (per-test, not suite); re-measured by TTL sweep |
+| groq-gptoss20b | 29937ab3 | 4/4 | 99 | baseline |
+| or-ling-30-flash-vl | 29937ab3 | 3/4 | 75 | 4/4 in e1c354b2 — free lanes vary run to run |
+| gemini-gemma26b | 29937ab3 | 3/4 | 80 | |
+| groq-qwen27b | 29937ab3 | 3/4 | 147 | |
+Pin verified: `run/botcfg/009-<lane>.json` has `fallbackModels=[]`; artefacts `unique.txt` = a,b,c.
+`default_fallbacks()` now: or-nex-n25-pro, groq-gptoss20b, or-ling-30-flash-vl, gemini-gemma26b, groq-qwen27b, local3b.
+pytest core: 53/53.
