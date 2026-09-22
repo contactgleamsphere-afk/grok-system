@@ -386,3 +386,14 @@ token cap (200k TPD) — the probe had said "ok" 40 minutes earlier. Now `run-bo
 and `run_tests()` calls `factory_probe.mark_quota()` which sets `health.quota_until = now + retry_after` on the matching
 lane at once. The next `resolve_chain` (every test/run/repair round re-resolves, D-040) skips it. A later probe `ok`
 clears it as before. No new state: same `quota_until` field the probe already uses.
+
+## D-081 — Lease re-adoption after sleep (2026-09-22) — VERIFIED (unit) / live pending
+Observed: laptop entered Modern Standby 20:36–21:24 while `svc-` was mid-repair (349607da). On wake the fast-lane
+worker's claim() expired the lease → job back to `queued` (attempt still 1) while `svc-` was still running the very
+same job. Two risks: a second worker claims it → duplicate, overlapping bundle writes; or the first finishes and
+`done()` stamps a job it no longer owns. Fix: `heartbeat()` now returns ok|readopted|lost — if the lease was expired
+and nobody took the job, the running worker re-adopts atomically (`job.readopted`); if another worker holds it, the
+first worker discards its result (`job.orphaned_result`) instead of writing. Both paths checked before `done()`/`fail()`.
+Power: `powercfg` standby timeouts set to 0 on AC (was already 0) and Modern Standby network kept connected
+(`powercfg /setacvalueindex … CONNECTIVITYINSTANDBY 1`) so a sleeping laptop at least keeps the tunnel up; a sleep on
+battery still pauses work — that is acceptable, resumption is now safe.

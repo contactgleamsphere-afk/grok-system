@@ -514,3 +514,24 @@ def test_d080_quota_hit_during_test_cools_lane_immediately(tmp_path, monkeypatch
     # short retry-after is floored to 60 s; a probe ok clears it
     assert fpr.mark_quota([{"model": "groq-a", "secs": 1}], now=now + 2000) == ["groq-a"]
     assert reg.get("models", "groq-a").limits["health"]["quota_until"] == now + 2060
+
+
+def test_d081_heartbeat_readopts_after_sleep_or_reports_lost(tmp_path):
+    """D-081: lease expired during a laptop sleep -> job back to queued while the worker still runs it.
+    heartbeat re-adopts if unclaimed; if another worker took it, 'lost' and the first must not write its result."""
+    from factory.jobs import JobStore
+    st = JobStore(tmp_path / "jobs.sqlite3")
+    j = st.enqueue("repair", {"bot_id": "004"})
+    a = st.claim("w1", lease_s=300)
+    assert st.heartbeat(a["id"], "w1", 1) == "ok"                    # last beat before the laptop slept
+    time.sleep(1.1)
+    assert st.claim("w-fast", 300, kinds=("test",)) is None       # fast lane: expires the lease -> queued, doesn't take repair
+    assert st.get(a["id"])["state"] == "queued"
+    assert st.heartbeat(a["id"], "w1", 300) == "readopted"          # w1 still running it -> takes it back, same attempt
+    g = st.get(a["id"]); assert g["state"] == "running" and g["lease_owner"] == "w1" and g["attempts"] == 1
+    assert any(r["event"] == "job.readopted" for r in st.audit_rows(20))
+    # now simulate the other case: lease lost AND another worker claimed it
+    st.db.execute("UPDATE jobs SET state='queued',lease_owner=NULL,lease_until=NULL WHERE id=?", (a["id"],)); st.db.commit()
+    b = st.claim("w2", 300); assert b["id"] == a["id"]
+    assert st.heartbeat(a["id"], "w1", 300) == "lost"
+    assert st.get(a["id"])["lease_owner"] == "w2"                   # untouched

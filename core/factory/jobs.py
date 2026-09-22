@@ -169,8 +169,24 @@ class JobStore:
         self.audit("job.claimed", job_id=jid, bot_id=j["payload"].get("bot_id"), actor=worker, attempt=j["attempts"])
         return j
 
-    def heartbeat(self, jid: str, worker: str, lease_s: int = 1800) -> None:
-        self.db.execute("UPDATE jobs SET lease_until=? WHERE id=? AND lease_owner=?", (time.time() + lease_s, jid, worker))
+    def heartbeat(self, jid: str, worker: str, lease_s: int = 1800) -> str:
+        """Extend the lease. Returns 'ok' | 'readopted' | 'lost'. D-081: after a laptop sleep the lease has expired and
+        the job is back in 'queued' while THIS worker is still running it. If nobody else has claimed it, re-adopt
+        atomically (same attempt, no duplicate work); if another worker holds it now, report 'lost' so the caller
+        discards its result instead of overwriting the other worker's."""
+        now = time.time()
+        with self.db:
+            cur = self.db.execute("UPDATE jobs SET lease_until=? WHERE id=? AND lease_owner=? AND state='running'", (now + lease_s, jid, worker))
+            if cur.rowcount == 1: return "ok"
+            cur = self.db.execute("UPDATE jobs SET state='running',lease_owner=?,lease_until=?,updated=? WHERE id=? AND state='queued'",
+                                  (worker, now + lease_s, now, jid))
+        if cur.rowcount == 1:
+            self.audit("job.readopted", job_id=jid, actor=worker); return "readopted"
+        return "lost"
+
+    def owns(self, jid: str, worker: str) -> bool:
+        r = self.db.execute("SELECT lease_owner, state FROM jobs WHERE id=?", (jid,)).fetchone()
+        return bool(r) and r[1] == "running" and r[0] == worker
 
     def done(self, jid: str, result: dict, actor: str) -> None:
         self.db.execute("UPDATE jobs SET state='done',result=?,lease_owner=NULL,lease_until=NULL,updated=? WHERE id=?",

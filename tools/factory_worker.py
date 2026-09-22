@@ -456,18 +456,25 @@ def run(worker: str, once: bool = False, idle_exit: int = 0, kinds: tuple[str, .
         def _beat():
             hb = JobStore(DB)                      # own connection: sqlite objects are not thread-safe
             while not stop.wait(60):
-                try: hb.heartbeat(job["id"], worker, LEASE)
+                try: hb.heartbeat(job["id"], worker, LEASE)      # D-081: re-adopts after a sleep, or reports 'lost'
                 except Exception: pass
         threading.Thread(target=_beat, daemon=True).start()
         _keep_awake(True)
         try:
             res = handle(job, store, worker)
-            store.done(job["id"], res if isinstance(res, dict) else {"result": res}, worker)
+            if store.heartbeat(job["id"], worker, LEASE) == "lost":   # D-081: someone else owns it now -> never overwrite
+                store.audit("job.orphaned_result", job_id=job["id"], bot_id=job["payload"].get("bot_id"), actor=worker,
+                            summary=str(res)[:300])
+            else:
+                store.done(job["id"], res if isinstance(res, dict) else {"result": res}, worker)
         except SecurityViolation as e:
             store.audit("security.violation", job_id=job["id"], bot_id=job["payload"].get("bot_id"), actor=worker, error=str(e))
             store.fail(job["id"], f"security: {e}", worker)
         except Exception as e:
-            store.fail(job["id"], f"{type(e).__name__}: {e}\n{traceback.format_exc()[-800:]}", worker)
+            if store.heartbeat(job["id"], worker, LEASE) == "lost":
+                store.audit("job.orphaned_result", job_id=job["id"], bot_id=job["payload"].get("bot_id"), actor=worker, error=str(e)[:300])
+            else:
+                store.fail(job["id"], f"{type(e).__name__}: {e}\n{traceback.format_exc()[-800:]}", worker)
         stop.set(); _keep_awake(False)
         store.audit_export(ROOT / "AUDIT.md"); store.audit_sync_jsonl(ROOT / "audit")      # D-067 durable trail
         _commit_state(job["kind"], job["id"][:8])
