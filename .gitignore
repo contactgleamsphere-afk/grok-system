@@ -23,3 +23,4 @@ run/repair-registry/
 run/factory-test-*.json
 run/botcfg/
 run/worker.lock
+run/selftest.json
