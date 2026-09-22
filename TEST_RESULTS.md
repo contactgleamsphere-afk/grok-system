@@ -289,3 +289,7 @@ Chat → job fbeb65ad → bot 018 (4/4) → auto run ca31fcf3 → totals.csv cor
 - unit `test_d069_needs_owner_notice_and_clear` (notice, dedup, clear-on-key, auth catalog fetch, preset id `cb-…`) — PASS
 - unit `test_d069_retire_gone_after_3_days` (first_gone stamp, retire only gone, ledger reject) — PASS (71/71)
 - live laptop (no1/no2): `discover --provider cerebras|nvidia` → needs_owner; `factory_report --md` shows two ACTION REQUIRED lines with signup URLs — PASS
+
+## D-058 recheck + needs_owner path — 2026-09-22 (live)
+- bench job 6f50b9fd (survived a laptop sleep: lease expired 15:29, attempt 2 finished): groq-gptoss120b 8/8 99s, groq-gptoss20b 4/4 106s, gemini-lite 1/4 618s. `default_primary()` now returns groq-gptoss120b on evidence (was the legacy default); gemini-lite dropped from fallbacks.
+- needs_owner path (first real exercise): create "pytest runner" needs shell:workspace → architect returned blocked → job 123271bb paused class=security, `security.violation` + `job.failed` audited → `resume --allow fs:read,fs:write,shell:workspace` → `job.payload_patched` + `job.resumed` audited → bot 019 pytest-runner built with exactly [shell:workspace, fs:write] → test job 8e53c5b9 queued. PASS (pause/grant/resume all audited).
