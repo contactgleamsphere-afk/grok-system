@@ -260,3 +260,9 @@
 | 256 | 2026-09-22 03:00:01 | 7e8fe2ef |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 257 | 2026-09-22 03:00:03 | 7e8fe2ef |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect: objective needs permissions outside the allowance ['fs:read', 'fs:write', 'net:search', 'net:fetch']: shell:workspace  |
 | 258 | 2026-09-22 03:00:03 | 7e8fe2ef |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: architect: objective needs permissions outside the a |
+| 259 | 2026-09-22 03:04:41 | 7e8fe2ef |  | job.payload_patched | owner | {"patch": {"allowed_permissions": ["fs:read", "shell:workspace"]}} |
+| 260 | 2026-09-22 03:04:41 | 7e8fe2ef |  | job.resumed | owner | {} |
+| 261 | 2026-09-22 03:04:42 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 262 | 2026-09-22 03:04:46 | 7e8fe2ef |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 263 | 2026-09-22 03:04:46 | 7e8fe2ef |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect: objective needs permissions outside the allowance ['fs:read', 'shell:workspace']: The objective requires deleting file |
+| 264 | 2026-09-22 03:04:46 | 7e8fe2ef |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: architect: objective needs permissions outside the a |
