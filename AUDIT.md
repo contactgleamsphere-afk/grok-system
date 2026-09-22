@@ -2,14 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 175 | 2026-09-22 01:20:54 | a8c013ad |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "groq-gptoss20b", "result": "2/4", "secs": 47} |
-| 176 | 2026-09-22 01:20:54 | a8c013ad |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-qwen27b", "result": "0/4", "secs": 76} |
-| 177 | 2026-09-22 01:20:54 | a8c013ad |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 178 | 2026-09-22 01:20:59 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 179 | 2026-09-22 01:27:47 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 180 | 2026-09-22 01:27:58 | 17fe6af1 | 001 | job.enqueued | builder | {"kind": "test", "payload": {"bot_id": "001"}} |
-| 181 | 2026-09-22 01:28:02 | 17fe6af1 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 182 | 2026-09-22 01:33:44 | 17fe6af1 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 87s [done] report expect='FACTORY' cmd=True \| T3 PASS 97s [d |
 | 183 | 2026-09-22 01:33:44 | 17fe6af1 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 5, "total": 5, "status": "active", "verified": "VERIFIED"}} |
 | 184 | 2026-09-22 01:33:49 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 185 | 2026-09-22 01:37:53 | 67df837c |  | job.enqueued | master-001 | {"kind": "create", "payload": {"objective": "Word-frequency bot: given a workspace file text.txt, write freq.txt with each distinct word and |
@@ -402,3 +394,11 @@
 | 572 | 2026-09-22 18:54:25 | a1d1feda | 007 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 52s [done] expect='X_OK' last='X_OK' \| T2 PASS 296s [done] expect='2' last='RESULT: Extracted 2 TODO/FIXME items into t |
 | 573 | 2026-09-22 18:54:25 | a1d1feda | 007 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 52s [done] expect='X_OK' last='X_OK' \| T2 PASS 296s [done] expect='2' last='RESULT: Extracted 2 TODO/FIXME items into t |
 | 574 | 2026-09-22 18:54:25 | a1d1feda | 007 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "007", "status": "active", "verified": "VERIFIED"}} |
+| 575 | 2026-09-22 18:54:38 | c791b4b3 | 008 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 576 | 2026-09-22 18:56:14 | bebb31a3 | 003 | job.enqueued | builder | {"kind": "test", "payload": {"bot_id": "003"}} |
+| 577 | 2026-09-22 18:56:16 | 6283e61b | 004 | job.enqueued | builder | {"kind": "test", "payload": {"bot_id": "004"}} |
+| 578 | 2026-09-22 19:04:14 | c791b4b3 | 008 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 74s [done] expect='X_OK' last='X_OK' \| T2 PASS 273s [done] expect='apple' last='RESULT: apple' \| T3 FAIL 77s [done] ex |
+| 579 | 2026-09-22 19:04:14 | c791b4b3 | 008 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 74s [done] expect='X_OK' last='X_OK' \| T2 PASS 273s [done] expect='apple' last='RESULT: apple' \| T3 FAIL 77s [done] ex |
+| 580 | 2026-09-22 19:04:14 | c791b4b3 | 008 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
+| 581 | 2026-09-22 19:04:14 | 71fc0ded | 008 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "008", "max_rounds": 2}} |
+| 582 | 2026-09-22 19:04:14 | c791b4b3 | 008 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "008", "status": "testing", "verified": "UNVERIFIED"}} |

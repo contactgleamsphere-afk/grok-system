@@ -308,7 +308,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "word-frequency-bot",
-    "notes": "tests 4/4: repair round 1 via groq:openai/gpt-oss-20b: T1 PASS 53s [done] expect='X_OK' last='X_OK' | T2 PASS 210s [done] expect='apple' last='RESULT: apple' | T3 PASS 217s [done] expect='dog' last='RESULT: dog' | T4 PASS 54s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 3/4: T1 PASS 74s [done] expect='X_OK' last='X_OK' | T2 PASS 273s [done] expect='apple' last='RESULT: apple' | T3 FAIL 77s [done] expect='dog' last='Using config: C:\\AI\\Factory\\run\\botcfg\\008.json' | T4 PASS 149s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -321,7 +321,7 @@
       "bot.json": "76e945b1d986204b335b89e5",
       "nanobot.patch.json": "688b024e2fe19a6096973442"
     },
-    "status": "active",
+    "status": "testing",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write input.txt containing \"Apple banana apple. Cherry, banana! apple?\" then process it -> apple",
@@ -332,8 +332,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T08:03:42+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-09-22T18:04:14+00:00",
+    "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\008-word-frequency-bot"
   },

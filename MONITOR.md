@@ -30,3 +30,4 @@
 | 2026-09-22 17:15 | 005 csv-quality-auditor | 2/4 | active→testing | - |
 | 2026-09-22 18:07 | 006 json-to-markdown-table | 4/4 | active→active | - |
 | 2026-09-22 18:54 | 007 todo-extractor | 4/4 | active→active | - |
+| 2026-09-22 19:04 | 008 word-frequency-bot | 3/4 | active→testing | - |
