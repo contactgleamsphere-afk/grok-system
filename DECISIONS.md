@@ -344,3 +344,14 @@ Bot 019's T2 expected the literal "Status: PASS"; any honest instruction ("write
 reward-hacking guard, so both repair rounds were rejected and the job paused as logic. Rule: when EVERY repair
 candidate is rejected for reward hacking, the defect is the test literal → escalate once to rearchitect (D-052 path)
 with that feedback; the architect prompt now requires post-liveness expected values to be computed, not quoted.
+
+## D-074 — Worker self-test gate (2026-09-22) — VERIFIED (positive + negative, live)
+pytest is now installed on the laptop (first full laptop run: 73/73 after a utf-8 fix in tests). The worker runs
+core/tests once per code stamp before processing jobs; red ⇒ `worker.blocked_by_tests`, STATUS "WORKER BLOCKED",
+waits for the next push. Proven by pushing a deliberately failing test (gate returned False, "1 failed") and reverting.
+
+## D-075 — Timeouts are availability, not quality (2026-09-22) — VERIFIED (unit) / live on 005
+Bot 005 was demoted at 17:15 by two 300-s TIMEOUTs with empty replies (lanes saturated by the monitor fan-out); repair
+then "failed" with 2/4 sandbox scores for the same reason. The runner now counts TIMEOUT-with-no-answer separately
+(`timeouts`), and test/monitor treat them exactly like D-051 quota: inconclusive, re-test in 2 h, never demote.
+A wrong answer among the failures still demotes.

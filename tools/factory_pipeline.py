@@ -384,8 +384,8 @@ def cmd_test(bot_id: str) -> dict:
     if drift and drift != ["<unsealed>"]:
         raise FactoryError(f"bundle integrity: {drift} changed outside the factory; rebuild/repair to reseal")
     res = run_tests(bot_dir)
-    p, t, q = int(res["pass"]), int(res["total"]), int(res.get("quota", 0) or 0)
-    if p < t and q and p + q >= t:      # D-051: every failure was a 429 -> inconclusive, status untouched
+    p, t, q = int(res["pass"]), int(res["total"]), int(res.get("quota", 0) or 0) + int(res.get("timeouts", 0) or 0)
+    if p < t and q and p + q >= t:      # D-051/D-075: every failure was a 429 or a wall-clock timeout -> inconclusive, status untouched
         return {"bot_id": bot_id, "tests": res["evidence"], "status": e.status, "verified": e.verified, "inconclusive": True, "quota": q}
     e = f.record_test_result(bot_id, p, t, res["evidence"])
     write_bot_registry_md(reg, ROOT / "BOT_REGISTRY.md")

@@ -23,7 +23,7 @@ New-Item -ItemType Directory -Force C:\AI\Factory\run\botcfg | Out-Null; $botCfg
 $env:AIFACTORY_DISABLED_TOOLS=$patch.env.AIFACTORY_DISABLED_TOOLS
 $env:AIFACTORY_TEMPLATE_DIR="$BotDir\templates"
 "bot $($bot.id) $($bot.name)  chain=$($cfg.agents.defaults.modelPreset),$($cfg.agents.defaults.fallbackModels -join ',') [$($live.source)]"
-$pass=0; $total=0; $idx=0; $quota=0; $ev=@(); $suiteStart=Get-Date
+$pass=0; $total=0; $idx=0; $quota=0; $timeouts=0; $ev=@(); $suiteStart=Get-Date
 foreach($t in $bot.tests){
   $idx++
   if($Only -and $idx -ne $Only){ continue }
@@ -49,8 +49,9 @@ foreach($t in $bot.tests){
   if($ok){ $pass++ }
   # D-051: a 429/quota answer is an availability failure, not a quality failure — counted separately so benchmarks stay attributable
   if(-not $ok -and ($out -match "code': 429|rate.limit|rate_limit_exceeded|Rate limit reached|temporarily rate-limited|RESOURCE_EXHAUSTED")){ $quota++ }
+  elseif(-not $ok -and $status -eq 'TIMEOUT'){ $timeouts++ }   # D-075: a wall-clock timeout with no answer is availability, not quality
   $line="T$idx $(if($ok){'PASS'}else{'FAIL'}) ${el}s [$status] expect='$expect' last='$($("$last".Trim()))'"; $line; $ev+=$line
 }
 "SCORE $pass/$total"
 if(-not $Lane){ Set-Content "$BotDir\TEST_RESULTS.md" ("# Test run $(Get-Date -Format s)`n`n" + ($ev -join "`n") + "`n`nSCORE $pass/$total`n") }
-"RESULTJSON " + (@{bot=$bot.id;lane=$Lane;pass=$pass;total=$total;quota=$quota;secs=[int]((Get-Date)-$suiteStart).TotalSeconds;evidence=($ev -join ' | ')}|ConvertTo-Json -Compress)
+"RESULTJSON " + (@{bot=$bot.id;lane=$Lane;pass=$pass;total=$total;quota=$quota;timeouts=$timeouts;secs=[int]((Get-Date)-$suiteStart).TotalSeconds;evidence=($ev -join ' | ')}|ConvertTo-Json -Compress)

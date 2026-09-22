@@ -26,7 +26,7 @@ def monitor(only: set[str] | None = None, dry_run: bool = False, runner=None) ->
         t0 = time.time()
         quota = 0
         try:
-            res = runner(bot_dir); p, t = int(res["pass"]), int(res["total"]); ev = res["evidence"]; quota = int(res.get("quota", 0) or 0)
+            res = runner(bot_dir); p, t = int(res["pass"]), int(res["total"]); ev = res["evidence"]; quota = int(res.get("quota", 0) or 0) + int(res.get("timeouts", 0) or 0)
         except Exception as ex:                       # runner crash = failure, never silent
             p, t, ev = 0, len(e.tests), f"runner error: {ex}"
         before = e.status

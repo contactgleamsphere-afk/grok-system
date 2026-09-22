@@ -420,3 +420,21 @@ def test_d052_repair_refuses_inconsistent_spec_and_rearchitect_fixes_from_object
     from factory.guard import SecurityViolation
     with pytest.raises(SecurityViolation):
         fp.cmd_rearchitect("094", allowed_permissions=["fs:read", "fs:write"])
+
+
+def test_d075_timeouts_are_inconclusive_like_quota(tmp_path, monkeypatch):
+    """D-075: a suite whose only failures are wall-clock TIMEOUTs (no answer at all) must not demote the bot (bot 005, 17:15)."""
+    import importlib, shutil
+    import pathlib; ROOT = pathlib.Path(__file__).resolve().parents[2]
+    monkeypatch.setenv("AIFACTORY_REPO", str(tmp_path)); shutil.copytree(ROOT / "registry", tmp_path / "registry")
+    fp = importlib.reload(importlib.import_module("factory_pipeline"))
+    from factory.registry import Registry
+    reg = Registry(tmp_path / "registry"); e = next(b for b in reg.all("bots") if b.status == "active" and b.id != "001")
+    e.seal = {}; reg.upsert("bots", e)               # no bundle in the sandbox: legacy/unsealed entry is allowed to test (D-068)
+    monkeypatch.setattr(fp, "run_tests", lambda d: {"pass": 2, "total": 4, "quota": 0, "timeouts": 2, "evidence": "T1 PASS | T2 FAIL [TIMEOUT] | T3 FAIL [TIMEOUT] | T4 PASS"})
+    out = fp.cmd_test(e.id)
+    assert out["inconclusive"] is True and out["status"] == "active"
+    # a real wrong answer among the failures still demotes
+    monkeypatch.setattr(fp, "run_tests", lambda d: {"pass": 2, "total": 4, "quota": 0, "timeouts": 1, "evidence": "T1 PASS | T2 FAIL [TIMEOUT] | T3 FAIL wrong | T4 PASS"})
+    out = fp.cmd_test(e.id)
+    assert not out.get("inconclusive") and out["status"] == "testing"
