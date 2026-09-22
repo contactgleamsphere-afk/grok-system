@@ -26,6 +26,7 @@ import factory_probe as fpr                          # noqa: E402
 
 MIN_HEALTHY = 5
 MIN_CONTEXT = 16_000
+DEFER_S = 6 * 3600          # D-084: quota-deferred candidates are re-evaluated after the free cap has rolled over
 CATALOG = {"openrouter": "https://openrouter.ai/api/v1/models", "cerebras": "https://api.cerebras.ai/v1/models",
            "nvidia": "https://integrate.api.nvidia.com/v1/models", "mistral": "https://api.mistral.ai/v1/models"}
 UNKNOWN_CONTEXT = 32768   # generic /models gives no context_length; the sandbox loop + probation are the real evidence
@@ -80,6 +81,8 @@ def evaluate(cands: list[dict], reg: Registry, ledger: dict, provider: str) -> t
         if c["context"] < MIN_CONTEXT: rejected.append((c, f"context {c['context']} < {MIN_CONTEXT}")); continue
         if v and v.get("verdict") in ("rejected", "needs_owner") and time.time() - v.get("ts", 0) < 7 * 86400:
             rejected.append((c, f"ledger: {v['verdict']} on {v.get('date')} ({v.get('reason','')[:60]})")); continue
+        if v and v.get("verdict") == "deferred" and v.get("until", 0) > time.time():        # D-084
+            rejected.append((c, f"ledger: deferred until {v['until']:.0f} ({v.get('reason','')[:40]})")); continue
         keep.append(c)
     return keep, rejected
 
@@ -135,13 +138,21 @@ def run(provider: str = "openrouter", max_new: int = 2, dry_run: bool = False, f
         return {"skipped": f"{keyvar} not set", "healthy": healthy, "needs_owner": needs_owner(provider, ledger, now) or "already notified"}
     if ledger["verdicts"].pop(f"provider:{provider}", None):  # key present -> the owner acted; clear the notice
         _save_ledger(ledger)
+    pq = ledger["verdicts"].get(f"provider-quota:{provider}")
+    if pq and pq.get("until", 0) > now:                          # D-084: don't spend the run on a capped account
+        return {"skipped": f"{provider} daily free cap hit at {pq.get('date')}; retry after {time.strftime('%H:%M', time.gmtime(pq['until']))}Z", "healthy": healthy}
     cands = discover(provider, fetch, key)
     keep, rejected = evaluate(cands, reg, ledger, provider)
     prober = prober or fpr.probe_remote; looper = looper or sandbox_loop
     added, verdicts = [], []
+    provider_quota = False
     for c in keep:
         if len(added) >= max_new: break
         p = prober(base, key, c["model"])
+        if p["outcome"] == "quota":
+            # D-084: a 429 during discovery is an ACCOUNT condition (daily free cap), not evidence about the model.
+            # Defer (short TTL) instead of rejecting for 7 days, and stop probing this provider for today.
+            verdicts.append((c, "deferred", f"probe quota: {p.get('detail','')[:80]}")); provider_quota = True; break
         if p["outcome"] != "ok":
             verdicts.append((c, "rejected", f"probe {p['outcome']}: {p.get('detail','')[:80]}")); continue
         l = looper(base, key, c["model"])
@@ -159,8 +170,12 @@ def run(provider: str = "openrouter", max_new: int = 2, dry_run: bool = False, f
         for c, v, r in verdicts:
             if v in ("rejected", "approved"):
                 ledger["verdicts"][f"{provider}:{c['model']}"] = {"verdict": v, "reason": r, "ts": now, "date": day}
+            elif v == "deferred":                                   # D-084: expires with the daily cap, never blocks the slug
+                ledger["verdicts"][f"{provider}:{c['model']}"] = {"verdict": "deferred", "reason": r, "ts": now, "date": day, "until": now + DEFER_S}
+        if provider_quota:
+            ledger["verdicts"][f"provider-quota:{provider}"] = {"verdict": "deferred", "reason": "daily free cap hit during discovery", "ts": now, "date": day, "until": now + DEFER_S}
         _save_ledger(ledger)
-    return {"provider": provider, "healthy_before": healthy, "catalog": len(cands), "evaluated": len(keep),
+    return {"provider": provider, "healthy_before": healthy, "catalog": len(cands), "evaluated": len(keep), "provider_quota": provider_quota,
             "added": added, "verdicts": [{"model": c["model"], "verdict": v, "reason": r} for c, v, r in verdicts]}
 
 

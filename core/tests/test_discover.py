@@ -61,3 +61,25 @@ def test_probation_lane_blocked_on_first_failure(tmp_path, monkeypatch):
     import factory_probe as fp
     fp.run(only={"or-p"}, prober_remote=lambda *a: {"outcome": "error", "detail": "timeout"})
     assert Registry(tmp_path / "registry").get("models", "or-p").verified == "BLOCKED"
+
+
+def test_d084_quota_during_discovery_defers_instead_of_rejecting(tmp_path, monkeypatch):
+    """D-084: a 429 on the account during discovery must not brand the model 'rejected' for 7 days. It is deferred
+    (6 h), the provider is skipped for the rest of the window, and after expiry the same slug is evaluated again."""
+    reg, fd = _setup(tmp_path, monkeypatch)
+    prober = lambda base, key, model: {"outcome": "quota", "detail": "rate limit exceeded: free-models-per-day"}
+    looper = lambda base, key, model: {"ok": True, "latency_s": 1.0}
+    out = fd.run("openrouter", 5, fetch=lambda url: CATALOG, prober=prober, looper=looper)
+    assert out["added"] == [] and out["provider_quota"] is True
+    assert [x["verdict"] for x in out["verdicts"] if x["model"] == "new/good:free"] == ["deferred"]
+    led = json.loads((tmp_path / "registry" / "discovery.json").read_text())
+    assert led["verdicts"]["openrouter:new/good:free"]["verdict"] == "deferred" and "provider-quota:openrouter" in led["verdicts"]
+    assert "new/badloop:free" not in " ".join(led["verdicts"])           # probing stopped at the first 429
+    # within the window: provider skipped entirely (no API spend)
+    out2 = fd.run("openrouter", 5, fetch=lambda url: CATALOG, prober=prober, looper=looper)
+    assert "daily free cap" in out2["skipped"]
+    # window over: candidate is evaluated again and, with a healthy account, integrated
+    for k, v in led["verdicts"].items(): v["until"] = time.time() - 1
+    (tmp_path / "registry" / "discovery.json").write_text(json.dumps(led))
+    out3 = fd.run("openrouter", 5, fetch=lambda url: CATALOG, prober=lambda b, k, m: {"outcome": "ok", "latency_s": 1.0}, looper=looper)
+    assert "or-good" in out3["added"]

@@ -37,34 +37,39 @@
    "date": "2026-09-22"
   },
   "openrouter:inclusionai/ling-3.0-flash-sante:free": {
-   "verdict": "rejected",
+   "verdict": "deferred",
    "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
    "ts": 1790108680.3095658,
-   "date": "2026-09-22"
+   "date": "2026-09-22",
+   "until": 1790130280.3095658
   },
   "openrouter:inclusionai/ling-3.0-flash-fin:free": {
-   "verdict": "rejected",
+   "verdict": "deferred",
    "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
    "ts": 1790108680.3095658,
-   "date": "2026-09-22"
+   "date": "2026-09-22",
+   "until": 1790130280.3095658
   },
   "openrouter:dots-studio/dots-3-note-preview:free": {
-   "verdict": "rejected",
+   "verdict": "deferred",
    "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
    "ts": 1790108680.3095658,
-   "date": "2026-09-22"
+   "date": "2026-09-22",
+   "until": 1790130280.3095658
   },
   "openrouter:liquid/lfm-2.5-2.6b:free": {
-   "verdict": "rejected",
+   "verdict": "deferred",
    "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
    "ts": 1790108680.3095658,
-   "date": "2026-09-22"
+   "date": "2026-09-22",
+   "until": 1790130280.3095658
   },
   "openrouter:nvidia/nemotron-3.5-lightning:free": {
-   "verdict": "rejected",
+   "verdict": "deferred",
    "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
    "ts": 1790108680.3095658,
-   "date": "2026-09-22"
+   "date": "2026-09-22",
+   "until": 1790130280.3095658
   },
   "openrouter:thinkingmachines/inkling-small:free": {
    "verdict": "rejected",
@@ -73,10 +78,11 @@
    "date": "2026-09-22"
   },
   "openrouter:poolside/laguna-s-2.1:free": {
-   "verdict": "rejected",
+   "verdict": "deferred",
    "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
    "ts": 1790108680.3095658,
-   "date": "2026-09-22"
+   "date": "2026-09-22",
+   "until": 1790130280.3095658
   },
   "openrouter:thinkingmachines/inkling:free": {
    "verdict": "rejected",
@@ -85,46 +91,53 @@
    "date": "2026-09-22"
   },
   "openrouter:poolside/laguna-xs-2.1:free": {
-   "verdict": "rejected",
+   "verdict": "deferred",
    "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
    "ts": 1790108680.3095658,
-   "date": "2026-09-22"
+   "date": "2026-09-22",
+   "until": 1790130280.3095658
   },
   "openrouter:cohere/north-mini-code:free": {
-   "verdict": "rejected",
+   "verdict": "deferred",
    "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
    "ts": 1790108680.3095658,
-   "date": "2026-09-22"
+   "date": "2026-09-22",
+   "until": 1790130280.3095658
   },
   "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
-   "verdict": "rejected",
+   "verdict": "deferred",
    "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
    "ts": 1790108680.3095658,
-   "date": "2026-09-22"
+   "date": "2026-09-22",
+   "until": 1790130280.3095658
   },
   "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": {
-   "verdict": "rejected",
+   "verdict": "deferred",
    "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
    "ts": 1790108680.3095658,
-   "date": "2026-09-22"
+   "date": "2026-09-22",
+   "until": 1790130280.3095658
   },
   "openrouter:google/gemma-4-26b-a4b-it:free": {
-   "verdict": "rejected",
+   "verdict": "deferred",
    "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
    "ts": 1790108680.3095658,
-   "date": "2026-09-22"
+   "date": "2026-09-22",
+   "until": 1790130280.3095658
   },
   "openrouter:google/gemma-4-31b-it:free": {
-   "verdict": "rejected",
+   "verdict": "deferred",
    "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
    "ts": 1790108680.3095658,
-   "date": "2026-09-22"
+   "date": "2026-09-22",
+   "until": 1790130280.3095658
   },
   "openrouter:nvidia/nemotron-3-super-120b-a12b:free": {
-   "verdict": "rejected",
+   "verdict": "deferred",
    "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
    "ts": 1790108680.3095658,
-   "date": "2026-09-22"
+   "date": "2026-09-22",
+   "until": 1790130280.3095658
   }
  }
 }

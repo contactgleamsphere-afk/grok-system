@@ -412,3 +412,11 @@ it has no bundle. Its security surface is: workspace `AGENTS.md` (behavioural ru
 those three (config reduced to the exec object so lane rotation is never "tampering") into the registry entry;
 `wire-master-factory.ps1` reseals after it writes them; `test 001` refuses to run (and so can never re-verify) when
 they drift. Self-improvement that widened the master's env keys or rewrote its rules would be caught at the next test.
+
+## D-084 — Discovery: account quota ≠ model verdict (2026-09-22) — VERIFIED (unit)
+Today's 21:24 discover job recorded 13 OpenRouter candidates (nemotron-3-super/ultra, gemma-4-31b, laguna, …) as
+`rejected` for 7 days — every one because the OpenRouter free-models-per-day cap was already spent, not because the
+models failed. That is the "popularity ≠ evidence" rule violated in reverse: no evidence ≠ rejection. Now a 429 during
+discovery marks the candidate `deferred` (6 h), stops probing that provider for the window (`provider-quota:<p>`),
+and the next run re-evaluates the slug. Today's 13 verdicts migrated to deferred (already expired) so the next hourly
+discover re-tries them once the cap rolls over.
