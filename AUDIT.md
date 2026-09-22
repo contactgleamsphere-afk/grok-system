@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 85 | 2026-09-21 21:34:46 | 9bad8732 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 86 | 2026-09-21 21:34:46 | 9bad8732 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: unknown job kind probe\nTraceback (most recent call |
-| 87 | 2026-09-21 21:37:19 | 9bad8732 |  | job.resumed | owner | {} |
-| 88 | 2026-09-21 21:37:23 | 9bad8732 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 89 | 2026-09-21 21:37:33 | 9bad8732 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "or-deepseek", "outcome": "gone", "before": "VERIFIED", "after": "BLOCKED", "detail": "{\"error\":{\"message\":\"this model is una |
 | 90 | 2026-09-21 21:37:33 | 9bad8732 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 91 | 2026-09-21 21:39:59 | f781e2f8 |  | job.enqueued | builder | {"kind": "probe", "payload": {"only": ["or-deepseek", "gemini-flash"], "hour": "2026-09-21T21"}} |
@@ -402,3 +398,7 @@
 | 482 | 2026-09-22 16:33:01 | b04c9e84 | 019 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 483 | 2026-09-22 16:37:56 | b04c9e84 | 019 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 27s [done] expect='X_OK' last='X_OK' \| T2 FAIL 175s [done] expect='Status: PASS' last='SUMMARY_WRITTEN' \| T3 FAIL 92s  |
 | 484 | 2026-09-22 16:37:56 | b04c9e84 | 019 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "019", "status": "testing", "verified": "UNVERIFIED"}} |
+| 485 | 2026-09-22 16:38:02 | e89cc0ba |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 486 | 2026-09-22 16:38:04 | e89cc0ba | 020 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "workspace-file-lister", "tools": ["exec", "write_file"], "permissions": ["shell:workspace", "fs:write"], "chain": ["groq-gptoss120 |
+| 487 | 2026-09-22 16:41:12 | e89cc0ba | 020 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 27s [done] expect='X_OK' last='X_OK' \| T2 PASS 85s [done] expect='DONE' last='DONE' \| T3 PASS 74s [done] expect='CONFI |
+| 488 | 2026-09-22 16:41:12 | e89cc0ba | 020 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "020", "name": "workspace-file-lister", "pass": 3, "total": 3, "status": "active", "verified": "VERIFIED"}} |
