@@ -50,3 +50,6 @@ Since D-055 the daily `report` job enqueues a monitor for the day if none exists
 
 ## Laptop lost / fresh machine
 Registry (`registry/`), specs, audit (`audit/*.jsonl`), proposals, MONITOR/BOT_REGISTRY/STATUS are all in git. Jobs DB and bot bundles are not: rebuild bundles from specs with `factory_cli build`, re-run `add monitor` to re-verify. Audit continuity: the JSONL high-water mark means a fresh DB starts a new seq range — keep the old files, do not delete.
+
+## Laptop offline mid-drill (2026-09-23 00:05)
+Symptom: `ssh` → `Connection closed by UNKNOWN port 65535`, tunnel URL returns HTTP 530, no worker state commits, `run/tunnel.txt` not refreshed for >45 min. Meaning: the laptop itself is asleep/offline (tunnel supervisor would have republished within ~2 min otherwise). Nothing to fix remotely; when it wakes: worker task restarts at logon/15-min tick, repo-sync pulls, self-test gate runs, queued jobs resume from leases (D-081). Pending at outage: D-099 live repair drill on bot 009 (`tools/_archive/q15.py` then `add repair 009`).
