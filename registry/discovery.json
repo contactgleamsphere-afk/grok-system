@@ -17,6 +17,18 @@
    "reason": "probe 1.46s loop 3.9s",
    "ts": 1790033243.8181138,
    "date": "2026-09-22"
+  },
+  "provider:cerebras": {
+   "verdict": "needs_owner",
+   "reason": "set CEREBRAS_API_KEY (User env) after signing up: https://cloud.cerebras.ai (free tier ~1M tokens/day)",
+   "ts": 1790064389.7761254,
+   "date": "2026-09-22"
+  },
+  "provider:nvidia": {
+   "verdict": "needs_owner",
+   "reason": "set NVIDIA_API_KEY (User env) after signing up: https://build.nvidia.com (free ~40 rpm, tool-capable models)",
+   "ts": 1790064390.0568123,
+   "date": "2026-09-22"
   }
  }
 }
