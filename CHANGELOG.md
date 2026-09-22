@@ -72,3 +72,4 @@
 - 2026-09-21 (23:xx) D-044 factory_report + daily STATUS.md + master `report`; D-045 lean canonical AGENTS.md (3.5 KB stale → 1.2 KB); D-046 master acceptance suite — 001 active VERIFIED 4/4. 47/47 unit tests.
 
 - D-068: bundle integrity seal (guard.bundle_seal/bundle_drift, BotEntry.seal; run/test enforce). tools/repo-sync.ps1 on laptop is now a shim to the repo script.
+- D-069: providers cerebras/nvidia/mistral; needs_owner notices in STATUS.md; probe fans out discover; retire lanes gone ≥3 days.

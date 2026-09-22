@@ -125,8 +125,36 @@ def run(only: set[str] | None = None, dry_run: bool = False, prober_remote=probe
         if not dry_run: reg.upsert("models", e)
         rows.append({"id": e.id, "model": e.model, **res, "before": before, "after": after})
     changed = [r for r in rows if r.get("before") != r.get("after")]
-    return {"probed": len(rows), "rows": rows, "changed": changed,
+    retired = [] if dry_run else retire_gone(reg, now)
+    return {"probed": len(rows), "rows": rows, "changed": changed, "retired": retired,
             "healthy": [r["id"] for r in rows if r.get("outcome") == "ok"]}
+
+
+RETIRE_AFTER_S = 3 * 86400
+
+
+def retire_gone(reg: Registry, now: float) -> list[dict]:
+    """D-069: a remote lane BLOCKED as 'gone' (404/decommissioned) that has stayed gone for 3 days is retired: removed
+    from the registry (bots' chains already skip BLOCKED lanes) and recorded in the discovery ledger so it is never
+    re-added under the same slug. Quota/auth/error blocks are NOT retired (they self-heal)."""
+    out = []
+    for e in reg.all("models"):
+        h = (e.limits or {}).get("health", {})
+        if e.verified != "BLOCKED" or e.location != "remote" or not str(h.get("reason", "")).startswith("gone"):
+            continue
+        try: since = time.mktime(time.strptime(h.get("first_gone") or h.get("last_probe"), "%Y-%m-%dT%H:%M:%S")) - time.timezone
+        except Exception: continue
+        if "first_gone" not in h:                       # start the clock on first sight
+            e.limits = {**e.limits, "health": {**h, "first_gone": h.get("last_probe")}}; reg.upsert("models", e); continue
+        if now - since >= RETIRE_AFTER_S:
+            led = ROOT / "registry" / "discovery.json"
+            try: ledger = json.loads(led.read_text(encoding="utf-8"))
+            except Exception: ledger = {"verdicts": {}}
+            ledger.setdefault("verdicts", {})[f"{e.provider}:{e.model}"] = {"verdict": "rejected", "reason": f"retired after 3 days gone: {h.get('reason','')[:80]}",
+                                                                          "ts": now, "date": time.strftime("%Y-%m-%d")}
+            led.write_text(json.dumps(ledger, indent=1), encoding="utf-8")
+            reg.remove("models", e.id); out.append({"id": e.id, "model": e.model, "reason": h.get("reason", "")[:80]})
+    return out
 
 
 def main(argv: list[str]) -> int:

@@ -284,3 +284,8 @@ Chat → job fbeb65ad → bot 018 (4/4) → auto run ca31fcf3 → totals.csv cor
 - unit `test_d068_bundle_seal_detects_tamper`: seal recorded at build, drift on AGENTS.md edit, memory edit ignored, rebuild reseals, legacy = `<unsealed>` — PASS (69/69)
 - live laptop (se1.py): 16 legacy bots sealed; bot 018 tampered → run refused with integrity error; restored → drift [] — PASS
 - regression: worker run of 018 after restore, job 0c438fbd — result recorded below
+
+## D-069 — 2026-09-22
+- unit `test_d069_needs_owner_notice_and_clear` (notice, dedup, clear-on-key, auth catalog fetch, preset id `cb-…`) — PASS
+- unit `test_d069_retire_gone_after_3_days` (first_gone stamp, retire only gone, ledger reject) — PASS (71/71)
+- live laptop (no1/no2): `discover --provider cerebras|nvidia` → needs_owner; `factory_report --md` shows two ACTION REQUIRED lines with signup URLs — PASS

@@ -309,3 +309,14 @@ records a sha256 seal of those files in the registry entry (git-tracked, so a la
 seal); `run` and `test` refuse a drifted bundle with an explicit error; rebuild/repair (which go through build) reseal.
 memory/ and templates/ are deliberately unsealed (bots learn). Legacy entries were sealed once in place (16 bots);
 an entry with no seal is reported `<unsealed>` but not blocked, so old registries keep working.
+
+## D-069 — Free-first scout: more providers, needs_owner, retirement (2026-09-22) — VERIFIED
+Discovery only knew OpenRouter. 2026 research (docs/FREE_PROVIDERS_2026-09-19.md + addendum) shows Cerebras, NVIDIA
+NIM and Mistral Experiment as free, no-card, OpenAI-compatible, tool-capable. They are now providers in the probe /
+discover path. Rule kept from D-047: the factory never signs up on the owner's behalf — with no key, `discover`
+records one `needs_owner` verdict per provider (7-day dedup) and STATUS.md prints
+`ACTION REQUIRED (owner): provider:cerebras — set CEREBRAS_API_KEY (User env) after signing up: https://cloud.cerebras.ai …`;
+the notice clears itself when the key appears. (Bug found: STATUS.md read the ledger at the wrong JSON level, so no
+needs_owner ever showed — fixed.) The hourly probe now fans discover out to all four providers when a lane blocks or
+the healthy pool is thin. Lanes BLOCKED as *gone* (404/decommissioned) for 3 days are retired from the registry with a
+ledger reject so they cannot be re-discovered under the same slug; quota/auth/error blocks still self-heal.

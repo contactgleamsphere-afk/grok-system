@@ -63,3 +63,21 @@ def test_live_lanes_and_default_fallbacks_follow_health(tmp_path, monkeypatch):
     lanes = fp.live_lanes()
     assert [m for _, _, _, m in lanes] == ["m-a", "m-l"]
     assert fp.default_fallbacks(Registry(tmp_path / "registry")) == ["a", "c", "l"]   # quota-cooled c still a valid *policy* member
+
+
+def test_d069_retire_gone_after_3_days(tmp_path, monkeypatch):
+    """D-069: 'gone' lanes get a first_gone stamp, are retired after 3 days (registry remove + ledger reject); quota blocks never retire."""
+    import json, time, shutil, factory_probe as fpr
+    from factory.registry import Registry
+    shutil.copytree(ROOT / "registry", tmp_path / "registry"); monkeypatch.setattr(fpr, "ROOT", tmp_path)
+    reg = Registry(tmp_path / "registry")
+    gone = next(m for m in reg.all("models") if m.location == "remote"); q = next(m for m in reg.all("models") if m.location == "remote" and m.id != gone.id)
+    old = time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime(time.time() - 4 * 86400))
+    gone.verified = "BLOCKED"; gone.limits = {**gone.limits, "health": {"reason": "gone: 404", "last_probe": old}}; reg.upsert("models", gone)
+    q.verified = "BLOCKED"; q.limits = {**q.limits, "health": {"reason": "auth: 401", "last_probe": old}}; reg.upsert("models", q)
+    assert fpr.retire_gone(reg, time.time()) == []                                    # first sight: clock starts
+    assert reg.get("models", gone.id).limits["health"]["first_gone"] == old
+    r = fpr.retire_gone(reg, time.time())
+    assert [x["id"] for x in r] == [gone.id] and reg.get("models", gone.id) is None and reg.get("models", q.id) is not None
+    led = json.loads((tmp_path / "registry" / "discovery.json").read_text())
+    assert led["verdicts"][f"{gone.provider}:{gone.model}"]["verdict"] == "rejected"
