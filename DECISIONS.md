@@ -397,3 +397,10 @@ first worker discards its result (`job.orphaned_result`) instead of writing. Bot
 Power: `powercfg` standby timeouts set to 0 on AC (was already 0) and Modern Standby network kept connected
 (`powercfg /setacvalueindex … CONNECTIVITYINSTANDBY 1`) so a sleeping laptop at least keeps the tunnel up; a sleep on
 battery still pauses work — that is acceptable, resumption is now safe.
+
+## D-082 — Quota-bound sandbox scores are inconclusive (2026-09-22) — VERIFIED (unit)
+Repair round 1 of bot 004 scored 1/4 on a candidate whose only fault was that the lane hit Groq's daily token cap
+mid-run; the round was burned and a possibly-good rewrite discarded. Now: if a sandbox run has quota/timeouts > 0 and
+did not pass, the SAME candidate is run once more (D-080 has just cooled the offending lanes; D-040 re-resolves the
+chain). Only that second, clean result counts. Logged as an extra `inconclusive: true` round entry so the audit shows
+both scores. Costs at most one extra test suite per round; never changes the candidate, permissions or spec.

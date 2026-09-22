@@ -438,3 +438,24 @@ def test_d075_timeouts_are_inconclusive_like_quota(tmp_path, monkeypatch):
     monkeypatch.setattr(fp, "run_tests", lambda d: {"pass": 2, "total": 4, "quota": 0, "timeouts": 1, "evidence": "T1 PASS | T2 FAIL [TIMEOUT] | T3 FAIL wrong | T4 PASS"})
     out = fp.cmd_test(e.id)
     assert not out.get("inconclusive") and out["status"] == "testing"
+
+
+def test_d082_repair_reruns_candidate_when_sandbox_score_was_quota_bound(tmp_path, monkeypatch):
+    """D-082: a sandbox run polluted by 429/timeouts is inconclusive -> the same candidate is re-run once (lanes were
+    cooled by D-080); a clean re-run that passes promotes, so a good repair is not thrown away for a provider cap."""
+    import sys, pathlib, importlib, json
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[2] / "tools"))
+    fr = importlib.import_module("factory_repair"); fp = importlib.import_module("factory_pipeline")
+    reg, f = _reg_and_factory(tmp_path); root = reg.root.parent
+    monkeypatch.setattr(fr, "ROOT", root); monkeypatch.setattr(fp, "WIN", False)
+    (root / "specs").mkdir(exist_ok=True)
+    spec = _rspec(id="097", name="quota-me"); f.build(spec); f.record_test_result("097", 0, 1, "T1 FAIL")
+    (root / "specs" / "097-quota-me.json").write_text(json.dumps(spec))
+    monkeypatch.setattr(fp, "chat", lambda msgs, max_tokens=700, skip=None: (json.dumps({"instructions": "Count carefully and reply with only the number. " * 5}), "fake:lane"))
+    runs = iter([{"pass": 1, "total": 4, "quota": 3, "timeouts": 0, "evidence": "429s", "raw": "", "cooled": ["groq-a"]},
+                 {"pass": 4, "total": 4, "quota": 0, "timeouts": 0, "evidence": "T1..T4 PASS", "raw": ""}])
+    calls = []
+    out = fr.repair("097", max_rounds=1, runner=lambda d: (calls.append(1) or next(runs)), skip_reverify=True)
+    assert len(calls) == 2 and out["ok"] and out["status"] == "active"
+    assert out["rounds"][0]["inconclusive"] is True and out["rounds"][0]["quota"] == 3 and out["rounds"][0]["cooled"] == ["groq-a"]
+    assert out["rounds"][1]["sandbox"] == "4/4" and out["rounds"][1]["round"] == 1

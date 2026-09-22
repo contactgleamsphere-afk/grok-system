@@ -149,8 +149,15 @@ def repair(bot_id: str, max_rounds: int = 2, runner=None, chat=None, skip_reveri
         shutil.rmtree(sandbox_root / sandbox_name, ignore_errors=True)
         r = sb.build(cand, overwrite=True)
         res = runner(r.bot_dir); p, t = int(res["pass"]), int(res["total"]); raw = res.get("raw", "")
+        # D-082: a sandbox score dragged down by 429s/timeouts says nothing about the candidate instructions. The runner
+        # has just cooled the offending lanes (D-080), so run the SAME candidate once more — its chain re-resolves live
+        # (D-040) and skips them. Only a clean second run may count against the candidate.
+        if p < t and (res.get("quota") or res.get("timeouts")):
+            log["rounds"].append({"round": rnd, "lane": lane, "sandbox": f"{p}/{t}", "inconclusive": True,
+                                  "quota": res.get("quota", 0), "timeouts": res.get("timeouts", 0), "cooled": res.get("cooled")})
+            res = runner(r.bot_dir); p, t = int(res["pass"]), int(res["total"]); raw = res.get("raw", "")
         log["rounds"].append({"round": rnd, "lane": lane, "sandbox": f"{p}/{t}", "evidence": res["evidence"][:400],
-                              "instructions": new_instr})
+                              "instructions": new_instr, "quota": res.get("quota", 0), "timeouts": res.get("timeouts", 0)})
         evidence = res["evidence"]
         if p == t and t > 0:
             # promote: archive old instructions, write spec, rebuild production bundle, record pass -> active
