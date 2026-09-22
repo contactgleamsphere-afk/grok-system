@@ -260,6 +260,12 @@ def spec_consistency(spec: dict) -> list[str]:
         # be satisfied by a read/write-only bot and the runtime has no pytest/node/git on PATH for bots anyway.
         if _SHELL_HINT.search(prompt) and "exec" not in tools:
             problems.append(f"test needs a shell command but tools lack exec: {prompt[:60]!r} (needs exec + shell:workspace, or restate the test as a file computation)")
+    try:                                                            # D-099 at architect time: instructions vs declared tools
+        import factory_repair as _fr
+        esc = _fr.instruction_boundary_violations(spec.get("instructions") or "", list(tools))
+        if esc: problems.append(f"instructions exceed the declared tools/boundary: {esc} — either grant the tool or rewrite the instructions")
+    except ImportError:
+        pass
     if "write_file" in tools and "fs:write" not in perms: problems.append("write_file requires permission fs:write")
     if "exec" in tools and "shell:workspace" not in perms: problems.append("exec requires permission shell:workspace")
     if "read_file" in tools and "fs:read" not in perms: problems.append("read_file requires permission fs:read")
