@@ -2,13 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 32 | 2026-09-21 19:51:57 | a5c299d7 |  | job.resumed | owner | {} |
-| 33 | 2026-09-21 19:51:58 | a5c299d7 | 004 | job.claimed | w6 | {"attempt": 1} |
-| 34 | 2026-09-21 19:54:53 | a5c299d7 | 004 | bot.repair | w6 | {"ok": true, "status": "active", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-120b", "sandbox": "4/4", "rejected": null}], "boundary |
-| 35 | 2026-09-21 19:54:53 | a5c299d7 | 004 | bot.promoted | w6 | {"to": "active"} |
-| 36 | 2026-09-21 19:54:53 | a5c299d7 | 004 | job.done | w6 | {"summary": {"bot_id": "004", "name": "changelog-writer", "status": "active", "verified": "VERIFIED"}} |
-| 37 | 2026-09-21 19:56:25 | efc687cf |  | job.enqueued | master-001 | {"kind": "create", "payload": {"objective": "Create a word-frequency bot: given a workspace text file named input.txt, count how often each  |
-| 38 | 2026-09-21 19:56:30 | efc687cf |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 39 | 2026-09-21 19:57:13 | bbafb536 |  | job.enqueued | master-001 | {"kind": "create", "payload": {"objective": "Create a TODO-extractor bot: given a workspace file named notes.txt, find every line containing |
 | 40 | 2026-09-21 20:03:25 | efc687cf | 006 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "word-frequency-bot", "tools": ["read_file", "write_file"], "permissions": {"fs:read": ["read_file"], "fs:write": ["write_file"]},  |
 | 41 | 2026-09-21 20:03:25 | efc687cf | 006 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 PASS 38s [done] expect='apple' last='apple' \| T3 PASS 51s [done] expect='thr |
@@ -402,3 +395,10 @@
 | 429 | 2026-09-22 09:08:29 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 430 | 2026-09-22 09:08:33 | ad285655 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 431 | 2026-09-22 09:08:34 | ad285655 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": [], "changed": []}} |
+| 432 | 2026-09-22 15:14:17 | 6f50b9fd |  | job.enqueued | owner | {"kind": "bench", "payload": {"lanes": ["groq-gptoss120b", "groq-gptoss20b", "gemini-lite", "gemini-lite31"], "stale_only": false, "max": 3, |
+| 433 | 2026-09-22 15:14:22 | 6f50b9fd |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 434 | 2026-09-22 15:15:09 | 123271bb |  | job.enqueued | owner | {"kind": "create", "payload": {"objective": "A bot that runs the project's unit test command (pytest) in the workspace via the shell and wri |
+| 435 | 2026-09-22 15:29:06 | 6f50b9fd |  | job.lease_expired | svc-LAPTOP-LRE6PSA8 | {} |
+| 436 | 2026-09-22 15:29:06 | 123271bb |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 437 | 2026-09-22 15:29:07 | 123271bb |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect: objective needs permissions outside the allowance ['fs:read', 'fs:write', 'net:search', 'net:fetch']: The objective re |
+| 438 | 2026-09-22 15:29:07 | 123271bb |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: architect: objective needs permissions outside the a |

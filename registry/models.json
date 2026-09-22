@@ -209,6 +209,24 @@
     "cost_per_1k": 0.0,
     "id": "groq-gptoss120b",
     "limits": {
+      "bench": {
+        "at": "2026-09-22T15:16:11",
+        "pass": 4,
+        "ref": "009",
+        "runs": 1,
+        "secs": 107,
+        "total": 4
+      },
+      "bench_runs": [
+        {
+          "at": "2026-09-22T15:16:11",
+          "pass": 4,
+          "quota": 0,
+          "ref": "009",
+          "secs": 107,
+          "total": 4
+        }
+      ],
       "health": {
         "failures": 0,
         "last_outcome": "ok",
@@ -224,7 +242,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-21T20:43:57+00:00",
+    "updated": "2026-09-22T14:16:11+00:00",
     "verified": "VERIFIED"
   },
   "groq-gptoss20b": {
