@@ -5,6 +5,7 @@
 Usage (laptop or repo):
   python tools/factory_pipeline.py create "<plain-English objective>" [--id 004] [--dry-run] [--no-tests]
   python tools/factory_pipeline.py test <bot_id>              # run acceptance tests + record only
+  python tools/factory_pipeline.py rearchitect <bot_id>       # D-052: regenerate spec from the original objective
   python tools/factory_pipeline.py spec "<objective>"         # print the generated spec, build nothing
 
 Design rules (see DECISIONS D-021..D-025):
@@ -15,13 +16,14 @@ Design rules (see DECISIONS D-021..D-025):
     so evidence is identical in shape.
 """
 from __future__ import annotations
-import json, os, re, subprocess, sys, pathlib, time, urllib.request
+import json, os, re, subprocess, sys, pathlib, time, urllib.request, datetime
 
 ROOT = pathlib.Path(os.environ.get("AIFACTORY_REPO", pathlib.Path(__file__).resolve().parents[1]))
 sys.path.insert(0, str(ROOT / "core"))
 from factory.registry import Registry                      # noqa: E402
 from factory.botspec import validate_spec                  # noqa: E402
-from factory.factory import BotFactory, FactoryError       # noqa: E402
+from factory.factory import BotFactory, FactoryError
+from factory.guard import SecurityViolation       # noqa: E402
 
 WIN = os.name == "nt"
 LAPTOP_BOTS = pathlib.Path(r"C:\AI\Factory\bots")
@@ -173,9 +175,12 @@ def spec_consistency(spec: dict) -> list[str]:
     return problems
 
 
-def objective_to_spec(objective: str, reg: Registry, bot_id: str, attempts: int = 3) -> tuple[dict, str]:
-    msgs = [{"role": "user", "content": SPEC_PROMPT.format(primary="groq-gptoss120b", bot_id=bot_id, fallbacks=json.dumps(default_fallbacks(reg)),
-                                                           catalog=_catalog(reg), objective=objective)}]
+def objective_to_spec(objective: str, reg: Registry, bot_id: str, attempts: int = 3, feedback: str = "") -> tuple[dict, str]:
+    prompt = SPEC_PROMPT.format(primary="groq-gptoss120b", bot_id=bot_id, fallbacks=json.dumps(default_fallbacks(reg)),
+                                catalog=_catalog(reg), objective=objective)
+    if feedback:
+        prompt += f"\n\nA PREVIOUS SPEC FOR THIS OBJECTIVE WAS REJECTED. Fix this: {feedback[:600]}"
+    msgs = [{"role": "user", "content": prompt}]
     last_err = ""
     for i in range(attempts):
         text, lane = chat(msgs)
@@ -242,6 +247,7 @@ def cmd_create(objective: str, bot_id: str | None, dry_run: bool, no_tests: bool
         raise FactoryError(f"bot {bot_id} exists; pipeline never overwrites (use factory_cli build --overwrite)")
     t0 = time.time()
     spec, lane = objective_to_spec(objective, reg, bot_id)
+    spec["objective"] = objective          # D-052: kept verbatim so a re-architect can start from the owner's words
     report = {"bot_id": bot_id, "name": spec["name"], "spec_lane": lane, "spec": spec}
     if dry_run:
         return report
@@ -258,6 +264,41 @@ def cmd_create(objective: str, bot_id: str | None, dry_run: bool, no_tests: bool
     write_bot_registry_md(reg, ROOT / "BOT_REGISTRY.md")
     report.update({"tests": res["evidence"], "pass": res["pass"], "total": res["total"],
                    "status": e.status, "verified": e.verified, "elapsed_s": int(time.time() - t0)})
+    return report
+
+
+def cmd_rearchitect(bot_id: str, feedback: str = "", allowed_permissions: list[str] | None = None) -> dict:
+    """D-052: regenerate the spec of a `testing` bot from its ORIGINAL objective (never from the broken spec),
+    rebuild in place, re-test. Used when repair cannot help because tools/tests are inconsistent. Boundaries:
+    permissions may change only within the job's allowance (checked by the worker) and are audited as a diff;
+    the previous spec is archived in specs/history. Bot id/name are kept."""
+    reg = Registry(ROOT / "registry"); bots_root = LAPTOP_BOTS if WIN else ROOT / "bots"
+    f = BotFactory(reg, bots_root); e = reg.get("bots", bot_id)
+    if e is None: raise FactoryError(f"unknown bot {bot_id}")
+    if e.status == "active": return {"ok": False, "bot_id": bot_id, "error": "rearchitect only runs on non-active bots"}
+    sp = ROOT / "specs" / f"{e.id}-{e.name}.json"
+    old = json.loads(sp.read_text(encoding="utf-8")) if sp.exists() else {}
+    objective = old.get("objective") or (old.get("notes") or "").split("from objective:")[-1].strip() or e.purpose
+    fb = feedback or "; ".join(spec_consistency(old)) or e.notes
+    spec, lane = objective_to_spec(objective, reg, bot_id, feedback=fb)
+    spec["id"], spec["name"], spec["objective"] = bot_id, e.name, objective        # identity is never the model's
+    spec["notes"] = (spec.get("notes") or "") + f" | re-architected {datetime.date.today()} by {lane}: {fb[:100]}"
+    if allowed_permissions is not None:
+        extra = set(spec["permissions"]) - set(allowed_permissions)
+        if extra: raise SecurityViolation(f"rearchitect {bot_id}: spec wants permissions beyond job allowance: {sorted(extra)}")
+    hist = ROOT / "specs" / "history"; hist.mkdir(exist_ok=True)
+    if old: (hist / f"{e.id}-{e.name}-{datetime.datetime.now():%Y%m%d-%H%M%S}-prearch.json").write_text(json.dumps(old, indent=2), encoding="utf-8")
+    sp.write_text(json.dumps(spec, indent=2), encoding="utf-8")
+    r = f.build(spec, overwrite=True)
+    report = {"ok": True, "bot_id": bot_id, "name": e.name, "spec_lane": lane, "chain": r.chain, "spec": spec,
+              "boundary_diff": {"tools": {"before": old.get("tools"), "after": spec["tools"]},
+                                "permissions": {"before": old.get("permissions"), "after": spec["permissions"]}}}
+    if not WIN: report["status"] = reg.get("bots", bot_id).status; return report
+    res = run_tests(r.bot_dir)
+    e2 = f.record_test_result(bot_id, int(res["pass"]), int(res["total"]), res["evidence"])
+    (r.bot_dir / "TEST_RESULTS.md").write_text(res["raw"], encoding="utf-8")
+    write_bot_registry_md(reg, ROOT / "BOT_REGISTRY.md")
+    report.update({"tests": res["evidence"], "pass": res["pass"], "total": res["total"], "status": e2.status, "verified": e2.verified})
     return report
 
 
@@ -290,6 +331,8 @@ def main(argv: list[str]) -> int:
     try:
         if cmd == "create":
             out = cmd_create(arg, opt("--id"), "--dry-run" in argv, "--no-tests" in argv)
+        elif cmd == "rearchitect":
+            out = cmd_rearchitect(arg, opt("--feedback", ""))
         elif cmd == "spec":
             out = cmd_create(arg, opt("--id"), True, True)
         elif cmd == "test":

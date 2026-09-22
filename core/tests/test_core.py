@@ -388,3 +388,35 @@ def test_repair_rejects_instructions_that_echo_test_tokens():
     assert fr.leaks_expected_tokens("Always answer X_OK first.", tests) == []      # liveness token is in its own prompt
     assert fr.leaks_expected_tokens("Reply CONFINED when unsure.", ["What is 2+2 -> 4"]) == ["CONFINED"]
     assert fr.leaks_expected_tokens("Count lines and reply with the number.", tests) == []
+
+
+def test_d052_repair_refuses_inconsistent_spec_and_rearchitect_fixes_from_objective(tmp_path, monkeypatch):
+    import sys, pathlib, importlib, json
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[2] / "tools"))
+    fr = importlib.import_module("factory_repair"); fp = importlib.import_module("factory_pipeline")
+    reg, f = _reg_and_factory(tmp_path); root = reg.root.parent
+    monkeypatch.setattr(fr, "ROOT", root); monkeypatch.setattr(fp, "ROOT", root); monkeypatch.setattr(fp, "WIN", False)
+    (root / "specs").mkdir(exist_ok=True)
+    bad_tests = ["Reply with exactly: OK -> OK", "First write data.csv containing 'a,1' then read data.csv and reply with the sum -> 1"]
+    spec = _rspec(id="094", name="csv-sum", tests=bad_tests, objective="Sum the amount column of data.csv")
+    f.build(spec); f.record_test_result("094", 0, 2, "T2 FAIL last='CAPABILITY_MISSING: write_file'")
+    (root / "specs" / "094-csv-sum.json").write_text(json.dumps(spec))
+    r = fr.repair("094", chat=lambda msgs: ("should never be called", "x"))
+    assert r["ok"] is False and r["error"].startswith("logic: spec/tests inconsistent")        # pauses, no LLM round burned
+    # rearchitect: the architect LLM returns a consistent spec; identity is preserved, old spec archived, perms bounded
+    good = {**spec, "name": "model-picked-name", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "id": "999"}
+    seen = {}
+    def chat(msgs):
+        seen["prompt"] = msgs[0]["content"]; return (json.dumps(good), "fake-lane")
+    monkeypatch.setattr(fp, "chat", chat)
+    out = fp.cmd_rearchitect("094", allowed_permissions=["fs:read", "fs:write"])
+    assert out["ok"] and out["spec"]["id"] == "094" and out["spec"]["name"] == "csv-sum"
+    assert "Sum the amount column" in seen["prompt"] and "REJECTED" in seen["prompt"]
+    assert out["boundary_diff"]["tools"]["after"] == ["read_file", "write_file"]
+    assert list((root / "specs" / "history").glob("094-csv-sum-*-prearch.json"))
+    # allowance is enforced: a spec wanting shell is refused even though the model asked for it
+    monkeypatch.setattr(fp, "chat", lambda msgs: (json.dumps({**good, "tools": ["read_file", "write_file", "exec"], "permissions": ["fs:read", "fs:write", "shell:workspace"]}), "fake"))
+    import pytest
+    from factory.guard import SecurityViolation
+    with pytest.raises(SecurityViolation):
+        fp.cmd_rearchitect("094", allowed_permissions=["fs:read", "fs:write"])

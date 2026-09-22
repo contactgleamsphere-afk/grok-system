@@ -2,7 +2,7 @@
 
   python tools/factory_worker.py run   [--once] [--worker NAME] [--idle-exit 30]
   python tools/factory_worker.py add create "<objective>" [--priority 3]
-  python tools/factory_worker.py add test|repair <bot_id>
+  python tools/factory_worker.py add test|repair|rearchitect <bot_id>
   python tools/factory_worker.py add monitor
   python tools/factory_worker.py add bench [--lanes a,b] [--stale-only] [--max N]   # D-050 lane quality
   python tools/factory_worker.py status | jobs | resume <job_id> | cancel <job_id> | release <job_id> [--uncount] | audit [bot_id]
@@ -18,7 +18,7 @@ import json, os, sys, time, socket, pathlib, datetime, traceback
 ROOT = pathlib.Path(os.environ.get("AIFACTORY_REPO", pathlib.Path(__file__).resolve().parents[1]))
 sys.path.insert(0, str(ROOT / "core")); sys.path.insert(0, str(ROOT / "tools"))
 from factory.jobs import JobStore                                     # noqa: E402
-from factory.guard import assert_no_silent_expansion, SecurityViolation  # noqa: E402
+from factory.guard import assert_no_silent_expansion, diff_boundaries, SecurityViolation  # noqa: E402
 from factory.registry import Registry                                 # noqa: E402
 from factory.factory import FactoryError                              # noqa: E402
 import factory_pipeline as fp                                          # noqa: E402
@@ -71,7 +71,7 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
                           priority=3, parent=jid, actor=worker, not_before=time.time() + 7200)
             return res
         if res["status"] != "active" and p.get("retest_of"):
-            store.enqueue("repair", {"bot_id": p["bot_id"], "max_rounds": 2}, priority=2, parent=jid, actor=worker)
+            store.enqueue("repair", {"bot_id": p["bot_id"], "max_rounds": 2, "rearchitected": bool(p.get("rearchitected"))}, priority=2, parent=jid, actor=worker)
         return res
     if kind == "repair":
         before = _spec_of(p["bot_id"])
@@ -85,8 +85,30 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
         if res.get("ok"):
             store.audit("bot.promoted", job_id=jid, bot_id=p["bot_id"], actor=worker, to="active")
         else:
-            raise FactoryError(res.get("error") or "repair produced no passing candidate")
+            err = res.get("error") or "repair produced no passing candidate"
+            if err.startswith("logic: spec/tests inconsistent") and not p.get("rearchitected"):
+                # D-052: instructions can't fix it -> one automatic re-architect from the original objective
+                store.enqueue("rearchitect", {"bot_id": p["bot_id"], "feedback": err[:400], "from_repair": jid}, priority=2, parent=jid, actor=worker)
+                store.audit("bot.rearchitect_queued", job_id=jid, bot_id=p["bot_id"], actor=worker, reason=err[:200])
+            raise FactoryError(err)
         return res
+    if kind == "rearchitect":
+        before = _spec_of(p["bot_id"])
+        if before is None: raise FactoryError(f"unknown bot {p['bot_id']}")
+        allowance = p.get("allowed_permissions", ["fs:read", "fs:write", "net:search", "net:fetch"])
+        res = fp.cmd_rearchitect(p["bot_id"], p.get("feedback", ""), allowance)
+        if not res.get("ok"): raise FactoryError(res.get("error"))
+        after = _spec_of(p["bot_id"])
+        # D-052: NOT silent — the diff is audited and bounded by the job allowance; shell/net beyond allowance is impossible
+        d = diff_boundaries(before, after)
+        store.audit("bot.rearchitected", job_id=jid, bot_id=p["bot_id"], actor=worker, lane=res.get("spec_lane"), tools=res["spec"]["tools"],
+                    permissions=res["spec"]["permissions"], boundary_diff=d, result=res.get("tests"), status=res.get("status"))
+        if res.get("status") == "active":
+            store.audit("bot.promoted", job_id=jid, bot_id=p["bot_id"], actor=worker, to="active")
+        else:
+            # one re-test like a fresh create; the test handler escalates to repair (flagged so repair->rearchitect can't loop)
+            store.enqueue("test", {"bot_id": p["bot_id"], "retest_of": jid, "rearchitected": True}, priority=3, parent=jid, actor=worker)
+        return {k: res.get(k) for k in ("bot_id", "spec_lane", "pass", "total", "status", "boundary_diff")}
     if kind == "probe":
         res = fpr.run(set(p["only"]) if p.get("only") else None)
         for r in res["changed"]:
@@ -240,6 +262,7 @@ def main(a: list[str]) -> int:
     if cmd == "add":
         kind = a[2]
         if kind == "create": j = store.enqueue("create", {"objective": a[3]}, priority=int(opt("--priority", 5)), actor=opt("--actor", "owner"))
+        elif kind == "rearchitect": j = store.enqueue("rearchitect", {"bot_id": a[3], "feedback": opt("--feedback", ""), "t": int(time.time())}, priority=2, actor=opt("--actor", "owner"))
         elif kind in ("test", "repair"): j = store.enqueue(kind, {"bot_id": a[3]}, priority=int(opt("--priority", 4)), actor=opt("--actor", "owner"))
         elif kind == "probe":
             only = [x for x in opt("--only", "").split(",") if x]

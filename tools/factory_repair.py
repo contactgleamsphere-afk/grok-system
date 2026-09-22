@@ -97,6 +97,12 @@ def repair(bot_id: str, max_rounds: int = 2, runner=None, chat=None) -> dict:
     if e.status != "testing":
         return {"ok": False, "bot_id": bot_id, "error": f"repair only runs on demoted bots (status={e.status})"}
     sp = _spec_path(reg, e); spec = json.loads(sp.read_text(encoding="utf-8"))
+    # D-052: instructions cannot fix a spec whose tests need tools it does not have (tools are frozen here).
+    # Fail closed as `logic` so the job pauses for the architect instead of burning repair rounds.
+    incons = fp.spec_consistency(spec)
+    if incons or "CAPABILITY_MISSING" in (e.notes or ""):
+        return {"ok": False, "bot_id": bot_id, "status": e.status, "permissions_after": spec.get("permissions"),
+                "error": "logic: spec/tests inconsistent, repair cannot change tools: " + "; ".join(incons or ["bot reported CAPABILITY_MISSING"])[:300]}
     before = {k: spec.get(k) for k in FROZEN}
     evidence = e.notes; raw = ""
     log = {"bot_id": bot_id, "name": e.name, "rounds": [], "permissions_before": before["permissions"]}
