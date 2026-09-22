@@ -162,3 +162,15 @@ frozen in repair, by design). Decision — three layers:
 Security note: this is the one path where a bot's boundary may *grow* without a human, so it is (a) bounded by an
 explicit allowance identical to `create`, (b) validated by `validate_spec` (shell:system never grantable), (c) audited
 as a diff, (d) never applied to an `active` bot.
+
+## D-053 — Objective planner: one owner objective → N single-purpose bots (2026-09-22) — VERIFIED
+`tools/factory_plan.py` + worker `plan` kind. The planner lane decomposes a compound objective into 1..4 self-
+contained bot objectives with explicit produces/consumes files; code (not prompt) enforces: bounded step count,
+no vague/duplicate steps, `->` forbidden, unproduced inputs become the step's own test fixtures, and a step whose
+purpose matches an existing active bot (≥0.75 similarity) is *reused*, not rebuilt (`plan.reused` audit). Each step
+becomes a normal `create` job with the same permission allowance and `plan`/`step` lineage in its payload.
+Live proof (from master 001 chat, no human steps): plan 25a47cdb → creates ff5312d9 (013 log-error-filter) and
+f9ae8ab7 (014 error-log-analyzer). 014 4/4 first run. 013 3/4 → retest → repair → 4/4 promoted.
+Root cause of 013's miss was not the planner: the bot *invented extra ERROR lines into its own fixture file*
+(artefacts show `app.log` with lines the test never asked for). Fixed in the bot AGENTS template: "write EXACTLY
+the given content; an empty result is valid; RESULT: bare answer only". Repair then passed in one round.

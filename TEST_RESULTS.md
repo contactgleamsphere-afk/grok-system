@@ -247,3 +247,7 @@ pytest core: 56/56.
 - Worker killed mid-job (pid 15912) during 012's retest; scheduled task restarted it, lease expired, job f5cf590e resumed att=2, no duplicate bot, ids intact.
 - 012 csv-column-sum: 1/3 (CAPABILITY_MISSING) → repair paused `logic` → `rearchitect` fbbc40db → tools +write_file, perms +fs:write (within allowance, audited) → 3/3 active VERIFIED; `specs/history/012-…-prearch.json` kept.
 pytest core: 58/58.
+
+## 2026-09-22 — D-053 pipeline objective end-to-end from chat — VERIFIED
+master chat → `queue plan` (25a47cdb, lane groq:qwen3.8-27b, 2 steps) → 013 log-error-filter (3/4 → repair 4/4 → active) and 014 error-log-analyzer (4/4 active). Zero human steps between the chat message and two VERIFIED bots.
+pytest core: 59/59.

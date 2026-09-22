@@ -3,6 +3,7 @@
 ## 2026-09-22 — discovery pipeline live, presets mirror, failover proof
 - D-047 `discover` job: OpenRouter free catalogue → filter → real probe + tool loop → probation. Live run added `or-ling-30-flash-vl`, `or-nex-n25-pro` (both VERIFIED after 2 clean probes); `nex-n2.5-mini` rejected; `or-deepseek` retired from presets.
 - D-048 `factory_presets.py`: nanobot `modelPresets` mirrors the registry (17 presets), pruned stale `or-deepseek` and `broken-primary`.
+- D-053 `factory_plan.py` + `plan` job: compound objectives → N single-purpose creates with reuse of existing bots; master 001 uses `queue plan` for pipelines. Bot template hardened against fixture fabrication.
 - D-052 `spec_consistency` + `rearchitect` job: tools/tests mismatches caught at architect time; repair fails closed on them; bounded, audited re-architect from the original objective (bot 012 recovered live).
 - D-051 quota-aware runner/bench/monitor: 429s never count as quality failures or trigger repair; rolling 3-run bench window; BLOCKED `custom` (OVH) presets pruned from config; master 001 `lanes` command + queue probe/discover/bench.
 - D-050 `factory_bench.py` + worker `bench` kind: pinned single-lane quality scores on the 009 reference suite; `default_fallbacks()` ranked by score. Runner gained `-Lane`; RUNNER path moved to the repo copy; 57 scratch scripts archived to `C:\AI\Factory\tools\_archive`.
