@@ -580,3 +580,8 @@
 {"seq": 580, "ts": 1790100254.603, "job": "c791b4b339df4f48ba4536e81db41d3a", "bot": "008", "event": "bot.demoted", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"to": "testing"}}
 {"seq": 581, "ts": 1790100254.603, "job": "71fc0dede1a94c228cd18691e0060158", "bot": "008", "event": "job.enqueued", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"kind": "repair", "payload": {"bot_id": "008", "max_rounds": 2}}}
 {"seq": 582, "ts": 1790100254.603, "job": "c791b4b339df4f48ba4536e81db41d3a", "bot": "008", "event": "job.done", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"summary": {"bot_id": "008", "status": "testing", "verified": "UNVERIFIED"}}}
+{"seq": 583, "ts": 1790100270.295, "job": "71fc0dede1a94c228cd18691e0060158", "bot": "008", "event": "job.claimed", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"attempt": 1}}
+{"seq": 584, "ts": 1790100585.199, "job": "322482f0dafc43b7a9c8cae390bf8106", "bot": null, "event": "job.enqueued", "actor": "owner", "detail": {"kind": "probe", "payload": {"only": [], "hour": "2026-09-22T19"}}}
+{"seq": 585, "ts": 1790100911.685, "job": "71fc0dede1a94c228cd18691e0060158", "bot": "008", "event": "bot.repair", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}}}
+{"seq": 586, "ts": 1790100911.685, "job": "71fc0dede1a94c228cd18691e0060158", "bot": "008", "event": "bot.promoted", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"to": "active"}}
+{"seq": 587, "ts": 1790100911.687, "job": "71fc0dede1a94c228cd18691e0060158", "bot": "008", "event": "job.done", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"summary": {"bot_id": "008", "status": "active"}}}

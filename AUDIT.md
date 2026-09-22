@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 183 | 2026-09-22 01:33:44 | 17fe6af1 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 5, "total": 5, "status": "active", "verified": "VERIFIED"}} |
-| 184 | 2026-09-22 01:33:49 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 185 | 2026-09-22 01:37:53 | 67df837c |  | job.enqueued | master-001 | {"kind": "create", "payload": {"objective": "Word-frequency bot: given a workspace file text.txt, write freq.txt with each distinct word and |
-| 186 | 2026-09-22 01:37:54 | 67df837c |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 187 | 2026-09-22 01:39:20 | 67df837c | 011 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "word-frequency-counter", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["groq-gptoss120b" |
 | 188 | 2026-09-22 01:39:20 | 67df837c | 011 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 10s [done] expect='2' last='2' \| T3 PASS 36s [done] expect='3' last='3' |
 | 189 | 2026-09-22 01:39:20 | 67df837c | 011 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "011", "name": "word-frequency-counter", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
 | 190 | 2026-09-22 01:46:45 | 57000908 |  | job.enqueued | builder | {"kind": "create", "payload": {"objective": "Create a CSV column-sum bot: given a workspace file data.csv with a header row, sum the numeric |
@@ -402,3 +397,8 @@
 | 580 | 2026-09-22 19:04:14 | c791b4b3 | 008 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 581 | 2026-09-22 19:04:14 | 71fc0ded | 008 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "008", "max_rounds": 2}} |
 | 582 | 2026-09-22 19:04:14 | c791b4b3 | 008 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "008", "status": "testing", "verified": "UNVERIFIED"}} |
+| 583 | 2026-09-22 19:04:30 | 71fc0ded | 008 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 584 | 2026-09-22 19:09:45 | 322482f0 |  | job.enqueued | owner | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-22T19"}} |
+| 585 | 2026-09-22 19:15:11 | 71fc0ded | 008 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
+| 586 | 2026-09-22 19:15:11 | 71fc0ded | 008 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 587 | 2026-09-22 19:15:11 | 71fc0ded | 008 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "008", "status": "active"}} |
