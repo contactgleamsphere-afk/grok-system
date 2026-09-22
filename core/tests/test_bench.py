@@ -571,7 +571,8 @@ def test_d088_daily_cap_cooldown_survives_tiny_probe_success(tmp_path, monkeypat
     reg, fb, fp = _reg(tmp_path, monkeypatch)
     import importlib, factory_probe as fpr; importlib.reload(fpr); monkeypatch.setattr(fpr, "ROOT", tmp_path)
     now = time.time() + 5000
-    fpr.mark_quota([{"model": "groq-a", "secs": 500, "kind": "tpd"}, {"model": "gemini-b", "secs": 120, "kind": "tpm"}], now=now)
+    assert fpr.mark_quota([{"model": "groq-a", "secs": 500, "kind": "tpd", "provider": "gemini"}], now=now) == []   # provider filter
+    fpr.mark_quota([{"model": "groq-a", "secs": 500, "kind": "tpd", "provider": "groq"}, {"model": "gemini-b", "secs": 120, "kind": "tpm"}], now=now)
     ha = reg.get("models", "groq-a").limits["health"]; hb = reg.get("models", "gemini-b").limits["health"]
     assert ha["quota_until"] == now + 3600 and ha["quota_kind"] == "tpd"
     assert hb["quota_until"] == now + 120 and hb["quota_kind"] == "tpm"

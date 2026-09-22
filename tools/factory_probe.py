@@ -161,7 +161,9 @@ def mark_quota(hits: list[dict], now: float | None = None) -> list[str]:
         # retry-after (= time until this ONE request fits the rolling window) elapses — the next real call hits it again.
         # Cool for at least an hour, and mark it so a 50-token probe success cannot clear it early.
         if kind in ("tpd", "rpd"): secs = max(secs, DAILY_COOLDOWN_S)
+        prov = hit.get("provider")
         for e in reg.all("models"):
+            if prov and e.provider != prov: continue
             if e.id != key and e.model != key and e.model.split("/")[-1] != key.split("/")[-1]: continue
             h = dict(e.limits.get("health", {})); h["ok"] = False; h["last_outcome"] = "quota"
             h["quota_until"] = max(float(h.get("quota_until", 0) or 0), now + secs); h["quota_kind"] = kind
