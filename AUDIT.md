@@ -2,17 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 131 | 2026-09-21 23:23:13 | 92e8b32f | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 11s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 85s [done] report expect='FACTORY' cmd=True \| T3 PASS 95s [d |
-| 132 | 2026-09-21 23:23:13 | 92e8b32f | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
-| 133 | 2026-09-22 00:26:15 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 134 | 2026-09-22 00:27:22 | 67adfc9d |  | job.enqueued | builder | {"kind": "discover", "payload": {"provider": "openrouter", "day": "2026-09-22", "trigger": "manual"}} |
-| 135 | 2026-09-22 00:27:23 | 67adfc9d |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 136 | 2026-09-22 00:27:40 | 67adfc9d |  | lane.discovered | svc-LAPTOP-LRE6PSA8 | {"model": "inclusionai/ling-3.0-flash-vl:free", "reason": "probe 2.53s loop 5.02s", "provider": "openrouter"} |
-| 137 | 2026-09-22 00:27:40 | 67adfc9d |  | lane.rejected | svc-LAPTOP-LRE6PSA8 | {"model": "nex-agi/nex-n2.5-mini:free", "reason": "loop: did not call add", "provider": "openrouter"} |
-| 138 | 2026-09-22 00:27:40 | 67adfc9d |  | lane.discovered | svc-LAPTOP-LRE6PSA8 | {"model": "nex-agi/nex-n2.5-pro:free", "reason": "probe 1.46s loop 3.9s", "provider": "openrouter"} |
-| 139 | 2026-09-22 00:27:40 | 67adfc9d |  | config.presets | svc-LAPTOP-LRE6PSA8 | {"added": ["or-ling-30-flash-vl", "or-nex-n25-pro"]} |
-| 140 | 2026-09-22 00:27:40 | 67adfc9d |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 141 | 2026-09-22 00:30:06 | acde44a1 |  | job.enqueued | builder | {"kind": "probe", "payload": {"only": ["or-ling-30-flash-vl", "or-nex-n25-pro"], "hour": "2026-09-22T00"}} |
 | 142 | 2026-09-22 00:30:09 | acde44a1 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 143 | 2026-09-22 00:30:12 | acde44a1 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 144 | 2026-09-22 00:31:07 | d5446b51 |  | job.enqueued | builder | {"kind": "probe", "payload": {"only": ["or-ling-30-flash-vl", "or-nex-n25-pro"], "hour": "2026-09-22T00"}} |
@@ -402,3 +391,14 @@
 | 528 | 2026-09-22 17:50:21 |  |  | worker.selftest | proof | {"ok": false, "tail": ["1 failed, 55 passed in 3.87s"]} |
 | 529 | 2026-09-22 17:56:46 | 16d02341 | 005 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-120b", "sandbox": "2/4", "rejected": null}, {"round" |
 | 530 | 2026-09-22 17:56:46 | 16d02341 | 005 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
+| 531 | 2026-09-22 17:56:50 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 532 | 2026-09-22 17:57:03 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["73 passed in 6.34s"]} |
+| 533 | 2026-09-22 17:57:03 | b7916bd1 | 006 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 534 | 2026-09-22 18:00:39 | 1d7ee2ef |  | job.cancelled | owner | {} |
+| 535 | 2026-09-22 18:00:41 | 7bfeca2a |  | job.resumed | owner | {} |
+| 536 | 2026-09-22 18:00:42 | 16d02341 |  | job.resumed | owner | {} |
+| 537 | 2026-09-22 18:01:06 | 7bfeca2a |  | job.cancelled | owner | {} |
+| 538 | 2026-09-22 18:01:08 | 746d5a79 | 019 | job.enqueued | builder | {"kind": "test", "payload": {"bot_id": "019"}} |
+| 539 | 2026-09-22 18:07:53 | b7916bd1 | 006 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 286s [done] expect='2' last='RESULT: Converted records.json to table.md  |
+| 540 | 2026-09-22 18:07:53 | b7916bd1 | 006 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 286s [done] expect='2' last='RESULT: Converted records.json to table.md  |
+| 541 | 2026-09-22 18:07:53 | b7916bd1 | 006 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "006", "status": "active", "verified": "VERIFIED"}} |
