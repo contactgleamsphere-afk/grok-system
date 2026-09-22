@@ -235,3 +235,7 @@
 | 231 | 2026-09-22 02:24:12 | e39e05e4 | 013 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 32s [done] expect='X_OK' last='X_OK' \| T2 FAIL 321s [TIMEOUT] expect='1' last='' \| T3 FAIL 123s [done] expect='0' last |
 | 232 | 2026-09-22 02:24:12 | e43a9934 | 013 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "013", "max_rounds": 2, "rearchitected": false}} |
 | 233 | 2026-09-22 02:24:12 | e39e05e4 | 013 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "013", "status": "testing", "verified": "UNVERIFIED"}} |
+| 234 | 2026-09-22 02:24:18 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 235 | 2026-09-22 02:24:22 | e43a9934 | 013 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 236 | 2026-09-22 02:33:50 | e43a9934 | 013 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:qwen/qwen3.8-27b", "sandbox": "3/4", "rejected": null}, {"round": 2 |
+| 237 | 2026-09-22 02:33:50 | e43a9934 | 013 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
