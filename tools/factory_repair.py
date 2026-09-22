@@ -12,7 +12,7 @@ Contract (D-029):
     specs/history/. On fail after max rounds: bot stays `testing`, evidence recorded, exit 1.
 """
 from __future__ import annotations
-import json, os, re, shutil, sys, pathlib, datetime
+import datetime, json, os, re, shutil, sys, pathlib
 ROOT = pathlib.Path(os.environ.get("AIFACTORY_REPO", pathlib.Path(__file__).resolve().parents[1]))
 sys.path.insert(0, str(ROOT / "core")); sys.path.insert(0, str(ROOT / "tools"))
 from factory.registry import Registry                        # noqa: E402
@@ -92,7 +92,7 @@ def permissions_unchanged(before: dict, after: dict) -> list[str]:
     return [k for k in FROZEN if json.dumps(before.get(k), sort_keys=True) != json.dumps(after.get(k), sort_keys=True)]
 
 
-def repair(bot_id: str, max_rounds: int = 2, runner=None, chat=None) -> dict:
+def repair(bot_id: str, max_rounds: int = 2, runner=None, chat=None, skip_reverify: bool = False) -> dict:
     reg = Registry(ROOT / "registry"); bots_root = fp.LAPTOP_BOTS if fp.WIN else ROOT / "bots"
     f = BotFactory(reg, bots_root); runner = runner or fp.run_tests
     if chat: fp.chat = chat
@@ -108,6 +108,19 @@ def repair(bot_id: str, max_rounds: int = 2, runner=None, chat=None) -> dict:
         return {"ok": False, "bot_id": bot_id, "status": e.status, "permissions_after": spec.get("permissions"),
                 "error": "logic: spec/tests inconsistent, repair cannot change tools: " + "; ".join(incons or ["bot reported CAPABILITY_MISSING"])[:300]}
     before = {k: spec.get(k) for k in FROZEN}
+    # D-059: re-verify before rewriting anything. A demotion can be caused by the judge, the lanes or the day —
+    # if the bot passes as it is, promote and touch nothing (a repair is never allowed to churn a healthy bot).
+    if not skip_reverify:
+        try:
+            r0 = runner(bots_root / f"{e.id}-{e.name}")
+            p0, t0 = int(r0["pass"]), int(r0["total"])
+        except Exception as ex:
+            p0, t0, r0 = 0, len(e.tests), {"evidence": f"runner error: {ex}"}
+        if t0 > 0 and p0 == t0:
+            e2 = f.record_test_result(bot_id, p0, t0, f"repair re-verify {datetime.date.today()}: {r0.get('evidence', '')}")
+            return {"ok": True, "bot_id": bot_id, "status": e2.status, "rounds": [], "reverified": True,
+                    "permissions_after": spec.get("permissions"), "note": "passed unchanged on re-verify; no rewrite"}
+        e.notes = f"tests {p0}/{t0}: {r0.get('evidence', '')}"[:2000]
     evidence = e.notes; raw = ""
     log = {"bot_id": bot_id, "name": e.name, "rounds": [], "permissions_before": before["permissions"]}
     sandbox_root = bots_root; sandbox_name = f"{e.id}-{e.name}-repair"

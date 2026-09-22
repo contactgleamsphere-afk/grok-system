@@ -209,3 +209,24 @@ def test_d057_insight_proposals_from_evidence(tmp_path, monkeypatch):
     assert not any("code" in (p_["auto_actionable"] or {}).get("kind", "") for p_ in P)     # never a code change
     out = fin.run(7, write=True)
     assert pathlib.Path(out["paths"]["md"]).exists() and "never applied" in pathlib.Path(out["paths"]["md"]).read_text()
+
+
+def test_d059_repair_reverifies_before_rewriting(tmp_path, monkeypatch):
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    import importlib, shutil, factory_repair as fr; importlib.reload(fr)
+    from factory.factory import BotFactory
+    shutil.copy(ROOT / "registry" / "tools.json", tmp_path / "registry" / "tools.json"); reg = Registry(tmp_path / "registry")
+    spec = {"id": "097", "name": "healthy", "purpose": "count things precisely for tests", "instructions": "Count precisely and reply with only the number. " * 4,
+            "model_policy": {"primary": "groq-a", "fallbacks": ["local3b"]}, "tools": ["read_file"], "permissions": ["fs:read"],
+            "tests": ["Reply with exactly: X_OK -> X_OK", "How many: a b c -> 3"]}
+    (tmp_path / "specs").mkdir(exist_ok=True); (tmp_path / "specs" / "097-healthy.json").write_text(json.dumps(spec))
+    f = BotFactory(reg, tmp_path / "bots"); f.build(spec)
+    f.record_test_result("097", 1, 2, "monitor: T2 FAIL (judge wrapped)")          # demoted by a flaky judge
+    assert reg.get("bots", "097").status == "testing"
+    called = {"chat": 0}
+    monkeypatch.setattr(fp, "chat", lambda *a, **k: called.__setitem__("chat", called["chat"] + 1) or ("{}", "x"))
+    out = fr.repair("097", runner=lambda d: {"pass": 2, "total": 2, "evidence": "T1 PASS | T2 PASS", "raw": ""})
+    assert out["ok"] and out.get("reverified") and out["rounds"] == [] and called["chat"] == 0     # no model call, no rewrite
+    e = Registry(tmp_path / "registry").get("bots", "097")
+    assert e.status == "active" and "re-verify" in e.notes
+    assert json.loads((tmp_path / "specs" / "097-healthy.json").read_text())["instructions"] == spec["instructions"]

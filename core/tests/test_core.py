@@ -370,7 +370,7 @@ def test_repair_rejects_permission_expansion_and_promotes_on_pass(tmp_path, monk
         return new, lane
     monkeypatch.setattr(fr, "regenerate_instructions", regen); monkeypatch.setattr(fp, "chat", fake_chat)
     calls = []
-    out = fr.repair("096", max_rounds=2, runner=lambda d: (calls.append(str(d)) or {"pass": 1, "total": 1, "evidence": "T1 PASS", "raw": ""}))
+    out = fr.repair("096", max_rounds=2, runner=lambda d: (calls.append(str(d)) or {"pass": 1, "total": 1, "evidence": "T1 PASS", "raw": ""}), skip_reverify=True)
     assert out["rounds"][0]["rejected"].startswith("frozen fields changed")
     assert out["ok"] and out["status"] == "active" and out["frozen_diff"] == []
     assert out["permissions_before"] == out["permissions_after"] == ["fs:read"]
