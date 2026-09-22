@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 379 | 2026-09-22 07:28:02 | 3173de79 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 380 | 2026-09-22 07:32:48 | 3173de79 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "5/5", "before": "testing", "after": "active", "inconclusive": false, "quota": 0} |
-| 381 | 2026-09-22 07:32:48 | 3173de79 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 382 | 2026-09-22 07:57:50 | 854ab0a2 |  | job.enqueued | builder | {"kind": "run", "payload": {"plan": "25a47cdb", "in": "C:\\AI\\Factory\\run\\runs\\_in-logtriage", "cap": 300, "t": 1790060269}} |
 | 383 | 2026-09-22 07:57:53 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 384 | 2026-09-22 07:57:57 | 854ab0a2 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 385 | 2026-09-22 08:00:15 | 854ab0a2 | 013 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"plan": "25a47cdb", "step": 1, "ok": true, "produced": ["errors.txt"], "missing": [], "secs": 63, "reply": "6", "chain": "groq-gptoss120b"} |
@@ -402,3 +398,7 @@
 | 776 | 2026-09-22 23:09:19 | 5aa3c5cd |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "report", "payload": {"day": "2026-09-23"}} |
 | 777 | 2026-09-22 23:09:19 | 4004bf3d |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "bench", "payload": {"stale_only": true, "max": 2, "day": "2026-09-22"}} |
 | 778 | 2026-09-22 23:09:19 | bb6439ae |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 779 | 2026-09-22 23:09:19 | 4004bf3d |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 780 | 2026-09-22 23:12:53 | 4004bf3d |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-flash36", "result": "2/4", "quota": 0, "secs": 63} |
+| 781 | 2026-09-22 23:12:53 | 4004bf3d |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-lite31", "result": "4/4", "quota": 0, "secs": 73} |
+| 782 | 2026-09-22 23:12:53 | 4004bf3d |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["gemini-flash36", "2/4"], ["gemini-lite31", "4/4"]]}} |
