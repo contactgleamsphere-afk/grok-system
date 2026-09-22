@@ -38,9 +38,14 @@ foreach($t in $bot.tests){
   $art="C:\AI\Factory\run\artefacts\$sid"; New-Item -ItemType Directory -Force $art | Out-Null
   Get-ChildItem $BotDir -File | ? { $_.Name -notmatch '^(AGENTS|SOUL|TESTS|RECOVERY|TEST_RESULTS|HEARTBEAT|USER)\.md$|^bot\.json$|^nanobot\.patch\.json$|^\.gitignore$' } | % { Copy-Item $_.FullName $art -Force; Remove-Item $_.FullName -Force }
   $el=[int]((Get-Date)-$t0).TotalSeconds
-  $last=(($out.Trim() -split "`n") | Where-Object { $_ -notmatch '^\s*✻' -and $_.Trim() } | Select -Last 1)
+  # D-059: judge the whole final RESULT block, not the last physical line. Rich wraps long replies at ~80 cols inside a
+  # background job, so "RESULT: Wrote CHANGELOG.md with 3 entries" arrived as two lines and only "entries…" was checked.
+  $lines=@(($out.Trim() -split "`n") | Where-Object { $_ -notmatch '^\s*✻' -and $_.Trim() } | % { $_.TrimEnd("`r") })
+  $ri=-1; for($li=0; $li -lt $lines.Count; $li++){ if($lines[$li] -match '^\s*(RESULT|ANSWER|OUTPUT)\s*[:=]'){ $ri=$li } }
+  if($ri -ge 0){ $last=(($lines[$ri..($lines.Count-1)] | Select -First 4) -join ' ') } else { $last=($lines | Select -Last 1) }
   $lastClean=("$last".Trim() -replace '^(RESULT|ANSWER|OUTPUT)\s*[:=]\s*','')
-  $ok = ($status -eq 'done') -and ( ($expect -eq '' -and $last) -or ($expect -ne '' -and ($lastClean -eq $expect -or $lastClean -match ('(^|\s)' + [regex]::Escape($expect) + '(\s|$)'))) )
+  $tok='(^|[\s`"''(\[])' + [regex]::Escape($expect) + '([\s`"'')\].,;:!?]|$)'
+  $ok = ($status -eq 'done') -and ( ($expect -eq '' -and $last) -or ($expect -ne '' -and ($lastClean -eq $expect -or $lastClean -match $tok)) )
   if($ok){ $pass++ }
   # D-051: a 429/quota answer is an availability failure, not a quality failure — counted separately so benchmarks stay attributable
   if(-not $ok -and ($out -match "code': 429|rate.limit|rate_limit_exceeded|Rate limit reached|temporarily rate-limited|RESOURCE_EXHAUSTED")){ $quota++ }
