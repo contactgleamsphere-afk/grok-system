@@ -400,3 +400,26 @@ def test_d072_monitor_fans_out_per_bot_tests_and_demotes_via_test_handler(tmp_pa
     assert ("monitor.fanout", None) in ev and ("bot.monitored", "071") in ev and ("bot.demoted", "072") in ev and ("bot.demoted", "071") not in ev
     md = (tmp_path / "MONITOR.md").read_text()
     assert "| 071 b071 | 1/1 | active→active" in md and "| 072 b072 | 0/1 | active→testing" in md
+
+
+def test_d073_all_reward_hack_rejections_escalate_to_rearchitect(tmp_path, monkeypatch):
+    """D-073: when every repair candidate is rejected as 'reward hacking', the test literal is the defect -> rearchitect queued once."""
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    import importlib, factory_worker as fw, factory_repair as fr; importlib.reload(fw)
+    from factory.jobs import JobStore
+    monkeypatch.setattr(fw, "ROOT", tmp_path)
+    st = JobStore(tmp_path / "run" / "jobs.sqlite3"); monkeypatch.setattr(fw, "DB", tmp_path / "run" / "jobs.sqlite3")
+    spec = {"permissions": ["fs:write"], "tools": ["write_file"], "model_policy": {"primary": "groq-a", "fallbacks": []}}
+    monkeypatch.setattr(fw, "_spec_of", lambda bid: spec)
+    monkeypatch.setattr(fw.fr, "repair", lambda bid, rounds: {"ok": False, "status": "testing", "error": "no passing candidate in 2 rounds",
+                        "rounds": [{"round": 1, "lane": "a", "rejected": "instructions hard-code test answers ['Status: PASS'] (reward hacking)"},
+                                   {"round": 2, "lane": "b", "rejected": "instructions hard-code test answers ['Status: PASS'] (reward hacking)"}]})
+    j = st.enqueue("repair", {"bot_id": "019", "max_rounds": 2}); c = st.claim("w", 300)
+    with pytest.raises(Exception) as ei: fw.handle(c, st, "w")
+    assert "spec/tests inconsistent" in str(ei.value)
+    ra = [x for x in st.list() if x["kind"] == "rearchitect"]
+    assert len(ra) == 1 and ra[0]["payload"]["bot_id"] == "019" and "literal" in ra[0]["payload"]["feedback"]
+    # once re-architected, a second all-reward-hack failure must NOT loop into another rearchitect
+    j2 = st.enqueue("repair", {"bot_id": "019", "max_rounds": 2, "rearchitected": True, "t": 2}); c2 = st.claim("w", 300)
+    with pytest.raises(Exception): fw.handle(c2, st, "w")
+    assert len([x for x in st.list() if x["kind"] == "rearchitect"]) == 1

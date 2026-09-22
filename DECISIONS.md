@@ -338,3 +338,9 @@ The nightly monitor tested every active bot inside ONE job: 17 bots × ~2–3 mi
 work and, on a sleep, lost all progress. Monitor is now a tiny job that enqueues one priority-6 `test` per active bot
 (owner work at priority ≤5 interleaves); each per-bot test is independently leased/resumable, writes its MONITOR.md
 row, and demote→repair happens in the test handler exactly as before (D-051 inconclusive rule kept).
+
+## D-073 — Reward-hack rejections point at the test, not the bot (2026-09-22) — VERIFIED (unit) / live on bot 019
+Bot 019's T2 expected the literal "Status: PASS"; any honest instruction ("write Status: PASS/FAIL") trips the
+reward-hacking guard, so both repair rounds were rejected and the job paused as logic. Rule: when EVERY repair
+candidate is rejected for reward hacking, the defect is the test literal → escalate once to rearchitect (D-052 path)
+with that feedback; the architect prompt now requires post-liveness expected values to be computed, not quoted.

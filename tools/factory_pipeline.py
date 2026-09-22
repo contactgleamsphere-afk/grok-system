@@ -117,6 +117,9 @@ Rules:
   then ..."). The expected token must be exactly the bot's final line. The expected value must be a short exact
   token the bot can reliably output (a number, a word, OK-style marker). The first test must be a trivial liveness
   check like "Reply with exactly: X_OK -> X_OK". Tests must be checkable offline unless the bot has net tools.
+  After the liveness check, expected values must be COMPUTED by the bot from the task (a count, a sum, a filename it
+  derived), never a fixed phrase that the instructions themselves would have to dictate (e.g. "Status: PASS"),
+  because the repair guard rejects any instruction text that quotes a test's expected value.
 - instructions: 40-120 words, concrete, telling the bot how to work and what to never do.
 - name: lowercase slug. id: "{bot_id}".
 

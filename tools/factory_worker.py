@@ -164,6 +164,13 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
             _maybe_deliver(store, job, worker)
         else:
             err = res.get("error") or "repair produced no passing candidate"
+            rounds = res.get("rounds") or []
+            all_reward_hack = bool(rounds) and all("reward hacking" in str(r.get("rejected") or "") for r in rounds)
+            if all_reward_hack:
+                # D-073: every candidate was rejected for echoing a test's expected literal — the TEST is the problem
+                # (its expected value is a phrase the bot legitimately has to say, e.g. 'Status: PASS'), not the bot.
+                # Re-architect with that feedback so the spec gets tests whose answers are computed, not quoted.
+                err = "logic: spec/tests inconsistent, tests expect a literal the instructions must mention (" + err[:200] + ")"
             if err.startswith("logic: spec/tests inconsistent") and not p.get("rearchitected"):
                 # D-052: instructions can't fix it -> one automatic re-architect from the original objective
                 store.enqueue("rearchitect", {"bot_id": p["bot_id"], "feedback": err[:400], "from_repair": jid, **_carry(p)}, priority=2, parent=jid, actor=worker)
