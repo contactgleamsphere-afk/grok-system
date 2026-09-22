@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 89 | 2026-09-21 21:37:33 | 9bad8732 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "or-deepseek", "outcome": "gone", "before": "VERIFIED", "after": "BLOCKED", "detail": "{\"error\":{\"message\":\"this model is una |
-| 90 | 2026-09-21 21:37:33 | 9bad8732 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 91 | 2026-09-21 21:39:59 | f781e2f8 |  | job.enqueued | builder | {"kind": "probe", "payload": {"only": ["or-deepseek", "gemini-flash"], "hour": "2026-09-21T21"}} |
-| 92 | 2026-09-21 21:40:12 | f781e2f8 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 93 | 2026-09-21 21:40:13 | f781e2f8 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "or-deepseek", "outcome": "gone", "before": "VERIFIED", "after": "BLOCKED", "detail": "{\"error\":{\"message\":\"this model is una |
 | 94 | 2026-09-21 21:40:13 | f781e2f8 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "RuntimeError: transient: probe found no healthy remote lane\nTrac |
 | 95 | 2026-09-21 21:41:23 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 96 | 2026-09-21 21:41:40 | f781e2f8 |  | job.resumed | owner | {} |
@@ -402,3 +397,8 @@
 | 486 | 2026-09-22 16:38:04 | e89cc0ba | 020 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "workspace-file-lister", "tools": ["exec", "write_file"], "permissions": ["shell:workspace", "fs:write"], "chain": ["groq-gptoss120 |
 | 487 | 2026-09-22 16:41:12 | e89cc0ba | 020 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 27s [done] expect='X_OK' last='X_OK' \| T2 PASS 85s [done] expect='DONE' last='DONE' \| T3 PASS 74s [done] expect='CONFI |
 | 488 | 2026-09-22 16:41:12 | e89cc0ba | 020 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "020", "name": "workspace-file-lister", "pass": 3, "total": 3, "status": "active", "verified": "VERIFIED"}} |
+| 489 | 2026-09-22 16:41:16 | a6d74a2f | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 490 | 2026-09-22 16:42:03 | 1d7ee2ef |  | job.resumed | owner | {} |
+| 491 | 2026-09-22 16:45:24 | a6d74a2f | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 27s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 56s [done] report expect='FACTORY' cmd=True \| T3 PASS 62s [d |
+| 492 | 2026-09-22 16:45:24 | a6d74a2f | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 27s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 56s [done] report expect='FACTORY' cmd=True \| T3 PASS 62s [d |
+| 493 | 2026-09-22 16:45:24 | a6d74a2f | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 5, "total": 5, "status": "active", "verified": "VERIFIED"}} |
