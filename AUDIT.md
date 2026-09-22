@@ -2,23 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 280 | 2026-09-22 05:07:35 | 66005b63 |  | job.cancelled | owner | {} |
-| 281 | 2026-09-22 05:07:35 | 2013c930 |  | job.cancelled | owner | {} |
-| 282 | 2026-09-22 05:21:46 | b59e7101 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "3/5", "before": "active", "after": "testing", "inconclusive": false, "quota": 0} |
-| 283 | 2026-09-22 05:21:46 | b59e7101 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 284 | 2026-09-22 05:21:46 | 04f8c4f9 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "001", "max_rounds": 2}} |
-| 285 | 2026-09-22 05:21:46 | b59e7101 | 002 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "2/2", "before": "active", "after": "active", "inconclusive": false, "quota": 0} |
-| 286 | 2026-09-22 05:21:46 | b59e7101 | 003 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "2/4", "before": "active", "after": "testing", "inconclusive": false, "quota": 0} |
-| 287 | 2026-09-22 05:21:46 | b59e7101 | 003 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 288 | 2026-09-22 05:21:46 | ac855168 | 003 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "003", "max_rounds": 2}} |
-| 289 | 2026-09-22 05:21:46 | b59e7101 | 004 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "3/4", "before": "active", "after": "testing", "inconclusive": false, "quota": 0} |
-| 290 | 2026-09-22 05:21:46 | b59e7101 | 004 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 291 | 2026-09-22 05:21:46 | 3f313b96 | 004 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "004", "max_rounds": 2}} |
-| 292 | 2026-09-22 05:21:46 | b59e7101 | 005 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "2/4", "before": "active", "after": "testing", "inconclusive": false, "quota": 0} |
-| 293 | 2026-09-22 05:21:46 | b59e7101 | 005 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 294 | 2026-09-22 05:21:46 | f2321ed5 | 005 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "005", "max_rounds": 2}} |
-| 295 | 2026-09-22 05:21:46 | b59e7101 | 006 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "2/4", "before": "active", "after": "testing", "inconclusive": false, "quota": 0} |
-| 296 | 2026-09-22 05:21:46 | b59e7101 | 006 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 297 | 2026-09-22 05:21:46 | a7af2653 | 006 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "006", "max_rounds": 2}} |
 | 298 | 2026-09-22 05:21:46 | b59e7101 | 007 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "3/4", "before": "active", "after": "testing", "inconclusive": false, "quota": 0} |
 | 299 | 2026-09-22 05:21:46 | b59e7101 | 007 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
@@ -402,3 +385,20 @@
 | 677 | 2026-09-22 21:18:17 | 72cfc51f |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 678 | 2026-09-22 21:19:42 | 615d5d9f |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 2} |
 | 679 | 2026-09-22 21:19:42 | 615d5d9f |  | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 2, "error": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>\no |
+| 680 | 2026-09-22 21:24:40 | 615d5d9f |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 3} |
+| 681 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "inclusionai/ling-3.0-flash-sante:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-da |
+| 682 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "inclusionai/ling-3.0-flash-fin:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. |
+| 683 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "dots-studio/dots-3-note-preview:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day |
+| 684 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "liquid/lfm-2.5-2.6b:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 cre |
+| 685 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "nvidia/nemotron-3.5-lightning:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day.  |
+| 686 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "thinkingmachines/inkling-small:free", "reason": "probe auth: {\"error\":{\"message\":\"thinkingmachines/inkling-small:free is onl |
+| 687 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "poolside/laguna-s-2.1:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 c |
+| 688 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "thinkingmachines/inkling:free", "reason": "probe auth: {\"error\":{\"message\":\"thinkingmachines/inkling:free is only available  |
+| 689 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "poolside/laguna-xs-2.1:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10  |
+| 690 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "cohere/north-mini-code:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10  |
+| 691 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "nvidia/nemotron-3-ultra-550b-a55b:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-d |
+| 692 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free- |
+| 693 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "google/gemma-4-26b-a4b-it:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add  |
+| 694 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "google/gemma-4-31b-it:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 c |
+| 695 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "nvidia/nemotron-3-super-120b-a12b:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-d |
+| 696 | 2026-09-22 21:24:53 | 615d5d9f |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |

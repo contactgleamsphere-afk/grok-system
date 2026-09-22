@@ -35,6 +35,96 @@
    "reason": "set MISTRAL_API_KEY (User env) after signing up: https://console.mistral.ai (Experiment free tier)",
    "ts": 1790108297.879643,
    "date": "2026-09-22"
+  },
+  "openrouter:inclusionai/ling-3.0-flash-sante:free": {
+   "verdict": "rejected",
+   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
+   "ts": 1790108680.3095658,
+   "date": "2026-09-22"
+  },
+  "openrouter:inclusionai/ling-3.0-flash-fin:free": {
+   "verdict": "rejected",
+   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
+   "ts": 1790108680.3095658,
+   "date": "2026-09-22"
+  },
+  "openrouter:dots-studio/dots-3-note-preview:free": {
+   "verdict": "rejected",
+   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
+   "ts": 1790108680.3095658,
+   "date": "2026-09-22"
+  },
+  "openrouter:liquid/lfm-2.5-2.6b:free": {
+   "verdict": "rejected",
+   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
+   "ts": 1790108680.3095658,
+   "date": "2026-09-22"
+  },
+  "openrouter:nvidia/nemotron-3.5-lightning:free": {
+   "verdict": "rejected",
+   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
+   "ts": 1790108680.3095658,
+   "date": "2026-09-22"
+  },
+  "openrouter:thinkingmachines/inkling-small:free": {
+   "verdict": "rejected",
+   "reason": "probe auth: {\"error\":{\"message\":\"thinkingmachines/inkling-small:free is only available on ag",
+   "ts": 1790108680.3095658,
+   "date": "2026-09-22"
+  },
+  "openrouter:poolside/laguna-s-2.1:free": {
+   "verdict": "rejected",
+   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
+   "ts": 1790108680.3095658,
+   "date": "2026-09-22"
+  },
+  "openrouter:thinkingmachines/inkling:free": {
+   "verdict": "rejected",
+   "reason": "probe auth: {\"error\":{\"message\":\"thinkingmachines/inkling:free is only available on agentic ",
+   "ts": 1790108680.3095658,
+   "date": "2026-09-22"
+  },
+  "openrouter:poolside/laguna-xs-2.1:free": {
+   "verdict": "rejected",
+   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
+   "ts": 1790108680.3095658,
+   "date": "2026-09-22"
+  },
+  "openrouter:cohere/north-mini-code:free": {
+   "verdict": "rejected",
+   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
+   "ts": 1790108680.3095658,
+   "date": "2026-09-22"
+  },
+  "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
+   "verdict": "rejected",
+   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
+   "ts": 1790108680.3095658,
+   "date": "2026-09-22"
+  },
+  "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": {
+   "verdict": "rejected",
+   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
+   "ts": 1790108680.3095658,
+   "date": "2026-09-22"
+  },
+  "openrouter:google/gemma-4-26b-a4b-it:free": {
+   "verdict": "rejected",
+   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
+   "ts": 1790108680.3095658,
+   "date": "2026-09-22"
+  },
+  "openrouter:google/gemma-4-31b-it:free": {
+   "verdict": "rejected",
+   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
+   "ts": 1790108680.3095658,
+   "date": "2026-09-22"
+  },
+  "openrouter:nvidia/nemotron-3-super-120b-a12b:free": {
+   "verdict": "rejected",
+   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
+   "ts": 1790108680.3095658,
+   "date": "2026-09-22"
   }
  }
 }
