@@ -11,9 +11,9 @@
     "limits": {
       "health": {
         "last_outcome": "quota",
-        "last_probe": "2026-09-21T20:43:55",
+        "last_probe": "2026-09-22T18:15:30",
         "ok": false,
-        "quota_until": 1790024335.9706395
+        "quota_until": 1790101830.9225142
       },
       "latency_s": "1.3",
       "rpd": 20,
@@ -26,7 +26,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-21T20:43:56+00:00",
+    "updated": "2026-09-22T18:15:31+00:00",
     "verified": "VERIFIED"
   },
   "gemini-flash36": {
@@ -41,7 +41,7 @@
     "limits": {
       "health": {
         "last_outcome": "no_tool_call",
-        "last_probe": "2026-09-21T20:43:55",
+        "last_probe": "2026-09-22T18:15:30",
         "ok": false
       },
       "latency_s": "1.3-2.4",
@@ -54,8 +54,8 @@
     "provider": "gemini",
     "ram_gb": null,
     "tokens_per_sec": null,
-    "tool_call_score": 0.6,
-    "updated": "2026-09-21T20:44:09+00:00",
+    "tool_call_score": 0.36,
+    "updated": "2026-09-22T18:15:34+00:00",
     "verified": "VERIFIED"
   },
   "gemini-flash38": {
@@ -70,9 +70,9 @@
     "limits": {
       "health": {
         "last_outcome": "quota",
-        "last_probe": "2026-09-21T20:43:55",
+        "last_probe": "2026-09-22T18:15:30",
         "ok": false,
-        "quota_until": 1790024335.9706395
+        "quota_until": 1790101830.9225142
       },
       "latency_s": "2.4",
       "rpd": 20,
@@ -85,7 +85,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-21T20:44:00+00:00",
+    "updated": "2026-09-22T18:15:34+00:00",
     "verified": "VERIFIED"
   },
   "gemini-gemma26b": {
@@ -118,8 +118,8 @@
       "health": {
         "failures": 0,
         "last_outcome": "ok",
-        "last_probe": "2026-09-21T20:43:55",
-        "latency_s": 1.02,
+        "last_probe": "2026-09-22T18:15:30",
+        "latency_s": 1.05,
         "ok": true
       },
       "latency_s": "1.3",
@@ -133,7 +133,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-22T00:16:21+00:00",
+    "updated": "2026-09-22T18:15:35+00:00",
     "verified": "VERIFIED"
   },
   "gemini-lite": {
@@ -167,8 +167,8 @@
       "health": {
         "failures": 0,
         "last_outcome": "ok",
-        "last_probe": "2026-09-21T20:43:55",
-        "latency_s": 0.74,
+        "last_probe": "2026-09-22T18:15:30",
+        "latency_s": 11.25,
         "ok": true
       },
       "latency_s": "0.7-1.4",
@@ -182,7 +182,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-22T14:45:23+00:00",
+    "updated": "2026-09-22T18:15:47+00:00",
     "verified": "VERIFIED"
   },
   "gemini-lite31": {
@@ -198,8 +198,8 @@
       "health": {
         "failures": 0,
         "last_outcome": "ok",
-        "last_probe": "2026-09-21T20:43:55",
-        "latency_s": 1.47,
+        "last_probe": "2026-09-22T18:15:30",
+        "latency_s": 9.62,
         "ok": true
       },
       "latency_s": "1.7",
@@ -213,7 +213,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-21T20:44:01+00:00",
+    "updated": "2026-09-22T18:15:56+00:00",
     "verified": "VERIFIED"
   },
   "groq-gptoss120b": {
@@ -256,8 +256,8 @@
       "health": {
         "failures": 0,
         "last_outcome": "ok",
-        "last_probe": "2026-09-21T20:43:55",
-        "latency_s": 0.61,
+        "last_probe": "2026-09-22T18:15:30",
+        "latency_s": 0.78,
         "ok": true
       }
     },
@@ -268,7 +268,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-22T14:30:47+00:00",
+    "updated": "2026-09-22T18:15:57+00:00",
     "verified": "VERIFIED"
   },
   "groq-gptoss20b": {
@@ -302,8 +302,8 @@
       "health": {
         "failures": 0,
         "last_outcome": "ok",
-        "last_probe": "2026-09-21T20:43:55",
-        "latency_s": 0.54,
+        "last_probe": "2026-09-22T18:15:30",
+        "latency_s": 0.6,
         "ok": true
       }
     },
@@ -314,7 +314,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-22T14:33:49+00:00",
+    "updated": "2026-09-22T18:15:58+00:00",
     "verified": "VERIFIED"
   },
   "groq-qwen27b": {
@@ -348,8 +348,8 @@
       "health": {
         "failures": 0,
         "last_outcome": "ok",
-        "last_probe": "2026-09-21T20:43:55",
-        "latency_s": 0.42,
+        "last_probe": "2026-09-22T18:15:30",
+        "latency_s": 0.4,
         "ok": true
       }
     },
@@ -359,8 +359,8 @@
     "provider": "groq",
     "ram_gb": null,
     "tokens_per_sec": null,
-    "tool_call_score": 0.8400000000000001,
-    "updated": "2026-09-22T00:18:49+00:00",
+    "tool_call_score": 0.8720000000000001,
+    "updated": "2026-09-22T18:15:58+00:00",
     "verified": "VERIFIED"
   },
   "local3b": {
@@ -376,7 +376,7 @@
       "health": {
         "failures": 0,
         "last_outcome": "ok",
-        "last_probe": "2026-09-21T20:43:55",
+        "last_probe": "2026-09-22T18:15:30",
         "latency_s": null,
         "ok": true
       }
@@ -387,8 +387,8 @@
     "provider": "ollama",
     "ram_gb": 2.0,
     "tokens_per_sec": 11.85,
-    "tool_call_score": 0.36000000000000004,
-    "updated": "2026-09-21T20:43:58+00:00",
+    "tool_call_score": 0.48800000000000004,
+    "updated": "2026-09-22T18:15:58+00:00",
     "verified": "VERIFIED"
   },
   "local4b": {
@@ -405,7 +405,7 @@
       "health": {
         "failures": 0,
         "last_outcome": "ok",
-        "last_probe": "2026-09-21T20:43:55",
+        "last_probe": "2026-09-22T18:15:30",
         "latency_s": null,
         "ok": true
       }
@@ -416,8 +416,8 @@
     "provider": "ollama",
     "ram_gb": 3.0,
     "tokens_per_sec": 9.19,
-    "tool_call_score": 0.36000000000000004,
-    "updated": "2026-09-21T20:43:58+00:00",
+    "tool_call_score": 0.48800000000000004,
+    "updated": "2026-09-22T18:15:58+00:00",
     "verified": "VERIFIED"
   },
   "or-deepseek": {
@@ -433,7 +433,7 @@
         "blocked_by": "probe",
         "first_gone": "2026-09-22T08:08:33",
         "last_outcome": "gone",
-        "last_probe": "2026-09-22T08:08:33",
+        "last_probe": "2026-09-22T18:15:30",
         "ok": false,
         "reason": "gone: {\"error\":{\"message\":\"this model is unavailable for free. the paid version is available now - use this slug instead: deepseek/deepseek-v4-flash-0731\",\"code\":404}"
       },
@@ -447,7 +447,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-22T08:08:34+00:00",
+    "updated": "2026-09-22T18:15:59+00:00",
     "verified": "BLOCKED"
   },
   "or-ling-30-flash-vl": {
@@ -478,10 +478,11 @@
       ],
       "health": {
         "failures": 0,
-        "last_outcome": "ok",
-        "last_probe": "2026-09-21T23:31:11",
+        "last_outcome": "quota",
+        "last_probe": "2026-09-22T18:15:30",
         "latency_s": 2.78,
-        "ok": true
+        "ok": false,
+        "quota_until": 1790101830.9225142
       },
       "rpd_scope": "openrouter free tier shared 50/day"
     },
@@ -492,7 +493,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 0.808,
-    "updated": "2026-09-22T00:15:08+00:00",
+    "updated": "2026-09-22T18:15:59+00:00",
     "verified": "VERIFIED"
   },
   "or-nex-n25-pro": {
@@ -523,10 +524,11 @@
       ],
       "health": {
         "failures": 0,
-        "last_outcome": "ok",
-        "last_probe": "2026-09-21T23:31:11",
+        "last_outcome": "quota",
+        "last_probe": "2026-09-22T18:15:30",
         "latency_s": 1.53,
-        "ok": true
+        "ok": false,
+        "quota_until": 1790101830.9225142
       },
       "rpd_scope": "openrouter free tier shared 50/day"
     },
@@ -537,7 +539,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 0.808,
-    "updated": "2026-09-22T00:14:04+00:00",
+    "updated": "2026-09-22T18:16:00+00:00",
     "verified": "VERIFIED"
   },
   "or-qwen27b": {
@@ -551,9 +553,9 @@
     "limits": {
       "health": {
         "last_outcome": "quota",
-        "last_probe": "2026-09-21T20:43:55",
+        "last_probe": "2026-09-22T18:15:30",
         "ok": false,
-        "quota_until": 1790024335.9706395
+        "quota_until": 1790101830.9225142
       },
       "rpd": 50,
       "rpd_scope": "account-wide across all :free models"
@@ -565,7 +567,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-22T00:27:54+00:00",
+    "updated": "2026-09-22T18:16:00+00:00",
     "verified": "VERIFIED"
   },
   "ovh-gptoss20b": {

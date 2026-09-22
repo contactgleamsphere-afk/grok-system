@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 188 | 2026-09-22 01:39:20 | 67df837c | 011 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 10s [done] expect='2' last='2' \| T3 PASS 36s [done] expect='3' last='3' |
-| 189 | 2026-09-22 01:39:20 | 67df837c | 011 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "011", "name": "word-frequency-counter", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
-| 190 | 2026-09-22 01:46:45 | 57000908 |  | job.enqueued | builder | {"kind": "create", "payload": {"objective": "Create a CSV column-sum bot: given a workspace file data.csv with a header row, sum the numeric |
-| 191 | 2026-09-22 01:46:49 | 57000908 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 192 | 2026-09-22 01:47:26 | 57000908 | 012 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "csv-column-sum", "tools": ["read_file"], "permissions": ["fs:read"], "chain": ["groq-gptoss120b", "or-ling-30-flash-vl", "or-nex-n |
 | 193 | 2026-09-22 01:47:26 | 57000908 | 012 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] expect='X_OK' last='RESULT: X_OK' \| T2 FAIL 9s [done] expect='60' last='CAPABILITY_MISSING: write_file' \| T |
 | 194 | 2026-09-22 01:47:26 | f5cf590e | 012 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "012", "retest_of": "57000908adad4c28b681b4fb41c35e7b"}} |
 | 195 | 2026-09-22 01:47:26 | 57000908 | 012 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "012", "name": "csv-column-sum", "pass": 1, "total": 3, "status": "testing", "verified": "UNVERIFIED"}} |
@@ -402,3 +397,8 @@
 | 585 | 2026-09-22 19:15:11 | 71fc0ded | 008 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
 | 586 | 2026-09-22 19:15:11 | 71fc0ded | 008 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 587 | 2026-09-22 19:15:11 | 71fc0ded | 008 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "008", "status": "active"}} |
+| 588 | 2026-09-22 19:15:15 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 589 | 2026-09-22 19:15:30 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["76 passed in 7.95s"]} |
+| 590 | 2026-09-22 19:15:30 | 322482f0 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 591 | 2026-09-22 19:15:30 | 60d56672 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-22T20"}} |
+| 592 | 2026-09-22 19:16:00 | 322482f0 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen27b", "local3b",  |
