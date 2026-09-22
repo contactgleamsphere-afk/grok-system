@@ -92,10 +92,29 @@ def chat(messages: list[dict], max_tokens: int = 1200, skip: set[str] | None = N
                 errors.append(f"{name}:{model} empty content (finish={d['choices'][0].get('finish_reason')})"); continue
             return text, f"{name}:{model}"
         except urllib.error.HTTPError as e:
-            errors.append(f"{name}:{model} HTTP {e.code} {e.read()[:120].decode(errors='replace')}")
+            txt = e.read()[:400].decode(errors="replace")
+            errors.append(f"{name}:{model} HTTP {e.code} {txt[:120]}")
+            if e.code in (429, 413) or "rate_limit" in txt or "RESOURCE_EXHAUSTED" in txt:
+                _cool_from_error(name, model, txt)                    # D-092: builder-side 429s cool the lane too
         except Exception as e:  # connection / timeout
             errors.append(f"{name}:{model} {type(e).__name__}")
     raise RuntimeError("all lanes failed: " + " | ".join(errors))
+
+
+def _cool_from_error(provider: str, model: str, txt: str) -> None:
+    """D-092: the same rule as the test runner's QUOTAHIT (D-080/D-088) for the architect/planner/repair calls made by
+    the builder itself: parse retry-after + daily-vs-minute kind and cool the exact lane now. Never raises."""
+    try:
+        import factory_probe as fpr
+        m = re.search(r"try\s+again in (?:(\d+)h)?(?:(\d+)m)?(?:([\d.]+)s)?", txt)
+        secs = int((int(m.group(1) or 0) * 3600 + int(m.group(2) or 0) * 60 + float(m.group(3) or 0)) + 30) if m and m.group(0).strip() != "try again in" else 0
+        if not secs:
+            m2 = re.search(r"retryDelay['\":\s]+(\d+)s", txt); secs = int(m2.group(1)) + 30 if m2 else 900
+        low = txt.lower()
+        kind = "tpd" if ("(tpd)" in low or "per day" in low or "per-day" in low or "perday" in low or "daily" in low) else ("rpd" if "(rpd)" in low else "tpm")
+        fpr.mark_quota([{"model": model, "secs": secs, "kind": kind, "provider": provider}])
+    except Exception:
+        pass
 
 
 # ---------------------------------------------------------------- objective -> spec

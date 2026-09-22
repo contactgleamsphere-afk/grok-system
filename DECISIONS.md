@@ -465,3 +465,8 @@ now carries `prev` (previous row's hash) and `h` = sha256(seq,ts,job,bot,event,a
 continues across sync calls and month files. `factory_worker.py audit-verify` walks it; rows written before D-091
 (733 today) are counted but not hashed — the chain starts after them. Repair/promotion/permission events are therefore
 tamper-evident in git, not just present.
+
+## D-092 — Builder-side 429s cool lanes too (2026-09-22) — VERIFIED (unit)
+D-080/D-088 covered 429s seen by bot test runs; the builder's own `chat()` (architect, planner, repair rewrite, insight)
+just rotated to the next lane and left the registry unaware. Now every HTTP 429/413/rate_limit/RESOURCE_EXHAUSTED in
+`chat()` runs the same parse (retry-after, daily vs minute) and `mark_quota()` — one rule, two entry points.

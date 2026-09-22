@@ -613,3 +613,16 @@ def test_d091_audit_jsonl_hash_chain_detects_tampering(tmp_path):
     # delete a row
     f.write_text("\n".join([lines[0], lines[2], lines[3]]) + "\n")
     v = JobStore.audit_verify(d); assert not v["ok"] and v["first_bad"]["why"] == "prev mismatch"
+
+
+def test_d092_builder_chat_429_cools_lane(tmp_path, monkeypatch):
+    """D-092: a 429 seen by the builder's own chat() (architect/planner/repair) cools that lane like a runner QUOTAHIT."""
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    import importlib, factory_probe as fpr; importlib.reload(fpr); monkeypatch.setattr(fpr, "ROOT", tmp_path)
+    e = reg.get("models", "groq-a"); e.model = "openai/gpt-oss-20b"; reg.upsert("models", e)
+    fp._cool_from_error("groq", "openai/gpt-oss-20b", "Rate limit reached for model `openai/gpt-oss-20b` ... on tokens per day (TPD): Limit 200000, Used 199515, Requested 1943. Please try again in 10m29.856s.")
+    h = reg.get("models", "groq-a").limits["health"]
+    assert h["quota_kind"] == "tpd" and h["quota_until"] >= time.time() + 3500          # daily -> >= 1 h
+    fp._cool_from_error("gemini", "gemini-b", "429 RESOURCE_EXHAUSTED ... 'retryDelay': '37s'")
+    hb = reg.get("models", "gemini-b").limits["health"]
+    assert hb["quota_kind"] == "tpm" and 60 <= hb["quota_until"] - time.time() <= 70
