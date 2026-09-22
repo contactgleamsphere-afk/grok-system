@@ -47,3 +47,6 @@ Action: none — retry after 60 s. If it persists >10 min, the laptop is asleep/
 ## Nightly monitor did not run
 Check `Get-ScheduledTaskInfo 'AIFactory Monitor'` (LastRunTime) and `factory_worker.py jobs | Select-String monitor`.
 Since D-055 the daily `report` job enqueues a monitor for the day if none exists, so a skipped task self-heals within 24 h; to force: `factory_worker.py add monitor`.
+
+## Laptop lost / fresh machine
+Registry (`registry/`), specs, audit (`audit/*.jsonl`), proposals, MONITOR/BOT_REGISTRY/STATUS are all in git. Jobs DB and bot bundles are not: rebuild bundles from specs with `factory_cli build`, re-run `add monitor` to re-verify. Audit continuity: the JSONL high-water mark means a fresh DB starts a new seq range — keep the old files, do not delete.

@@ -293,3 +293,11 @@ Live, in master chat: "I put orders.csv in inbox/orders. I need a bot that … B
 → `queue create "…" --then-run orders` (job fbeb65ad) → bot 018 csv-country-totals built, 4/4, active → child run
 ca31fcf3 → `totals.csv` = UK 370.25 / DE 1510.50 / US 2480.00 (exact). The full loop objective → plan → create →
 test → verify → register → run → deliver (→ monitor → repair) is closed with no human in it.
+
+## D-067 — Durable audit trail in git (2026-09-22) — VERIFIED
+The audit table lived only in the laptop's SQLite (gitignored); AUDIT.md carried the last 400 rows. Now every
+job end appends new rows exactly once to `audit/YYYY-MM.jsonl` (high-water mark by seq), committed with state by
+both the worker and repo-sync; `proposals/` is committed the same way. 421 events back to the first build are in
+the repo. Found and fixed on the way: `C:\AI\Factory\tools\repo-sync.ps1` was a stale hand-copy that silently
+ignored new state paths — it is now a 4-line shim that runs the repo's script (one source of truth, same rule as
+D-050 for the test runner).
