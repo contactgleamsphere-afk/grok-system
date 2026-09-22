@@ -306,7 +306,7 @@ def _sync_presets() -> None:
     except Exception as e: JobStore(DB).audit("config.presets_error", actor="worker", error=str(e)[:200])
 
 
-STATE_PATHS = ["registry", "specs", "AUDIT.md", "MONITOR.md", "BOT_REGISTRY.md", "STATUS.md"]
+STATE_PATHS = ["registry", "specs", "AUDIT.md", "MONITOR.md", "BOT_REGISTRY.md", "STATUS.md", "audit", "proposals"]
 
 
 def _commit_state(kind: str, jid8: str) -> None:
@@ -359,7 +359,7 @@ def run(worker: str, once: bool = False, idle_exit: int = 0) -> int:
         except Exception as e:
             store.fail(job["id"], f"{type(e).__name__}: {e}\n{traceback.format_exc()[-800:]}", worker)
         stop.set()
-        store.audit_export(ROOT / "AUDIT.md")
+        store.audit_export(ROOT / "AUDIT.md"); store.audit_sync_jsonl(ROOT / "audit")      # D-067 durable trail
         _commit_state(job["kind"], job["id"][:8])
         if once: break
     store.audit_export(ROOT / "AUDIT.md")

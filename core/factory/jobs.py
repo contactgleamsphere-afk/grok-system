@@ -68,6 +68,26 @@ class JobStore:
         return [dict(zip(("seq", "ts", "job_id", "bot_id", "event", "actor", "detail"), r))
                 for r in self.db.execute(q, args + (limit,))]
 
+    def audit_sync_jsonl(self, dir_: pathlib.Path) -> int:
+        """D-067: durable, append-only audit in git. Every row is appended exactly once to audit/YYYY-MM.jsonl
+        (high-water mark = last seq present in the newest file). The SQLite table stays the working copy; the JSONL
+        files are the record that survives a laptop loss and lets AUDIT.md be rebuilt for any period."""
+        dir_.mkdir(parents=True, exist_ok=True)
+        files = sorted(dir_.glob("*.jsonl"))
+        last = 0
+        if files:
+            for line in reversed(files[-1].read_text(encoding="utf-8").splitlines()):
+                if line.strip():
+                    last = int(json.loads(line)["seq"]); break
+        rows = self.db.execute("SELECT seq,ts,job_id,bot_id,event,actor,detail FROM audit WHERE seq>? ORDER BY seq", (last,)).fetchall()
+        n = 0
+        for seq, ts, job_id, bot_id, event, actor, detail in rows:
+            month = datetime.datetime.fromtimestamp(ts).strftime("%Y-%m")
+            with (dir_ / f"{month}.jsonl").open("a", encoding="utf-8") as f:
+                f.write(json.dumps({"seq": seq, "ts": round(ts, 3), "job": job_id, "bot": bot_id, "event": event, "actor": actor, "detail": json.loads(detail) if detail else {}}, default=str) + "\n")
+            n += 1
+        return n
+
     def audit_export(self, path: pathlib.Path, limit: int = 400) -> None:
         rows = list(reversed(self.audit_rows(limit)))
         out = ["# AUDIT — append-only factory event log (latest %d)" % limit, "",

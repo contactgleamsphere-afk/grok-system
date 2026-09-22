@@ -308,3 +308,16 @@ def test_d066_then_run_delivers_only_when_every_plan_bot_is_active(tmp_path, mon
     fw._maybe_deliver(st, c3, "w")
     r = [j for j in st.list() if j["kind"] == "run" and j["payload"].get("bot_id") == "033"]
     assert len(r) == 1 and r[0]["payload"]["task"] == "sort names" and fw._carry(c3["payload"]) == {"then_run": {"in": "/inbox/y"}}
+
+
+def test_d067_audit_jsonl_is_append_only_and_exactly_once(tmp_path):
+    from factory.jobs import JobStore
+    st = JobStore(tmp_path / "j.sqlite3")
+    st.audit("a", actor="t", x=1); st.audit("b", actor="t", x=2)
+    d = tmp_path / "audit"
+    assert st.audit_sync_jsonl(d) == 2
+    assert st.audit_sync_jsonl(d) == 0                                    # idempotent
+    st.audit("c", actor="t", x=3)
+    assert st.audit_sync_jsonl(d) == 1
+    f = next(d.glob("*.jsonl")); rows = [json.loads(l) for l in f.read_text().splitlines()]
+    assert [r["event"] for r in rows] == ["a", "b", "c"] and rows[2]["seq"] == 3 and rows[2]["detail"] == {"x": 3}
