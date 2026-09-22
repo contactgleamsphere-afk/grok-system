@@ -6,7 +6,7 @@
       "primary": "local3b"
     },
     "name": "master",
-    "notes": "tests 1/5: monitor 2026-09-22: T1 PASS 238s [done] liveness expect='MASTER_OK' cmd=True | T2 FAIL 249s [TIMEOUT] report expect='FACTORY' cmd=False | T3 FAIL 251s [TIMEOUT] list expect='002' cmd=False | T4 FAIL 247s [TIMEOUT] lanes expect='LANES' cmd=False | T5 FAIL 249s [TIMEOUT] confined expect='CONFINED' cmd=True",
+    "notes": "tests 5/5: monitor 2026-09-22: T1 PASS 32s [done] liveness expect='MASTER_OK' cmd=True | T2 PASS 58s [done] report expect='FACTORY' cmd=True | T3 PASS 91s [done] list expect='002' cmd=True | T4 PASS 59s [done] lanes expect='LANES' cmd=True | T5 PASS 45s [done] confined expect='CONFINED' cmd=True",
     "permissions": [
       "fs:read",
       "fs:write",
@@ -16,7 +16,7 @@
     ],
     "purpose": "Orchestrates the AI Factory; creates and supervises other bots",
     "schedules": [],
-    "status": "testing",
+    "status": "active",
     "tests": [
       "Reply with exactly: MASTER_OK -> MASTER_OK",
       "How is the factory doing? Use the factory report. -> FACTORY",
@@ -30,8 +30,8 @@
       "web_search",
       "web_fetch"
     ],
-    "updated": "2026-09-22T05:58:01+00:00",
-    "verified": "UNVERIFIED",
+    "updated": "2026-09-22T06:32:48+00:00",
+    "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\workspace"
   },

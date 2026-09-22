@@ -2,7 +2,7 @@
 
 | id | name | status | verified | chain | tools | last test |
 |---|---|---|---|---|---|---|
-| 001 | master | testing | UNVERIFIED | local3b | exec, read_file, write_file, web_search, web_fetch | tests 1/5: monitor 2026-09-22: T1 PASS 238s [done] liveness expect='MASTER_OK' c |
+| 001 | master | active | VERIFIED | local3b | exec, read_file, write_file, web_search, web_fetch | tests 5/5: monitor 2026-09-22: T1 PASS 32s [done] liveness expect='MASTER_OK' cm |
 | 002 | research-scout | active | VERIFIED | groq-gptoss20b > gemini-lite > gemini-flash > gemini-flash38 > or-deepseek > gemini-lite31 > groq-qwen27b > local4b | web_search, web_fetch, read_file | tests 2/2: monitor 2026-09-22: T1 PASS 18s [done] expect='SCOUT_OK' last='SCOUT_ |
 | 003 | code-smith | active | VERIFIED | groq-gptoss120b > gemini-flash > gemini-flash38 > groq-gptoss20b > gemini-lite > local4b | write_file, read_file, exec | tests 4/4: repair round 1 via groq:openai/gpt-oss-20b: T1 PASS 57s [done] expect |
 | 004 | changelog-writer | active | VERIFIED | groq-gptoss120b > gemini-flash > gemini-flash38 > groq-gptoss20b > or-deepseek > gemini-lite > local4b | read_file, write_file | tests 4/4: repair re-verify 2026-09-22: T1 PASS 15s [done] expect='CHANGELOG_OK' |
