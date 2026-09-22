@@ -282,3 +282,29 @@ def test_d065_create_resumes_at_test_stage_after_crash(tmp_path, monkeypatch):
     res = fw.handle(claimed, st, "w2")
     assert created["n"] == 0 and res["bot_id"] == "077" and res["status"] == "active"                  # no second bot
     assert "job.resumed_at" in [r["event"] for r in st.audit_rows(20)]
+
+
+def test_d066_then_run_delivers_only_when_every_plan_bot_is_active(tmp_path, monkeypatch):
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    import importlib, factory_worker as fw; importlib.reload(fw)
+    from factory.jobs import JobStore
+    from factory.registry import BotEntry
+    st = JobStore(tmp_path / "run" / "jobs.sqlite3")
+    def mk(bid, status):
+        reg.upsert("bots", BotEntry(id=bid, name="b" + bid, purpose="p", status=status, verified="VERIFIED", tools=[], permissions=[], model_policy={"primary": "groq-a", "fallbacks": []}, workspace="x"))
+    pj = st.enqueue("plan", {"objective": "o", "then_run": {"in": "/inbox/x"}})
+    c1 = st.enqueue("create", {"objective": "s1", "plan": pj["id"], "step": 1, "then_run": {"in": "/inbox/x"}})
+    c2 = st.enqueue("create", {"objective": "s2", "plan": pj["id"], "step": 2, "then_run": {"in": "/inbox/x"}})
+    st.audit("bot.created", job_id=c1["id"], bot_id="031"); st.audit("bot.created", job_id=c2["id"], bot_id="032")
+    mk("031", "active"); mk("032", "testing")
+    fw._maybe_deliver(st, c1, "w")
+    assert not [j for j in st.list() if j["kind"] == "run"]                      # step 2 not ready -> no run
+    mk("032", "active")
+    fw._maybe_deliver(st, c2, "w"); fw._maybe_deliver(st, c1, "w")               # both sides fire; idem key dedups
+    runs = [j for j in st.list() if j["kind"] == "run"]
+    assert len(runs) == 1 and runs[0]["payload"] == {"plan": pj["id"], "in": "/inbox/x", "cap": 300}
+    # single-bot objective: retest payload carries then_run and delivers with the objective as the task
+    c3 = st.enqueue("create", {"objective": "sort names", "then_run": {"in": "/inbox/y"}}); st.audit("bot.created", job_id=c3["id"], bot_id="033"); mk("033", "active")
+    fw._maybe_deliver(st, c3, "w")
+    r = [j for j in st.list() if j["kind"] == "run" and j["payload"].get("bot_id") == "033"]
+    assert len(r) == 1 and r[0]["payload"]["task"] == "sort names" and fw._carry(c3["payload"]) == {"then_run": {"in": "/inbox/y"}}

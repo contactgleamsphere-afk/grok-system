@@ -40,6 +40,34 @@ DB = ROOT / "run" / "jobs.sqlite3"
 LEASE = 300          # D-043: short lease + heartbeat every 60 s -> a dead worker is detected within 5 min
 
 
+def _carry(p: dict) -> dict:
+    """Lineage fields that must follow a bot through retest/repair/rearchitect so delivery can still fire."""
+    return {k: p[k] for k in ("then_run", "plan") if p.get(k)}
+
+
+def _maybe_deliver(store: JobStore, job: dict, worker: str) -> None:
+    """D-066 deliver: a create (or its retest/repair descendants) that carries `then_run` triggers the run once every
+    bot of its plan is active — or immediately for a single-bot objective. Idempotent via the run job's idem key."""
+    p = job["payload"]; tr = p.get("then_run")
+    if not tr:
+        return
+    if p.get("plan"):
+        sib = [j for j in store.list() if j["kind"] == "create" and j["payload"].get("plan") == p["plan"]]
+        bots = []
+        for j in sib:
+            b = next((r["bot_id"] for r in store.audit_rows(3000) if r["job_id"] == j["id"] and r["event"] == "bot.created"), None)
+            bots.append(b)
+        if any(b is None or reg_status(b) != "active" for b in bots):
+            return
+        store.enqueue("run", {"plan": p["plan"], "in": tr.get("in"), "cap": 300}, priority=4, parent=job["id"], actor=worker)
+        store.audit("deliver.run_queued", job_id=job["id"], actor=worker, plan=p["plan"][:8], bots=bots)
+    else:
+        bot = p.get("bot_id") or next((r["bot_id"] for r in store.audit_rows(3000) if r["job_id"] == job["id"] and r["event"] == "bot.created"), None)
+        if bot and reg_status(bot) == "active":
+            store.enqueue("run", {"bot_id": bot, "task": tr.get("task") or p.get("objective"), "in": tr.get("in"), "cap": 300}, priority=4, parent=job["id"], actor=worker)
+            store.audit("deliver.run_queued", job_id=job["id"], actor=worker, bot_id=bot)
+
+
 def reg_status(bot_id: str) -> str | None:
     from factory.registry import Registry
     e = Registry(ROOT / "registry").get("bots", bot_id); return e.status if e else None
@@ -66,10 +94,13 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
             if st.get("reuse"):
                 store.audit("plan.reused", job_id=jid, actor=worker, step=i, bot_id=st["reuse"]["id"], similarity=st["reuse"]["similarity"]); continue
             j = store.enqueue("create", {"objective": st["objective"], "plan": jid, "step": i, "produces": st.get("produces", []),
-                                         "allowed_permissions": p.get("allowed_permissions", ["fs:read", "fs:write", "net:search", "net:fetch"])},
+                                         "allowed_permissions": p.get("allowed_permissions", ["fs:read", "fs:write", "net:search", "net:fetch"]),
+                                         **({"then_run": p["then_run"]} if p.get("then_run") else {})},
                               priority=int(p.get("priority", 5)), parent=jid, actor=worker)
             queued.append((i, j["id"][:8]))
         store.audit("plan.made", job_id=jid, actor=worker, lane=res["lane"], steps=len(res["steps"]), queued=queued, rationale=res.get("rationale", "")[:200])
+        if p.get("then_run") and not queued:        # every step reused an existing bot -> nothing to build, run now
+            store.enqueue("run", {"plan": jid, "in": p["then_run"].get("in"), "cap": 300}, priority=4, parent=jid, actor=worker)
         return {"name": f"plan:{len(res['steps'])} steps", "status": "queued " + ",".join(q[1] for q in queued), "lane": res["lane"]}
     if kind == "create":
         # D-065 crash-resume: if an earlier attempt of THIS job already registered a bot (crash between build and
@@ -89,7 +120,9 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
         if res.get("status") != "active":
             # D-036: a fresh bot that misses on first run gets exactly one automatic re-test (flaky lanes / timeouts);
             # if the re-test also fails the test handler escalates to repair, which fails closed.
-            store.enqueue("test", {"bot_id": res["bot_id"], "retest_of": jid}, priority=3, parent=jid, actor=worker)
+            store.enqueue("test", {"bot_id": res["bot_id"], "retest_of": jid, **_carry(p)}, priority=3, parent=jid, actor=worker)
+        else:
+            _maybe_deliver(store, job, worker)
         return res
     if kind == "test":
         before = _spec_of(p["bot_id"]); res = fp.cmd_test(p["bot_id"])
@@ -100,7 +133,9 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
                           priority=3, parent=jid, actor=worker, not_before=time.time() + 7200)
             return res
         if res["status"] != "active" and p.get("retest_of"):
-            store.enqueue("repair", {"bot_id": p["bot_id"], "max_rounds": 2, "rearchitected": bool(p.get("rearchitected"))}, priority=2, parent=jid, actor=worker)
+            store.enqueue("repair", {"bot_id": p["bot_id"], "max_rounds": 2, "rearchitected": bool(p.get("rearchitected")), **_carry(p)}, priority=2, parent=jid, actor=worker)
+        elif res["status"] == "active":
+            _maybe_deliver(store, job, worker)
         return res
     if kind == "repair":
         before = _spec_of(p["bot_id"])
@@ -113,11 +148,12 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
                     boundary_diff=d)
         if res.get("ok"):
             store.audit("bot.promoted", job_id=jid, bot_id=p["bot_id"], actor=worker, to="active")
+            _maybe_deliver(store, job, worker)
         else:
             err = res.get("error") or "repair produced no passing candidate"
             if err.startswith("logic: spec/tests inconsistent") and not p.get("rearchitected"):
                 # D-052: instructions can't fix it -> one automatic re-architect from the original objective
-                store.enqueue("rearchitect", {"bot_id": p["bot_id"], "feedback": err[:400], "from_repair": jid}, priority=2, parent=jid, actor=worker)
+                store.enqueue("rearchitect", {"bot_id": p["bot_id"], "feedback": err[:400], "from_repair": jid, **_carry(p)}, priority=2, parent=jid, actor=worker)
                 store.audit("bot.rearchitect_queued", job_id=jid, bot_id=p["bot_id"], actor=worker, reason=err[:200])
             raise FactoryError(err)
         return res
@@ -142,7 +178,7 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
                     store.cancel(j["id"], actor=worker); store.audit("job.superseded", job_id=j["id"], bot_id=p["bot_id"], actor=worker, by=jid)
         else:
             # one re-test like a fresh create; the test handler escalates to repair (flagged so repair->rearchitect can't loop)
-            store.enqueue("test", {"bot_id": p["bot_id"], "retest_of": jid, "rearchitected": True}, priority=3, parent=jid, actor=worker)
+            store.enqueue("test", {"bot_id": p["bot_id"], "retest_of": jid, "rearchitected": True, **_carry(p)}, priority=3, parent=jid, actor=worker)
         return {k: res.get(k) for k in ("bot_id", "spec_lane", "pass", "total", "status", "boundary_diff")}
     if kind == "probe":
         res = fpr.run(set(p["only"]) if p.get("only") else None)
@@ -342,8 +378,12 @@ def main(a: list[str]) -> int:
         if kind == "create":
             pl = {"objective": a[3]}
             if opt("--allow"): pl["allowed_permissions"] = opt("--allow").split(",")     # D-054: explicit owner grant (recorded in the job + audit)
+            if opt("--then-run"): pl["then_run"] = {"in": opt("--then-run"), "task": opt("--task")}   # D-066
             j = store.enqueue("create", pl, priority=int(opt("--priority", 5)), actor=opt("--actor", "owner"))
-        elif kind == "plan": j = store.enqueue("plan", {"objective": a[3], "max": int(opt("--max", 4))}, priority=int(opt("--priority", 5)), actor=opt("--actor", "owner"))
+        elif kind == "plan":
+            pl = {"objective": a[3], "max": int(opt("--max", 4))}
+            if opt("--then-run"): pl["then_run"] = {"in": opt("--then-run")}          # D-066: build, then run on these files
+            j = store.enqueue("plan", pl, priority=int(opt("--priority", 5)), actor=opt("--actor", "owner"))
         elif kind == "rearchitect": j = store.enqueue("rearchitect", {"bot_id": a[3], "feedback": opt("--feedback", ""), "t": int(time.time())}, priority=2, actor=opt("--actor", "owner"))
         elif kind in ("test", "repair"): j = store.enqueue(kind, {"bot_id": a[3]}, priority=int(opt("--priority", 4)), actor=opt("--actor", "owner"))
         elif kind == "probe":
