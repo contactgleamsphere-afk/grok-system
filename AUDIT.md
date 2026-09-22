@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 271 | 2026-09-22 03:51:46 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 272 | 2026-09-22 03:51:48 | b59e7101 |  | job.enqueued | builder | {"kind": "monitor", "payload": {"only": null, "day": "2026-09-22"}} |
 | 273 | 2026-09-22 03:51:50 | b59e7101 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 274 | 2026-09-22 05:05:34 | c959e323 | 003 | job.enqueued | builder | {"kind": "test", "payload": {"bot_id": "003"}} |
 | 275 | 2026-09-22 05:05:34 | e826d8e4 | 004 | job.enqueued | builder | {"kind": "test", "payload": {"bot_id": "004"}} |
@@ -402,3 +400,5 @@
 | 668 | 2026-09-22 21:18:00 | 096d9bb8 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["local3b", "local4b"], "changed": []}} |
 | 669 | 2026-09-22 21:18:15 | 615d5d9f |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 670 | 2026-09-22 21:18:15 | 615d5d9f |  | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 1, "error": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>\no |
+| 671 | 2026-09-22 21:18:16 | aeb98a0c |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 672 | 2026-09-22 21:18:16 | aeb98a0c |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
