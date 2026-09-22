@@ -46,12 +46,22 @@ def due(m: ModelEntry, now: datetime.datetime | None = None, ttl_days: int = BEN
         return True
 
 
+BENCH_WINDOW = 3     # rolling window: free lanes are noisy run-to-run (or-ling 4/4 then 3/4); one run must not reorder the chain
+
+
 def record(reg: Registry, lane: str, passed: int, total: int, secs: int, ref: str = REF_BOT) -> ModelEntry:
+    """Append a run to `limits.bench_runs` (last BENCH_WINDOW kept) and write the aggregate to `limits.bench`
+    (pass/total summed over the window, secs = mean). Consumers only read `limits.bench`."""
     m = reg.get("models", lane)
     if m is None:
         raise KeyError(lane)
     m.limits = dict(m.limits or {})
-    m.limits["bench"] = {"pass": int(passed), "total": int(total), "secs": int(secs), "ref": ref, "at": _now()}
+    runs = list(m.limits.get("bench_runs") or [])
+    runs.append({"pass": int(passed), "total": int(total), "secs": int(secs), "ref": ref, "at": _now()})
+    runs = runs[-BENCH_WINDOW:]
+    m.limits["bench_runs"] = runs
+    m.limits["bench"] = {"pass": sum(r["pass"] for r in runs), "total": sum(r["total"] for r in runs),
+                         "secs": int(sum(r["secs"] for r in runs) / len(runs)), "ref": ref, "at": runs[-1]["at"], "runs": len(runs)}
     reg.upsert("models", m)
     return m
 
@@ -62,7 +72,7 @@ def rank(reg: Registry) -> list[dict]:
         b = (m.limits or {}).get("bench")
         if b and b.get("total"):
             rows.append({"lane": m.id, "score": round(b["pass"] / b["total"], 2), "pass": b["pass"], "total": b["total"],
-                         "secs": b.get("secs"), "at": b.get("at"), "verified": m.verified})
+                         "secs": b.get("secs"), "runs": b.get("runs", 1), "at": b.get("at"), "verified": m.verified})
     rows.sort(key=lambda r: (-r["score"], r["secs"] or 9e9))
     return rows
 

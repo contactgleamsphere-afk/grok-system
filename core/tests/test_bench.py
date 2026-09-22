@@ -50,3 +50,13 @@ def test_run_isolates_lane_errors(tmp_path, monkeypatch):
     assert calls == ["or-c", "gemini-b"]
     assert [r["lane"] for r in out["results"]] == ["or-c"] and out["errors"][0]["lane"] == "gemini-b"
     assert Registry(tmp_path / "registry").get("models", "or-c").limits["bench"]["total"] == 4
+
+
+def test_rolling_window(tmp_path, monkeypatch):
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    for p_, secs in ((4, 20), (3, 40), (4, 60), (2, 80)):
+        fb.record(reg, "or-c", p_, 4, secs)
+    b = Registry(tmp_path / "registry").get("models", "or-c").limits
+    assert len(b["bench_runs"]) == 3 and b["bench"]["runs"] == 3
+    assert b["bench"]["pass"] == 9 and b["bench"]["total"] == 12 and b["bench"]["secs"] == 60   # oldest (4/4,20s) dropped
+    assert fb.rank(reg)[0]["score"] == 0.75
