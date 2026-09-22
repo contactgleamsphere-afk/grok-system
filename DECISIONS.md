@@ -225,3 +225,16 @@ budget (`rpd` unknown or ≥200, and not an account-wide/shared 50-per-day pool)
 `groq-gptoss120b`. Live: OpenRouter lanes score 4/4 but share 50 req/day, so they stay fallbacks; groq-gptoss120b
 remains primary until its own bench score exists (queued by D-057). Fallback ranking unchanged (D-050), primary
 excluded. Quota-cooled lanes stay valid *policy* members (the live chain skips them at call time).
+
+## D-059 — Judge the whole RESULT block; repair re-verifies before rewriting (2026-09-22) — VERIFIED (replay) / live pending
+The first full nightly monitor (b59e7101, 14 bots) demoted 8 of them at once. Replaying the saved logs offline showed
+the *judge* was wrong for 6 of the 10 misses: the runner compared the expected token against the last physical line,
+but Rich wraps long replies at ~80 columns inside a PowerShell job, so `RESULT: Wrote CHANGELOG.md with 3 entries…`
+arrived split and only its tail was checked. Fixes:
+1. `run-bot-tests.ps1` now takes the last `RESULT:|ANSWER:|OUTPUT:` line plus up to 3 continuation lines joined, and
+   matches the token with punctuation/quote boundaries. Replay: 004/005/009/003 misses flip to PASS; 006 T1 (`ERROR`),
+   007 T1 (did work instead of replying X_OK), 008 T2/T3 (wrote the file, never said the word) remain genuine failures.
+2. `repair()` re-runs the suite unchanged first. Pass → promote, no model call, no rewrite (`reverified: true`).
+   Fail → proceed with fresh evidence. A repair may never churn a healthy bot because the judge or a lane had a bad day.
+Why not just re-test: the monitor→repair chain is already the recovery path; adding a retest job would be a third
+state machine for the same question.
