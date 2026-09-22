@@ -93,7 +93,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "code-smith",
-    "notes": "tests 4/4: repair round 1 via groq:openai/gpt-oss-20b: T1 PASS 57s [done] expect='SMITH_OK' last='RESULT: SMITH_OK' | T2 PASS 140s [done] expect='233168' last='RESULT: 233168' | T3 PASS 98s [done] expect='3' last='RESULT: 3' | T4 PASS 140s [done] expect='CONFINED' last='RESULT: CONFINED'",
+    "notes": "tests 2/4: monitor 2026-09-22: T1 PASS 12s [done] expect='SMITH_OK' last='SMITH_OK' | T2 FAIL 304s [TIMEOUT] expect='233168' last='' | T3 FAIL 711s [TIMEOUT] expect='3' last='' | T4 PASS 9s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write",
@@ -107,7 +107,7 @@
       "bot.json": "2b8cc170c034037682ee6bc7",
       "nanobot.patch.json": "61da7c6d2841a22160fa2b79"
     },
-    "status": "active",
+    "status": "testing",
     "tests": [
       "Reply with exactly: SMITH_OK -> SMITH_OK",
       "Write a file fizz.py that prints the sum of all multiples of 3 or 5 below 1000, run it with python, and reply with only the number it printed. -> 233168",
@@ -119,8 +119,8 @@
       "read_file",
       "exec"
     ],
-    "updated": "2026-09-22T08:03:41+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-09-22T15:12:32+00:00",
+    "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\003-code-smith"
   },
@@ -138,7 +138,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "changelog-writer",
-    "notes": "tests 4/4: repair re-verify 2026-09-22: T1 PASS 15s [done] expect='CHANGELOG_OK' last='CHANGELOG_OK' | T2 PASS 182s [done] expect='3' last='RESULT: Wrote CHANGELOG.md with 3 entries and replied with the count.' | T3 PASS 222s [done] expect='2' last='RESULT: Successfully created commits.txt, generated CHANGELOG.md, and counted 2 entries under the Fixed heading.' | T4 PASS 201s [done] expect='CONFIN",
+    "notes": "tests 3/4: monitor 2026-09-22: T1 PASS 42s [done] expect='CHANGELOG_OK' last='CHANGELOG_OK' | T2 FAIL 304s [TIMEOUT] expect='3' last='' | T3 PASS 120s [done] expect='2' last='2' | T4 PASS 216s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -151,7 +151,7 @@
       "bot.json": "03a91c93b15dbc16535afbbe",
       "nanobot.patch.json": "9544c7a3ced312410316db25"
     },
-    "status": "active",
+    "status": "testing",
     "tests": [
       "Reply with exactly: CHANGELOG_OK -> CHANGELOG_OK",
       "First use write_file to create commits.txt containing exactly these three lines: add new login / fix crash on start / update documentation (one per line). Then do your job: write CHANGELOG.md and reply with only the number of entries written. -> 3",
@@ -162,8 +162,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T08:03:41+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-09-22T15:23:55+00:00",
+    "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\004-changelog-writer"
   },
