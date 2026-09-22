@@ -28,7 +28,8 @@ def _classify_fail(status: str, expect: str, last: str) -> str:
     if "CAPABILITY_MISSING" in last: return "capability_missing"
     if "429" in last or "rate" in last.lower(): return "quota"
     if not last: return "empty_reply"
-    if expect and expect in last: return "answer_wrapped"          # right value, wrong format (e.g. "RESULT: 1 line")
+    if "request fitting" in last or "tiktoken" in last or "context" in last.lower() and "token" in last.lower(): return "context_overflow"
+    if expect and re.search(r"(^|\s)" + re.escape(expect) + r"(\s|$)", last): return "answer_wrapped"          # right value, wrong format (e.g. "RESULT: 1 line")
     return "wrong_answer"
 
 
@@ -77,6 +78,11 @@ def propose(ev: dict) -> list[dict]:
         P.append({"kind": "template", "severity": "medium",
                   "evidence": f"{f['answer_wrapped']} of {total_f} test failures had the right value inside a sentence ({ev['fail_examples']['answer_wrapped'][:2]})",
                   "suggestion": "Tighten the bot AGENTS template 'RESULT: <answer>' rule further or let the runner accept `RESULT: <expected> ...` when the expected token is the first word after the prefix. Needs a human decision: stricter bots vs. looser matcher.",
+                  "auto_actionable": None})
+    if f.get("context_overflow", 0) >= 1:
+        P.append({"kind": "lanes", "severity": "medium",
+                  "evidence": f"{f['context_overflow']} failures where the prompt no longer fit the lane's context ({ev['fail_examples']['context_overflow'][:2]})",
+                  "suggestion": "A small-TPM lane was primary for a bot with a long tool contract/history. Check config hygiene (D-035) and maxToolResultChars; consider excluding <16k-context lanes from chains of bots with >2 tools.",
                   "auto_actionable": None})
     if f.get("timeout", 0) >= 2:
         P.append({"kind": "lanes", "severity": "medium",
