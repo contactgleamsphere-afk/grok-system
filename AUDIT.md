@@ -2,16 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 443 | 2026-09-22 15:45:23 | 6f50b9fd |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "groq-gptoss120b", "result": "4/4", "quota": 0, "secs": 92} |
-| 444 | 2026-09-22 15:45:23 | 6f50b9fd |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "groq-gptoss20b", "result": "4/4", "quota": 0, "secs": 106} |
-| 445 | 2026-09-22 15:45:23 | 6f50b9fd |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-lite", "result": "1/4", "quota": 0, "secs": 618} |
-| 446 | 2026-09-22 15:45:23 | 6f50b9fd |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["groq-gptoss120b", "4/4"], ["groq-gptoss20b", "4/4"], ["gemini-lite", "1/4"]]}} |
-| 447 | 2026-09-22 15:45:29 | 123271bb |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 448 | 2026-09-22 15:45:32 | 123271bb | 019 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "pytest-runner", "tools": ["exec", "write_file"], "permissions": ["shell:workspace", "fs:write"], "chain": ["groq-gptoss120b", "or- |
-| 449 | 2026-09-22 15:46:39 | 123271bb | 019 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 FAIL 27s [done] expect='Status: PASS' last='Status: ERROR' \| T3 PASS 29s [do |
-| 450 | 2026-09-22 15:46:39 | 8e53c5b9 | 019 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "019", "retest_of": "123271bbc0064964bd016ef29316ad29"}} |
-| 451 | 2026-09-22 15:46:39 | 123271bb | 019 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "019", "name": "pytest-runner", "pass": 2, "total": 3, "status": "testing", "verified": "UNVERIFIED"}} |
-| 452 | 2026-09-22 15:46:42 | c5bb159c |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 453 | 2026-09-22 15:53:57 | e89cc0ba |  | job.enqueued | master-001 | {"kind": "create", "payload": {"objective": "List files in workspace using shell dir command and write to files.txt"}} |
 | 454 | 2026-09-22 15:54:19 | e89cc0ba |  | job.payload_patched | owner-via-master | {"patch": {"allowed_permissions": ["shell:workspace", "fs:write"]}} |
 | 455 | 2026-09-22 15:54:19 | e89cc0ba |  | job.resumed | owner-via-master | {} |
@@ -402,3 +392,13 @@
 | 840 | 2026-09-22 23:52:51 | 40a753dd |  | job.enqueued | builder | {"kind": "run", "payload": {"plan": "593061c9", "in": "C:\\AI\\Factory\\workspace\\inbox\\orders1", "cap": 300, "t": 1790117571}} |
 | 841 | 2026-09-22 23:52:53 | 40a753dd |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 842 | 2026-09-22 23:52:53 | 40a753dd |  | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "KeyError: 'bot_id'\n\\Factory\\repo\\tools\\factory_worker.py\",  |
+| 843 | 2026-09-22 23:58:48 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 844 | 2026-09-22 23:58:49 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 845 | 2026-09-22 23:59:01 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["93 passed in 9.94s"]} |
+| 846 | 2026-09-22 23:59:01 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["93 passed in 8.76s"]} |
+| 847 | 2026-09-22 23:59:31 | 40a753dd |  | job.resumed | builder | {} |
+| 848 | 2026-09-22 23:59:31 | 40a753dd |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 849 | 2026-09-23 00:00:45 | 40a753dd | 022 | bot.ran | fast-LAPTOP-LRE6PSA8 | {"plan": "593061c9", "step": 1, "ok": true, "produced": ["refunded.csv"], "missing": [], "secs": 11, "reply": "RESULT: success", "chain": "g |
+| 850 | 2026-09-23 00:00:45 | 40a753dd | 023 | bot.ran | fast-LAPTOP-LRE6PSA8 | {"plan": "593061c9", "step": 2, "ok": true, "produced": ["summary.txt"], "missing": [], "secs": 12, "reply": "RESULT: 39.5", "chain": "groq- |
+| 851 | 2026-09-23 00:00:45 | 40a753dd | 025 | bot.ran | fast-LAPTOP-LRE6PSA8 | {"plan": "593061c9", "step": 3, "ok": true, "produced": ["summary_upper.txt"], "missing": [], "secs": 48, "reply": "RESULT: 39.5", "chain":  |
+| 852 | 2026-09-23 00:00:45 | 40a753dd |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"name": "run:plan 593061c9", "status": "ok orders.csv,refunded.csv,summary.txt,summary_upper.txt"}} |
