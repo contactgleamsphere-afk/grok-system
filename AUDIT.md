@@ -2,17 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 414 | 2026-09-22 08:47:50 | fbeb65ad | 018 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 27s [done] expect='X_OK' last='X_OK' \| T2 PASS 90s [done] expect='30' last='RESULT: 30' \| T3 PASS 88s [done] expect='2 |
-| 415 | 2026-09-22 08:47:50 | ca31fcf3 | 018 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "run", "payload": {"bot_id": "018", "task": "reads orders.csv and writes totals.csv with one row per country and the total amount f |
-| 416 | 2026-09-22 08:47:50 | fbeb65ad | 018 | deliver.run_queued | svc-LAPTOP-LRE6PSA8 | {} |
-| 417 | 2026-09-22 08:47:50 | fbeb65ad | 018 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "name": "csv-country-totals", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
-| 418 | 2026-09-22 08:47:53 | ca31fcf3 | 018 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 419 | 2026-09-22 08:49:12 | ca31fcf3 | 018 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"ok": true, "produced": ["totals.csv"], "secs": 78, "reply": "RESULT: totals.csv", "chain": "groq-gptoss120b"} |
-| 420 | 2026-09-22 08:49:12 | ca31fcf3 | 018 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "name": "run", "status": "ok totals.csv"}} |
-| 421 | 2026-09-22 08:59:46 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 422 | 2026-09-22 09:03:41 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 423 | 2026-09-22 09:04:16 | 0c438fbd | 018 | job.enqueued | owner | {"kind": "run", "payload": {"bot_id": "018", "task": "Sum order totals per country into totals.csv", "in": "C:\\AI\\Factory\\workspace\\inbo |
-| 424 | 2026-09-22 09:04:16 | 0c438fbd | 018 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 425 | 2026-09-22 09:05:20 | 0c438fbd | 018 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"ok": true, "produced": ["totals.csv"], "secs": 62, "reply": "RESULT: totals.csv", "chain": "groq-gptoss120b"} |
 | 426 | 2026-09-22 09:05:20 | 0c438fbd | 018 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "name": "run", "status": "ok totals.csv"}} |
 | 427 | 2026-09-22 09:06:29 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
@@ -402,3 +391,14 @@
 | 811 | 2026-09-22 23:31:34 | c73bd54a | 024 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "pytest-runner-bot", "tools": ["write_file", "read_file", "exec"], "permissions": ["fs:read", "fs:write", "shell:workspace"], "chai |
 | 812 | 2026-09-22 23:32:19 | c73bd54a | 024 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 17s [done] expect='2' last='RESULT: 2' \| T3 PASS 17s [done] expect='CON |
 | 813 | 2026-09-22 23:32:19 | c73bd54a | 024 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "024", "name": "pytest-runner-bot", "pass": 3, "total": 3, "status": "active", "verified": "VERIFIED"}} |
+| 814 | 2026-09-22 23:40:19 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 815 | 2026-09-22 23:40:23 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 816 | 2026-09-22 23:40:33 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["91 passed in 8.90s"]} |
+| 817 | 2026-09-22 23:40:33 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["91 passed in 10.43s"]} |
+| 818 | 2026-09-22 23:42:33 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 819 | 2026-09-22 23:42:33 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 820 | 2026-09-22 23:42:44 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["91 passed in 9.03s"]} |
+| 821 | 2026-09-22 23:42:46 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["91 passed in 8.77s"]} |
+| 822 | 2026-09-22 23:43:29 | 5230a652 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 823 | 2026-09-22 23:43:29 | 4f65b755 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-23T00"}} |
+| 824 | 2026-09-22 23:43:29 | 5230a652 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
