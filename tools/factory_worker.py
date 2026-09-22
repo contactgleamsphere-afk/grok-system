@@ -5,6 +5,8 @@
   python tools/factory_worker.py add plan "<multi-part objective>" [--max 4]     # D-053: decompose -> N creates
   python tools/factory_worker.py add test|repair|rearchitect <bot_id>
   python tools/factory_worker.py add monitor
+  python tools/factory_worker.py add run <bot_id> --task "..." [--in DIR] [--out DIR]   # D-063 real work
+  python tools/factory_worker.py add run --plan <plan_job> --in DIR                       # run a whole pipeline
   python tools/factory_worker.py add insight [--days 7]      # D-057 factory self-review -> proposals/<date>.md
   python tools/factory_worker.py add bench [--lanes a,b] [--stale-only] [--max N]   # D-050 lane quality
   python tools/factory_worker.py status | jobs | resume <job_id> [--allow fs:read,shell:workspace] | cancel <job_id> | release <job_id> [--uncount] | audit [bot_id] [--width N]
@@ -32,6 +34,7 @@ import factory_discover as fdc                                         # noqa: E
 import factory_bench as fbn
 import factory_plan as fpl
 import factory_insight as fin
+import factory_run as frun
 
 DB = ROOT / "run" / "jobs.sqlite3"
 LEASE = 300          # D-043: short lease + heartbeat every 60 s -> a dead worker is detected within 5 min
@@ -167,6 +170,24 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
             store.audit("lane.bench_error", job_id=jid, actor=worker, lane=r["lane"], error=r["error"])
         _sync_presets()                            # D-062: bench scores may change the master's primary/fallback chain
         return {"benchmarked": [(r["lane"], f"{r['pass']}/{r['total']}" + (f" q{r['quota']}" if r.get("quota") else "")) for r in res["results"]], "errors": res["errors"], "rank": res["rank"][:8]}
+    if kind == "run":
+        # D-063: run a bot or a whole plan on real input; audited per step; failure classes flow through the normal machinery
+        if p.get("plan"):
+            res = frun.run_plan(p["plan"], pathlib.Path(p["in"]) if p.get("in") else None, None, int(p.get("cap", 300)))
+            for st in res.get("steps", []):
+                store.audit("bot.ran", job_id=jid, bot_id=st.get("bot"), actor=worker, plan=p["plan"], step=st["step"], ok=st.get("ok"),
+                            produced=st.get("produced"), missing=st.get("missing_outputs"), secs=st.get("secs"), reply=(st.get("reply") or "")[:160], chain=st.get("chain"))
+            if not res.get("ok"):
+                bad = next((s_ for s_ in res.get("steps", []) if not s_.get("ok")), {})
+                if bad.get("quota"): raise RuntimeError("transient: lane quota during run")
+                raise FactoryError(f"logic: plan run failed at step {bad.get('step')} ({bad.get('bot')}): {bad.get('error') or bad.get('status')}")
+            return {"name": f"run:plan {p['plan'][:8]}", "status": "ok " + ",".join(res.get("outputs", [])), "path": res.get("dir")}
+        res = frun.run_bot(p["bot_id"], p["task"], pathlib.Path(p["in"]) if p.get("in") else None, pathlib.Path(p["out"]) if p.get("out") else frun.RUNS / f"bot-{p['bot_id']}-{int(time.time())}", int(p.get("cap", 300)))
+        store.audit("bot.ran", job_id=jid, bot_id=p["bot_id"], actor=worker, ok=res.get("ok"), produced=res.get("produced"), secs=res.get("secs"), reply=(res.get("reply") or "")[:160], chain=res.get("chain"))
+        if not res.get("ok"):
+            if res.get("quota"): raise RuntimeError("transient: lane quota during run")
+            raise FactoryError(f"logic: run failed: {res.get('error') or res.get('status')}")
+        return {"bot_id": p["bot_id"], "name": "run", "status": "ok " + ",".join(res.get("produced", []))}
     if kind == "insight":
         # D-057 self-improvement stage 1: evidence -> proposals/<date>.md. Only pre-approved mechanisms are auto-enqueued.
         res = fin.run(int(p.get("days", 7)), write=True)
@@ -320,6 +341,10 @@ def main(a: list[str]) -> int:
         elif kind == "bench":
             lanes = [x for x in opt("--lanes", "").split(",") if x]
             j = store.enqueue("bench", {"lanes": lanes, "stale_only": "--stale-only" in a, "max": int(opt("--max", 3)), "day": str(datetime.date.today()), "t": int(time.time())}, priority=4, actor=opt("--actor", "owner"))
+        elif kind == "run":
+            if opt("--plan"): pl = {"plan": opt("--plan"), "in": opt("--in"), "cap": int(opt("--cap", 300)), "t": int(time.time())}
+            else: pl = {"bot_id": a[3].zfill(3), "task": opt("--task", ""), "in": opt("--in"), "out": opt("--out"), "cap": int(opt("--cap", 300)), "t": int(time.time())}
+            j = store.enqueue("run", pl, priority=int(opt("--priority", 4)), actor=opt("--actor", "owner"))
         elif kind == "insight":
             j = store.enqueue("insight", {"days": int(opt("--days", 7)), "t": int(time.time())}, priority=8, actor=opt("--actor", "owner"))
         elif kind == "report":

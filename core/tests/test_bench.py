@@ -230,3 +230,33 @@ def test_d059_repair_reverifies_before_rewriting(tmp_path, monkeypatch):
     e = Registry(tmp_path / "registry").get("bots", "097")
     assert e.status == "active" and "re-verify" in e.notes
     assert json.loads((tmp_path / "specs" / "097-healthy.json").read_text())["instructions"] == spec["instructions"]
+
+
+def test_d063_run_plan_chains_outputs_and_fails_on_missing_declared_output(tmp_path, monkeypatch):
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    import importlib, factory_run as frun; importlib.reload(frun)
+    from factory.jobs import JobStore
+    from factory.registry import BotEntry
+    st = JobStore(tmp_path / "run" / "jobs.sqlite3")
+    for bid, name in (("013", "filter"), ("014", "summary")):
+        reg.upsert("bots", BotEntry(id=bid, name=name, purpose=name, status="active", verified="VERIFIED", tools=["read_file", "write_file"],
+                                    permissions=["fs:read", "fs:write"], model_policy={"primary": "groq-a", "fallbacks": []}, workspace="x", tests=[], notes=""))
+    pj = st.enqueue("plan", {"objective": "pipeline"})
+    c1 = st.enqueue("create", {"objective": "filter ERROR lines of app.log into errors.txt", "plan": pj["id"], "step": 1, "produces": ["errors.txt"]})
+    c2 = st.enqueue("create", {"objective": "summarise errors.txt into summary.txt", "plan": pj["id"], "step": 2, "produces": ["summary.txt"]})
+    st.audit("bot.created", job_id=c1["id"], bot_id="013"); st.audit("bot.created", job_id=c2["id"], bot_id="014")
+    steps = frun.plan_steps(st, pj["id"][:8])
+    assert [s_["bot"] for s_ in steps] == ["013", "014"]
+    ind = tmp_path / "in"; ind.mkdir(); (ind / "app.log").write_text("INFO a\nERROR x\nERROR y\n")
+    seen = []
+    def fake_runner(bot_dir, task, in_dir, out_dir, cap):
+        out_dir.mkdir(parents=True, exist_ok=True); seen.append((bot_dir.name, sorted(p.name for p in in_dir.iterdir())))
+        if bot_dir.name.startswith("013"):
+            errs = [l for l in (in_dir / "app.log").read_text().splitlines() if "ERROR" in l]
+            (out_dir / "errors.txt").write_text("\n".join(errs)); return {"status": "done", "produced": ["errors.txt"], "reply": "RESULT: 2", "secs": 1}
+        return {"status": "done", "produced": [], "reply": "RESULT: forgot to write", "secs": 1}      # step 2 never writes summary.txt
+    rep = frun.run_plan(pj["id"][:8], ind, tmp_path / "out", runner=fake_runner)
+    assert seen[0] == ("013-filter", ["app.log"]) and seen[1] == ("014-summary", ["app.log", "errors.txt"])   # outputs chained forward
+    assert rep["steps"][0]["ok"] and (tmp_path / "out" / "1-013" / "errors.txt").read_text() == "ERROR x\nERROR y"
+    assert not rep["ok"] and rep["steps"][1]["missing_outputs"] == ["summary.txt"]                             # no silent success
+    assert (tmp_path / "out" / "RUN.json").exists()
