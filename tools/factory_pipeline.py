@@ -126,18 +126,41 @@ Return ONLY the JSON object with keys: id, name, purpose, instructions, model_po
 OBJECTIVE: {objective}"""
 
 
-def default_fallbacks(reg: Registry) -> list[str]:
-    """Healthy, tool-capable remote presets (not the primary), benchmark-ranked (D-050), then the best local model."""
+LEGACY_PRIMARY = "groq-gptoss120b"
+
+
+def ranked_remote(reg: Registry) -> list:
+    """Healthy, tool-capable remote lanes, benchmark-ranked (D-050): benchmarked lanes by pass-rate then speed,
+    then un-benchmarked lanes in provider order."""
     order = {"groq": 0, "gemini": 1, "openrouter": 2}
     rem = [m for m in reg.all("models") if m.verified != "BLOCKED" and m.location == "remote" and m.provider in order
-           and "tools" in (m.capabilities or []) and m.id != "groq-gptoss120b"]
-    # D-050: benchmarked lanes first, best score first (ties: faster), then un-benchmarked lanes in provider order
+           and "tools" in (m.capabilities or [])]      # quota-cooled lanes stay valid POLICY members; the live chain skips them
     def _key(m):
         b = (m.limits or {}).get("bench") or {}
         if b.get("total"):
             return (0, -(b["pass"] / b["total"]), b.get("secs", 9e9))
         return (1, order[m.provider], -(m.tool_call_score or 0))
     rem.sort(key=_key)
+    return rem
+
+
+def default_primary(reg: Registry) -> str:
+    """D-058: primary = best benchmarked lane with a perfect-or-near score (>=0.9 over its window); otherwise the
+    legacy primary. Measured quality decides who goes first, not a constant."""
+    now = time.time()
+    for m in ranked_remote(reg):
+        b = (m.limits or {}).get("bench") or {}
+        if float(((m.limits or {}).get("health") or {}).get("quota_until", 0) or 0) > now: continue   # a cooled lane must not be primary today
+        if b.get("total") and b["pass"] / b["total"] >= 0.9:
+            return m.id
+    return LEGACY_PRIMARY
+
+
+def default_fallbacks(reg: Registry, primary: str | None = None) -> list[str]:
+    """Ranked remote lanes minus the primary, then the best local model."""
+    primary = primary or default_primary(reg)
+    order = {"groq": 0, "gemini": 1, "openrouter": 2}
+    rem = [m for m in ranked_remote(reg) if m.id != primary]
     loc = [m for m in reg.all("models") if m.location == "local" and m.verified != "BLOCKED"]
     loc.sort(key=lambda m: -(m.tool_call_score or 0))
     return [m.id for m in rem][:5] + ([loc[0].id] if loc else [])
@@ -183,7 +206,8 @@ def spec_consistency(spec: dict) -> list[str]:
 def objective_to_spec(objective: str, reg: Registry, bot_id: str, attempts: int = 3, feedback: str = "",
                       allowed_permissions: list[str] | None = None) -> tuple[dict, str]:
     allowed = DEFAULT_ALLOWANCE if allowed_permissions is None else allowed_permissions
-    prompt = SPEC_PROMPT.format(primary="groq-gptoss120b", bot_id=bot_id, fallbacks=json.dumps(default_fallbacks(reg)),
+    primary = default_primary(reg)
+    prompt = SPEC_PROMPT.format(primary=primary, bot_id=bot_id, fallbacks=json.dumps(default_fallbacks(reg, primary)),
                                 catalog=_catalog(reg), objective=objective)
     prompt += (f"\n\nPERMISSION ALLOWANCE for this job: {json.dumps(allowed)}. You may not request any other permission "
                "(so no exec/shell unless shell:workspace is listed). If the objective genuinely cannot be met inside the "

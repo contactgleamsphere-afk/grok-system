@@ -46,8 +46,13 @@ def test_rank_reorders_default_fallbacks(tmp_path, monkeypatch):
     assert fp.default_fallbacks(reg) == ["groq-a", "gemini-b", "or-c", "local3b"]          # provider order before any bench
     fb.record(reg, "or-c", 4, 4, 60); fb.record(reg, "groq-a", 3, 4, 40)
     reg = Registry(tmp_path / "registry")
-    assert fp.default_fallbacks(reg) == ["or-c", "groq-a", "gemini-b", "local3b"]          # benchmarked first, by score; unbenched after
+    assert fp.default_primary(reg) == "or-c"                                                  # D-058: best-benchmarked lane leads
+    assert fp.default_fallbacks(reg) == ["groq-a", "gemini-b", "local3b"]                    # primary excluded; benched before unbenched
+    assert fp.default_fallbacks(reg, primary="zzz") == ["or-c", "groq-a", "gemini-b", "local3b"]
     assert [r["lane"] for r in fb.rank(reg)] == ["or-c", "groq-a"]
+    fb.record(reg, "or-c", 1, 4, 60); fb.record(reg, "or-c", 1, 4, 60)                       # window drops to 6/12 -> not primary material
+    assert fp.default_primary(Registry(tmp_path / "registry")) == fp.LEGACY_PRIMARY          # nobody >=0.9 -> legacy constant
+
 
 
 def test_run_isolates_lane_errors(tmp_path, monkeypatch):
