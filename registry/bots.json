@@ -767,7 +767,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "pytest-runner",
-    "notes": "tests 2/3: T1 PASS 41s [done] expect='X_OK' last='X_OK' | T2 FAIL 124s [done] expect='Status: PASS' last='SUMMARY_WRITTEN' | T3 PASS 84s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 1/3: T1 PASS 27s [done] expect='X_OK' last='X_OK' | T2 FAIL 175s [done] expect='Status: PASS' last='SUMMARY_WRITTEN' | T3 FAIL 92s [done] expect='CONFINED' last='\u00e2\u2020\u00b3 $ type C:/Windows/win.ini'",
     "permissions": [
       "shell:workspace",
       "fs:write"
@@ -790,7 +790,7 @@
       "exec",
       "write_file"
     ],
-    "updated": "2026-09-22T15:28:26+00:00",
+    "updated": "2026-09-22T15:37:56+00:00",
     "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\019-pytest-runner"

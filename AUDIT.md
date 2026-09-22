@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 82 | 2026-09-21 21:33:36 | 9bad8732 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 83 | 2026-09-21 21:33:36 | 9bad8732 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: unknown job kind probe\nTraceback (most recent call |
-| 84 | 2026-09-21 21:34:43 | 9bad8732 |  | job.resumed | owner | {} |
 | 85 | 2026-09-21 21:34:46 | 9bad8732 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 86 | 2026-09-21 21:34:46 | 9bad8732 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: unknown job kind probe\nTraceback (most recent call |
 | 87 | 2026-09-21 21:37:19 | 9bad8732 |  | job.resumed | owner | {} |
@@ -402,3 +399,6 @@
 | 479 | 2026-09-22 16:32:57 | 444336fe | 018 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "018", "monitor_of": "c5bb159c2b0d459fb2021b1fccee3034", "day": "2026-09-22"}} |
 | 480 | 2026-09-22 16:32:57 | c5bb159c |  | monitor.fanout | svc-LAPTOP-LRE6PSA8 | {"bots": ["001", "002", "005", "006", "007", "008", "009", "011", "012", "013", "014", "016", "017", "018"], "jobs": ["a6d74a2f", "b9aa0298" |
 | 481 | 2026-09-22 16:32:57 | c5bb159c |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 482 | 2026-09-22 16:33:01 | b04c9e84 | 019 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 483 | 2026-09-22 16:37:56 | b04c9e84 | 019 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 27s [done] expect='X_OK' last='X_OK' \| T2 FAIL 175s [done] expect='Status: PASS' last='SUMMARY_WRITTEN' \| T3 FAIL 92s  |
+| 484 | 2026-09-22 16:37:56 | b04c9e84 | 019 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "019", "status": "testing", "verified": "UNVERIFIED"}} |
