@@ -135,14 +135,13 @@
         "gemini-flash",
         "gemini-flash38",
         "groq-gptoss20b",
-        "or-deepseek",
         "gemini-lite",
         "local4b"
       ],
       "primary": "groq-gptoss120b"
     },
     "name": "changelog-writer",
-    "notes": "tests 2/4: T1 PASS 37s [done] expect='CHANGELOG_OK' last='CHANGELOG_OK' | T2 FAIL 56s [done] expect='3' last='RESULT: Created commits.txt, generated CHANGELOG.md, and replied with the total number of entries written.' | T3 FAIL 68s [done] expect='2' last='RESULT: Successfully created commits.txt, generated CHANGELOG.md, and reported  the number of entries under the Fixed heading.' | T4 PASS 33s [d",
+    "notes": "tests 4/4: repair round 1 via groq:openai/gpt-oss-20b: T1 PASS 135s [done] expect='CHANGELOG_OK' last='CHANGELOG_OK' | T2 PASS 174s [done] expect='3' last='RESULT: 3' | T3 PASS 217s [done] expect='2' last='RESULT: 2' | T4 PASS 92s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -150,12 +149,12 @@
     "purpose": "Read git commit messages from commits.txt, categorize them under Added, Fixed, or Changed headings, write a formatted CHANGELOG.md, and reply with the total number of entries written.",
     "schedules": [],
     "seal": {
-      "AGENTS.md": "ece544192ec5141d752c2405",
-      "SOUL.md": "ccf30f6dea4beb73750b2cde",
-      "bot.json": "03a91c93b15dbc16535afbbe",
-      "nanobot.patch.json": "9544c7a3ced312410316db25"
+      "AGENTS.md": "f7a3c9ce96a828c3156bc545",
+      "SOUL.md": "241a2aa60541a46a7cd698a1",
+      "bot.json": "226d116f97111cf4ef9c5611",
+      "nanobot.patch.json": "2c2df538b877ad3396c6c007"
     },
-    "status": "testing",
+    "status": "active",
     "tests": [
       "Reply with exactly: CHANGELOG_OK -> CHANGELOG_OK",
       "First use write_file to create commits.txt containing exactly these three lines: add new login / fix crash on start / update documentation (one per line). Then do your job: write CHANGELOG.md and reply with only the number of entries written. -> 3",
@@ -166,8 +165,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T18:22:03+00:00",
-    "verified": "UNVERIFIED",
+    "updated": "2026-09-22T20:53:22+00:00",
+    "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\004-changelog-writer"
   },

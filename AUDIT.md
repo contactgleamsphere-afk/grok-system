@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 308 | 2026-09-22 05:21:46 | b59e7101 | 012 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "3/4", "before": "active", "after": "testing", "inconclusive": false, "quota": 0} |
-| 309 | 2026-09-22 05:21:46 | b59e7101 | 012 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 310 | 2026-09-22 05:21:46 | 136c6448 | 012 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "012", "max_rounds": 2}} |
 | 311 | 2026-09-22 05:21:46 | b59e7101 | 013 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "4/4", "before": "active", "after": "active", "inconclusive": false, "quota": 0} |
 | 312 | 2026-09-22 05:21:46 | b59e7101 | 014 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "4/4", "before": "active", "after": "active", "inconclusive": false, "quota": 0} |
 | 313 | 2026-09-22 05:21:46 | b59e7101 | 016 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "3/4", "before": "active", "after": "testing", "inconclusive": false, "quota": 0} |
@@ -402,3 +399,6 @@
 | 705 | 2026-09-22 21:43:27 | 60e46601 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 706 | 2026-09-22 21:43:27 | 51e8edf3 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-22T22"}} |
 | 707 | 2026-09-22 21:43:27 | 60e46601 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 708 | 2026-09-22 21:53:22 | 349607da | 004 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": "4/4", "rejected": null}], "boundary_ |
+| 709 | 2026-09-22 21:53:22 | 349607da | 004 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 710 | 2026-09-22 21:53:22 | 349607da | 004 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "004", "name": "changelog-writer", "status": "active", "verified": "VERIFIED"}} |

@@ -705,3 +705,6 @@
 {"seq": 705, "ts": 1790109807.467, "job": "60e46601dc584577935d515a8952a576", "bot": null, "event": "job.claimed", "actor": "fast-LAPTOP-LRE6PSA8", "detail": {"attempt": 1}}
 {"seq": 706, "ts": 1790109807.488, "job": "51e8edf335c5451b95c368611f60ef4d", "bot": null, "event": "job.enqueued", "actor": "fast-LAPTOP-LRE6PSA8", "detail": {"kind": "tick", "payload": {"hour": "2026-09-22T22"}}}
 {"seq": 707, "ts": 1790109807.488, "job": "60e46601dc584577935d515a8952a576", "bot": null, "event": "job.done", "actor": "fast-LAPTOP-LRE6PSA8", "detail": {"summary": {}}}
+{"seq": 708, "ts": 1790110402.767, "job": "349607da4544403c930720775f5dbc9f", "bot": "004", "event": "bot.repair", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"ok": true, "status": "active", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": "4/4", "rejected": null}], "boundary_diff": {}}}
+{"seq": 709, "ts": 1790110402.773, "job": "349607da4544403c930720775f5dbc9f", "bot": "004", "event": "bot.promoted", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"to": "active"}}
+{"seq": 710, "ts": 1790110402.775, "job": "349607da4544403c930720775f5dbc9f", "bot": "004", "event": "job.done", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"summary": {"bot_id": "004", "name": "changelog-writer", "status": "active", "verified": "VERIFIED"}}}
