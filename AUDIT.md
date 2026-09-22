@@ -2,13 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 11 | 2026-09-21 19:40:50 | 7c69d3cf |  | job.claimed | w2 | {"attempt": 1} |
-| 12 | 2026-09-21 19:41:32 | 31ffc26e | 005 | job.claimed | w3 | {"attempt": 1} |
-| 13 | 2026-09-21 19:42:46 | 31ffc26e |  | job.released | owner | {"uncount": true} |
-| 14 | 2026-09-21 19:42:48 | 7c69d3cf |  | job.released | owner | {"uncount": false} |
-| 15 | 2026-09-21 19:42:49 | 7c69d3cf |  | job.claimed | w4 | {"attempt": 2} |
-| 16 | 2026-09-21 19:45:42 | 7c69d3cf | 002 | bot.monitored | w4 | {"result": "2/2", "before": "active", "after": "active"} |
-| 17 | 2026-09-21 19:45:42 | 7c69d3cf | 003 | bot.monitored | w4 | {"result": "4/4", "before": "active", "after": "active"} |
 | 18 | 2026-09-21 19:45:42 | 7c69d3cf |  | job.done | w4 | {"summary": {}} |
 | 19 | 2026-09-21 19:45:42 | 31ffc26e | 005 | job.claimed | w4 | {"attempt": 1} |
 | 20 | 2026-09-21 19:47:49 | 31ffc26e | 005 | bot.tested | w4 | {"result": "T1 PASS 11s [done] expect='X_OK' last='X_OK' \| T2 PASS 47s [done] expect='1' last='RESULT: 1' \| T3 PASS 56s [done] expect='0'  |
@@ -402,3 +395,10 @@
 | 408 | 2026-09-22 08:43:11 | fbeb65ad |  | job.enqueued | master-001 | {"kind": "create", "payload": {"objective": "reads orders.csv and writes totals.csv with one row per country and the total amount for that c |
 | 409 | 2026-09-22 08:43:24 | 28cfb1d6 | 017 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 102s [done] expect='3' last='RESULT: 3' \| T3 PASS 91s [done] expect='3'  |
 | 410 | 2026-09-22 08:43:24 | 28cfb1d6 | 017 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "017", "status": "active", "verified": "VERIFIED"}} |
+| 411 | 2026-09-22 08:43:28 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 412 | 2026-09-22 08:43:33 | fbeb65ad |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 413 | 2026-09-22 08:43:34 | fbeb65ad | 018 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "csv-country-totals", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["groq-gptoss120b", "o |
+| 414 | 2026-09-22 08:47:50 | fbeb65ad | 018 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 27s [done] expect='X_OK' last='X_OK' \| T2 PASS 90s [done] expect='30' last='RESULT: 30' \| T3 PASS 88s [done] expect='2 |
+| 415 | 2026-09-22 08:47:50 | ca31fcf3 | 018 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "run", "payload": {"bot_id": "018", "task": "reads orders.csv and writes totals.csv with one row per country and the total amount f |
+| 416 | 2026-09-22 08:47:50 | fbeb65ad | 018 | deliver.run_queued | svc-LAPTOP-LRE6PSA8 | {} |
+| 417 | 2026-09-22 08:47:50 | fbeb65ad | 018 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "name": "csv-country-totals", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
