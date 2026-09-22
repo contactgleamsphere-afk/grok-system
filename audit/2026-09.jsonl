@@ -731,3 +731,22 @@
 {"seq": 731, "ts": 1790111607.515, "job": "f462fb6b55f643059d5274ebd09a6440", "bot": null, "event": "job.claimed", "actor": "fast-LAPTOP-LRE6PSA8", "detail": {"attempt": 1}}
 {"seq": 732, "ts": 1790111607.536, "job": "c367ebb5a6cf4821a2437b2859071b62", "bot": null, "event": "job.enqueued", "actor": "fast-LAPTOP-LRE6PSA8", "detail": {"kind": "probe", "payload": {"only": [], "hour": "2026-09-22T23"}}}
 {"seq": 733, "ts": 1790111619.353, "job": "f462fb6b55f643059d5274ebd09a6440", "bot": null, "event": "job.done", "actor": "fast-LAPTOP-LRE6PSA8", "detail": {"summary": {"healthy": ["gemini-flash36", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen27b", "local3b", "local4b"], "changed": []}}}
+{"seq": 734, "ts": 1790111988.593, "job": null, "bot": null, "event": "worker.restart", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"reason": "code changed on disk"}}
+{"seq": 735, "ts": 1790111990.421, "job": null, "bot": null, "event": "worker.restart", "actor": "fast-LAPTOP-LRE6PSA8", "detail": {"reason": "code changed on disk"}}
+{"seq": 736, "ts": 1790112001.287, "job": null, "bot": null, "event": "worker.selftest", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"ok": true, "tail": ["84 passed in 8.54s"]}}
+{"seq": 737, "ts": 1790112001.501, "job": null, "bot": null, "event": "worker.selftest", "actor": "fast-LAPTOP-LRE6PSA8", "detail": {"ok": true, "tail": ["84 passed in 9.77s"]}}
+{"seq": 738, "ts": 1790112866.925, "job": null, "bot": null, "event": "worker.restart", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"reason": "code changed on disk"}}
+{"seq": 739, "ts": 1790112867.111, "job": null, "bot": null, "event": "worker.restart", "actor": "fast-LAPTOP-LRE6PSA8", "detail": {"reason": "code changed on disk"}}
+{"seq": 740, "ts": 1790112877.707, "job": null, "bot": null, "event": "worker.selftest", "actor": "fast-LAPTOP-LRE6PSA8", "detail": {"ok": true, "tail": ["85 passed in 9.20s"]}}
+{"seq": 741, "ts": 1790112879.462, "job": null, "bot": null, "event": "worker.selftest", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"ok": true, "tail": ["85 passed in 8.31s"]}}
+{"seq": 742, "ts": 1790112909.507, "job": null, "bot": null, "event": "worker.restart", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"reason": "code changed on disk"}}
+{"seq": 743, "ts": 1790112912.742, "job": null, "bot": null, "event": "worker.restart", "actor": "fast-LAPTOP-LRE6PSA8", "detail": {"reason": "code changed on disk"}}
+{"seq": 744, "ts": 1790112924.391, "job": null, "bot": null, "event": "worker.selftest", "actor": "fast-LAPTOP-LRE6PSA8", "detail": {"ok": true, "tail": ["85 passed in 10.08s"]}}
+{"seq": 745, "ts": 1790112924.427, "job": null, "bot": null, "event": "worker.selftest", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"ok": true, "tail": ["85 passed in 10.28s"]}}
+{"seq": 746, "ts": 1790113334.683, "job": null, "bot": null, "event": "worker.restart", "actor": "fast-LAPTOP-LRE6PSA8", "detail": {"reason": "code changed on disk"}}
+{"seq": 747, "ts": 1790113334.715, "job": null, "bot": null, "event": "worker.restart", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"reason": "code changed on disk"}}
+{"seq": 748, "ts": 1790113345.37, "job": null, "bot": null, "event": "worker.selftest", "actor": "fast-LAPTOP-LRE6PSA8", "detail": {"ok": true, "tail": ["86 passed in 9.02s"]}}
+{"seq": 749, "ts": 1790113347.624, "job": null, "bot": null, "event": "worker.selftest", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"ok": true, "tail": ["86 passed in 8.76s"]}}
+{"seq": 750, "ts": 1790113407.71, "job": "51e8edf335c5451b95c368611f60ef4d", "bot": null, "event": "job.claimed", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"attempt": 1}}
+{"seq": 751, "ts": 1790113407.73, "job": "5230a652b90c4a4a818cd2989edb8d4f", "bot": null, "event": "job.enqueued", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"kind": "tick", "payload": {"hour": "2026-09-22T23"}}}
+{"seq": 752, "ts": 1790113407.73, "job": "51e8edf335c5451b95c368611f60ef4d", "bot": null, "event": "job.done", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"summary": {}}}

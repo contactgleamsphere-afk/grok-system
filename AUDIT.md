@@ -2,25 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 334 | 2026-09-22 05:54:57 | f2321ed5 | 005 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "005", "status": "active"}} |
-| 335 | 2026-09-22 05:55:01 | a7af2653 | 006 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 336 | 2026-09-22 06:02:41 | a7af2653 | 006 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
-| 337 | 2026-09-22 06:02:41 | a7af2653 | 006 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
-| 338 | 2026-09-22 06:02:41 | a7af2653 | 006 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "006", "status": "active"}} |
-| 339 | 2026-09-22 06:02:44 | 200a8275 | 007 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 340 | 2026-09-22 06:11:06 | 200a8275 | 007 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
-| 341 | 2026-09-22 06:11:06 | 200a8275 | 007 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
-| 342 | 2026-09-22 06:11:06 | 200a8275 | 007 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "007", "status": "active"}} |
-| 343 | 2026-09-22 06:11:10 | 16e3b204 | 008 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 344 | 2026-09-22 06:28:35 | 16e3b204 | 008 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": "4/4", "rejected": null}], "boundary_ |
-| 345 | 2026-09-22 06:28:35 | 16e3b204 | 008 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
-| 346 | 2026-09-22 06:28:35 | 16e3b204 | 008 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "008", "name": "word-frequency-bot", "status": "active", "verified": "VERIFIED"}} |
-| 347 | 2026-09-22 06:28:39 | 2cc34059 | 009 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 348 | 2026-09-22 06:33:27 | 2cc34059 | 009 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
-| 349 | 2026-09-22 06:33:27 | 2cc34059 | 009 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
-| 350 | 2026-09-22 06:33:27 | 2cc34059 | 009 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "009", "status": "active"}} |
-| 351 | 2026-09-22 06:33:31 | 136c6448 | 012 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 352 | 2026-09-22 06:37:13 | 136c6448 | 012 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
 | 353 | 2026-09-22 06:37:13 | 136c6448 | 012 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 354 | 2026-09-22 06:37:13 | 136c6448 | 012 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "012", "status": "active"}} |
 | 355 | 2026-09-22 06:37:17 | dffdd22d | 016 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +383,22 @@
 | 731 | 2026-09-22 22:13:27 | f462fb6b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 732 | 2026-09-22 22:13:27 | c367ebb5 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-22T23"}} |
 | 733 | 2026-09-22 22:13:39 | f462fb6b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq-qwe |
+| 734 | 2026-09-22 22:19:48 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 735 | 2026-09-22 22:19:50 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 736 | 2026-09-22 22:20:01 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["84 passed in 8.54s"]} |
+| 737 | 2026-09-22 22:20:01 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["84 passed in 9.77s"]} |
+| 738 | 2026-09-22 22:34:26 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 739 | 2026-09-22 22:34:27 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 740 | 2026-09-22 22:34:37 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["85 passed in 9.20s"]} |
+| 741 | 2026-09-22 22:34:39 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["85 passed in 8.31s"]} |
+| 742 | 2026-09-22 22:35:09 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 743 | 2026-09-22 22:35:12 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 744 | 2026-09-22 22:35:24 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["85 passed in 10.08s"]} |
+| 745 | 2026-09-22 22:35:24 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["85 passed in 10.28s"]} |
+| 746 | 2026-09-22 22:42:14 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 747 | 2026-09-22 22:42:14 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 748 | 2026-09-22 22:42:25 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["86 passed in 9.02s"]} |
+| 749 | 2026-09-22 22:42:27 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["86 passed in 8.76s"]} |
+| 750 | 2026-09-22 22:43:27 | 51e8edf3 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 751 | 2026-09-22 22:43:27 | 5230a652 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-22T23"}} |
+| 752 | 2026-09-22 22:43:27 | 51e8edf3 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
