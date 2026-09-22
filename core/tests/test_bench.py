@@ -371,3 +371,32 @@ def test_d069_needs_owner_notice_and_clear(tmp_path, monkeypatch):
     assert "provider:cerebras" not in json.loads((tmp_path / "registry" / "discovery.json").read_text())["verdicts"]
     # every provider in BASES has a signup pointer (except the three originals with keys already on the laptop)
     assert all(pv in fpr.SIGNUP for pv in fpr.BASES if pv not in ("groq", "gemini", "openrouter"))
+
+
+def test_d072_monitor_fans_out_per_bot_tests_and_demotes_via_test_handler(tmp_path, monkeypatch):
+    """D-072: monitor = one small job that enqueues a `test` per active bot; a failing monitored test demotes + queues repair,
+    a passing one records the MONITOR row; nothing runs inside the monitor job itself."""
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    import importlib, factory_worker as fw, factory_monitor as fm; importlib.reload(fm); importlib.reload(fw)
+    from factory.jobs import JobStore
+    from factory.registry import BotEntry
+    monkeypatch.setattr(fw, "ROOT", tmp_path); monkeypatch.setattr(fm, "ROOT", tmp_path)
+    for bid, st in (("071", "active"), ("072", "active"), ("073", "testing")):
+        reg.upsert("bots", BotEntry(id=bid, name=f"b{bid}", purpose="p", status=st, verified="VERIFIED" if st == "active" else "UNVERIFIED", tools=["read_file"],
+                                    permissions=["fs:read"], model_policy={"primary": "groq-a", "fallbacks": []}, workspace="x", tests=["a -> b"], notes=""))
+    st = JobStore(tmp_path / "run" / "jobs.sqlite3"); monkeypatch.setattr(fw, "DB", tmp_path / "run" / "jobs.sqlite3")
+    monkeypatch.setattr(fw, "_spec_of", lambda bid: {"permissions": ["fs:read"], "tools": ["read_file"]})
+    m = st.enqueue("monitor", {"day": "2026-09-22"}); mj = st.claim("w", 300)
+    res = fw.handle(mj, st, "w"); st.done(mj["id"], res, "w")
+    kids = [j for j in st.list() if j["parent"] == mj["id"]]
+    assert res["fanout"] == 2 and sorted(j["payload"]["bot_id"] for j in kids) == ["071", "072"] and all(j["kind"] == "test" and j["payload"]["monitor_of"] == mj["id"] for j in kids)
+    # 071 passes, 072 fails its monitored test
+    monkeypatch.setattr(fp, "cmd_test", lambda bid: {"bot_id": bid, "tests": "T1 PASS" if bid == "071" else "T1 FAIL", "status": "active" if bid == "071" else "testing", "verified": "VERIFIED"})
+    for _ in range(2):
+        j = st.claim("w", 300); r = fw.handle(j, st, "w"); st.done(j["id"], r, "w")
+    repairs = [j for j in st.list() if j["kind"] == "repair"]
+    assert [j["payload"]["bot_id"] for j in repairs] == ["072"]
+    ev = [(r["event"], r["bot_id"]) for r in st.audit_rows(50)]
+    assert ("monitor.fanout", None) in ev and ("bot.monitored", "071") in ev and ("bot.demoted", "072") in ev and ("bot.demoted", "071") not in ev
+    md = (tmp_path / "MONITOR.md").read_text()
+    assert "| 071 b071 | 1/1 | active→active" in md and "| 072 b072 | 0/1 | active→testing" in md

@@ -125,14 +125,27 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
             _maybe_deliver(store, job, worker)
         return res
     if kind == "test":
-        before = _spec_of(p["bot_id"]); res = fp.cmd_test(p["bot_id"])
+        before = _spec_of(p["bot_id"]); before_status = reg_status(p["bot_id"])
+        res = fp.cmd_test(p["bot_id"])
         store.audit("bot.tested", job_id=jid, bot_id=p["bot_id"], actor=worker, result=res["tests"], status=res["status"],
                     inconclusive=bool(res.get("inconclusive")), quota=res.get("quota", 0))
+        if p.get("monitor_of"):
+            # D-072: nightly re-verification row (was written by factory_monitor in one go)
+            fm.record_row(p["bot_id"], res, before_status=before_status)
+            store.audit("bot.monitored", job_id=jid, bot_id=p["bot_id"], actor=worker, result=res["tests"][:200], after=res["status"],
+                        inconclusive=bool(res.get("inconclusive")), quota=res.get("quota", 0))
         if res.get("inconclusive"):     # D-051: lanes were rate-limited, not the bot's fault -> same test again in 2h, no repair
-            store.enqueue("test", {"bot_id": p["bot_id"], "retest_of": p.get("retest_of") or jid, "after_quota": jid},
+            store.enqueue("test", {"bot_id": p["bot_id"], "retest_of": p.get("retest_of") or jid, "after_quota": jid, **({"monitor_of": p["monitor_of"]} if p.get("monitor_of") else {})},
                           priority=3, parent=jid, actor=worker, not_before=time.time() + 7200)
             return res
-        if res["status"] != "active" and p.get("retest_of"):
+        if res["status"] != "active" and p.get("monitor_of"):
+            store.audit("bot.demoted", job_id=jid, bot_id=p["bot_id"], actor=worker, to=res["status"])
+            if p["bot_id"] == "001":
+                # D-060: the master is hand-wired (no spec) — re-verify it in 30 min; the daily report flags persistent failure
+                store.enqueue("test", {"bot_id": "001", "monitor_of": p["monitor_of"], "retry_of": jid}, priority=2, parent=jid, actor=worker, not_before=time.time() + 1800)
+            else:
+                store.enqueue("repair", {"bot_id": p["bot_id"], "max_rounds": 2}, priority=2, parent=jid, actor=worker)
+        elif res["status"] != "active" and p.get("retest_of"):
             store.enqueue("repair", {"bot_id": p["bot_id"], "max_rounds": 2, "rearchitected": bool(p.get("rearchitected")), **_carry(p)}, priority=2, parent=jid, actor=worker)
         elif res["status"] == "active":
             _maybe_deliver(store, job, worker)
@@ -275,25 +288,17 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
             if probs:
                 store.audit("config.unhealthy", job_id=jid, actor=worker, problems=probs)
                 raise RuntimeError("logic: config.json unhealthy, monitor aborted before demoting anyone: " + "; ".join(probs))
-        res = fm.monitor(set(p["only"]) if p.get("only") else None)
-        for r in res["rows"]:
-            store.audit("bot.monitored", job_id=jid, bot_id=r["id"], actor=worker, result=f"{r['pass']}/{r['total']}", before=r["before"], after=r["after"],
-                        inconclusive=bool(r.get("inconclusive")), quota=r.get("quota", 0))
-            if r.get("inconclusive"):
-                continue
-            if r["after"] != "active":
-                store.audit("bot.demoted", job_id=jid, bot_id=r["id"], actor=worker, to=r["after"])
-                if r["id"] == "001":
-                    # D-060: the master is hand-wired (no spec) — it cannot be "repaired" by rewriting instructions.
-                    # Re-verify it in 30 min; if it keeps failing the daily report flags it for the owner.
-                    store.enqueue("monitor", {"only": ["001"], "day": datetime.date.today().isoformat(), "retry_of": jid},
-                                  priority=2, parent=jid, actor=worker, not_before=time.time() + 1800)
-                else:
-                    store.enqueue("repair", {"bot_id": r["id"], "max_rounds": 2}, priority=2, parent=jid, actor=worker)
-        if res.get("inconclusive"):
-            store.enqueue("monitor", {"only": res["inconclusive"], "day": datetime.date.today().isoformat(), "retry_of": jid},
-                          priority=3, parent=jid, actor=worker, not_before=time.time() + 7200)
-        return res
+        # D-072: the monitor no longer tests every bot inside one 40-minute job (it blocked the queue for hours and lost
+        # everything on a laptop sleep). It fans out one low-priority `test` job per active bot; each is independently
+        # leased, resumable and interleaves with owner work. Demote -> repair happens in the test handler (monitor_of).
+        reg = fm.Registry(ROOT / "registry"); only = set(p["only"]) if p.get("only") else None
+        targets = [e.id for e in reg.all("bots") if (e.status == "active" or e.id == "001") and (not only or e.id in only)]
+        kids = []
+        for bid in targets:
+            j = store.enqueue("test", {"bot_id": bid, "monitor_of": jid, "day": p.get("day")}, priority=6, parent=jid, actor=worker)
+            kids.append(j["id"][:8])
+        store.audit("monitor.fanout", job_id=jid, actor=worker, bots=targets, jobs=kids)
+        return {"fanout": len(targets), "bots": targets}
     raise FactoryError(f"unknown job kind {kind}")
 
 

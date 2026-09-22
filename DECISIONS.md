@@ -320,3 +320,21 @@ the notice clears itself when the key appears. (Bug found: STATUS.md read the le
 needs_owner ever showed — fixed.) The hourly probe now fans discover out to all four providers when a lane blocks or
 the healthy pool is thin. Lanes BLOCKED as *gone* (404/decommissioned) for 3 days are retired from the registry with a
 ledger reject so they cannot be re-discovered under the same slug; quota/auth/error blocks still self-heal.
+
+## D-070 — Owner grants via master chat (2026-09-22) — VERIFIED
+A create whose objective needs a permission outside the default allowance pauses (class security) — exercised live
+for the first time today (bot 019 pytest-runner needed shell:workspace; job 123271bb). The master now has
+`factory.py approve <job> --allow …` and an AGENTS rule: name the exact permission, ask the owner yes/no, never
+self-approve, never request shell:system (refused by the worker anyway). Live: master chat → blocked → asked → owner
+"yes" → `job.payload_patched` + `job.resumed` audited (job e89cc0ba).
+
+## D-071 — Keep-awake during jobs (2026-09-22) — VERIFIED (code) / INFERRED (effect)
+Laptop is Modern Standby; it slept twice today mid-job (bench lease expired, tunnel down 15 min). The worker now holds
+`SetThreadExecutionState(ES_SYSTEM_REQUIRED|ES_AWAYMODE_REQUIRED)` only while a job is in flight. No powercfg changes
+(owner's machine settings untouched).
+
+## D-072 — Monitor fans out (2026-09-22) — VERIFIED (unit) / live pending
+The nightly monitor tested every active bot inside ONE job: 17 bots × ~2–3 min = a 40-minute lease that blocked owner
+work and, on a sleep, lost all progress. Monitor is now a tiny job that enqueues one priority-6 `test` per active bot
+(owner work at priority ≤5 interleaves); each per-bot test is independently leased/resumable, writes its MONITOR.md
+row, and demote→repair happens in the test handler exactly as before (D-051 inconclusive rule kept).

@@ -57,6 +57,18 @@ def monitor(only: set[str] | None = None, dry_run: bool = False, runner=None) ->
     return {"ok": not regressed, "regressed": regressed, "inconclusive": inconclusive, "rows": rows}
 
 
+def record_row(bot_id: str, res: dict, before_status: str | None = None) -> None:
+    """D-072: one MONITOR.md row + BOT_REGISTRY refresh for a fanned-out per-bot test job."""
+    reg = Registry(ROOT / "registry"); e = reg.get("bots", bot_id)
+    ev = str(res.get("tests") or ""); p = ev.count(" PASS"); t = p + ev.count(" FAIL") + ev.count(" ERROR")
+    md = ROOT / "MONITOR.md"
+    head = "# MONITOR — nightly re-verification of active bots\n\n| date | bot | pass | status | s |\n|---|---|---|---|---|\n"
+    body = md.read_text(encoding="utf-8") if md.exists() else head
+    body += f"| {datetime.datetime.now():%Y-%m-%d %H:%M} | {bot_id} {e.name if e else ''} | {p}/{t}{' (quota, inconclusive)' if res.get('inconclusive') else ''} | {before_status or '?'}→{res.get('status')} | - |\n"
+    md.write_text(body, encoding="utf-8")
+    fp.write_bot_registry_md(reg, ROOT / "BOT_REGISTRY.md")
+
+
 if __name__ == "__main__":
     a = sys.argv
     only = set(a[a.index("--only") + 1].split(",")) if "--only" in a else None
