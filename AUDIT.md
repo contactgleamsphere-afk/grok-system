@@ -253,3 +253,10 @@
 | 249 | 2026-09-22 02:52:48 | f78710c5 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 250 | 2026-09-22 02:56:23 | f78710c5 |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "create: spec requested permissions beyond job allowance: ['shell:workspace']"} |
 | 251 | 2026-09-22 02:56:23 | f78710c5 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: create: spec requested permissions beyond job allowa |
+| 252 | 2026-09-22 02:59:56 |  | 015 | bot.retired | builder | {"reason": "D-054 over-privileged (shell) without owner grant", "bundle": "C:\\AI\\Factory\\bots\\_retired\\015-system-cleanup"} |
+| 253 | 2026-09-22 02:59:57 | f78710c5 |  | job.cancelled | owner | {} |
+| 254 | 2026-09-22 02:59:57 | 7e8fe2ef |  | job.enqueued | builder | {"kind": "create", "payload": {"objective": "Create a system-cleanup bot that uses exec to run PowerShell commands to delete temporary files |
+| 255 | 2026-09-22 02:59:58 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 256 | 2026-09-22 03:00:01 | 7e8fe2ef |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 257 | 2026-09-22 03:00:03 | 7e8fe2ef |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect: objective needs permissions outside the allowance ['fs:read', 'fs:write', 'net:search', 'net:fetch']: shell:workspace  |
+| 258 | 2026-09-22 03:00:03 | 7e8fe2ef |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: architect: objective needs permissions outside the a |

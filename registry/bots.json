@@ -529,13 +529,13 @@
       "primary": "groq-gptoss120b"
     },
     "name": "system-cleanup",
-    "notes": "tests 3/3: T1 PASS 15s [done] expect='X_OK' last='RESULT: X_OK' | T2 PASS 123s [done] expect='0' last='0' | T3 PASS 74s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "D-054: built with shell:workspace that no owner granted (allowance gate ran after build). Retired; bundle moved to bots/_retired. Objective needs an explicit --allow shell:workspace grant to be rebuilt.",
     "permissions": [
       "shell:workspace"
     ],
     "purpose": "Delete temporary files using PowerShell and report the count.",
     "schedules": [],
-    "status": "active",
+    "status": "retired",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "Clean up temporary files now -> 0",
@@ -544,8 +544,8 @@
     "tools": [
       "exec"
     ],
-    "updated": "2026-09-22T01:56:23+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-09-22T01:59:56+00:00",
+    "verified": "BLOCKED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\015-system-cleanup"
   }
