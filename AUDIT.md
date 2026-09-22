@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 215 | 2026-09-22 02:07:15 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 216 | 2026-09-22 02:07:16 | 8359fbe8 |  | job.cancelled | owner | {} |
-| 217 | 2026-09-22 02:07:50 | bb6439ae |  | job.dedup | builder | {"kind": "report"} |
-| 218 | 2026-09-22 02:09:43 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 219 | 2026-09-22 02:10:08 | 25a47cdb |  | job.enqueued | master-001 | {"kind": "plan", "payload": {"objective": "log-triage pipeline: first a bot that reads app.log and writes errors.txt containing only the lin |
 | 220 | 2026-09-22 02:10:11 | 25a47cdb |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 221 | 2026-09-22 02:10:13 | ff5312d9 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "create", "payload": {"objective": "Read app.log, filter lines containing 'ERROR', and write them to errors.txt.", "plan": "25a47cd |
@@ -402,3 +398,7 @@
 | 612 | 2026-09-22 19:29:43 | a011a038 | 013 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 PASS 21s [done] expect='1' last='RESULT: 1' \| T3 PASS 33s [done] expect='0'  |
 | 613 | 2026-09-22 19:29:43 | a011a038 | 013 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 PASS 21s [done] expect='1' last='RESULT: 1' \| T3 PASS 33s [done] expect='0'  |
 | 614 | 2026-09-22 19:29:43 | a011a038 | 013 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "013", "status": "active", "verified": "VERIFIED"}} |
+| 615 | 2026-09-22 19:29:49 | 8f64a64f | 014 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 616 | 2026-09-22 19:31:10 | 8f64a64f | 014 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 PASS 27s [done] expect='5' last='5' \| T3 PASS 20s [done] expect='Timeout' la |
+| 617 | 2026-09-22 19:31:10 | 8f64a64f | 014 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 PASS 27s [done] expect='5' last='5' \| T3 PASS 20s [done] expect='Timeout' la |
+| 618 | 2026-09-22 19:31:10 | 8f64a64f | 014 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "014", "status": "active", "verified": "VERIFIED"}} |

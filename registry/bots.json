@@ -562,7 +562,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "error-log-analyzer",
-    "notes": "tests 4/4: monitor 2026-09-22: T1 PASS 32s [done] expect='X_OK' last='X_OK' | T2 PASS 91s [done] expect='5' last='5' | T3 PASS 76s [done] expect='Timeout' last='Timeout' | T4 PASS 51s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: T1 PASS 15s [done] expect='X_OK' last='X_OK' | T2 PASS 27s [done] expect='5' last='5' | T3 PASS 20s [done] expect='Timeout' last='Timeout' | T4 PASS 16s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -586,7 +586,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T08:03:42+00:00",
+    "updated": "2026-09-22T18:31:10+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\014-error-log-analyzer"
