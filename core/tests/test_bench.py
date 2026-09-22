@@ -60,3 +60,15 @@ def test_rolling_window(tmp_path, monkeypatch):
     assert len(b["bench_runs"]) == 3 and b["bench"]["runs"] == 3
     assert b["bench"]["pass"] == 9 and b["bench"]["total"] == 12 and b["bench"]["secs"] == 60   # oldest (4/4,20s) dropped
     assert fb.rank(reg)[0]["score"] == 0.75
+
+
+def test_quota_failures_do_not_count_as_quality(tmp_path, monkeypatch):
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    fb.record(reg, "or-c", 2, 4, 50, quota=2)                    # 2 pass, 2 quota-failed -> 2/2 scored
+    b = Registry(tmp_path / "registry").get("models", "or-c").limits["bench"]
+    assert (b["pass"], b["total"]) == (2, 2)
+    fb.record(reg, "groq-a", 0, 4, 20, quota=4)                  # all quota -> inconclusive, no score
+    m = Registry(tmp_path / "registry").get("models", "groq-a").limits
+    assert "bench" not in m and m["bench_last_inconclusive"]["quota"] == 4
+    fb.record(reg, "gemini-b", 0, 4, 20, quota=0)                # genuine 0/4 still scores
+    assert Registry(tmp_path / "registry").get("models", "gemini-b").limits["bench"]["pass"] == 0

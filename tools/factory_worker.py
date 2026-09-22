@@ -116,10 +116,10 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
         # D-050: pinned single-lane quality score on the reference suite; ranks default_fallbacks()
         res = fbn.run(p.get("lanes") or None, p.get("ref", fbn.REF_BOT), bool(p.get("stale_only")), int(p.get("max", 3)))
         for r in res["results"]:
-            store.audit("lane.benchmarked", job_id=jid, actor=worker, lane=r["lane"], result=f"{r['pass']}/{r['total']}", secs=r["secs"])
+            store.audit("lane.benchmarked", job_id=jid, actor=worker, lane=r["lane"], result=f"{r['pass']}/{r['total']}", quota=r.get("quota", 0), secs=r["secs"])
         for r in res["errors"]:
             store.audit("lane.bench_error", job_id=jid, actor=worker, lane=r["lane"], error=r["error"])
-        return {"benchmarked": [(r["lane"], f"{r['pass']}/{r['total']}") for r in res["results"]], "errors": res["errors"], "rank": res["rank"][:8]}
+        return {"benchmarked": [(r["lane"], f"{r['pass']}/{r['total']}" + (f" q{r['quota']}" if r.get("quota") else "")) for r in res["results"]], "errors": res["errors"], "rank": res["rank"][:8]}
     if kind == "report":
         r = frp.build(); (ROOT / "STATUS.md").write_text(frp.markdown(r), encoding="utf-8")
         nxt = datetime.datetime.now() + datetime.timedelta(days=1)

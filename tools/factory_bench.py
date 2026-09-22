@@ -23,6 +23,7 @@ from factory.registry import Registry, ModelEntry  # noqa: E402
 
 REF_BOT = "009"            # line-dedupe-bot: 4 tests (echo, 2x tool-loop file tasks, sandbox escape) — all deterministic
 BENCH_TTL_DAYS = 14
+BENCH_GAP_S = 75           # pause between lanes in a sweep
 LOCAL = ("local3b", "local4b")
 
 
@@ -49,15 +50,22 @@ def due(m: ModelEntry, now: datetime.datetime | None = None, ttl_days: int = BEN
 BENCH_WINDOW = 3     # rolling window: free lanes are noisy run-to-run (or-ling 4/4 then 3/4); one run must not reorder the chain
 
 
-def record(reg: Registry, lane: str, passed: int, total: int, secs: int, ref: str = REF_BOT) -> ModelEntry:
+def record(reg: Registry, lane: str, passed: int, total: int, secs: int, ref: str = REF_BOT, quota: int = 0) -> ModelEntry:
     """Append a run to `limits.bench_runs` (last BENCH_WINDOW kept) and write the aggregate to `limits.bench`
-    (pass/total summed over the window, secs = mean). Consumers only read `limits.bench`."""
+    (pass/total summed over the window, secs = mean). Consumers only read `limits.bench`.
+    D-051: tests that failed on a 429/quota are availability, not quality — they are removed from `total` for the
+    score. A run where every failure was quota is recorded as inconclusive and does not enter the window at all."""
     m = reg.get("models", lane)
     if m is None:
         raise KeyError(lane)
     m.limits = dict(m.limits or {})
+    scored_total = int(total) - int(quota)
+    if scored_total <= 0 or (int(passed) == 0 and int(quota) > 0 and int(passed) + int(quota) == int(total)):
+        m.limits["bench_last_inconclusive"] = {"quota": int(quota), "total": int(total), "at": _now()}
+        reg.upsert("models", m)
+        return m
     runs = list(m.limits.get("bench_runs") or [])
-    runs.append({"pass": int(passed), "total": int(total), "secs": int(secs), "ref": ref, "at": _now()})
+    runs.append({"pass": int(passed), "total": scored_total, "secs": int(secs), "ref": ref, "at": _now(), "quota": int(quota)})
     runs = runs[-BENCH_WINDOW:]
     m.limits["bench_runs"] = runs
     m.limits["bench"] = {"pass": sum(r["pass"] for r in runs), "total": sum(r["total"] for r in runs),
@@ -87,8 +95,9 @@ def run_one(reg: Registry, lane: str, ref: str = REF_BOT, runner=None) -> dict:
     bot_dir = bots_root / f"{e.id}-{e.name}"
     runner = runner or (lambda d, l: fp.run_tests(d, cap=240, lane=l))
     res = runner(bot_dir, lane)
-    record(reg, lane, int(res["pass"]), int(res["total"]), int(res.get("secs", 0)), ref)
-    return {"lane": lane, "pass": res["pass"], "total": res["total"], "secs": res.get("secs"), "evidence": str(res.get("evidence", ""))[:600]}
+    record(reg, lane, int(res["pass"]), int(res["total"]), int(res.get("secs", 0)), ref, int(res.get("quota", 0)))
+    return {"lane": lane, "pass": res["pass"], "total": res["total"], "quota": int(res.get("quota", 0)), "secs": res.get("secs"),
+            "evidence": str(res.get("evidence", ""))[:600]}
 
 
 def run(lanes: list[str] | None = None, ref: str = REF_BOT, stale_only: bool = False, max_lanes: int = 3, runner=None) -> dict:
@@ -101,7 +110,9 @@ def run(lanes: list[str] | None = None, ref: str = REF_BOT, stale_only: bool = F
                [m.id for m in models.values() if m.id not in LOCAL and m.location == "remote" and m.verified != "BLOCKED"]
     todo = todo[:max_lanes]
     out = {"ref": ref, "results": [], "errors": []}
-    for lane in todo:
+    for i, lane in enumerate(todo):
+        if i and runner is None:
+            import time; time.sleep(BENCH_GAP_S)     # D-051: don't let the sweep itself trip per-minute limits on shared providers
         try:
             out["results"].append(run_one(reg, lane, ref, runner))
         except Exception as ex:   # one bad lane must not stop the sweep
@@ -114,6 +125,10 @@ if __name__ == "__main__":
     a = sys.argv[1:]
     opt = lambda k, d=None: a[a.index(k) + 1] if k in a else d
     lanes = [x for x in (opt("--lane") or "").split(",") if x] or None
+    if "--forget" in a:      # drop a lane's window (e.g. a run known to be quota-polluted before D-051 existed)
+        reg = Registry(ROOT / "registry"); m = reg.get("models", opt("--forget"))
+        m.limits = {k: v for k, v in (m.limits or {}).items() if k not in ("bench", "bench_runs")}; reg.upsert("models", m)
+        print(json.dumps({"forgot": m.id})); sys.exit(0)
     if "--rank" in a:
         print(json.dumps(rank(Registry(ROOT / "registry")), indent=1)); sys.exit(0)
     print(json.dumps(run(lanes, opt("--ref", REF_BOT), "--stale-only" in a, int(opt("--max", 3))), indent=1))
