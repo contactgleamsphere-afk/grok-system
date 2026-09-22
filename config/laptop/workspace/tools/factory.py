@@ -34,6 +34,29 @@ def main(a):
         print("LANES lane verified health bench secs")
         for r in rows: print(" ".join(str(x) for x in r))
         return 0
+    if a[1] == "job":
+        # D-064: one job's outcome for the owner: state, class, error, and what it produced (bots / files) — compact
+        import sqlite3
+        c = sqlite3.connect(str(REPO / "run" / "jobs.sqlite3")); pre = a[2]
+        row = c.execute("SELECT id,kind,state,failure_class,error,payload FROM jobs WHERE id LIKE ?", (pre + "%",)).fetchone()
+        if not row: print(f"no job starting with {pre}"); return 1
+        jid, kind, state, cls, err, payload = row; pl = json.loads(payload)
+        print(f"JOB {jid[:8]} {kind} {state}" + (f" class={cls}" if cls else "") + (f" error={err[:200]}" if err else ""))
+        ev = c.execute("SELECT event,bot_id,detail FROM audit WHERE job_id=? ORDER BY seq", (jid,)).fetchall()
+        for e, b, d in ev:
+            if e in ("bot.created", "bot.tested", "bot.promoted", "bot.demoted", "bot.ran", "plan.made", "plan.reused", "security.violation", "bot.rearchitected", "bot.repair"):
+                dd = json.loads(d or "{}"); short = {k: dd[k] for k in ("name", "status", "result", "produced", "reply", "steps", "queued", "error", "ok") if k in dd}
+                print(f"  {e} {b or ''} {json.dumps(short)[:220]}")
+        kids = c.execute("SELECT id,kind,state,payload FROM jobs WHERE parent=? ORDER BY created", (jid,)).fetchall()
+        for k, kk, ks, kp in kids: print(f"  child {k[:8]} {kk} {ks} {json.loads(kp).get('bot_id') or json.loads(kp).get('objective', '')[:50]}")
+        return 0
+    if a[1] == "runs":
+        runs = pathlib.Path(r"C:\AI\Factory\run\runs")
+        for d in sorted([d for d in runs.iterdir() if d.is_dir() and not d.name.startswith("_")], key=lambda d: d.stat().st_mtime)[-8:]:
+            rj = d / "RUN.json"; ok = json.loads(rj.read_text(encoding="utf-8")).get("ok") if rj.exists() else None
+            files = [f.relative_to(d).as_posix() for f in d.rglob("*") if f.is_file() and f.name != "RUN.json" and "_stage" not in f.parts]
+            print(f"{d.name} ok={ok} files={','.join(files)[:150]}")
+        return 0
     if a[1] == "report":
         r = subprocess.run([sys.executable, str(REPO / "tools" / "factory_report.py"), "--brief"], env=env, cwd=str(REPO), capture_output=True, text=True, timeout=120)
         print((r.stdout + r.stderr)[:1000]); return r.returncode
