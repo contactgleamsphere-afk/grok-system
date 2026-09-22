@@ -393,3 +393,8 @@
 | 389 | 2026-09-22 08:09:05 | ab214a76 | 013 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 390 | 2026-09-22 08:10:20 | ab214a76 | 013 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"ok": true, "produced": ["errors.txt"], "secs": 72, "reply": "RESULT: 6", "chain": "groq-gptoss120b"} |
 | 391 | 2026-09-22 08:10:20 | ab214a76 | 013 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "013", "name": "run", "status": "ok errors.txt"}} |
+| 392 | 2026-09-22 08:19:31 | f230e382 |  | job.enqueued | master-001 | {"kind": "run", "payload": {"plan": "25a47cdb", "in": "C:\\AI\\Factory\\workspace\\inbox\\logs-sep22", "cap": 300, "t": 1790061571}} |
+| 393 | 2026-09-22 08:19:33 | f230e382 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 394 | 2026-09-22 08:21:31 | f230e382 | 013 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"plan": "25a47cdb", "step": 1, "ok": true, "produced": ["errors.txt"], "missing": [], "secs": 48, "reply": "RESULT: 6", "chain": "groq-gpto |
+| 395 | 2026-09-22 08:21:31 | f230e382 | 014 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"plan": "25a47cdb", "step": 2, "ok": true, "produced": ["summary.txt"], "missing": [], "secs": 68, "reply": "RESULT: Analysis complete. sum |
+| 396 | 2026-09-22 08:21:31 | f230e382 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"name": "run:plan 25a47cdb", "status": "ok app.log,errors.txt,summary.txt"}} |
