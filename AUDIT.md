@@ -179,3 +179,9 @@
 | 175 | 2026-09-22 01:20:54 | a8c013ad |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "groq-gptoss20b", "result": "2/4", "secs": 47} |
 | 176 | 2026-09-22 01:20:54 | a8c013ad |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-qwen27b", "result": "0/4", "secs": 76} |
 | 177 | 2026-09-22 01:20:54 | a8c013ad |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 178 | 2026-09-22 01:20:59 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 179 | 2026-09-22 01:27:47 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 180 | 2026-09-22 01:27:58 | 17fe6af1 | 001 | job.enqueued | builder | {"kind": "test", "payload": {"bot_id": "001"}} |
+| 181 | 2026-09-22 01:28:02 | 17fe6af1 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 182 | 2026-09-22 01:33:44 | 17fe6af1 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 87s [done] report expect='FACTORY' cmd=True \| T3 PASS 97s [d |
+| 183 | 2026-09-22 01:33:44 | 17fe6af1 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 5, "total": 5, "status": "active", "verified": "VERIFIED"}} |
