@@ -404,3 +404,11 @@ mid-run; the round was burned and a possibly-good rewrite discarded. Now: if a s
 did not pass, the SAME candidate is run once more (D-080 has just cooled the offending lanes; D-040 re-resolves the
 chain). Only that second, clean result counts. Logged as an extra `inconclusive: true` round entry so the audit shows
 both scores. Costs at most one extra test suite per round; never changes the candidate, permissions or spec.
+
+## D-083 — Master integrity seal (2026-09-22) — VERIFIED (unit) / live below
+The 20 bots were sealed (D-068) but the master 001 — the one bot with exec and the factory wrapper — was not, because
+it has no bundle. Its security surface is: workspace `AGENTS.md` (behavioural rules incl. NEEDS_OWNER), `tools/factory.py`
+(what exec can reach), and `config.json → tools.exec` (deny patterns, allowedEnvKeys, timeout). `seal-master` hashes
+those three (config reduced to the exec object so lane rotation is never "tampering") into the registry entry;
+`wire-master-factory.ps1` reseals after it writes them; `test 001` refuses to run (and so can never re-verify) when
+they drift. Self-improvement that widened the master's env keys or rewrote its rules would be caught at the next test.

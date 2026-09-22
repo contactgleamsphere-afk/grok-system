@@ -13,3 +13,6 @@ Copy-Item C:\AI\Factory\repo\config\laptop\workspace\AGENTS.md C:\AI\Factory\wor
 # Strip mojibake from SOUL/USER (same encoding bug as botIcon)
 foreach($f in 'SOUL.md','USER.md'){ $q="C:\AI\Factory\workspace\$f"; if(Test-Path $q){ $t=Get-Content $q -Raw -Encoding UTF8; $t2=($t -replace '[\u00C2\u00C3\u00E2][\u0080-\u00BF\u20AC\u2122\u201A\u2039\u0153\u017E\u02C6\u2013\u2014\u2018\u2019\u201C\u201D\u2022\u2026]+','-'); if($t2 -ne $t){ [IO.File]::WriteAllText($q,$t2,(New-Object Text.UTF8Encoding($false))) } } }
 "master wired: allowedEnvKeys=$($c.tools.exec.allowedEnvKeys.Count) timeout=$($c.tools.exec.timeout) AGENTS=$((Get-Item C:\AI\Factory\workspace\AGENTS.md).Length)B"
+# D-083: seal the master's security surface (AGENTS.md, tools/factory.py, config tools.exec) in the registry
+$env:AIFACTORY_REPO='C:\AI\Factory\repo'; $env:PYTHONIOENCODING='utf-8'
+python C:\AI\Factory\repo\tools\factory_pipeline.py seal-master wire-script

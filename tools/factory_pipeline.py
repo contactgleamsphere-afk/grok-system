@@ -6,6 +6,7 @@ Usage (laptop or repo):
   python tools/factory_pipeline.py create "<plain-English objective>" [--id 004] [--dry-run] [--no-tests]
   python tools/factory_pipeline.py create "<objective>" --allow fs:read,fs:write,shell:workspace   # D-054 owner grant beyond default allowance
   python tools/factory_pipeline.py test <bot_id>              # run acceptance tests + record only
+  python tools/factory_pipeline.py seal-master [actor]        # D-083: seal master AGENTS.md / tools/factory.py / config tools.exec
   python tools/factory_pipeline.py rearchitect <bot_id>       # D-052: regenerate spec from the original objective
   python tools/factory_pipeline.py spec "<objective>"         # print the generated spec, build nothing
 
@@ -24,10 +25,12 @@ sys.path.insert(0, str(ROOT / "core"))
 from factory.registry import Registry                      # noqa: E402
 from factory.botspec import validate_spec                  # noqa: E402
 from factory.factory import BotFactory, FactoryError
-from factory.guard import SecurityViolation, bundle_drift       # noqa: E402
+from factory.guard import SecurityViolation, bundle_drift, master_seal, master_drift       # noqa: E402
 
 WIN = os.name == "nt"
 LAPTOP_BOTS = pathlib.Path(r"C:\AI\Factory\bots")
+MASTER_WS = pathlib.Path(os.environ.get("AIFACTORY_MASTER_WS", r"C:\AI\Factory\workspace"))        # D-083
+MASTER_CFG = pathlib.Path(os.environ.get("AIFACTORY_MASTER_CFG", r"C:\AI\Factory\config.json"))
 RUNNER = ROOT / "scripts" / "windows" / "run-bot-tests.ps1"   # D-050: the repo copy is the only copy (hand-synced duplicate in C:\AI\Factory\tools archived)
 
 # ---------------------------------------------------------------- LLM lane (OpenAI-compatible, chain order)
@@ -373,9 +376,20 @@ def cmd_rearchitect(bot_id: str, feedback: str = "", allowed_permissions: list[s
     return report
 
 
+def cmd_seal_master(actor: str = "builder") -> dict:
+    """D-083: record the master's security surface (called by wire-master-factory.ps1 after it writes those files)."""
+    reg = Registry(ROOT / "registry"); e = reg.get("bots", "001")
+    if e is None: raise FactoryError("no master entry 001")
+    before = dict(e.seal or {}); e.seal = master_seal(MASTER_WS, MASTER_CFG); reg.upsert("bots", e)
+    return {"bot_id": "001", "seal": e.seal, "changed": [k for k in e.seal if before.get(k) != e.seal[k]], "actor": actor}
+
+
 def cmd_test(bot_id: str) -> dict:
     if bot_id == "001":
         reg = Registry(ROOT / "registry"); f = BotFactory(reg, LAPTOP_BOTS if WIN else ROOT / "bots")
+        drift = master_drift(MASTER_WS, MASTER_CFG, getattr(reg.get("bots", "001"), "seal", None))   # D-083
+        if drift and drift != ["<unsealed>"]:
+            raise FactoryError(f"master integrity: {drift} changed outside the factory; re-run wire-master-factory.ps1 to reseal")
         res = run_master_tests()
         e = f.record_test_result("001", int(res["pass"]), int(res["total"]), res["evidence"])
         write_bot_registry_md(reg, ROOT / "BOT_REGISTRY.md")
@@ -410,6 +424,8 @@ def main(argv: list[str]) -> int:
             out = cmd_rearchitect(arg, opt("--feedback", ""))
         elif cmd == "spec":
             out = cmd_create(arg, opt("--id"), True, True)
+        elif cmd == "seal-master":
+            out = cmd_seal_master(arg)
         elif cmd == "test":
             out = cmd_test(arg)
         else:

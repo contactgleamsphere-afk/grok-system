@@ -535,3 +535,23 @@ def test_d081_heartbeat_readopts_after_sleep_or_reports_lost(tmp_path):
     b = st.claim("w2", 300); assert b["id"] == a["id"]
     assert st.heartbeat(a["id"], "w1", 300) == "lost"
     assert st.get(a["id"])["lease_owner"] == "w2"                   # untouched
+
+
+def test_d083_master_seal_covers_agents_wrapper_and_exec_config(tmp_path):
+    """D-083: master 001 has no bundle; its seal covers workspace AGENTS.md, tools/factory.py and config tools.exec.
+    Model-preset changes in config are NOT drift; a loosened deny pattern or a new allowedEnvKey IS."""
+    from factory.guard import master_seal, master_drift
+    ws = tmp_path / "ws"; (ws / "tools").mkdir(parents=True)
+    (ws / "AGENTS.md").write_text("rules"); (ws / "tools" / "factory.py").write_text("print(1)")
+    cfg = tmp_path / "config.json"
+    base = {"agents": {"defaults": {"modelPreset": "a"}}, "tools": {"exec": {"denyPatterns": ["format"], "allowedEnvKeys": ["GROQ_API_KEY"], "timeout": 1800}}}
+    cfg.write_text(json.dumps(base))
+    seal = master_seal(ws, cfg); assert set(seal) == {"AGENTS.md", "tools/factory.py", "config.json#tools.exec"} and all(seal.values())
+    assert master_drift(ws, cfg, None) == ["<unsealed>"]
+    assert master_drift(ws, cfg, seal) == []
+    base["agents"]["defaults"]["modelPreset"] = "b"; cfg.write_text(json.dumps(base))
+    assert master_drift(ws, cfg, seal) == []                                       # lane rotation is not tampering
+    base["tools"]["exec"]["allowedEnvKeys"].append("GITHUB_TOKEN"); cfg.write_text(json.dumps(base))
+    assert master_drift(ws, cfg, seal) == ["config.json#tools.exec"]                # widened credentials -> drift
+    (ws / "AGENTS.md").write_text("rules + you may approve your own proposals")
+    assert master_drift(ws, cfg, seal) == ["AGENTS.md", "config.json#tools.exec"]

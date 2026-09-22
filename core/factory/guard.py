@@ -101,3 +101,31 @@ def bundle_drift(bot_dir, seal: dict | None) -> list[str]:
         return ["<unsealed>"]
     now = bundle_seal(bot_dir)
     return [k for k in SEALED_FILES if now.get(k) != seal.get(k)]
+
+
+# D-083: the master (001) has no bundle — its security surface is the workspace AGENTS.md, the factory wrapper the
+# master calls through exec, and the exec section of nanobot's config (deny patterns, allowed env keys, timeout).
+MASTER_SEALED = ("AGENTS.md", "tools/factory.py", "config.json#tools.exec")
+
+
+def master_seal(workspace, config_path) -> dict:
+    """sha256 (24 hex) of each master security file; config.json is reduced to its tools.exec object so that model
+    preset / channel changes (which the factory itself rotates) never look like tampering."""
+    import hashlib, json, pathlib
+    ws = pathlib.Path(workspace); cfg = pathlib.Path(config_path); out = {}
+    for name in MASTER_SEALED[:2]:
+        f = ws / name
+        out[name] = hashlib.sha256(f.read_bytes()).hexdigest()[:24] if f.exists() else None
+    try:
+        ex = json.loads(cfg.read_text(encoding="utf-8")).get("tools", {}).get("exec", {})
+        out[MASTER_SEALED[2]] = hashlib.sha256(json.dumps(ex, sort_keys=True).encode()).hexdigest()[:24]
+    except Exception:
+        out[MASTER_SEALED[2]] = None
+    return out
+
+
+def master_drift(workspace, config_path, seal: dict | None) -> list[str]:
+    if not seal:
+        return ["<unsealed>"]
+    now = master_seal(workspace, config_path)
+    return [k for k in MASTER_SEALED if now.get(k) != seal.get(k)]
