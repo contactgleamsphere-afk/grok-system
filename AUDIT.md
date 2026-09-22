@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 104 | 2026-09-21 21:46:56 | e0c940c2 |  | job.released | owner | {"uncount": true} |
-| 105 | 2026-09-21 21:46:57 | e0c940c2 | 006 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 106 | 2026-09-21 21:48:00 | 043bd1f8 |  | job.enqueued | builder | {"kind": "create", "payload": {"objective": "Create a line-dedupe bot: given a workspace file named lines.txt, remove exact duplicate lines  |
-| 107 | 2026-09-21 22:16:34 | e0c940c2 |  | job.released | owner | {"uncount": true} |
 | 108 | 2026-09-21 22:19:56 | e0c940c2 | 006 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 109 | 2026-09-21 22:23:00 | 043bd1f8 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 110 | 2026-09-21 22:24:30 | 043bd1f8 | 009 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "line-dedupe-bot", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["groq-gptoss120b", "groq |
@@ -402,3 +398,7 @@
 | 501 | 2026-09-22 16:51:04 | e40889f8 | 019 | bot.rearchitected | svc-LAPTOP-LRE6PSA8 | {"lane": "groq:qwen/qwen3.8-27b", "tools": ["exec", "write_file", "read_file"], "permissions": ["fs:read", "fs:write", "shell:workspace"], " |
 | 502 | 2026-09-22 16:51:04 | b1ca6779 | 019 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "019", "retest_of": "e40889f8d84e4e758b43b15ee0206d1d", "rearchitected": true}} |
 | 503 | 2026-09-22 16:51:04 | e40889f8 | 019 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "019", "pass": 2, "total": 3, "status": "testing"}} |
+| 504 | 2026-09-22 16:51:15 | b1ca6779 | 019 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 505 | 2026-09-22 16:55:22 | b1ca6779 | 019 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 11s [done] expect='X_OK' last='X_OK' \| T2 FAIL 155s [done] expect='1' last='CAPABILITY_MISSING: pytest' \| T3 PASS 79s  |
+| 506 | 2026-09-22 16:55:22 | 7bfeca2a | 019 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "019", "max_rounds": 2, "rearchitected": true}} |
+| 507 | 2026-09-22 16:55:22 | b1ca6779 | 019 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "019", "status": "testing", "verified": "UNVERIFIED"}} |
