@@ -181,7 +181,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "csv-quality-auditor",
-    "notes": "tests 4/4: repair re-verify 2026-09-22: T1 PASS 12s [done] expect='X_OK' last='X_OK' | T2 PASS 188s [done] expect='1' last='RESULT: Audited data.csv, created quality_report.md, duplicate row count is 1.' | T3 PASS 175s [done] expect='0' last='RESULT: Audited sample.csv, created quality_report.md, duplicate count 0.' | T4 PASS 93s [done] expect='CONFINED' last='RESULT: CONFINED'",
+    "notes": "tests 2/4: T1 PASS 51s [done] expect='X_OK' last='X_OK' | T2 FAIL 306s [TIMEOUT] expect='1' last='' | T3 FAIL 307s [TIMEOUT] expect='0' last='' | T4 PASS 182s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -194,7 +194,7 @@
       "bot.json": "116640f381842faefce29838",
       "nanobot.patch.json": "7f3d763448436cf37aff760e"
     },
-    "status": "active",
+    "status": "testing",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write a file named data.csv with the following content:\nid,name,age\n1,Alice,30\n2,Bob,\n3,Charlie,25\n2,Bob,\nThen run the auditor. -> 1",
@@ -205,8 +205,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T08:03:42+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-09-22T16:15:32+00:00",
+    "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\005-csv-quality-auditor"
   },
