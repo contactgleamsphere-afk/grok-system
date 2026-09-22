@@ -47,11 +47,17 @@ def test_rank_reorders_default_fallbacks(tmp_path, monkeypatch):
     fb.record(reg, "or-c", 4, 4, 60); fb.record(reg, "groq-a", 3, 4, 40)
     reg = Registry(tmp_path / "registry")
     assert fp.default_primary(reg) == "or-c"                                                  # D-058: best-benchmarked lane leads
-    assert fp.default_fallbacks(reg) == ["groq-a", "gemini-b", "local3b"]                    # primary excluded; benched before unbenched
+    m = reg.get("models", "or-c"); m.limits = {**m.limits, "rpd": 50, "rpd_scope": "account-wide across all :free models"}; reg.upsert("models", m)
+    reg = Registry(tmp_path / "registry")
+    assert fp.default_primary(reg) == fp.LEGACY_PRIMARY                                       # tiny shared daily budget -> not primary; groq-a is 3/4 < 0.9 -> legacy
+    fb.record(reg, "groq-a", 4, 4, 30); fb.record(reg, "groq-a", 4, 4, 30)                     # window 11/12 >= 0.9
+    reg = Registry(tmp_path / "registry")
+    assert fp.default_primary(reg) == "groq-a"
+    assert fp.default_fallbacks(reg) == ["or-c", "gemini-b", "local3b"]                      # primary excluded; benched (or-c 4/4) before unbenched
     assert fp.default_fallbacks(reg, primary="zzz") == ["or-c", "groq-a", "gemini-b", "local3b"]
     assert [r["lane"] for r in fb.rank(reg)] == ["or-c", "groq-a"]
-    fb.record(reg, "or-c", 1, 4, 60); fb.record(reg, "or-c", 1, 4, 60)                       # window drops to 6/12 -> not primary material
-    assert fp.default_primary(Registry(tmp_path / "registry")) == fp.LEGACY_PRIMARY          # nobody >=0.9 -> legacy constant
+    fb.record(reg, "groq-a", 0, 4, 60); fb.record(reg, "groq-a", 0, 4, 60)                   # window drops to 4/12 -> not primary material
+    assert fp.default_primary(Registry(tmp_path / "registry")) == fp.LEGACY_PRIMARY          # nobody eligible >=0.9 -> legacy constant
 
 
 

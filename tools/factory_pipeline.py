@@ -144,13 +144,20 @@ def ranked_remote(reg: Registry) -> list:
     return rem
 
 
+PRIMARY_MIN_RPD = 200      # a primary serves every bot's every test; tiny daily budgets (OpenRouter free 50/day shared,
+                           # Gemini free 20/day/model) are fallback material, not primary material
+
+
 def default_primary(reg: Registry) -> str:
-    """D-058: primary = best benchmarked lane with a perfect-or-near score (>=0.9 over its window); otherwise the
-    legacy primary. Measured quality decides who goes first, not a constant."""
+    """D-058: primary = best benchmarked lane (>=0.9 over its window) that is not quota-cooled AND has a daily budget
+    big enough to be everyone's first call (rpd unknown or >= PRIMARY_MIN_RPD, and not a shared tiny pool);
+    otherwise the legacy primary. Measured quality decides who goes first — within budget reality."""
     now = time.time()
     for m in ranked_remote(reg):
-        b = (m.limits or {}).get("bench") or {}
-        if float(((m.limits or {}).get("health") or {}).get("quota_until", 0) or 0) > now: continue   # a cooled lane must not be primary today
+        lim = m.limits or {}; b = lim.get("bench") or {}
+        if float((lim.get("health") or {}).get("quota_until", 0) or 0) > now: continue
+        rpd = lim.get("rpd"); scope = str(lim.get("rpd_scope") or "")
+        if (rpd is not None and rpd < PRIMARY_MIN_RPD) or "50/day" in scope or "account-wide" in scope: continue
         if b.get("total") and b["pass"] / b["total"] >= 0.9:
             return m.id
     return LEGACY_PRIMARY
