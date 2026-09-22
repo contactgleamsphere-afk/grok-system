@@ -146,6 +146,24 @@
     "cost_per_1k": 0.0,
     "id": "gemini-lite",
     "limits": {
+      "bench": {
+        "at": "2026-09-22T15:45:23",
+        "pass": 1,
+        "ref": "009",
+        "runs": 1,
+        "secs": 618,
+        "total": 4
+      },
+      "bench_runs": [
+        {
+          "at": "2026-09-22T15:45:23",
+          "pass": 1,
+          "quota": 0,
+          "ref": "009",
+          "secs": 618,
+          "total": 4
+        }
+      ],
       "health": {
         "failures": 0,
         "last_outcome": "ok",
@@ -164,7 +182,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-21T20:43:58+00:00",
+    "updated": "2026-09-22T14:45:23+00:00",
     "verified": "VERIFIED"
   },
   "gemini-lite31": {

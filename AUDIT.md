@@ -2,14 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 39 | 2026-09-21 19:57:13 | bbafb536 |  | job.enqueued | master-001 | {"kind": "create", "payload": {"objective": "Create a TODO-extractor bot: given a workspace file named notes.txt, find every line containing |
-| 40 | 2026-09-21 20:03:25 | efc687cf | 006 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "word-frequency-bot", "tools": ["read_file", "write_file"], "permissions": {"fs:read": ["read_file"], "fs:write": ["write_file"]},  |
-| 41 | 2026-09-21 20:03:25 | efc687cf | 006 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 PASS 38s [done] expect='apple' last='apple' \| T3 PASS 51s [done] expect='thr |
-| 42 | 2026-09-21 20:03:25 | efc687cf | 006 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "006", "name": "word-frequency-bot", "pass": 3, "total": 4, "status": "testing", "verified": "UNVERIFIED"}} |
-| 43 | 2026-09-21 20:03:25 | bbafb536 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 44 | 2026-09-21 20:08:36 | 39f42e32 |  | job.enqueued | builder | {"kind": "create", "payload": {"objective": "Create a word-frequency bot: given a workspace text file named input.txt, count how often each  |
-| 45 | 2026-09-21 20:10:02 | 39f42e32 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 46 | 2026-09-21 20:10:04 | bbafb536 | 007 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "todo-extractor", "tools": ["read_file", "write_file"], "permissions": {"fs:read": ["read_file"], "fs:write": ["write_file"]}, "cha |
 | 47 | 2026-09-21 20:10:04 | bbafb536 | 007 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 14s [done] expect='X_OK' last='+ FullyQualifiedErrorId : NativeCommandError' \| T2 FAIL 108s [done] expect='2' last='aft |
 | 48 | 2026-09-21 20:10:04 | bbafb536 | 007 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "007", "name": "todo-extractor", "pass": 1, "total": 4, "status": "testing", "verified": "UNVERIFIED"}} |
 | 49 | 2026-09-21 20:21:06 | 74c74bee | 007 | job.enqueued | builder | {"kind": "test", "payload": {"bot_id": "007"}} |
@@ -402,3 +394,11 @@
 | 436 | 2026-09-22 15:29:06 | 123271bb |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 437 | 2026-09-22 15:29:07 | 123271bb |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect: objective needs permissions outside the allowance ['fs:read', 'fs:write', 'net:search', 'net:fetch']: The objective re |
 | 438 | 2026-09-22 15:29:07 | 123271bb |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: architect: objective needs permissions outside the a |
+| 439 | 2026-09-22 15:29:14 | 6f50b9fd |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 2} |
+| 440 | 2026-09-22 15:30:47 | 123271bb |  | job.payload_patched | owner | {"patch": {"allowed_permissions": ["fs:read", "fs:write", "shell:workspace"]}} |
+| 441 | 2026-09-22 15:30:47 | 123271bb |  | job.resumed | owner | {} |
+| 442 | 2026-09-22 15:38:02 | c5bb159c |  | job.enqueued | nightly-task | {"kind": "monitor", "payload": {"only": null, "day": "2026-09-22"}} |
+| 443 | 2026-09-22 15:45:23 | 6f50b9fd |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "groq-gptoss120b", "result": "4/4", "quota": 0, "secs": 92} |
+| 444 | 2026-09-22 15:45:23 | 6f50b9fd |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "groq-gptoss20b", "result": "4/4", "quota": 0, "secs": 106} |
+| 445 | 2026-09-22 15:45:23 | 6f50b9fd |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-lite", "result": "1/4", "quota": 0, "secs": 618} |
+| 446 | 2026-09-22 15:45:23 | 6f50b9fd |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["groq-gptoss120b", "4/4"], ["groq-gptoss20b", "4/4"], ["gemini-lite", "1/4"]]}} |
