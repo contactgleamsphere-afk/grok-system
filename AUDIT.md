@@ -2,12 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 94 | 2026-09-21 21:40:13 | f781e2f8 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "RuntimeError: transient: probe found no healthy remote lane\nTrac |
-| 95 | 2026-09-21 21:41:23 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 96 | 2026-09-21 21:41:40 | f781e2f8 |  | job.resumed | owner | {} |
-| 97 | 2026-09-21 21:41:43 | f781e2f8 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 98 | 2026-09-21 21:41:44 | f781e2f8 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "or-deepseek", "outcome": "gone", "before": "VERIFIED", "after": "BLOCKED", "detail": "{\"error\":{\"message\":\"this model is una |
-| 99 | 2026-09-21 21:41:44 | f781e2f8 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 100 | 2026-09-21 21:43:37 | e0c940c2 | 006 | job.enqueued | builder | {"kind": "test", "payload": {"bot_id": "006"}} |
 | 101 | 2026-09-21 21:43:39 | e0c940c2 | 006 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 102 | 2026-09-21 21:43:55 | e0c940c2 |  | job.cancelled | owner | {} |
@@ -402,3 +396,9 @@
 | 491 | 2026-09-22 16:45:24 | a6d74a2f | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 27s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 56s [done] report expect='FACTORY' cmd=True \| T3 PASS 62s [d |
 | 492 | 2026-09-22 16:45:24 | a6d74a2f | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 27s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 56s [done] report expect='FACTORY' cmd=True \| T3 PASS 62s [d |
 | 493 | 2026-09-22 16:45:24 | a6d74a2f | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 5, "total": 5, "status": "active", "verified": "VERIFIED"}} |
+| 494 | 2026-09-22 16:45:28 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 495 | 2026-09-22 16:45:33 | 1d7ee2ef | 019 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 496 | 2026-09-22 16:45:33 | 1d7ee2ef | 019 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [], "boundary_diff": {}} |
+| 497 | 2026-09-22 16:45:33 | e40889f8 | 019 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "rearchitect", "payload": {"bot_id": "019", "feedback": "logic: spec/tests inconsistent, repair cannot change tools: expected value |
+| 498 | 2026-09-22 16:45:33 | 1d7ee2ef | 019 | bot.rearchitect_queued | svc-LAPTOP-LRE6PSA8 | {"reason": "logic: spec/tests inconsistent, repair cannot change tools: expected value 'Status: PASS' is a phrase the instructions would hav |
+| 499 | 2026-09-22 16:45:33 | 1d7ee2ef | 019 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: logic: spec/tests inconsistent, repair cannot chang |
