@@ -318,3 +318,6 @@
 | 314 | 2026-09-22 05:21:46 | b59e7101 | 016 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 315 | 2026-09-22 05:21:46 | dffdd22d | 016 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "016", "max_rounds": 2}} |
 | 316 | 2026-09-22 05:21:46 | b59e7101 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 317 | 2026-09-22 05:21:52 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 318 | 2026-09-22 05:21:56 | 04f8c4f9 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 319 | 2026-09-22 05:21:56 | 04f8c4f9 | 001 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FileNotFoundError: [Errno 2] No such file or directory: 'C:\\\\AI |
