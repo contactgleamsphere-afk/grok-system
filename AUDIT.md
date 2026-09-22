@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 371 | 2026-09-22 07:03:08 | 5552a0d9 | 016 | bot.rearchitected | svc-LAPTOP-LRE6PSA8 | {"lane": "groq:qwen/qwen3.8-27b", "tools": ["exec"], "permissions": ["shell:workspace"], "boundary_diff": {}, "result": "T1 PASS 13s [done]  |
-| 372 | 2026-09-22 07:03:08 | 6b1adac9 | 016 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "016", "retest_of": "5552a0d904d94cd08163076c2400c9e0", "rearchitected": true}} |
-| 373 | 2026-09-22 07:03:08 | 5552a0d9 | 016 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "016", "pass": 3, "total": 4, "status": "testing"}} |
-| 374 | 2026-09-22 07:03:12 | 6b1adac9 | 016 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 375 | 2026-09-22 07:10:22 | 6b1adac9 | 016 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 28s [done] expect='X_OK' last='X_OK' \| T2 PASS 151s [done] expect='2' last='RESULT: 2' \| T3 PASS 49s [done] expect='0' |
 | 376 | 2026-09-22 07:10:22 | 6b1adac9 | 016 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "016", "status": "active", "verified": "VERIFIED"}} |
 | 377 | 2026-09-22 07:25:57 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
@@ -402,3 +398,7 @@
 | 768 | 2026-09-22 23:00:06 | 1e546b89 | 022 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "csv-refund-filter", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["or-ling-30-flash-vl", |
 | 769 | 2026-09-22 23:04:43 | 1e546b89 | 022 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 28s [done] expect='X_OK' last='X_OK' \| T2 PASS 105s [done] expect='2' last='RESULT: 2' \| T3 PASS 95s [done] expect='2' |
 | 770 | 2026-09-22 23:04:43 | 1e546b89 | 022 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "022", "name": "csv-refund-filter", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
+| 771 | 2026-09-22 23:04:47 | 1a129f56 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 772 | 2026-09-22 23:04:49 | 1a129f56 | 023 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "refund-summarizer", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["or-ling-30-flash-vl", |
+| 773 | 2026-09-22 23:08:55 | 1a129f56 | 023 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 26s [done] expect='X_OK' last='X_OK' \| T2 PASS 87s [done] expect='36.0' last='RESULT: 36.0' \| T3 PASS 82s [done] expec |
+| 774 | 2026-09-22 23:08:55 | 1a129f56 | 023 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "023", "name": "refund-summarizer", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
