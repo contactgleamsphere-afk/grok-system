@@ -352,3 +352,7 @@
 | 348 | 2026-09-22 06:33:27 | 2cc34059 | 009 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
 | 349 | 2026-09-22 06:33:27 | 2cc34059 | 009 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 350 | 2026-09-22 06:33:27 | 2cc34059 | 009 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "009", "status": "active"}} |
+| 351 | 2026-09-22 06:33:31 | 136c6448 | 012 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 352 | 2026-09-22 06:37:13 | 136c6448 | 012 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
+| 353 | 2026-09-22 06:37:13 | 136c6448 | 012 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 354 | 2026-09-22 06:37:13 | 136c6448 | 012 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "012", "status": "active"}} |

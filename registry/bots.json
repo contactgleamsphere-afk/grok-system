@@ -416,14 +416,14 @@
       "primary": "groq-gptoss120b"
     },
     "name": "csv-column-sum",
-    "notes": "tests 3/4: monitor 2026-09-22: T1 PASS 33s [done] expect='X_OK' last='X_OK' | T2 FAIL 72s [done] expect='60' last='RESULT: Sum of amount column is 60.' | T3 PASS 74s [done] expect='22' last='RESULT: 22' | T4 PASS 52s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: repair re-verify 2026-09-22: T1 PASS 30s [done] expect='X_OK' last='X_OK' | T2 PASS 70s [done] expect='60' last='RESULT: 60' | T3 PASS 70s [done] expect='22' last='RESULT: 22' | T4 PASS 49s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
     ],
     "purpose": "Sum the numeric values in the 'amount' column of a CSV file.",
     "schedules": [],
-    "status": "testing",
+    "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write data.csv containing 'id,amount\\n1,10\\n2,20\\n3,30' then sum the amount column -> 60",
@@ -434,8 +434,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T04:08:58+00:00",
-    "verified": "UNVERIFIED",
+    "updated": "2026-09-22T05:37:13+00:00",
+    "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\012-csv-column-sum"
   },
