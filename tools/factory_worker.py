@@ -105,6 +105,10 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
                     permissions=res["spec"]["permissions"], boundary_diff=d, result=res.get("tests"), status=res.get("status"))
         if res.get("status") == "active":
             store.audit("bot.promoted", job_id=jid, bot_id=p["bot_id"], actor=worker, to="active")
+            # a paused repair for this bot is now moot: clear it so "needs attention" stays truthful
+            for j in store.list():
+                if j["state"] == "paused" and j["kind"] == "repair" and j["payload"].get("bot_id") == p["bot_id"]:
+                    store.cancel(j["id"], actor=worker); store.audit("job.superseded", job_id=j["id"], bot_id=p["bot_id"], actor=worker, by=jid)
         else:
             # one re-test like a fresh create; the test handler escalates to repair (flagged so repair->rearchitect can't loop)
             store.enqueue("test", {"bot_id": p["bot_id"], "retest_of": jid, "rearchitected": True}, priority=3, parent=jid, actor=worker)
