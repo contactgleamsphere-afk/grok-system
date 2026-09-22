@@ -2,14 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 391 | 2026-09-22 08:10:20 | ab214a76 | 013 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "013", "name": "run", "status": "ok errors.txt"}} |
-| 392 | 2026-09-22 08:19:31 | f230e382 |  | job.enqueued | master-001 | {"kind": "run", "payload": {"plan": "25a47cdb", "in": "C:\\AI\\Factory\\workspace\\inbox\\logs-sep22", "cap": 300, "t": 1790061571}} |
-| 393 | 2026-09-22 08:19:33 | f230e382 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 394 | 2026-09-22 08:21:31 | f230e382 | 013 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"plan": "25a47cdb", "step": 1, "ok": true, "produced": ["errors.txt"], "missing": [], "secs": 48, "reply": "RESULT: 6", "chain": "groq-gpto |
-| 395 | 2026-09-22 08:21:31 | f230e382 | 014 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"plan": "25a47cdb", "step": 2, "ok": true, "produced": ["summary.txt"], "missing": [], "secs": 68, "reply": "RESULT: Analysis complete. sum |
-| 396 | 2026-09-22 08:21:31 | f230e382 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"name": "run:plan 25a47cdb", "status": "ok app.log,errors.txt,summary.txt"}} |
-| 397 | 2026-09-22 08:30:00 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 398 | 2026-09-22 08:30:00 | 1c4af272 |  | job.enqueued | builder | {"kind": "create", "payload": {"objective": "Create a bot that reads names.txt (one name per line) and writes sorted.txt with the names sort |
 | 399 | 2026-09-22 08:30:04 | 1c4af272 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 400 | 2026-09-22 08:30:06 | 1c4af272 | 017 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "name-sorter", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["groq-gptoss120b", "or-ling- |
 | 401 | 2026-09-22 08:30:50 | 1c4af272 |  | job.lease_expired | svc-LAPTOP-LRE6PSA8 | {} |
@@ -402,3 +394,11 @@
 | 788 | 2026-09-22 23:17:38 | fa0a4093 | 022 | bot.ran | fast-LAPTOP-LRE6PSA8 | {"plan": "197bb3e5", "step": 1, "ok": true, "produced": ["refunded.csv"], "missing": [], "secs": 52, "reply": "RESULT: refunded.csv", "chain |
 | 789 | 2026-09-22 23:17:38 | fa0a4093 | 023 | bot.ran | fast-LAPTOP-LRE6PSA8 | {"plan": "197bb3e5", "step": 2, "ok": true, "produced": ["summary.txt"], "missing": [], "secs": 53, "reply": "RESULT: 39.5", "chain": "gemin |
 | 790 | 2026-09-22 23:17:38 | fa0a4093 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"name": "run:plan 197bb3e5", "status": "ok orders.csv,refunded.csv,summary.txt"}} |
+| 791 | 2026-09-22 23:24:17 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 792 | 2026-09-22 23:24:19 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 793 | 2026-09-22 23:24:31 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["89 passed in 9.59s"]} |
+| 794 | 2026-09-22 23:24:31 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["89 passed in 10.34s"]} |
+| 795 | 2026-09-22 23:25:08 | bb3c746e |  | job.enqueued | builder | {"kind": "create", "payload": {"objective": "--objective"}} |
+| 796 | 2026-09-22 23:25:11 | bb3c746e |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 797 | 2026-09-22 23:25:12 | bb3c746e |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect: objective needs permissions outside the allowance ['fs:read', 'fs:write', 'net:search', 'net:fetch']: The objective is |
+| 798 | 2026-09-22 23:25:12 | bb3c746e |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: architect: objective needs permissions outside the a |
