@@ -190,3 +190,15 @@ the bot existed and was `active`. Fixes:
 Re-run of the same objective (7e8fe2ef): `security.violation` audited, job paused, **no bot, no spec, no bundle**.
 Defence in depth still applies: `validate_spec` never grants `shell:system`; `exec` is disabled in every bundle
 that lacks `shell:workspace`; repair freezes permissions; rearchitect is bounded by the same allowance.
+
+## D-055 — The factory owns its nightly cycle (2026-09-22) — VERIFIED (task settings) / monitor run in progress
+The 03:30 "AIFactory Monitor" task did not fire on 2026-09-22: it was created with `schtasks /Create` defaults, which
+set `DisallowStartIfOnBatteries=True` and no catch-up — the laptop was on battery. Decision:
+1. Task re-registered via `Register-ScheduledTask` with AllowStartIfOnBatteries, DontStopIfGoingOnBatteries,
+   StartWhenAvailable (catch-up), 6 h limit, and the action now points at the repo's `scripts/windows/run-monitor.ps1`
+   (the hand-copied `C:\AI\Factory\tools\run-monitor.ps1` was archived).
+2. Belt and braces: the daily `report` job enqueues a full `monitor` for today if none exists, using the exact
+   scheduler payload so the idem key dedups either way. The factory no longer depends on Task Scheduler for its
+   nightly re-verification; the scheduler is just the preferred trigger.
+Also observed: the Cloudflare quick tunnel rotated hostname at ~03:26; the supervisor republished `run/tunnel.txt`
+and `~/bin/laptop` self-healed within ~3 minutes. Recorded in RECOVERY.md.

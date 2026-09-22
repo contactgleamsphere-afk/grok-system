@@ -38,3 +38,12 @@ Pre-warm the local model before any test that may fall back to it (prevents the 
 - Kill + relaunch: stop those PIDs, `Remove-Item C:\AI\Factory\run\worker.lock`, then `schtasks /Run`.
 - Orphaned running jobs recover by lease expiry (40 min) or `factory_worker.py release <id8> --uncount`.
 - Logs: `C:\AI\Factory\run\logs\worker-<date>-<pid>.log`; audit: `factory_worker.py audit`.
+
+## Tunnel hostname rotated (seen 2026-09-22 03:26)
+Symptom from the builder side: `dial tcp: lookup <old>.trycloudflare.com: no such host` then `websocket: bad handshake` for ~2-3 min.
+Cause: cloudflared quick tunnels rotate on reconnect. The tunnel supervisor republishes `run/tunnel.txt` to GitHub; `~/bin/laptop` reads it before every connect.
+Action: none — retry after 60 s. If it persists >10 min, the laptop is asleep/offline (task AIFactory-Tunnel runs as SYSTEM at boot).
+
+## Nightly monitor did not run
+Check `Get-ScheduledTaskInfo 'AIFactory Monitor'` (LastRunTime) and `factory_worker.py jobs | Select-String monitor`.
+Since D-055 the daily `report` job enqueues a monitor for the day if none exists, so a skipped task self-heals within 24 h; to force: `factory_worker.py add monitor`.
