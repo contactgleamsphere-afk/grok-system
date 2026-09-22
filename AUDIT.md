@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 108 | 2026-09-21 22:19:56 | e0c940c2 | 006 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 109 | 2026-09-21 22:23:00 | 043bd1f8 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 110 | 2026-09-21 22:24:30 | 043bd1f8 | 009 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "line-dedupe-bot", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["groq-gptoss120b", "groq |
 | 111 | 2026-09-21 22:24:30 | 043bd1f8 | 009 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] expect='X_OK' last='X_OK' \| T2 PASS 16s [done] expect='3' last='3' \| T3 PASS 29s [done] expect='1' last='1' |
 | 112 | 2026-09-21 22:24:30 | 043bd1f8 | 009 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "009", "name": "line-dedupe-bot", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
 | 113 | 2026-09-21 22:46:14 | e0c940c2 |  | job.lease_expired | svc-LAPTOP-LRE6PSA8 | {} |
@@ -402,3 +399,6 @@
 | 505 | 2026-09-22 16:55:22 | b1ca6779 | 019 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 11s [done] expect='X_OK' last='X_OK' \| T2 FAIL 155s [done] expect='1' last='CAPABILITY_MISSING: pytest' \| T3 PASS 79s  |
 | 506 | 2026-09-22 16:55:22 | 7bfeca2a | 019 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "019", "max_rounds": 2, "rearchitected": true}} |
 | 507 | 2026-09-22 16:55:22 | b1ca6779 | 019 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "019", "status": "testing", "verified": "UNVERIFIED"}} |
+| 508 | 2026-09-22 16:55:32 | 7bfeca2a | 019 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 509 | 2026-09-22 16:55:32 | 7bfeca2a | 019 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [], "boundary_diff": {}} |
+| 510 | 2026-09-22 16:55:32 | 7bfeca2a | 019 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: logic: spec/tests inconsistent, repair cannot chang |
