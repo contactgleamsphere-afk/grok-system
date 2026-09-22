@@ -60,7 +60,7 @@ _Last updated: 2026-09-22 — by Arena agent (architect/builder). Source of trut
 - What consumes ~10 GB RAM at idle.
 
 ## BLOCKED
-- **Now required, not optional** (D-019): OPENROUTER_API_KEY / GEMINI_API_KEY not set (staged in config.keyed-lanes.staged.json; apply-keyed-lanes.ps1 picks them up automatically).
+- (D-019 resolved 2026-09-20: OPENROUTER/GEMINI keys set as User env; lanes live.)
 - Port 3000 JARVIS X service: owner decision.
 
 ## Known debt
