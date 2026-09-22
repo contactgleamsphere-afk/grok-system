@@ -147,7 +147,10 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
                 store.enqueue("test", {"bot_id": "001", "monitor_of": p["monitor_of"], "retry_of": jid}, priority=2, parent=jid, actor=worker, not_before=time.time() + 1800)
             else:
                 store.enqueue("repair", {"bot_id": p["bot_id"], "max_rounds": 2}, priority=2, parent=jid, actor=worker)
-        elif res["status"] != "active" and p.get("retest_of"):
+        elif res["status"] != "active" and (p.get("retest_of") or before_status == "active"):
+            # retest after build/rearchitect, OR an ad-hoc test that just demoted an active bot (D-078: no orphan demotions)
+            if before_status == "active" and not p.get("retest_of"):
+                store.audit("bot.demoted", job_id=jid, bot_id=p["bot_id"], actor=worker, to=res["status"])
             store.enqueue("repair", {"bot_id": p["bot_id"], "max_rounds": 2, "rearchitected": bool(p.get("rearchitected")), **_carry(p)}, priority=2, parent=jid, actor=worker)
         elif res["status"] == "active":
             _maybe_deliver(store, job, worker)
