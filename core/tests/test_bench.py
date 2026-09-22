@@ -650,3 +650,13 @@ def test_d094_enqueue_rejects_empty_objective(tmp_path):
         with pytest.raises(ValueError):
             st.enqueue("create", {"objective": bad})
     assert st.enqueue("create", {"objective": "Count lines in a.txt"})["state"] == "queued"
+
+
+def test_d095_live_lanes_prefer_best_benchmarked(tmp_path, monkeypatch):
+    """D-095: builder lanes are ordered by measured quality (bench tier), weak lanes last, local always last."""
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    fb.record(reg, "groq-a", 2, 4, 100)                     # weak: 50% is not < 0.5 -> tier 0 but low rate
+    fb.record(reg, "or-c", 4, 4, 60)                        # best measured
+    e = reg.get("models", "groq-a"); e.limits["bench"] = {"pass": 1, "total": 4, "secs": 100, "at": "2026-09-22T00:00:00"}; reg.upsert("models", e)
+    order = [m for _, _, _, m in fp.live_lanes()]
+    assert order == ["or-c", "gemini-b", "groq-a", "x"], order   # measured-good, un-benchmarked, weak, local

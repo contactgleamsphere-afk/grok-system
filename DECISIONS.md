@@ -480,3 +480,10 @@ spec at architect time unless `exec` + `shell:workspace` are granted, and `exec`
 A mis-typed `add create --objective ...` enqueued objective="--objective" and spent an architect call (paused as
 security). `JobStore.enqueue` now raises for empty/flag objectives (covers master's queue bridge too); the CLI accepts
 both positional and `--objective` forms.
+
+## D-095 — Builder lanes ranked by measured quality (2026-09-22) — VERIFIED (unit + live order)
+`live_lanes()` ordered providers alphabetically-by-preference (groq → gemini → openrouter), so the architect/planner/
+repair calls went to groq-qwen27b (bench 2/4) before or-ling (4/4) and gpt-oss-120b (8/8). Now: tier 0 = bench ≥ 0.75
+by pass-rate then latency, tier 1 = un-benchmarked (old provider order), tier 2 = weak (<0.5 on ≥4 tests) as last
+resort, local last. Cooling/BLOCKED still excluded. Bench data (D-050/D-090) now steers the builder itself, not only
+the bots' chains.

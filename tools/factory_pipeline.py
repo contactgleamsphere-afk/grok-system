@@ -60,9 +60,15 @@ def live_lanes() -> list[tuple[str, str, str | None, str]]:
             h = (m.limits or {}).get("health", {})
             if float(h.get("quota_until", 0) or 0) > now: continue
             if h.get("last_outcome") in ("no_tool_call",): continue
-            cands.append((order[m.provider], float(h.get("latency_s") or 5.0), m))
-        cands.sort(key=lambda x: (x[0], x[1]))
-        lanes = [(m.provider, _LANE_BASES[m.provider][0], _LANE_BASES[m.provider][1], m.model) for _, _, m in cands]
+            b = (m.limits or {}).get("bench") or {}
+            rate = (b["pass"] / b["total"]) if b.get("total") else None
+            # D-095: builder work (architect/planner/repair/insight) goes to the best MEASURED lane first, not the first
+            # provider alphabetically. Tiers: 0 = bench >= 0.75, 1 = un-benchmarked (provider order), 2 = weak (< 0.5 on
+            # >= 4 tests) — still usable as a last resort, never first. Local lanes always last.
+            tier = 3 if m.provider == "ollama" else (2 if (rate is not None and rate < 0.5 and b["total"] >= 4) else (1 if rate is None else 0))
+            cands.append(((tier, -(rate or 0), order[m.provider], float(h.get("latency_s") or 5.0)), m))
+        cands.sort(key=lambda x: x[0])
+        lanes = [(m.provider, _LANE_BASES[m.provider][0], _LANE_BASES[m.provider][1], m.model) for _, m in cands]
         return lanes or LANES
     except Exception:
         return LANES
