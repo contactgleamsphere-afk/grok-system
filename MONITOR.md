@@ -37,3 +37,4 @@
 | 2026-09-22 19:29 | 013 log-error-filter | 4/4 | active→active | - |
 | 2026-09-22 19:31 | 014 error-log-analyzer | 4/4 | active→active | - |
 | 2026-09-22 19:35 | 016 workspace-tidy-counter | 4/4 | active→active | - |
+| 2026-09-22 19:40 | 017 name-sorter | 4/4 | active→active | - |
