@@ -432,7 +432,7 @@ trigger BLOCKED. Thirteen providers do not fail simultaneously — we do. `facto
 all-remote-error sweep spanning ≥2 providers, records nothing, and the worker re-queues a probe in 10 min
 (`probe.network_down`). Counters from that sweep reset to 0.
 
-## D-087 — Groq presets: TPM is not a context window (2026-09-22) — VERIFIED (config) / test pending Groq TPD reset
+## D-087 — Groq presets: TPM is not a context window (2026-09-22) — VERIFIED (live 2026-09-23 00:03: bot 007 T2 6.6k tokens PASS on groq-gptoss20b pinned; T3/T4 = TPM 429 counted as quota, not quality)
 Groq presets carried `contextWindowTokens: 8200` (from the 8k **tokens-per-minute** cap, D-015). nanobot's context
 governor derives a ~6.4k input budget from that and raises `ContextWindowExceededError` *locally* — before any
 request — so bot 007 T2/T3 (6586 / 7200 tokens) failed with no provider call and therefore no fallback. Set to 16384:

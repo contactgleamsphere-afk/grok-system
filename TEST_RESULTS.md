@@ -357,3 +357,6 @@ Chat → job fbeb65ad → bot 018 (4/4) → auto run ca31fcf3 → totals.csv cor
 - D-095 live lane order on laptop: gemini-lite31 (4/4) first, then gemma26b, flash38, flash37, lite35 — Groq lanes cooling (TPD), OpenRouter capped. `is_weak()` = [] today (qwen27b 2/4 has < 8 scored tests).
 - D-097 live: plan 593061c9 (3 stages) → step 1 REUSED 022 (0.70), step 2 REUSED 023 (0.78), step 3 → new bot 025 text-transformer 3/3 VERIFIED in 63 s. Only one build for a 3-stage pipeline.
 - D-098: `run --plan 593061c9` paused with KeyError('bot_id') (mixed reused/created steps) → fixed, regression test, resumed → refunded.csv (3 rows) → summary.txt `39.5` → summary_upper.txt `39.5`, job done 00:00:45. Bots 022/023 ran on groq-gptoss120b again (TPD reset at 00:00 UTC — quota_until honoured then released, D-088/D-092 chain).
+
+## D-087 proof — 2026-09-23 00:03 (after Groq TPD reset)
+`run_tests(bot 007, lane=groq-gptoss20b)` pinned: T1 PASS 9 s, **T2 PASS 15 s** (the 6,586-token prompt that previously died locally with ContextWindowExceeded), T3/T4 `rate_limit_exceeded` (8k TPM consumed by T2; pinned runs do not fall back by design) → pass 2 / total 4 / quota 2 — availability, not quality (D-051).
