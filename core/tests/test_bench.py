@@ -555,3 +555,11 @@ def test_d083_master_seal_covers_agents_wrapper_and_exec_config(tmp_path):
     assert master_drift(ws, cfg, seal) == ["config.json#tools.exec"]                # widened credentials -> drift
     (ws / "AGENTS.md").write_text("rules + you may approve your own proposals")
     assert master_drift(ws, cfg, seal) == ["AGENTS.md", "config.json#tools.exec"]
+
+
+def test_d085_bench_timeouts_are_availability_not_quality(tmp_path, monkeypatch):
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    m = fb.record(reg, "groq-a", 2, 4, 100, quota=0, timeouts=2)            # 2 pass, 2 timeouts -> 2/2 scored
+    assert m.limits["bench"]["pass"] == 2 and m.limits["bench"]["total"] == 2
+    m = fb.record(reg, "gemini-b", 0, 4, 600, quota=1, timeouts=3)         # nothing but availability failures -> inconclusive
+    assert "bench" not in m.limits and m.limits["bench_last_inconclusive"]["quota"] == 4

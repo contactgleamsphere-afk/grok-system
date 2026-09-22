@@ -50,11 +50,14 @@ def due(m: ModelEntry, now: datetime.datetime | None = None, ttl_days: int = BEN
 BENCH_WINDOW = 3     # rolling window: free lanes are noisy run-to-run (or-ling 4/4 then 3/4); one run must not reorder the chain
 
 
-def record(reg: Registry, lane: str, passed: int, total: int, secs: int, ref: str = REF_BOT, quota: int = 0) -> ModelEntry:
+def record(reg: Registry, lane: str, passed: int, total: int, secs: int, ref: str = REF_BOT, quota: int = 0, timeouts: int = 0) -> ModelEntry:
     """Append a run to `limits.bench_runs` (last BENCH_WINDOW kept) and write the aggregate to `limits.bench`
     (pass/total summed over the window, secs = mean). Consumers only read `limits.bench`.
     D-051: tests that failed on a 429/quota are availability, not quality — they are removed from `total` for the
-    score. A run where every failure was quota is recorded as inconclusive and does not enter the window at all."""
+    score. A run where every failure was quota is recorded as inconclusive and does not enter the window at all.
+    D-075/D-085: wall-clock timeouts are treated exactly like quota (availability), so a slow day never lowers a lane's
+    quality score; `quota` below is the sum of both."""
+    quota = int(quota) + int(timeouts)
     m = reg.get("models", lane)
     if m is None:
         raise KeyError(lane)
@@ -95,7 +98,7 @@ def run_one(reg: Registry, lane: str, ref: str = REF_BOT, runner=None) -> dict:
     bot_dir = bots_root / f"{e.id}-{e.name}"
     runner = runner or (lambda d, l: fp.run_tests(d, cap=240, lane=l))
     res = runner(bot_dir, lane)
-    record(reg, lane, int(res["pass"]), int(res["total"]), int(res.get("secs", 0)), ref, int(res.get("quota", 0)))
+    record(reg, lane, int(res["pass"]), int(res["total"]), int(res.get("secs", 0)), ref, int(res.get("quota", 0)), int(res.get("timeouts", 0)))
     return {"lane": lane, "pass": res["pass"], "total": res["total"], "quota": int(res.get("quota", 0)), "secs": res.get("secs"),
             "evidence": str(res.get("evidence", ""))[:600]}
 

@@ -420,3 +420,7 @@ models failed. That is the "popularity ≠ evidence" rule violated in reverse: n
 discovery marks the candidate `deferred` (6 h), stops probing that provider for the window (`provider-quota:<p>`),
 and the next run re-evaluates the slug. Today's 13 verdicts migrated to deferred (already expired) so the next hourly
 discover re-tries them once the cap rolls over.
+
+## D-085 — Bench: timeouts scored as availability (2026-09-22) — VERIFIED (unit)
+`factory_bench.record()` only discounted 429s; a TIMEOUT test (D-075 already treats it as availability for bot status)
+still counted as a quality failure against the lane. Now `timeouts` is passed through and summed with `quota`.
