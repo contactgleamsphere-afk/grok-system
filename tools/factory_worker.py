@@ -320,7 +320,8 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
     raise FactoryError(f"unknown job kind {kind}")
 
 
-CODE_FILES = [pathlib.Path(__file__), *sorted((ROOT / "core" / "factory").glob("*.py")), *sorted((ROOT / "tools").glob("factory_*.py"))]
+CODE_FILES = [pathlib.Path(__file__), *sorted((ROOT / "core" / "factory").glob("*.py")), *sorted((ROOT / "tools").glob("factory_*.py")),
+              *sorted((ROOT / "core" / "tests").glob("*.py"))]   # D-074: a test-only fix must also unblock/restart the worker
 
 
 def _code_stamp() -> float:
