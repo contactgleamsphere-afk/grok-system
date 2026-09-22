@@ -270,3 +270,6 @@ After D-059..D-062, every demotion from monitor b59e7101 recovered without a hum
 
 ## 2026-09-22 — D-063 real pipeline run — VERIFIED
 `add run --plan 25a47cdb --in <11-line app.log>` (job 854ab0a2): step 1 (013) errors.txt = exactly the 6 ERROR lines; step 2 (014) summary.txt = `Total: 6` + correct top-3 counts (3/2/1). No human steps. pytest 65/65 (fake-runner test covers chaining + missing-output failure).
+
+## 2026-09-22 — D-064 chat → run → report — VERIFIED
+Master 001 session: queued plan run from inbox (f230e382), both steps ok, and later reported the outcome on request. Crash test: worker killed mid-`run` (ab214a76) → supervisor relaunched in ~20 s, job completed on the same attempt (lease not expired), no duplicate.

@@ -268,3 +268,12 @@ each step's declared `produces` enforced (missing output = failed run, never sil
 `bot.ran` per step; quota → transient retry, other failures → logic pause. Master: `queue run`.
 Live: plan 25a47cdb on an 11-line app.log → 013 wrote errors.txt (6 lines, exact) → 014 wrote summary.txt
 (`Total: 6`, 3/2/1 top messages, exact). Output dir `run/runs/plan-25a47cdb-20260922-075757`.
+
+## D-064 — Owner ⇄ master loop for real work (2026-09-22) — VERIFIED live
+Input contract: owner drops files in `workspace/inbox/<name>/`; the master only ever names that folder (nanobot's
+exec guard correctly refuses outside paths — first attempt with an absolute run path was blocked, which is the
+desired behaviour). `factory.py job <id>` gives the master a compact, audit-derived outcome (state, class, error,
+bots created/ran, files produced, child jobs); `factory.py runs` lists run outputs.
+Live, in chat: "I put a log file in inbox/logs-sep22. Run the log triage pipeline on it" → `dir inbox` →
+`queue run --plan 25a47cdb --in logs-sep22` → job f230e382 done (013 → 6 errors, 014 → summary.txt). Then
+"How did job f230e382 go?" → master answered from `factory.py job`.
