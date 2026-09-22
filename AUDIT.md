@@ -169,3 +169,13 @@
 | 165 | 2026-09-22 01:07:31 | 29937ab3 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "groq-qwen27b", "result": "3/4", "secs": 147} |
 | 166 | 2026-09-22 01:07:31 | 29937ab3 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-gemma26b", "result": "3/4", "secs": 80} |
 | 167 | 2026-09-22 01:07:31 | 29937ab3 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 168 | 2026-09-22 01:12:35 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 169 | 2026-09-22 01:12:36 | a8c013ad |  | job.enqueued | builder | {"kind": "bench", "payload": {"lanes": ["or-nex-n25-pro", "or-ling-30-flash-vl", "gemini-gemma26b", "groq-qwen27b", "groq-gptoss20b", "or-qw |
+| 170 | 2026-09-22 01:12:39 | a8c013ad |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 171 | 2026-09-22 01:20:54 | a8c013ad |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-nex-n25-pro", "result": "4/4", "secs": 84} |
+| 172 | 2026-09-22 01:20:54 | a8c013ad |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-ling-30-flash-vl", "result": "4/4", "secs": 62} |
+| 173 | 2026-09-22 01:20:54 | a8c013ad |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-gemma26b", "result": "3/4", "secs": 73} |
+| 174 | 2026-09-22 01:20:54 | a8c013ad |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "groq-qwen27b", "result": "2/4", "secs": 147} |
+| 175 | 2026-09-22 01:20:54 | a8c013ad |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "groq-gptoss20b", "result": "2/4", "secs": 47} |
+| 176 | 2026-09-22 01:20:54 | a8c013ad |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-qwen27b", "result": "0/4", "secs": 76} |
+| 177 | 2026-09-22 01:20:54 | a8c013ad |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |

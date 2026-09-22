@@ -99,12 +99,22 @@
     "id": "gemini-gemma26b",
     "limits": {
       "bench": {
-        "at": "2026-09-22T01:07:31",
+        "at": "2026-09-22T01:16:21",
         "pass": 3,
         "ref": "009",
-        "secs": 80,
+        "runs": 1,
+        "secs": 73,
         "total": 4
       },
+      "bench_runs": [
+        {
+          "at": "2026-09-22T01:16:21",
+          "pass": 3,
+          "ref": "009",
+          "secs": 73,
+          "total": 4
+        }
+      ],
       "health": {
         "failures": 0,
         "last_outcome": "ok",
@@ -123,7 +133,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-22T00:07:31+00:00",
+    "updated": "2026-09-22T00:16:21+00:00",
     "verified": "VERIFIED"
   },
   "gemini-lite": {
@@ -228,12 +238,22 @@
     "id": "groq-gptoss20b",
     "limits": {
       "bench": {
-        "at": "2026-09-22T01:03:42",
-        "pass": 4,
+        "at": "2026-09-22T01:19:37",
+        "pass": 2,
         "ref": "009",
-        "secs": 99,
+        "runs": 1,
+        "secs": 47,
         "total": 4
       },
+      "bench_runs": [
+        {
+          "at": "2026-09-22T01:19:37",
+          "pass": 2,
+          "ref": "009",
+          "secs": 47,
+          "total": 4
+        }
+      ],
       "health": {
         "failures": 0,
         "last_outcome": "ok",
@@ -249,7 +269,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-22T00:03:42+00:00",
+    "updated": "2026-09-22T00:19:37+00:00",
     "verified": "VERIFIED"
   },
   "groq-qwen27b": {
@@ -264,12 +284,22 @@
     "id": "groq-qwen27b",
     "limits": {
       "bench": {
-        "at": "2026-09-22T01:06:10",
-        "pass": 3,
+        "at": "2026-09-22T01:18:49",
+        "pass": 2,
         "ref": "009",
+        "runs": 1,
         "secs": 147,
         "total": 4
       },
+      "bench_runs": [
+        {
+          "at": "2026-09-22T01:18:49",
+          "pass": 2,
+          "ref": "009",
+          "secs": 147,
+          "total": 4
+        }
+      ],
       "health": {
         "failures": 0,
         "last_outcome": "ok",
@@ -285,7 +315,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 0.8400000000000001,
-    "updated": "2026-09-22T00:06:10+00:00",
+    "updated": "2026-09-22T00:18:49+00:00",
     "verified": "VERIFIED"
   },
   "local3b": {
@@ -384,12 +414,22 @@
     "id": "or-ling-30-flash-vl",
     "limits": {
       "bench": {
-        "at": "2026-09-22T01:02:02",
-        "pass": 3,
+        "at": "2026-09-22T01:15:08",
+        "pass": 4,
         "ref": "009",
-        "secs": 75,
+        "runs": 1,
+        "secs": 62,
         "total": 4
       },
+      "bench_runs": [
+        {
+          "at": "2026-09-22T01:15:08",
+          "pass": 4,
+          "ref": "009",
+          "secs": 62,
+          "total": 4
+        }
+      ],
       "health": {
         "failures": 0,
         "last_outcome": "ok",
@@ -406,7 +446,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 0.808,
-    "updated": "2026-09-22T00:02:02+00:00",
+    "updated": "2026-09-22T00:15:08+00:00",
     "verified": "VERIFIED"
   },
   "or-nex-n25-pro": {
@@ -419,12 +459,22 @@
     "id": "or-nex-n25-pro",
     "limits": {
       "bench": {
-        "at": "2026-09-22T00:53:26",
+        "at": "2026-09-22T01:14:04",
         "pass": 4,
         "ref": "009",
-        "secs": 87,
+        "runs": 1,
+        "secs": 84,
         "total": 4
       },
+      "bench_runs": [
+        {
+          "at": "2026-09-22T01:14:04",
+          "pass": 4,
+          "ref": "009",
+          "secs": 84,
+          "total": 4
+        }
+      ],
       "health": {
         "failures": 0,
         "last_outcome": "ok",
@@ -441,7 +491,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 0.808,
-    "updated": "2026-09-21T23:53:26+00:00",
+    "updated": "2026-09-22T00:14:04+00:00",
     "verified": "VERIFIED"
   },
   "or-qwen27b": {
@@ -453,6 +503,23 @@
     "cost_per_1k": 0.0,
     "id": "or-qwen27b",
     "limits": {
+      "bench": {
+        "at": "2026-09-22T01:20:54",
+        "pass": 0,
+        "ref": "009",
+        "runs": 1,
+        "secs": 76,
+        "total": 4
+      },
+      "bench_runs": [
+        {
+          "at": "2026-09-22T01:20:54",
+          "pass": 0,
+          "ref": "009",
+          "secs": 76,
+          "total": 4
+        }
+      ],
       "health": {
         "last_outcome": "quota",
         "last_probe": "2026-09-21T20:43:55",
@@ -469,7 +536,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-21T20:44:00+00:00",
+    "updated": "2026-09-22T00:20:54+00:00",
     "verified": "VERIFIED"
   },
   "ovh-gptoss20b": {
