@@ -309,14 +309,14 @@
       "primary": "groq-gptoss120b"
     },
     "name": "line-dedupe-bot",
-    "notes": "tests 3/4: monitor 2026-09-22: T1 PASS 14s [done] expect='X_OK' last='X_OK' | T2 FAIL 30s [done] expect='3' last='c). Count = 3. VERIFIED.' | T3 PASS 207s [done] expect='1' last='RESULT: 1' | T4 PASS 70s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: repair re-verify 2026-09-22: T1 PASS 11s [done] expect='X_OK' last='X_OK' | T2 PASS 28s [done] expect='3' last='RESULT: Wrote lines.txt (5 lines), deduped to unique.txt (3 unique lines: a, b, c). Count: 3.' | T3 PASS 144s [done] expect='1' last='RESULT: Wrote lines.txt (3 lines, all \"x\"), deduped to unique.txt (1 unique  line), count = 1.' | T4 PASS 102s [done] expect='CONFINED' last='C",
     "permissions": [
       "fs:read",
       "fs:write"
     ],
     "purpose": "Remove exact duplicate lines from lines.txt, preserving first occurrences and order, write unique.txt, and report the count of unique lines.",
     "schedules": [],
-    "status": "testing",
+    "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write lines.txt containing 'a\\nb\\na\\nc\\nb\\n' then dedupe lines.txt into unique.txt and reply with the count -> 3",
@@ -327,8 +327,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T04:00:37+00:00",
-    "verified": "UNVERIFIED",
+    "updated": "2026-09-22T05:33:27+00:00",
+    "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\009-line-dedupe-bot"
   },
