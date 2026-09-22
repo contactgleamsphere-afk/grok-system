@@ -241,3 +241,9 @@ pytest core: 53/53.
 T1 liveness 13s · T2 report 87s · T3 list 97s · T4 **lanes** (new) 97s · T5 confined 47s. Master now answers lane health/quality questions and can queue probe/discover/bench from chat.
 Bench sweep a8c013ad: or-ling 4/4, or-nex 4/4, gemma26b 3/4; groq-gptoss20b and or-qwen27b runs were pure 429 → led to D-051, their windows forgotten.
 pytest core: 56/56.
+
+## 2026-09-22 — crash-resume + D-052 live (bots 011, 012)
+- Chat → master 001 queued `create` (67df837c) → bot 011 word-frequency-counter 4/4 active, fully hands-off.
+- Worker killed mid-job (pid 15912) during 012's retest; scheduled task restarted it, lease expired, job f5cf590e resumed att=2, no duplicate bot, ids intact.
+- 012 csv-column-sum: 1/3 (CAPABILITY_MISSING) → repair paused `logic` → `rearchitect` fbbc40db → tools +write_file, perms +fs:write (within allowance, audited) → 3/3 active VERIFIED; `specs/history/012-…-prearch.json` kept.
+pytest core: 58/58.

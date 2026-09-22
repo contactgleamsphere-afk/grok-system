@@ -145,3 +145,20 @@ repair — which rewrites instructions that were never wrong. Decision:
    those bots is queued for +2 h. One genuine failure still demotes.
 4. `factory_bench.py --forget <lane>` drops a window polluted before this rule existed (used on the two lanes).
 Rejected: retrying the failing test in-place inside the runner (would double the load on an already limited lane).
+
+## D-052 — Re-architect from the original objective when repair cannot help (2026-09-22) — VERIFIED
+Bot 012 (csv-column-sum) was specced with `tools=[read_file]` but tests that begin "First write data.csv…" →
+`CAPABILITY_MISSING: write_file`, 1/3, demoted, repair burned two LLM rounds that could never succeed (tools are
+frozen in repair, by design). Decision — three layers:
+1. **Architect-time** `spec_consistency()`: tests that imply write/read/web must be matched by tools; tool→permission
+   pairs enforced. Rejected specs go back to the architect model with the reason (same loop as validate_spec).
+2. **Repair fails closed**: if the stored spec is inconsistent (or the bot reported CAPABILITY_MISSING) repair returns
+   `logic:` immediately without an LLM call → job pauses.
+3. **`rearchitect` job**: regenerates the spec from the *verbatim original objective* (now stored on every spec as
+   `objective`) plus the rejection feedback — never from the broken spec. Identity (id, name) kept; previous spec
+   archived `specs/history/*-prearch.json`; permissions bounded by the job allowance (`fs:*`, `net:*` — never shell)
+   and the tools/permissions diff is written to the audit as `bot.rearchitected`. One automatic rearchitect per
+   repair chain (`rearchitected` flag stops repair→rearchitect→repair loops). Live: fbbc40db → 012 active 3/3.
+Security note: this is the one path where a bot's boundary may *grow* without a human, so it is (a) bounded by an
+explicit allowance identical to `create`, (b) validated by `validate_spec` (shell:system never grantable), (c) audited
+as a diff, (d) never applied to an `active` bot.
