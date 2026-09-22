@@ -236,3 +236,8 @@ pytest core: 50/50.
 Pin verified: `run/botcfg/009-<lane>.json` has `fallbackModels=[]`; artefacts `unique.txt` = a,b,c.
 `default_fallbacks()` now: or-nex-n25-pro, groq-gptoss20b, or-ling-30-flash-vl, gemini-gemma26b, groq-qwen27b, local3b.
 pytest core: 53/53.
+
+## 2026-09-22 — master 001 acceptance 5/5 (job 17fe6af1) — VERIFIED
+T1 liveness 13s · T2 report 87s · T3 list 97s · T4 **lanes** (new) 97s · T5 confined 47s. Master now answers lane health/quality questions and can queue probe/discover/bench from chat.
+Bench sweep a8c013ad: or-ling 4/4, or-nex 4/4, gemma26b 3/4; groq-gptoss20b and or-qwen27b runs were pure 429 → led to D-051, their windows forgotten.
+pytest core: 56/56.
