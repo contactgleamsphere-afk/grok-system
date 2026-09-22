@@ -338,3 +338,12 @@ Chat → job fbeb65ad → bot 018 (4/4) → auto run ca31fcf3 → totals.csv cor
 - D-088 unit `test_d088_daily_cap_cooldown_survives_tiny_probe_success` — PASS. Live: TPD "try again in 8m" → 10 min later still 429 (proves retry-after ≠ day reset); both gpt-oss lanes cooled 60 min; 007's live chain now gemini-flash → flash38 → lite → local4b.
 - D-089 live repro: dirty registry/discovery.json + repo-sync → edit survived rebase (`survived True`), committed as laptop state.
 - E2E: master chat "Please queue a new bot: … email address …" → `queue create` → job 135e45ff → bot 021 email-line-counter built by groq:qwen27b, tested 4/4 (T1 X_OK, T2 2, T3 1, T4 CONFINED), VERIFIED active, 21:55→21:59.
+
+## FULL AUTONOMOUS LOOP — 2026-09-22 23:00–23:17 (live, real data)
+- master chat: "I want a small pipeline: … refunded.csv … summary.txt … Please plan and queue it." → `queue plan` → job 197bb3e5 (planner lane groq:qwen27b, 2 steps, 23:00:00).
+- step 1 → create 1e546b89 → bot 022 csv-refund-filter built 23:00:06, tested 4/4 (T2/T3 computed counts, T4 CONFINED) → VERIFIED active 23:04:43.
+- step 2 → create 1a129f56 → bot 023 refund-summarizer built 23:04:49, tested 4/4 (T2 36.0, T3 300) → VERIFIED active 23:08:55.
+- `add run --plan 197bb3e5 --in inbox/orders1` (5-row orders.csv, 3 refunded: 20 + 5.25 + 14.25) → job fa0a4093 → 1-022/refunded.csv = exactly the 3 refunded rows; 2-023/summary.txt = `39.5` — correct. 23:17:38.
+- Concurrently on the fast lane: nightly report 23:09, bench (gemini-flash36 2/4, gemini-lite31 4/4; cooling Groq lanes skipped per D-090), probe 23:13 (9 healthy). Neither waited for the creates.
+- D-092 unit `test_d092_builder_chat_429_cools_lane` — PASS (88/88; laptop self-test 88 passed).
+- D-091 live: `audit-verify` ok rows 752 hashed 0 (chain starts with the next export).

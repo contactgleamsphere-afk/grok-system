@@ -78,3 +78,4 @@
 - D-078 demote→repair, D-079 fast-lane second worker + per-bot claim exclusion + git-state lock, D-080 event-driven lane cooldown (QUOTAHIT). Master acceptance 7 tests. 78 tests.
 - D-081 lease re-adoption after sleep + fast-lane self-respawn, D-082 inconclusive repair rounds re-run, D-083 master integrity seal. 81 tests.
 - D-084 discovery quota deferral, D-085 bench timeouts, D-086 outage-sweep guard, D-087 Groq ctx, D-088 daily-cap cooldown, D-089 repo-sync autostash. Bot 021. 85 tests.
+- D-090 bench cooling skip, D-091 audit hash chain, D-092 builder 429 cooling. Bots 022/023 + first real plan run. 88 tests.
