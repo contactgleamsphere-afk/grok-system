@@ -298,3 +298,7 @@ Chat → job fbeb65ad → bot 018 (4/4) → auto run ca31fcf3 → totals.csv cor
 - positive: worker restart on code change → `worker.selftest ok=true "73 passed in 5.97s"` → jobs processed.
 - negative: pushed a deliberately failing test + touched guard.py; `_self_test_gate` on the laptop returned False with `"1 failed, 55 passed"` cached in run/selftest.json (STATUS would show WORKER BLOCKED). Both commits reverted immediately.
 - first full laptop run of core/tests: 73/73 after fixing utf-8 reads in tests (cp1252 default on Windows).
+
+## D-076 schedules — 2026-09-22 (live)
+- master tool `schedule add 018 "*/5 * * * *" --task … --in orders` → sid 5539cff4; `add tick` → `schedule.fired` 18:35 (job aba5e667) and 18:40 (job f42e8c49); both `bot.ran ok=true produced=[totals.csv]` (83 s / 102 s, lane groq-gptoss120b); totals.csv UK 370.25 / DE 1510.50 / US 2480.00 each time. Re-tick within a slot fired nothing (idempotent). PASS.
+- demo schedule replaced by a daily 07:00 one (registry/schedules.json, git-tracked). Tick self-chains hourly (job 83f56639 → …).
