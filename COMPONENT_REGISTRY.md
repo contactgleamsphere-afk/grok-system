@@ -8,3 +8,5 @@
 | Git | 2.55 | laptop | source control | VERIFIED |
 | core/factory | 0.1.0 | this repo | registries, router, botspec | VERIFIED (sandbox tests) |
 | Docker / WSL | — | not installed | future sandboxing | BLOCKED |
+
+| factory_bench | tools/factory_bench.py | lane quality benchmark (D-050): pinned single-lane run of the reference suite → limits.bench; `--rank` | VERIFIED 2026-09-22 |

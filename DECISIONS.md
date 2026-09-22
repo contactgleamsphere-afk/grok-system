@@ -119,3 +119,16 @@ discovered lane `or-nex-n25-pro` talked itself out of writing the fixture file a
 2. Next capability: `benchmark` job kind — run a fixed mini-suite (the 009 tests) per lane and store
    `quality_score` in the registry so `default_fallbacks()` can order by it instead of provider order.
 3. Bot 010 is kept as the standing failover regression fixture (status `testing`, UNVERIFIED by design).
+
+## D-050 — Lane quality benchmark ranks the fallback chain (2026-09-22) — VERIFIED
+Problem (D-049): capability ≠ quality; provider order was a guess. Decision: `tools/factory_bench.py` runs the
+reference suite (bot 009's four deterministic acceptance tests) **pinned to a single lane with no fallbacks**
+(`run-bot-tests.ps1 -Lane X` — score is attributable to X alone, per-lane botcfg/log names, bundle TEST_RESULTS.md
+untouched) and stores `limits.bench = {pass,total,secs,ref,at}` on the model entry. `default_fallbacks()` now orders
+benchmarked lanes by pass-rate then suite seconds, ahead of un-benchmarked lanes (which keep provider order).
+Triggers: worker `bench` kind — automatically for lanes added by `discover`; a `stale_only` sweep (max 2 lanes) is
+chained from the daily `report`; scores expire after 14 days. One failing lane never aborts a sweep
+(`lane.bench_error` audit). Also: `RUNNER` now points at the repo's `scripts/windows/run-bot-tests.ps1` — the
+hand-synced duplicate in `C:\AI\Factory\tools` was archived (single source of truth).
+Rejected: benchmarking with fallbacks enabled (score would be the chain's, not the lane's); a bespoke benchmark
+prompt set (the acceptance suite already exercises echo, two tool loops and a sandbox-escape refusal).
