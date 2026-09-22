@@ -238,3 +238,9 @@ arrived split and only its tail was checked. Fixes:
    Fail → proceed with fresh evidence. A repair may never churn a healthy bot because the judge or a lane had a bad day.
 Why not just re-test: the monitor→repair chain is already the recovery path; adding a retest job would be a third
 state machine for the same question.
+
+## D-060 — The master is re-verified, never "repaired" (2026-09-22) — VERIFIED
+Bot 001 is hand-wired (`config/laptop/workspace`, no spec). The monitor demoted it (2 timeouts on the 5-test suite)
+and the chain enqueued a repair that crashed on the missing spec. Now: a demoted 001 gets `monitor --only 001` 30 min
+later; repair refuses spec-less bots with a clean `logic` error. Persistent master failure surfaces in the daily
+report for the owner rather than being auto-rewritten.

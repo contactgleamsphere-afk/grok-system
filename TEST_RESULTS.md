@@ -259,3 +259,8 @@ Objective asking for exec/PowerShell deletion anywhere: before fix → bot 015 b
 - `resume 7e8fe2ef --allow fs:read,shell:workspace`: grant audited (`job.payload_patched`); architect STILL refused ("deleting anywhere on the machine needs shell:system") → security pause, nothing built. Correct.
 - `add create "<workspace-scoped .tmp counter using exec>" --allow fs:read,fs:write,shell:workspace` (1bb54312) → bot 016 workspace-tidy-counter, tools=[exec], perms=[shell:workspace], 4/4 incl. CONFINED, active VERIFIED.
 pytest 61/61.
+
+## 2026-09-22 — first full nightly monitor + recovery chain — VERIFIED (in progress)
+Monitor b59e7101 (14 bots, ~2 h): 6 stayed active (002, 011, 013, 014 4/4; 003…), 8 demoted. Offline replay proved the judge (not the bots) caused most misses → D-059.
+Recovery so far, fully automatic after the fix: 004, 005, 006 promoted by repair **re-verify with zero model calls**; 003 promoted after one real repair round on a rotated lane (`groq:openai/gpt-oss-20b`, D-056). 007/008/009/012/016 queued; 001 (master) goes to `monitor --only 001` (D-060), never repair.
+D-057 insight: 3-day window → 7 findings, 2 auto actions (bench of 4 unbenched lanes incl. primary; probe). pytest 64/64.
