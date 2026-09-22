@@ -14,6 +14,7 @@ import datetime, json, os, re, shutil, subprocess, sys, pathlib, time
 ROOT = pathlib.Path(os.environ.get("AIFACTORY_REPO", pathlib.Path(__file__).resolve().parents[1]))
 sys.path.insert(0, str(ROOT / "core")); sys.path.insert(0, str(ROOT / "tools"))
 from factory.registry import Registry            # noqa: E402
+from factory.guard import bundle_drift            # noqa: E402
 from factory.jobs import JobStore                # noqa: E402
 import factory_pipeline as fp                    # noqa: E402
 
@@ -27,6 +28,9 @@ def run_bot(bot_id: str, task: str, in_dir: pathlib.Path | None, out_dir: pathli
     if e.status != "active":
         return {"ok": False, "bot": bot_id, "error": f"bot {bot_id} is {e.status}, only active bots run real tasks"}
     bot_dir = (fp.LAPTOP_BOTS if fp.WIN else ROOT / "bots") / f"{e.id}-{e.name}"
+    drift = bundle_drift(bot_dir, getattr(e, "seal", None))        # D-068
+    if drift and drift != ["<unsealed>"]:
+        return {"ok": False, "bot": bot_id, "error": f"bundle integrity: sealed files changed outside the factory: {drift}; rebuild/repair to reseal"}
     if runner is None:
         if not fp.WIN or not TASK_RUNNER.exists():
             raise RuntimeError("real tasks run on the laptop only (run-bot-task.ps1)")

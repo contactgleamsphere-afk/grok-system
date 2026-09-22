@@ -78,3 +78,26 @@ def config_hygiene(config: dict, size_bytes: int) -> list[str]:
     if len(icon) > 8:
         problems.append(f"agents.defaults.botIcon is {len(icon)} chars (should be one glyph)")
     return problems
+
+
+# D-068: bundle integrity. The security-relevant files of a bot bundle are sealed after build/rearchitect; anything
+# (a repair candidate that escaped its sandbox, a stray edit, malware) that changes them makes the bot unrunnable
+# until re-sealed by the factory itself. The seal lives in the registry entry (git), not in the bundle.
+SEALED_FILES = ("bot.json", "nanobot.patch.json", "AGENTS.md", "SOUL.md")
+
+
+def bundle_seal(bot_dir) -> dict:
+    import hashlib, pathlib
+    bot_dir = pathlib.Path(bot_dir); out = {}
+    for name in SEALED_FILES:
+        f = bot_dir / name
+        out[name] = hashlib.sha256(f.read_bytes()).hexdigest()[:24] if f.exists() else None
+    return out
+
+
+def bundle_drift(bot_dir, seal: dict | None) -> list[str]:
+    """Names of sealed files whose content differs from the recorded seal. Empty seal = never sealed (reported as such)."""
+    if not seal:
+        return ["<unsealed>"]
+    now = bundle_seal(bot_dir)
+    return [k for k in SEALED_FILES if now.get(k) != seal.get(k)]

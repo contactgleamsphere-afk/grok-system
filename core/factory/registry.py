@@ -94,6 +94,8 @@ class BotEntry:
     notes: str = ""
     updated: str = field(default_factory=_now)
 
+    seal: dict = field(default_factory=dict)      # D-068 sha256 of sealed bundle files
+
     def validate(self) -> None:
         if self.status not in ("planned", "building", "testing", "active", "paused", "retired"):
             raise RegistryError(f"bad bot status {self.status!r}")

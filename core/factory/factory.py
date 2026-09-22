@@ -123,6 +123,7 @@ class BotFactory:
         # A rebuild changes the bundle, so verification must be re-earned: status drops to
         # "testing" (not "building") and previous evidence is kept in notes for traceability.
         prev_note = f" | previous: {existing.status}/{existing.verified} {existing.notes}"[:300] if existing else ""
+        from .guard import bundle_seal
         self.registry.upsert("bots", BotEntry(
             id=spec["id"], name=spec["name"], purpose=spec["purpose"], status="testing" if existing else "building",
             model_policy={"primary": chain[0], "fallbacks": chain[1:]},
@@ -130,6 +131,7 @@ class BotFactory:
             workspace=str(bot_dir), version=str(spec.get("version", "0.1.0")),
             schedules=list(spec.get("schedules", [])), tests=list(spec["tests"]),
             verified="UNVERIFIED", notes=(spec.get("notes", "built by BotFactory") + prev_note)[:400],
+            seal=bundle_seal(bot_dir),                       # D-068
         ))
         return BuildResult(bot_dir, spec["id"], spec["name"], chain, disabled, sorted(files))
 

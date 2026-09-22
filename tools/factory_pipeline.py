@@ -24,7 +24,7 @@ sys.path.insert(0, str(ROOT / "core"))
 from factory.registry import Registry                      # noqa: E402
 from factory.botspec import validate_spec                  # noqa: E402
 from factory.factory import BotFactory, FactoryError
-from factory.guard import SecurityViolation       # noqa: E402
+from factory.guard import SecurityViolation, bundle_drift       # noqa: E402
 
 WIN = os.name == "nt"
 LAPTOP_BOTS = pathlib.Path(r"C:\AI\Factory\bots")
@@ -373,6 +373,9 @@ def cmd_test(bot_id: str) -> dict:
     if not e:
         raise FactoryError(f"unknown bot {bot_id}")
     bot_dir = (LAPTOP_BOTS if WIN else ROOT / "bots") / f"{e.id}-{e.name}"
+    drift = bundle_drift(bot_dir, getattr(e, "seal", None))        # D-068: a tampered bundle cannot earn "active"
+    if drift and drift != ["<unsealed>"]:
+        raise FactoryError(f"bundle integrity: {drift} changed outside the factory; rebuild/repair to reseal")
     res = run_tests(bot_dir)
     p, t, q = int(res["pass"]), int(res["total"]), int(res.get("quota", 0) or 0)
     if p < t and q and p + q >= t:      # D-051: every failure was a 429 -> inconclusive, status untouched
