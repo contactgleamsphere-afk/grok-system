@@ -329,3 +329,12 @@ Chat → job fbeb65ad → bot 018 (4/4) → auto run ca31fcf3 → totals.csv cor
 ## D-083 master seal — 2026-09-22 (live)
 - unit `test_d083_master_seal_covers_agents_wrapper_and_exec_config` — PASS (81/81).
 - laptop g10: wire script sealed 001 (3 hashes); appended a comment to workspace/tools/factory.py → `test 001` → `master integrity: ['tools/factory.py'] changed outside the factory`; wire script restore+reseal → drift [] — PASS.
+
+## D-084…D-089 — 2026-09-22 (evening)
+- D-084 unit `test_d084_quota_during_discovery_defers_instead_of_rejecting` — PASS. Live: 13 verdicts migrated rejected→deferred.
+- D-085 unit `test_d085_bench_timeouts_are_availability_not_quality` — PASS.
+- D-086 unit `test_d086_whole_sweep_error_is_network_outage_not_lane_health` — PASS. Live evidence: probe 60d56672 20:17Z all 13 remote lanes `error` during Modern Standby; counters reset; re-probe f462fb6b 21:13Z → 9 healthy.
+- D-087 live: `factory_presets.py` → 3 Groq presets ctx=16384. Behavioural proof (bot 007 T2/T3 no longer pre-empted) blocked by Groq TPD (200k/day spent on both gpt-oss lanes, measured 199,515/200,000) — re-run after 00:00 UTC.
+- D-088 unit `test_d088_daily_cap_cooldown_survives_tiny_probe_success` — PASS. Live: TPD "try again in 8m" → 10 min later still 429 (proves retry-after ≠ day reset); both gpt-oss lanes cooled 60 min; 007's live chain now gemini-flash → flash38 → lite → local4b.
+- D-089 live repro: dirty registry/discovery.json + repo-sync → edit survived rebase (`survived True`), committed as laptop state.
+- E2E: master chat "Please queue a new bot: … email address …" → `queue create` → job 135e45ff → bot 021 email-line-counter built by groq:qwen27b, tested 4/4 (T1 X_OK, T2 2, T3 1, T4 CONFINED), VERIFIED active, 21:55→21:59.
