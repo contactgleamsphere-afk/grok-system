@@ -2,17 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 425 | 2026-09-22 09:05:20 | 0c438fbd | 018 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"ok": true, "produced": ["totals.csv"], "secs": 62, "reply": "RESULT: totals.csv", "chain": "groq-gptoss120b"} |
-| 426 | 2026-09-22 09:05:20 | 0c438fbd | 018 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "name": "run", "status": "ok totals.csv"}} |
-| 427 | 2026-09-22 09:06:29 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 428 | 2026-09-22 09:08:29 | ad285655 |  | job.enqueued | owner | {"kind": "probe", "payload": {"only": ["or-deepseek"], "hour": "2026-09-22T09"}} |
-| 429 | 2026-09-22 09:08:29 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 430 | 2026-09-22 09:08:33 | ad285655 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 431 | 2026-09-22 09:08:34 | ad285655 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": [], "changed": []}} |
-| 432 | 2026-09-22 15:14:17 | 6f50b9fd |  | job.enqueued | owner | {"kind": "bench", "payload": {"lanes": ["groq-gptoss120b", "groq-gptoss20b", "gemini-lite", "gemini-lite31"], "stale_only": false, "max": 3, |
-| 433 | 2026-09-22 15:14:22 | 6f50b9fd |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 434 | 2026-09-22 15:15:09 | 123271bb |  | job.enqueued | owner | {"kind": "create", "payload": {"objective": "A bot that runs the project's unit test command (pytest) in the workspace via the shell and wri |
-| 435 | 2026-09-22 15:29:06 | 6f50b9fd |  | job.lease_expired | svc-LAPTOP-LRE6PSA8 | {} |
 | 436 | 2026-09-22 15:29:06 | 123271bb |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 437 | 2026-09-22 15:29:07 | 123271bb |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect: objective needs permissions outside the allowance ['fs:read', 'fs:write', 'net:search', 'net:fetch']: The objective re |
 | 438 | 2026-09-22 15:29:07 | 123271bb |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: architect: objective needs permissions outside the a |
@@ -402,3 +391,14 @@
 | 822 | 2026-09-22 23:43:29 | 5230a652 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 823 | 2026-09-22 23:43:29 | 4f65b755 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-23T00"}} |
 | 824 | 2026-09-22 23:43:29 | 5230a652 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 825 | 2026-09-22 23:46:06 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 826 | 2026-09-22 23:46:10 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 827 | 2026-09-22 23:46:22 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["92 passed in 11.14s"]} |
+| 828 | 2026-09-22 23:46:22 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["92 passed in 10.72s"]} |
+| 829 | 2026-09-22 23:46:52 | 593061c9 |  | job.enqueued | builder | {"kind": "plan", "payload": {"objective": "Pipeline: take orders.csv, keep only the rows whose status is refunded and write them to refunded |
+| 830 | 2026-09-22 23:46:52 | 593061c9 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 831 | 2026-09-22 23:46:56 | 593061c9 | 022 | plan.reused | svc-LAPTOP-LRE6PSA8 | {"step": 1, "similarity": 0.7} |
+| 832 | 2026-09-22 23:46:56 | 593061c9 | 023 | plan.reused | svc-LAPTOP-LRE6PSA8 | {"step": 2, "similarity": 0.78} |
+| 833 | 2026-09-22 23:46:56 | 9d375361 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "create", "payload": {"objective": "Read summary.txt and write its content in uppercase to summary_upper.txt.", "plan": "593061c979 |
+| 834 | 2026-09-22 23:46:56 | 593061c9 |  | plan.made | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini:gemini-3.1-flash-lite", "steps": 3, "queued": [[3, "9d375361"]], "rationale": "The objective requires a three-step pipeline |
+| 835 | 2026-09-22 23:46:56 | 593061c9 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"name": "plan:3 steps", "status": "queued 9d375361"}} |
