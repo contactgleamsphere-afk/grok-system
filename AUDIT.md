@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 207 | 2026-09-22 01:56:34 | 8359fbe8 | 012 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 2, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
-| 208 | 2026-09-22 01:56:37 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 209 | 2026-09-22 01:58:51 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 210 | 2026-09-22 01:59:14 | fbbc40db | 012 | job.enqueued | builder | {"kind": "rearchitect", "payload": {"bot_id": "012", "feedback": "", "t": 1790038754}} |
 | 211 | 2026-09-22 01:59:14 | fbbc40db | 012 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 212 | 2026-09-22 02:02:50 | fbbc40db | 012 | bot.rearchitected | svc-LAPTOP-LRE6PSA8 | {"lane": "groq:qwen/qwen3.8-27b", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "boundary_diff": {"permissio |
 | 213 | 2026-09-22 02:02:50 | fbbc40db | 012 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
@@ -402,3 +398,7 @@
 | 604 | 2026-09-22 19:26:46 | 221106e0 | 011 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 PASS 29s [done] expect='2' last='2' \| T3 PASS 22s [done] expect='3' last='3' |
 | 605 | 2026-09-22 19:26:46 | 221106e0 | 011 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 PASS 29s [done] expect='2' last='2' \| T3 PASS 22s [done] expect='3' last='3' |
 | 606 | 2026-09-22 19:26:46 | 221106e0 | 011 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "011", "status": "active", "verified": "VERIFIED"}} |
+| 607 | 2026-09-22 19:26:51 | 086db9b1 | 012 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 608 | 2026-09-22 19:27:59 | 086db9b1 | 012 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 21s [done] expect='60' last='RESULT: Summed amount column to 60.' \| T3  |
+| 609 | 2026-09-22 19:27:59 | 086db9b1 | 012 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 21s [done] expect='60' last='RESULT: Summed amount column to 60.' \| T3  |
+| 610 | 2026-09-22 19:27:59 | 086db9b1 | 012 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "012", "status": "active", "verified": "VERIFIED"}} |

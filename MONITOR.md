@@ -33,3 +33,4 @@
 | 2026-09-22 19:04 | 008 word-frequency-bot | 3/4 | active→testing | - |
 | 2026-09-22 19:25 | 009 line-dedupe-bot | 4/4 | active→active | - |
 | 2026-09-22 19:26 | 011 word-frequency-counter | 4/4 | active→active | - |
+| 2026-09-22 19:27 | 012 csv-column-sum | 4/4 | active→active | - |
