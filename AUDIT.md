@@ -243,3 +243,9 @@
 | 239 | 2026-09-22 02:38:37 | f9ae8ab7 | 014 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "error-log-analyzer", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["groq-gptoss120b", "o |
 | 240 | 2026-09-22 02:38:38 | f9ae8ab7 | 014 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 32s [done] expect='X_OK' last='X_OK' \| T2 PASS 99s [done] expect='5' last='5' \| T3 PASS 92s [done] expect='Timeout' la |
 | 241 | 2026-09-22 02:38:38 | f9ae8ab7 | 014 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "014", "name": "error-log-analyzer", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
+| 242 | 2026-09-22 02:39:38 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 243 | 2026-09-22 02:39:41 | e43a9934 |  | job.resumed | owner | {} |
+| 244 | 2026-09-22 02:39:41 | e43a9934 | 013 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 245 | 2026-09-22 02:43:48 | e43a9934 | 013 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [{"round": 1, "lane": "groq:qwen/qwen3.8-27b", "sandbox": "4/4", "rejected": null}], "boundary_di |
+| 246 | 2026-09-22 02:43:48 | e43a9934 | 013 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 247 | 2026-09-22 02:43:48 | e43a9934 | 013 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "013", "name": "log-error-filter", "status": "active", "verified": "VERIFIED"}} |
