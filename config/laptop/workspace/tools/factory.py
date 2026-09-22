@@ -5,13 +5,14 @@
     python tools/factory.py queue plan "<multi-stage objective>"   # planner -> one create per stage
     python tools/factory.py queue probe | discover | bench        # model-lane health / new free lanes / quality scores
     python tools/factory.py jobs | audit [bot_id] | report | lanes
+    python tools/factory.py approve <job_id> --allow fs:read,fs:write,shell:workspace   # D-070 owner grants a paused job's permission request
     python tools/factory.py test <bot_id>
     python tools/factory.py list
 
 It only forwards to the repo pipeline (C:\\AI\\Factory\\repo\\tools\\factory_pipeline.py) with the repo root set.
 All policy (permissions, chain, escape test, id allocation, status) is enforced there, not here.
 """
-import os, subprocess, sys, json, pathlib
+import os, re, subprocess, sys, json, pathlib
 REPO = pathlib.Path(os.environ.get("AIFACTORY_REPO", r"C:\AI\Factory\repo"))
 PIPE = REPO / "tools" / "factory_pipeline.py"
 
@@ -42,6 +43,10 @@ def main(a):
         if not row: print(f"no job starting with {pre}"); return 1
         jid, kind, state, cls, err, payload = row; pl = json.loads(payload)
         print(f"JOB {jid[:8]} {kind} {state}" + (f" class={cls}" if cls else "") + (f" error={err[:200]}" if err else ""))
+        if state == "paused" and cls == "security" and "allowance" in (err or ""):
+            m = re.search(r"needs? (?:permissions? )?(?:outside the allowance \[[^\]]*\]: )?(.{0,160})", err or "")
+            print(f"  NEEDS OWNER DECISION: permission outside allowance {pl.get('allowed_permissions')}: {m.group(1) if m else err[:160]}")
+            print(f"  if the owner says yes: python tools/factory.py approve {jid[:8]} --allow <comma-separated perms>")
         ev = c.execute("SELECT event,bot_id,detail FROM audit WHERE job_id=? ORDER BY seq", (jid,)).fetchall()
         for e, b, d in ev:
             if e in ("bot.created", "bot.tested", "bot.promoted", "bot.demoted", "bot.ran", "plan.made", "plan.reused", "security.violation", "bot.rearchitected", "bot.repair"):
@@ -60,6 +65,13 @@ def main(a):
     if a[1] == "report":
         r = subprocess.run([sys.executable, str(REPO / "tools" / "factory_report.py"), "--brief"], env=env, cwd=str(REPO), capture_output=True, text=True, timeout=120)
         print((r.stdout + r.stderr)[:1000]); return r.returncode
+    if a[1] == "approve":
+        # D-070: the only way a paused (security) job gets more permission is an explicit owner grant relayed here.
+        # shell:system / net:* beyond allowance are refused by the worker; the grant + resume are audited.
+        if len(a) < 5 or a[3] != "--allow": print("usage: approve <job_id> --allow perm1,perm2"); return 2
+        w = REPO / "tools" / "factory_worker.py"
+        r = subprocess.run([sys.executable, str(w), "resume", a[2], "--allow", a[4], "--actor", "owner-via-master"], env=env, cwd=str(REPO), capture_output=True, text=True, timeout=120)
+        print((r.stdout + r.stderr)[-600:]); return r.returncode
     if a[1] in ("queue", "jobs", "audit"):
         w = REPO / "tools" / "factory_worker.py"
         if a[1] == "queue":
