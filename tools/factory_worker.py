@@ -5,6 +5,7 @@
   python tools/factory_worker.py add plan "<multi-part objective>" [--max 4]     # D-053: decompose -> N creates
   python tools/factory_worker.py add test|repair|rearchitect <bot_id>
   python tools/factory_worker.py add monitor
+  python tools/factory_worker.py add insight [--days 7]      # D-057 factory self-review -> proposals/<date>.md
   python tools/factory_worker.py add bench [--lanes a,b] [--stale-only] [--max N]   # D-050 lane quality
   python tools/factory_worker.py status | jobs | resume <job_id> [--allow fs:read,shell:workspace] | cancel <job_id> | release <job_id> [--uncount] | audit [bot_id] [--width N]
 
@@ -30,6 +31,7 @@ import factory_report as frp                                           # noqa: E
 import factory_discover as fdc                                         # noqa: E402
 import factory_bench as fbn
 import factory_plan as fpl
+import factory_insight as fin
 
 DB = ROOT / "run" / "jobs.sqlite3"
 LEASE = 300          # D-043: short lease + heartbeat every 60 s -> a dead worker is detected within 5 min
@@ -162,11 +164,24 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
         for r in res["errors"]:
             store.audit("lane.bench_error", job_id=jid, actor=worker, lane=r["lane"], error=r["error"])
         return {"benchmarked": [(r["lane"], f"{r['pass']}/{r['total']}" + (f" q{r['quota']}" if r.get("quota") else "")) for r in res["results"]], "errors": res["errors"], "rank": res["rank"][:8]}
+    if kind == "insight":
+        # D-057 self-improvement stage 1: evidence -> proposals/<date>.md. Only pre-approved mechanisms are auto-enqueued.
+        res = fin.run(int(p.get("days", 7)), write=True)
+        acted = []
+        for pr in res["proposals"]:
+            aa = pr.get("auto_actionable")
+            if aa:
+                j = store.enqueue(aa["kind"], aa["payload"], priority=6, parent=jid, actor=worker); acted.append((aa["kind"], j["id"][:8]))
+        store.audit("factory.proposals", job_id=jid, actor=worker, count=len(res["proposals"]),
+                    kinds=[f"{x['severity']}:{x['kind']}" for x in res["proposals"]], auto=acted, path=res["paths"].get("md"))
+        return {"name": f"insight:{len(res['proposals'])} proposals", "status": "auto " + ",".join(f"{k}:{i}" for k, i in acted) if acted else "review", "path": res["paths"].get("md")}
     if kind == "report":
         r = frp.build(); (ROOT / "STATUS.md").write_text(frp.markdown(r), encoding="utf-8")
         nxt = datetime.datetime.now() + datetime.timedelta(days=1)
         store.enqueue("report", {"day": nxt.strftime("%Y-%m-%d")}, priority=6, parent=jid, actor=worker, not_before=time.time() + 86400)
         store.enqueue("bench", {"stale_only": True, "max": 2, "day": datetime.date.today().isoformat()}, priority=7, parent=jid, actor=worker)
+        if datetime.date.today().weekday() == 0:       # D-057 weekly self-review (Mondays; idem by iso week)
+            store.enqueue("insight", {"days": 7, "week": datetime.date.today().strftime("%G-W%V")}, priority=8, parent=jid, actor=worker)
         # D-055: the factory owns its nightly cycle. If no monitor ran today (Task Scheduler skipped: battery, asleep),
         # enqueue one now — idempotent by day, so a scheduler-triggered monitor is never duplicated.
         today = datetime.date.today().isoformat()
@@ -296,6 +311,8 @@ def main(a: list[str]) -> int:
         elif kind == "bench":
             lanes = [x for x in opt("--lanes", "").split(",") if x]
             j = store.enqueue("bench", {"lanes": lanes, "stale_only": "--stale-only" in a, "max": int(opt("--max", 3)), "day": str(datetime.date.today()), "t": int(time.time())}, priority=4, actor=opt("--actor", "owner"))
+        elif kind == "insight":
+            j = store.enqueue("insight", {"days": int(opt("--days", 7)), "t": int(time.time())}, priority=8, actor=opt("--actor", "owner"))
         elif kind == "report":
             j = store.enqueue("report", {"day": str(datetime.date.today())}, priority=6, actor=opt("--actor", "owner"))
         elif kind == "monitor":

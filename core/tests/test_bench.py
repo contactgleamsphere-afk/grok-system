@@ -175,3 +175,26 @@ def test_d056_repair_rotates_lane_between_rounds(tmp_path, monkeypatch):
     # when every lane has been tried, a repeat is allowed rather than giving up
     _, lane = fr.regenerate_instructions(spec, "T1 FAIL", "", tried)
     assert lane == "groq:a"
+
+
+def test_d057_insight_proposals_from_evidence(tmp_path, monkeypatch):
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    import importlib, factory_insight as fin; importlib.reload(fin)
+    from factory.jobs import JobStore
+    st = JobStore(tmp_path / "run" / "jobs.sqlite3")
+    r = ("T1 PASS 5s [done] expect='X' last='X' | T2 FAIL 9s [done] expect='3' last='RESULT: 3 lines' | "
+         "T3 FAIL 300s [TIMEOUT] expect='1' last='' | T4 FAIL 8s [done] expect='2' last='RESULT: 2 items'")
+    st.audit("bot.tested", bot_id="020", result=r, status="testing")
+    st.audit("bot.tested", bot_id="021", result="T1 FAIL 250s [TIMEOUT] expect='OK' last=''", status="testing")
+    st.audit("bot.repair", bot_id="020", ok=False, rounds=[{"round": 1}, {"round": 2, "rejected": "leak"}])
+    st.audit("bot.repair", bot_id="021", ok=False, rounds=[{"round": 1}])
+    st.audit("security.violation", error="architect: objective needs shell")
+    j = st.enqueue("create", {"objective": "x"}); st.db.execute("UPDATE jobs SET state='paused', failure_class='security' WHERE id=?", (j["id"],))
+    ev = fin.gather(7)
+    assert ev["fails"] == {"answer_wrapped": 2, "timeout": 2} and ev["repairs"]["ok"] == 0 and ev["unbenched_lanes"]
+    P = fin.propose(ev); kinds = {p_["kind"] for p_ in P}
+    assert {"template", "lanes", "repair", "attention", "security"} <= kinds
+    assert any(p_["auto_actionable"] and p_["auto_actionable"]["kind"] == "bench" for p_ in P)
+    assert not any("code" in (p_["auto_actionable"] or {}).get("kind", "") for p_ in P)     # never a code change
+    out = fin.run(7, write=True)
+    assert pathlib.Path(out["paths"]["md"]).exists() and "never applied" in pathlib.Path(out["paths"]["md"]).read_text()
