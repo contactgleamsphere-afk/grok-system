@@ -20,6 +20,16 @@ def build() -> dict:
         h = (m.limits or {}).get("health", {})
         state = "BLOCKED" if m.verified == "BLOCKED" else ("cooldown" if float(h.get("quota_until", 0) or 0) > now else h.get("last_outcome", "unprobed"))
         lanes.append({"id": m.id, "provider": m.provider, "state": state, "latency_s": h.get("latency_s"), "reason": h.get("reason")})
+    # D-047 needs_owner: free lanes that require a human signup/key — the factory never self-applies
+    owner = []
+    led = ROOT / "registry" / "discovery.json"
+    if led.exists():
+        try:
+            for k, v in json.loads(led.read_text(encoding="utf-8")).items():
+                if v.get("verdict") == "needs_owner": owner.append(f"lane {k} needs owner action: {v.get('reason', '')[:80]}")
+        except Exception: pass
+    bench = sorted([(m.id, (m.limits or {}).get("bench")) for m in reg.all("models") if (m.limits or {}).get("bench", {}).get("total")],
+                   key=lambda x: (-(x[1]["pass"] / x[1]["total"]), x[1].get("secs", 9e9)))
     jobs = store.list()
     recent = [j for j in jobs if now - float(j["updated"]) < 86400]
     audit = store.audit_rows(limit=25)
@@ -31,7 +41,9 @@ def build() -> dict:
             "lanes": lanes, "healthy_lanes": [l["id"] for l in lanes if l["state"] == "ok"],
             "attention": [f"job {j['id'][:8]} {j['kind']} paused ({j.get('failure_class')})" for j in jobs if j["state"] == "paused"]
                          + [f"bot {b['id']} {b['name']} is {b['status']}" for b in bots if b["status"] not in ("active",) and b["id"] != "001"]
-                         + [f"lane {l['id']} BLOCKED: {l['reason']}" for l in lanes if l["state"] == "BLOCKED" and l.get("reason")],
+                         + [f"lane {l['id']} BLOCKED: {l['reason']}" for l in lanes if l["state"] == "BLOCKED" and l.get("reason")]
+                         + owner,
+            "bench": [{"id": i, "score": f"{b['pass']}/{b['total']}", "secs": b.get("secs"), "runs": b.get("runs", 1)} for i, b in bench],
             "recent_audit": [f"{a['ts']} {a['event']} {a.get('bot_id') or ''}".strip() for a in audit]}
 
 
@@ -44,6 +56,9 @@ def markdown(r: dict) -> str:
     out += [f"| {b['id']} | {b['name']} | {b['status']} | {b['verified']} | {', '.join(b['permissions'])} |" for b in r["bots"]["list"]]
     out += ["", "## Jobs (24h)", "| id | kind | state | att | class | bot | objective |", "|---|---|---|---|---|---|---|"]
     out += [f"| {j['id']} | {j['kind']} | {j['state']} | {j['attempts']} | {j['class'] or '-'} | {j['bot'] or '-'} | {j['objective']} |" for j in r["jobs_24h"]]
+    if r.get("bench"):
+        out += ["", "## Lane quality (D-050, reference suite, rolling window)", "| lane | score | secs | runs |", "|---|---|---|---|"]
+        out += [f"| {b['id']} | {b['score']} | {b['secs']} | {b['runs']} |" for b in r["bench"]]
     out += ["", "## Lanes", "| id | provider | state | latency s |", "|---|---|---|---|"]
     out += [f"| {l['id']} | {l['provider']} | {l['state']} | {l['latency_s'] or '-'} |" for l in r["lanes"]]
     return "\n".join(out) + "\n"
