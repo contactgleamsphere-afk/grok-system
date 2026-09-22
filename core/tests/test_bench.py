@@ -493,3 +493,24 @@ def test_d079_claim_never_gives_two_workers_the_same_bot(tmp_path):
     j4 = st.claim("w4", 300); assert j4["id"] == d["id"]                                        # slow worker still takes the create
     st.done(j1["id"], {}, "w1")
     j5 = st.claim("w2", 300, kinds=("test",)); assert j5["id"] == b["id"]                       # 004 free again
+
+
+def test_d080_quota_hit_during_test_cools_lane_immediately(tmp_path, monkeypatch):
+    """D-080: a 429 seen in a real test run cools that lane now (provider retry-after honoured), so the next chain resolve
+    skips it without waiting for the hourly probe."""
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    import importlib, factory_probe as fpr; importlib.reload(fpr)
+    monkeypatch.setattr(fpr, "ROOT", tmp_path)
+    e = reg.get("models", "groq-a"); e.model = "openai/gpt-oss-120b"; reg.upsert("models", e)
+    now = time.time() + 5000   # future 'now' so resolve_chain's real clock still sees the cooldown
+    cooled = fpr.mark_quota([{"model": "openai/gpt-oss-120b", "secs": 674}, {"model": "nope/unknown", "secs": 5}], now=now)
+    assert cooled == ["groq-a"]
+    h = reg.get("models", "groq-a").limits["health"]
+    assert h["ok"] is False and h["last_outcome"] == "quota" and h["quota_until"] == now + 674
+    # chain resolve drops it
+    from factory.factory import BotFactory
+    chain = BotFactory(reg, tmp_path / "bots").resolve_chain({"primary": "groq-a", "fallbacks": ["gemini-b", "or-c"]})
+    assert "groq-a" not in chain and chain[0] == "gemini-b"
+    # short retry-after is floored to 60 s; a probe ok clears it
+    assert fpr.mark_quota([{"model": "groq-a", "secs": 1}], now=now + 2000) == ["groq-a"]
+    assert reg.get("models", "groq-a").limits["health"]["quota_until"] == now + 2060

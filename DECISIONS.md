@@ -378,3 +378,11 @@ run/test/tick/probe/report/discover. Safety: `JobStore.claim` never hands out a 
 job already holds (atomic in the same BEGIN IMMEDIATE), so bundle/registry writes for one bot stay serialized; the
 git state commit/rebase/push is serialized by `run/git-state.lock`. Registry JSON writes are whole-file, so
 different-bot concurrency is safe.
+
+## D-080 — Event-driven lane cooldown (2026-09-22) — VERIFIED (unit + regex on real 429 text)
+The hourly probe is too slow a signal: bot 004's repair burned two rounds on groq-gptoss120b after it hit its daily
+token cap (200k TPD) — the probe had said "ok" 40 minutes earlier. Now `run-bot-tests.ps1` emits a `QUOTAHIT
+{model,secs}` line for every 429 it sees (Groq "try again in 11m14s" and Gemini `retryDelay` parsed; default 900 s),
+and `run_tests()` calls `factory_probe.mark_quota()` which sets `health.quota_until = now + retry_after` on the matching
+lane at once. The next `resolve_chain` (every test/run/repair round re-resolves, D-040) skips it. A later probe `ok`
+clears it as before. No new state: same `quota_until` field the probe already uses.

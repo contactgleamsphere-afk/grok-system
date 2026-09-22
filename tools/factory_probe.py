@@ -130,6 +130,24 @@ def run(only: set[str] | None = None, dry_run: bool = False, prober_remote=probe
             "healthy": [r["id"] for r in rows if r.get("outcome") == "ok"]}
 
 
+def mark_quota(hits: list[dict], now: float | None = None) -> list[str]:
+    """D-080: event-driven health. A 429 seen during a real test/run cools the lane down NOW (with the provider's own
+    retry-after when it gave one), instead of waiting for the next hourly probe. `hits` = [{"model": "openai/gpt-oss-120b"
+    | lane id, "secs": 674}]. Returns the lane ids that were cooled."""
+    now = now or time.time(); reg = Registry(ROOT / "registry"); cooled = []
+    for hit in hits:
+        key = str(hit.get("model") or "").strip()
+        if not key: continue
+        secs = max(60, min(int(hit.get("secs") or QUOTA_COOLDOWN_S), 24 * 3600))
+        for e in reg.all("models"):
+            if e.id != key and e.model != key and e.model.split("/")[-1] != key.split("/")[-1]: continue
+            h = dict(e.limits.get("health", {})); h["ok"] = False; h["last_outcome"] = "quota"
+            h["quota_until"] = max(float(h.get("quota_until", 0) or 0), now + secs)
+            h["quota_seen"] = time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime(now))
+            e.limits = {**e.limits, "health": h}; reg.upsert("models", e); cooled.append(e.id)
+    return cooled
+
+
 RETIRE_AFTER_S = 3 * 86400
 
 

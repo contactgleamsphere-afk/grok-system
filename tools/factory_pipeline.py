@@ -279,6 +279,11 @@ def run_tests(bot_dir: pathlib.Path, cap: int = 300, lane: str | None = None) ->
     if not m:
         raise RuntimeError("runner produced no RESULTJSON:\n" + out[-1500:])
     res = json.loads(m.group(1)); res["raw"] = out
+    hits = [json.loads(x) for x in re.findall(r"^QUOTAHIT (\{.*\})\s*$", out, re.M)]
+    if hits:                                             # D-080: cool the exact lanes that 429'd during this run
+        from factory_probe import mark_quota
+        try: res["cooled"] = mark_quota(hits)
+        except Exception as e: res["cooled_error"] = repr(e)
     return res
 
 
