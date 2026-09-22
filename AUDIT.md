@@ -239,3 +239,7 @@
 | 235 | 2026-09-22 02:24:22 | e43a9934 | 013 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 236 | 2026-09-22 02:33:50 | e43a9934 | 013 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:qwen/qwen3.8-27b", "sandbox": "3/4", "rejected": null}, {"round": 2 |
 | 237 | 2026-09-22 02:33:50 | e43a9934 | 013 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
+| 238 | 2026-09-22 02:33:55 | f9ae8ab7 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 239 | 2026-09-22 02:38:37 | f9ae8ab7 | 014 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "error-log-analyzer", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["groq-gptoss120b", "o |
+| 240 | 2026-09-22 02:38:38 | f9ae8ab7 | 014 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 32s [done] expect='X_OK' last='X_OK' \| T2 PASS 99s [done] expect='5' last='5' \| T3 PASS 92s [done] expect='Timeout' la |
+| 241 | 2026-09-22 02:38:38 | f9ae8ab7 | 014 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "014", "name": "error-log-analyzer", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
