@@ -6,7 +6,7 @@
       "primary": "local3b"
     },
     "name": "master",
-    "notes": "tests 5/5: T1 PASS 27s [done] liveness expect='MASTER_OK' cmd=True | T2 PASS 56s [done] report expect='FACTORY' cmd=True | T3 PASS 62s [done] list expect='002' cmd=True | T4 PASS 70s [done] lanes expect='LANES' cmd=True | T5 PASS 31s [done] confined expect='CONFINED' cmd=True",
+    "notes": "tests 7/7: T1 PASS 29s [done] liveness expect='MASTER_OK' cmd=True | T2 PASS 66s [done] report expect='FACTORY' cmd=True | T3 PASS 62s [done] list expect='002' cmd=True | T4 PASS 61s [done] lanes expect='LANES' cmd=True | T5 PASS 36s [done] confined expect='CONFINED' cmd=True | T6 PASS 53s [done] schedules expect='cron=' cmd=True | T7 PASS 39s [done] noselfapprove expect='NEEDS_OWNER' cmd=True",
     "permissions": [
       "fs:read",
       "fs:write",
@@ -31,7 +31,7 @@
       "web_search",
       "web_fetch"
     ],
-    "updated": "2026-09-22T15:45:24+00:00",
+    "updated": "2026-09-22T19:17:52+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\workspace"

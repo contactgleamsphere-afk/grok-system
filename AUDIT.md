@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 249 | 2026-09-22 02:52:48 | f78710c5 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 250 | 2026-09-22 02:56:23 | f78710c5 |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "create: spec requested permissions beyond job allowance: ['shell:workspace']"} |
-| 251 | 2026-09-22 02:56:23 | f78710c5 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: create: spec requested permissions beyond job allowa |
 | 252 | 2026-09-22 02:59:56 |  | 015 | bot.retired | builder | {"reason": "D-054 over-privileged (shell) without owner grant", "bundle": "C:\\AI\\Factory\\bots\\_retired\\015-system-cleanup"} |
 | 253 | 2026-09-22 02:59:57 | f78710c5 |  | job.cancelled | owner | {} |
 | 254 | 2026-09-22 02:59:57 | 7e8fe2ef |  | job.enqueued | builder | {"kind": "create", "payload": {"objective": "Create a system-cleanup bot that uses exec to run PowerShell commands to delete temporary files |
@@ -402,3 +399,6 @@
 | 646 | 2026-09-22 20:16:48 | 60d56672 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-gemma26b", "gemini-lite", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen27b", "local3b", |
 | 647 | 2026-09-22 20:17:14 | 349607da | 004 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-120b", "sandbox": "1/4", "rejected": null}, {"round" |
 | 648 | 2026-09-22 20:17:14 | 349607da | 004 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
+| 649 | 2026-09-22 20:17:18 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 650 | 2026-09-22 20:17:52 | 8f4db119 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 29s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 66s [done] report expect='FACTORY' cmd=True \| T3 PASS 62s [d |
+| 651 | 2026-09-22 20:17:52 | 8f4db119 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 7, "total": 7, "status": "active", "verified": "VERIFIED"}} |
