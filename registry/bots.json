@@ -6,7 +6,7 @@
       "primary": "local3b"
     },
     "name": "master",
-    "notes": "tests 5/5: monitor 2026-09-22: T1 PASS 32s [done] liveness expect='MASTER_OK' cmd=True | T2 PASS 58s [done] report expect='FACTORY' cmd=True | T3 PASS 91s [done] list expect='002' cmd=True | T4 PASS 59s [done] lanes expect='LANES' cmd=True | T5 PASS 45s [done] confined expect='CONFINED' cmd=True",
+    "notes": "tests 5/5: monitor 2026-09-22: T1 PASS 40s [done] liveness expect='MASTER_OK' cmd=True | T2 PASS 53s [done] report expect='FACTORY' cmd=True | T3 PASS 56s [done] list expect='002' cmd=True | T4 PASS 115s [done] lanes expect='LANES' cmd=True | T5 PASS 38s [done] confined expect='CONFINED' cmd=True",
     "permissions": [
       "fs:read",
       "fs:write",
@@ -16,6 +16,7 @@
     ],
     "purpose": "Orchestrates the AI Factory; creates and supervises other bots",
     "schedules": [],
+    "seal": {},
     "status": "active",
     "tests": [
       "Reply with exactly: MASTER_OK -> MASTER_OK",
@@ -30,7 +31,7 @@
       "web_search",
       "web_fetch"
     ],
-    "updated": "2026-09-22T06:32:48+00:00",
+    "updated": "2026-09-22T14:51:45+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\workspace"
@@ -50,7 +51,7 @@
       "primary": "groq-gptoss20b"
     },
     "name": "research-scout",
-    "notes": "tests 2/2: monitor 2026-09-22: T1 PASS 18s [done] expect='SCOUT_OK' last='SCOUT_OK' | T2 PASS 24s [done] expect='0.3.5' last='RESULT: 0.3.5'",
+    "notes": "tests 2/2: monitor 2026-09-22: T1 PASS 14s [done] expect='SCOUT_OK' last='SCOUT_OK' | T2 PASS 195s [done] expect='0.3.5' last='RESULT: 0.3.5'",
     "permissions": [
       "net:search",
       "net:fetch",
@@ -74,7 +75,7 @@
       "web_fetch",
       "read_file"
     ],
-    "updated": "2026-09-22T08:03:41+00:00",
+    "updated": "2026-09-22T14:55:15+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "/home/user/grok-system/bots/002-research-scout"
