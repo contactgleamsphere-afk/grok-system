@@ -2,19 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 234 | 2026-09-22 02:24:18 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 235 | 2026-09-22 02:24:22 | e43a9934 | 013 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 236 | 2026-09-22 02:33:50 | e43a9934 | 013 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:qwen/qwen3.8-27b", "sandbox": "3/4", "rejected": null}, {"round": 2 |
-| 237 | 2026-09-22 02:33:50 | e43a9934 | 013 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
-| 238 | 2026-09-22 02:33:55 | f9ae8ab7 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 239 | 2026-09-22 02:38:37 | f9ae8ab7 | 014 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "error-log-analyzer", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["groq-gptoss120b", "o |
-| 240 | 2026-09-22 02:38:38 | f9ae8ab7 | 014 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 32s [done] expect='X_OK' last='X_OK' \| T2 PASS 99s [done] expect='5' last='5' \| T3 PASS 92s [done] expect='Timeout' la |
-| 241 | 2026-09-22 02:38:38 | f9ae8ab7 | 014 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "014", "name": "error-log-analyzer", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
-| 242 | 2026-09-22 02:39:38 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 243 | 2026-09-22 02:39:41 | e43a9934 |  | job.resumed | owner | {} |
-| 244 | 2026-09-22 02:39:41 | e43a9934 | 013 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 245 | 2026-09-22 02:43:48 | e43a9934 | 013 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [{"round": 1, "lane": "groq:qwen/qwen3.8-27b", "sandbox": "4/4", "rejected": null}], "boundary_di |
-| 246 | 2026-09-22 02:43:48 | e43a9934 | 013 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 247 | 2026-09-22 02:43:48 | e43a9934 | 013 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "013", "name": "log-error-filter", "status": "active", "verified": "VERIFIED"}} |
 | 248 | 2026-09-22 02:52:46 | f78710c5 |  | job.enqueued | builder | {"kind": "create", "payload": {"objective": "Create a system-cleanup bot that uses exec to run PowerShell commands to delete temporary files |
 | 249 | 2026-09-22 02:52:48 | f78710c5 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +389,16 @@
 | 631 | 2026-09-22 19:44:27 | 444336fe | 018 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 26s [done] expect='X_OK' last='X_OK' \| T2 PASS 86s [done] expect='30' last='RESULT: 30' \| T3 PASS 88s [done] expect='2 |
 | 632 | 2026-09-22 19:44:27 | 444336fe | 018 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 26s [done] expect='X_OK' last='X_OK' \| T2 PASS 86s [done] expect='30' last='RESULT: 30' \| T3 PASS 88s [done] expect='2 |
 | 633 | 2026-09-22 19:44:27 | 444336fe | 018 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "status": "active", "verified": "VERIFIED"}} |
+| 634 | 2026-09-22 19:56:45 | 349607da | 004 | job.enqueued | builder | {"kind": "repair", "payload": {"bot_id": "004"}} |
+| 635 | 2026-09-22 19:56:47 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 636 | 2026-09-22 19:56:57 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": false, "tail": ["1 failed, 20 passed in 2.24s"]} |
+| 637 | 2026-09-22 19:56:57 |  |  | worker.blocked_by_tests | svc-LAPTOP-LRE6PSA8 | {"reason": "core/tests red on current code; refusing to process jobs until code changes"} |
+| 638 | 2026-09-22 20:01:39 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["76 passed in 6.64s"]} |
+| 639 | 2026-09-22 20:01:39 | 349607da | 004 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 640 | 2026-09-22 20:03:03 | 8f4db119 | 001 | job.enqueued | builder | {"kind": "test", "payload": {"bot_id": "001"}} |
+| 641 | 2026-09-22 20:12:07 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["77 passed in 8.24s"]} |
+| 642 | 2026-09-22 20:12:07 | 8f4db119 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 643 | 2026-09-22 20:12:07 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["77 passed in 8.53s"]} |
+| 644 | 2026-09-22 20:15:32 | 60d56672 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 645 | 2026-09-22 20:15:32 | 096d9bb8 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-22T21"}} |
+| 646 | 2026-09-22 20:16:48 | 60d56672 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-gemma26b", "gemini-lite", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen27b", "local3b", |
