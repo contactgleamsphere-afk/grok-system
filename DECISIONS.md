@@ -258,3 +258,13 @@ the local 4B tail timed out under the 240 s cap. `factory_presets.sync()` now al
 and `fallbackModels` from `default_primary()`/`default_fallbacks()` (bench-ranked, budget-aware, cross-provider, local
 tail) and is re-run after every probe and bench. Live result: `groq-gptoss120b → or-ling-30-flash-vl → or-nex-n25-pro
 → gemini-gemma26b → groq-qwen27b → groq-gptoss20b → local3b`; config hygiene still healthy (40 KB).
+
+## D-063 — Bots do real work: `run` (2026-09-22) — VERIFIED live
+Until now a bot's only execution path was its own acceptance suite. `scripts/windows/run-bot-task.ps1` runs one task
+with the identical isolation (per-bot config, disabled tools, template dir, live chain) but stages owner input files
+in and captures produced/changed files out, leaving the bundle clean. `tools/factory_run.py` runs a bot or a whole
+plan: steps resolved from the plan's create jobs / `plan.reused` audits, step N's outputs staged as step N+1's inputs,
+each step's declared `produces` enforced (missing output = failed run, never silent). Worker `run` kind audits
+`bot.ran` per step; quota → transient retry, other failures → logic pause. Master: `queue run`.
+Live: plan 25a47cdb on an 11-line app.log → 013 wrote errors.txt (6 lines, exact) → 014 wrote summary.txt
+(`Total: 6`, 3/2/1 top messages, exact). Output dir `run/runs/plan-25a47cdb-20260922-075757`.

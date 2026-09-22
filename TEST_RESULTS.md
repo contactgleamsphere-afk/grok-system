@@ -267,3 +267,6 @@ D-057 insight: 3-day window → 7 findings, 2 auto actions (bench of 4 unbenched
 
 ## 2026-09-22 — full nightly cycle closed — VERIFIED
 After D-059..D-062, every demotion from monitor b59e7101 recovered without a human: 004/005/006/007/009/012 promoted on re-verify (0 model calls); 003/008 by one repair round on a rotated lane; 016 by rearchitect within its grant; 001 by chain re-sync (1/5 → 5/5, 285 s total vs 4×240 s timeouts). Registry: 14/16 active (010 fixture paused, 015 retired by policy). pytest 64/64.
+
+## 2026-09-22 — D-063 real pipeline run — VERIFIED
+`add run --plan 25a47cdb --in <11-line app.log>` (job 854ab0a2): step 1 (013) errors.txt = exactly the 6 ERROR lines; step 2 (014) summary.txt = `Total: 6` + correct top-3 counts (3/2/1). No human steps. pytest 65/65 (fake-runner test covers chaining + missing-output failure).
