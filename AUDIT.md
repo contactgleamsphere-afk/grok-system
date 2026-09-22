@@ -209,3 +209,10 @@
 | 205 | 2026-09-22 01:54:50 | 8359fbe8 | 012 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 2} |
 | 206 | 2026-09-22 01:56:34 | 8359fbe8 | 012 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:qwen/qwen3.8-27b", "sandbox": "1/3", "rejected": null}, {"round": 2 |
 | 207 | 2026-09-22 01:56:34 | 8359fbe8 | 012 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 2, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
+| 208 | 2026-09-22 01:56:37 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 209 | 2026-09-22 01:58:51 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 210 | 2026-09-22 01:59:14 | fbbc40db | 012 | job.enqueued | builder | {"kind": "rearchitect", "payload": {"bot_id": "012", "feedback": "", "t": 1790038754}} |
+| 211 | 2026-09-22 01:59:14 | fbbc40db | 012 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 212 | 2026-09-22 02:02:50 | fbbc40db | 012 | bot.rearchitected | svc-LAPTOP-LRE6PSA8 | {"lane": "groq:qwen/qwen3.8-27b", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "boundary_diff": {"permissio |
+| 213 | 2026-09-22 02:02:50 | fbbc40db | 012 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 214 | 2026-09-22 02:02:50 | fbbc40db | 012 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "012", "pass": 4, "total": 4, "status": "active"}} |
