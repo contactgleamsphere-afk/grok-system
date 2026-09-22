@@ -57,15 +57,23 @@ Host: laptop or VPS (Docker recommended for sandboxes)
 4. **v3** — OpenHands Docker sandbox + Letta/mem0 + research lane
 5. **v4** — Self-improvement loop (skill discovery, repo evaluation pipeline)
 
-## Factory execution path (2026-09-21)
+## Factory execution path (2026-09-22)
 ```
-owner CLI / master 001 chat / nightly task  ──add──▶  run/jobs.sqlite3 (JobStore: lease, idem, priority, retry, audit)
-                                                              │ claim (lease 40 min, heartbeat)
-                                                 factory_worker.py (scheduled task, single instance via run/worker.lock)
-                                                              ├─ create  → factory_pipeline.cmd_create → guard
-                                                              ├─ test    → factory_pipeline.cmd_test
-                                                              ├─ monitor → factory_monitor → demoted? enqueue repair (prio 2)
-                                                              └─ repair  → factory_repair (instructions only, sandbox) → guard
-                                             failure → classify (transient/quota/model/logic/security) → retry or pause
-                                             every event → audit table → AUDIT.md
+owner CLI / master 001 chat / scheduled tasks ──add──▶ run/jobs.sqlite3 (JobStore: lease 5 min + heartbeat, idem, priority, retry, audit)
+                                                              │ claim
+                                                 factory_worker.py (scheduled task; single instance via run/worker.lock; restarts on code change)
+   bot lifecycle                                              ├─ create      → cmd_create (architect LLM → validate_spec + spec_consistency) → build → test → guard
+                                                              ├─ test        → cmd_test (all-429 = inconclusive → retest +2h; else fail twice → repair)
+                                                              ├─ monitor     → factory_monitor (nightly; quota-aware) → demoted? → repair
+                                                              ├─ repair      → factory_repair (instructions only, sandbox, frozen perms) → guard
+                                                              │                  └─ inconsistent spec → logic pause → one automatic rearchitect
+                                                              ├─ rearchitect → cmd_rearchitect (from ORIGINAL objective, allowance-bounded, diff audited)
+   model lanes                                                ├─ probe       → factory_probe (hourly; health, probation, BLOCK) → presets sync
+                                                              │                  └─ lane BLOCKED or <5 healthy → discover
+                                                              ├─ discover    → factory_discover (catalogue → sandbox tool loop → INFERRED probation) → bench
+                                                              ├─ bench       → factory_bench (pinned single-lane reference suite, rolling 3, quota-aware)
+                                                              │                  → limits.bench → default_fallbacks() ranking
+   reporting                                                  └─ report      → STATUS.md (+ daily stale bench sweep)
+                                             failure → classify (transient/quota/model/logic/security) → retry / route / pause
+                                             every event → audit table → AUDIT.md ; state files → git (laptop state commits)
 ```
