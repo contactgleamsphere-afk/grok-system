@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 440 | 2026-09-22 15:30:47 | 123271bb |  | job.payload_patched | owner | {"patch": {"allowed_permissions": ["fs:read", "fs:write", "shell:workspace"]}} |
-| 441 | 2026-09-22 15:30:47 | 123271bb |  | job.resumed | owner | {} |
-| 442 | 2026-09-22 15:38:02 | c5bb159c |  | job.enqueued | nightly-task | {"kind": "monitor", "payload": {"only": null, "day": "2026-09-22"}} |
 | 443 | 2026-09-22 15:45:23 | 6f50b9fd |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "groq-gptoss120b", "result": "4/4", "quota": 0, "secs": 92} |
 | 444 | 2026-09-22 15:45:23 | 6f50b9fd |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "groq-gptoss20b", "result": "4/4", "quota": 0, "secs": 106} |
 | 445 | 2026-09-22 15:45:23 | 6f50b9fd |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-lite", "result": "1/4", "quota": 0, "secs": 618} |
@@ -402,3 +399,6 @@
 | 837 | 2026-09-22 23:47:06 | 9d375361 | 025 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "text-transformer", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["gemini-lite31", "gemin |
 | 838 | 2026-09-22 23:48:09 | 9d375361 | 025 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='LIVENESS_OK' last='LIVENESS_OK' \| T2 PASS 38s [done] expect='HELLO WORLD' last='RESULT: HELLO WORLD' |
 | 839 | 2026-09-22 23:48:09 | 9d375361 | 025 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "025", "name": "text-transformer", "pass": 3, "total": 3, "status": "active", "verified": "VERIFIED"}} |
+| 840 | 2026-09-22 23:52:51 | 40a753dd |  | job.enqueued | builder | {"kind": "run", "payload": {"plan": "593061c9", "in": "C:\\AI\\Factory\\workspace\\inbox\\orders1", "cap": 300, "t": 1790117571}} |
+| 841 | 2026-09-22 23:52:53 | 40a753dd |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 842 | 2026-09-22 23:52:53 | 40a753dd |  | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "KeyError: 'bot_id'\n\\Factory\\repo\\tools\\factory_worker.py\",  |
