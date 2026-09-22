@@ -361,3 +361,6 @@
 | 357 | 2026-09-22 06:37:17 | 5552a0d9 | 016 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "rearchitect", "payload": {"bot_id": "016", "feedback": "logic: spec/tests inconsistent, repair cannot change tools: bot reported C |
 | 358 | 2026-09-22 06:37:17 | dffdd22d | 016 | bot.rearchitect_queued | svc-LAPTOP-LRE6PSA8 | {"reason": "logic: spec/tests inconsistent, repair cannot change tools: bot reported CAPABILITY_MISSING"} |
 | 359 | 2026-09-22 06:37:17 | dffdd22d | 016 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: logic: spec/tests inconsistent, repair cannot chang |
+| 360 | 2026-09-22 06:37:21 | 5552a0d9 | 016 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 361 | 2026-09-22 06:37:23 | 5552a0d9 | 016 | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect: objective needs permissions outside the allowance ['fs:read', 'fs:write', 'net:search', 'net:fetch']: exec permission  |
+| 362 | 2026-09-22 06:37:23 | 5552a0d9 | 016 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: architect: objective needs permissions outside the a |
