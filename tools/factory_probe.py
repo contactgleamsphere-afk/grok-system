@@ -34,6 +34,7 @@ SIGNUP = {  # RESEARCH 2026-09: free tier, no card, OpenAI-compatible, tool call
     "mistral": "https://console.mistral.ai (Experiment free tier)",
 }
 QUOTA_COOLDOWN_S = 900
+DAILY_COOLDOWN_S = 3600       # D-088: minimum cooldown after a daily-cap 429
 GONE_MARKERS = ("no longer available", "decommissioned", "not found", "does not exist", "has been retired")
 TOOL = {"type": "function", "function": {"name": "ping", "description": "Reply to a liveness check.",
                                          "parameters": {"type": "object", "properties": {"ok": {"type": "boolean"}}, "required": ["ok"]}}}
@@ -81,7 +82,11 @@ def apply(entry, res: dict, now: float) -> tuple[str, str]:
     h["last_probe"] = time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime(now)); h["last_outcome"] = res["outcome"]
     o = res["outcome"]
     if o == "ok":
-        h["failures"] = 0; h["ok"] = True; h.pop("quota_until", None); h["latency_s"] = res.get("latency_s")
+        h["failures"] = 0; h["latency_s"] = res.get("latency_s")
+        if h.get("quota_kind") in ("tpd", "rpd") and float(h.get("quota_until", 0) or 0) > now:
+            h["ok"] = False          # D-088: a tiny probe fitting under a daily cap proves nothing; keep the cooldown
+        else:
+            h["ok"] = True; h.pop("quota_until", None); h.pop("quota_kind", None)
         if before == "BLOCKED" and h.get("blocked_by") == "probe":
             entry.verified = "VERIFIED"; h.pop("blocked_by", None)   # self-heal
         if before == "INFERRED" and "probation" in h:                # D-047 probation: N clean probes -> VERIFIED
@@ -89,7 +94,9 @@ def apply(entry, res: dict, now: float) -> tuple[str, str]:
             if h["probation"] <= 0: entry.verified = "VERIFIED"; h.pop("probation", None)
         entry.tool_call_score = min(1.0, (entry.tool_call_score or 0.5) * 0.8 + 0.2)
     elif o == "quota":
-        h["ok"] = False; h["quota_until"] = now + QUOTA_COOLDOWN_S
+        daily = any(t in str(res.get("detail", "")).lower() for t in ("per day", "(tpd)", "(rpd)", "per-day", "perday", "daily"))
+        h["ok"] = False; h["quota_until"] = now + (DAILY_COOLDOWN_S if daily else QUOTA_COOLDOWN_S)
+        if daily: h["quota_kind"] = "tpd"
     elif o in ("gone", "auth"):
         h["ok"] = False; h["blocked_by"] = "probe"; h["reason"] = f"{o}: {res.get('detail', '')}"[:200]
         entry.verified = "BLOCKED"
@@ -149,10 +156,15 @@ def mark_quota(hits: list[dict], now: float | None = None) -> list[str]:
         key = str(hit.get("model") or "").strip()
         if not key: continue
         secs = max(60, min(int(hit.get("secs") or QUOTA_COOLDOWN_S), 24 * 3600))
+        kind = str(hit.get("kind") or "tpm")
+        # D-088: a DAILY cap (Groq TPD/RPD, Gemini RPD, OpenRouter free-models-per-day) is not over when the provider's
+        # retry-after (= time until this ONE request fits the rolling window) elapses — the next real call hits it again.
+        # Cool for at least an hour, and mark it so a 50-token probe success cannot clear it early.
+        if kind in ("tpd", "rpd"): secs = max(secs, DAILY_COOLDOWN_S)
         for e in reg.all("models"):
             if e.id != key and e.model != key and e.model.split("/")[-1] != key.split("/")[-1]: continue
             h = dict(e.limits.get("health", {})); h["ok"] = False; h["last_outcome"] = "quota"
-            h["quota_until"] = max(float(h.get("quota_until", 0) or 0), now + secs)
+            h["quota_until"] = max(float(h.get("quota_until", 0) or 0), now + secs); h["quota_kind"] = kind
             h["quota_seen"] = time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime(now))
             e.limits = {**e.limits, "health": h}; reg.upsert("models", e); cooled.append(e.id)
     return cooled

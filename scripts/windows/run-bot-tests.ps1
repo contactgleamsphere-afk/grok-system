@@ -52,7 +52,8 @@ foreach($t in $bot.tests){
   # D-080: report every 429 with the model and the provider's retry-after so the worker cools that lane immediately
   foreach($qm in [regex]::Matches($out, "Rate limit reached for model ``([^``]+)``[\s\S]{0,400}?try\s+again in (?:(\d+)h)?(?:(\d+)m)?(?:([\d.]+)s)?")){
     $qs=[int]([int]"0$($qm.Groups[2].Value)"*3600 + [int]"0$($qm.Groups[3].Value)"*60 + [double]"0$($qm.Groups[4].Value)")
-    "QUOTAHIT " + (@{model=$qm.Groups[1].Value;secs=$(if($qs -gt 0){$qs+30}else{900})}|ConvertTo-Json -Compress) }
+    $kind = if($qm.Value -match 'per day \(TPD\)|\(TPD\)'){ 'tpd' } elseif($qm.Value -match 'per day \(RPD\)'){ 'rpd' } else { 'tpm' }
+    "QUOTAHIT " + (@{model=$qm.Groups[1].Value;secs=$(if($qs -gt 0){$qs+30}else{900});kind=$kind}|ConvertTo-Json -Compress) }
   if(($out -match "RESOURCE_EXHAUSTED") -and ($out -match "model[s/:\s]+([\w.\-]+)")){ "QUOTAHIT " + (@{model=$Matches[1];secs=$(if($out -match "retryDelay['`":\s]+(\d+)s"){[int]$Matches[1]+30}else{900})}|ConvertTo-Json -Compress) }
   elseif(-not $ok -and $status -eq 'TIMEOUT'){ $timeouts++ }   # D-075: a wall-clock timeout with no answer is availability, not quality
   $line="T$idx $(if($ok){'PASS'}else{'FAIL'}) ${el}s [$status] expect='$expect' last='$($("$last".Trim()))'"; $line; $ev+=$line

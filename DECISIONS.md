@@ -431,3 +431,18 @@ Probe 60d56672 at 20:17Z (laptop entering standby, Wi-Fi in "Adaptive Connected 
 trigger BLOCKED. Thirteen providers do not fail simultaneously — we do. `factory_probe.run()` now detects an
 all-remote-error sweep spanning ≥2 providers, records nothing, and the worker re-queues a probe in 10 min
 (`probe.network_down`). Counters from that sweep reset to 0.
+
+## D-087 — Groq presets: TPM is not a context window (2026-09-22) — VERIFIED (config) / test pending Groq TPD reset
+Groq presets carried `contextWindowTokens: 8200` (from the 8k **tokens-per-minute** cap, D-015). nanobot's context
+governor derives a ~6.4k input budget from that and raises `ContextWindowExceededError` *locally* — before any
+request — so bot 007 T2/T3 (6586 / 7200 tokens) failed with no provider call and therefore no fallback. Set to 16384:
+requests under 8k go through; over 8k Groq answers 413 (TPM), which the fallback patch already routes to the next
+lane. `factory_presets.sync` now updates existing presets when the policy changes (live: 3 presets → 16384).
+
+## D-088 — Daily caps cool for ≥1 h and outlast probe successes (2026-09-22) — VERIFIED (unit + live evidence)
+Live evidence 22:15–22:40Z: gpt-oss-20b TPD 199,120/200,000 → "try again in 8m13s" → after 10 min: 199,515/200,000
+→ "try again in 10m29s". The retry-after is when ONE request fits the rolling window, not when the day is over; and
+the hourly probe (≈50 tokens) succeeded in between and cleared `quota_until`, so chains kept sending real work to a
+lane that could only serve probes. Now the runner tags each 429 `kind=tpd|rpd|tpm`; daily kinds cool ≥ 3600 s and a
+probe `ok` does not clear them until the window ends. Groq TPD is per model per org (measured), so the sibling Groq
+lanes stay usable until their own caps.

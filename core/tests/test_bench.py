@@ -563,3 +563,25 @@ def test_d085_bench_timeouts_are_availability_not_quality(tmp_path, monkeypatch)
     assert m.limits["bench"]["pass"] == 2 and m.limits["bench"]["total"] == 2
     m = fb.record(reg, "gemini-b", 0, 4, 600, quota=1, timeouts=3)         # nothing but availability failures -> inconclusive
     assert "bench" not in m.limits and m.limits["bench_last_inconclusive"]["quota"] == 4
+
+
+def test_d088_daily_cap_cooldown_survives_tiny_probe_success(tmp_path, monkeypatch):
+    """D-088: a TPD 429 cools >= 1 h even if the provider says 'try again in 8m'; a later probe 'ok' (50 tokens fit)
+    does not clear it; a TPM hit still uses the short retry-after and IS cleared by a probe ok."""
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    import importlib, factory_probe as fpr; importlib.reload(fpr); monkeypatch.setattr(fpr, "ROOT", tmp_path)
+    now = time.time() + 5000
+    fpr.mark_quota([{"model": "groq-a", "secs": 500, "kind": "tpd"}, {"model": "gemini-b", "secs": 120, "kind": "tpm"}], now=now)
+    ha = reg.get("models", "groq-a").limits["health"]; hb = reg.get("models", "gemini-b").limits["health"]
+    assert ha["quota_until"] == now + 3600 and ha["quota_kind"] == "tpd"
+    assert hb["quota_until"] == now + 120 and hb["quota_kind"] == "tpm"
+    ok = {"outcome": "ok", "latency_s": 0.5}
+    ea = reg.get("models", "groq-a"); fpr.apply(ea, ok, now + 600); reg.upsert("models", ea)
+    eb = reg.get("models", "gemini-b"); fpr.apply(eb, ok, now + 600); reg.upsert("models", eb)
+    assert reg.get("models", "groq-a").limits["health"]["ok"] is False and "quota_until" in reg.get("models", "groq-a").limits["health"]
+    assert reg.get("models", "gemini-b").limits["health"]["ok"] is True and "quota_until" not in reg.get("models", "gemini-b").limits["health"]
+    ea = reg.get("models", "groq-a"); fpr.apply(ea, ok, now + 3601); reg.upsert("models", ea)      # window over -> cleared
+    assert reg.get("models", "groq-a").limits["health"]["ok"] is True
+    # probe's own quota detection with daily text
+    ec = reg.get("models", "or-c"); fpr.apply(ec, {"outcome": "quota", "detail": "rate limit exceeded: free-models-per-day"}, now)
+    assert ec.limits["health"]["quota_until"] == now + 3600 and ec.limits["health"]["quota_kind"] == "tpd"
