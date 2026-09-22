@@ -3,6 +3,9 @@
 ## 2026-09-22 — discovery pipeline live, presets mirror, failover proof
 - D-047 `discover` job: OpenRouter free catalogue → filter → real probe + tool loop → probation. Live run added `or-ling-30-flash-vl`, `or-nex-n25-pro` (both VERIFIED after 2 clean probes); `nex-n2.5-mini` rejected; `or-deepseek` retired from presets.
 - D-048 `factory_presets.py`: nanobot `modelPresets` mirrors the registry (17 presets), pruned stale `or-deepseek` and `broken-primary`.
+- D-058 bench-driven primary within daily-budget constraints.
+- D-057 `factory_insight.py` weekly self-review → `proposals/<date>.md`; `insight` job kind.
+- D-056 repair rounds rotate lanes.
 - D-055 nightly monitor task fixed (battery/catch-up/repo script) and made scheduler-independent via the daily report job.
 - D-054 allowance gate moved before build; architect can return `blocked`; `--allow` for owner grants; bot 015 (shell without grant) retired. Red-team re-run paused with nothing created.
 - D-053 `factory_plan.py` + `plan` job: compound objectives → N single-purpose creates with reuse of existing bots; master 001 uses `queue plan` for pipelines. Bot template hardened against fixture fabrication.

@@ -202,3 +202,26 @@ set `DisallowStartIfOnBatteries=True` and no catch-up — the laptop was on batt
    nightly re-verification; the scheduler is just the preferred trigger.
 Also observed: the Cloudflare quick tunnel rotated hostname at ~03:26; the supervisor republished `run/tunnel.txt`
 and `~/bin/laptop` self-healed within ~3 minutes. Recorded in RECOVERY.md.
+
+## D-056 — Repair rounds rotate to a lane that has not yet failed the bot (2026-09-22) — VERIFIED (unit)
+Evidence: bot 012/013 repairs burned two rounds on `groq:qwen/qwen3.8-27b` producing near-identical instructions.
+`fp.chat(skip=)` skips lanes that already produced a rejected/failed candidate for this bot; a repeat is only allowed
+when every other lane is down. Cheap diversity instead of asking the same model to disagree with itself.
+
+## D-057 — Self-improvement stage 1: the factory reviews itself, proposes, never self-applies (2026-09-22) — VERIFIED
+`tools/factory_insight.py` reads the audit table (bot.tested, bot.repair, security.violation, paused jobs) and the
+registry (bench coverage, weak lanes) and writes `proposals/<date>.md|json`: one section per recurring pattern with
+evidence, a concrete suggestion, and whether an *already-approved* mechanism can act (bench a lane with no score,
+probe after timeouts). Only those mechanisms are auto-enqueued (audited `factory.proposals`); anything touching
+factory code or policy is left for review. Runs weekly (Monday, chained from the daily report) or `add insight`.
+First live run (3-day window) found: 2 context-overflow failures (bot 007) that the old classifier mislabelled,
+4 unbenched lanes incl. the primary (→ bench enqueued), repair success 2/5, groq-qwen27b 2/4. Two of those led
+directly to D-058 and the classifier fix. This is the propose→review loop from the contract; sandboxed self-patching
+is deliberately NOT built yet.
+
+## D-058 — Primary lane is chosen by measured quality within budget reality (2026-09-22) — VERIFIED
+`default_primary()`: best benchmarked lane with ≥0.9 pass over its window, not quota-cooled, and with a real daily
+budget (`rpd` unknown or ≥200, and not an account-wide/shared 50-per-day pool); otherwise the legacy constant
+`groq-gptoss120b`. Live: OpenRouter lanes score 4/4 but share 50 req/day, so they stay fallbacks; groq-gptoss120b
+remains primary until its own bench score exists (queued by D-057). Fallback ranking unchanged (D-050), primary
+excluded. Quota-cooled lanes stay valid *policy* members (the live chain skips them at call time).
