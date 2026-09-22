@@ -293,3 +293,8 @@ Chat → job fbeb65ad → bot 018 (4/4) → auto run ca31fcf3 → totals.csv cor
 ## D-058 recheck + needs_owner path — 2026-09-22 (live)
 - bench job 6f50b9fd (survived a laptop sleep: lease expired 15:29, attempt 2 finished): groq-gptoss120b 8/8 99s, groq-gptoss20b 4/4 106s, gemini-lite 1/4 618s. `default_primary()` now returns groq-gptoss120b on evidence (was the legacy default); gemini-lite dropped from fallbacks.
 - needs_owner path (first real exercise): create "pytest runner" needs shell:workspace → architect returned blocked → job 123271bb paused class=security, `security.violation` + `job.failed` audited → `resume --allow fs:read,fs:write,shell:workspace` → `job.payload_patched` + `job.resumed` audited → bot 019 pytest-runner built with exactly [shell:workspace, fs:write] → test job 8e53c5b9 queued. PASS (pause/grant/resume all audited).
+
+## D-074 worker self-test gate — 2026-09-22 (live, laptop Python 3.11, pytest 9.1.1 installed today)
+- positive: worker restart on code change → `worker.selftest ok=true "73 passed in 5.97s"` → jobs processed.
+- negative: pushed a deliberately failing test + touched guard.py; `_self_test_gate` on the laptop returned False with `"1 failed, 55 passed"` cached in run/selftest.json (STATUS would show WORKER BLOCKED). Both commits reverted immediately.
+- first full laptop run of core/tests: 73/73 after fixing utf-8 reads in tests (cp1252 default on Windows).
