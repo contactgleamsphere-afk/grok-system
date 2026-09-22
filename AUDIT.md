@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 47 | 2026-09-21 20:10:04 | bbafb536 | 007 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 14s [done] expect='X_OK' last='+ FullyQualifiedErrorId : NativeCommandError' \| T2 FAIL 108s [done] expect='2' last='aft |
-| 48 | 2026-09-21 20:10:04 | bbafb536 | 007 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "007", "name": "todo-extractor", "pass": 1, "total": 4, "status": "testing", "verified": "UNVERIFIED"}} |
-| 49 | 2026-09-21 20:21:06 | 74c74bee | 007 | job.enqueued | builder | {"kind": "test", "payload": {"bot_id": "007"}} |
-| 50 | 2026-09-21 20:21:09 | 74c74bee | 007 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 51 | 2026-09-21 20:21:41 | 39f42e32 | 008 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "word-frequency-bot", "tools": ["read_file", "write_file"], "permissions": {"fs:read": true, "fs:write": true}, "chain": ["groq-gpt |
 | 52 | 2026-09-21 20:21:41 | 39f42e32 | 008 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 303s [TIMEOUT] expect='X_OK' last='' \| T2 PASS 171s [done] expect='apple' last='apple' \| T3 PASS 131s [done] expect='d |
 | 53 | 2026-09-21 20:21:41 | 39f42e32 | 008 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "008", "name": "word-frequency-bot", "pass": 3, "total": 4, "status": "testing", "verified": "UNVERIFIED"}} |
 | 54 | 2026-09-21 20:28:24 | 74c74bee | 007 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 47s [done] expect='X_OK' last='X_OK' \| T2 PASS 170s [done] expect='2' last='2' \| T3 PASS 128s [done] expect='0' last=' |
@@ -402,3 +397,8 @@
 | 444 | 2026-09-22 15:45:23 | 6f50b9fd |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "groq-gptoss20b", "result": "4/4", "quota": 0, "secs": 106} |
 | 445 | 2026-09-22 15:45:23 | 6f50b9fd |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-lite", "result": "1/4", "quota": 0, "secs": 618} |
 | 446 | 2026-09-22 15:45:23 | 6f50b9fd |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["groq-gptoss120b", "4/4"], ["groq-gptoss20b", "4/4"], ["gemini-lite", "1/4"]]}} |
+| 447 | 2026-09-22 15:45:29 | 123271bb |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 448 | 2026-09-22 15:45:32 | 123271bb | 019 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "pytest-runner", "tools": ["exec", "write_file"], "permissions": ["shell:workspace", "fs:write"], "chain": ["groq-gptoss120b", "or- |
+| 449 | 2026-09-22 15:46:39 | 123271bb | 019 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 FAIL 27s [done] expect='Status: PASS' last='Status: ERROR' \| T3 PASS 29s [do |
+| 450 | 2026-09-22 15:46:39 | 8e53c5b9 | 019 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "019", "retest_of": "123271bbc0064964bd016ef29316ad29"}} |
+| 451 | 2026-09-22 15:46:39 | 123271bb | 019 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "019", "name": "pytest-runner", "pass": 2, "total": 3, "status": "testing", "verified": "UNVERIFIED"}} |
