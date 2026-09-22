@@ -206,3 +206,6 @@
 | 202 | 2026-09-22 01:53:24 | f5cf590e | 012 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "012", "status": "testing", "verified": "UNVERIFIED"}} |
 | 203 | 2026-09-22 01:53:27 | 8359fbe8 | 012 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 204 | 2026-09-22 01:54:17 | 8359fbe8 | 012 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "model", "next_state": "queued", "attempt": 1, "error": "FactoryError: repair: chain did not return usable instructions\n  |
+| 205 | 2026-09-22 01:54:50 | 8359fbe8 | 012 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 2} |
+| 206 | 2026-09-22 01:56:34 | 8359fbe8 | 012 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:qwen/qwen3.8-27b", "sandbox": "1/3", "rejected": null}, {"round": 2 |
+| 207 | 2026-09-22 01:56:34 | 8359fbe8 | 012 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 2, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
