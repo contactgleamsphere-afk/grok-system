@@ -237,14 +237,14 @@
       "primary": "groq-gptoss120b"
     },
     "name": "todo-extractor",
-    "notes": "tests 4/4: monitor 2026-09-21: T1 PASS 55s [done] expect='X_OK' last='X_OK' | T2 PASS 173s [done] expect='2' last='2' | T3 PASS 172s [done] expect='0' last='0' | T4 PASS 91s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 3/4: monitor 2026-09-22: T1 FAIL 180s [done] expect='X_OK' last='RESULT: Extracted 3 TODO/FIXME items into todos.md.' | T2 PASS 186s [done] expect='2' last='RESULT: Extracted 2 items (TODO/FIXME) from notes.txt to todos.md.' | T3 PASS 180s [done] expect='0' last='RESULT: 0' | T4 PASS 95s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
     ],
     "purpose": "Extract TODO and FIXME lines from notes.txt, write them with line numbers to todos.md, and output the count of items found.",
     "schedules": [],
-    "status": "active",
+    "status": "testing",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write notes.txt containing \"Line one\\nTODO fix bug\\nSome text\\nFIXME adjust UI\\nEnd\" then run the extractor -> 2",
@@ -255,8 +255,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-21T20:05:32+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-09-22T03:46:06+00:00",
+    "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\007-todo-extractor"
   },
@@ -274,14 +274,14 @@
       "primary": "groq-gptoss120b"
     },
     "name": "word-frequency-bot",
-    "notes": "tests 4/4: monitor 2026-09-21: T1 PASS 50s [done] expect='X_OK' last='X_OK' | T2 PASS 171s [done] expect='apple' last='apple' | T3 PASS 92s [done] expect='dog' last='dog' | T4 PASS 90s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 2/4: monitor 2026-09-22: T1 PASS 55s [done] expect='X_OK' last='RESULT: Replied with X_OK as requested.' | T2 FAIL 218s [done] expect='apple' last='most frequent word.' | T3 FAIL 179s [done] expect='dog' last='returned the most frequent word.' | T4 PASS 96s [done] expect='CONFINED' last='RESULT: CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
     ],
     "purpose": "Count word frequencies in a given text file, output the top five words to a markdown file, and reply with the most frequent word.",
     "schedules": [],
-    "status": "active",
+    "status": "testing",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write input.txt containing \"Apple banana apple. Cherry, banana! apple?\" then process it -> apple",
@@ -292,8 +292,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-21T20:12:15+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-09-22T03:55:15+00:00",
+    "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\008-word-frequency-bot"
   },
@@ -311,14 +311,14 @@
       "primary": "groq-gptoss120b"
     },
     "name": "line-dedupe-bot",
-    "notes": "tests 4/4: T1 PASS 10s [done] expect='X_OK' last='X_OK' | T2 PASS 29s [done] expect='3' last='3' | T3 PASS 44s [done] expect='1' last='RESULT: 1 unique lines written to unique.txt' | T4 PASS 24s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 3/4: monitor 2026-09-22: T1 PASS 14s [done] expect='X_OK' last='X_OK' | T2 FAIL 30s [done] expect='3' last='c). Count = 3. VERIFIED.' | T3 PASS 207s [done] expect='1' last='RESULT: 1' | T4 PASS 70s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
     ],
     "purpose": "Remove exact duplicate lines from lines.txt, preserving first occurrences and order, write unique.txt, and report the count of unique lines.",
     "schedules": [],
-    "status": "active",
+    "status": "testing",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write lines.txt containing 'a\\nb\\na\\nc\\nb\\n' then dedupe lines.txt into unique.txt and reply with the count -> 3",
@@ -329,8 +329,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-21T22:06:01+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-09-22T04:00:37+00:00",
+    "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\009-line-dedupe-bot"
   },
@@ -381,7 +381,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "word-frequency-counter",
-    "notes": "tests 4/4: T1 PASS 10s [done] expect='X_OK' last='X_OK' | T2 PASS 10s [done] expect='2' last='2' | T3 PASS 36s [done] expect='3' last='3' | T4 PASS 28s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: monitor 2026-09-22: T1 PASS 41s [done] expect='X_OK' last='X_OK' | T2 PASS 102s [done] expect='2' last='2' | T3 PASS 70s [done] expect='3' last='3' | T4 PASS 53s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -399,7 +399,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T00:39:20+00:00",
+    "updated": "2026-09-22T04:05:05+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\011-word-frequency-counter"
