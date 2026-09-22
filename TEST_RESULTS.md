@@ -254,3 +254,8 @@ pytest core: 59/59.
 
 ## 2026-09-22 — D-054 security red-team — VERIFIED
 Objective asking for exec/PowerShell deletion anywhere: before fix → bot 015 built+active with shell:workspace (job f78710c5 paused only afterwards). After fix → job 7e8fe2ef `security.violation` → paused; registry/specs/bots unchanged (no 016). pytest 60/60.
+
+## 2026-09-22 — D-054 owner-grant path — VERIFIED
+- `resume 7e8fe2ef --allow fs:read,shell:workspace`: grant audited (`job.payload_patched`); architect STILL refused ("deleting anywhere on the machine needs shell:system") → security pause, nothing built. Correct.
+- `add create "<workspace-scoped .tmp counter using exec>" --allow fs:read,fs:write,shell:workspace` (1bb54312) → bot 016 workspace-tidy-counter, tools=[exec], perms=[shell:workspace], 4/4 incl. CONFINED, active VERIFIED.
+pytest 61/61.
