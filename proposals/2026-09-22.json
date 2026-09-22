@@ -1,0 +1,179 @@
+{
+ "evidence": {
+  "days": 3,
+  "tests_run": 21,
+  "fails": {
+   "timeout": 3,
+   "wrong_answer": 6,
+   "capability_missing": 2,
+   "answer_wrapped": 2
+  },
+  "fail_examples": {
+   "timeout": [
+    {
+     "bot": "013",
+     "test": 2,
+     "expect": "1",
+     "last": ""
+    },
+    {
+     "bot": "008",
+     "test": 1,
+     "expect": "X_OK",
+     "last": ""
+    },
+    {
+     "bot": "006",
+     "test": 4,
+     "expect": "CONFINED",
+     "last": ""
+    }
+   ],
+   "wrong_answer": [
+    {
+     "bot": "013",
+     "test": 3,
+     "expect": "0",
+     "last": "RESULT: 1 line in errors.txt"
+    },
+    {
+     "bot": "013",
+     "test": 3,
+     "expect": "0",
+     "last": "RESULT: 1 line in errors.txt"
+    },
+    {
+     "bot": "012",
+     "test": 3,
+     "expect": "40",
+     "last": "the sum)"
+    }
+   ],
+   "capability_missing": [
+    {
+     "bot": "012",
+     "test": 2,
+     "expect": "60",
+     "last": "RESULT: CAPABILITY_MISSING: write_file"
+    },
+    {
+     "bot": "012",
+     "test": 2,
+     "expect": "60",
+     "last": "CAPABILITY_MISSING: write_file"
+    }
+   ],
+   "answer_wrapped": [
+    {
+     "bot": "007",
+     "test": 2,
+     "expect": "2",
+     "last": "after request fitting for bot007-t2-200353: 6586/6408 via tiktoken"
+    },
+    {
+     "bot": "007",
+     "test": 3,
+     "expect": "0",
+     "last": "after request fitting for bot007-t3-200541: 7200/6408 via tiktoken"
+    }
+   ]
+  },
+  "repairs": {
+   "total": 5,
+   "ok": 2,
+   "rounds": 8,
+   "rejected_candidates": 2
+  },
+  "paused": [],
+  "failed_classes": {},
+  "unbenched_lanes": [
+   "gemini-lite",
+   "gemini-lite31",
+   "groq-gptoss120b",
+   "groq-gptoss20b"
+  ],
+  "weak_lanes": [
+   {
+    "id": "groq-qwen27b",
+    "score": "2/4"
+   }
+  ],
+  "security_violations": [
+   "architect: objective needs permissions outside the allowance ['fs:read', 'shell:workspace']: The objective requires deleting files anywhere on the machine, whic",
+   "architect: objective needs permissions outside the allowance ['fs:read', 'fs:write', 'net:search', 'net:fetch']: shell:workspace permission is needed to execute",
+   "create: spec requested permissions beyond job allowance: ['shell:workspace']"
+  ],
+  "bots": {
+   "total": 16,
+   "active": 10
+  }
+ },
+ "proposals": [
+  {
+   "kind": "template",
+   "severity": "medium",
+   "evidence": "2 of 13 test failures had the right value inside a sentence ([{'bot': '007', 'test': 2, 'expect': '2', 'last': 'after request fitting for bot007-t2-200353: 6586/6408 via tiktoken'}, {'bot': '007', 'test': 3, 'expect': '0', 'last': 'after request fitting for bot007-t3-200541: 7200/6408 via tiktoken'}])",
+   "suggestion": "Tighten the bot AGENTS template 'RESULT: <answer>' rule further or let the runner accept `RESULT: <expected> ...` when the expected token is the first word after the prefix. Needs a human decision: stricter bots vs. looser matcher.",
+   "auto_actionable": null
+  },
+  {
+   "kind": "lanes",
+   "severity": "medium",
+   "evidence": "3 test timeouts in 3d ([{'bot': '013', 'test': 2, 'expect': '1', 'last': ''}, {'bot': '008', 'test': 1, 'expect': 'X_OK', 'last': ''}])",
+   "suggestion": "Timeouts are usually a slow/over-loaded primary. Compare bench `secs` per lane and consider lowering per-test cap from 300 s only after the chain's median is known.",
+   "auto_actionable": {
+    "kind": "probe",
+    "payload": {
+     "only": [],
+     "hour": "2026-09-22T04"
+    }
+   }
+  },
+  {
+   "kind": "architect",
+   "severity": "high",
+   "evidence": "2 CAPABILITY_MISSING failures ([{'bot': '012', 'test': 2, 'expect': '60', 'last': 'RESULT: CAPABILITY_MISSING: write_file'}, {'bot': '012', 'test': 2, 'expect': '60', 'last': 'CAPABILITY_MISSING: write_file'}])",
+   "suggestion": "spec_consistency (D-052) covers write/read/web hints; extend its patterns with the verbs seen in these prompts.",
+   "auto_actionable": null
+  },
+  {
+   "kind": "lanes",
+   "severity": "low",
+   "evidence": "lanes without a quality score: ['gemini-lite', 'gemini-lite31', 'groq-gptoss120b', 'groq-gptoss20b']",
+   "suggestion": "Benchmark them so default_fallbacks() can rank them.",
+   "auto_actionable": {
+    "kind": "bench",
+    "payload": {
+     "lanes": [
+      "gemini-lite",
+      "gemini-lite31",
+      "groq-gptoss120b"
+     ],
+     "day": "2026-09-22",
+     "trigger": "insight"
+    }
+   }
+  },
+  {
+   "kind": "lanes",
+   "severity": "low",
+   "evidence": "lanes scoring <75% on the reference suite: [{'id': 'groq-qwen27b', 'score': '2/4'}]",
+   "suggestion": "They already sit at the tail of the chain; if a lane stays <50% over 3 windows, retire it from presets (decision).",
+   "auto_actionable": null
+  },
+  {
+   "kind": "repair",
+   "severity": "medium",
+   "evidence": "repair success 2/5 (8 rounds, 2 rejected candidates)",
+   "suggestion": "Repair rewrites only instructions. When the failing test is a fixture/format issue the fix belongs in the template (D-053 finding); consider a 'diagnose' step that classifies the failure before choosing repair vs rearchitect.",
+   "auto_actionable": null
+  },
+  {
+   "kind": "security",
+   "severity": "info",
+   "evidence": "3 security violations caught: [\"architect: objective needs permissions outside the allowance ['fs:read', 'shell:workspace']: The objective requires deleting files anywhere on the machine, whic\", \"architect: objective needs permissions outside the allowance ['fs:read', 'fs:write', 'net:search', 'net:fetch']: shell:workspace permission is needed to execute\"]",
+   "suggestion": "No action \u2014 the gate worked. Listed so the owner sees what was refused.",
+   "auto_actionable": null
+  }
+ ]
+}
