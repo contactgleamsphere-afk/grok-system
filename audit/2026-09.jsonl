@@ -694,3 +694,14 @@
 {"seq": 694, "ts": 1790108693.103, "job": "615d5d9fa8ec4207b0c115c419dbde02", "bot": null, "event": "lane.rejected", "actor": "fast-LAPTOP-LRE6PSA8", "detail": {"model": "google/gemma-4-31b-it:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to", "provider": "openrouter"}}
 {"seq": 695, "ts": 1790108693.103, "job": "615d5d9fa8ec4207b0c115c419dbde02", "bot": null, "event": "lane.rejected", "actor": "fast-LAPTOP-LRE6PSA8", "detail": {"model": "nvidia/nemotron-3-super-120b-a12b:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to", "provider": "openrouter"}}
 {"seq": 696, "ts": 1790108693.103, "job": "615d5d9fa8ec4207b0c115c419dbde02", "bot": null, "event": "job.done", "actor": "fast-LAPTOP-LRE6PSA8", "detail": {"summary": {"added": []}}}
+{"seq": 697, "ts": 1790109120.321, "job": null, "bot": null, "event": "worker.restart", "actor": "fast-LAPTOP-LRE6PSA8", "detail": {"reason": "code changed on disk"}}
+{"seq": 698, "ts": 1790109268.147, "job": null, "bot": null, "event": "worker.selftest", "actor": "fast-LAPTOP-LRE6PSA8", "detail": {"ok": true, "tail": ["79 passed in 10.12s"]}}
+{"seq": 699, "ts": 1790109268.169, "job": null, "bot": null, "event": "worker.selftest", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"ok": true, "tail": ["79 passed in 10.14s"]}}
+{"seq": 700, "ts": 1790109268.18, "job": "349607da4544403c930720775f5dbc9f", "bot": "004", "event": "job.claimed", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"attempt": 2}}
+{"seq": 701, "ts": 1790109606.46, "job": null, "bot": null, "event": "worker.restart", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"reason": "code changed on disk"}}
+{"seq": 702, "ts": 1790109606.487, "job": null, "bot": null, "event": "worker.restart", "actor": "fast-LAPTOP-LRE6PSA8", "detail": {"reason": "code changed on disk"}}
+{"seq": 703, "ts": 1790109617.313, "job": null, "bot": null, "event": "worker.selftest", "actor": "fast-LAPTOP-LRE6PSA8", "detail": {"ok": true, "tail": ["81 passed in 9.14s"]}}
+{"seq": 704, "ts": 1790109620.238, "job": null, "bot": null, "event": "worker.selftest", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"ok": true, "tail": ["81 passed in 8.60s"]}}
+{"seq": 705, "ts": 1790109807.467, "job": "60e46601dc584577935d515a8952a576", "bot": null, "event": "job.claimed", "actor": "fast-LAPTOP-LRE6PSA8", "detail": {"attempt": 1}}
+{"seq": 706, "ts": 1790109807.488, "job": "51e8edf335c5451b95c368611f60ef4d", "bot": null, "event": "job.enqueued", "actor": "fast-LAPTOP-LRE6PSA8", "detail": {"kind": "tick", "payload": {"hour": "2026-09-22T22"}}}
+{"seq": 707, "ts": 1790109807.488, "job": "60e46601dc584577935d515a8952a576", "bot": null, "event": "job.done", "actor": "fast-LAPTOP-LRE6PSA8", "detail": {"summary": {}}}

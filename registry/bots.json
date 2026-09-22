@@ -16,7 +16,11 @@
     ],
     "purpose": "Orchestrates the AI Factory; creates and supervises other bots",
     "schedules": [],
-    "seal": {},
+    "seal": {
+      "AGENTS.md": "d5e5eac02b10e80d56bc80da",
+      "config.json#tools.exec": "04a5f6b63ecbb58f6323d65e",
+      "tools/factory.py": "0e1f58ed74cf36a6b342489d"
+    },
     "status": "active",
     "tests": [
       "Reply with exactly: MASTER_OK -> MASTER_OK",
@@ -31,7 +35,7 @@
       "web_search",
       "web_fetch"
     ],
-    "updated": "2026-09-22T19:17:52+00:00",
+    "updated": "2026-09-22T20:40:09+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\workspace"
