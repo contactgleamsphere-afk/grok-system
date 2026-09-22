@@ -264,3 +264,6 @@ pytest 61/61.
 Monitor b59e7101 (14 bots, ~2 h): 6 stayed active (002, 011, 013, 014 4/4; 003…), 8 demoted. Offline replay proved the judge (not the bots) caused most misses → D-059.
 Recovery so far, fully automatic after the fix: 004, 005, 006 promoted by repair **re-verify with zero model calls**; 003 promoted after one real repair round on a rotated lane (`groq:openai/gpt-oss-20b`, D-056). 007/008/009/012/016 queued; 001 (master) goes to `monitor --only 001` (D-060), never repair.
 D-057 insight: 3-day window → 7 findings, 2 auto actions (bench of 4 unbenched lanes incl. primary; probe). pytest 64/64.
+
+## 2026-09-22 — full nightly cycle closed — VERIFIED
+After D-059..D-062, every demotion from monitor b59e7101 recovered without a human: 004/005/006/007/009/012 promoted on re-verify (0 model calls); 003/008 by one repair round on a rotated lane; 016 by rearchitect within its grant; 001 by chain re-sync (1/5 → 5/5, 285 s total vs 4×240 s timeouts). Registry: 14/16 active (010 fixture paused, 015 retired by policy). pytest 64/64.
