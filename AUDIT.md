@@ -191,3 +191,9 @@
 | 187 | 2026-09-22 01:39:20 | 67df837c | 011 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "word-frequency-counter", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["groq-gptoss120b" |
 | 188 | 2026-09-22 01:39:20 | 67df837c | 011 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 10s [done] expect='2' last='2' \| T3 PASS 36s [done] expect='3' last='3' |
 | 189 | 2026-09-22 01:39:20 | 67df837c | 011 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "011", "name": "word-frequency-counter", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
+| 190 | 2026-09-22 01:46:45 | 57000908 |  | job.enqueued | builder | {"kind": "create", "payload": {"objective": "Create a CSV column-sum bot: given a workspace file data.csv with a header row, sum the numeric |
+| 191 | 2026-09-22 01:46:49 | 57000908 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 192 | 2026-09-22 01:47:26 | 57000908 | 012 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "csv-column-sum", "tools": ["read_file"], "permissions": ["fs:read"], "chain": ["groq-gptoss120b", "or-ling-30-flash-vl", "or-nex-n |
+| 193 | 2026-09-22 01:47:26 | 57000908 | 012 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] expect='X_OK' last='RESULT: X_OK' \| T2 FAIL 9s [done] expect='60' last='CAPABILITY_MISSING: write_file' \| T |
+| 194 | 2026-09-22 01:47:26 | f5cf590e | 012 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "012", "retest_of": "57000908adad4c28b681b4fb41c35e7b"}} |
+| 195 | 2026-09-22 01:47:26 | 57000908 | 012 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "012", "name": "csv-column-sum", "pass": 1, "total": 3, "status": "testing", "verified": "UNVERIFIED"}} |
