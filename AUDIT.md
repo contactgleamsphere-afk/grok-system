@@ -2,20 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 353 | 2026-09-22 06:37:13 | 136c6448 | 012 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
-| 354 | 2026-09-22 06:37:13 | 136c6448 | 012 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "012", "status": "active"}} |
-| 355 | 2026-09-22 06:37:17 | dffdd22d | 016 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 356 | 2026-09-22 06:37:17 | dffdd22d | 016 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [], "boundary_diff": {}} |
-| 357 | 2026-09-22 06:37:17 | 5552a0d9 | 016 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "rearchitect", "payload": {"bot_id": "016", "feedback": "logic: spec/tests inconsistent, repair cannot change tools: bot reported C |
-| 358 | 2026-09-22 06:37:17 | dffdd22d | 016 | bot.rearchitect_queued | svc-LAPTOP-LRE6PSA8 | {"reason": "logic: spec/tests inconsistent, repair cannot change tools: bot reported CAPABILITY_MISSING"} |
-| 359 | 2026-09-22 06:37:17 | dffdd22d | 016 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: logic: spec/tests inconsistent, repair cannot chang |
-| 360 | 2026-09-22 06:37:21 | 5552a0d9 | 016 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 361 | 2026-09-22 06:37:23 | 5552a0d9 | 016 | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect: objective needs permissions outside the allowance ['fs:read', 'fs:write', 'net:search', 'net:fetch']: exec permission  |
-| 362 | 2026-09-22 06:37:23 | 5552a0d9 | 016 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: architect: objective needs permissions outside the a |
-| 363 | 2026-09-22 06:37:26 | d2db2ed1 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 364 | 2026-09-22 06:58:02 | d2db2ed1 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "1/5", "before": "testing", "after": "testing", "inconclusive": false, "quota": 0} |
-| 365 | 2026-09-22 06:58:02 | d2db2ed1 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 366 | 2026-09-22 06:58:02 | 3173de79 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "monitor", "payload": {"only": ["001"], "day": "2026-09-22", "retry_of": "d2db2ed1f3b64889b33a4efb8b2595ef"}} |
 | 367 | 2026-09-22 06:58:02 | d2db2ed1 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 368 | 2026-09-22 06:59:45 | 5552a0d9 |  | job.resumed | builder | {} |
 | 369 | 2026-09-22 06:59:46 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
@@ -402,3 +388,17 @@
 | 750 | 2026-09-22 22:43:27 | 51e8edf3 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 751 | 2026-09-22 22:43:27 | 5230a652 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-22T23"}} |
 | 752 | 2026-09-22 22:43:27 | 51e8edf3 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 753 | 2026-09-22 22:44:55 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 754 | 2026-09-22 22:44:56 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 755 | 2026-09-22 22:45:06 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["87 passed in 9.73s"]} |
+| 756 | 2026-09-22 22:45:10 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["87 passed in 9.47s"]} |
+| 757 | 2026-09-22 22:55:12 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 758 | 2026-09-22 22:55:16 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 759 | 2026-09-22 22:55:23 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["88 passed in 9.80s"]} |
+| 760 | 2026-09-22 22:55:29 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["88 passed in 8.78s"]} |
+| 761 | 2026-09-22 22:59:58 | 197bb3e5 |  | job.enqueued | master-001 | {"kind": "plan", "payload": {"objective": "Create a pipeline: first bot reads a CSV of orders and writes only rows where status is refunded  |
+| 762 | 2026-09-22 22:59:59 | 197bb3e5 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 763 | 2026-09-22 23:00:00 | 1e546b89 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "create", "payload": {"objective": "Read orders.csv, filter rows where the 'status' column is 'refunded', and write the resulting r |
+| 764 | 2026-09-22 23:00:00 | 1a129f56 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "create", "payload": {"objective": "Read refunded.csv, sum the values in the 'amount' column, and write a single line to summary.tx |
+| 765 | 2026-09-22 23:00:00 | 197bb3e5 |  | plan.made | svc-LAPTOP-LRE6PSA8 | {"lane": "groq:qwen/qwen3.8-27b", "steps": 2, "queued": [[1, "1e546b89"], [2, "1a129f56"]], "rationale": "The objective explicitly defines a |
+| 766 | 2026-09-22 23:00:00 | 197bb3e5 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"name": "plan:2 steps", "status": "queued 1e546b89,1a129f56"}} |
