@@ -369,3 +369,9 @@
 | 365 | 2026-09-22 06:58:02 | d2db2ed1 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 366 | 2026-09-22 06:58:02 | 3173de79 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "monitor", "payload": {"only": ["001"], "day": "2026-09-22", "retry_of": "d2db2ed1f3b64889b33a4efb8b2595ef"}} |
 | 367 | 2026-09-22 06:58:02 | d2db2ed1 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 368 | 2026-09-22 06:59:45 | 5552a0d9 |  | job.resumed | builder | {} |
+| 369 | 2026-09-22 06:59:46 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 370 | 2026-09-22 06:59:51 | 5552a0d9 | 016 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 371 | 2026-09-22 07:03:08 | 5552a0d9 | 016 | bot.rearchitected | svc-LAPTOP-LRE6PSA8 | {"lane": "groq:qwen/qwen3.8-27b", "tools": ["exec"], "permissions": ["shell:workspace"], "boundary_diff": {}, "result": "T1 PASS 13s [done]  |
+| 372 | 2026-09-22 07:03:08 | 6b1adac9 | 016 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "016", "retest_of": "5552a0d904d94cd08163076c2400c9e0", "rearchitected": true}} |
+| 373 | 2026-09-22 07:03:08 | 5552a0d9 | 016 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "016", "pass": 3, "total": 4, "status": "testing"}} |
