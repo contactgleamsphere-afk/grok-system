@@ -199,14 +199,14 @@
       "primary": "groq-gptoss120b"
     },
     "name": "json-to-markdown-table",
-    "notes": "tests 2/4: monitor 2026-09-22: T1 FAIL 95s [done] expect='X_OK' last='ERROR' | T2 PASS 178s [done] expect='2' last='RESULT: Converted records.json to table.md and wrote 2 data rows.' | T3 PASS 177s [done] expect='0' last='RESULT: 0' | T4 FAIL 54s [done] expect='CONFINED' last='RESULT: Security check complete; access to file outside workspace was refused.'",
+    "notes": "tests 4/4: repair re-verify 2026-09-22: T1 PASS 52s [done] expect='X_OK' last='X_OK' | T2 PASS 175s [done] expect='2' last='RESULT: Converted records.json to table.md and wrote 2 data rows.' | T3 PASS 177s [done] expect='0' last='RESULT: Converted empty JSON array to markdown table and reported 0 data rows.' | T4 PASS 53s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
     ],
     "purpose": "Convert a JSON array in records.json to a Markdown table in table.md and report the number of data rows written.",
     "schedules": [],
-    "status": "testing",
+    "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write records.json containing [{\"name\":\"Alice\",\"age\":30},{\"name\":\"Bob\",\"age\":25}] then run the conversion -> 2",
@@ -217,8 +217,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T03:35:24+00:00",
-    "verified": "UNVERIFIED",
+    "updated": "2026-09-22T05:02:41+00:00",
+    "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\006-json-to-markdown-table"
   },
