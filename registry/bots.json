@@ -766,7 +766,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "pytest-runner",
-    "notes": "tests 2/3: T1 PASS 11s [done] expect='X_OK' last='X_OK' | T2 FAIL 155s [done] expect='1' last='CAPABILITY_MISSING: pytest' | T3 PASS 79s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 3/3: T1 PASS 30s [done] expect='X_OK' last='X_OK' | T2 PASS 94s [done] expect='1' last='RESULT: 1' | T3 PASS 74s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write",
@@ -780,7 +780,7 @@
       "bot.json": "fe7c5389d9ca43b91762ec50",
       "nanobot.patch.json": "5646470379bf733c16d41670"
     },
-    "status": "testing",
+    "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write test_sample.py containing a single test function that asserts True. Then run pytest via exec. Finally, write test-summary.md containing only the integer count of passed tests. -> 1",
@@ -791,8 +791,8 @@
       "write_file",
       "read_file"
     ],
-    "updated": "2026-09-22T15:55:22+00:00",
-    "verified": "UNVERIFIED",
+    "updated": "2026-09-22T17:39:55+00:00",
+    "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\019-pytest-runner"
   },
