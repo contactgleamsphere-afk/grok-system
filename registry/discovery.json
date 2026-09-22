@@ -29,6 +29,12 @@
    "reason": "set NVIDIA_API_KEY (User env) after signing up: https://build.nvidia.com (free ~40 rpm, tool-capable models)",
    "ts": 1790064390.0568123,
    "date": "2026-09-22"
+  },
+  "provider:mistral": {
+   "verdict": "needs_owner",
+   "reason": "set MISTRAL_API_KEY (User env) after signing up: https://console.mistral.ai (Experiment free tier)",
+   "ts": 1790108297.879643,
+   "date": "2026-09-22"
   }
  }
 }

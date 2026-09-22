@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 275 | 2026-09-22 05:05:34 | e826d8e4 | 004 | job.enqueued | builder | {"kind": "test", "payload": {"bot_id": "004"}} |
-| 276 | 2026-09-22 05:05:35 | 66005b63 | 005 | job.enqueued | builder | {"kind": "test", "payload": {"bot_id": "005"}} |
-| 277 | 2026-09-22 05:05:35 | 2013c930 | 009 | job.enqueued | builder | {"kind": "test", "payload": {"bot_id": "009"}} |
 | 278 | 2026-09-22 05:07:34 | c959e323 |  | job.cancelled | owner | {} |
 | 279 | 2026-09-22 05:07:34 | e826d8e4 |  | job.cancelled | owner | {} |
 | 280 | 2026-09-22 05:07:35 | 66005b63 |  | job.cancelled | owner | {} |
@@ -402,3 +399,6 @@
 | 672 | 2026-09-22 21:18:16 | aeb98a0c |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 673 | 2026-09-22 21:18:17 | 9e271e81 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 674 | 2026-09-22 21:18:17 | 9e271e81 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 675 | 2026-09-22 21:18:17 | 72cfc51f |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 676 | 2026-09-22 21:18:17 | 72cfc51f |  | owner.needed | fast-LAPTOP-LRE6PSA8 | {"provider": "mistral", "reason": "set MISTRAL_API_KEY (User env) after signing up: https://console.mistral.ai (Experiment free tier)"} |
+| 677 | 2026-09-22 21:18:17 | 72cfc51f |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
