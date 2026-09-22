@@ -204,3 +204,5 @@
 | 200 | 2026-09-22 01:53:24 | f5cf590e | 012 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 FAIL 17s [done] expect='60' last='RESULT: CAPABILITY_MISSING: write_file' \|  |
 | 201 | 2026-09-22 01:53:24 | 8359fbe8 | 012 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "012", "max_rounds": 2}} |
 | 202 | 2026-09-22 01:53:24 | f5cf590e | 012 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "012", "status": "testing", "verified": "UNVERIFIED"}} |
+| 203 | 2026-09-22 01:53:27 | 8359fbe8 | 012 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 204 | 2026-09-22 01:54:17 | 8359fbe8 | 012 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "model", "next_state": "queued", "attempt": 1, "error": "FactoryError: repair: chain did not return usable instructions\n  |
