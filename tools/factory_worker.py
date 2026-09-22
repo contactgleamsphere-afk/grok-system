@@ -108,7 +108,9 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
     if kind == "rearchitect":
         before = _spec_of(p["bot_id"])
         if before is None: raise FactoryError(f"unknown bot {p['bot_id']}")
-        allowance = p.get("allowed_permissions", ["fs:read", "fs:write", "net:search", "net:fetch"])
+        # D-054/D-061: a re-architect may keep what the owner already granted this bot (its current permissions were
+        # approved at create time, e.g. 016's shell:workspace) plus the default allowance — never more.
+        allowance = sorted(set(p.get("allowed_permissions", fp.DEFAULT_ALLOWANCE)) | set(before.get("permissions") or []))
         res = fp.cmd_rearchitect(p["bot_id"], p.get("feedback", ""), allowance)
         if not res.get("ok"): raise FactoryError(res.get("error"))
         after = _spec_of(p["bot_id"])
