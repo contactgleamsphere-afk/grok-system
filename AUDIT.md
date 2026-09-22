@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 100 | 2026-09-21 21:43:37 | e0c940c2 | 006 | job.enqueued | builder | {"kind": "test", "payload": {"bot_id": "006"}} |
-| 101 | 2026-09-21 21:43:39 | e0c940c2 | 006 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 102 | 2026-09-21 21:43:55 | e0c940c2 |  | job.cancelled | owner | {} |
-| 103 | 2026-09-21 21:44:09 | e0c940c2 |  | job.dedup | builder | {"kind": "test"} |
 | 104 | 2026-09-21 21:46:56 | e0c940c2 |  | job.released | owner | {"uncount": true} |
 | 105 | 2026-09-21 21:46:57 | e0c940c2 | 006 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 106 | 2026-09-21 21:48:00 | 043bd1f8 |  | job.enqueued | builder | {"kind": "create", "payload": {"objective": "Create a line-dedupe bot: given a workspace file named lines.txt, remove exact duplicate lines  |
@@ -402,3 +398,7 @@
 | 497 | 2026-09-22 16:45:33 | e40889f8 | 019 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "rearchitect", "payload": {"bot_id": "019", "feedback": "logic: spec/tests inconsistent, repair cannot change tools: expected value |
 | 498 | 2026-09-22 16:45:33 | 1d7ee2ef | 019 | bot.rearchitect_queued | svc-LAPTOP-LRE6PSA8 | {"reason": "logic: spec/tests inconsistent, repair cannot change tools: expected value 'Status: PASS' is a phrase the instructions would hav |
 | 499 | 2026-09-22 16:45:33 | 1d7ee2ef | 019 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: logic: spec/tests inconsistent, repair cannot chang |
+| 500 | 2026-09-22 16:45:42 | e40889f8 | 019 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 501 | 2026-09-22 16:51:04 | e40889f8 | 019 | bot.rearchitected | svc-LAPTOP-LRE6PSA8 | {"lane": "groq:qwen/qwen3.8-27b", "tools": ["exec", "write_file", "read_file"], "permissions": ["fs:read", "fs:write", "shell:workspace"], " |
+| 502 | 2026-09-22 16:51:04 | b1ca6779 | 019 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "019", "retest_of": "e40889f8d84e4e758b43b15ee0206d1d", "rearchitected": true}} |
+| 503 | 2026-09-22 16:51:04 | e40889f8 | 019 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "019", "pass": 2, "total": 3, "status": "testing"}} |
