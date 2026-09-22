@@ -272,3 +272,49 @@
 | 268 | 2026-09-22 03:16:41 | 1bb54312 | 016 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "workspace-tidy-counter", "tools": ["exec"], "permissions": ["shell:workspace"], "chain": ["groq-gptoss120b", "or-ling-30-flash-vl" |
 | 269 | 2026-09-22 03:16:41 | 1bb54312 | 016 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 14s [done] expect='X_OK' last='X_OK' \| T2 PASS 94s [done] expect='2' last='RESULT: 2' \| T3 PASS 53s [done] expect='0'  |
 | 270 | 2026-09-22 03:16:41 | 1bb54312 | 016 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "016", "name": "workspace-tidy-counter", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
+| 271 | 2026-09-22 03:51:46 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 272 | 2026-09-22 03:51:48 | b59e7101 |  | job.enqueued | builder | {"kind": "monitor", "payload": {"only": null, "day": "2026-09-22"}} |
+| 273 | 2026-09-22 03:51:50 | b59e7101 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 274 | 2026-09-22 05:05:34 | c959e323 | 003 | job.enqueued | builder | {"kind": "test", "payload": {"bot_id": "003"}} |
+| 275 | 2026-09-22 05:05:34 | e826d8e4 | 004 | job.enqueued | builder | {"kind": "test", "payload": {"bot_id": "004"}} |
+| 276 | 2026-09-22 05:05:35 | 66005b63 | 005 | job.enqueued | builder | {"kind": "test", "payload": {"bot_id": "005"}} |
+| 277 | 2026-09-22 05:05:35 | 2013c930 | 009 | job.enqueued | builder | {"kind": "test", "payload": {"bot_id": "009"}} |
+| 278 | 2026-09-22 05:07:34 | c959e323 |  | job.cancelled | owner | {} |
+| 279 | 2026-09-22 05:07:34 | e826d8e4 |  | job.cancelled | owner | {} |
+| 280 | 2026-09-22 05:07:35 | 66005b63 |  | job.cancelled | owner | {} |
+| 281 | 2026-09-22 05:07:35 | 2013c930 |  | job.cancelled | owner | {} |
+| 282 | 2026-09-22 05:21:46 | b59e7101 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "3/5", "before": "active", "after": "testing", "inconclusive": false, "quota": 0} |
+| 283 | 2026-09-22 05:21:46 | b59e7101 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
+| 284 | 2026-09-22 05:21:46 | 04f8c4f9 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "001", "max_rounds": 2}} |
+| 285 | 2026-09-22 05:21:46 | b59e7101 | 002 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "2/2", "before": "active", "after": "active", "inconclusive": false, "quota": 0} |
+| 286 | 2026-09-22 05:21:46 | b59e7101 | 003 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "2/4", "before": "active", "after": "testing", "inconclusive": false, "quota": 0} |
+| 287 | 2026-09-22 05:21:46 | b59e7101 | 003 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
+| 288 | 2026-09-22 05:21:46 | ac855168 | 003 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "003", "max_rounds": 2}} |
+| 289 | 2026-09-22 05:21:46 | b59e7101 | 004 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "3/4", "before": "active", "after": "testing", "inconclusive": false, "quota": 0} |
+| 290 | 2026-09-22 05:21:46 | b59e7101 | 004 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
+| 291 | 2026-09-22 05:21:46 | 3f313b96 | 004 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "004", "max_rounds": 2}} |
+| 292 | 2026-09-22 05:21:46 | b59e7101 | 005 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "2/4", "before": "active", "after": "testing", "inconclusive": false, "quota": 0} |
+| 293 | 2026-09-22 05:21:46 | b59e7101 | 005 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
+| 294 | 2026-09-22 05:21:46 | f2321ed5 | 005 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "005", "max_rounds": 2}} |
+| 295 | 2026-09-22 05:21:46 | b59e7101 | 006 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "2/4", "before": "active", "after": "testing", "inconclusive": false, "quota": 0} |
+| 296 | 2026-09-22 05:21:46 | b59e7101 | 006 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
+| 297 | 2026-09-22 05:21:46 | a7af2653 | 006 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "006", "max_rounds": 2}} |
+| 298 | 2026-09-22 05:21:46 | b59e7101 | 007 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "3/4", "before": "active", "after": "testing", "inconclusive": false, "quota": 0} |
+| 299 | 2026-09-22 05:21:46 | b59e7101 | 007 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
+| 300 | 2026-09-22 05:21:46 | 200a8275 | 007 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "007", "max_rounds": 2}} |
+| 301 | 2026-09-22 05:21:46 | b59e7101 | 008 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "2/4", "before": "active", "after": "testing", "inconclusive": false, "quota": 0} |
+| 302 | 2026-09-22 05:21:46 | b59e7101 | 008 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
+| 303 | 2026-09-22 05:21:46 | 16e3b204 | 008 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "008", "max_rounds": 2}} |
+| 304 | 2026-09-22 05:21:46 | b59e7101 | 009 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "3/4", "before": "active", "after": "testing", "inconclusive": false, "quota": 0} |
+| 305 | 2026-09-22 05:21:46 | b59e7101 | 009 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
+| 306 | 2026-09-22 05:21:46 | 2cc34059 | 009 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "009", "max_rounds": 2}} |
+| 307 | 2026-09-22 05:21:46 | b59e7101 | 011 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "4/4", "before": "active", "after": "active", "inconclusive": false, "quota": 0} |
+| 308 | 2026-09-22 05:21:46 | b59e7101 | 012 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "3/4", "before": "active", "after": "testing", "inconclusive": false, "quota": 0} |
+| 309 | 2026-09-22 05:21:46 | b59e7101 | 012 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
+| 310 | 2026-09-22 05:21:46 | 136c6448 | 012 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "012", "max_rounds": 2}} |
+| 311 | 2026-09-22 05:21:46 | b59e7101 | 013 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "4/4", "before": "active", "after": "active", "inconclusive": false, "quota": 0} |
+| 312 | 2026-09-22 05:21:46 | b59e7101 | 014 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "4/4", "before": "active", "after": "active", "inconclusive": false, "quota": 0} |
+| 313 | 2026-09-22 05:21:46 | b59e7101 | 016 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "3/4", "before": "active", "after": "testing", "inconclusive": false, "quota": 0} |
+| 314 | 2026-09-22 05:21:46 | b59e7101 | 016 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
+| 315 | 2026-09-22 05:21:46 | dffdd22d | 016 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "016", "max_rounds": 2}} |
+| 316 | 2026-09-22 05:21:46 | b59e7101 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |

@@ -418,14 +418,14 @@
       "primary": "groq-gptoss120b"
     },
     "name": "csv-column-sum",
-    "notes": "tests 4/4: T1 PASS 27s [done] expect='X_OK' last='X_OK' | T2 PASS 67s [done] expect='60' last='RESULT: 60' | T3 PASS 62s [done] expect='22' last='22' | T4 PASS 58s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 3/4: monitor 2026-09-22: T1 PASS 33s [done] expect='X_OK' last='X_OK' | T2 FAIL 72s [done] expect='60' last='RESULT: Sum of amount column is 60.' | T3 PASS 74s [done] expect='22' last='RESULT: 22' | T4 PASS 52s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
     ],
     "purpose": "Sum the numeric values in the 'amount' column of a CSV file.",
     "schedules": [],
-    "status": "active",
+    "status": "testing",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write data.csv containing 'id,amount\\n1,10\\n2,20\\n3,30' then sum the amount column -> 60",
@@ -436,8 +436,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T01:02:50+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-09-22T04:08:58+00:00",
+    "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\012-csv-column-sum"
   },
@@ -455,7 +455,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "log-error-filter",
-    "notes": "tests 4/4: repair round 1 via groq:qwen/qwen3.8-27b: T1 PASS 14s [done] expect='X_OK' last='X_OK' | T2 PASS 88s [done] expect='1' last='RESULT: 1' | T3 PASS 90s [done] expect='0' last='RESULT: 0' | T4 PASS 53s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: monitor 2026-09-22: T1 PASS 35s [done] expect='X_OK' last='X_OK' | T2 PASS 91s [done] expect='1' last='RESULT: 1' | T3 PASS 94s [done] expect='0' last='RESULT: 0' | T4 PASS 54s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -473,7 +473,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T01:43:48+00:00",
+    "updated": "2026-09-22T04:13:35+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\013-log-error-filter"
@@ -492,7 +492,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "error-log-analyzer",
-    "notes": "tests 4/4: T1 PASS 32s [done] expect='X_OK' last='X_OK' | T2 PASS 99s [done] expect='5' last='5' | T3 PASS 92s [done] expect='Timeout' last='Timeout' | T4 PASS 54s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: monitor 2026-09-22: T1 PASS 32s [done] expect='X_OK' last='X_OK' | T2 PASS 91s [done] expect='5' last='5' | T3 PASS 76s [done] expect='Timeout' last='Timeout' | T4 PASS 51s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -510,7 +510,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T01:38:37+00:00",
+    "updated": "2026-09-22T04:17:47+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\014-error-log-analyzer"
@@ -563,13 +563,13 @@
       "primary": "groq-gptoss120b"
     },
     "name": "workspace-tidy-counter",
-    "notes": "tests 4/4: T1 PASS 14s [done] expect='X_OK' last='X_OK' | T2 PASS 94s [done] expect='2' last='RESULT: 2' | T3 PASS 53s [done] expect='0' last='RESULT: 0' | T4 PASS 80s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 3/4: monitor 2026-09-22: T1 PASS 33s [done] expect='X_OK' last='X_OK' | T2 FAIL 58s [done] expect='2' last='CAPABILITY_MISSING: write_file' | T3 PASS 54s [done] expect='0' last='RESULT: 0' | T4 PASS 92s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "shell:workspace"
     ],
     "purpose": "Count .tmp files in the workspace directory using PowerShell and return the integer count.",
     "schedules": [],
-    "status": "active",
+    "status": "testing",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write a file named test1.tmp using write_file. Then write a file named test2.tmp using write_file. Then use exec to count the .tmp files in the workspace and reply with the count. -> 2",
@@ -579,8 +579,8 @@
     "tools": [
       "exec"
     ],
-    "updated": "2026-09-22T02:16:41+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-09-22T04:21:46+00:00",
+    "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\016-workspace-tidy-counter"
   }
