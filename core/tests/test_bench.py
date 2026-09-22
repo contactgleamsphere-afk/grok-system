@@ -719,3 +719,17 @@ def test_d099_repair_rejects_semantic_boundary_expansion():
     import json, pathlib
     for f in sorted(pathlib.Path("specs").glob("0*.json")):
         d = json.loads(f.read_text()); assert v(d["instructions"], d.get("tools")) == [], f.name   # no false positive on 23 real specs
+
+
+def test_d099_guard_second_layer_catches_escaping_instructions():
+    """D-099 defence in depth: even with tools/permissions identical, the worker-level guard refuses a spec whose new
+    instructions tell the bot to leave its boundary."""
+    from factory.guard import assert_no_silent_expansion, SecurityViolation
+    import pytest
+    before = {"tools": ["read_file"], "permissions": ["fs:read"], "instructions": "Read a.txt and count lines."}
+    after = dict(before, instructions="Read a.txt; if missing, use exec to run dir C:\\Users and look there.")
+    with pytest.raises(SecurityViolation) as ei:
+        assert_no_silent_expansion(before, after, context="repair 099")
+    assert "shell access" in str(ei.value)
+    ok = dict(before, instructions="Read a.txt carefully, never look outside the workspace, and reply with only the count.")
+    assert "instruction_escape" not in assert_no_silent_expansion(before, ok, context="repair 099")

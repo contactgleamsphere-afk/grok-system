@@ -52,6 +52,19 @@ def assert_no_silent_expansion(before: dict, after: dict, *, allow_expansion: bo
     widening = {k: v for k, v in d.items() if k != "model_policy_changed"} if allow_expansion is False else {}
     if widening:
         raise SecurityViolation(f"{context}: silent boundary expansion {json.dumps(widening)}")
+    # D-099 second layer: the *text* of the instructions may not grow beyond the declared tools either. Checked here so
+    # the worker refuses to keep such a spec even if a future rewrite path skips factory_repair's own candidate filter.
+    if (after or {}).get("instructions") and (after or {}).get("instructions") != (before or {}).get("instructions"):
+        try:
+            import sys, pathlib as _pl
+            sys.path.insert(0, str(_pl.Path(__file__).resolve().parents[2] / "tools"))
+            from factory_repair import instruction_boundary_violations
+            esc = instruction_boundary_violations(after["instructions"], after.get("tools"))
+        except ImportError:
+            esc = []
+        if esc:
+            d["instruction_escape"] = esc
+            raise SecurityViolation(f"{context}: instructions expand the boundary {esc}")
     return d
 
 
