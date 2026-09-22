@@ -176,7 +176,15 @@ class JobStore:
                         "WHERE id=? AND state='running'", (1 if uncount else 0, time.time(), jid))
         self.audit("job.released", job_id=jid, actor=actor, uncount=uncount); return self.get(jid)
 
-    def resume(self, jid: str, actor: str = "owner") -> dict:
+    def resume(self, jid: str, actor: str = "owner", payload_patch: dict | None = None) -> dict:
+        """Re-queue a paused/failed job. `payload_patch` (D-054) is how an OWNER grants what the job lacked, e.g.
+        {"allowed_permissions": [...]} — recorded in the audit so a widened allowance is never silent."""
+        if payload_patch:
+            j = self.get(jid)
+            if j is None: raise KeyError(jid)
+            new = {**j["payload"], **payload_patch}
+            self.db.execute("UPDATE jobs SET payload=? WHERE id=?", (json.dumps(new), jid))
+            self.audit("job.payload_patched", job_id=jid, actor=actor, patch=payload_patch)
         self.db.execute("UPDATE jobs SET state='queued',attempts=0,not_before=0,updated=? WHERE id=? AND state IN ('paused','failed')",
                         (time.time(), jid))
         self.audit("job.resumed", job_id=jid, actor=actor); return self.get(jid)

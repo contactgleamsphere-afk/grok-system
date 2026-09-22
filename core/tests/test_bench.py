@@ -143,3 +143,14 @@ def test_d054_allowance_gate_runs_before_build(tmp_path, monkeypatch):
     monkeypatch.setattr(fp, "chat", chat)
     out = fp.cmd_create("system cleanup bot", "092", False, True, ["fs:read", "shell:workspace"])
     assert out["bot_id"] == "092" and Registry(tmp_path / "registry").get("bots", "092") is not None
+
+
+def test_resume_with_owner_grant_patches_payload_and_audits(tmp_path):
+    from factory.jobs import JobStore
+    st = JobStore(tmp_path / "j.sqlite3")
+    j = st.enqueue("create", {"objective": "cleanup with shell"})
+    st.db.execute("UPDATE jobs SET state='paused', failure_class='security' WHERE id=?", (j["id"],))
+    out = st.resume(j["id"], actor="owner", payload_patch={"allowed_permissions": ["fs:read", "shell:workspace"]})
+    assert out["state"] == "queued" and out["payload"]["allowed_permissions"] == ["fs:read", "shell:workspace"]
+    events = [r["event"] for r in st.audit_rows(10)]
+    assert "job.payload_patched" in events and "job.resumed" in events

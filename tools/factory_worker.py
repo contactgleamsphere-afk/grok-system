@@ -6,7 +6,7 @@
   python tools/factory_worker.py add test|repair|rearchitect <bot_id>
   python tools/factory_worker.py add monitor
   python tools/factory_worker.py add bench [--lanes a,b] [--stale-only] [--max N]   # D-050 lane quality
-  python tools/factory_worker.py status | jobs | resume <job_id> | cancel <job_id> | release <job_id> [--uncount] | audit [bot_id] [--width N]
+  python tools/factory_worker.py status | jobs | resume <job_id> [--allow fs:read,shell:workspace] | cancel <job_id> | release <job_id> [--uncount] | audit [bot_id] [--width N]
 
 Autonomous loop (capability 1): a `create` job that ends VERIFIED enqueues nothing more (monitor covers it);
 a `monitor` job enqueues a `repair` job for every bot it demoted; a `repair` that fails pauses with a class
@@ -304,8 +304,11 @@ def main(a: list[str]) -> int:
         return 0
     if cmd == "resume":
         ids = [j["id"] for j in store.list(["paused", "failed"])] if (len(a) < 3 or a[2] == "--all") else [store.resolve(a[2])]
-        for i in ids: store.resume(i)
-        print(json.dumps({"resumed": [i[:8] for i in ids]})); return 0
+        patch = {"allowed_permissions": opt("--allow").split(",")} if opt("--allow") else None    # D-054 owner grant
+        if patch and len(ids) != 1: print("--allow needs exactly one job id"); return 2
+        if patch and "shell:system" in patch["allowed_permissions"]: print("shell:system is never grantable"); return 2
+        for i in ids: store.resume(i, actor=opt("--actor", "owner"), payload_patch=patch)
+        print(json.dumps({"resumed": [i[:8] for i in ids], "granted": patch})); return 0
     if cmd == "cancel": print(json.dumps(store.cancel(store.resolve(a[2]))["state"])); return 0
     if cmd == "release": print(json.dumps(store.release(store.resolve(a[2]), uncount="--uncount" in a)["state"])); return 0
     if cmd == "audit":
