@@ -446,3 +446,9 @@ the hourly probe (≈50 tokens) succeeded in between and cleared `quota_until`, 
 lane that could only serve probes. Now the runner tags each 429 `kind=tpd|rpd|tpm`; daily kinds cool ≥ 3600 s and a
 probe `ok` does not clear them until the window ends. Groq TPD is per model per org (measured), so the sibling Groq
 lanes stay usable until their own caps.
+
+## D-089 — repo-sync must not hard-reset on a dirty tree (2026-09-22) — VERIFIED (live repro)
+`run/selftest.json` was tracked (added by an early `git add -A` before its ignore rule). Every worker self-test
+modified it → `git rebase` refused with "unstaged changes" → repo-sync's conflict branch ran `reset --hard
+origin/main`, silently discarding any uncommitted registry edit on the laptop (observed: the D-086 counter reset had to
+be applied twice). Fix: file untracked; repo-sync auto-stashes (incl. untracked) around the rebase and restores after.

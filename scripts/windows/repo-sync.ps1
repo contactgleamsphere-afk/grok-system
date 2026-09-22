@@ -10,6 +10,8 @@ git diff --cached --quiet; if($LASTEXITCODE -ne 0){ git commit -qm "laptop state
 $tok=[Environment]::GetEnvironmentVariable('GITHUB_TOKEN','User'); $url="https://x-access-token:$tok@github.com/contactgleamsphere-afk/grok-system.git"
 $env:GIT_TERMINAL_PROMPT='0'; $env:GCM_INTERACTIVE='Never'
 git -c credential.helper= fetch -q $url main; git update-ref refs/remotes/origin/main FETCH_HEAD
+# D-089: never let a dirty worktree (worker's selftest.json, half-written state) turn a clean rebase into a hard reset
+git stash push -q --include-untracked -m "repo-sync autostash" 2>$null; $stashed = ($LASTEXITCODE -eq 0) -and ((git stash list | Select-String 'repo-sync autostash' | Measure-Object).Count -gt 0)
 git rebase -q origin/main 2>$null
 if($LASTEXITCODE -ne 0){
   # conflict on state files: laptop (runtime truth) wins; on anything else origin wins
@@ -17,5 +19,6 @@ if($LASTEXITCODE -ne 0){
   git add -A; git -c core.editor=true rebase --continue 2>$null
   if($LASTEXITCODE -ne 0){ git rebase --abort; git fetch -q origin; git reset -q --hard origin/main; Write-Output "SYNC: conflict, took origin (laptop state commits preserved in reflog)" }
 }
+if($stashed){ git stash pop -q 2>$null; if($LASTEXITCODE -ne 0){ git checkout -q -- . 2>$null; git stash drop -q 2>$null; Write-Output "SYNC: autostash conflicted, dropped (runtime files only)" } }
 if($tok){ git -c credential.helper= push -q $url HEAD:main 2>&1 | Select -Last 1 }
 git log --oneline -1
