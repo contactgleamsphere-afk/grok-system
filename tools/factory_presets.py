@@ -9,7 +9,12 @@ ROOT = pathlib.Path(os.environ.get("AIFACTORY_REPO", pathlib.Path(__file__).reso
 sys.path.insert(0, str(ROOT / "core"))
 from factory.registry import Registry  # noqa: E402
 CONFIG = pathlib.Path(os.environ.get("AIFACTORY_CONFIG", r"C:\AI\Factory\config.json"))
-SMALL_TPM = {"groq": (8200, 768)}     # provider -> (contextWindowTokens, maxTokens) for 8k-TPM free tiers
+# provider -> (contextWindowTokens, maxTokens). D-087: Groq free tier is 8k TOKENS PER MINUTE, not an 8k context. With
+# ctx 8200 nanobot's context governor computed a ~6.4k input budget and raised ContextWindowExceededError locally for
+# bot 007 (6586 tokens) — an error that never reaches the fallback provider, so the test just failed. At 16k the local
+# check stops pre-empting: a request under 8k goes through; one over 8k gets Groq's 413 (TPM) which the fallback patch
+# already routes to the next (32k+) lane.
+SMALL_TPM = {"groq": (16384, 768)}
 
 
 def sync(config_path: pathlib.Path = CONFIG, dry_run: bool = False) -> tuple[list[str], list[str]]:
@@ -26,10 +31,12 @@ def sync(config_path: pathlib.Path = CONFIG, dry_run: bool = False) -> tuple[lis
             if m.id in presets: presets.pop(m.id); removed.append(m.id)
             continue
         if m.provider not in ("groq", "gemini", "openrouter"): continue   # auto-ADD only for keyed providers we probe
+        ctx, mx = SMALL_TPM.get(m.provider, (32768, 2048))
         if m.id not in presets:
-            ctx, mx = SMALL_TPM.get(m.provider, (32768, 2048))
             presets[m.id] = {"model": m.model, "provider": m.provider, "maxTokens": mx, "contextWindowTokens": ctx, "temperature": 0.2}
             added.append(m.id)
+        elif m.provider in SMALL_TPM and presets[m.id].get("contextWindowTokens") != ctx:     # D-087: policy change applies to existing presets
+            presets[m.id]["contextWindowTokens"] = ctx; added.append(f"{m.id}:ctx={ctx}")
     # D-062: the master's own chain follows the same policy as every child bot (bench-ranked primary within budget,
     # cross-provider fallbacks, local tail) instead of a hand-wired list that strands it when one provider's day quota ends.
     chain_changed = False
