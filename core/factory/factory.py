@@ -195,7 +195,8 @@ class BotFactory:
             "- Stay inside this bot's workspace. Never touch files outside it.",
             "- Never write secrets into files. Never install software.",
             "- If a task needs a tool you do not have, stop and report `CAPABILITY_MISSING: <what>`.",
-            "- Finish every task with one line `RESULT: <summary>`.",
+            "- When asked to write a file with given content, write EXACTLY that content (interpret \\n as a newline); never add, invent or 'improve' lines. Then work only from what the file really contains — an empty result (0, none) is a valid answer.",
+            "- Finish every task with one line `RESULT: <answer>` where <answer> is ONLY the value asked for (a bare number or token), no units, no sentence.",
         ]
         return "\n".join(lines) + "\n"
 
