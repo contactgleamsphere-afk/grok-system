@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 111 | 2026-09-21 22:24:30 | 043bd1f8 | 009 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] expect='X_OK' last='X_OK' \| T2 PASS 16s [done] expect='3' last='3' \| T3 PASS 29s [done] expect='1' last='1' |
-| 112 | 2026-09-21 22:24:30 | 043bd1f8 | 009 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "009", "name": "line-dedupe-bot", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
-| 113 | 2026-09-21 22:46:14 | e0c940c2 |  | job.lease_expired | svc-LAPTOP-LRE6PSA8 | {} |
-| 114 | 2026-09-21 22:46:14 | e0c940c2 | 006 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 2} |
 | 115 | 2026-09-21 22:51:22 | e0c940c2 | 006 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 35s [done] expect='2' last='RESULT: 2' \| T3 PASS 133s [done] expect='0' |
 | 116 | 2026-09-21 22:51:22 | e0c940c2 | 006 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "006", "status": "active", "verified": "VERIFIED"}} |
 | 117 | 2026-09-21 23:03:49 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
@@ -402,3 +398,7 @@
 | 508 | 2026-09-22 16:55:32 | 7bfeca2a | 019 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 509 | 2026-09-22 16:55:32 | 7bfeca2a | 019 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [], "boundary_diff": {}} |
 | 510 | 2026-09-22 16:55:32 | 7bfeca2a | 019 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: logic: spec/tests inconsistent, repair cannot chang |
+| 511 | 2026-09-22 16:55:41 | b9aa0298 | 002 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 512 | 2026-09-22 17:01:15 | b9aa0298 | 002 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 149s [done] expect='SCOUT_OK' last='SCOUT_OK' \| T2 PASS 183s [done] expect='0.3.5' last='RESULT: nanobot-ai latest stab |
+| 513 | 2026-09-22 17:01:15 | b9aa0298 | 002 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 149s [done] expect='SCOUT_OK' last='SCOUT_OK' \| T2 PASS 183s [done] expect='0.3.5' last='RESULT: nanobot-ai latest stab |
+| 514 | 2026-09-22 17:01:15 | b9aa0298 | 002 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "002", "status": "active", "verified": "VERIFIED"}} |

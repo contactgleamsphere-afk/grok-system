@@ -51,7 +51,7 @@
       "primary": "groq-gptoss20b"
     },
     "name": "research-scout",
-    "notes": "tests 2/2: monitor 2026-09-22: T1 PASS 14s [done] expect='SCOUT_OK' last='SCOUT_OK' | T2 PASS 195s [done] expect='0.3.5' last='RESULT: 0.3.5'",
+    "notes": "tests 2/2: T1 PASS 149s [done] expect='SCOUT_OK' last='SCOUT_OK' | T2 PASS 183s [done] expect='0.3.5' last='RESULT: nanobot-ai latest stable on PyPI is 0.3.5 (released 2026-09-15).  VERIFIED via PyPI RSS.'",
     "permissions": [
       "net:search",
       "net:fetch",
@@ -75,7 +75,7 @@
       "web_fetch",
       "read_file"
     ],
-    "updated": "2026-09-22T14:55:15+00:00",
+    "updated": "2026-09-22T16:01:15+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "/home/user/grok-system/bots/002-research-scout"
