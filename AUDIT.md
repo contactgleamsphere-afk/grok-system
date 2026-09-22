@@ -2,12 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 21 | 2026-09-21 19:47:49 | 31ffc26e | 005 | job.done | w4 | {"summary": {"bot_id": "005", "status": "active", "verified": "VERIFIED"}} |
-| 22 | 2026-09-21 19:48:28 | 009ae02a |  | job.enqueued | owner | {"kind": "monitor", "payload": {"only": ["004"], "day": "2026-09-21"}} |
-| 23 | 2026-09-21 19:48:30 | 009ae02a |  | job.claimed | w5 | {"attempt": 1} |
-| 24 | 2026-09-21 19:50:00 | 009ae02a | 004 | bot.monitored | w5 | {"result": "2/4", "before": "active", "after": "testing"} |
-| 25 | 2026-09-21 19:50:00 | 009ae02a | 004 | bot.demoted | w5 | {"to": "testing"} |
-| 26 | 2026-09-21 19:50:00 | a5c299d7 | 004 | job.enqueued | w5 | {"kind": "repair", "payload": {"bot_id": "004", "max_rounds": 2}} |
 | 27 | 2026-09-21 19:50:00 | 009ae02a |  | job.done | w5 | {"summary": {}} |
 | 28 | 2026-09-21 19:50:00 | a5c299d7 | 004 | job.claimed | w5 | {"attempt": 1} |
 | 29 | 2026-09-21 19:50:15 | a5c299d7 | 004 | bot.repair | w5 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "gemini:gemini-3.5-flash-lite", "sandbox": null, "rejected": "instruction |
@@ -402,3 +396,9 @@
 | 418 | 2026-09-22 08:47:53 | ca31fcf3 | 018 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 419 | 2026-09-22 08:49:12 | ca31fcf3 | 018 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"ok": true, "produced": ["totals.csv"], "secs": 78, "reply": "RESULT: totals.csv", "chain": "groq-gptoss120b"} |
 | 420 | 2026-09-22 08:49:12 | ca31fcf3 | 018 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "name": "run", "status": "ok totals.csv"}} |
+| 421 | 2026-09-22 08:59:46 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 422 | 2026-09-22 09:03:41 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 423 | 2026-09-22 09:04:16 | 0c438fbd | 018 | job.enqueued | owner | {"kind": "run", "payload": {"bot_id": "018", "task": "Sum order totals per country into totals.csv", "in": "C:\\AI\\Factory\\workspace\\inbo |
+| 424 | 2026-09-22 09:04:16 | 0c438fbd | 018 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 425 | 2026-09-22 09:05:20 | 0c438fbd | 018 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"ok": true, "produced": ["totals.csv"], "secs": 62, "reply": "RESULT: totals.csv", "chain": "groq-gptoss120b"} |
+| 426 | 2026-09-22 09:05:20 | 0c438fbd | 018 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "name": "run", "status": "ok totals.csv"}} |
