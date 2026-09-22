@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 160 | 2026-09-22 00:56:23 | e1c354b2 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 161 | 2026-09-22 01:00:42 | 29937ab3 |  | job.enqueued | builder | {"kind": "bench", "payload": {"lanes": ["or-ling-30-flash-vl", "groq-gptoss20b", "groq-qwen27b", "gemini-gemma26b"], "stale_only": false, "m |
-| 162 | 2026-09-22 01:00:47 | 29937ab3 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 163 | 2026-09-22 01:07:31 | 29937ab3 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-ling-30-flash-vl", "result": "3/4", "secs": 75} |
-| 164 | 2026-09-22 01:07:31 | 29937ab3 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "groq-gptoss20b", "result": "4/4", "secs": 99} |
 | 165 | 2026-09-22 01:07:31 | 29937ab3 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "groq-qwen27b", "result": "3/4", "secs": 147} |
 | 166 | 2026-09-22 01:07:31 | 29937ab3 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-gemma26b", "result": "3/4", "secs": 80} |
 | 167 | 2026-09-22 01:07:31 | 29937ab3 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
@@ -402,3 +397,8 @@
 | 557 | 2026-09-22 18:39:54 | dbe8c0ee |  | job.enqueued | owner | {"kind": "tick", "payload": {"hour": "2026-09-22T18"}} |
 | 558 | 2026-09-22 18:39:55 | 746d5a79 | 019 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 30s [done] expect='X_OK' last='X_OK' \| T2 PASS 94s [done] expect='1' last='RESULT: 1' \| T3 PASS 74s [done] expect='CON |
 | 559 | 2026-09-22 18:39:55 | 746d5a79 | 019 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "019", "status": "active", "verified": "VERIFIED"}} |
+| 560 | 2026-09-22 18:40:08 | dbe8c0ee |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 561 | 2026-09-22 18:40:08 | f42e8c49 | 018 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "run", "payload": {"bot_id": "018", "task": "Sum order totals per country into totals.csv", "in": "C:\\AI\\Factory\\workspace\\inbo |
+| 562 | 2026-09-22 18:40:08 |  | 018 | schedule.fired | svc-LAPTOP-LRE6PSA8 | {"sid": "5539cff4", "fire": "2026-09-22T18:40", "job": "f42e8c49"} |
+| 563 | 2026-09-22 18:40:08 | 83f56639 |  | job.dedup | svc-LAPTOP-LRE6PSA8 | {"kind": "tick"} |
+| 564 | 2026-09-22 18:40:08 | dbe8c0ee |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
