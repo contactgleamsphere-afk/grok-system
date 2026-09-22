@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 171 | 2026-09-22 01:20:54 | a8c013ad |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-nex-n25-pro", "result": "4/4", "secs": 84} |
-| 172 | 2026-09-22 01:20:54 | a8c013ad |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-ling-30-flash-vl", "result": "4/4", "secs": 62} |
-| 173 | 2026-09-22 01:20:54 | a8c013ad |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-gemma26b", "result": "3/4", "secs": 73} |
-| 174 | 2026-09-22 01:20:54 | a8c013ad |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "groq-qwen27b", "result": "2/4", "secs": 147} |
 | 175 | 2026-09-22 01:20:54 | a8c013ad |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "groq-gptoss20b", "result": "2/4", "secs": 47} |
 | 176 | 2026-09-22 01:20:54 | a8c013ad |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-qwen27b", "result": "0/4", "secs": 76} |
 | 177 | 2026-09-22 01:20:54 | a8c013ad |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
@@ -402,3 +398,7 @@
 | 568 | 2026-09-22 18:41:58 | f42e8c49 | 018 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 569 | 2026-09-22 18:43:43 | f42e8c49 | 018 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"ok": true, "produced": ["totals.csv"], "secs": 102, "reply": "RESULT: totals.csv", "chain": "groq-gptoss120b"} |
 | 570 | 2026-09-22 18:43:43 | f42e8c49 | 018 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "name": "run", "status": "ok totals.csv"}} |
+| 571 | 2026-09-22 18:43:56 | a1d1feda | 007 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 572 | 2026-09-22 18:54:25 | a1d1feda | 007 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 52s [done] expect='X_OK' last='X_OK' \| T2 PASS 296s [done] expect='2' last='RESULT: Extracted 2 TODO/FIXME items into t |
+| 573 | 2026-09-22 18:54:25 | a1d1feda | 007 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 52s [done] expect='X_OK' last='X_OK' \| T2 PASS 296s [done] expect='2' last='RESULT: Extracted 2 TODO/FIXME items into t |
+| 574 | 2026-09-22 18:54:25 | a1d1feda | 007 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "007", "status": "active", "verified": "VERIFIED"}} |
