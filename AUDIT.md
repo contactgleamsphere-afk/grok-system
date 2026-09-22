@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 219 | 2026-09-22 02:10:08 | 25a47cdb |  | job.enqueued | master-001 | {"kind": "plan", "payload": {"objective": "log-triage pipeline: first a bot that reads app.log and writes errors.txt containing only the lin |
-| 220 | 2026-09-22 02:10:11 | 25a47cdb |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 221 | 2026-09-22 02:10:13 | ff5312d9 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "create", "payload": {"objective": "Read app.log, filter lines containing 'ERROR', and write them to errors.txt.", "plan": "25a47cd |
-| 222 | 2026-09-22 02:10:13 | f9ae8ab7 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "create", "payload": {"objective": "Read errors.txt, count the total lines, identify the three most common error messages, and writ |
 | 223 | 2026-09-22 02:10:13 | 25a47cdb |  | plan.made | svc-LAPTOP-LRE6PSA8 | {"lane": "groq:qwen/qwen3.8-27b", "steps": 2, "queued": [[1, "ff5312d9"], [2, "f9ae8ab7"]], "rationale": "The objective requires a sequentia |
 | 224 | 2026-09-22 02:10:13 | 25a47cdb |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 225 | 2026-09-22 02:10:16 | ff5312d9 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +398,7 @@
 | 616 | 2026-09-22 19:31:10 | 8f64a64f | 014 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 PASS 27s [done] expect='5' last='5' \| T3 PASS 20s [done] expect='Timeout' la |
 | 617 | 2026-09-22 19:31:10 | 8f64a64f | 014 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 PASS 27s [done] expect='5' last='5' \| T3 PASS 20s [done] expect='Timeout' la |
 | 618 | 2026-09-22 19:31:10 | 8f64a64f | 014 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "014", "status": "active", "verified": "VERIFIED"}} |
+| 619 | 2026-09-22 19:31:15 | 75abeab4 | 016 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 620 | 2026-09-22 19:35:20 | 75abeab4 | 016 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 26s [done] expect='X_OK' last='X_OK' \| T2 PASS 74s [done] expect='2' last='RESULT: 2' \| T3 PASS 31s [done] expect='0'  |
+| 621 | 2026-09-22 19:35:20 | 75abeab4 | 016 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 26s [done] expect='X_OK' last='X_OK' \| T2 PASS 74s [done] expect='2' last='RESULT: 2' \| T3 PASS 31s [done] expect='0'  |
+| 622 | 2026-09-22 19:35:20 | 75abeab4 | 016 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "016", "status": "active", "verified": "VERIFIED"}} |
