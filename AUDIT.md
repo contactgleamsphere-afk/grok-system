@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 383 | 2026-09-22 07:57:53 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 384 | 2026-09-22 07:57:57 | 854ab0a2 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 385 | 2026-09-22 08:00:15 | 854ab0a2 | 013 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"plan": "25a47cdb", "step": 1, "ok": true, "produced": ["errors.txt"], "missing": [], "secs": 63, "reply": "6", "chain": "groq-gptoss120b"} |
 | 386 | 2026-09-22 08:00:15 | 854ab0a2 | 014 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"plan": "25a47cdb", "step": 2, "ok": true, "produced": ["summary.txt"], "missing": [], "secs": 70, "reply": "RESULT: summary.txt created wi |
 | 387 | 2026-09-22 08:00:15 | 854ab0a2 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"name": "run:plan 25a47cdb", "status": "ok app.log,errors.txt,summary.txt"}} |
 | 388 | 2026-09-22 08:09:01 | ab214a76 | 013 | job.enqueued | builder | {"kind": "run", "payload": {"bot_id": "013", "task": "Filter the ERROR lines of app.log into errors.txt and reply with the count.", "in": "C |
@@ -402,3 +399,6 @@
 | 780 | 2026-09-22 23:12:53 | 4004bf3d |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-flash36", "result": "2/4", "quota": 0, "secs": 63} |
 | 781 | 2026-09-22 23:12:53 | 4004bf3d |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-lite31", "result": "4/4", "quota": 0, "secs": 73} |
 | 782 | 2026-09-22 23:12:53 | 4004bf3d |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["gemini-flash36", "2/4"], ["gemini-lite31", "4/4"]]}} |
+| 783 | 2026-09-22 23:13:27 | c367ebb5 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 784 | 2026-09-22 23:13:27 | 6349a92d |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-23T00"}} |
+| 785 | 2026-09-22 23:13:47 | c367ebb5 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen2 |
