@@ -44,11 +44,14 @@ def test_discover_evaluate_sandbox_integrate(tmp_path, monkeypatch):
 def test_presets_sync_adds_and_removes(tmp_path, monkeypatch):
     reg, fd = _setup(tmp_path, monkeypatch)
     reg.upsert("models", ModelEntry(id="or-new", provider="openrouter", model="n/x:free", capabilities=["chat", "tools"], context_window=32000, location="remote", verified="INFERRED"))
-    cfg = tmp_path / "config.json"; cfg.write_text(json.dumps({"modelPresets": {"or-old": {"model": "old/one:free", "provider": "openrouter"}}, "providers": {"openrouter": {"apiKey": "${K}"}}}))
+    reg.upsert("models", ModelEntry(id="ovh-x", provider="custom", model="x", capabilities=["chat", "tools"], context_window=32000, location="remote", verified="BLOCKED"))
+    reg.upsert("models", ModelEntry(id="ovh-y", provider="custom", model="y", capabilities=["chat", "tools"], context_window=32000, location="remote", verified="INFERRED"))
+    cfg = tmp_path / "config.json"; cfg.write_text(json.dumps({"modelPresets": {"or-old": {"model": "old/one:free", "provider": "openrouter"}, "ovh-x": {"model": "x", "provider": "custom"}}, "providers": {"openrouter": {"apiKey": "${K}"}}}))
     import importlib, factory_presets as fps; importlib.reload(fps)
     added, removed = fps.sync(cfg)
     c = json.loads(cfg.read_text())
-    assert added == ["or-new"] and removed == ["or-old"] and "or-new" in c["modelPresets"] and c["providers"]["openrouter"]["apiKey"] == "${K}"
+    assert added == ["or-new"] and sorted(removed) == ["or-old", "ovh-x"] and "or-new" in c["modelPresets"] and c["providers"]["openrouter"]["apiKey"] == "${K}"
+    assert "ovh-y" not in c["modelPresets"]     # BLOCKED custom lanes are pruned, but custom lanes are never auto-added
 
 
 def test_probation_lane_blocked_on_first_failure(tmp_path, monkeypatch):

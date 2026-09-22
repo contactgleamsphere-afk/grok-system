@@ -22,10 +22,10 @@ def sync(config_path: pathlib.Path = CONFIG, dry_run: bool = False) -> tuple[lis
         if pid not in known and presets[pid].get("provider") in ("groq", "gemini", "openrouter", "custom"):
             presets.pop(pid); removed.append(pid)
     for m in reg.all("models"):
-        if m.provider not in ("groq", "gemini", "openrouter"): continue
-        if m.verified == "BLOCKED":
+        if m.verified == "BLOCKED":                      # any provider: a BLOCKED lane must not be routable
             if m.id in presets: presets.pop(m.id); removed.append(m.id)
             continue
+        if m.provider not in ("groq", "gemini", "openrouter"): continue   # auto-ADD only for keyed providers we probe
         if m.id not in presets:
             ctx, mx = SMALL_TPM.get(m.provider, (32768, 2048))
             presets[m.id] = {"model": m.model, "provider": m.provider, "maxTokens": mx, "contextWindowTokens": ctx, "temperature": 0.2}
