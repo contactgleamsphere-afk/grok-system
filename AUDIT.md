@@ -231,3 +231,7 @@
 | 227 | 2026-09-22 02:15:18 | ff5312d9 | 013 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 8s [done] expect='X_OK' last='X_OK' \| T2 PASS 112s [done] expect='1' last='RESULT: 1 line in errors.txt' \| T3 FAIL 119 |
 | 228 | 2026-09-22 02:15:18 | e39e05e4 | 013 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "013", "retest_of": "ff5312d97a2841e2800def53ee49bdc9"}} |
 | 229 | 2026-09-22 02:15:18 | ff5312d9 | 013 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "013", "name": "log-error-filter", "pass": 3, "total": 4, "status": "testing", "verified": "UNVERIFIED"}} |
+| 230 | 2026-09-22 02:15:22 | e39e05e4 | 013 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 231 | 2026-09-22 02:24:12 | e39e05e4 | 013 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 32s [done] expect='X_OK' last='X_OK' \| T2 FAIL 321s [TIMEOUT] expect='1' last='' \| T3 FAIL 123s [done] expect='0' last |
+| 232 | 2026-09-22 02:24:12 | e43a9934 | 013 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "013", "max_rounds": 2, "rearchitected": false}} |
+| 233 | 2026-09-22 02:24:12 | e39e05e4 | 013 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "013", "status": "testing", "verified": "UNVERIFIED"}} |
