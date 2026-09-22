@@ -50,13 +50,17 @@ def _tail(raw: str, n: int = 12) -> str:
     return "LAST OUTPUT LINES:\n" + "\n".join(l[:160] for l in lines)
 
 
-def regenerate_instructions(spec: dict, evidence: str, raw: str = "") -> tuple[str, str]:
+def regenerate_instructions(spec: dict, evidence: str, raw: str = "", tried: set[str] | None = None) -> tuple[str, str]:
     msg = REPAIR_PROMPT.format(purpose=spec["purpose"], tools=", ".join(spec["tools"]),
                                instructions=spec["instructions"],
                                tests="\n".join(t.rsplit("->", 1)[0].strip() for t in spec["tests"]),
                                evidence=evidence[:600], last_lines=_tail(raw))
     for _ in range(3):
-        text, lane = fp.chat([{"role": "user", "content": msg}], max_tokens=1500)
+        try:
+            text, lane = fp.chat([{"role": "user", "content": msg}], max_tokens=1500, skip=tried)
+        except RuntimeError:
+            if not tried: raise
+            text, lane = fp.chat([{"role": "user", "content": msg}], max_tokens=1500)   # every other lane is down: allow a repeat
         m = re.search(r"\{.*\}", text, re.S)
         try:
             new = json.loads(m.group(0) if m else text)["instructions"].strip()
@@ -107,8 +111,10 @@ def repair(bot_id: str, max_rounds: int = 2, runner=None, chat=None) -> dict:
     evidence = e.notes; raw = ""
     log = {"bot_id": bot_id, "name": e.name, "rounds": [], "permissions_before": before["permissions"]}
     sandbox_root = bots_root; sandbox_name = f"{e.id}-{e.name}-repair"
+    tried: set[str] = set()          # D-056: each round uses a lane that has not yet failed this bot
     for rnd in range(1, max_rounds + 1):
-        new_instr, lane = regenerate_instructions(spec, evidence, raw)
+        new_instr, lane = regenerate_instructions(spec, evidence, raw, tried)
+        tried.add(lane)
         cand = {**spec, "instructions": new_instr, "name": f"{e.name}-repair"}
         changed = permissions_unchanged(before, {**cand, "name": e.name})
         problems = validate_spec(cand, reg)

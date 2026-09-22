@@ -65,10 +65,14 @@ def live_lanes() -> list[tuple[str, str, str | None, str]]:
         return LANES
 
 
-def chat(messages: list[dict], max_tokens: int = 1200) -> tuple[str, str]:
-    """Try each live lane in order; return (text, lane_label). Quota/auth/connection errors rotate (D-017/D-042)."""
+def chat(messages: list[dict], max_tokens: int = 1200, skip: set[str] | None = None) -> tuple[str, str]:
+    """Try each live lane in order; return (text, lane_label). Quota/auth/connection errors rotate (D-017/D-042).
+    `skip` (D-056) = lane labels ("provider:model") that already failed to solve THIS task — a different model gets
+    the next attempt instead of the same one repeating itself."""
     errors = []
     for name, base, keyvar, model in live_lanes():
+        if skip and f"{name}:{model}" in skip:
+            errors.append(f"{name}:{model} skipped (already tried)"); continue
         key = os.environ.get(keyvar) if keyvar else "ollama"
         if not key:
             errors.append(f"{name}:{model} no key"); continue

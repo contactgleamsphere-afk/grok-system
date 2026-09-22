@@ -154,3 +154,24 @@ def test_resume_with_owner_grant_patches_payload_and_audits(tmp_path):
     assert out["state"] == "queued" and out["payload"]["allowed_permissions"] == ["fs:read", "shell:workspace"]
     events = [r["event"] for r in st.audit_rows(10)]
     assert "job.payload_patched" in events and "job.resumed" in events
+
+
+def test_d056_repair_rotates_lane_between_rounds(tmp_path, monkeypatch):
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    import importlib, factory_repair as fr; importlib.reload(fr)
+    lanes_seen = []
+    def fake_chat(msgs, max_tokens=1200, skip=None):
+        for lane in ("groq:a", "gemini:b", "openrouter:c"):
+            if not skip or lane not in skip:
+                lanes_seen.append(lane)
+                return json.dumps({"instructions": f"Round via {lane}. " + "Compute precisely and answer with only the value. " * 6}), lane
+        raise RuntimeError("all lanes failed")
+    monkeypatch.setattr(fp, "chat", fake_chat)
+    spec = {"purpose": "p", "tools": ["read_file"], "instructions": "old " * 40, "tests": ["a -> b"]}
+    tried = set()
+    for _ in range(3):
+        _, lane = fr.regenerate_instructions(spec, "T1 FAIL", "", tried); tried.add(lane)
+    assert lanes_seen == ["groq:a", "gemini:b", "openrouter:c"]      # never the same lane twice while others exist
+    # when every lane has been tried, a repeat is allowed rather than giving up
+    _, lane = fr.regenerate_instructions(spec, "T1 FAIL", "", tried)
+    assert lane == "groq:a"

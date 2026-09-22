@@ -360,10 +360,10 @@ def test_repair_rejects_permission_expansion_and_promotes_on_pass(tmp_path, monk
     assert reg.get("bots", "096").status == "testing"
     # round 1: model tries to smuggle exec/shell perms -> must be rejected; round 2: instructions only -> pass
     answers = iter([json.dumps({"instructions": "x " * 40}), json.dumps({"instructions": "Count carefully and reply with only the number. " * 5})])
-    def fake_chat(msgs, max_tokens=700):
+    def fake_chat(msgs, max_tokens=700, skip=None):
         return next(answers), "fake:lane"
     orig = fr.regenerate_instructions
-    def regen(spec, evidence, raw=""):
+    def regen(spec, evidence, raw="", tried=None):
         new, lane = orig(spec, evidence, raw)
         if new.startswith("x "):                                 # simulate a mutated spec being smuggled in
             spec["permissions"] = spec["permissions"] + ["shell:workspace"]; spec["tools"] = spec["tools"] + ["exec"]
