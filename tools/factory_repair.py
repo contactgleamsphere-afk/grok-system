@@ -100,7 +100,10 @@ def repair(bot_id: str, max_rounds: int = 2, runner=None, chat=None, skip_reveri
     if e is None: raise FactoryError(f"unknown bot {bot_id}")
     if e.status != "testing":
         return {"ok": False, "bot_id": bot_id, "error": f"repair only runs on demoted bots (status={e.status})"}
-    sp = _spec_path(reg, e); spec = json.loads(sp.read_text(encoding="utf-8"))
+    sp = _spec_path(reg, e)
+    if not sp.exists():
+        return {"ok": False, "bot_id": bot_id, "status": e.status, "error": f"logic: bot {bot_id} has no spec ({sp.name}); hand-wired bots are re-verified by monitor, not repaired"}
+    spec = json.loads(sp.read_text(encoding="utf-8"))
     # D-052: instructions cannot fix a spec whose tests need tools it does not have (tools are frozen here).
     # Fail closed as `logic` so the job pauses for the architect instead of burning repair rounds.
     incons = fp.spec_consistency(spec)

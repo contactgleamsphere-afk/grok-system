@@ -205,7 +205,13 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
                 continue
             if r["after"] != "active":
                 store.audit("bot.demoted", job_id=jid, bot_id=r["id"], actor=worker, to=r["after"])
-                store.enqueue("repair", {"bot_id": r["id"], "max_rounds": 2}, priority=2, parent=jid, actor=worker)
+                if r["id"] == "001":
+                    # D-060: the master is hand-wired (no spec) — it cannot be "repaired" by rewriting instructions.
+                    # Re-verify it in 30 min; if it keeps failing the daily report flags it for the owner.
+                    store.enqueue("monitor", {"only": ["001"], "day": datetime.date.today().isoformat(), "retry_of": jid},
+                                  priority=2, parent=jid, actor=worker, not_before=time.time() + 1800)
+                else:
+                    store.enqueue("repair", {"bot_id": r["id"], "max_rounds": 2}, priority=2, parent=jid, actor=worker)
         if res.get("inconclusive"):
             store.enqueue("monitor", {"only": res["inconclusive"], "day": datetime.date.today().isoformat(), "retry_of": jid},
                           priority=3, parent=jid, actor=worker, not_before=time.time() + 7200)
