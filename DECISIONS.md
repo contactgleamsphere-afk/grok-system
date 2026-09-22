@@ -277,3 +277,10 @@ bots created/ran, files produced, child jobs); `factory.py runs` lists run outpu
 Live, in chat: "I put a log file in inbox/logs-sep22. Run the log triage pipeline on it" → `dir inbox` →
 `queue run --plan 25a47cdb --in logs-sep22` → job f230e382 done (013 → 6 errors, 014 → summary.txt). Then
 "How did job f230e382 go?" → master answered from `factory.py job`.
+
+## D-065 — Create resumes at the test stage after a crash; never a duplicate bot (2026-09-22) — VERIFIED live
+Persistent-job gap: a `create` that died between build and verdict was re-claimed and rebuilt a *second* bot (new id)
+while the half-built one sat in `testing`. Now `bot.created` is audited the moment the bundle exists (`on_built`
+callback inside `cmd_create`), and a re-claimed create first looks for its own `bot.created` — if that bot is
+`building/testing` it resumes with `cmd_test` and audits `job.resumed_at`. Live kill test (job 1c4af272): worker
+killed mid-test → lease expired → attempt 2 → `job.resumed_at stage=test` → 017 tested, registry still 17 bots, no 018.

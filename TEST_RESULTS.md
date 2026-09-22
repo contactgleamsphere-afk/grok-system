@@ -273,3 +273,6 @@ After D-059..D-062, every demotion from monitor b59e7101 recovered without a hum
 
 ## 2026-09-22 — D-064 chat → run → report — VERIFIED
 Master 001 session: queued plan run from inbox (f230e382), both steps ok, and later reported the outcome on request. Crash test: worker killed mid-`run` (ab214a76) → supervisor relaunched in ~20 s, job completed on the same attempt (lease not expired), no duplicate.
+
+## 2026-09-22 — D-065 crash mid-create — VERIFIED
+Worker SIGKILLed 30 s into 017's test phase; supervisor relaunched; attempt 2 resumed at test; no duplicate bot. (017 3/4 with a timeout → normal auto-retest path.) pytest 66/66.
