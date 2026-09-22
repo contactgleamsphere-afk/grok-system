@@ -683,3 +683,18 @@ def test_d097_reuse_matches_original_objective_not_only_purpose(tmp_path, monkey
     assert hit and hit["id"] == "022"
     assert fpl._similar("Count the number of lines in an email text file and report it", ex) is None
     assert fpl._similar("Read refunded.csv, sum the amount column and write summary.txt", ex) is None
+
+
+def test_d098_plan_steps_mixed_reused_and_created(tmp_path):
+    """D-098: a plan whose steps mix reused bots (audited as plan.reused with bot_id in the column) and freshly created
+    bots resolves in step order — live it raised KeyError('bot_id') and paused the run job."""
+    from factory.jobs import JobStore
+    import factory_run as frun
+    st = JobStore(tmp_path / "j.sqlite3")
+    pj = st.enqueue("plan", {"objective": "three step pipeline"})["id"]
+    st.audit("plan.reused", job_id=pj, actor="w", step=1, bot_id="022", similarity=0.7)
+    st.audit("plan.reused", job_id=pj, actor="w", step=2, bot_id="023", similarity=0.78)
+    cj = st.enqueue("create", {"objective": "Read summary.txt and write it upper-cased", "plan": pj, "step": 3, "produces": ["summary_upper.txt"]})["id"]
+    st.audit("bot.created", job_id=cj, bot_id="025", actor="w", name="text-transformer")
+    steps = frun.plan_steps(st, pj[:8])
+    assert [(s["step"], s["bot"], s.get("reused", False)) for s in steps] == [(1, "022", True), (2, "023", True), (3, "025", False)]

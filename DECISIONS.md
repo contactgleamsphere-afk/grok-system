@@ -501,3 +501,8 @@ restating what a bot was built for scored 0.48 and a duplicate bot got built. No
 `spec.objective` (back-filled into 7 older specs from their notes, line endings preserved) and reuse fires on sequence
 ratio ≥ 0.75 OR content-word Jaccard ≥ 0.6 against purpose or objective. Thresholds stay strict — a false reuse gives
 the owner the wrong bot; a missed reuse costs one build.
+
+## D-098 — plan run: reused steps resolve from the audit column (2026-09-22) — VERIFIED (unit + live)
+First real mixed plan (593061c9: reuse 022, reuse 023, create 025) paused its `run` job with KeyError('bot_id'):
+`plan.reused` writes the bot id in the audit `bot_id` column, `plan_steps()` read it from `detail`. Fixed + regression
+test on a real JobStore. Found only because the E2E was run on real data — exactly why mocks are not enough.

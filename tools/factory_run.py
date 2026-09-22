@@ -59,7 +59,8 @@ def plan_steps(store: JobStore, plan_prefix: str) -> list[dict]:
             steps[int(j["payload"]["step"])] = {"objective": j["payload"]["objective"], "produces": j["payload"].get("produces", []), "bot": bot, "job": j["id"][:8]}
     for r in store.audit_rows(5000):
         if r["job_id"] == pj and r["event"] == "plan.reused":
-            d = json.loads(r["detail"]); steps[int(d["step"])] = {"objective": f"(reused bot {d['bot_id']})", "produces": [], "bot": d["bot_id"], "job": None, "reused": True}
+            d = json.loads(r["detail"]); bid = r["bot_id"] or d.get("bot_id")      # D-098: bot id lives in the audit column
+            steps[int(d["step"])] = {"objective": f"(reused bot {bid})", "produces": [], "bot": bid, "job": None, "reused": True}
     return [dict(step=i, **steps[i]) for i in sorted(steps)]
 
 
