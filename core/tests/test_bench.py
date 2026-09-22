@@ -440,7 +440,9 @@ def test_d076_schedules_fire_once_per_slot_and_catch_up_once(tmp_path, monkeypat
     s = fs.add("018", "0 * * * *", "sum orders", in_dir="C:/in")
     with pytest.raises(ValueError): fs.add("019", "0 * * * *", "x")            # not active
     with pytest.raises(ValueError): fs.add("018", "0 * * *", "x")              # bad cron
-    t0 = datetime.datetime.fromisoformat(s["created"])
+    # pin 'created' to a fixed :10 so the arithmetic below never crosses an hour boundary at test time
+    d = fs.load(); d[s["sid"]]["created"] = "2026-09-22T10:10:00"; fs.save(d)
+    t0 = datetime.datetime(2026, 9, 22, 10, 10)
     assert fs.tick(st, now=t0 + datetime.timedelta(minutes=5))["fired"] == []  # not due yet
     r1 = fs.tick(st, now=t0.replace(minute=0) + datetime.timedelta(hours=1, minutes=2))
     assert len(r1["fired"]) == 1 and r1["fired"][0]["bot_id"] == "018"
