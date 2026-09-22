@@ -36,3 +36,16 @@
 Sealed files: bot.json, nanobot.patch.json, AGENTS.md, SOUL.md — sha256 in `registry/bots.json[id].seal`. Drift ⇒
 run/test refuse. Only the factory reseals (build/repair). Live test 2026-09-22: appended a permission-widening line
 to bot 018 AGENTS.md → `run` returned `bundle integrity: ['AGENTS.md'] changed outside the factory`.
+
+## Semantic boundary guard (D-099, 2026-09-23)
+Frozen-field diffs cannot see an expansion that lives in the *wording* of instructions. `instruction_boundary_violations()`
+(tools/factory_repair.py) rejects any affirmative instruction to: shell out without `exec`; use the network without
+`web_*`; touch paths outside the bot workspace (drive letters, `..`, `~`, `%APPDATA%`, `/etc`); handle API keys /
+tokens / passwords; change model/provider/lane; bypass a guard/sandbox/policy; or destroy system-wide data.
+Prohibitions ("never access files outside the workspace") are allowed via sentence-local negation; "if not found, use
+exec" is still affirmative. Applied in repair (candidate rejected before sandbox build, reason audited) and in the
+architect gate (`spec_consistency`). Verified with 0 false positives on all 23 live specs and their history.
+
+## Audit hash chain (D-091, 2026-09-22)
+`AUDIT.jsonl` rows carry `prev`/`h` (sha256 over seq,ts,job,bot,event,actor,detail,prev). `factory_worker.py audit-verify`
+exits 1 on any edit/removal/reorder. The SQLite table stays the source; the JSONL is the tamper-evident export.
