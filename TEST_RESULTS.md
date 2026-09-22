@@ -352,3 +352,8 @@ Chat → job fbeb65ad → bot 018 (4/4) → auto run ca31fcf3 → totals.csv cor
 - `add create --objective ...` (mis-typed) enqueued objective="--objective" → architect call wasted → D-094 added; re-tested: refused at enqueue.
 - "Run pytest in the workspace and report how many tests passed" under default allowance → `security.violation` ("shell:workspace is needed"), job paused after 2 s — no doomed bot built (bot 019 class closed).
 - Same objective with owner grant `--allow fs:read,fs:write,shell:workspace` → bot 024 pytest-runner-bot (tools write_file/read_file/exec), T2 wrote test_dummy.py and ran pytest via exec → `2`; 3/3 VERIFIED in 48 s on gemini-lite31.
+
+## D-095..D-098 live — 2026-09-22 23:40 – 23 00:01
+- D-095 live lane order on laptop: gemini-lite31 (4/4) first, then gemma26b, flash38, flash37, lite35 — Groq lanes cooling (TPD), OpenRouter capped. `is_weak()` = [] today (qwen27b 2/4 has < 8 scored tests).
+- D-097 live: plan 593061c9 (3 stages) → step 1 REUSED 022 (0.70), step 2 REUSED 023 (0.78), step 3 → new bot 025 text-transformer 3/3 VERIFIED in 63 s. Only one build for a 3-stage pipeline.
+- D-098: `run --plan 593061c9` paused with KeyError('bot_id') (mixed reused/created steps) → fixed, regression test, resumed → refunded.csv (3 rows) → summary.txt `39.5` → summary_upper.txt `39.5`, job done 00:00:45. Bots 022/023 ran on groq-gptoss120b again (TPD reset at 00:00 UTC — quota_until honoured then released, D-088/D-092 chain).
