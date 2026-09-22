@@ -506,3 +506,12 @@ the owner the wrong bot; a missed reuse costs one build.
 First real mixed plan (593061c9: reuse 022, reuse 023, create 025) paused its `run` job with KeyError('bot_id'):
 `plan.reused` writes the bot id in the audit `bot_id` column, `plan_steps()` read it from `detail`. Fixed + regression
 test on a real JobStore. Found only because the E2E was run on real data — exactly why mocks are not enough.
+
+## D-099 — Repair rejects semantic boundary expansion (2026-09-23) — VERIFIED (unit, e2e through repair(), 0 false positives on 23 live specs + history)
+`permissions_unchanged` freezes tools/permissions/model_policy, but rewritten *instructions* could still tell a bot to
+shell out, read `C:\Users`, go online, use credentials or "switch to a stronger model" — an expansion no field diff can
+see. `instruction_boundary_violations()` now rejects any affirmative hint of shell / network / outside-workspace paths /
+credentials / model-policy change / guard bypass / destructive system action that the bot's own tool set does not
+grant. Prohibitions ("never access files outside the workspace") are recognised by sentence-local negation, with
+"if not found, use exec" still counted as affirmative. Rejected candidates are never sandbox-built; the reason is
+audited in `bot.repair.rounds[].rejected` as "(security)".

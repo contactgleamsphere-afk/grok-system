@@ -88,6 +88,46 @@ def leaks_expected_tokens(instructions: str, tests: list[str]) -> list[str]:
     return leaked
 
 
+_ESCAPE_HINTS = [
+    (r"\b(ignore|bypass|disable|override|circumvent)\b.{0,40}\b(sandbox|guard|restriction|confinement|permission|policy)", "instructs bypassing a guard/sandbox"),
+    (r"\b(outside|beyond|above)\b.{0,30}\b(the )?workspace\b", "instructs working outside the workspace"),
+    (r"(?<![\w-])(?:[a-z]:\\|/etc/|/home/|/root/|~[/\\]|\.\.[/\\]|%appdata%|%userprofile%|\$home)", "absolute/parent path outside the bot workspace"),
+    (r"\b(https?://|curl\s|wget\s|invoke-webrequest|web_search|web_fetch|fetch (the )?url|search the web)", "network access"),
+    (r"\b(exec|powershell|cmd\.exe|bash|subprocess|os\.system|shell command)", "shell access"),
+    (r"\b(api[_ -]?key|access token|password|credential)s?\b", "credential handling"),
+    (r"\b(switch to|prefer|call)\b.{0,20}\b(a (different|stronger|larger) )?(model|provider|lane)\b", "model policy change"),
+    (r"\b(delete|remove|erase|format)\b.{0,20}\b(entire|whole|system|drive|disk|all files on)\b", "destructive system action"),
+]
+_NEGATION = re.compile(r"\b(never|not|don'?t|do not|must not|avoid|no|without|refuse|cannot|can't|forbidden|prohibited|outside of your|nor)\b")
+
+
+def _negated(low: str, start: int) -> bool:
+    """True when the 60 chars before the match carry a prohibition (\"never … outside the workspace\")."""
+    sent = re.split(r"[.;:!?]", low[max(0, start - 80):start])[-1]         # same sentence
+    m = None
+    for m in _NEGATION.finditer(sent): pass
+    if not m: return False
+    between = sent[m.end():]
+    # "if not found, use exec ..." / "never guess, then run ..." -> a new imperative after the negation is affirmative
+    return not re.search(r"(,|\bthen\b|\band then\b)\s+(use|run|try|call|switch|open|execute|invoke|fetch|read|search)\b", between)
+
+
+def instruction_boundary_violations(instructions: str, tools: list[str] | None = None) -> list[str]:
+    """D-099: the frozen-field check (permissions_unchanged) cannot see a SEMANTIC expansion — rewritten instructions
+    that tell the bot to leave the workspace, shell out, go online, touch credentials or pick its own model. Any such
+    *affirmative* hint that the bot's own tool set does not already legitimately grant rejects the candidate.
+    Prohibitions (\"never access files outside the workspace\") are the template's own language and are allowed.
+    Conservative on purpose: a false positive costs one repair round; a miss would be a silent permission expansion."""
+    tools = set(tools or []); low = instructions.lower(); out = []
+    for pat, why in _ESCAPE_HINTS:
+        if why == "network access" and tools & {"web_search", "web_fetch"}: continue
+        if why == "shell access" and "exec" in tools: continue
+        for m in re.finditer(pat, low, re.I | re.S):
+            if not _negated(low, m.start()):
+                out.append(why); break
+    return sorted(set(out))
+
+
 def permissions_unchanged(before: dict, after: dict) -> list[str]:
     return [k for k in FROZEN if json.dumps(before.get(k), sort_keys=True) != json.dumps(after.get(k), sort_keys=True)]
 
@@ -135,9 +175,11 @@ def repair(bot_id: str, max_rounds: int = 2, runner=None, chat=None, skip_reveri
         changed = permissions_unchanged(before, {**cand, "name": e.name})
         problems = validate_spec(cand, reg)
         leaked = leaks_expected_tokens(new_instr, spec["tests"])
-        if changed or problems or leaked:
+        escapes = instruction_boundary_violations(new_instr, spec.get("tools"))       # D-099
+        if changed or problems or leaked or escapes:
             why = (f"frozen fields changed: {changed}" if changed else
-                   f"instructions hard-code test answers {leaked} (reward hacking)" if leaked else problems)
+                   f"instructions hard-code test answers {leaked} (reward hacking)" if leaked else
+                   f"instructions expand the bot's boundary: {escapes} (security)" if escapes else problems)
             log["rounds"].append({"round": rnd, "lane": lane, "rejected": why, "instructions": new_instr})
             evidence = (evidence + f" | previous candidate rejected: {why}")[:900]
             spec = json.loads(sp.read_text(encoding="utf-8"))   # discard any mutation, reload pristine spec
