@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 193 | 2026-09-22 01:47:26 | 57000908 | 012 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] expect='X_OK' last='RESULT: X_OK' \| T2 FAIL 9s [done] expect='60' last='CAPABILITY_MISSING: write_file' \| T |
-| 194 | 2026-09-22 01:47:26 | f5cf590e | 012 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "012", "retest_of": "57000908adad4c28b681b4fb41c35e7b"}} |
-| 195 | 2026-09-22 01:47:26 | 57000908 | 012 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "012", "name": "csv-column-sum", "pass": 1, "total": 3, "status": "testing", "verified": "UNVERIFIED"}} |
 | 196 | 2026-09-22 01:47:31 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 197 | 2026-09-22 01:47:35 | f5cf590e | 012 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 198 | 2026-09-22 01:52:37 | f5cf590e |  | job.lease_expired | svc-LAPTOP-LRE6PSA8 | {} |
@@ -402,3 +399,6 @@
 | 590 | 2026-09-22 19:15:30 | 322482f0 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 591 | 2026-09-22 19:15:30 | 60d56672 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-22T20"}} |
 | 592 | 2026-09-22 19:16:00 | 322482f0 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen27b", "local3b",  |
+| 593 | 2026-09-22 19:16:15 | bebb31a3 | 003 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 594 | 2026-09-22 19:18:43 | bebb31a3 | 003 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 29s [done] expect='SMITH_OK' last='RESULT: SMITH_OK' \| T2 PASS 41s [done] expect='233168' last='RESULT: 233168' \| T3 P |
+| 595 | 2026-09-22 19:18:43 | bebb31a3 | 003 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "003", "status": "active", "verified": "VERIFIED"}} |
