@@ -6,7 +6,7 @@
   python tools/factory_worker.py add test|repair|rearchitect <bot_id>
   python tools/factory_worker.py add monitor
   python tools/factory_worker.py add bench [--lanes a,b] [--stale-only] [--max N]   # D-050 lane quality
-  python tools/factory_worker.py status | jobs | resume <job_id> | cancel <job_id> | release <job_id> [--uncount] | audit [bot_id]
+  python tools/factory_worker.py status | jobs | resume <job_id> | cancel <job_id> | release <job_id> [--uncount] | audit [bot_id] [--width N]
 
 Autonomous loop (capability 1): a `create` job that ends VERIFIED enqueues nothing more (monitor covers it);
 a `monitor` job enqueues a `repair` job for every bot it demoted; a `repair` that fails pauses with a class
@@ -60,7 +60,7 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
                               priority=int(p.get("priority", 5)), parent=jid, actor=worker)
             queued.append((i, j["id"][:8]))
         store.audit("plan.made", job_id=jid, actor=worker, lane=res["lane"], steps=len(res["steps"]), queued=queued, rationale=res.get("rationale", "")[:200])
-        return {"steps": [s_["objective"][:80] for s_ in res["steps"]], "queued": queued, "lane": res["lane"]}
+        return {"name": f"plan:{len(res['steps'])} steps", "status": "queued " + ",".join(q[1] for q in queued), "lane": res["lane"]}
     if kind == "create":
         res = fp.cmd_create(p["objective"], p.get("id"), False, False)
         spec = res["spec"]
@@ -311,7 +311,7 @@ def main(a: list[str]) -> int:
     if cmd == "release": print(json.dumps(store.release(store.resolve(a[2]), uncount="--uncount" in a)["state"])); return 0
     if cmd == "audit":
         for r in reversed(store.audit_rows(40, a[2] if len(a) > 2 else None)):
-            print(f"{datetime.datetime.fromtimestamp(r['ts']):%H:%M:%S} {r['event']:20s} job={str(r['job_id'])[:8]} bot={r['bot_id'] or '-'} {r['detail'][:110]}")
+            print(f"{datetime.datetime.fromtimestamp(r['ts']):%H:%M:%S} {r['event']:20s} job={str(r['job_id'])[:8]} bot={r['bot_id'] or '-'} {r['detail'][:int(opt('--width', 110))]}")
         return 0
     print(__doc__); return 2
 

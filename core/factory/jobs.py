@@ -153,7 +153,7 @@ class JobStore:
         self.db.execute("UPDATE jobs SET state='done',result=?,lease_owner=NULL,lease_until=NULL,updated=? WHERE id=?",
                         (json.dumps(result, default=str)[:20000], time.time(), jid))
         self.audit("job.done", job_id=jid, bot_id=(result or {}).get("bot_id"), actor=actor,
-                   summary={k: result.get(k) for k in ("bot_id", "name", "pass", "total", "status", "verified") if k in result})
+                   summary={k: result.get(k) for k in ("bot_id", "name", "pass", "total", "status", "verified", "benchmarked", "healthy", "changed", "added") if k in result})
 
     def fail(self, jid: str, error: str, actor: str) -> dict:
         """Classify, then retry / defer / pause. Returns the updated job."""
