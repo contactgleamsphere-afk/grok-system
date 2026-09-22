@@ -72,3 +72,15 @@ def test_quota_failures_do_not_count_as_quality(tmp_path, monkeypatch):
     assert "bench" not in m and m["bench_last_inconclusive"]["quota"] == 4
     fb.record(reg, "gemini-b", 0, 4, 20, quota=0)                # genuine 0/4 still scores
     assert Registry(tmp_path / "registry").get("models", "gemini-b").limits["bench"]["pass"] == 0
+
+
+def test_spec_consistency_catches_tools_tests_mismatch(tmp_path, monkeypatch):
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    bad = {"tools": ["read_file"], "permissions": ["fs:read"],
+           "tests": ["Reply with exactly: X_OK -> X_OK", "First write data.csv containing 'a,1' then read data.csv and reply with the sum -> 1"]}
+    probs = fp.spec_consistency(bad)
+    assert any("lack write_file" in p_ for p_ in probs)
+    good = {**bad, "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"]}
+    assert fp.spec_consistency(good) == []
+    assert fp.spec_consistency({**good, "permissions": ["fs:read"]}) == ["write_file requires permission fs:write"]
+    assert fp.spec_consistency({**good, "tests": ["a -> b -> c"]})[0].startswith("test must contain exactly one")
