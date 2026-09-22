@@ -590,6 +590,7 @@ def test_d088_daily_cap_cooldown_survives_tiny_probe_success(tmp_path, monkeypat
 
 def test_d090_bench_skips_blocked_and_cooling_lanes(tmp_path, monkeypatch):
     reg, fb, fp = _reg(tmp_path, monkeypatch)
+    from factory.registry import BotEntry
     reg.upsert("bots", BotEntry(id="009", name="ref", purpose="o", status="active", model_policy={"primary": "groq-a", "fallbacks": []}, tools=[], permissions=[], workspace="w", verified="VERIFIED"))
     e = reg.get("models", "groq-a"); e.limits = {"health": {"quota_until": time.time() + 3000, "quota_kind": "tpd"}}; reg.upsert("models", e)
     e = reg.get("models", "or-c"); e.verified = "BLOCKED"; reg.upsert("models", e)
