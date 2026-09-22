@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 367 | 2026-09-22 06:58:02 | d2db2ed1 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 368 | 2026-09-22 06:59:45 | 5552a0d9 |  | job.resumed | builder | {} |
-| 369 | 2026-09-22 06:59:46 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 370 | 2026-09-22 06:59:51 | 5552a0d9 | 016 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 371 | 2026-09-22 07:03:08 | 5552a0d9 | 016 | bot.rearchitected | svc-LAPTOP-LRE6PSA8 | {"lane": "groq:qwen/qwen3.8-27b", "tools": ["exec"], "permissions": ["shell:workspace"], "boundary_diff": {}, "result": "T1 PASS 13s [done]  |
 | 372 | 2026-09-22 07:03:08 | 6b1adac9 | 016 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "016", "retest_of": "5552a0d904d94cd08163076c2400c9e0", "rearchitected": true}} |
 | 373 | 2026-09-22 07:03:08 | 5552a0d9 | 016 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "016", "pass": 3, "total": 4, "status": "testing"}} |
@@ -402,3 +398,7 @@
 | 764 | 2026-09-22 23:00:00 | 1a129f56 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "create", "payload": {"objective": "Read refunded.csv, sum the values in the 'amount' column, and write a single line to summary.tx |
 | 765 | 2026-09-22 23:00:00 | 197bb3e5 |  | plan.made | svc-LAPTOP-LRE6PSA8 | {"lane": "groq:qwen/qwen3.8-27b", "steps": 2, "queued": [[1, "1e546b89"], [2, "1a129f56"]], "rationale": "The objective explicitly defines a |
 | 766 | 2026-09-22 23:00:00 | 197bb3e5 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"name": "plan:2 steps", "status": "queued 1e546b89,1a129f56"}} |
+| 767 | 2026-09-22 23:00:04 | 1e546b89 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 768 | 2026-09-22 23:00:06 | 1e546b89 | 022 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "csv-refund-filter", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["or-ling-30-flash-vl", |
+| 769 | 2026-09-22 23:04:43 | 1e546b89 | 022 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 28s [done] expect='X_OK' last='X_OK' \| T2 PASS 105s [done] expect='2' last='RESULT: 2' \| T3 PASS 95s [done] expect='2' |
+| 770 | 2026-09-22 23:04:43 | 1e546b89 | 022 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "022", "name": "csv-refund-filter", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
