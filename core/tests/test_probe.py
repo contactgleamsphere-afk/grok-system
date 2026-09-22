@@ -79,5 +79,5 @@ def test_d069_retire_gone_after_3_days(tmp_path, monkeypatch):
     assert reg.get("models", gone.id).limits["health"]["first_gone"] == old
     r = fpr.retire_gone(reg, time.time())
     assert [x["id"] for x in r] == [gone.id] and reg.get("models", gone.id) is None and reg.get("models", q.id) is not None
-    led = json.loads((tmp_path / "registry" / "discovery.json").read_text())
+    led = json.loads((tmp_path / "registry" / "discovery.json").read_text(encoding="utf-8"))
     assert led["verdicts"][f"{gone.provider}:{gone.model}"]["verdict"] == "rejected"

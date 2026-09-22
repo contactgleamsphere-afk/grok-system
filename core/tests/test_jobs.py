@@ -44,7 +44,7 @@ def test_failure_classification_and_retry_policy(tmp_path):
     sec = s.enqueue("repair", {"bot_id": "003"}); s.claim("w")
     j = s.fail(sec["id"], "security: silent boundary expansion", "w"); assert j["state"] == "paused" and j["failure_class"] == "security"
     assert s.resume(j["id"])["state"] == "queued"
-    s.audit_export(tmp_path / "AUDIT.md"); assert "job.failed" in (tmp_path / "AUDIT.md").read_text()
+    s.audit_export(tmp_path / "AUDIT.md"); assert "job.failed" in (tmp_path / "AUDIT.md").read_text(encoding="utf-8")
 
 
 def test_guard_blocks_silent_expansion_and_credentials():

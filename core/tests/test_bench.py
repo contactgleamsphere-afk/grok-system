@@ -208,7 +208,7 @@ def test_d057_insight_proposals_from_evidence(tmp_path, monkeypatch):
     assert any(p_["auto_actionable"] and p_["auto_actionable"]["kind"] == "bench" for p_ in P)
     assert not any("code" in (p_["auto_actionable"] or {}).get("kind", "") for p_ in P)     # never a code change
     out = fin.run(7, write=True)
-    assert pathlib.Path(out["paths"]["md"]).exists() and "never applied" in pathlib.Path(out["paths"]["md"]).read_text()
+    assert pathlib.Path(out["paths"]["md"]).exists() and "never applied" in pathlib.Path(out["paths"]["md"]).read_text(encoding="utf-8")
 
 
 def test_d059_repair_reverifies_before_rewriting(tmp_path, monkeypatch):
@@ -229,7 +229,7 @@ def test_d059_repair_reverifies_before_rewriting(tmp_path, monkeypatch):
     assert out["ok"] and out.get("reverified") and out["rounds"] == [] and called["chat"] == 0     # no model call, no rewrite
     e = Registry(tmp_path / "registry").get("bots", "097")
     assert e.status == "active" and "re-verify" in e.notes
-    assert json.loads((tmp_path / "specs" / "097-healthy.json").read_text())["instructions"] == spec["instructions"]
+    assert json.loads((tmp_path / "specs" / "097-healthy.json").read_text(encoding="utf-8"))["instructions"] == spec["instructions"]
 
 
 def test_d063_run_plan_chains_outputs_and_fails_on_missing_declared_output(tmp_path, monkeypatch):
@@ -252,12 +252,12 @@ def test_d063_run_plan_chains_outputs_and_fails_on_missing_declared_output(tmp_p
     def fake_runner(bot_dir, task, in_dir, out_dir, cap):
         out_dir.mkdir(parents=True, exist_ok=True); seen.append((bot_dir.name, sorted(p.name for p in in_dir.iterdir())))
         if bot_dir.name.startswith("013"):
-            errs = [l for l in (in_dir / "app.log").read_text().splitlines() if "ERROR" in l]
+            errs = [l for l in (in_dir / "app.log").read_text(encoding="utf-8").splitlines() if "ERROR" in l]
             (out_dir / "errors.txt").write_text("\n".join(errs)); return {"status": "done", "produced": ["errors.txt"], "reply": "RESULT: 2", "secs": 1}
         return {"status": "done", "produced": [], "reply": "RESULT: forgot to write", "secs": 1}      # step 2 never writes summary.txt
     rep = frun.run_plan(pj["id"][:8], ind, tmp_path / "out", runner=fake_runner)
     assert seen[0] == ("013-filter", ["app.log"]) and seen[1] == ("014-summary", ["app.log", "errors.txt"])   # outputs chained forward
-    assert rep["steps"][0]["ok"] and (tmp_path / "out" / "1-013" / "errors.txt").read_text() == "ERROR x\nERROR y"
+    assert rep["steps"][0]["ok"] and (tmp_path / "out" / "1-013" / "errors.txt").read_text(encoding="utf-8") == "ERROR x\nERROR y"
     assert not rep["ok"] and rep["steps"][1]["missing_outputs"] == ["summary.txt"]                             # no silent success
     assert (tmp_path / "out" / "RUN.json").exists()
 
@@ -319,7 +319,7 @@ def test_d067_audit_jsonl_is_append_only_and_exactly_once(tmp_path):
     assert st.audit_sync_jsonl(d) == 0                                    # idempotent
     st.audit("c", actor="t", x=3)
     assert st.audit_sync_jsonl(d) == 1
-    f = next(d.glob("*.jsonl")); rows = [json.loads(l) for l in f.read_text().splitlines()]
+    f = next(d.glob("*.jsonl")); rows = [json.loads(l) for l in f.read_text(encoding="utf-8").splitlines()]
     assert [r["event"] for r in rows] == ["a", "b", "c"] and rows[2]["seq"] == 3 and rows[2]["detail"] == {"x": 3}
 
 
@@ -359,7 +359,7 @@ def test_d069_needs_owner_notice_and_clear(tmp_path, monkeypatch):
     assert "cloud.cerebras.ai" in r1["needs_owner"]["reason"] and "CEREBRAS_API_KEY" in r1["needs_owner"]["reason"]
     r2 = fdc.run("cerebras")
     assert r2["needs_owner"] == "already notified"                                     # dedup within 7 days
-    led = json.loads((tmp_path / "registry" / "discovery.json").read_text())
+    led = json.loads((tmp_path / "registry" / "discovery.json").read_text(encoding="utf-8"))
     assert led["verdicts"]["provider:cerebras"]["verdict"] == "needs_owner"
     # owner acts: key set -> notice cleared, /models fetched with bearer, generic entries evaluated
     monkeypatch.setenv("CEREBRAS_API_KEY", "k")
@@ -368,7 +368,7 @@ def test_d069_needs_owner_notice_and_clear(tmp_path, monkeypatch):
     r3 = fdc.run("cerebras", fetch=fetch, prober=lambda b, k, m: {"outcome": "ok", "latency_s": 0.5},
                  looper=lambda b, k, m: {"ok": True, "latency_s": 1.0}, dry_run=True)
     assert seen["url"].startswith("https://api.cerebras.ai") and r3["added"] == ["cb-llama-33-70b"]
-    assert "provider:cerebras" not in json.loads((tmp_path / "registry" / "discovery.json").read_text())["verdicts"]
+    assert "provider:cerebras" not in json.loads((tmp_path / "registry" / "discovery.json").read_text(encoding="utf-8"))["verdicts"]
     # every provider in BASES has a signup pointer (except the three originals with keys already on the laptop)
     assert all(pv in fpr.SIGNUP for pv in fpr.BASES if pv not in ("groq", "gemini", "openrouter"))
 
@@ -398,7 +398,7 @@ def test_d072_monitor_fans_out_per_bot_tests_and_demotes_via_test_handler(tmp_pa
     assert [j["payload"]["bot_id"] for j in repairs] == ["072"]
     ev = [(r["event"], r["bot_id"]) for r in st.audit_rows(50)]
     assert ("monitor.fanout", None) in ev and ("bot.monitored", "071") in ev and ("bot.demoted", "072") in ev and ("bot.demoted", "071") not in ev
-    md = (tmp_path / "MONITOR.md").read_text()
+    md = (tmp_path / "MONITOR.md").read_text(encoding="utf-8")
     assert "| 071 b071 | 1/1 | active→active" in md and "| 072 b072 | 0/1 | active→testing" in md
 
 

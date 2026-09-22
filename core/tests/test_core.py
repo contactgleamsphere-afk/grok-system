@@ -56,7 +56,7 @@ def test_registry_corrupt_file_is_reported_not_swallowed(tmp_path):
 
 def test_registry_atomic_write_leaves_no_tmp(reg, tmp_path):
     assert not [p for p in tmp_path.iterdir() if p.suffix == ".tmp"]
-    assert json.loads((tmp_path / "models.json").read_text())["deep"]["model"] == "qwen3:8b"
+    assert json.loads((tmp_path / "models.json").read_text(encoding="utf-8"))["deep"]["model"] == "qwen3:8b"
 
 
 # ---------------- router: selection ----------------
@@ -179,14 +179,14 @@ def test_factory_builds_bundle(reg, tmp_path):
     assert r.chain == ["remote", "deep"]           # deep is local -> no extra local appended
     for name in ("SOUL.md", "AGENTS.md", "bot.json", "nanobot.patch.json", "TESTS.md", "RECOVERY.md", "memory/MEMORY.md", "templates/agent/tool_contract.md"):
         assert (r.bot_dir / name).exists(), name
-    patch = json.loads((r.bot_dir / "nanobot.patch.json").read_text())
+    patch = json.loads((r.bot_dir / "nanobot.patch.json").read_text(encoding="utf-8"))
     assert patch["agents"]["defaults"]["modelPreset"] == "remote"
     disabled = patch["env"]["AIFACTORY_DISABLED_TOOLS"].split(",")
     assert "exec" in disabled and "write_file" in disabled and "web_fetch" in disabled   # not granted
     assert "web_search" not in disabled and "read_file" not in disabled                 # granted
     assert "spawn" in disabled and "message" in disabled                                # never granted
     assert patch["env"]["AIFACTORY_TEMPLATE_DIR"].endswith("templates")
-    assert len((r.bot_dir / "templates/agent/tool_contract.md").read_text()) < 1200      # lean contract (D-020)
+    assert len((r.bot_dir / "templates/agent/tool_contract.md").read_text(encoding="utf-8")) < 1200      # lean contract (D-020)
     bot = reg.get("bots", "002"); assert bot.status == "building" and bot.verified == "UNVERIFIED"
 
 
@@ -226,7 +226,7 @@ def test_spec_003_code_smith_requires_shell_permission():
     from core.factory.botspec import validate_spec
     from core.factory.registry import Registry
     reg = Registry(pathlib.Path(__file__).resolve().parents[2] / "registry")
-    spec = json.loads((pathlib.Path(__file__).resolve().parents[2] / "specs" / "003-code-smith.json").read_text())
+    spec = json.loads((pathlib.Path(__file__).resolve().parents[2] / "specs" / "003-code-smith.json").read_text(encoding="utf-8"))
     assert validate_spec(spec, reg) == []
     bad = dict(spec, permissions=["fs:read", "fs:write"])   # exec without shell:workspace
     assert any("exec" in p or "shell" in p for p in validate_spec(bad, reg))
@@ -256,10 +256,10 @@ def test_d023_escape_test_injected_for_write_and_shell(tmp_path):
     reg, f = _reg_and_factory(tmp_path)
     r = f.build(_rspec(tools=["write_file", "read_file", "exec"], permissions=["fs:read", "fs:write", "shell:workspace"]))
     import json
-    tests = json.loads((r.bot_dir / "bot.json").read_text())["tests"]
+    tests = json.loads((r.bot_dir / "bot.json").read_text(encoding="utf-8"))["tests"]
     assert any(t.endswith("-> CONFINED") and "exec" in t for t in tests)
     r2 = f.build(_rspec(id="098", tools=["write_file", "read_file"], permissions=["fs:read", "fs:write"]))
-    t2 = json.loads((r2.bot_dir / "bot.json").read_text())["tests"]
+    t2 = json.loads((r2.bot_dir / "bot.json").read_text(encoding="utf-8"))["tests"]
     assert any(t.endswith("-> CONFINED") and "exec" not in t for t in t2)
 
 
@@ -267,7 +267,7 @@ def test_d023_not_injected_for_readonly_bot(tmp_path):
     reg, f = _reg_and_factory(tmp_path)
     r = f.build(_rspec())
     import json
-    assert not any("CONFINED" in t for t in json.loads((r.bot_dir / "bot.json").read_text())["tests"])
+    assert not any("CONFINED" in t for t in json.loads((r.bot_dir / "bot.json").read_text(encoding="utf-8"))["tests"])
 
 
 def test_factory_failure_modes(tmp_path):
@@ -327,7 +327,7 @@ def test_monitor_demotes_failed_bot_and_keeps_passing(tmp_path, monkeypatch):
     out = fm.monitor(only={"097", "098"}, runner=fake)
     assert out["ok"] is False and out["regressed"] == ["098"]
     assert reg.get("bots", "097").status == "active" and reg.get("bots", "098").status == "testing"
-    assert "098 fail-bot" in (reg.root.parent / "MONITOR.md").read_text()
+    assert "098 fail-bot" in (reg.root.parent / "MONITOR.md").read_text(encoding="utf-8")
 
 
 def test_monitor_quota_failures_are_inconclusive_not_demotions(tmp_path, monkeypatch):

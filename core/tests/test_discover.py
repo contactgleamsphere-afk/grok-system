@@ -49,7 +49,7 @@ def test_presets_sync_adds_and_removes(tmp_path, monkeypatch):
     cfg = tmp_path / "config.json"; cfg.write_text(json.dumps({"modelPresets": {"or-old": {"model": "old/one:free", "provider": "openrouter"}, "ovh-x": {"model": "x", "provider": "custom"}}, "providers": {"openrouter": {"apiKey": "${K}"}}}))
     import importlib, factory_presets as fps; importlib.reload(fps)
     added, removed = fps.sync(cfg)
-    c = json.loads(cfg.read_text())
+    c = json.loads(cfg.read_text(encoding="utf-8"))
     assert added == ["or-new"] and sorted(removed) == ["or-old", "ovh-x"] and "or-new" in c["modelPresets"] and c["providers"]["openrouter"]["apiKey"] == "${K}"
     assert "ovh-y" not in c["modelPresets"]     # BLOCKED custom lanes are pruned, but custom lanes are never auto-added
 
