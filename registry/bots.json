@@ -58,6 +58,12 @@
     ],
     "purpose": "Find, verify and summarise free-tier AI infrastructure (LLM APIs, compute, hosting) that the Factory could use legitimately.",
     "schedules": [],
+    "seal": {
+      "AGENTS.md": "e5855d6def38fc1a70ba189a",
+      "SOUL.md": "993165f32485900232095862",
+      "bot.json": "85475bef96a8a231d1de1d70",
+      "nanobot.patch.json": "ddd567c818a942271fad69e5"
+    },
     "status": "active",
     "tests": [
       "Reply with exactly: SCOUT_OK -> SCOUT_OK",
@@ -68,7 +74,7 @@
       "web_fetch",
       "read_file"
     ],
-    "updated": "2026-09-22T03:02:30+00:00",
+    "updated": "2026-09-22T08:03:41+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "/home/user/grok-system/bots/002-research-scout"
@@ -94,6 +100,12 @@
     ],
     "purpose": "Write and run small Python scripts and tests inside its own workspace on request from the Factory. No network, no access outside the workspace.",
     "schedules": [],
+    "seal": {
+      "AGENTS.md": "12ec11f10e7adb9c75e2bedb",
+      "SOUL.md": "56a60c496a15d1441b3bd5de",
+      "bot.json": "2b8cc170c034037682ee6bc7",
+      "nanobot.patch.json": "61da7c6d2841a22160fa2b79"
+    },
     "status": "active",
     "tests": [
       "Reply with exactly: SMITH_OK -> SMITH_OK",
@@ -106,7 +118,7 @@
       "read_file",
       "exec"
     ],
-    "updated": "2026-09-22T04:36:31+00:00",
+    "updated": "2026-09-22T08:03:41+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\003-code-smith"
@@ -132,6 +144,12 @@
     ],
     "purpose": "Read git commit messages from commits.txt, categorize them under Added, Fixed, or Changed headings, write a formatted CHANGELOG.md, and reply with the total number of entries written.",
     "schedules": [],
+    "seal": {
+      "AGENTS.md": "ece544192ec5141d752c2405",
+      "SOUL.md": "ccf30f6dea4beb73750b2cde",
+      "bot.json": "03a91c93b15dbc16535afbbe",
+      "nanobot.patch.json": "9544c7a3ced312410316db25"
+    },
     "status": "active",
     "tests": [
       "Reply with exactly: CHANGELOG_OK -> CHANGELOG_OK",
@@ -143,7 +161,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T04:47:04+00:00",
+    "updated": "2026-09-22T08:03:41+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\004-changelog-writer"
@@ -169,6 +187,12 @@
     ],
     "purpose": "Audit a CSV file for data quality: count rows, detect duplicate rows, and report per\u2011column empty value counts, then output the duplicate row count.",
     "schedules": [],
+    "seal": {
+      "AGENTS.md": "7fd586658afa625619ff20d2",
+      "SOUL.md": "cf8f5df738ef0dbca8efc828",
+      "bot.json": "116640f381842faefce29838",
+      "nanobot.patch.json": "7f3d763448436cf37aff760e"
+    },
     "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
@@ -180,7 +204,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T04:54:57+00:00",
+    "updated": "2026-09-22T08:03:42+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\005-csv-quality-auditor"
@@ -206,6 +230,12 @@
     ],
     "purpose": "Convert a JSON array in records.json to a Markdown table in table.md and report the number of data rows written.",
     "schedules": [],
+    "seal": {
+      "AGENTS.md": "f7dcba14ae5d9b3cc3fe7fd6",
+      "SOUL.md": "6d60bf5e902aa91835d5ba91",
+      "bot.json": "1f03e9a5c2a47b001beb80c0",
+      "nanobot.patch.json": "9e4d44e1733f99735356e73c"
+    },
     "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
@@ -217,7 +247,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T05:02:41+00:00",
+    "updated": "2026-09-22T08:03:42+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\006-json-to-markdown-table"
@@ -243,6 +273,12 @@
     ],
     "purpose": "Extract TODO and FIXME lines from notes.txt, write them with line numbers to todos.md, and output the count of items found.",
     "schedules": [],
+    "seal": {
+      "AGENTS.md": "8d67d6be06fe13823fa8a6f0",
+      "SOUL.md": "73601ee3090ccd5f7e14e211",
+      "bot.json": "a8b6e3502f843de724927997",
+      "nanobot.patch.json": "8019b2a6aeef8893e9b52118"
+    },
     "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
@@ -254,7 +290,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T05:11:06+00:00",
+    "updated": "2026-09-22T08:03:42+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\007-todo-extractor"
@@ -279,6 +315,12 @@
     ],
     "purpose": "Count word frequencies in a given text file, output the top five words to a markdown file, and reply with the most frequent word.",
     "schedules": [],
+    "seal": {
+      "AGENTS.md": "c110d80bf08ed2d68528e9fe",
+      "SOUL.md": "34247aa505480da333bff640",
+      "bot.json": "76e945b1d986204b335b89e5",
+      "nanobot.patch.json": "688b024e2fe19a6096973442"
+    },
     "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
@@ -290,7 +332,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T05:28:35+00:00",
+    "updated": "2026-09-22T08:03:42+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\008-word-frequency-bot"
@@ -316,6 +358,12 @@
     ],
     "purpose": "Remove exact duplicate lines from lines.txt, preserving first occurrences and order, write unique.txt, and report the count of unique lines.",
     "schedules": [],
+    "seal": {
+      "AGENTS.md": "bad78ff4255e48d15049b1b7",
+      "SOUL.md": "3c5edd02e158c74ea78be5b1",
+      "bot.json": "c3a93af04d485e37e087f110",
+      "nanobot.patch.json": "67d569e3d85dadc052ed5145"
+    },
     "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
@@ -327,7 +375,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T05:33:27+00:00",
+    "updated": "2026-09-22T08:03:42+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\009-line-dedupe-bot"
@@ -349,6 +397,12 @@
     ],
     "purpose": "Remove exact duplicate lines from lines.txt, preserving first occurrences and order, write unique.txt, and report the count of unique lines.",
     "schedules": [],
+    "seal": {
+      "AGENTS.md": "bd598b5eb092aa5dbb25e74a",
+      "SOUL.md": "7a51c421e330a85e67cb814f",
+      "bot.json": "f86725fa48c5da8e34c88d96",
+      "nanobot.patch.json": "5856d8f5ca10395eee40b33d"
+    },
     "status": "paused",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
@@ -360,7 +414,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T01:07:49+00:00",
+    "updated": "2026-09-22T08:03:42+00:00",
     "verified": "INFERRED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\010-dedupe-failover-probe"
@@ -386,6 +440,12 @@
     ],
     "purpose": "Analyze text.txt to generate word frequency statistics in freq.txt and report distinct word count.",
     "schedules": [],
+    "seal": {
+      "AGENTS.md": "a570655d5bf17392c2843d09",
+      "SOUL.md": "3122cedfd48e5727e0067c77",
+      "bot.json": "f4728670e45a1804aa2f2d53",
+      "nanobot.patch.json": "046c4827c65fc1c23376d68b"
+    },
     "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
@@ -397,7 +457,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T04:05:05+00:00",
+    "updated": "2026-09-22T08:03:42+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\011-word-frequency-counter"
@@ -423,6 +483,12 @@
     ],
     "purpose": "Sum the numeric values in the 'amount' column of a CSV file.",
     "schedules": [],
+    "seal": {
+      "AGENTS.md": "8895e9ddb49d04d19922f429",
+      "SOUL.md": "a4d58615a1b16190ecaddd57",
+      "bot.json": "04a4f2f213a2414fa65fda7f",
+      "nanobot.patch.json": "6bbeaec89eb610150c1a6a52"
+    },
     "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
@@ -434,7 +500,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T05:37:13+00:00",
+    "updated": "2026-09-22T08:03:42+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\012-csv-column-sum"
@@ -460,6 +526,12 @@
     ],
     "purpose": "Extract ERROR lines from app.log and save to errors.txt",
     "schedules": [],
+    "seal": {
+      "AGENTS.md": "76559138d2327db2d00438db",
+      "SOUL.md": "727b1abd42fe4caa72642349",
+      "bot.json": "a681ce478df6a20a1ad5d29b",
+      "nanobot.patch.json": "574ad358997be0854a13ebc5"
+    },
     "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
@@ -471,7 +543,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T04:13:35+00:00",
+    "updated": "2026-09-22T08:03:42+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\013-log-error-filter"
@@ -497,6 +569,12 @@
     ],
     "purpose": "Analyze error logs to count lines and identify top frequent errors.",
     "schedules": [],
+    "seal": {
+      "AGENTS.md": "42e22afea77924f59c2a2fb4",
+      "SOUL.md": "6746f2dfc9b2128c78b1fc26",
+      "bot.json": "3579554591519e3567d8609b",
+      "nanobot.patch.json": "97e114c9ac7f15ea9b06aeb9"
+    },
     "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
@@ -508,7 +586,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T04:17:47+00:00",
+    "updated": "2026-09-22T08:03:42+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\014-error-log-analyzer"
@@ -567,6 +645,12 @@
     ],
     "purpose": "Count .tmp files in the workspace directory using PowerShell and return the integer count.",
     "schedules": [],
+    "seal": {
+      "AGENTS.md": "f542b8cc020491abba8de89c",
+      "SOUL.md": "217e862218b70ef93cc7cd35",
+      "bot.json": "da9b23f3322b81015a9a14ab",
+      "nanobot.patch.json": "63e3e972319c11b957581189"
+    },
     "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
@@ -577,7 +661,7 @@
     "tools": [
       "exec"
     ],
-    "updated": "2026-09-22T06:10:22+00:00",
+    "updated": "2026-09-22T08:03:42+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\016-workspace-tidy-counter"
@@ -603,6 +687,12 @@
     ],
     "purpose": "Read names from names.txt, sort them alphabetically, write to sorted.txt, and reply with the count of names.",
     "schedules": [],
+    "seal": {
+      "AGENTS.md": "38f0df711dfcd3cedab05541",
+      "SOUL.md": "37f86c16bd47e8a4d4696c9e",
+      "bot.json": "592bc786b593e7ac0be95e0b",
+      "nanobot.patch.json": "20fd2285c77d57bf91125e80"
+    },
     "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
@@ -614,7 +704,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T07:43:24+00:00",
+    "updated": "2026-09-22T08:03:42+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\017-name-sorter"
@@ -640,6 +730,12 @@
     ],
     "purpose": "Aggregate order amounts by country from orders.csv into totals.csv",
     "schedules": [],
+    "seal": {
+      "AGENTS.md": "1b7157b4c80fa35b32e0d077",
+      "SOUL.md": "e05e16baac52a13dc2c5aa86",
+      "bot.json": "d770bdeb2053d9f499c41b2a",
+      "nanobot.patch.json": "93d3e3bdc9c0a76824a251a0"
+    },
     "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
@@ -651,7 +747,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T07:47:50+00:00",
+    "updated": "2026-09-22T08:03:42+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\018-csv-country-totals"
