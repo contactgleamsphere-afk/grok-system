@@ -2,6 +2,7 @@
 
   python tools/factory_worker.py run   [--once] [--worker NAME] [--idle-exit 30]
   python tools/factory_worker.py add create "<objective>" [--priority 3]
+  python tools/factory_worker.py add plan "<multi-part objective>" [--max 4]     # D-053: decompose -> N creates
   python tools/factory_worker.py add test|repair|rearchitect <bot_id>
   python tools/factory_worker.py add monitor
   python tools/factory_worker.py add bench [--lanes a,b] [--stale-only] [--max N]   # D-050 lane quality
@@ -28,6 +29,7 @@ import factory_probe as fpr                                            # noqa: E
 import factory_report as frp                                           # noqa: E402
 import factory_discover as fdc                                         # noqa: E402
 import factory_bench as fbn
+import factory_plan as fpl
 
 DB = ROOT / "run" / "jobs.sqlite3"
 LEASE = 300          # D-043: short lease + heartbeat every 60 s -> a dead worker is detected within 5 min
@@ -46,6 +48,19 @@ def _spec_of(bot_id: str) -> dict | None:
 
 def handle(job: dict, store: JobStore, worker: str) -> dict:
     kind, p = job["kind"], job["payload"]; jid = job["id"]
+    if kind == "plan":
+        # D-053: objective -> 1..N single-purpose bot objectives -> one create job each (same allowance, chained parent)
+        res = fpl.plan(p["objective"], int(p.get("max", fpl.MAX_STEPS)))
+        queued = []
+        for i, st in enumerate(res["steps"], 1):
+            if st.get("reuse"):
+                store.audit("plan.reused", job_id=jid, actor=worker, step=i, bot_id=st["reuse"]["id"], similarity=st["reuse"]["similarity"]); continue
+            j = store.enqueue("create", {"objective": st["objective"], "plan": jid, "step": i, "produces": st.get("produces", []),
+                                         "allowed_permissions": p.get("allowed_permissions", ["fs:read", "fs:write", "net:search", "net:fetch"])},
+                              priority=int(p.get("priority", 5)), parent=jid, actor=worker)
+            queued.append((i, j["id"][:8]))
+        store.audit("plan.made", job_id=jid, actor=worker, lane=res["lane"], steps=len(res["steps"]), queued=queued, rationale=res.get("rationale", "")[:200])
+        return {"steps": [s_["objective"][:80] for s_ in res["steps"]], "queued": queued, "lane": res["lane"]}
     if kind == "create":
         res = fp.cmd_create(p["objective"], p.get("id"), False, False)
         spec = res["spec"]
@@ -266,6 +281,7 @@ def main(a: list[str]) -> int:
     if cmd == "add":
         kind = a[2]
         if kind == "create": j = store.enqueue("create", {"objective": a[3]}, priority=int(opt("--priority", 5)), actor=opt("--actor", "owner"))
+        elif kind == "plan": j = store.enqueue("plan", {"objective": a[3], "max": int(opt("--max", 4))}, priority=int(opt("--priority", 5)), actor=opt("--actor", "owner"))
         elif kind == "rearchitect": j = store.enqueue("rearchitect", {"bot_id": a[3], "feedback": opt("--feedback", ""), "t": int(time.time())}, priority=2, actor=opt("--actor", "owner"))
         elif kind in ("test", "repair"): j = store.enqueue(kind, {"bot_id": a[3]}, priority=int(opt("--priority", 4)), actor=opt("--actor", "owner"))
         elif kind == "probe":

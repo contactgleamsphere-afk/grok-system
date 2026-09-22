@@ -1,3 +1,4 @@
+import json
 import datetime, sys, pathlib
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "core")); sys.path.insert(0, str(ROOT / "tools"))
@@ -84,3 +85,21 @@ def test_spec_consistency_catches_tools_tests_mismatch(tmp_path, monkeypatch):
     assert fp.spec_consistency(good) == []
     assert fp.spec_consistency({**good, "permissions": ["fs:read"]}) == ["write_file requires permission fs:write"]
     assert fp.spec_consistency({**good, "tests": ["a -> b -> c"]})[0].startswith("test must contain exactly one")
+
+
+def test_plan_validation_and_reuse(tmp_path, monkeypatch):
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    from factory.registry import BotEntry
+    reg.upsert("bots", BotEntry(id="011", name="word-frequency-counter", purpose="Count word frequencies in text.txt and write freq.txt", status="active",
+                                model_policy={"primary": "groq-a", "fallbacks": []}, tools=[], permissions=[], workspace="w", verified="VERIFIED"))
+    import importlib, factory_plan as fpl; importlib.reload(fpl)
+    ex = fpl._existing(Registry(tmp_path / "registry"))
+    assert fpl.validate_plan({"steps": []}, ex) == ["plan must contain a non-empty steps list"]
+    assert any("too many" in p_ for p_ in fpl.validate_plan({"steps": [{"objective": "a b c d e f g"}] * 5}, ex))
+    assert any("vague" in p_ for p_ in fpl.validate_plan({"steps": [{"objective": "do it"}]}, ex))
+    good = {"steps": [{"objective": "Count word frequencies in text.txt and write freq.txt sorted", "produces": ["freq.txt"]},
+                      {"objective": "Read freq.txt and write top3.txt with the three most frequent words", "consumes": ["freq.txt"], "produces": ["top3.txt"]}]}
+    assert fpl.validate_plan(good, ex) == []
+    answers = iter(["not json at all", json.dumps(good)])
+    out = fpl.plan("word stats pipeline", chat=lambda msgs: (next(answers), "fake"))
+    assert len(out["steps"]) == 2 and out["steps"][0].get("reuse", {}).get("id") == "011" and "reuse" not in out["steps"][1]

@@ -2,6 +2,7 @@
 
     python tools/factory.py create "<plain-English objective>"   # synchronous (blocks ~2-5 min)
     python tools/factory.py queue create "<objective>" | test <id> | repair <id> | monitor [ids]   # async via job queue
+    python tools/factory.py queue plan "<multi-stage objective>"   # planner -> one create per stage
     python tools/factory.py queue probe | discover | bench        # model-lane health / new free lanes / quality scores
     python tools/factory.py jobs | audit [bot_id] | report | lanes
     python tools/factory.py test <bot_id>
