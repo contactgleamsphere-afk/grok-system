@@ -596,14 +596,14 @@
       "primary": "groq-gptoss120b"
     },
     "name": "name-sorter",
-    "notes": "tests 3/4: T1 PASS 28s [done] expect='X_OK' last='X_OK' | T2 PASS 97s [done] expect='3' last='RESULT: 3' | T3 FAIL 307s [TIMEOUT] expect='3' last='' | T4 PASS 51s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: T1 PASS 9s [done] expect='X_OK' last='X_OK' | T2 PASS 102s [done] expect='3' last='RESULT: 3' | T3 PASS 91s [done] expect='3' last='RESULT: 3' | T4 PASS 63s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
     ],
     "purpose": "Read names from names.txt, sort them alphabetically, write to sorted.txt, and reply with the count of names.",
     "schedules": [],
-    "status": "testing",
+    "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write names.txt containing Alice\\nBob\\nCharlie then read and sort -> 3",
@@ -614,8 +614,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T07:38:54+00:00",
-    "verified": "UNVERIFIED",
+    "updated": "2026-09-22T07:43:24+00:00",
+    "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\017-name-sorter"
   }

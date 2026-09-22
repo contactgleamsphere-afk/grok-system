@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7 | 2026-09-21 19:40:14 | 0a39c2e1 | 006 | bot.tested | w1 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 15s [done] expect='2' last='RESULT: 2' \| T3 PASS 24s [done] expect='0'  |
-| 8 | 2026-09-21 19:40:14 | 0a39c2e1 | 006 | job.done | w1 | {"summary": {"bot_id": "006", "name": "json-to-markdown-table", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
-| 9 | 2026-09-21 19:40:47 | fe3b6a6b |  | job.cancelled | owner | {} |
-| 10 | 2026-09-21 19:40:48 | 7c69d3cf |  | job.enqueued | owner | {"kind": "monitor", "payload": {"only": ["002", "003"], "day": "2026-09-21"}} |
 | 11 | 2026-09-21 19:40:50 | 7c69d3cf |  | job.claimed | w2 | {"attempt": 1} |
 | 12 | 2026-09-21 19:41:32 | 31ffc26e | 005 | job.claimed | w3 | {"attempt": 1} |
 | 13 | 2026-09-21 19:42:46 | 31ffc26e |  | job.released | owner | {"uncount": true} |
@@ -402,3 +398,7 @@
 | 404 | 2026-09-22 08:38:54 | 1c4af272 | 017 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 28s [done] expect='X_OK' last='X_OK' \| T2 PASS 97s [done] expect='3' last='RESULT: 3' \| T3 FAIL 307s [TIMEOUT] expect= |
 | 405 | 2026-09-22 08:38:54 | 28cfb1d6 | 017 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "017", "retest_of": "1c4af2721f574d5b878f5ca7e20882f1"}} |
 | 406 | 2026-09-22 08:38:54 | 1c4af272 | 017 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "017", "name": "name-sorter", "status": "testing", "verified": "UNVERIFIED"}} |
+| 407 | 2026-09-22 08:38:59 | 28cfb1d6 | 017 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 408 | 2026-09-22 08:43:11 | fbeb65ad |  | job.enqueued | master-001 | {"kind": "create", "payload": {"objective": "reads orders.csv and writes totals.csv with one row per country and the total amount for that c |
+| 409 | 2026-09-22 08:43:24 | 28cfb1d6 | 017 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 102s [done] expect='3' last='RESULT: 3' \| T3 PASS 91s [done] expect='3'  |
+| 410 | 2026-09-22 08:43:24 | 28cfb1d6 | 017 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "017", "status": "active", "verified": "VERIFIED"}} |
