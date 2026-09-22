@@ -2,19 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 321 | 2026-09-22 05:34:09 | 04f8c4f9 |  | job.cancelled | owner | {} |
-| 322 | 2026-09-22 05:34:10 | d2db2ed1 |  | job.enqueued | builder | {"kind": "monitor", "payload": {"only": ["001"], "day": "2026-09-22"}} |
-| 323 | 2026-09-22 05:36:31 | ac855168 | 003 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": "4/4", "rejected": null}], "boundary_ |
-| 324 | 2026-09-22 05:36:31 | ac855168 | 003 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
-| 325 | 2026-09-22 05:36:31 | ac855168 | 003 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "003", "name": "code-smith", "status": "active", "verified": "VERIFIED"}} |
-| 326 | 2026-09-22 05:36:35 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 327 | 2026-09-22 05:36:40 | 3f313b96 | 004 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 328 | 2026-09-22 05:47:04 | 3f313b96 | 004 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
-| 329 | 2026-09-22 05:47:04 | 3f313b96 | 004 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
-| 330 | 2026-09-22 05:47:04 | 3f313b96 | 004 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "004", "status": "active"}} |
-| 331 | 2026-09-22 05:47:07 | f2321ed5 | 005 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 332 | 2026-09-22 05:54:57 | f2321ed5 | 005 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
-| 333 | 2026-09-22 05:54:57 | f2321ed5 | 005 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 334 | 2026-09-22 05:54:57 | f2321ed5 | 005 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "005", "status": "active"}} |
 | 335 | 2026-09-22 05:55:01 | a7af2653 | 006 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 336 | 2026-09-22 06:02:41 | a7af2653 | 006 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
@@ -402,3 +389,16 @@
 | 718 | 2026-09-22 21:55:47 | 135e45ff | 021 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "email-line-counter", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["groq-gptoss120b", "o |
 | 719 | 2026-09-22 21:59:57 | 135e45ff | 021 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 52s [done] expect='X_OK' last='X_OK' \| T2 PASS 72s [done] expect='2' last='RESULT: 2' \| T3 PASS 68s [done] expect='1'  |
 | 720 | 2026-09-22 21:59:57 | 135e45ff | 021 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "021", "name": "email-line-counter", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
+| 721 | 2026-09-22 22:00:00 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 722 | 2026-09-22 22:00:01 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 723 | 2026-09-22 22:00:11 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["83 passed in 9.26s"]} |
+| 724 | 2026-09-22 22:00:15 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["83 passed in 8.98s"]} |
+| 725 | 2026-09-22 22:11:16 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 726 | 2026-09-22 22:11:20 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 727 | 2026-09-22 22:11:27 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["84 passed in 8.91s"]} |
+| 728 | 2026-09-22 22:11:33 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["84 passed in 8.20s"]} |
+| 729 | 2026-09-22 22:12:59 | f462fb6b |  | job.dedup | builder | {"kind": "probe"} |
+| 730 | 2026-09-22 22:13:25 | f462fb6b |  | job.resumed | builder | {} |
+| 731 | 2026-09-22 22:13:27 | f462fb6b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 732 | 2026-09-22 22:13:27 | c367ebb5 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-22T23"}} |
+| 733 | 2026-09-22 22:13:39 | f462fb6b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq-qwe |
