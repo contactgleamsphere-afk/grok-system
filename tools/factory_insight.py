@@ -28,8 +28,9 @@ def _classify_fail(status: str, expect: str, last: str) -> str:
     if "CAPABILITY_MISSING" in last: return "capability_missing"
     if "429" in last or "rate" in last.lower(): return "quota"
     if not last: return "empty_reply"
-    if "request fitting" in last or "tiktoken" in last or "context" in last.lower() and "token" in last.lower(): return "context_overflow"
-    if expect and re.search(r"(^|\s)" + re.escape(expect) + r"(\s|$)", last): return "answer_wrapped"          # right value, wrong format (e.g. "RESULT: 1 line")
+    if "request fitting" in last or "tiktoken" in last or ("context" in last.lower() and "token" in last.lower()): return "context_overflow"
+    if "NativeCommandError" in last or "CommandNotFound" in last or "is not recognized" in last: return "shell_error"
+    if expect and re.search(r"(^|\s|:)" + re.escape(expect) + r"(\s|$|\.)", last): return "answer_wrapped"      # right value, wrong format (e.g. "RESULT: 1 line")
     return "wrong_answer"
 
 

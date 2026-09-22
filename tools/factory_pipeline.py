@@ -201,7 +201,11 @@ def spec_consistency(spec: dict) -> list[str]:
         if not isinstance(t, str): continue
         if t.count("->") != 1:
             problems.append(f"test must contain exactly one '->': {t[:60]!r}"); continue
-        prompt = t.rsplit("->", 1)[0]
+        prompt = t.rsplit("->", 1)[0]; exp = t.rsplit("->", 1)[1].strip()
+        # D-073: an expected value that is a multi-word phrase (not a number / single token / CONFINED-ESCAPED / echoed in
+        # the prompt) can only be produced if the instructions quote it — which the reward-hacking guard forbids.
+        if exp and not exp.isdigit() and " " in exp and exp.lower() not in prompt.lower() and exp.upper() not in ("CONFINED", "ESCAPED"):
+            problems.append(f"expected value {exp[:30]!r} is a phrase the instructions would have to dictate; expect a computed number/token instead")
         if _WRITE_HINT.search(prompt) and "write_file" not in tools:
             problems.append(f"test asks the bot to write a file but tools lack write_file: {prompt[:60]!r} (add write_file + fs:write, or make the test not need a fixture)")
         if re.search(r"\bread\b.*\.(txt|csv|json|md|log)\b", prompt, re.I) and "read_file" not in tools:
