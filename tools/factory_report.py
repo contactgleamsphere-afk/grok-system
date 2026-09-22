@@ -25,8 +25,8 @@ def build() -> dict:
     led = ROOT / "registry" / "discovery.json"
     if led.exists():
         try:
-            for k, v in json.loads(led.read_text(encoding="utf-8")).items():
-                if v.get("verdict") == "needs_owner": owner.append(f"lane {k} needs owner action: {v.get('reason', '')[:80]}")
+            for k, v in json.loads(led.read_text(encoding="utf-8")).get("verdicts", {}).items():   # D-069: was reading the wrong level
+                if v.get("verdict") == "needs_owner": owner.append(f"ACTION REQUIRED (owner): {k} — {v.get('reason', '')[:140]}")
         except Exception: pass
     bench = sorted([(m.id, (m.limits or {}).get("bench")) for m in reg.all("models") if (m.limits or {}).get("bench", {}).get("total")],
                    key=lambda x: (-(x[1]["pass"] / x[1]["total"]), x[1].get("secs", 9e9)))

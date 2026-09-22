@@ -345,3 +345,29 @@ def test_d068_bundle_seal_detects_tamper(tmp_path):
     f.build(spec, overwrite=True)                                                    # factory rebuild reseals
     assert bundle_drift(r.bot_dir, reg.get("bots", "990").seal) == []
     assert bundle_drift(r.bot_dir, {}) == ["<unsealed>"]                              # legacy entries: reported, not fatal
+
+
+def test_d069_needs_owner_notice_and_clear(tmp_path, monkeypatch):
+    """D-069: a free provider without a key -> one needs_owner verdict (ledger, 7-day dedup) that STATUS.md turns into
+    ACTION REQUIRED with the signup URL; once the key appears the notice is cleared and the catalog is fetched with auth."""
+    import importlib, json, factory_discover as fdc, factory_probe as fpr
+    monkeypatch.setattr(fdc, "ROOT", tmp_path); monkeypatch.setattr(fdc, "LEDGER", tmp_path / "registry" / "discovery.json")
+    (tmp_path / "registry").mkdir(); (tmp_path / "registry" / "models.json").write_text("{}")
+    monkeypatch.delenv("CEREBRAS_API_KEY", raising=False)
+    r1 = fdc.run("cerebras")
+    assert r1["skipped"] == "CEREBRAS_API_KEY not set" and r1["needs_owner"]["verdict"] == "needs_owner"
+    assert "cloud.cerebras.ai" in r1["needs_owner"]["reason"] and "CEREBRAS_API_KEY" in r1["needs_owner"]["reason"]
+    r2 = fdc.run("cerebras")
+    assert r2["needs_owner"] == "already notified"                                     # dedup within 7 days
+    led = json.loads((tmp_path / "registry" / "discovery.json").read_text())
+    assert led["verdicts"]["provider:cerebras"]["verdict"] == "needs_owner"
+    # owner acts: key set -> notice cleared, /models fetched with bearer, generic entries evaluated
+    monkeypatch.setenv("CEREBRAS_API_KEY", "k")
+    seen = {}
+    def fetch(url): seen["url"] = url; return {"data": [{"id": "llama-3.3-70b", "created": 1}]}
+    r3 = fdc.run("cerebras", fetch=fetch, prober=lambda b, k, m: {"outcome": "ok", "latency_s": 0.5},
+                 looper=lambda b, k, m: {"ok": True, "latency_s": 1.0}, dry_run=True)
+    assert seen["url"].startswith("https://api.cerebras.ai") and r3["added"] == ["cb-llama-33-70b"]
+    assert "provider:cerebras" not in json.loads((tmp_path / "registry" / "discovery.json").read_text())["verdicts"]
+    # every provider in BASES has a signup pointer (except the three originals with keys already on the laptop)
+    assert all(pv in fpr.SIGNUP for pv in fpr.BASES if pv not in ("groq", "gemini", "openrouter"))

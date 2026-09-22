@@ -22,6 +22,16 @@ BASES = {
     "groq": ("https://api.groq.com/openai/v1", "GROQ_API_KEY"),
     "gemini": ("https://generativelanguage.googleapis.com/v1beta/openai", "GEMINI_API_KEY"),
     "openrouter": ("https://openrouter.ai/api/v1", "OPENROUTER_API_KEY"),
+    # D-069: 2026 free tiers that need a human signup (no card). The factory never self-applies; a missing key
+    # becomes a needs_owner notice in STATUS.md with the signup URL.
+    "cerebras": ("https://api.cerebras.ai/v1", "CEREBRAS_API_KEY"),
+    "nvidia": ("https://integrate.api.nvidia.com/v1", "NVIDIA_API_KEY"),
+    "mistral": ("https://api.mistral.ai/v1", "MISTRAL_API_KEY"),
+}
+SIGNUP = {  # RESEARCH 2026-09: free tier, no card, OpenAI-compatible, tool calling
+    "cerebras": "https://cloud.cerebras.ai (free tier ~1M tokens/day)",
+    "nvidia": "https://build.nvidia.com (free ~40 rpm, tool-capable models)",
+    "mistral": "https://console.mistral.ai (Experiment free tier)",
 }
 QUOTA_COOLDOWN_S = 900
 GONE_MARKERS = ("no longer available", "decommissioned", "not found", "does not exist", "has been retired")

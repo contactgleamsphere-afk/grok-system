@@ -192,15 +192,18 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
         remote_ok = [r for r in res["rows"] if r.get("outcome") == "ok" and r["id"] not in ("local3b", "local4b")]
         newly_blocked = [c for c in res["changed"] if c["after"] == "BLOCKED"]
         if not p.get("only") and (newly_blocked or len(remote_ok) < fdc.MIN_HEALTHY):
-            store.enqueue("discover", {"provider": "openrouter", "day": datetime.date.today().isoformat(),
-                                       "trigger": "blocked:" + ",".join(c["id"] for c in newly_blocked) if newly_blocked else f"healthy={len(remote_ok)}"},
-                          priority=2, parent=jid, actor=worker)
+            trig = "blocked:" + ",".join(c["id"] for c in newly_blocked) if newly_blocked else f"healthy={len(remote_ok)}"
+            # D-069: free-first scout — also try the other 2026 free providers; without a key each yields a needs_owner notice
+            for prov in ("openrouter", "cerebras", "nvidia", "mistral"):
+                store.enqueue("discover", {"provider": prov, "day": datetime.date.today().isoformat(), "trigger": trig}, priority=2, parent=jid, actor=worker)
         nxt = (datetime.datetime.now() + datetime.timedelta(hours=1))
         if not p.get("only"): store.enqueue("probe", {"only": [], "hour": nxt.strftime("%Y-%m-%dT%H")}, priority=1, parent=jid, actor=worker,
                       not_before=time.time() + 3600)
         return {"probed": res["probed"], "healthy": res["healthy"], "changed": [(c["id"], c["after"]) for c in res["changed"]]}
     if kind == "discover":
         res = fdc.run(p.get("provider", "openrouter"), int(p.get("max", 2)))
+        if isinstance(res.get("needs_owner"), dict):                    # D-069: surfaced in STATUS.md; owner acts, factory never self-applies
+            store.audit("owner.needed", job_id=jid, actor=worker, provider=res.get("provider") or p.get("provider"), reason=res["needs_owner"]["reason"])
         for v in res.get("verdicts", []):
             if v["verdict"] in ("approved", "rejected"):
                 store.audit("lane.discovered" if v["verdict"] == "approved" else "lane.rejected", job_id=jid, actor=worker,

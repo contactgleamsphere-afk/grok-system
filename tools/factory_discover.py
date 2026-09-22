@@ -26,7 +26,9 @@ import factory_probe as fpr                          # noqa: E402
 
 MIN_HEALTHY = 5
 MIN_CONTEXT = 16_000
-CATALOG = {"openrouter": "https://openrouter.ai/api/v1/models"}
+CATALOG = {"openrouter": "https://openrouter.ai/api/v1/models", "cerebras": "https://api.cerebras.ai/v1/models",
+           "nvidia": "https://integrate.api.nvidia.com/v1/models", "mistral": "https://api.mistral.ai/v1/models"}
+UNKNOWN_CONTEXT = 32768   # generic /models gives no context_length; the sandbox loop + probation are the real evidence
 LEDGER = ROOT / "registry" / "discovery.json"
 
 
@@ -38,16 +40,34 @@ def _save_ledger(d: dict) -> None:
     LEDGER.write_text(json.dumps(d, indent=1), encoding="utf-8")
 
 
-def discover(provider: str = "openrouter", fetch=None) -> list[dict]:
-    fetch = fetch or (lambda url: json.load(urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "aifactory-discover/1.0"}), timeout=30)))
+def discover(provider: str = "openrouter", fetch=None, key: str | None = None) -> list[dict]:
+    hdr = {"User-Agent": "aifactory-discover/1.0", **({"Authorization": f"Bearer {key}"} if key else {})}
+    fetch = fetch or (lambda url: json.load(urllib.request.urlopen(urllib.request.Request(url, headers=hdr), timeout=30)))
     data = fetch(CATALOG[provider])["data"]
     out = []
     for m in data:
         if provider == "openrouter" and not m["id"].endswith(":free"):
             continue
-        out.append({"model": m["id"], "context": int(m.get("context_length") or 0),
-                    "tools": "tools" in (m.get("supported_parameters") or []), "created": int(m.get("created") or 0)})
+        if provider == "openrouter":
+            out.append({"model": m["id"], "context": int(m.get("context_length") or 0),
+                        "tools": "tools" in (m.get("supported_parameters") or []), "created": int(m.get("created") or 0)})
+        else:  # generic OpenAI /models: no capability metadata -> assume, and let the sandbox loop decide
+            out.append({"model": m["id"], "context": int(m.get("context_length") or m.get("max_context_length") or UNKNOWN_CONTEXT),
+                        "tools": bool(m.get("capabilities", {}).get("function_calling", True)) if isinstance(m.get("capabilities"), dict) else True,
+                        "created": int(m.get("created") or 0)})
     return out
+
+
+def needs_owner(provider: str, ledger: dict, now: float) -> dict | None:
+    """D-069: record (once per 7 days) that a free provider is unusable until the owner signs up and sets the key."""
+    k = f"provider:{provider}"; v = ledger["verdicts"].get(k)
+    if v and v.get("verdict") == "needs_owner" and now - v.get("ts", 0) < 7 * 86400:
+        return None
+    base, keyvar = fpr.BASES[provider]
+    v = {"verdict": "needs_owner", "reason": f"set {keyvar} (User env) after signing up: {fpr.SIGNUP.get(provider, base)}",
+         "ts": now, "date": time.strftime("%Y-%m-%d")}
+    ledger["verdicts"][k] = v; _save_ledger(ledger)
+    return v
 
 
 def evaluate(cands: list[dict], reg: Registry, ledger: dict, provider: str) -> tuple[list[dict], list[tuple[dict, str]]]:
@@ -91,7 +111,7 @@ def sandbox_loop(base: str, key: str, model: str, timeout: int = 60) -> dict:
 
 def preset_id(provider: str, model: str) -> str:
     slug = model.split("/")[-1].replace(":free", "").replace(".", "").replace("_", "-")
-    return f"{ {'openrouter': 'or'}.get(provider, provider) }-{slug}"[:40]
+    return f"{ {'openrouter': 'or', 'cerebras': 'cb', 'nvidia': 'nv', 'mistral': 'mi'}.get(provider, provider) }-{slug}"[:40]
 
 
 def integrate(reg: Registry, provider: str, c: dict, probe: dict, loop: dict) -> ModelEntry:
@@ -100,7 +120,7 @@ def integrate(reg: Registry, provider: str, c: dict, probe: dict, loop: dict) ->
                    tool_call_score=0.7, verified="INFERRED",
                    notes=f"DISCOVERED {time.strftime('%Y-%m-%d')} by factory_discover: probe {probe.get('latency_s')}s, loop {loop.get('latency_s')}s. Probation: 2 clean hourly probes -> VERIFIED.",
                    limits={"health": {"ok": True, "probation": 2, "latency_s": probe.get("latency_s"), "last_outcome": "ok",
-                                      "last_probe": time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime())}, "rpd_scope": "openrouter free tier shared 50/day"})
+                                      "last_probe": time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime())}, "rpd_scope": {"openrouter": "openrouter free tier shared 50/day"}.get(provider, f"{provider} free tier (see SIGNUP)")})
     reg.upsert("models", e)
     return e
 
@@ -112,8 +132,10 @@ def run(provider: str = "openrouter", max_new: int = 2, dry_run: bool = False, f
                and float((m.limits or {}).get("health", {}).get("quota_until", 0) or 0) <= now]
     base, keyvar = fpr.BASES[provider]; key = os.environ.get(keyvar)
     if not key:
-        return {"skipped": f"{keyvar} not set", "healthy": healthy}
-    cands = discover(provider, fetch)
+        return {"skipped": f"{keyvar} not set", "healthy": healthy, "needs_owner": needs_owner(provider, ledger, now) or "already notified"}
+    if ledger["verdicts"].pop(f"provider:{provider}", None):  # key present -> the owner acted; clear the notice
+        _save_ledger(ledger)
+    cands = discover(provider, fetch, key)
     keep, rejected = evaluate(cands, reg, ledger, provider)
     prober = prober or fpr.probe_remote; looper = looper or sandbox_loop
     added, verdicts = [], []
