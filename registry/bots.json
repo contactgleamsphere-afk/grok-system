@@ -561,13 +561,13 @@
       "primary": "groq-gptoss120b"
     },
     "name": "workspace-tidy-counter",
-    "notes": "tests 3/4: T1 PASS 13s [done] expect='X_OK' last='X_OK' | T2 FAIL 13s [done] expect='2' last='CAPABILITY_MISSING: write_file' | T3 PASS 52s [done] expect='0' last='RESULT: 0' | T4 PASS 112s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: T1 PASS 28s [done] expect='X_OK' last='X_OK' | T2 PASS 151s [done] expect='2' last='RESULT: 2' | T3 PASS 49s [done] expect='0' last='RESULT: 0' | T4 PASS 199s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "shell:workspace"
     ],
     "purpose": "Count .tmp files in the workspace directory using PowerShell and return the integer count.",
     "schedules": [],
-    "status": "testing",
+    "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write_file a file named test1.tmp containing 'a'. Then write_file a file named test2.tmp containing 'b'. Then use exec to run a PowerShell command to count .tmp files in the workspace. Reply with the count. -> 2",
@@ -577,8 +577,8 @@
     "tools": [
       "exec"
     ],
-    "updated": "2026-09-22T06:03:08+00:00",
-    "verified": "UNVERIFIED",
+    "updated": "2026-09-22T06:10:22+00:00",
+    "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\016-workspace-tidy-counter"
   }

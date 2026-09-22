@@ -375,3 +375,6 @@
 | 371 | 2026-09-22 07:03:08 | 5552a0d9 | 016 | bot.rearchitected | svc-LAPTOP-LRE6PSA8 | {"lane": "groq:qwen/qwen3.8-27b", "tools": ["exec"], "permissions": ["shell:workspace"], "boundary_diff": {}, "result": "T1 PASS 13s [done]  |
 | 372 | 2026-09-22 07:03:08 | 6b1adac9 | 016 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "016", "retest_of": "5552a0d904d94cd08163076c2400c9e0", "rearchitected": true}} |
 | 373 | 2026-09-22 07:03:08 | 5552a0d9 | 016 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "016", "pass": 3, "total": 4, "status": "testing"}} |
+| 374 | 2026-09-22 07:03:12 | 6b1adac9 | 016 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 375 | 2026-09-22 07:10:22 | 6b1adac9 | 016 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 28s [done] expect='X_OK' last='X_OK' \| T2 PASS 151s [done] expect='2' last='RESULT: 2' \| T3 PASS 49s [done] expect='0' |
+| 376 | 2026-09-22 07:10:22 | 6b1adac9 | 016 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "016", "status": "active", "verified": "VERIFIED"}} |
