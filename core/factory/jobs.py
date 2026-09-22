@@ -80,13 +80,46 @@ class JobStore:
                 if line.strip():
                     last = int(json.loads(line)["seq"]); break
         rows = self.db.execute("SELECT seq,ts,job_id,bot_id,event,actor,detail FROM audit WHERE seq>? ORDER BY seq", (last,)).fetchall()
+        prev = self._last_hash(files[-1]) if files else "0" * 16
         n = 0
         for seq, ts, job_id, bot_id, event, actor, detail in rows:
             month = datetime.datetime.fromtimestamp(ts).strftime("%Y-%m")
+            row = {"seq": seq, "ts": round(ts, 3), "job": job_id, "bot": bot_id, "event": event, "actor": actor, "detail": json.loads(detail) if detail else {}}
+            row["prev"] = prev; row["h"] = prev = self._row_hash(row)          # D-091: hash chain -> edits/deletions are detectable
             with (dir_ / f"{month}.jsonl").open("a", encoding="utf-8") as f:
-                f.write(json.dumps({"seq": seq, "ts": round(ts, 3), "job": job_id, "bot": bot_id, "event": event, "actor": actor, "detail": json.loads(detail) if detail else {}}, default=str) + "\n")
+                f.write(json.dumps(row, default=str) + "\n")
             n += 1
         return n
+
+    @staticmethod
+    def _row_hash(row: dict) -> str:
+        body = {k: row[k] for k in ("seq", "ts", "job", "bot", "event", "actor", "detail", "prev")}
+        return hashlib.sha256(json.dumps(body, sort_keys=True, default=str).encode()).hexdigest()[:16]
+
+    @staticmethod
+    def _last_hash(path: pathlib.Path) -> str:
+        for line in reversed(path.read_text(encoding="utf-8").splitlines()):
+            if line.strip():
+                r = json.loads(line); return r.get("h") or "0" * 16     # pre-D-091 rows have no hash: chain starts after them
+        return "0" * 16
+
+    @staticmethod
+    def audit_verify(dir_: pathlib.Path) -> dict:
+        """D-091: walk audit/*.jsonl in order; every hashed row must reference the previous row's hash and hash to its own
+        `h`. Returns {ok, rows, hashed, first_bad}. Rows written before D-091 (no `h`) are skipped but still counted."""
+        prev = "0" * 16; rows = hashed = 0; first_bad = None; last_seq = 0
+        for f in sorted(dir_.glob("*.jsonl")):
+            for line in f.read_text(encoding="utf-8").splitlines():
+                if not line.strip(): continue
+                r = json.loads(line); rows += 1
+                if r["seq"] <= last_seq and first_bad is None: first_bad = {"file": f.name, "seq": r["seq"], "why": "seq not increasing"}
+                last_seq = r["seq"]
+                if "h" not in r: continue
+                hashed += 1
+                if first_bad is None and (r.get("prev") != prev or JobStore._row_hash(r) != r["h"]):
+                    first_bad = {"file": f.name, "seq": r["seq"], "why": "prev mismatch" if r.get("prev") != prev else "row altered"}
+                prev = r["h"]
+        return {"ok": first_bad is None, "rows": rows, "hashed": hashed, "first_bad": first_bad}
 
     def audit_export(self, path: pathlib.Path, limit: int = 400) -> None:
         rows = list(reversed(self.audit_rows(limit)))

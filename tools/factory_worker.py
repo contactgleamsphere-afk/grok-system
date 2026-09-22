@@ -10,7 +10,7 @@
   python tools/factory_worker.py add tick                     # D-076: fire due schedules now (self-chains hourly)
   python tools/factory_worker.py add insight [--days 7]      # D-057 factory self-review -> proposals/<date>.md
   python tools/factory_worker.py add bench [--lanes a,b] [--stale-only] [--max N]   # D-050 lane quality
-  python tools/factory_worker.py status | jobs | resume <job_id> [--allow fs:read,shell:workspace] | cancel <job_id> | release <job_id> [--uncount] | audit [bot_id] [--width N]
+  python tools/factory_worker.py status | audit-verify (D-091 hash chain) | jobs | resume <job_id> [--allow fs:read,shell:workspace] | cancel <job_id> | release <job_id> [--uncount] | audit [bot_id] [--width N]
 
 Autonomous loop (capability 1): a `create` job that ends VERIFIED enqueues nothing more (monitor covers it);
 a `monitor` job enqueues a `repair` job for every bot it demoted; a `repair` that fails pauses with a class
@@ -544,6 +544,8 @@ def main(a: list[str]) -> int:
         else: print(__doc__); return 2
         print(json.dumps({"job_id": j["id"], "state": j["state"], "kind": j["kind"]})); return 0
     if cmd == "status": print(json.dumps(store.summary())); return 0
+    if cmd == "audit-verify":                                   # D-091
+        r = JobStore.audit_verify(ROOT / "audit"); print(json.dumps(r)); return 0 if r["ok"] else 1
     if cmd == "jobs":
         for j in store.list(): print(f"{j['id'][:8]} {j['kind']:8s} {j['state']:9s} att={j['attempts']} cls={j['failure_class'] or '-':9s} {json.dumps(j['payload'])[:70]}")
         return 0

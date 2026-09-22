@@ -458,3 +458,10 @@ The nightly `bench --stale-only` picked lanes by score age only; a lane in a dai
 inconclusive run (gemini-lite 1/4 in 618 s today). `factory_bench.run()` now drops BLOCKED and `quota_until` lanes up
 front (`skipped_cooling` in the result) so the reference bot's time and the shared provider budget go to lanes that
 can actually be scored.
+
+## D-091 — Audit hash chain (2026-09-22) — VERIFIED (unit)
+`audit/*.jsonl` (D-067) was append-only by convention; nothing detected an edited or deleted row. Each exported row
+now carries `prev` (previous row's hash) and `h` = sha256(seq,ts,job,bot,event,actor,detail,prev)[:16]. The chain
+continues across sync calls and month files. `factory_worker.py audit-verify` walks it; rows written before D-091
+(733 today) are counted but not hashed — the chain starts after them. Repair/promotion/permission events are therefore
+tamper-evident in git, not just present.

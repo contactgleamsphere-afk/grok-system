@@ -597,3 +597,19 @@ def test_d090_bench_skips_blocked_and_cooling_lanes(tmp_path, monkeypatch):
     ran = []
     out = fb.run(["groq-a", "gemini-b", "or-c"], runner=lambda d, l: (ran.append(l) or {"pass": 4, "total": 4, "secs": 10, "evidence": "ok"}))
     assert ran == ["gemini-b"] and sorted(out["skipped_cooling"]) == ["groq-a", "or-c"]
+
+
+def test_d091_audit_jsonl_hash_chain_detects_tampering(tmp_path):
+    from factory.jobs import JobStore
+    st = JobStore(tmp_path / "jobs.sqlite3"); d = tmp_path / "audit"
+    for i in range(3): st.audit("x.event", actor="t", i=i)
+    assert st.audit_sync_jsonl(d) == 3
+    st.audit("x.event", actor="t", i=3); assert st.audit_sync_jsonl(d) == 1        # second sync chains onto the first
+    v = JobStore.audit_verify(d); assert v["ok"] and v["hashed"] == 4 and v["rows"] == 4
+    f = next(d.glob("*.jsonl")); lines = f.read_text().splitlines()
+    # alter a detail in row 2
+    r = json.loads(lines[1]); r["detail"]["i"] = 99; lines[1] = json.dumps(r); f.write_text("\n".join(lines) + "\n")
+    v = JobStore.audit_verify(d); assert not v["ok"] and v["first_bad"]["seq"] == 2 and v["first_bad"]["why"] == "row altered"
+    # delete a row
+    f.write_text("\n".join([lines[0], lines[2], lines[3]]) + "\n")
+    v = JobStore.audit_verify(d); assert not v["ok"] and v["first_bad"]["why"] == "prev mismatch"
