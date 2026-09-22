@@ -216,3 +216,13 @@
 | 212 | 2026-09-22 02:02:50 | fbbc40db | 012 | bot.rearchitected | svc-LAPTOP-LRE6PSA8 | {"lane": "groq:qwen/qwen3.8-27b", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "boundary_diff": {"permissio |
 | 213 | 2026-09-22 02:02:50 | fbbc40db | 012 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 214 | 2026-09-22 02:02:50 | fbbc40db | 012 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "012", "pass": 4, "total": 4, "status": "active"}} |
+| 215 | 2026-09-22 02:07:15 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 216 | 2026-09-22 02:07:16 | 8359fbe8 |  | job.cancelled | owner | {} |
+| 217 | 2026-09-22 02:07:50 | bb6439ae |  | job.dedup | builder | {"kind": "report"} |
+| 218 | 2026-09-22 02:09:43 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 219 | 2026-09-22 02:10:08 | 25a47cdb |  | job.enqueued | master-001 | {"kind": "plan", "payload": {"objective": "log-triage pipeline: first a bot that reads app.log and writes errors.txt containing only the lin |
+| 220 | 2026-09-22 02:10:11 | 25a47cdb |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 221 | 2026-09-22 02:10:13 | ff5312d9 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "create", "payload": {"objective": "Read app.log, filter lines containing 'ERROR', and write them to errors.txt.", "plan": "25a47cd |
+| 222 | 2026-09-22 02:10:13 | f9ae8ab7 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "create", "payload": {"objective": "Read errors.txt, count the total lines, identify the three most common error messages, and writ |
+| 223 | 2026-09-22 02:10:13 | 25a47cdb |  | plan.made | svc-LAPTOP-LRE6PSA8 | {"lane": "groq:qwen/qwen3.8-27b", "steps": 2, "queued": [[1, "ff5312d9"], [2, "f9ae8ab7"]], "rationale": "The objective requires a sequentia |
+| 224 | 2026-09-22 02:10:13 | 25a47cdb |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
