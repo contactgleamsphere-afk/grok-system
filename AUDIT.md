@@ -364,3 +364,8 @@
 | 360 | 2026-09-22 06:37:21 | 5552a0d9 | 016 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 361 | 2026-09-22 06:37:23 | 5552a0d9 | 016 | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect: objective needs permissions outside the allowance ['fs:read', 'fs:write', 'net:search', 'net:fetch']: exec permission  |
 | 362 | 2026-09-22 06:37:23 | 5552a0d9 | 016 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: architect: objective needs permissions outside the a |
+| 363 | 2026-09-22 06:37:26 | d2db2ed1 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 364 | 2026-09-22 06:58:02 | d2db2ed1 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "1/5", "before": "testing", "after": "testing", "inconclusive": false, "quota": 0} |
+| 365 | 2026-09-22 06:58:02 | d2db2ed1 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
+| 366 | 2026-09-22 06:58:02 | 3173de79 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "monitor", "payload": {"only": ["001"], "day": "2026-09-22", "retry_of": "d2db2ed1f3b64889b33a4efb8b2595ef"}} |
+| 367 | 2026-09-22 06:58:02 | d2db2ed1 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
