@@ -133,7 +133,7 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
         for r in res["changed"]:
             store.audit("model.health", job_id=jid, actor=worker, model=r["id"], outcome=r["outcome"],
                         before=r["before"], after=r["after"], detail=r.get("detail"))
-        if res["changed"]: _sync_presets()          # BLOCKED lanes leave nanobot config immediately
+        _sync_presets()                             # BLOCKED lanes leave nanobot config immediately; quota-cooled primary rotates (D-062)
         if not res["healthy"] and not p.get("only"):
             raise RuntimeError("transient: probe found no healthy remote lane")
         # D-047: a lane went BLOCKED, or the healthy remote pool is thin -> discover replacements (dedup by day)
@@ -165,6 +165,7 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
             store.audit("lane.benchmarked", job_id=jid, actor=worker, lane=r["lane"], result=f"{r['pass']}/{r['total']}", quota=r.get("quota", 0), secs=r["secs"])
         for r in res["errors"]:
             store.audit("lane.bench_error", job_id=jid, actor=worker, lane=r["lane"], error=r["error"])
+        _sync_presets()                            # D-062: bench scores may change the master's primary/fallback chain
         return {"benchmarked": [(r["lane"], f"{r['pass']}/{r['total']}" + (f" q{r['quota']}" if r.get("quota") else "")) for r in res["results"]], "errors": res["errors"], "rank": res["rank"][:8]}
     if kind == "insight":
         # D-057 self-improvement stage 1: evidence -> proposals/<date>.md. Only pre-approved mechanisms are auto-enqueued.
