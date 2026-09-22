@@ -167,6 +167,11 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
         nxt = datetime.datetime.now() + datetime.timedelta(days=1)
         store.enqueue("report", {"day": nxt.strftime("%Y-%m-%d")}, priority=6, parent=jid, actor=worker, not_before=time.time() + 86400)
         store.enqueue("bench", {"stale_only": True, "max": 2, "day": datetime.date.today().isoformat()}, priority=7, parent=jid, actor=worker)
+        # D-055: the factory owns its nightly cycle. If no monitor ran today (Task Scheduler skipped: battery, asleep),
+        # enqueue one now — idempotent by day, so a scheduler-triggered monitor is never duplicated.
+        today = datetime.date.today().isoformat()
+        if not any(j["kind"] == "monitor" and j["payload"].get("day") == today and not j["payload"].get("only") and j["state"] in ("done", "running", "queued") for j in store.list()):
+            store.enqueue("monitor", {"only": None, "day": today}, priority=3, parent=jid, actor=worker)   # same payload as the scheduler => same idem key
         return {"bots_active": r["bots"]["active"], "attention": r["attention"][:10], "healthy_lanes": r["healthy_lanes"]}
     if kind == "monitor":
         # D-035 pre-flight: a bloated config makes every test fail for the wrong reason — refuse to demote on it
