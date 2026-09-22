@@ -138,6 +138,8 @@ class JobStore:
 
     def enqueue(self, kind: str, payload: dict, *, priority: int = 5, max_attempts: int = 3,
                 idem: str | None = None, parent: str | None = None, actor: str = "factory", not_before: float = 0.0) -> dict:
+        if kind in ("create", "plan") and (not str(payload.get("objective", "")).strip() or str(payload["objective"]).startswith("-")):
+            raise ValueError("objective must be non-empty text, not a flag")          # D-094: no architect call for empty/flag objectives
         idem = idem or self.idem_key(kind, payload)
         row = self.db.execute("SELECT id,state FROM jobs WHERE idem=?", (idem,)).fetchone()
         if row and row[1] in ("queued", "running", "paused"):

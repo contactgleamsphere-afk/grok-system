@@ -509,6 +509,11 @@ def main(a: list[str]) -> int:
         print(json.dumps({"processed": n, "queue": store.summary()})); return 0
     if cmd == "add":
         kind = a[2]
+        if kind in ("create", "plan"):
+            obj = opt("--objective") or (a[3] if len(a) > 3 and not a[3].startswith("--") else "")
+            if len(obj.split()) < 3:                                      # D-094: never spend an architect call on an empty/flag objective
+                print(json.dumps({"error": "objective must be a sentence (>=3 words); got " + repr(obj[:40])})); return 2
+            a = a[:3] + [obj] + a[3:]
         if kind == "create":
             pl = {"objective": a[3]}
             if opt("--allow"): pl["allowed_permissions"] = opt("--allow").split(",")     # D-054: explicit owner grant (recorded in the job + audit)

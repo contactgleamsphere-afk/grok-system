@@ -639,3 +639,14 @@ def test_d093_spec_consistency_flags_shell_tests_without_exec(tmp_path, monkeypa
     assert fp.spec_consistency(ok) == []
     with_exec = {"tools": ["exec"], "permissions": ["fs:read"], "tests": ["Run pytest -> 3"]}
     assert fp.spec_consistency(with_exec) == ["exec requires permission shell:workspace"]
+
+
+def test_d094_enqueue_rejects_empty_objective(tmp_path):
+    """D-094: create/plan jobs with an empty or flag-like objective are refused before any model call is spent."""
+    from factory.jobs import JobStore
+    import pytest
+    st = JobStore(tmp_path / "j.sqlite3")
+    for bad in ("", "  ", "--objective"):
+        with pytest.raises(ValueError):
+            st.enqueue("create", {"objective": bad})
+    assert st.enqueue("create", {"objective": "Count lines in a.txt"})["state"] == "queued"

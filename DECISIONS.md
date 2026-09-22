@@ -475,3 +475,8 @@ just rotated to the next lane and left the registry unaware. Now every HTTP 429/
 Bot 019 failed CAPABILITY_MISSING because its tests said "run pytest" while tools were read/write only; repair is
 tool-frozen so it could never recover. `_SHELL_HINT` (run/execute pytest|python|npm|git|docker|…) now rejects such a
 spec at architect time unless `exec` + `shell:workspace` are granted, and `exec` without `shell:workspace` is rejected.
+
+## D-094 — Empty/flag objectives refused at enqueue (2026-09-22) — VERIFIED
+A mis-typed `add create --objective ...` enqueued objective="--objective" and spent an architect call (paused as
+security). `JobStore.enqueue` now raises for empty/flag objectives (covers master's queue bridge too); the CLI accepts
+both positional and `--objective` forms.
