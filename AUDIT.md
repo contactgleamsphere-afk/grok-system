@@ -356,3 +356,8 @@
 | 352 | 2026-09-22 06:37:13 | 136c6448 | 012 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
 | 353 | 2026-09-22 06:37:13 | 136c6448 | 012 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 354 | 2026-09-22 06:37:13 | 136c6448 | 012 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "012", "status": "active"}} |
+| 355 | 2026-09-22 06:37:17 | dffdd22d | 016 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 356 | 2026-09-22 06:37:17 | dffdd22d | 016 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [], "boundary_diff": {}} |
+| 357 | 2026-09-22 06:37:17 | 5552a0d9 | 016 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "rearchitect", "payload": {"bot_id": "016", "feedback": "logic: spec/tests inconsistent, repair cannot change tools: bot reported C |
+| 358 | 2026-09-22 06:37:17 | dffdd22d | 016 | bot.rearchitect_queued | svc-LAPTOP-LRE6PSA8 | {"reason": "logic: spec/tests inconsistent, repair cannot change tools: bot reported CAPABILITY_MISSING"} |
+| 359 | 2026-09-22 06:37:17 | dffdd22d | 016 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: logic: spec/tests inconsistent, repair cannot chang |
