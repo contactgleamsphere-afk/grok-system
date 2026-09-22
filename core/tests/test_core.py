@@ -420,3 +420,7 @@ def test_d052_repair_refuses_inconsistent_spec_and_rearchitect_fixes_from_object
     from factory.guard import SecurityViolation
     with pytest.raises(SecurityViolation):
         fp.cmd_rearchitect("094", allowed_permissions=["fs:read", "fs:write"])
+
+
+def test_d074_deliberate_red_for_gate_proof():
+    assert False, "D-074 gate proof"
