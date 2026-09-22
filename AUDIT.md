@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 375 | 2026-09-22 07:10:22 | 6b1adac9 | 016 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 28s [done] expect='X_OK' last='X_OK' \| T2 PASS 151s [done] expect='2' last='RESULT: 2' \| T3 PASS 49s [done] expect='0' |
-| 376 | 2026-09-22 07:10:22 | 6b1adac9 | 016 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "016", "status": "active", "verified": "VERIFIED"}} |
-| 377 | 2026-09-22 07:25:57 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 378 | 2026-09-22 07:26:23 | dffdd22d |  | job.cancelled | owner | {} |
 | 379 | 2026-09-22 07:28:02 | 3173de79 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 380 | 2026-09-22 07:32:48 | 3173de79 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "5/5", "before": "testing", "after": "active", "inconclusive": false, "quota": 0} |
 | 381 | 2026-09-22 07:32:48 | 3173de79 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
@@ -402,3 +398,7 @@
 | 772 | 2026-09-22 23:04:49 | 1a129f56 | 023 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "refund-summarizer", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["or-ling-30-flash-vl", |
 | 773 | 2026-09-22 23:08:55 | 1a129f56 | 023 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 26s [done] expect='X_OK' last='X_OK' \| T2 PASS 87s [done] expect='36.0' last='RESULT: 36.0' \| T3 PASS 82s [done] expec |
 | 774 | 2026-09-22 23:08:55 | 1a129f56 | 023 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "023", "name": "refund-summarizer", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
+| 775 | 2026-09-22 23:09:19 | bb6439ae |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 776 | 2026-09-22 23:09:19 | 5aa3c5cd |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "report", "payload": {"day": "2026-09-23"}} |
+| 777 | 2026-09-22 23:09:19 | 4004bf3d |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "bench", "payload": {"stale_only": true, "max": 2, "day": "2026-09-22"}} |
+| 778 | 2026-09-22 23:09:19 | bb6439ae |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
