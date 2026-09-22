@@ -344,3 +344,7 @@
 | 340 | 2026-09-22 06:11:06 | 200a8275 | 007 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
 | 341 | 2026-09-22 06:11:06 | 200a8275 | 007 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 342 | 2026-09-22 06:11:06 | 200a8275 | 007 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "007", "status": "active"}} |
+| 343 | 2026-09-22 06:11:10 | 16e3b204 | 008 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 344 | 2026-09-22 06:28:35 | 16e3b204 | 008 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": "4/4", "rejected": null}], "boundary_ |
+| 345 | 2026-09-22 06:28:35 | 16e3b204 | 008 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 346 | 2026-09-22 06:28:35 | 16e3b204 | 008 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "008", "name": "word-frequency-bot", "status": "active", "verified": "VERIFIED"}} |
