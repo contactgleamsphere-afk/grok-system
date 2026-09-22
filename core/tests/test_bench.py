@@ -423,3 +423,34 @@ def test_d073_all_reward_hack_rejections_escalate_to_rearchitect(tmp_path, monke
     j2 = st.enqueue("repair", {"bot_id": "019", "max_rounds": 2, "rearchitected": True, "t": 2}); c2 = st.claim("w", 300)
     with pytest.raises(Exception): fw.handle(c2, st, "w")
     assert len([x for x in st.list() if x["kind"] == "rearchitect"]) == 1
+
+
+def test_d076_schedules_fire_once_per_slot_and_catch_up_once(tmp_path, monkeypatch):
+    """D-076: cron schedule -> tick enqueues one run per due slot; re-tick is idempotent; a long sleep catches up exactly once;
+    disabled / non-active bots never fire."""
+    import datetime, importlib, factory_schedule as fs
+    from factory.jobs import JobStore
+    from factory.registry import Registry, BotEntry
+    monkeypatch.setattr(fs, "ROOT", tmp_path); monkeypatch.setattr(fs, "PATH", tmp_path / "registry" / "schedules.json")
+    (tmp_path / "registry").mkdir(); reg = Registry(tmp_path / "registry")
+    for bid, st in (("018", "active"), ("019", "testing")):
+        reg.upsert("bots", BotEntry(id=bid, name=f"b{bid}", purpose="p", status=st, verified="VERIFIED", tools=[], permissions=[],
+                                    model_policy={"primary": "x", "fallbacks": []}, workspace="x", tests=["a -> b"], notes=""))
+    st = JobStore(tmp_path / "run" / "jobs.sqlite3")
+    s = fs.add("018", "0 * * * *", "sum orders", in_dir="C:/in")
+    with pytest.raises(ValueError): fs.add("019", "0 * * * *", "x")            # not active
+    with pytest.raises(ValueError): fs.add("018", "0 * * *", "x")              # bad cron
+    t0 = datetime.datetime.fromisoformat(s["created"])
+    assert fs.tick(st, now=t0 + datetime.timedelta(minutes=5))["fired"] == []  # not due yet
+    r1 = fs.tick(st, now=t0.replace(minute=0) + datetime.timedelta(hours=1, minutes=2))
+    assert len(r1["fired"]) == 1 and r1["fired"][0]["bot_id"] == "018"
+    r2 = fs.tick(st, now=t0.replace(minute=0) + datetime.timedelta(hours=1, minutes=30))
+    assert r2["fired"] == []                                                    # same slot: idempotent
+    r3 = fs.tick(st, now=t0.replace(minute=0) + datetime.timedelta(hours=9, minutes=1))   # slept 8 h
+    assert len(r3["fired"]) == 1                                                # catch-up once, not 8 times
+    runs = [j for j in st.list() if j["kind"] == "run"]
+    assert len(runs) == 2 and all(j["payload"]["schedule"] == s["sid"] and j["payload"]["in"] == "C:/in" for j in runs)
+    fs.set_enabled(s["sid"], False)
+    assert fs.tick(st, now=t0 + datetime.timedelta(hours=20))["fired"] == []
+    ev = [r["event"] for r in st.audit_rows(20)]
+    assert ev.count("schedule.fired") == 2

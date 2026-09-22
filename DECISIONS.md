@@ -355,3 +355,10 @@ Bot 005 was demoted at 17:15 by two 300-s TIMEOUTs with empty replies (lanes sat
 then "failed" with 2/4 sandbox scores for the same reason. The runner now counts TIMEOUT-with-no-answer separately
 (`timeouts`), and test/monitor treat them exactly like D-051 quota: inconclusive, re-test in 2 h, never demote.
 A wrong answer among the failures still demotes.
+
+## D-076 — Schedules: recurring bot work (2026-09-22) — VERIFIED (unit) / live pending
+Bot specs allowed `schedules` (cron strings) but nothing ever fired them. Now: `registry/schedules.json` (git-tracked)
+holds owner/master-created schedules for ACTIVE bots; an hourly self-chaining `tick` job enqueues one `run` per due
+schedule, idempotent per (schedule, slot) so a restart or a slept laptop never double-runs and catches up exactly once.
+Own 5-field cron parser in core/factory/cron.py (no dependency). Master: "every morning run 018 on orders" →
+`factory.py schedule add 018 "0 7 * * *" --task … --in orders`. Same inbox-name contract as `queue run` (D-064).

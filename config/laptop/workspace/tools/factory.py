@@ -5,6 +5,8 @@
     python tools/factory.py queue plan "<multi-stage objective>"   # planner -> one create per stage
     python tools/factory.py queue probe | discover | bench        # model-lane health / new free lanes / quality scores
     python tools/factory.py jobs | audit [bot_id] | report | lanes
+    python tools/factory.py schedule add <bot_id> "<5-field cron>" --task "..." [--in <inbox name>]   # D-076 recurring work
+    python tools/factory.py schedule list | remove <sid> | enable <sid> | disable <sid>
     python tools/factory.py approve <job_id> --allow fs:read,fs:write,shell:workspace   # D-070 owner grants a paused job's permission request
     python tools/factory.py test <bot_id>
     python tools/factory.py list
@@ -65,6 +67,16 @@ def main(a):
     if a[1] == "report":
         r = subprocess.run([sys.executable, str(REPO / "tools" / "factory_report.py"), "--brief"], env=env, cwd=str(REPO), capture_output=True, text=True, timeout=120)
         print((r.stdout + r.stderr)[:1000]); return r.returncode
+    if a[1] == "schedule":
+        # D-076: recurring runs. Same inbox contract as `queue run` (names only, never outside paths).
+        w = REPO / "tools" / "factory_schedule.py"; rest = list(a[2:])
+        if "--in" in rest:
+            i = rest.index("--in"); name = pathlib.Path(rest[i + 1]).name
+            inbox = pathlib.Path(__file__).resolve().parents[1] / "inbox" / name
+            if not inbox.is_dir(): print(f"inbox folder '{name}' not found under workspace/inbox"); return 1
+            rest[i + 1] = str(inbox)
+        r = subprocess.run([sys.executable, str(w), *rest, *(["--actor", "master-001"] if rest and rest[0] == "add" else [])], env=env, cwd=str(REPO), capture_output=True, text=True, timeout=120)
+        print((r.stdout + r.stderr)[-900:]); return r.returncode
     if a[1] == "approve":
         # D-070: the only way a paused (security) job gets more permission is an explicit owner grant relayed here.
         # shell:system / net:* beyond allowance are refused by the worker; the grant + resume are audited.

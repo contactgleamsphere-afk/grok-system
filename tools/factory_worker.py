@@ -7,6 +7,7 @@
   python tools/factory_worker.py add monitor
   python tools/factory_worker.py add run <bot_id> --task "..." [--in DIR] [--out DIR]   # D-063 real work
   python tools/factory_worker.py add run --plan <plan_job> --in DIR                       # run a whole pipeline
+  python tools/factory_worker.py add tick                     # D-076: fire due schedules now (self-chains hourly)
   python tools/factory_worker.py add insight [--days 7]      # D-057 factory self-review -> proposals/<date>.md
   python tools/factory_worker.py add bench [--lanes a,b] [--stale-only] [--max N]   # D-050 lane quality
   python tools/factory_worker.py status | jobs | resume <job_id> [--allow fs:read,shell:workspace] | cancel <job_id> | release <job_id> [--uncount] | audit [bot_id] [--width N]
@@ -31,6 +32,7 @@ import factory_monitor as fm                                           # noqa: E
 import factory_probe as fpr                                            # noqa: E402
 import factory_report as frp                                           # noqa: E402
 import factory_discover as fdc                                         # noqa: E402
+import factory_schedule as fsch                                        # noqa: E402
 import factory_bench as fbn
 import factory_plan as fpl
 import factory_insight as fin
@@ -262,6 +264,12 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
             if res.get("quota"): raise RuntimeError("transient: lane quota during run")
             raise FactoryError(f"logic: run failed: {res.get('error') or res.get('status')}")
         return {"bot_id": p["bot_id"], "name": "run", "status": "ok " + ",".join(res.get("produced", []))}
+    if kind == "tick":
+        # D-076: fire due schedules (idempotent per slot); chained hourly like probe/report so it survives restarts
+        res = fsch.tick(store, actor=worker)
+        nxt = datetime.datetime.now() + datetime.timedelta(hours=1)
+        store.enqueue("tick", {"hour": nxt.strftime("%Y-%m-%dT%H")}, priority=1, parent=jid, actor=worker, not_before=time.time() + 3600)
+        return res
     if kind == "insight":
         # D-057 self-improvement stage 1: evidence -> proposals/<date>.md. Only pre-approved mechanisms are auto-enqueued.
         res = fin.run(int(p.get("days", 7)), write=True)
@@ -461,6 +469,8 @@ def main(a: list[str]) -> int:
             j = store.enqueue("insight", {"days": int(opt("--days", 7)), "t": int(time.time())}, priority=8, actor=opt("--actor", "owner"))
         elif kind == "report":
             j = store.enqueue("report", {"day": str(datetime.date.today())}, priority=6, actor=opt("--actor", "owner"))
+        elif kind == "tick":
+            j = store.enqueue("tick", {"hour": datetime.datetime.now().strftime("%Y-%m-%dT%H")}, priority=1, actor=opt("--actor", "owner"))
         elif kind == "monitor":
             only = [x.strip().zfill(3) for x in str(opt("--only", "")).split(",") if x.strip()] or None   # zfill: shells turn 002 into 2
             j = store.enqueue("monitor", {"only": only, "day": str(datetime.date.today())}, priority=3, actor=opt("--actor", "owner"))
