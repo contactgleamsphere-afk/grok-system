@@ -319,3 +319,13 @@ Chat → job fbeb65ad → bot 018 (4/4) → auto run ca31fcf3 → totals.csv cor
 - unit `test_d080_quota_hit_during_test_cools_lane_immediately` — PASS (78/78).
 - PowerShell regex checked against the real Groq 429 text ("try again in 11m14.352s" → secs 704, model openai/gpt-oss-120b) and a Gemini RESOURCE_EXHAUSTED/retryDelay sample (→ 67 s) on the laptop.
 - trigger: 004 repair round 1 scored 1/4 on groq-gptoss120b because its 200k TPD cap was hit (probe 40 min earlier said ok). Repair 349607da resumed on the new code — result recorded in BOT_REGISTRY/audit.
+
+## D-081 sleep resilience — 2026-09-22 (live)
+- observed: Modern Standby 20:36–21:24 (Kernel-Power 507/172); fast worker's claim() expired repair 349607da's lease at 20:43 while svc- still ran it (job back to queued, attempt 1). Motivating incident for the re-adopt path.
+- unit `test_d081_heartbeat_readopts_after_sleep_or_reports_lost` — PASS. Live: fast worker relaunched itself as pid 13196 `--fast-lane --respawn` after the D-082 push without the supervisor.
+
+## D-082 — unit `test_d082_repair_reruns_candidate_when_sandbox_score_was_quota_bound` — PASS (80/80).
+
+## D-083 master seal — 2026-09-22 (live)
+- unit `test_d083_master_seal_covers_agents_wrapper_and_exec_config` — PASS (81/81).
+- laptop g10: wire script sealed 001 (3 hashes); appended a comment to workspace/tools/factory.py → `test 001` → `master integrity: ['tools/factory.py'] changed outside the factory`; wire script restore+reseal → drift [] — PASS.
