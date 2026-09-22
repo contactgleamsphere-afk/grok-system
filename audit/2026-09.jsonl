@@ -565,3 +565,6 @@
 {"seq": 565, "ts": 1790098820.067, "job": "aba5e667652349b4bdd8d2eec1f0aafd", "bot": "018", "event": "job.claimed", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"attempt": 1}}
 {"seq": 566, "ts": 1790098905.327, "job": "aba5e667652349b4bdd8d2eec1f0aafd", "bot": "018", "event": "bot.ran", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"ok": true, "produced": ["totals.csv"], "secs": 83, "reply": "RESULT: totals.csv", "chain": "groq-gptoss120b"}}
 {"seq": 567, "ts": 1790098905.327, "job": "aba5e667652349b4bdd8d2eec1f0aafd", "bot": "018", "event": "job.done", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"summary": {"bot_id": "018", "name": "run", "status": "ok totals.csv"}}}
+{"seq": 568, "ts": 1790098918.684, "job": "f42e8c49605f4fedbf521e769287218d", "bot": "018", "event": "job.claimed", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"attempt": 1}}
+{"seq": 569, "ts": 1790099023.451, "job": "f42e8c49605f4fedbf521e769287218d", "bot": "018", "event": "bot.ran", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"ok": true, "produced": ["totals.csv"], "secs": 102, "reply": "RESULT: totals.csv", "chain": "groq-gptoss120b"}}
+{"seq": 570, "ts": 1790099023.468, "job": "f42e8c49605f4fedbf521e769287218d", "bot": "018", "event": "job.done", "actor": "svc-LAPTOP-LRE6PSA8", "detail": {"summary": {"bot_id": "018", "name": "run", "status": "ok totals.csv"}}}

@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 168 | 2026-09-22 01:12:35 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 169 | 2026-09-22 01:12:36 | a8c013ad |  | job.enqueued | builder | {"kind": "bench", "payload": {"lanes": ["or-nex-n25-pro", "or-ling-30-flash-vl", "gemini-gemma26b", "groq-qwen27b", "groq-gptoss20b", "or-qw |
-| 170 | 2026-09-22 01:12:39 | a8c013ad |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 171 | 2026-09-22 01:20:54 | a8c013ad |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-nex-n25-pro", "result": "4/4", "secs": 84} |
 | 172 | 2026-09-22 01:20:54 | a8c013ad |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-ling-30-flash-vl", "result": "4/4", "secs": 62} |
 | 173 | 2026-09-22 01:20:54 | a8c013ad |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-gemma26b", "result": "3/4", "secs": 73} |
@@ -402,3 +399,6 @@
 | 565 | 2026-09-22 18:40:20 | aba5e667 | 018 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 566 | 2026-09-22 18:41:45 | aba5e667 | 018 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"ok": true, "produced": ["totals.csv"], "secs": 83, "reply": "RESULT: totals.csv", "chain": "groq-gptoss120b"} |
 | 567 | 2026-09-22 18:41:45 | aba5e667 | 018 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "name": "run", "status": "ok totals.csv"}} |
+| 568 | 2026-09-22 18:41:58 | f42e8c49 | 018 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 569 | 2026-09-22 18:43:43 | f42e8c49 | 018 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"ok": true, "produced": ["totals.csv"], "secs": 102, "reply": "RESULT: totals.csv", "chain": "groq-gptoss120b"} |
+| 570 | 2026-09-22 18:43:43 | f42e8c49 | 018 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "name": "run", "status": "ok totals.csv"}} |
