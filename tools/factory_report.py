@@ -38,6 +38,9 @@ def build() -> dict:
     jobs = store.list()
     recent = [j for j in jobs if now - float(j["updated"]) < 86400]
     audit = store.audit_rows(limit=25)
+    live = liveness(store, jobs, now)                                   # D-100
+    if live["state"] != "running":
+        owner.insert(0, f"FACTORY {live['state'].upper()}: {live['reason']}")
     return {"generated": datetime.datetime.now().isoformat(timespec="seconds"),
             "bots": {"active": sum(b["status"] == "active" for b in bots), "total": len(bots), "list": bots},
             "queue": store.summary(),
@@ -48,12 +51,45 @@ def build() -> dict:
                          + [f"bot {b['id']} {b['name']} is {b['status']}" for b in bots if b["status"] not in ("active",) and b["id"] != "001"]
                          + [f"lane {l['id']} BLOCKED: {l['reason']}" for l in lanes if l["state"] == "BLOCKED" and l.get("reason")]
                          + owner,
+            "liveness": live,
             "bench": [{"id": i, "score": f"{b['pass']}/{b['total']}", "secs": b.get("secs"), "runs": b.get("runs", 1)} for i, b in bench],
             "recent_audit": [f"{a['ts']} {a['event']} {a.get('bot_id') or ''}".strip() for a in audit]}
 
 
+STALE_WORKER_S = 2 * 3600      # hourly probe/tick chain + 15-min task tick: >2 h of silence means nobody is executing
+STUCK_QUEUE_S = 30 * 60        # a queued job older than this while a worker is alive = pick loop broken
+
+
+def liveness(store, jobs: list[dict], now: float) -> dict:
+    """D-100: is anything actually executing? Evidence = the newest audit row written by a worker (job.claimed/done,
+    worker.selftest/restart, probe/tick). STATUS.md used to show yesterday's numbers as if current; with the laptop
+    asleep the owner could not tell. `state`: running | stalled (worker silent > 2 h) | stuck (alive but queue not
+    draining) | idle-blocked (self-test red)."""
+    rows = store.audit_rows(limit=400)
+    worker_rows = [r for r in rows if r["event"].startswith(("job.claimed", "job.done", "job.failed", "worker.")) or r["event"] in ("lane.probed", "tick.fired")]
+    last = max((float(r["ts"]) for r in worker_rows), default=0.0)
+    age = now - last if last else None
+    queued = [j for j in jobs if j["state"] == "queued" and float(j.get("not_before") or 0) <= now]
+    oldest_ready = min((now - float(j["created"]) for j in queued), default=0.0)
+    st = ROOT / "run" / "selftest.json"
+    try:
+        selftest_ok = bool(json.loads(st.read_text(encoding="utf-8")).get("ok"))
+    except Exception:
+        selftest_ok = True
+    if not selftest_ok:
+        state, reason = "idle-blocked", "worker self-test gate is red; nothing is processed until the tests pass"
+    elif age is None or age > STALE_WORKER_S:
+        state, reason = "stalled", f"no worker activity for {int((age or 0) // 60)} min (laptop asleep/offline or worker task dead)"
+    elif queued and oldest_ready > STUCK_QUEUE_S and age > STUCK_QUEUE_S:
+        state, reason = "stuck", f"{len(queued)} ready jobs waiting {int(oldest_ready // 60)} min while the worker is silent"
+    else:
+        state, reason = "running", f"last worker activity {int((age or 0) // 60)} min ago"
+    return {"state": state, "reason": reason, "last_worker_ts": last, "ready_queued": len(queued), "oldest_ready_min": int(oldest_ready // 60)}
+
+
 def markdown(r: dict) -> str:
-    out = [f"# FACTORY STATUS — {r['generated']}", "",
+    lv = r.get("liveness") or {}
+    out = [f"# FACTORY STATUS — {r['generated']}", "", f"**Worker:** {lv.get('state', '?')} — {lv.get('reason', '')}", "",
            f"**Bots:** {r['bots']['active']}/{r['bots']['total']} active   **Queue:** {json.dumps(r['queue'])}   **Healthy lanes:** {', '.join(r['healthy_lanes']) or 'none'}", ""]
     if r["attention"]:
         out += ["## Needs attention"] + [f"- {a}" for a in r["attention"]] + [""]
@@ -71,8 +107,9 @@ def markdown(r: dict) -> str:
 
 def brief(r: dict) -> str:
     """<=900 chars for small-context masters (D-044): counts, attention items, last 3 jobs. Full detail is in STATUS.md."""
-    lines = [f"FACTORY {r['generated'][:16]}: bots {r['bots']['active']}/{r['bots']['total']} active; queue {json.dumps(r['queue'])}; "
-             f"healthy lanes {len(r['healthy_lanes'])}."]
+    lv = r.get("liveness") or {}
+    lines = [f"FACTORY {r['generated'][:16]} [{lv.get('state', '?')}: {lv.get('reason', '')[:70]}]: bots {r['bots']['active']}/{r['bots']['total']} active; "
+             f"queue {json.dumps(r['queue'])}; healthy lanes {len(r['healthy_lanes'])}."]
     lines += ["ATTENTION: " + ("; ".join(a[:90] for a in r["attention"][:5]) if r["attention"] else "nothing")]
     last = r["jobs_24h"][-3:]
     lines += ["LAST JOBS: " + "; ".join(f"{j['kind']} {j['bot'] or j['objective'][:30] or ''} -> {j['state']}" for j in last)]

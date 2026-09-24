@@ -733,3 +733,25 @@ def test_d099_guard_second_layer_catches_escaping_instructions():
     assert "shell access" in str(ei.value)
     ok = dict(before, instructions="Read a.txt carefully, never look outside the workspace, and reply with only the count.")
     assert "instruction_escape" not in assert_no_silent_expansion(before, ok, context="repair 099")
+
+
+def test_d100_report_liveness_states(tmp_path, monkeypatch):
+    """D-100: STATUS/report say whether anything is executing: running / stalled (>2 h silence) / stuck / idle-blocked."""
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    import importlib, factory_report as frp; importlib.reload(frp)
+    from factory.jobs import JobStore
+    (tmp_path / "run").mkdir(exist_ok=True)
+    st = JobStore(tmp_path / "run" / "jobs.sqlite3"); now = time.time()
+    assert frp.liveness(st, [], now)["state"] == "stalled"                       # no worker ever
+    st.audit("job.done", job_id="x", actor="w", summary={})
+    assert frp.liveness(st, st.list(), now)["state"] == "running"
+    j = st.enqueue("create", {"objective": "Count lines in a.txt"})
+    st.db.execute("UPDATE jobs SET created=? WHERE id=?", (now - 3600, j["id"])); st.db.commit()
+    st.db.execute("UPDATE audit SET ts=?", (now - 2400,)); st.db.commit()         # worker last seen 40 min ago, job waiting 60
+    assert frp.liveness(st, st.list(), now)["state"] == "stuck"
+    st.db.execute("UPDATE audit SET ts=?", (now - 3 * 3600,)); st.db.commit()
+    assert frp.liveness(st, st.list(), now)["state"] == "stalled"
+    (tmp_path / "run" / "selftest.json").write_text(json.dumps({"ok": False, "tail": ["1 failed"]}))
+    assert frp.liveness(st, st.list(), now)["state"] == "idle-blocked"
+    r = frp.build(); assert r["liveness"]["state"] == "idle-blocked" and r["attention"][0].startswith("FACTORY IDLE-BLOCKED")
+    assert "[idle-blocked" in frp.brief(r) and "**Worker:** idle-blocked" in frp.markdown(r)
