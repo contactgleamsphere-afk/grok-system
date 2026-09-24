@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 950 | 2026-09-24 01:24:54 | e30126b8 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 951 | 2026-09-24 01:28:26 | 581618e9 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 239s [done] liveness expect='MASTER_OK' cmd=True \| T2 FAIL 241s [TIMEOUT] report expect='FACTORY' cmd=False \| T3 PASS  |
 | 952 | 2026-09-24 01:28:26 | 581618e9 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 239s [done] liveness expect='MASTER_OK' cmd=True \| T2 FAIL 241s [TIMEOUT] report expect='FACTORY' cmd=False \| T3 PASS  |
 | 953 | 2026-09-24 01:28:26 | 581618e9 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 954 | 2026-09-24 01:28:26 | 7b4d176b | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "ec7ed62485264d62b34fc744deeb0c6f", "retry_of": "581618e95bdc448cac249a3a9d2422f |
@@ -402,3 +400,5 @@
 | 1347 | 2026-09-24 22:29:43 |  | 018 | schedule.fired | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "fire": "2026-09-24T07:00", "job": "3fe01ea5"} |
 | 1348 | 2026-09-24 22:29:44 | 7946d979 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-24T23"}} |
 | 1349 | 2026-09-24 22:29:44 | e7340c6e |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 1350 | 2026-09-24 22:29:46 | 2107158e |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1351 | 2026-09-24 22:29:49 | 2107158e |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
