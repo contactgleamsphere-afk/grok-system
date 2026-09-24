@@ -638,7 +638,7 @@ Live finding (04:25): the supervisor WAS alive and restarted the tunnel itself; 
 internet" loop pinging 1.1.1.1 (ICMP) for 580 s while HTTPS worked throughout. D-116b: supervisor now tests HTTPS
 (api.github.com) first, ICMP as fallback, wait capped at 300 s. The tick check stays as the backstop for a dead supervisor.
 
-## D-117 — Nightly factory canary (2026-09-24) — VERIFIED (unit); live run pending
+## D-117 — Nightly factory canary (2026-09-24) — VERIFIED live (job c76efa69: pass 2/2 in 20 s, architect groq gpt-oss-20b)
 `canary` job (nightly from the report job; `factory_pipeline.py canary` by hand): architect (real lane) → bundle →
 acceptance runner on a fixed objective ("count lines in a named text file", fixture declared), built into a scratch
 dir with `register=False` — no bot id consumed, no registry entry, scratch deleted. Verdict audited as

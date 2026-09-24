@@ -93,3 +93,4 @@
 - D-084 discovery quota deferral, D-085 bench timeouts, D-086 outage-sweep guard, D-087 Groq ctx, D-088 daily-cap cooldown, D-089 repo-sync autostash. Bot 021. 85 tests.
 - D-090 bench cooling skip, D-091 audit hash chain, D-092 builder 429 cooling. Bots 022/023 + first real plan run. 88 tests.
 - D-093..D-099: shell-test gate, enqueue validation, bench-ranked builder lanes, weak-lane exclusion, objective-aware reuse, mixed-plan run fix, semantic boundary guard. Bots 024/025. 95 tests.
+- 2026-09-24 D-116/D-116b/D-117: tick + fast-worker tunnel self-heal (schtasks /Run when URL=530 and no supervisor); supervisor HTTPS-first net check (cap 300 s) and `tools\tunnel-supervisor.ps1` shim to the repo script; nightly factory canary job (`canary`, `factory_pipeline.py canary`), report flag `FACTORY CANARY FAILED`, `BotFactory.build(register=False, out_dir=)`. 110 unit tests.
