@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 959 | 2026-09-24 01:28:39 | c3c35810 | 002 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: repair only runs on demoted bots (status=active)\nT |
-| 960 | 2026-09-24 01:28:44 | 8b22fe5c |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 961 | 2026-09-24 01:28:44 | 8b22fe5c |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 962 | 2026-09-24 01:28:48 | f800e68b |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 963 | 2026-09-24 01:28:48 | f800e68b |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 964 | 2026-09-24 01:28:52 | aa0b21ba |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +399,6 @@
 | 1356 | 2026-09-24 22:30:22 | 66ca017e |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1357 | 2026-09-24 22:30:39 | bc1ce82b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1358 | 2026-09-24 22:30:39 | bc1ce82b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 1359 | 2026-09-24 22:30:46 | 66ca017e |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 1360 | 2026-09-24 22:30:49 | 541f6f6e |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1361 | 2026-09-24 22:30:49 | 541f6f6e |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
