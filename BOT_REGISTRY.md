@@ -25,5 +25,5 @@
 | 021 | email-line-counter | active | VERIFIED | groq-gptoss120b > or-ling-30-flash-vl > or-nex-n25-pro > groq-gptoss20b > gemini-gemma26b > groq-qwen27b > local3b | read_file, write_file | tests 4/4: T1 PASS 10s [done] expect='X_OK' last='X_OK' | T2 PASS 41s [done] exp |
 | 022 | csv-refund-filter | active | VERIFIED | or-ling-30-flash-vl > or-nex-n25-pro > gemini-gemma26b > groq-qwen27b > local3b | read_file, write_file | tests 4/4: T1 PASS 10s [done] expect='X_OK' last='X_OK' | T2 PASS 70s [done] exp |
 | 023 | refund-summarizer | active | VERIFIED | or-ling-30-flash-vl > or-nex-n25-pro > gemini-gemma26b > groq-qwen27b > local3b | read_file, write_file | tests 4/4: T1 PASS 26s [done] expect='X_OK' last='X_OK' | T2 PASS 87s [done] exp |
-| 024 | pytest-runner-bot | active | VERIFIED | gemini-lite31 > gemini-gemma26b > local3b | write_file, read_file, exec | tests 3/3: T1 PASS 10s [done] expect='X_OK' last='X_OK' | T2 PASS 17s [done] exp |
+| 024 | pytest-runner-bot | active | VERIFIED | gemini-lite31 > gemini-gemma26b > local3b | write_file, read_file, exec | tests 3/3: T1 PASS 14s [done] expect='X_OK' last='X_OK' | T2 PASS 27s [done] exp |
 | 025 | text-transformer | active | VERIFIED | gemini-lite31 > gemini-gemma26b > local3b | read_file, write_file | tests 3/3: T1 PASS 13s [done] expect='LIVENESS_OK' last='LIVENESS_OK' | T2 PASS  |

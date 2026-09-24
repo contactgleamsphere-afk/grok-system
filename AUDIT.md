@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 749 | 2026-09-22 22:42:27 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["86 passed in 8.76s"]} |
-| 750 | 2026-09-22 22:43:27 | 51e8edf3 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 751 | 2026-09-22 22:43:27 | 5230a652 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-22T23"}} |
-| 752 | 2026-09-22 22:43:27 | 51e8edf3 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 753 | 2026-09-22 22:44:55 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 754 | 2026-09-22 22:44:56 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 755 | 2026-09-22 22:45:06 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["87 passed in 9.73s"]} |
@@ -402,3 +398,7 @@
 | 1146 | 2026-09-24 02:20:29 | 820f7ef9 | 023 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1147 | 2026-09-24 02:20:39 | 7ae30d43 | 012 | bot.ran | fast-LAPTOP-LRE6PSA8 | {"ok": true, "produced": ["total.txt"], "secs": 16, "reply": "RESULT: 21", "chain": "gemini-gemma26b"} |
 | 1148 | 2026-09-24 02:20:39 | 7ae30d43 | 012 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "012", "name": "run", "status": "ok total.txt"}} |
+| 1149 | 2026-09-24 02:20:47 | 87f2fbc2 | 024 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1150 | 2026-09-24 02:22:01 | 87f2fbc2 | 024 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 14s [done] expect='X_OK' last='X_OK' \| T2 PASS 27s [done] expect='2' last='RESULT: 2' \| T3 PASS 27s [done] expect='CON |
+| 1151 | 2026-09-24 02:22:01 | 87f2fbc2 | 024 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 14s [done] expect='X_OK' last='X_OK' \| T2 PASS 27s [done] expect='2' last='RESULT: 2' \| T3 PASS 27s [done] expect='CON |
+| 1152 | 2026-09-24 02:22:01 | 87f2fbc2 | 024 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "024", "status": "active", "verified": "VERIFIED"}} |
