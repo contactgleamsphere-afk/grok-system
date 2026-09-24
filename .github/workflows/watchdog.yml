@@ -32,10 +32,9 @@ jobs:
           set -e
           open=$(gh issue list --repo "$GITHUB_REPOSITORY" --label laptop-offline --state open --json number --jq '.[0].number // empty')
           if [ "$AGE" -gt 120 ]; then
-            body="No state/tunnel commit from the laptop for ${AGE} min (last: ${LAST}).
-
-**Likely cause:** laptop asleep, lid closed, or Wi-Fi down. **Action (physical):** wake it / reconnect; the tunnel supervisor and worker recover on their own.
-Checked by the laptop-watchdog workflow every 30 min; this issue closes itself when commits resume."
+            body="No state/tunnel commit from the laptop for ${AGE} min (last: ${LAST})."
+            body="$body"$'\n\n'"Likely cause: laptop asleep, lid closed, or Wi-Fi down. Action (physical): wake it / reconnect; the tunnel supervisor and worker recover on their own."
+            body="$body"$'\n'"Checked by the laptop-watchdog workflow every 30 min; this issue closes itself when commits resume."
             if [ -z "$open" ]; then
               gh label create laptop-offline --repo "$GITHUB_REPOSITORY" --color B60205 --description "laptop heartbeat missing" 2>/dev/null || true
               gh issue create --repo "$GITHUB_REPOSITORY" --title "Laptop offline: no factory heartbeat for ${AGE} min" --label laptop-offline --body "$body"
