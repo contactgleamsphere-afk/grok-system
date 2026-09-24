@@ -2,15 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 827 | 2026-09-22 23:46:22 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["92 passed in 11.14s"]} |
-| 828 | 2026-09-22 23:46:22 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["92 passed in 10.72s"]} |
-| 829 | 2026-09-22 23:46:52 | 593061c9 |  | job.enqueued | builder | {"kind": "plan", "payload": {"objective": "Pipeline: take orders.csv, keep only the rows whose status is refunded and write them to refunded |
-| 830 | 2026-09-22 23:46:52 | 593061c9 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 831 | 2026-09-22 23:46:56 | 593061c9 | 022 | plan.reused | svc-LAPTOP-LRE6PSA8 | {"step": 1, "similarity": 0.7} |
-| 832 | 2026-09-22 23:46:56 | 593061c9 | 023 | plan.reused | svc-LAPTOP-LRE6PSA8 | {"step": 2, "similarity": 0.78} |
-| 833 | 2026-09-22 23:46:56 | 9d375361 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "create", "payload": {"objective": "Read summary.txt and write its content in uppercase to summary_upper.txt.", "plan": "593061c979 |
-| 834 | 2026-09-22 23:46:56 | 593061c9 |  | plan.made | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini:gemini-3.1-flash-lite", "steps": 3, "queued": [[3, "9d375361"]], "rationale": "The objective requires a three-step pipeline |
-| 835 | 2026-09-22 23:46:56 | 593061c9 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"name": "plan:3 steps", "status": "queued 9d375361"}} |
 | 836 | 2026-09-22 23:47:00 | 9d375361 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 837 | 2026-09-22 23:47:06 | 9d375361 | 025 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "text-transformer", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["gemini-lite31", "gemin |
 | 838 | 2026-09-22 23:48:09 | 9d375361 | 025 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='LIVENESS_OK' last='LIVENESS_OK' \| T2 PASS 38s [done] expect='HELLO WORLD' last='RESULT: HELLO WORLD' |
@@ -402,3 +393,12 @@
 | 1224 | 2026-09-24 03:37:40 | 1f96bf25 | 026 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1225 | 2026-09-24 03:41:47 | 1f96bf25 | 026 | bot.rebuilt | svc-LAPTOP-LRE6PSA8 | {"chain": ["groq-gptoss120b", "gemini-lite31", "groq-gptoss20b", "local3b"], "result": "T1 PASS 17s [done] expect='X_OK' last='X_OK' \| T2 P |
 | 1226 | 2026-09-24 03:41:47 | 1f96bf25 | 026 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "026", "name": "sqlite-query-bot", "pass": 3, "total": 4, "status": "testing", "verified": "UNVERIFIED"}} |
+| 1227 | 2026-09-24 03:47:31 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1228 | 2026-09-24 03:47:48 | c18703a7 |  | job.cancelled | owner | {} |
+| 1229 | 2026-09-24 03:47:48 | a14b2bd5 | 026 | job.enqueued | owner | {"kind": "rearchitect", "payload": {"bot_id": "026", "feedback": "Every test prompt that uses the fixture database must name the file fixtur |
+| 1230 | 2026-09-24 03:47:52 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["107 passed in 16.49s"]} |
+| 1231 | 2026-09-24 03:47:52 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["107 passed in 16.52s"]} |
+| 1232 | 2026-09-24 03:47:52 | a14b2bd5 | 026 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1233 | 2026-09-24 03:50:17 | a14b2bd5 | 026 | bot.rearchitected | svc-LAPTOP-LRE6PSA8 | {"lane": "groq:openai/gpt-oss-120b", "tools": ["read_file", "write_file", "mcp:mcp-sqlite3"], "permissions": ["fs:read", "fs:write", "mcp:mc |
+| 1234 | 2026-09-24 03:50:17 | a14b2bd5 | 026 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 1235 | 2026-09-24 03:50:17 | a14b2bd5 | 026 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "026", "pass": 4, "total": 4, "status": "active"}} |
