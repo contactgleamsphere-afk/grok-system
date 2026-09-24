@@ -2,12 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 876 | 2026-09-24 01:12:10 | 5aa3c5cd |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 877 | 2026-09-24 01:12:16 | ec7ed624 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 878 | 2026-09-24 01:12:16 | 581618e9 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "ec7ed62485264d62b34fc744deeb0c6f", "day": "2026-09-24"}} |
-| 879 | 2026-09-24 01:12:16 | c50593d5 | 002 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "002", "monitor_of": "ec7ed62485264d62b34fc744deeb0c6f", "day": "2026-09-24"}} |
-| 880 | 2026-09-24 01:12:16 | 36a3539c | 003 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "003", "monitor_of": "ec7ed62485264d62b34fc744deeb0c6f", "day": "2026-09-24"}} |
-| 881 | 2026-09-24 01:12:16 | 1eedd036 | 004 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "004", "monitor_of": "ec7ed62485264d62b34fc744deeb0c6f", "day": "2026-09-24"}} |
 | 882 | 2026-09-24 01:12:16 | 192d34a1 | 005 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "005", "monitor_of": "ec7ed62485264d62b34fc744deeb0c6f", "day": "2026-09-24"}} |
 | 883 | 2026-09-24 01:12:16 | 80275837 | 006 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "006", "monitor_of": "ec7ed62485264d62b34fc744deeb0c6f", "day": "2026-09-24"}} |
 | 884 | 2026-09-24 01:12:17 | 902b8c56 | 007 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "007", "monitor_of": "ec7ed62485264d62b34fc744deeb0c6f", "day": "2026-09-24"}} |
@@ -402,3 +396,9 @@
 | 1273 | 2026-09-24 04:12:15 | c7322101 |  | probe.network_down | fast-LAPTOP-LRE6PSA8 | {"detail": "all 17 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
 | 1274 | 2026-09-24 04:12:15 | 42efc9da |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-24T04-retry", "retry_of": "c7322101d26e4ebaace5c5a83c8d56bf"}} |
 | 1275 | 2026-09-24 04:12:15 | c7322101 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 1276 | 2026-09-24 04:19:44 | 21c6bb9d | 020 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1277 | 2026-09-24 04:22:18 | 42efc9da |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1278 | 2026-09-24 04:22:18 | 86ba95ba |  | job.dedup | fast-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
+| 1279 | 2026-09-24 04:22:19 | 42efc9da |  | probe.network_down | fast-LAPTOP-LRE6PSA8 | {"detail": "all 17 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
+| 1280 | 2026-09-24 04:22:19 | 40419dff |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-24T04-retry-retry", "retry_of": "42efc9da202848eba93c2c0b343346b8"}} |
+| 1281 | 2026-09-24 04:22:19 | 42efc9da |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
