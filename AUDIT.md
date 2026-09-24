@@ -2,12 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 733 | 2026-09-22 22:13:39 | f462fb6b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq-qwe |
-| 734 | 2026-09-22 22:19:48 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 735 | 2026-09-22 22:19:50 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 736 | 2026-09-22 22:20:01 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["84 passed in 8.54s"]} |
-| 737 | 2026-09-22 22:20:01 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["84 passed in 9.77s"]} |
-| 738 | 2026-09-22 22:34:26 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 739 | 2026-09-22 22:34:27 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 740 | 2026-09-22 22:34:37 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["85 passed in 9.20s"]} |
 | 741 | 2026-09-22 22:34:39 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["85 passed in 8.31s"]} |
@@ -402,3 +396,9 @@
 | 1130 | 2026-09-24 02:16:41 | a6fa92d2 | 021 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 41s [done] expect='2' last='2' \| T3 PASS 40s [done] expect='1' last='RE |
 | 1131 | 2026-09-24 02:16:41 | a6fa92d2 | 021 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 41s [done] expect='2' last='2' \| T3 PASS 40s [done] expect='1' last='RE |
 | 1132 | 2026-09-24 02:16:41 | a6fa92d2 | 021 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "021", "status": "active", "verified": "VERIFIED"}} |
+| 1133 | 2026-09-24 02:16:44 | c8eb6c89 | 022 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1134 | 2026-09-24 02:17:46 | 7ae30d43 | 012 | job.enqueued | owner | {"kind": "run", "payload": {"bot_id": "012", "task": "Sum the amount column of sales.csv and write total.txt containing only the total", "in |
+| 1135 | 2026-09-24 02:19:43 | e26da376 | 020 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 18s [done] expect='X_OK' last='X_OK' \| T2 FAIL 307s [TIMEOUT] expect='DONE' last='' \| T3 PASS 94s [done] expect='CONFI |
+| 1136 | 2026-09-24 02:19:43 | e26da376 | 020 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 18s [done] expect='X_OK' last='X_OK' \| T2 FAIL 307s [TIMEOUT] expect='DONE' last='' \| T3 PASS 94s [done] expect='CONFI |
+| 1137 | 2026-09-24 02:19:43 | 21c6bb9d | 020 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "020", "retest_of": "e26da376c0fc43bf8f30a1ad800da243", "after_quota": "e26da376c0fc43bf8f30a1ad800da |
+| 1138 | 2026-09-24 02:19:43 | e26da376 | 020 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "020", "status": "active", "verified": "VERIFIED"}} |
