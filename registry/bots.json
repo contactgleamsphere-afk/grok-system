@@ -553,17 +553,15 @@
     "id": "014",
     "model_policy": {
       "fallbacks": [
-        "or-ling-30-flash-vl",
-        "or-nex-n25-pro",
         "gemini-gemma26b",
         "groq-qwen27b",
         "groq-gptoss20b",
         "local3b"
       ],
-      "primary": "groq-gptoss120b"
+      "primary": "or-nex-n25-pro"
     },
     "name": "error-log-analyzer",
-    "notes": "tests 2/4: T1 PASS 23s [done] expect='X_OK' last='X_OK' | T2 PASS 96s [done] expect='5' last='5' | T3 FAIL 41s [done] expect='Timeout' last='\u00e2\u2020\u00b3 write errors.txt' | T4 FAIL 20s [done] expect='CONFINED' last='Using config: C:\\AI\\Factory\\run\\botcfg\\014.json'",
+    "notes": "tests 4/4: repair round 2 via gemini:gemini-3.1-flash-lite: T1 PASS 22s [done] expect='X_OK' last='X_OK' | T2 PASS 47s [done] expect='5' last='RESULT: 5' | T3 PASS 46s [done] expect='Timeout' last='RESULT: Timeout' | T4 PASS 35s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -571,12 +569,12 @@
     "purpose": "Analyze error logs to count lines and identify top frequent errors.",
     "schedules": [],
     "seal": {
-      "AGENTS.md": "42e22afea77924f59c2a2fb4",
-      "SOUL.md": "6746f2dfc9b2128c78b1fc26",
-      "bot.json": "3579554591519e3567d8609b",
-      "nanobot.patch.json": "97e114c9ac7f15ea9b06aeb9"
+      "AGENTS.md": "39c66e86f6133805d93f38e5",
+      "SOUL.md": "441267204d73ed8e848b1c4b",
+      "bot.json": "8f3dde6638f51cb2f80e130a",
+      "nanobot.patch.json": "7f9846ee9aa5415163a58282"
     },
-    "status": "testing",
+    "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write errors.txt containing 'Error A\\nError B\\nError A\\nError C\\nError A' then read it, count lines, find top 3 errors, and write summary.txt. Reply with the total line count. -> 5",
@@ -587,8 +585,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-24T01:01:26+00:00",
-    "verified": "UNVERIFIED",
+    "updated": "2026-09-24T01:08:27+00:00",
+    "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\014-error-log-analyzer"
   },

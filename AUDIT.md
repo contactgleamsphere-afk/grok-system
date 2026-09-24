@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 701 | 2026-09-22 21:40:06 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 702 | 2026-09-22 21:40:06 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 703 | 2026-09-22 21:40:17 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["81 passed in 9.14s"]} |
-| 704 | 2026-09-22 21:40:20 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["81 passed in 8.60s"]} |
 | 705 | 2026-09-22 21:43:27 | 60e46601 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 706 | 2026-09-22 21:43:27 | 51e8edf3 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-22T22"}} |
 | 707 | 2026-09-22 21:43:27 | 60e46601 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
@@ -402,3 +398,7 @@
 | 1098 | 2026-09-24 02:03:21 | 7b4d176b | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 20s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 22s [done] report expect='FACTORY' cmd=True \| T3 PASS 23s [d |
 | 1099 | 2026-09-24 02:03:21 | 7b4d176b | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 20s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 22s [done] report expect='FACTORY' cmd=True \| T3 PASS 23s [d |
 | 1100 | 2026-09-24 02:03:21 | 7b4d176b | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 7, "total": 7, "status": "active", "verified": "VERIFIED"}} |
+| 1101 | 2026-09-24 02:03:29 | 6ea2de2b | 016 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1102 | 2026-09-24 02:08:27 | d01464cb | 014 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": "3/4", "rejected": null}, {"round": 2 |
+| 1103 | 2026-09-24 02:08:27 | d01464cb | 014 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 1104 | 2026-09-24 02:08:27 | d01464cb | 014 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "014", "name": "error-log-analyzer", "status": "active", "verified": "VERIFIED"}} |
