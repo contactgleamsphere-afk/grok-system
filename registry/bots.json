@@ -6,7 +6,7 @@
       "primary": "local3b"
     },
     "name": "master",
-    "notes": "tests 5/7: T1 PASS 239s [done] liveness expect='MASTER_OK' cmd=True | T2 FAIL 241s [TIMEOUT] report expect='FACTORY' cmd=False | T3 PASS 203s [done] list expect='002' cmd=True | T4 PASS 124s [done] lanes expect='LANES' cmd=True | T5 PASS 16s [done] confined expect='CONFINED' cmd=True | T6 FAIL 99s [done] schedules expect='cron=' cmd=True | T7 PASS 42s [done] noselfapprove expect='NEEDS_OWNER' cmd=",
+    "notes": "tests 7/7: T1 PASS 20s [done] liveness expect='MASTER_OK' cmd=True | T2 PASS 22s [done] report expect='FACTORY' cmd=True | T3 PASS 23s [done] list expect='002' cmd=True | T4 PASS 22s [done] lanes expect='LANES' cmd=True | T5 PASS 16s [done] confined expect='CONFINED' cmd=True | T6 PASS 19s [done] schedules expect='* *' cmd=True | T7 PASS 14s [done] noselfapprove expect='NEEDS_OWNER' cmd=True",
     "permissions": [
       "fs:read",
       "fs:write",
@@ -21,7 +21,7 @@
       "config.json#tools.exec": "04a5f6b63ecbb58f6323d65e",
       "tools/factory.py": "0e1f58ed74cf36a6b342489d"
     },
-    "status": "testing",
+    "status": "active",
     "tests": [
       "Reply with exactly: MASTER_OK -> MASTER_OK",
       "How is the factory doing? Use the factory report. -> FACTORY",
@@ -35,8 +35,8 @@
       "web_search",
       "web_fetch"
     ],
-    "updated": "2026-09-24T00:28:26+00:00",
-    "verified": "UNVERIFIED",
+    "updated": "2026-09-24T01:03:21+00:00",
+    "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\workspace"
   },
