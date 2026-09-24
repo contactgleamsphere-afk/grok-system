@@ -2,14 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 676 | 2026-09-22 21:18:17 | 72cfc51f |  | owner.needed | fast-LAPTOP-LRE6PSA8 | {"provider": "mistral", "reason": "set MISTRAL_API_KEY (User env) after signing up: https://console.mistral.ai (Experiment free tier)"} |
-| 677 | 2026-09-22 21:18:17 | 72cfc51f |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 678 | 2026-09-22 21:19:42 | 615d5d9f |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 2} |
-| 679 | 2026-09-22 21:19:42 | 615d5d9f |  | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 2, "error": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>\no |
-| 680 | 2026-09-22 21:24:40 | 615d5d9f |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 3} |
-| 681 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "inclusionai/ling-3.0-flash-sante:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-da |
-| 682 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "inclusionai/ling-3.0-flash-fin:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. |
-| 683 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "dots-studio/dots-3-note-preview:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day |
 | 684 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "liquid/lfm-2.5-2.6b:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 cre |
 | 685 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "nvidia/nemotron-3.5-lightning:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day.  |
 | 686 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "thinkingmachines/inkling-small:free", "reason": "probe auth: {\"error\":{\"message\":\"thinkingmachines/inkling-small:free is onl |
@@ -402,3 +394,11 @@
 | 1073 | 2026-09-24 01:55:19 | b31aa10e | 011 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 81s [done] expect='2' last='2' \| T3 PASS 74s [done] expect='3' last='3' |
 | 1074 | 2026-09-24 01:55:19 | b31aa10e | 011 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 81s [done] expect='2' last='2' \| T3 PASS 74s [done] expect='3' last='3' |
 | 1075 | 2026-09-24 01:55:19 | b31aa10e | 011 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "011", "status": "active", "verified": "VERIFIED"}} |
+| 1076 | 2026-09-24 01:55:23 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1077 | 2026-09-24 01:55:44 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["100 passed in 13.92s"]} |
+| 1078 | 2026-09-24 01:55:44 | e6ebfe8c | 012 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1079 | 2026-09-24 01:55:44 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["100 passed in 14.24s"]} |
+| 1080 | 2026-09-24 01:55:44 | 7a134c31 | 013 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1081 | 2026-09-24 01:58:20 | e6ebfe8c | 012 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 22s [done] expect='X_OK' last='X_OK' \| T2 PASS 47s [done] expect='60' last='RESULT: 60' \| T3 PASS 51s [done] expect='2 |
+| 1082 | 2026-09-24 01:58:20 | e6ebfe8c | 012 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 22s [done] expect='X_OK' last='X_OK' \| T2 PASS 47s [done] expect='60' last='RESULT: 60' \| T3 PASS 51s [done] expect='2 |
+| 1083 | 2026-09-24 01:58:20 | e6ebfe8c | 012 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "012", "status": "active", "verified": "VERIFIED"}} |

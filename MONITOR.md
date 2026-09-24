@@ -48,3 +48,4 @@
 | 2026-09-24 01:39 | 008 word-frequency-bot | 4/4 | active→active | - |
 | 2026-09-24 01:41 | 009 line-dedupe-bot | 4/4 | active→active | - |
 | 2026-09-24 01:55 | 011 word-frequency-counter | 4/4 | active→active | - |
+| 2026-09-24 01:58 | 012 csv-column-sum | 4/4 | active→active | - |
