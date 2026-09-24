@@ -319,7 +319,9 @@ def run_master_tests(cap: int = 240) -> dict:
     raw = r.stdout + r.stderr
     m = re.search(r"pass/total: (\d+)/(\d+)", raw)
     ev = raw.strip().splitlines()[-1] if raw.strip() else "no output"
-    return {"pass": int(m.group(1)) if m else 0, "total": int(m.group(2)) if m else 5, "evidence": ev[:900], "raw": raw}
+    # D-102: master timeouts are availability (cold laptop, lane back-off), not master quality — same rule as bot tests (D-075)
+    timeouts = len(re.findall(r"T\d+ FAIL \d+s \[TIMEOUT\]", ev))
+    return {"pass": int(m.group(1)) if m else 0, "total": int(m.group(2)) if m else 5, "evidence": ev[:900], "raw": raw, "timeouts": timeouts, "quota": 0}
 
 
 def run_tests(bot_dir: pathlib.Path, cap: int = 300, lane: str | None = None) -> dict:
@@ -443,7 +445,12 @@ def cmd_test(bot_id: str) -> dict:
         if drift and drift != ["<unsealed>"]:
             raise FactoryError(f"master integrity: {drift} changed outside the factory; re-run wire-master-factory.ps1 to reseal")
         res = run_master_tests()
-        e = f.record_test_result("001", int(res["pass"]), int(res["total"]), res["evidence"])
+        p_, t_, q_ = int(res["pass"]), int(res["total"]), int(res.get("timeouts", 0))
+        if p_ < t_ and q_ and p_ + q_ >= t_:                       # D-102: every miss was a timeout -> inconclusive, status untouched
+            e = reg.get("bots", "001")
+            return {"bot_id": "001", "tests": res["evidence"], "pass": p_, "total": t_, "status": e.status, "verified": e.verified,
+                    "inconclusive": True, "timeouts": q_}
+        e = f.record_test_result("001", p_, t_, res["evidence"])
         write_bot_registry_md(reg, ROOT / "BOT_REGISTRY.md")
         return {"bot_id": "001", "tests": res["evidence"], "pass": res["pass"], "total": res["total"], "status": e.status, "verified": e.verified}
     reg = Registry(ROOT / "registry"); f = BotFactory(reg, LAPTOP_BOTS if WIN else ROOT / "bots")

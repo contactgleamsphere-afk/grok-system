@@ -768,3 +768,22 @@ def test_d101_slot_jobs_run_once_even_after_done(tmp_path):
     c = st.enqueue("monitor", {"only": None, "day": "2026-09-25"}); assert c["id"] != a["id"]
     x = st.enqueue("create", {"objective": "Count lines in a.txt"}); st.done(x["id"], {}, "w")
     assert st.enqueue("create", {"objective": "Count lines in a.txt"})["id"] != x["id"]
+
+
+def test_d102_master_timeouts_are_inconclusive(tmp_path, monkeypatch):
+    """D-102: master 001 misses that are all wall-clock timeouts leave its status untouched (inconclusive)."""
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    from factory.registry import BotEntry
+    reg.upsert("bots", BotEntry(id="001", name="master", purpose="m", status="active", model_policy={"primary": "groq-a", "fallbacks": []},
+                                tools=[], permissions=[], workspace="w", verified="VERIFIED"))
+    ev = "T1 PASS 9s [done] a | T2 FAIL 241s [TIMEOUT] b | T3 PASS 5s [done] c"
+    monkeypatch.setattr(fp, "run_master_tests", lambda cap=240: {"pass": 2, "total": 3, "evidence": ev, "raw": "", "timeouts": 1, "quota": 0})
+    monkeypatch.setattr(fp, "master_drift", lambda *a, **k: [])
+    r = fp.cmd_test("001")
+    assert r["inconclusive"] and r["status"] == "active" and reg.get("bots", "001").status == "active"
+    monkeypatch.setattr(fp, "run_master_tests", lambda cap=240: {"pass": 2, "total": 3, "evidence": ev.replace("[TIMEOUT]", "[done]"), "raw": "", "timeouts": 0, "quota": 0})
+    r = fp.cmd_test("001")
+    assert not r.get("inconclusive") and r["status"] == "testing"          # a genuine miss still demotes
+    # timeout parsing from the script's evidence line
+    import re
+    assert len(re.findall(r"T\d+ FAIL \d+s \[TIMEOUT\]", ev)) == 1

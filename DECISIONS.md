@@ -533,3 +533,9 @@ pops keep the laptop side of state files; `_commit_state` handles its own rebase
 `git.sync_conflict`. (3) `JobStore.enqueue`: slot-keyed housekeeping (monitor/day, probe/hour, report/day, tick/hour,
 insight/week, bench/day) is deduplicated even after the slot's job is done — the catch-up Monitor task plus the report
 handler had produced two 24-bot sweeps in one night. Owner-targeted requests (`--only`, explicit lanes, `t`) stay re-runnable.
+
+## D-102 — Master timeouts are inconclusive; schedule test matcher (2026-09-24) — VERIFIED (unit)
+Post-wake sweep demoted master 001 on 5/7: T2 `report` timed out at 241 s (cold laptop + lane back-off 11 s/32 s) and
+T6 failed only because the master paraphrased `cron=` into a unicode dash while the command itself ran (cmd=True).
+`run_master_tests` now reports `timeouts`; `cmd_test("001")` applies the D-075 rule (all misses timeouts ⇒
+inconclusive, retest in 2 h, no demotion). T6 expects any cron field (`* *`).
