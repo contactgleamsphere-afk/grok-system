@@ -53,3 +53,8 @@ Registry (`registry/`), specs, audit (`audit/*.jsonl`), proposals, MONITOR/BOT_R
 
 ## Laptop offline mid-drill (2026-09-23 00:05)
 Symptom: `ssh` → `Connection closed by UNKNOWN port 65535`, tunnel URL returns HTTP 530, no worker state commits, `run/tunnel.txt` not refreshed for >45 min. Meaning: the laptop itself is asleep/offline (tunnel supervisor would have republished within ~2 min otherwise). Nothing to fix remotely; when it wakes: worker task restarts at logon/15-min tick, repo-sync pulls, self-test gate runs, queued jobs resume from leases (D-081). Pending at outage: D-099 live repair drill on bot 009 (`tools/_archive/q15.py` then `add repair 009`).
+
+## Laptop offline alert (D-119)
+GitHub issue labelled `laptop-offline` = no laptop commit for >2 h (watchdog workflow, every 30 min). Action: physical —
+wake the laptop / reconnect Wi-Fi. Nothing to run: supervisor republishes the tunnel, the worker resumes queued jobs, and
+the issue closes itself on the next heartbeat. Manual drill: Actions → laptop-watchdog → Run workflow, threshold_min=1.

@@ -50,8 +50,8 @@ CATALOG: list[dict] = [
     # ---- compute / hosting / storage ----
     {"id": "github", "kind": "storage", "obtain": "signup", "key": None, "check": "https://api.github.com/repos/contactgleamsphere-afk/grok-system",
      "signup": "https://github.com", "free": "repo = durable state + audit; Actions 2000 min/month private (unused so far)"},
-    {"id": "github-actions", "kind": "compute", "obtain": "signup", "key": None, "check": None,
-     "signup": "https://github.com/features/actions", "free": "scheduled/CI runners on the same account; candidate for off-laptop unit tests"},
+    {"id": "github-actions", "kind": "compute", "obtain": "signup", "key": None, "check": "https://api.github.com/repos/contactgleamsphere-afk/grok-system/actions/workflows",
+     "signup": "https://github.com/features/actions", "free": "in use since D-119: ci.yml (unit suite on push) + watchdog.yml (laptop-offline issue every 30 min)"},
     {"id": "cloudflare-workers", "kind": "hosting", "obtain": "signup", "key": "CLOUDFLARE_API_TOKEN", "check": None,
      "signup": "https://dash.cloudflare.com", "free": "100k req/day Workers + Pages; already the tunnel provider (quick tunnel, keyless)"},
     {"id": "cloudflare-quick-tunnel", "kind": "hosting", "obtain": "keyless", "key": None, "check": "tunnel",

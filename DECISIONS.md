@@ -653,3 +653,12 @@ evidence, RESEARCH→VERIFIED. Weekly `scout` job (Monday report) + manual `add 
 `infra.scouted`, newly-missing items once as `owner.needed`; STATUS.md ATTENTION shows the count. Legitimate by
 construction: one GET per keyless endpoint, keys only sent to their own provider, nothing is ever signed up for,
 card-verification tiers (Oracle Always Free, Cloud Run) are owner-only rows.
+
+## D-119 — Off-laptop CI + laptop watchdog on GitHub Actions (2026-09-24) — VERIFIED live
+The laptop is the single host; tonight it was offline 04:42–22:29 and nothing outside it could say so. Two workflows on
+the free Actions tier of the existing account (no new signup, only GITHUB_TOKEN): `ci.yml` runs `core/tests` on every
+push touching code (first run: 111 pass on ubuntu — the suite is now proven on Linux and Windows); `watchdog.yml`
+every 30 min measures the age of the last laptop `state:`/`tunnel:` commit and, past 120 min, opens ONE issue labelled
+`laptop-offline` (GitHub e-mails the owner — the physical-action channel), comments while it persists and closes it
+when heartbeats resume. Drill: dispatched with threshold 1 → issue #1 opened ("no factory heartbeat for 6 min"),
+re-dispatched with default → closed with "Laptop is back". registry/infra.json: github-actions → in_use.
