@@ -520,7 +520,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "log-error-filter",
-    "notes": "tests 4/4: T1 PASS 15s [done] expect='X_OK' last='X_OK' | T2 PASS 21s [done] expect='1' last='RESULT: 1' | T3 PASS 33s [done] expect='0' last='RESULT: 0' | T4 PASS 28s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: T1 PASS 39s [done] expect='X_OK' last='X_OK' | T2 PASS 58s [done] expect='1' last='RESULT: 1' | T3 PASS 71s [done] expect='0' last='RESULT: 0' | T4 PASS 131s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -544,7 +544,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T18:29:43+00:00",
+    "updated": "2026-09-24T01:00:46+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\013-log-error-filter"

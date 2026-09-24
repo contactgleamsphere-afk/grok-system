@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 684 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "liquid/lfm-2.5-2.6b:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 cre |
-| 685 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "nvidia/nemotron-3.5-lightning:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day.  |
-| 686 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "thinkingmachines/inkling-small:free", "reason": "probe auth: {\"error\":{\"message\":\"thinkingmachines/inkling-small:free is onl |
-| 687 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "poolside/laguna-s-2.1:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 c |
 | 688 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "thinkingmachines/inkling:free", "reason": "probe auth: {\"error\":{\"message\":\"thinkingmachines/inkling:free is only available  |
 | 689 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "poolside/laguna-xs-2.1:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10  |
 | 690 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "cohere/north-mini-code:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10  |
@@ -402,3 +398,7 @@
 | 1081 | 2026-09-24 01:58:20 | e6ebfe8c | 012 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 22s [done] expect='X_OK' last='X_OK' \| T2 PASS 47s [done] expect='60' last='RESULT: 60' \| T3 PASS 51s [done] expect='2 |
 | 1082 | 2026-09-24 01:58:20 | e6ebfe8c | 012 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 22s [done] expect='X_OK' last='X_OK' \| T2 PASS 47s [done] expect='60' last='RESULT: 60' \| T3 PASS 51s [done] expect='2 |
 | 1083 | 2026-09-24 01:58:20 | e6ebfe8c | 012 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "012", "status": "active", "verified": "VERIFIED"}} |
+| 1084 | 2026-09-24 01:58:25 | 06b13d4d | 014 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1085 | 2026-09-24 02:00:46 | 7a134c31 | 013 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 39s [done] expect='X_OK' last='X_OK' \| T2 PASS 58s [done] expect='1' last='RESULT: 1' \| T3 PASS 71s [done] expect='0'  |
+| 1086 | 2026-09-24 02:00:46 | 7a134c31 | 013 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 39s [done] expect='X_OK' last='X_OK' \| T2 PASS 58s [done] expect='1' last='RESULT: 1' \| T3 PASS 71s [done] expect='0'  |
+| 1087 | 2026-09-24 02:00:46 | 7a134c31 | 013 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "013", "status": "active", "verified": "VERIFIED"}} |
