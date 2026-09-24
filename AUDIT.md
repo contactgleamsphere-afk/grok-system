@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 787 | 2026-09-22 23:15:51 | fa0a4093 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 788 | 2026-09-22 23:17:38 | fa0a4093 | 022 | bot.ran | fast-LAPTOP-LRE6PSA8 | {"plan": "197bb3e5", "step": 1, "ok": true, "produced": ["refunded.csv"], "missing": [], "secs": 52, "reply": "RESULT: refunded.csv", "chain |
-| 789 | 2026-09-22 23:17:38 | fa0a4093 | 023 | bot.ran | fast-LAPTOP-LRE6PSA8 | {"plan": "197bb3e5", "step": 2, "ok": true, "produced": ["summary.txt"], "missing": [], "secs": 53, "reply": "RESULT: 39.5", "chain": "gemin |
 | 790 | 2026-09-22 23:17:38 | fa0a4093 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"name": "run:plan 197bb3e5", "status": "ok orders.csv,refunded.csv,summary.txt"}} |
 | 791 | 2026-09-22 23:24:17 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 792 | 2026-09-22 23:24:19 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
@@ -402,3 +399,6 @@
 | 1184 | 2026-09-24 03:12:05 | f773c50b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1185 | 2026-09-24 03:12:05 | 49eeafe3 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-24T04"}} |
 | 1186 | 2026-09-24 03:12:05 | f773c50b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 1187 | 2026-09-24 03:12:14 | 4a052706 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1188 | 2026-09-24 03:12:14 | c7322101 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-24T04"}} |
+| 1189 | 2026-09-24 03:12:35 | 4a052706 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-flash38", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gpt |
