@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 952 | 2026-09-24 01:28:26 | 581618e9 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 239s [done] liveness expect='MASTER_OK' cmd=True \| T2 FAIL 241s [TIMEOUT] report expect='FACTORY' cmd=False \| T3 PASS  |
-| 953 | 2026-09-24 01:28:26 | 581618e9 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 954 | 2026-09-24 01:28:26 | 7b4d176b | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "ec7ed62485264d62b34fc744deeb0c6f", "retry_of": "581618e95bdc448cac249a3a9d2422f |
 | 955 | 2026-09-24 01:28:26 | 581618e9 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 5, "total": 7, "status": "testing", "verified": "UNVERIFIED"}} |
 | 956 | 2026-09-24 01:28:33 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
@@ -402,3 +400,5 @@
 | 1349 | 2026-09-24 22:29:44 | e7340c6e |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 1350 | 2026-09-24 22:29:46 | 2107158e |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1351 | 2026-09-24 22:29:49 | 2107158e |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 1352 | 2026-09-24 22:29:57 | 1ce9e348 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1353 | 2026-09-24 22:30:02 | 1ce9e348 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
