@@ -379,3 +379,15 @@ Tunnel rotated 02:02 (quick-tunnel URL changed); laptop republished `run/tunnel.
 Selftest laptop: 101 passed (D-105 included).
 - 02:20 D-107 live: `run 012` on inbox mem-drill (5+7+9) → RESULT 21, total.txt produced, lane gemini-gemma26b, MEMORY.md line written. D-106 runner check: 012 suite 4/4 with new AVAILERR path, RESULTJSON parsed. Laptop selftest 102 passed.
 - 02:50 D-108 live (laptop): `factory_tooldisc.py sqlite --max 2` → 11 candidates from the official MCP registry; approved on probation: `mcp:mcp-sqlite3` (PyPI, MIT, 37 tools, throw-away venv, 10 s handshake) and `mcp:mcp-sqlite-tools` (npm via npx, 19 tools, 14 s); rejected: 2 hosted-only (data egress), 1 NOASSERTION licence, 1 licence unknown, 3 no MCP initialize reply within 120 s. Bug found & fixed on the way: `subprocess.run(timeout=)` hung on npx grandchildren → handshake now reads on a thread and tree-kills (`taskkill /T`); regression test with a mute server passes in <15 s.
+
+## 2026-09-24 03:50 — MCP capability pipeline, live (laptop) — VERIFIED
+| step | evidence |
+|---|---|
+| discover/sandbox | `tooldisc sqlite`: 11 candidates; mcp-sqlite3 (PyPI) + mcp-sqlite-tools (npm) on probation; hosted/unlicensed rejected |
+| approve (owner) | `approve-tool mcp:mcp-sqlite3` → persistent venv `C:\AI\Factory\mcp\mcp-sqlite3`, 37 tools re-handshaked |
+| boundary | create with allowance fs:read+mcp → **security pause** (architect needed fs:write) ×2 — correct, not bypassed |
+| create | bot 026 built with tools [read_file, write_file, mcp:mcp-sqlite3], fixture.db declared |
+| first test | T2/T3 FAIL: server ran in nanobot cwd → empty DB (D-112 fix); repair round 1 **rejected for adding shell access** |
+| rebuild | T2 PASS (tables → users), T3 FAIL (prompt never named the fixture → D-113) |
+| rearchitect | T1–T4 PASS 4/4, boundary_diff {}, **026 active VERIFIED 03:50** |
+Unit tests: 107 pass (repo + laptop).

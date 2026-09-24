@@ -7,6 +7,10 @@
 - D-103 `resolve_chain` tops up to ≥2 healthy remote lanes when policy lanes are retired/blocked (bots no longer collapse to local and get falsely "repaired").
 - D-104 ATTENTION: liveness first; settled paused/retired bots collapse to a count; BLOCKED reasons one line.
 - D-105 probe → canary `monitor --only` for bots whose primary lane just went BLOCKED.
+- D-107 Phase 5 memory MVP: factory-written bounded run memory per bot (live: 012).
+- D-108/109/110 **tool capability discovery, end to end**: official MCP registry → PyPI/npm/GitHub facts → evidence rules (licence, recency, archived, deps, local-stdio-only) → throw-away sandbox handshake with secrets stripped → probation in `registry/tools.json` → capability gaps from the architect auto-enqueue discovery → owner-only `approve-tool` (persistent install, re-handshake) → explicit per-bot grant `mcp:<slug>` enforced by validate_spec and the repair boundary guard.
+- D-111 declared test fixtures (text / SQLite-from-SQL) materialised before every test; D-112 `mcp_launch.py` runs servers inside the bot workspace, `rebuild` job; D-113 tests must name their fixtures.
+- **Bot 026 sqlite-query-bot: first bot using a discovered MCP server — 4/4 VERIFIED, active (03:50).** On the way the security boundary fired correctly three times (two architect over-reach pauses, one repair rejected for adding shell access).
 - Live evidence: 006 demoted 01:36 → auto-repaired (gpt-oss-20b, sandbox 4/4) → active 01:46; 007 re-verified 01:51; audit hash chain verified on 319 rows, tamper drill pinpoints seq 1069. Tests: 101 pass (repo + laptop).
 
 ## 2026-09-22 — discovery pipeline live, presets mirror, failover proof
