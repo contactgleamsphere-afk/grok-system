@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 867 | 2026-09-24 01:12:04 | ada8b925 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-24T02"}} |
-| 868 | 2026-09-24 01:12:07 | 6320985a |  | probe.network_down | svc-LAPTOP-LRE6PSA8 | {"detail": "all 13 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
-| 869 | 2026-09-24 01:12:07 | bdee72b1 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-23T01-retry", "retry_of": "6320985aecca4449a53b8cc8acd81034"}} |
-| 870 | 2026-09-24 01:12:07 | 6320985a |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 871 | 2026-09-24 01:12:07 | 657a2134 | 018 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 872 | 2026-09-24 01:12:10 | 5aa3c5cd |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 873 | 2026-09-24 01:12:10 | 0253aa82 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "report", "payload": {"day": "2026-09-25"}} |
@@ -402,3 +398,7 @@
 | 1264 | 2026-09-24 04:08:34 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["108 passed in 14.89s"]} |
 | 1265 | 2026-09-24 04:08:56 | 5db5434d |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-gemini-flash-lite-latest", "result": "4/4", "quota": 0, "secs": 42} |
 | 1266 | 2026-09-24 04:08:56 | 5db5434d |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["gemini-gemini-flash-lite-latest", "4/4"]]}} |
+| 1267 | 2026-09-24 04:09:00 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1268 | 2026-09-24 04:12:08 | 49eeafe3 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1269 | 2026-09-24 04:12:08 | 9a01357c |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-24T05"}} |
+| 1270 | 2026-09-24 04:12:08 | 49eeafe3 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
