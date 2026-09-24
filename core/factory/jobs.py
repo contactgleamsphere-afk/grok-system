@@ -37,6 +37,9 @@ def classify_failure(msg: str) -> str:
     return "logic"
 
 
+ONCE_PER_SLOT = ("monitor", "probe", "report", "tick", "insight", "bench")
+
+
 class JobStore:
     def __init__(self, path: str | os.PathLike):
         self.path = pathlib.Path(path); self.path.parent.mkdir(parents=True, exist_ok=True)
@@ -144,6 +147,13 @@ class JobStore:
         row = self.db.execute("SELECT id,state FROM jobs WHERE idem=?", (idem,)).fetchone()
         if row and row[1] in ("queued", "running", "paused"):
             self.audit("job.dedup", job_id=row[0], actor=actor, kind=kind)
+            return self.get(row[0])
+        if row and row[1] == "done" and kind in ONCE_PER_SLOT and any(k in payload for k in ("day", "hour", "week")) \
+                and not payload.get("only") and not payload.get("lanes") and not payload.get("t"):   # owner-targeted requests stay re-runnable
+            # D-101: slot-keyed housekeeping (monitor/day, probe/hour, report/day, tick/hour, insight/week) runs ONCE per
+            # slot even if re-requested after it finished — 2026-09-24 the catch-up Monitor task + the report handler
+            # produced two full 24-bot sweeps in one night.
+            self.audit("job.dedup", job_id=row[0], actor=actor, kind=kind, note="slot already done")
             return self.get(row[0])
         if row:   # finished earlier -> new job with a fresh idem suffix (explicit re-run)
             idem = f"{idem}:{int(time.time())}"

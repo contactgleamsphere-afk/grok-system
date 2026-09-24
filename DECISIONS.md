@@ -521,3 +521,15 @@ Laptop went offline at 00:05; STATUS.md / `factory.py report` kept presenting ye
 `liveness()` derives running / stalled (>2 h without a worker audit row) / stuck (ready jobs >30 min while worker
 silent) / idle-blocked (self-test red) from the audit table and surfaces it first in ATTENTION, in the brief and as
 the `**Worker:**` line of STATUS.md. The master's "how is the factory doing" answer now starts with that state.
+
+## D-101 — Git sync can never discard laptop state; slot jobs run once (2026-09-24) — VERIFIED (unit + forensic)
+Forensics (reflog): fast worker committed the 002 demotion (4f563a4, 01:20:26) and began its rebase; an out-of-band
+repo-sync (my own script) ran at 01:21:05 with no lock, committed inside that rebase, the rebase aborted and the
+script's fallback `git reset --hard origin/main` erased the demotion → registry said 002 active while the audit said
+demoted, and the queued repair paused as "not demoted". Fixes: (1) repo-sync.ps1 takes the worker's `run/git-state.lock`
+(one git writer at a time); (2) no `reset --hard` anywhere — rebase failure → abort → `merge -X ours` (laptop state
+wins, code never conflicts) → if even that fails, keep local commits unpushed and retry next time; conflicted autostash
+pops keep the laptop side of state files; `_commit_state` handles its own rebase failure the same way and audits
+`git.sync_conflict`. (3) `JobStore.enqueue`: slot-keyed housekeeping (monitor/day, probe/hour, report/day, tick/hour,
+insight/week, bench/day) is deduplicated even after the slot's job is done — the catch-up Monitor task plus the report
+handler had produced two 24-bot sweeps in one night. Owner-targeted requests (`--only`, explicit lanes, `t`) stay re-runnable.

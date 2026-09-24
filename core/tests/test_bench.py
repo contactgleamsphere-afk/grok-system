@@ -755,3 +755,16 @@ def test_d100_report_liveness_states(tmp_path, monkeypatch):
     assert frp.liveness(st, st.list(), now)["state"] == "idle-blocked"
     r = frp.build(); assert r["liveness"]["state"] == "idle-blocked" and r["attention"][0].startswith("FACTORY IDLE-BLOCKED")
     assert "[idle-blocked" in frp.brief(r) and "**Worker:** idle-blocked" in frp.markdown(r)
+
+
+def test_d101_slot_jobs_run_once_even_after_done(tmp_path):
+    """D-101: a monitor for the same day requested after the first one finished is deduplicated (not re-run);
+    a create with the same payload after done still gets a fresh job (explicit re-run stays possible)."""
+    from factory.jobs import JobStore
+    st = JobStore(tmp_path / "j.sqlite3")
+    a = st.enqueue("monitor", {"only": None, "day": "2026-09-24"}); st.done(a["id"], {}, "w")
+    b = st.enqueue("monitor", {"only": None, "day": "2026-09-24"})
+    assert b["id"] == a["id"] and b["state"] == "done"
+    c = st.enqueue("monitor", {"only": None, "day": "2026-09-25"}); assert c["id"] != a["id"]
+    x = st.enqueue("create", {"objective": "Count lines in a.txt"}); st.done(x["id"], {}, "w")
+    assert st.enqueue("create", {"objective": "Count lines in a.txt"})["id"] != x["id"]

@@ -368,7 +368,14 @@ def _commit_state(kind: str, jid8: str) -> None:
             if tok:   # push with the token in the URL and every credential helper disabled -> can never block on a GUI prompt
                 url = f"https://x-access-token:{tok}@github.com/contactgleamsphere-afk/grok-system.git"
                 nh = ["-c", "credential.helper=", "-c", "core.askPass=", "-c", "credential.interactive=never"]
-                g(*nh, "fetch", "-q", url, "main"); g("rebase", "-q", "FETCH_HEAD"); g(*nh, "push", "-q", url, "HEAD:main")
+                g(*nh, "fetch", "-q", url, "main")
+                if g("rebase", "-q", "FETCH_HEAD").returncode != 0:
+                    # D-101: never leave a rebase half-done or throw state away — abort, then merge with the laptop's
+                    # state commits winning every conflict (code files never conflict: the laptop never edits them).
+                    g("rebase", "--abort")
+                    if g("merge", "-q", "--no-edit", "-X", "ours", "FETCH_HEAD").returncode != 0:
+                        g("merge", "--abort"); JobStore(DB).audit("git.sync_conflict", actor="worker", note="local state kept unpushed; retry next job")
+                g(*nh, "push", "-q", url, "HEAD:main")
     except Exception:
         pass
     finally:
