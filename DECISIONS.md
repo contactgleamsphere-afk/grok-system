@@ -637,3 +637,10 @@ code-sync path — no SSH needed to ship the fix that restores SSH.
 Live finding (04:25): the supervisor WAS alive and restarted the tunnel itself; the 15-min gap was its "wait for
 internet" loop pinging 1.1.1.1 (ICMP) for 580 s while HTTPS worked throughout. D-116b: supervisor now tests HTTPS
 (api.github.com) first, ICMP as fallback, wait capped at 300 s. The tick check stays as the backstop for a dead supervisor.
+
+## D-117 — Nightly factory canary (2026-09-24) — VERIFIED (unit); live run pending
+`canary` job (nightly from the report job; `factory_pipeline.py canary` by hand): architect (real lane) → bundle →
+acceptance runner on a fixed objective ("count lines in a named text file", fixture declared), built into a scratch
+dir with `register=False` — no bot id consumed, no registry entry, scratch deleted. Verdict audited as
+`factory.canary` (pass / inconclusive on availability / FAIL); a FAIL puts "FACTORY CANARY FAILED" at the top of
+ATTENTION. Bots are monitored nightly; now the factory that makes them is too.

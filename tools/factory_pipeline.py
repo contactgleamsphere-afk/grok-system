@@ -9,6 +9,7 @@ Usage (laptop or repo):
   python tools/factory_pipeline.py seal-master [actor]        # D-083: seal master AGENTS.md / tools/factory.py / config tools.exec
   python tools/factory_pipeline.py rearchitect <bot_id>       # D-052: regenerate spec from the original objective
   python tools/factory_pipeline.py rebuild <bot_id>           # D-112: regenerate the bundle from the SAME spec, re-test
+  python tools/factory_pipeline.py canary                     # D-117: architect→bundle→tests on a fixed objective, no registry entry
   python tools/factory_pipeline.py spec "<objective>"         # print the generated spec, build nothing
 
 Design rules (see DECISIONS D-021..D-025):
@@ -475,6 +476,33 @@ def cmd_rebuild(bot_id: str) -> dict:
     return report
 
 
+CANARY_OBJECTIVE = ("Count the lines in a text file the user names in the workspace and reply with only the number. "
+                    "Declare a small text fixture for the tests.")
+
+
+def cmd_canary(runner=None) -> dict:
+    """D-117 factory canary: exercise architect (real lane) → bundle → acceptance runner on a fixed objective, in a
+    scratch dir, with NO registry entry and no bot id consumed. A nightly 4/4 here proves the FACTORY still works
+    end to end (as opposed to the bots); a miss points at the factory code or the lanes, never at a bot."""
+    import shutil, tempfile
+    reg = Registry(ROOT / "registry"); t0 = time.time()
+    spec, lane = objective_to_spec(CANARY_OBJECTIVE, reg, "000", allowed_permissions=["fs:read"])
+    spec["id"], spec["name"] = "000", "factory-canary"
+    scratch = pathlib.Path(tempfile.mkdtemp(prefix="canary-", dir=str((LAPTOP_BOTS.parent / "run") if WIN else ROOT / "run")))
+    try:
+        r = BotFactory(reg, scratch).build(spec, register=False, out_dir=scratch / "000-factory-canary")
+        out = {"ok": True, "lane": lane, "chain": r.chain, "tools": spec["tools"], "fixtures": [f["name"] for f in spec.get("fixtures") or []], "spec_secs": int(time.time() - t0)}
+        if runner is None and not WIN: out["status"] = "built (tests run on the laptop only)"; return out
+        res = (runner or run_tests)(r.bot_dir)
+        out.update({"pass": res["pass"], "total": res["total"], "quota": res.get("quota", 0), "timeouts": res.get("timeouts", 0),
+                    "evidence": res["evidence"][:600], "secs": int(time.time() - t0)})
+        out["ok"] = res["pass"] == res["total"]
+        return out
+    finally:
+        shutil.rmtree(scratch, ignore_errors=True)
+        assert reg.get("bots", "000") is None
+
+
 def cmd_seal_master(actor: str = "builder") -> dict:
     """D-083: record the master's security surface (called by wire-master-factory.ps1 after it writes those files)."""
     reg = Registry(ROOT / "registry"); e = reg.get("bots", "001")
@@ -516,9 +544,9 @@ def cmd_test(bot_id: str) -> dict:
 
 
 def main(argv: list[str]) -> int:
-    if len(argv) < 3:
+    if len(argv) < 3 and not (len(argv) == 2 and argv[1] in ("canary", "seal-master")):
         print(__doc__); return 2
-    cmd, arg = argv[1], argv[2]
+    cmd, arg = argv[1], (argv[2] if len(argv) > 2 else "")
     opt = lambda k, d=None: argv[argv.index(k) + 1] if k in argv else d
     try:
         if cmd == "create":
@@ -528,6 +556,8 @@ def main(argv: list[str]) -> int:
             out = cmd_rearchitect(arg, opt("--feedback", ""))
         elif cmd == "rebuild":
             out = cmd_rebuild(arg)
+        elif cmd == "canary":
+            out = cmd_canary()
         elif cmd == "spec":
             out = cmd_create(arg, opt("--id"), True, True)
         elif cmd == "seal-master":

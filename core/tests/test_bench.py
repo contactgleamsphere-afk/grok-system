@@ -1054,3 +1054,37 @@ def test_d116_tunnel_selfheal_restarts_task_only_when_dead_and_unsupervised(tmp_
     assert any(a["event"] == "tunnel.restarted" for a in st.audit_rows(10))
     alive = lambda cmd: "1" if "Get-CimInstance" in " ".join(cmd) else "SUCCESS"
     assert fw.tunnel_selfheal(st, "j", "w", probe=lambda u: -1, runner=alive)["supervisor"].startswith("alive")
+
+
+def test_d117_factory_canary_has_no_registry_footprint(tmp_path, monkeypatch):
+    """D-117: the canary runs architect → bundle → runner on a scratch dir; no bot id consumed, no registry entry,
+    scratch removed; the worker audits the verdict and the report flags a FAIL as a factory fault."""
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    from factory.registry import ToolEntry
+    reg.upsert("tools", ToolEntry(id="read_file", kind="builtin", provides=["filesystem"], risk="low", verified="VERIFIED"))
+    spec = {"id": "000", "name": "line-counter", "purpose": "p" * 12, "instructions": "i" * 40, "model_policy": {"primary": "groq-a", "fallbacks": []},
+            "tools": ["read_file"], "permissions": ["fs:read"], "tests": ["Reply with exactly: X_OK -> X_OK", "How many lines in notes.txt? -> 2"],
+            "fixtures": [{"name": "notes.txt", "text": "a\nb\n"}]}
+    monkeypatch.setattr(fp, "chat", lambda msgs, max_tokens=1200: (json.dumps(spec), "fake:lane"))
+    (tmp_path / "run").mkdir(exist_ok=True)
+    seen = {}
+    def runner(bot_dir):
+        seen["dir"] = pathlib.Path(bot_dir); assert (seen["dir"] / "bot.json").exists() and "canary-" in str(bot_dir)
+        return {"pass": 2, "total": 2, "evidence": "T1 PASS | T2 PASS", "raw": "", "quota": 0, "timeouts": 0}
+    r = fp.cmd_canary(runner=runner)
+    assert r["ok"] and r["pass"] == 2 and r["fixtures"] == ["notes.txt"] and r["lane"] == "fake:lane"
+    assert reg.get("bots", "000") is None and not seen["dir"].exists() and fp.next_id(reg) == "001"
+    # worker verdicts + report flag
+    import importlib, factory_worker as fw; importlib.reload(fw)
+    from factory.jobs import JobStore
+    monkeypatch.setattr(fw, "ROOT", tmp_path)
+    st = JobStore(tmp_path / "run" / "jobs.sqlite3"); monkeypatch.setattr(fw, "DB", tmp_path / "run" / "jobs.sqlite3")
+    monkeypatch.setattr(fw.fp, "cmd_canary", lambda: {"ok": False, "pass": 1, "total": 2, "quota": 0, "timeouts": 0, "lane": "l", "evidence": "T2 FAIL", "secs": 9})
+    j = st.enqueue("canary", {"day": "2026-09-24"}); c = st.claim("w", 300)
+    assert fw.handle(c, st, "w")["verdict"] == "FAIL"
+    monkeypatch.setattr(fw.fp, "cmd_canary", lambda: {"ok": False, "pass": 1, "total": 2, "quota": 0, "timeouts": 1, "lane": "l", "evidence": "T2 TIMEOUT", "secs": 9})
+    st.done(c["id"], {}, "w"); j2 = st.enqueue("canary", {"day": "2026-09-25"}); c2 = st.claim("w", 300)
+    assert fw.handle(c2, st, "w")["verdict"] == "inconclusive"
+    import factory_report as fr; importlib.reload(fr); monkeypatch.setattr(fr, "ROOT", tmp_path)
+    monkeypatch.setattr(fr, "Registry", lambda *_a, **_k: reg) if hasattr(fr, "Registry") else None
+    rows = st.audit_rows(10); assert sum(a["event"] == "factory.canary" for a in rows) == 2

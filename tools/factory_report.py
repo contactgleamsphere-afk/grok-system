@@ -44,9 +44,17 @@ def build() -> dict:
     audit = store.audit_rows(limit=25)
     live = liveness(store, jobs, now)                                   # D-100
     head = [f"FACTORY {live['state'].upper()}: {live['reason']}"] if live["state"] != "running" else []
+    can = next((r for r in store.audit_rows(limit=600) if r["event"] == "factory.canary"), None)       # D-117
+    canary = None
+    if can:
+        try: d = json.loads(can["detail"]) if isinstance(can.get("detail"), str) else (can.get("detail") or {})
+        except Exception: d = {}
+        canary = {"at": can.get("ts"), "verdict": d.get("verdict"), "lane": d.get("lane"), "secs": d.get("secs")}
+        if d.get("verdict") == "FAIL":
+            head.append(f"FACTORY CANARY FAILED at {str(can.get('ts'))[:16]} (lane {d.get('lane')}): the factory itself, not a bot, is broken — see AUDIT factory.canary")
     return {"generated": datetime.datetime.now().isoformat(timespec="seconds"),
             "bots": {"active": sum(b["status"] == "active" for b in bots), "total": len(bots), "list": bots},
-            "queue": store.summary(),
+            "queue": store.summary(), "canary": canary,
             "jobs_24h": [{"id": j["id"][:8], "kind": j["kind"], "state": j["state"], "attempts": j["attempts"], "class": j.get("failure_class"),
                           "bot": j["payload"].get("bot_id"), "objective": (j["payload"].get("objective") or "")[:70]} for j in recent],
             "lanes": lanes, "healthy_lanes": [l["id"] for l in lanes if l["state"] == "ok"],

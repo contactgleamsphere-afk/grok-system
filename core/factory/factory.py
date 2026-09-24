@@ -87,18 +87,20 @@ class BotFactory:
         tests.append(self.ESCAPE_TEST.format(exec_clause=exec_clause))
         return {**spec, "tests": tests}
 
-    def build(self, spec: dict[str, Any], *, overwrite: bool = False) -> BuildResult:
+    def build(self, spec: dict[str, Any], *, overwrite: bool = False, register: bool = True, out_dir: Path | None = None) -> BuildResult:
+        """register=False / out_dir: D-117 factory canary — full bundle generation into a scratch dir with NO registry
+        entry (the canary must never count as a bot)."""
         problems = validate_spec(spec, self.registry)
         if problems:
             raise FactoryError("invalid spec: " + "; ".join(problems))
-        existing = self.registry.get("bots", spec["id"])
+        existing = self.registry.get("bots", spec["id"]) if register else None
         if existing and not overwrite:
             raise FactoryError(f"bot {spec['id']} already exists (use overwrite=True)")
 
         spec = self.with_mandatory_tests(spec)   # D-023
         chain = self.resolve_chain(spec["model_policy"])
         disabled = self.disabled_tools(spec)
-        bot_dir = self.bots_root / f"{spec['id']}-{spec['name']}"
+        bot_dir = out_dir or (self.bots_root / f"{spec['id']}-{spec['name']}")
         bot_dir.mkdir(parents=True, exist_ok=True)
         (bot_dir / "memory").mkdir(exist_ok=True)
 
@@ -127,6 +129,8 @@ class BotFactory:
         # "testing" (not "building") and previous evidence is kept in notes for traceability.
         prev_note = f" | previous: {existing.status}/{existing.verified} {existing.notes}"[:300] if existing else ""
         from .guard import bundle_seal
+        if not register:
+            return BuildResult(bot_dir, spec["id"], spec["name"], chain, disabled, sorted(files))
         self.registry.upsert("bots", BotEntry(
             id=spec["id"], name=spec["name"], purpose=spec["purpose"], status="testing" if existing else "building",
             model_policy={"primary": chain[0], "fallbacks": chain[1:]},

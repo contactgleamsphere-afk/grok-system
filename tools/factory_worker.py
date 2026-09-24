@@ -228,6 +228,15 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
                 store.audit("bot.rearchitect_queued", job_id=jid, bot_id=p["bot_id"], actor=worker, reason=err[:200])
             raise FactoryError(err)
         return res
+    if kind == "canary":
+        # D-117: nightly factory self-test (architect → bundle → runner) with no registry footprint. Availability misses
+        # (quota/timeouts) are inconclusive like everywhere else; a genuine miss is surfaced in STATUS as a factory fault.
+        res = fp.cmd_canary()
+        avail = int(res.get("quota", 0) or 0) + int(res.get("timeouts", 0) or 0)
+        verdict = "pass" if res.get("ok") else ("inconclusive" if res.get("total") and res["pass"] + avail >= res["total"] else "FAIL")
+        store.audit("factory.canary", job_id=jid, actor=worker, verdict=verdict, lane=res.get("lane"), chain=res.get("chain"),
+                    result=res.get("evidence"), secs=res.get("secs"), fixtures=res.get("fixtures"))
+        return {"verdict": verdict, **{k: res.get(k) for k in ("pass", "total", "lane", "secs")}}
     if kind == "rebuild":
         # D-112: same spec, new bundle (factory-side generation changed). Boundary diff is empty by construction;
         # the bundle seal is recomputed by build(). Verdict flows through record_test_result like any test.
@@ -374,6 +383,7 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
         nxt = datetime.datetime.now() + datetime.timedelta(days=1)
         store.enqueue("report", {"day": nxt.strftime("%Y-%m-%d")}, priority=6, parent=jid, actor=worker, not_before=time.time() + 86400)
         store.enqueue("bench", {"stale_only": True, "max": 2, "day": datetime.date.today().isoformat()}, priority=7, parent=jid, actor=worker)
+        store.enqueue("canary", {"day": datetime.date.today().isoformat()}, priority=7, parent=jid, actor=worker)   # D-117 nightly factory self-test
         if datetime.date.today().weekday() == 0:       # D-057 weekly self-review (Mondays; idem by iso week)
             store.enqueue("insight", {"days": 7, "week": datetime.date.today().strftime("%G-W%V")}, priority=8, parent=jid, actor=worker)
             for prov in ("groq", "gemini", "openrouter"):   # D-115: weekly catalogue sweep of the keyed/free providers even when nothing is blocked
@@ -621,6 +631,7 @@ def main(a: list[str]) -> int:
             pl = {"objective": a[3], "max": int(opt("--max", 4))}
             if opt("--then-run"): pl["then_run"] = {"in": opt("--then-run")}          # D-066: build, then run on these files
             j = store.enqueue("plan", pl, priority=int(opt("--priority", 5)), actor=opt("--actor", "owner"))
+        elif kind == "canary": j = store.enqueue("canary", {"day": str(datetime.date.today())}, priority=5, actor=opt("--actor", "owner"))
         elif kind == "rebuild": j = store.enqueue("rebuild", {"bot_id": a[3].zfill(3), "t": int(time.time())}, priority=2, actor=opt("--actor", "owner"))
         elif kind == "rearchitect": j = store.enqueue("rearchitect", {"bot_id": a[3], "feedback": opt("--feedback", ""), "t": int(time.time())}, priority=2, actor=opt("--actor", "owner"))
         elif kind in ("test", "repair"): j = store.enqueue(kind, {"bot_id": a[3]}, priority=int(opt("--priority", 4)), actor=opt("--actor", "owner"))
