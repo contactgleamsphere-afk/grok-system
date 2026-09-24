@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 739 | 2026-09-22 22:34:27 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 740 | 2026-09-22 22:34:37 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["85 passed in 9.20s"]} |
-| 741 | 2026-09-22 22:34:39 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["85 passed in 8.31s"]} |
-| 742 | 2026-09-22 22:35:09 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 743 | 2026-09-22 22:35:12 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 744 | 2026-09-22 22:35:24 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["85 passed in 10.08s"]} |
 | 745 | 2026-09-22 22:35:24 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["85 passed in 10.28s"]} |
@@ -402,3 +398,7 @@
 | 1136 | 2026-09-24 02:19:43 | e26da376 | 020 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 18s [done] expect='X_OK' last='X_OK' \| T2 FAIL 307s [TIMEOUT] expect='DONE' last='' \| T3 PASS 94s [done] expect='CONFI |
 | 1137 | 2026-09-24 02:19:43 | 21c6bb9d | 020 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "020", "retest_of": "e26da376c0fc43bf8f30a1ad800da243", "after_quota": "e26da376c0fc43bf8f30a1ad800da |
 | 1138 | 2026-09-24 02:19:43 | e26da376 | 020 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "020", "status": "active", "verified": "VERIFIED"}} |
+| 1139 | 2026-09-24 02:19:59 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1140 | 2026-09-24 02:20:21 | c8eb6c89 | 022 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 70s [done] expect='2' last='RESULT: 2' \| T3 PASS 113s [done] expect='2' |
+| 1141 | 2026-09-24 02:20:21 | c8eb6c89 | 022 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 70s [done] expect='2' last='RESULT: 2' \| T3 PASS 113s [done] expect='2' |
+| 1142 | 2026-09-24 02:20:21 | c8eb6c89 | 022 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "022", "status": "active", "verified": "VERIFIED"}} |
