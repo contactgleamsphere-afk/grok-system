@@ -6,6 +6,7 @@
   python tools/factory_worker.py add test|repair|rearchitect <bot_id>
   python tools/factory_worker.py add monitor
   python tools/factory_worker.py add run <bot_id> --task "..." [--in DIR] [--out DIR]   # D-063 real work
+  python tools/factory_worker.py add tooldisc <need> [--max 2]                            # D-108 MCP tool discovery → probation
   python tools/factory_worker.py add run --plan <plan_job> --in DIR                       # run a whole pipeline
   python tools/factory_worker.py add tick                     # D-076: fire due schedules now (self-chains hourly)
   python tools/factory_worker.py add insight [--days 7]      # D-057 factory self-review -> proposals/<date>.md
@@ -37,6 +38,7 @@ import factory_bench as fbn
 import factory_plan as fpl
 import factory_insight as fin
 import factory_run as frun
+import factory_tooldisc as ftd                                          # noqa: E402  D-108
 
 DB = ROOT / "run" / "jobs.sqlite3"
 LEASE = 300          # D-043: short lease + heartbeat every 60 s -> a dead worker is detected within 5 min
@@ -253,6 +255,18 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
             _sync_presets()
             store.enqueue("bench", {"lanes": res["added"], "day": datetime.date.today().isoformat()}, priority=4, parent=jid, actor=worker)
         return {k: res.get(k) for k in ("skipped", "healthy_before", "catalog", "evaluated", "added")}
+    if kind == "tooldisc":
+        # D-108: tool/MCP capability discovery. Approved servers land in registry/tools.json on PROBATION only —
+        # attaching one to a bot is a permission change and is never done here (owner decision, SECURITY §6).
+        res = ftd.run(p["need"], int(p.get("max", 2)))
+        for v in res.get("verdicts", []):
+            if v["verdict"] in ("approved", "rejected"):
+                store.audit("tool.discovered" if v["verdict"] == "approved" else "tool.rejected", job_id=jid, actor=worker,
+                            tool=v["name"], reason=v["reason"], need=p["need"])
+        if res.get("added"):
+            store.audit("owner.needed", job_id=jid, actor=worker, provider="tools", reason=f"MCP tools on probation for need '{p['need']}': {res['added']} — approve to wire into a bot")
+        return {"need": p["need"], "candidates": res.get("candidates"), "added": res.get("added"),
+                "rejected": sum(v["verdict"] == "rejected" for v in res.get("verdicts", []))}
     if kind == "bench":
         # D-050: pinned single-lane quality score on the reference suite; ranks default_fallbacks()
         res = fbn.run(p.get("lanes") or None, p.get("ref", fbn.REF_BOT), bool(p.get("stale_only")), int(p.get("max", 3)))
@@ -449,7 +463,7 @@ def ensure_recurring(store: "JobStore", worker: str) -> list[str]:
     return seeded
 
 
-FAST_KINDS = ("run", "test", "tick", "probe", "report", "discover")   # D-079: minutes, not tens of minutes
+FAST_KINDS = ("run", "test", "tick", "probe", "report", "discover", "tooldisc")   # D-079: minutes, not tens of minutes
 
 
 def _respawn() -> None:
@@ -544,6 +558,8 @@ def main(a: list[str]) -> int:
         elif kind == "probe":
             only = [x for x in opt("--only", "").split(",") if x]
             j = store.enqueue("probe", {"only": only, "hour": datetime.datetime.now().strftime("%Y-%m-%dT%H")}, priority=1, actor=opt("--actor", "owner"))
+        elif kind == "tooldisc":
+            j = store.enqueue("tooldisc", {"need": (a[3] if len(a) > 3 and not a[3].startswith("--") else opt("--need", "")), "max": int(opt("--max", 2)), "day": str(datetime.date.today())}, priority=3, actor=opt("--actor", "owner"))
         elif kind == "discover":
             j = store.enqueue("discover", {"provider": opt("--provider", "openrouter"), "day": str(datetime.date.today()), "trigger": "manual"}, priority=2, actor=opt("--actor", "owner"))
         elif kind == "bench":

@@ -848,3 +848,50 @@ def test_d107_run_memory_bounded_and_factual(tmp_path):
     assert "orders-0.csv" not in txt and f"orders-{fr.MEMORY_MAX + 2}.csv" in lines[-2]
     assert lines[-1].startswith("- ") and "run quota: nightly digest -> - (lane ?)" in lines[-1]
     assert "process orders-5.csv and summarise -> summary-5.md (lane groq-a)" in txt
+
+
+def test_d108_tool_discovery_rules_and_probation(tmp_path, monkeypatch):
+    """D-108: MCP registry → research → evidence rules (licence/recency/archived/remote-only/deps) → sandbox handshake →
+    registry/tools.json on PROBATION (INFERRED, not attached to any bot); rejections go to the ledger, not the registry."""
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    import importlib, factory_tooldisc as td; importlib.reload(td)
+    monkeypatch.setattr(td, "ROOT", tmp_path); monkeypatch.setattr(td, "LEDGER", tmp_path / "registry" / "tool_candidates.json")
+    now = time.time(); fresh = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(now - 30 * 86400)); stale = "2024-01-01T00:00:00Z"
+    def srv(name, pk=None, remotes=None, repo="https://github.com/o/" + "r"):
+        return {"server": {"name": name, "version": "1.0.0", "description": "d", "repository": {"url": repo},
+                           "packages": [pk] if pk else [], "remotes": remotes or []}, "_meta": {"io.modelcontextprotocol.registry/official": {"status": "active"}}}
+    pages = {td.MCP_REG: {"servers": [
+        srv("io.github.a/good-sqlite", {"registryType": "pypi", "identifier": "good-sqlite", "version": "1.0.0", "transport": {"type": "stdio"}}),
+        srv("io.github.b/hosted", None, remotes=[{"type": "streamable-http", "url": "https://x"}]),
+        srv("io.github.c/gpl-tool", {"registryType": "npm", "identifier": "gpl-tool", "version": "2.0.0"}),
+        srv("io.github.d/stale-tool", {"registryType": "pypi", "identifier": "stale-tool", "version": "0.1.0"}, repo="https://github.com/o/archived"),
+        srv("io.github.e/shell-tool", {"registryType": "pypi", "identifier": "shell-tool", "version": "3.0.0"})]},
+        "https://pypi.org/pypi/good-sqlite/json": {"info": {"version": "1.0.0", "license": "MIT", "requires_dist": ["mcp"]}, "releases": {"1.0.0": [{"upload_time_iso_8601": fresh}]}},
+        "https://pypi.org/pypi/stale-tool/json": {"info": {"version": "0.1.0", "license": "MIT", "requires_dist": []}, "releases": {"0.1.0": [{"upload_time_iso_8601": stale}]}},
+        "https://pypi.org/pypi/shell-tool/json": {"info": {"version": "3.0.0", "license": "Apache-2.0", "requires_dist": []}, "releases": {"3.0.0": [{"upload_time_iso_8601": fresh}]}},
+        "https://registry.npmjs.org/gpl-tool": {"dist-tags": {"latest": "2.0.0"}, "versions": {"2.0.0": {"dependencies": {}}}, "license": "GPL-3.0", "time": {"2.0.0": fresh}},
+        "https://api.github.com/repos/o/r": {"full_name": "o/r", "archived": False, "stargazers_count": 3, "license": {"spdx_id": "MIT"}},
+        "https://api.github.com/repos/o/archived": {"full_name": "o/archived", "archived": True, "stargazers_count": 9000}}
+    fetch = lambda url, timeout=20: next((v for k, v in pages.items() if url.startswith(k)), None)
+    sb = lambda c: {"ok": True, "server": c["name"], "tools": ["query", "list_tables"] if "good" in c["name"] else ["run_shell", "exec_cmd"], "secs": 3}
+    r = td.run("sqlite", 5, fetch=fetch, sandboxer=sb)
+    v = {x["name"]: (x["verdict"], x["reason"]) for x in r["verdicts"]}
+    assert v["io.github.b/hosted"][0] == "rejected" and "remote-only" in v["io.github.b/hosted"][1]
+    assert v["io.github.c/gpl-tool"][0] == "rejected" and "not permissive" in v["io.github.c/gpl-tool"][1]
+    assert v["io.github.d/stale-tool"][0] == "rejected" and "stale" in v["io.github.d/stale-tool"][1] and "archived" in v["io.github.d/stale-tool"][1]   # 9000 stars do not save it
+    assert v["io.github.a/good-sqlite"][0] == "approved" and v["io.github.e/shell-tool"][0] == "approved"
+    good = reg.get("tools", "mcp:good-sqlite"); sh = reg.get("tools", "mcp:shell-tool")
+    assert good.kind == "mcp" and good.verified == "INFERRED" and good.risk == "medium" and "PROBATION" in good.scope
+    assert sh.risk == "high" and "write" in sh.provides and "run_shell" in sh.notes           # shell-class tools flagged high
+    assert reg.get("tools", "mcp:gpl-tool") is None
+    led = json.loads((tmp_path / "registry" / "tool_candidates.json").read_text())["verdicts"]
+    assert led["io.github.c/gpl-tool:1.0.0"]["verdict"] == "rejected"
+    # second run: nothing re-evaluated, nothing re-added
+    r2 = td.run("sqlite", 5, fetch=fetch, sandboxer=lambda c: (_ for _ in ()).throw(AssertionError("sandbox re-run")))
+    assert r2["added"] == [] and all(x["verdict"] in ("known", "ledger") for x in r2["verdicts"])
+    # handshake parser: real JSON-RPC lines
+    import subprocess as sp
+    fake = tmp_path / "fake_mcp.py"; fake.write_text("import sys,json\nfor line in sys.stdin:\n    m=json.loads(line)\n    if m.get('id')==1: print(json.dumps({'jsonrpc':'2.0','id':1,'result':{'serverInfo':{'name':'fake'}}}),flush=True)\n    if m.get('id')==2: print(json.dumps({'jsonrpc':'2.0','id':2,'result':{'tools':[{'name':'ping'}]}}),flush=True)\n")
+    hs = td.mcp_handshake([sys.executable, str(fake)], str(tmp_path), td._clean_env(), timeout=20)
+    assert hs == {"ok": True, "server": "fake", "tools": ["ping"]}
+    assert not any("KEY" in k for k in td._clean_env())

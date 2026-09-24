@@ -571,3 +571,12 @@ After every real `run`, the factory (not the model) appends one factual line to 
 loads the file into every context, D-035 budget). Tests never write memory. MEMORY.md is outside the seal (D-068).
 Also fixed: D-103 top-up appended remote lanes after a policy-listed local lane; top-ups now insert before the first
 local lane so local is always the tail (regression test in test_d103).
+
+## D-108 — Tool/MCP capability discovery pipeline (2026-09-24) — VERIFIED (unit); live run pending
+`tools/factory_tooldisc.py` + job kind `tooldisc <need>`: DISCOVER (official MCP registry, keyless) → RESEARCH (PyPI /
+npm / GitHub facts) → EVALUATE (permissive licence, release <365 d, not archived, ≤40 deps, local stdio only — hosted
+"remote" servers rejected as lock-in/data-egress; stars recorded, never decisive) → SANDBOX (throw-away venv or npx
+cache, every *KEY/TOKEN/SECRET* env stripped, MCP JSON-RPC initialize→tools/list over stdio, 120 s cap) → PROBATION
+(`registry/tools.json` kind=mcp, verified=INFERRED, risk=high when tool names look like exec/write/delete). Nothing is
+attached to any bot: wiring an MCP server into a bot config is a permission change → `owner.needed` audit + STATUS
+ACTION REQUIRED. Verdicts (incl. rejections) persist in `registry/tool_candidates.json` for 14 days.
