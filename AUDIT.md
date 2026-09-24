@@ -2,14 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 997 | 2026-09-24 01:29:40 | faef1fd6 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "bench", "payload": {"lanes": ["or-nemotron-35-lightning"], "day": "2026-09-24"}} |
-| 998 | 2026-09-24 01:29:40 | e30126b8 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": ["or-nemotron-35-lightning"]}} |
-| 999 | 2026-09-24 01:29:52 | 1eedd036 | 004 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1000 | 2026-09-24 01:31:46 | 1eedd036 | 004 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 22s [done] expect='CHANGELOG_OK' last='CHANGELOG_OK' \| T2 PASS 22s [done] expect='3' last='3' \| T3 PASS 51s [done] exp |
-| 1001 | 2026-09-24 01:31:46 | 1eedd036 | 004 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 22s [done] expect='CHANGELOG_OK' last='CHANGELOG_OK' \| T2 PASS 22s [done] expect='3' last='3' \| T3 PASS 51s [done] exp |
-| 1002 | 2026-09-24 01:31:46 | 1eedd036 | 004 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "004", "status": "active", "verified": "VERIFIED"}} |
-| 1003 | 2026-09-24 01:31:56 | 192d34a1 | 005 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1004 | 2026-09-24 01:33:32 | ad7a13c3 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-ling-30-flash-sante", "result": "4/4", "quota": 0, "secs": 89} |
 | 1005 | 2026-09-24 01:33:32 | ad7a13c3 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-ling-30-flash-fin", "result": "4/4", "quota": 0, "secs": 100} |
 | 1006 | 2026-09-24 01:33:32 | ad7a13c3 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["or-ling-30-flash-sante", "4/4"], ["or-ling-30-flash-fin", "4/4"]]}} |
 | 1007 | 2026-09-24 01:33:37 | faef1fd6 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +394,11 @@
 | 1394 | 2026-09-24 23:58:46 | ff48e3c4 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "bench", "payload": {"lanes": ["gemini-flash"], "day": "2026-09-24", "trigger": "insight"}} |
 | 1395 | 2026-09-24 23:58:46 | 9504d124 |  | factory.proposals | svc-LAPTOP-LRE6PSA8 | {"count": 7, "kinds": ["medium:lanes", "medium:lanes", "high:architect", "medium:quality", "low:lanes", "low:lanes", "info:security"], "auto |
 | 1396 | 2026-09-24 23:58:46 | 9504d124 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"name": "insight:7 proposals", "status": "auto probe:d0196af8,bench:ff48e3c4"}} |
+| 1397 | 2026-09-24 23:58:51 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1398 | 2026-09-24 23:58:52 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1399 | 2026-09-24 23:58:57 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": false, "tail": ["........................"]} |
+| 1400 | 2026-09-24 23:58:57 |  |  | worker.blocked_by_tests | fast-LAPTOP-LRE6PSA8 | {"reason": "core/tests red on current code; refusing to process jobs until code changes"} |
+| 1401 | 2026-09-24 23:59:13 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["111 passed in 17.75s"]} |
+| 1402 | 2026-09-24 23:59:13 | ff48e3c4 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1403 | 2026-09-25 00:02:14 | ff48e3c4 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-flash", "result": "2/4", "quota": 0, "secs": 180} |
+| 1404 | 2026-09-25 00:02:15 | ff48e3c4 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["gemini-flash", "2/4"]]}} |
