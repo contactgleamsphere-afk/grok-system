@@ -56,6 +56,9 @@ foreach($t in $bot.tests){
     "QUOTAHIT " + (@{model=$qm.Groups[1].Value;secs=$(if($qs -gt 0){$qs+30}else{900});kind=$kind;provider='groq'}|ConvertTo-Json -Compress) }
   if(($out -match "RESOURCE_EXHAUSTED") -and ($out -match "model[s/:\s]+([\w.\-]+)")){ "QUOTAHIT " + (@{model=$Matches[1];secs=$(if($out -match "retryDelay['`":\s]+(\d+)s"){[int]$Matches[1]+30}else{900});kind=$(if($out -match 'PerDay|per_day|Daily'){'rpd'}else{'tpm'});provider='gemini'}|ConvertTo-Json -Compress) }
   elseif(-not $ok -and $status -eq 'TIMEOUT'){ $timeouts++ }   # D-075: a wall-clock timeout with no answer is availability, not quality
+  # D-106: provider 5xx / "model unavailable" / a run that produced nothing but the config banner is availability too.
+  # 2026-09-24 bot 014 T4 "failed" in 20 s with last='Using config: ...' — the lane errored, the bot never answered.
+  elseif(-not $ok -and $status -eq 'done' -and ($out -match "code': 50[0-9]|Service Unavailable|UNAVAILABLE|overloaded|Internal Server Error|Bad Gateway|upstream" -or ($lines.Count -le 2 -and "$last" -match '^Using config'))){ $timeouts++; "AVAILERR " + (@{t=$idx;last="$last".Substring(0,[Math]::Min(80,"$last".Length))}|ConvertTo-Json -Compress) }
   $line="T$idx $(if($ok){'PASS'}else{'FAIL'}) ${el}s [$status] expect='$expect' last='$($("$last".Trim()))'"; $line; $ev+=$line
 }
 "SCORE $pass/$total"

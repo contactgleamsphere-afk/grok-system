@@ -558,3 +558,9 @@ The probe handler now enqueues a targeted `monitor --only <bots>` for every acti
 just flipped to BLOCKED (audit `monitor.canary`). Those bots run on a D-103 top-up lane from that moment; the canary
 verifies them today rather than at the nightly sweep. Paused/retired bots and 001 are excluded; payload carries
 `only` so it is exempt from the D-101 slot dedup but still idempotent by payload hash.
+
+## D-106 — Provider 5xx / empty run counted as availability in bot tests (2026-09-24) — VERIFIED (laptop run)
+`run-bot-tests.ps1` now counts a `done` test whose output contains a provider 5xx/unavailable marker, or nothing beyond
+the nanobot config banner, under `timeouts` (availability) and prints `AVAILERR`. The pipeline's D-051/D-075 rule then
+makes an all-availability miss inconclusive (status untouched) instead of demoting and "repairing" a bot whose lane
+was down (014 T4, 02:01). Lane health itself is handled by probe → BLOCKED → D-103 top-up → D-105 canary.
