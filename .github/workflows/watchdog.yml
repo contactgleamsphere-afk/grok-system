@@ -5,6 +5,10 @@ name: laptop-watchdog
 on:
   schedule: [{ cron: "*/30 * * * *" }]
   workflow_dispatch:
+    inputs:
+      threshold_min:
+        description: "minutes without a laptop commit before alerting (default 120; use 1 to drill the alert path)"
+        default: "120"
 permissions:
   contents: read
   issues: write
@@ -27,11 +31,12 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           AGE: ${{ steps.hb.outputs.age_min }}
+          THRESHOLD: ${{ github.event.inputs.threshold_min || '120' }}
           LAST: ${{ steps.hb.outputs.last }}
         run: |
           set -e
           open=$(gh issue list --repo "$GITHUB_REPOSITORY" --label laptop-offline --state open --json number --jq '.[0].number // empty')
-          if [ "$AGE" -gt 120 ]; then
+          if [ "$AGE" -gt "$THRESHOLD" ]; then
             body="No state/tunnel commit from the laptop for ${AGE} min (last: ${LAST})."
             body="$body"$'\n\n'"Likely cause: laptop asleep, lid closed, or Wi-Fi down. Action (physical): wake it / reconnect; the tunnel supervisor and worker recover on their own."
             body="$body"$'\n'"Checked by the laptop-watchdog workflow every 30 min; this issue closes itself when commits resume."
