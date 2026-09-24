@@ -4,7 +4,7 @@
 |---|---|---|---|---|---|---|
 | 001 | master | active | VERIFIED | local3b | exec, read_file, write_file, web_search, web_fetch | tests 7/7: T1 PASS 29s [done] liveness expect='MASTER_OK' cmd=True | T2 PASS 66s |
 | 002 | research-scout | active | VERIFIED | groq-gptoss20b > gemini-lite > gemini-flash > gemini-flash38 > or-deepseek > gemini-lite31 > groq-qwen27b > local4b | web_search, web_fetch, read_file | tests 2/2: T1 PASS 149s [done] expect='SCOUT_OK' last='SCOUT_OK' | T2 PASS 183s  |
-| 003 | code-smith | active | VERIFIED | groq-gptoss120b > gemini-flash > gemini-flash38 > groq-gptoss20b > gemini-lite > local4b | write_file, read_file, exec | tests 4/4: T1 PASS 29s [done] expect='SMITH_OK' last='RESULT: SMITH_OK' | T2 PAS |
+| 003 | code-smith | active | VERIFIED | groq-gptoss120b > gemini-flash > gemini-flash38 > groq-gptoss20b > gemini-lite > local4b | write_file, read_file, exec | tests 4/4: T1 PASS 13s [done] expect='SMITH_OK' last='SMITH_OK' | T2 PASS 60s [d |
 | 004 | changelog-writer | active | VERIFIED | groq-gptoss120b > gemini-flash > gemini-flash38 > groq-gptoss20b > gemini-lite > local4b | read_file, write_file | tests 4/4: repair round 1 via groq:openai/gpt-oss-20b: T1 PASS 135s [done] expec |
 | 005 | csv-quality-auditor | active | VERIFIED | groq-gptoss120b > gemini-flash > gemini-flash38 > groq-gptoss20b > gemini-lite > local4b | read_file, write_file | tests 4/4: repair round 1 via groq:qwen/qwen3.8-27b: T1 PASS 97s [done] expect=' |
 | 006 | json-to-markdown-table | active | VERIFIED | groq-gptoss120b > gemini-flash > gemini-flash38 > groq-gptoss20b > or-deepseek > gemini-lite > local4b | read_file, write_file | tests 4/4: T1 PASS 13s [done] expect='X_OK' last='X_OK' | T2 PASS 286s [done] ex |
