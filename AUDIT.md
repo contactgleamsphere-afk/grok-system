@@ -2,14 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 688 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "thinkingmachines/inkling:free", "reason": "probe auth: {\"error\":{\"message\":\"thinkingmachines/inkling:free is only available  |
-| 689 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "poolside/laguna-xs-2.1:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10  |
-| 690 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "cohere/north-mini-code:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10  |
-| 691 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "nvidia/nemotron-3-ultra-550b-a55b:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-d |
-| 692 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free- |
-| 693 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "google/gemma-4-26b-a4b-it:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add  |
-| 694 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "google/gemma-4-31b-it:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 c |
-| 695 | 2026-09-22 21:24:53 | 615d5d9f |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "nvidia/nemotron-3-super-120b-a12b:free", "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-d |
 | 696 | 2026-09-22 21:24:53 | 615d5d9f |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 697 | 2026-09-22 21:32:00 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 698 | 2026-09-22 21:34:28 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["79 passed in 10.12s"]} |
@@ -402,3 +394,11 @@
 | 1085 | 2026-09-24 02:00:46 | 7a134c31 | 013 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 39s [done] expect='X_OK' last='X_OK' \| T2 PASS 58s [done] expect='1' last='RESULT: 1' \| T3 PASS 71s [done] expect='0'  |
 | 1086 | 2026-09-24 02:00:46 | 7a134c31 | 013 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 39s [done] expect='X_OK' last='X_OK' \| T2 PASS 58s [done] expect='1' last='RESULT: 1' \| T3 PASS 71s [done] expect='0'  |
 | 1087 | 2026-09-24 02:00:46 | 7a134c31 | 013 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "013", "status": "active", "verified": "VERIFIED"}} |
+| 1088 | 2026-09-24 02:00:50 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1089 | 2026-09-24 02:01:05 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["101 passed in 12.85s"]} |
+| 1090 | 2026-09-24 02:01:05 | 7b4d176b | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1091 | 2026-09-24 02:01:26 | 06b13d4d | 014 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 23s [done] expect='X_OK' last='X_OK' \| T2 PASS 96s [done] expect='5' last='5' \| T3 FAIL 41s [done] expect='Timeout' la |
+| 1092 | 2026-09-24 02:01:26 | 06b13d4d | 014 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 23s [done] expect='X_OK' last='X_OK' \| T2 PASS 96s [done] expect='5' last='5' \| T3 FAIL 41s [done] expect='Timeout' la |
+| 1093 | 2026-09-24 02:01:26 | 06b13d4d | 014 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
+| 1094 | 2026-09-24 02:01:26 | d01464cb | 014 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "014", "max_rounds": 2}} |
+| 1095 | 2026-09-24 02:01:26 | 06b13d4d | 014 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "014", "status": "testing", "verified": "UNVERIFIED"}} |
