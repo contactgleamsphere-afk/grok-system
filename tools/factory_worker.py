@@ -20,7 +20,7 @@ Security (capability 6): every create/repair result is checked with guard.assert
 pre-job spec; a violation pauses the job and audits it — it never reaches the registry.
 """
 from __future__ import annotations
-import json, os, sys, time, socket, pathlib, datetime, traceback
+import re, json, os, sys, time, socket, pathlib, datetime, traceback
 ROOT = pathlib.Path(os.environ.get("AIFACTORY_REPO", pathlib.Path(__file__).resolve().parents[1]))
 sys.path.insert(0, str(ROOT / "core")); sys.path.insert(0, str(ROOT / "tools"))
 from factory.jobs import JobStore                                     # noqa: E402
@@ -88,6 +88,19 @@ def _spec_of(bot_id: str) -> dict | None:
     return d
 
 
+def _capability_gaps(store: JobStore, jid: str, worker: str, wanted: list[str]) -> list[str]:
+    """D-109: tools the architect asked for that the registry lacks become `tooldisc` jobs (one per need per day —
+    the job store dedups identical queued payloads). Discovery only ever reaches PROBATION; nothing is auto-wired."""
+    needs = []
+    for t in wanted:
+        need = re.sub(r"[_\-]+", " ", t.lower()).replace("mcp", "").strip()
+        if not need or need in needs: continue
+        needs.append(need)
+        store.audit("capability.gap", job_id=jid, actor=worker, tool=t, need=need)
+        store.enqueue("tooldisc", {"need": need, "max": 2, "day": datetime.date.today().isoformat(), "trigger": f"create:{jid[:8]}"}, priority=5, parent=jid, actor=worker)
+    return needs
+
+
 def handle(job: dict, store: JobStore, worker: str) -> dict:
     kind, p = job["kind"], job["payload"]; jid = job["id"]
     if kind == "plan":
@@ -118,7 +131,11 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
             def _built(rep):
                 store.audit("bot.created", job_id=jid, bot_id=rep["bot_id"], actor=worker, name=rep["name"], tools=rep["spec"]["tools"],
                             permissions=rep["spec"]["permissions"], chain=rep.get("chain"), lane=rep.get("spec_lane"))
-            res = fp.cmd_create(p["objective"], p.get("id"), False, False, p.get("allowed_permissions", fp.DEFAULT_ALLOWANCE), on_built=_built)
+            fp.UNKNOWN_TOOLS.clear()
+            try:
+                res = fp.cmd_create(p["objective"], p.get("id"), False, False, p.get("allowed_permissions", fp.DEFAULT_ALLOWANCE), on_built=_built)
+            finally:
+                _capability_gaps(store, jid, worker, list(fp.UNKNOWN_TOOLS))
         spec = res.get("spec") or _spec_of(res["bot_id"]) or {}
         store.audit("bot.tested", job_id=jid, bot_id=res["bot_id"], actor=worker, result=res.get("tests"), status=res.get("status"))
         if res.get("status") != "active":

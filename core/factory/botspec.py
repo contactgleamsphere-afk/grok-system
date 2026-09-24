@@ -69,6 +69,9 @@ def validate_spec(spec: dict[str, Any], registry: Registry) -> list[str]:
         if t is None:
             problems.append(f"tool '{tid}' not in tool registry")
             continue
+        if t.kind == "mcp" and "PROBATION" in (t.scope or ""):        # D-108/D-109: discovered, sandboxed, but NOT owner-approved
+            problems.append(f"tool '{tid}' is on probation (owner approval required before any bot may use it)")
+            continue
         if t.risk == "high":
             for tag, needed in HIGH_RISK_TOOL_PERMISSION.items():
                 if tag in t.provides and needed not in perms:

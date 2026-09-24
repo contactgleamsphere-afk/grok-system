@@ -901,3 +901,32 @@ def test_d108_tool_discovery_rules_and_probation(tmp_path, monkeypatch):
     t0 = time.time(); hs2 = td.mcp_handshake([sys.executable, str(mute)], str(tmp_path), td._clean_env(), timeout=2)
     assert not hs2["ok"] and "no initialize result" in hs2["reason"] and time.time() - t0 < 15   # tree killed, no hang
     assert not any("KEY" in k for k in td._clean_env())
+
+
+def test_d109_probation_tools_unusable_and_gaps_trigger_discovery(tmp_path, monkeypatch):
+    """D-109: a probation MCP tool is rejected by validate_spec; an unknown tool requested by the architect is recorded
+    as a capability gap and becomes a `tooldisc` job — never auto-wired."""
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    from factory.registry import ToolEntry
+    from factory.botspec import validate_spec
+    reg.upsert("tools", ToolEntry(id="read_file", kind="builtin", provides=["filesystem"], risk="low", verified="VERIFIED"))
+    reg.upsert("tools", ToolEntry(id="mcp:mcp-sqlite3", kind="mcp", provides=["sqlite"], risk="high", verified="INFERRED", scope="PROBATION — not attached"))
+    base = {"id": "090", "name": "pg-counter", "purpose": "p" * 12, "instructions": "i" * 40, "model_policy": {"primary": "groq-a", "fallbacks": []},
+            "tools": ["read_file", "mcp:mcp-sqlite3"], "permissions": ["fs:read"], "tests": ["a -> b"]}
+    probs = validate_spec(base, reg)
+    assert any("on probation" in x for x in probs)
+    # architect asks for an unknown tool twice, then complies
+    good = dict(base, tools=["read_file"])
+    answers = iter([json.dumps(dict(base, tools=["read_file", "postgres_query"])), json.dumps(good)])
+    monkeypatch.setattr(fp, "chat", lambda msgs, max_tokens=1200: (next(answers), "fake:lane"))
+    fp.UNKNOWN_TOOLS.clear()
+    spec, lane = fp.objective_to_spec("count rows in a postgres table", reg, "090")
+    assert spec["tools"] == ["read_file"] and fp.UNKNOWN_TOOLS == ["postgres_query"]
+    import importlib, factory_worker as fw; importlib.reload(fw)
+    from factory.jobs import JobStore
+    st = JobStore(tmp_path / "run" / "jobs.sqlite3")
+    needs = fw._capability_gaps(st, "job12345678", "w", ["postgres_query", "postgres-query", "mcp_github"])
+    assert needs == ["postgres query", "github"]
+    td = [j for j in st.list(["queued"]) if j["kind"] == "tooldisc"]
+    assert sorted(j["payload"]["need"] for j in td) == ["github", "postgres query"] and all(j["payload"]["trigger"].startswith("create:") for j in td)
+    assert sum(a["event"] == "capability.gap" for a in st.audit_rows(20)) == 2

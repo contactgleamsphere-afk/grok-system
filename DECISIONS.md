@@ -580,3 +580,9 @@ cache, every *KEY/TOKEN/SECRET* env stripped, MCP JSON-RPC initialize→tools/li
 (`registry/tools.json` kind=mcp, verified=INFERRED, risk=high when tool names look like exec/write/delete). Nothing is
 attached to any bot: wiring an MCP server into a bot config is a permission change → `owner.needed` audit + STATUS
 ACTION REQUIRED. Verdicts (incl. rejections) persist in `registry/tool_candidates.json` for 14 days.
+
+## D-109 — Capability gaps trigger discovery; probation tools are unusable by bots (2026-09-24) — VERIFIED (unit)
+`validate_spec` rejects any `kind=mcp` tool whose scope says PROBATION, so a discovered server can never enter a
+bot spec (create or repair) without owner approval. When the architect LLM asks for a tool the registry lacks, the
+create job records `capability.gap` and enqueues `tooldisc <need>` (dedup by need/day). Loop: objective → gap →
+discover → sandbox → probation → STATUS "ACTION REQUIRED" → owner approves → (future) wire + re-test.

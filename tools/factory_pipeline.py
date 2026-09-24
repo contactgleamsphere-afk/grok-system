@@ -272,6 +272,9 @@ def spec_consistency(spec: dict) -> list[str]:
     return problems
 
 
+UNKNOWN_TOOLS: list[str] = []      # D-109: tools the architect wanted that the registry lacks (per process)
+
+
 def objective_to_spec(objective: str, reg: Registry, bot_id: str, attempts: int = 3, feedback: str = "",
                       allowed_permissions: list[str] | None = None) -> tuple[dict, str]:
     allowed = DEFAULT_ALLOWANCE if allowed_permissions is None else allowed_permissions
@@ -297,6 +300,9 @@ def objective_to_spec(objective: str, reg: Registry, bot_id: str, attempts: int 
             raise SecurityViolation(f"architect: objective needs permissions outside the allowance {allowed}: {str(spec['blocked'])[:200]}")
         spec["id"] = bot_id  # never trust the model with identity
         problems = validate_spec(spec, reg) + spec_consistency(spec)
+        for pr in problems:                                   # D-109: a capability gap is a discovery trigger, not just a rejection
+            mm = re.match(r"tool '([^']+)' not in tool registry", pr)
+            if mm and mm.group(1) not in UNKNOWN_TOOLS: UNKNOWN_TOOLS.append(mm.group(1))
         extra = sorted(set(spec.get("permissions") or []) - set(allowed))
         if extra: problems.append(f"permissions {extra} are outside the job allowance {allowed}; redesign without them or return blocked")
         if not problems:
