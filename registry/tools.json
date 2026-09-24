@@ -11,6 +11,19 @@
     "updated": "2026-09-18T17:28:28+00:00",
     "verified": "VERIFIED"
   },
+  "mcp:mcp-sqlite-tools": {
+    "id": "mcp:mcp-sqlite-tools",
+    "kind": "mcp",
+    "notes": "{\"deps\": 6, \"licence\": \"MIT\", \"package\": {\"identifier\": \"mcp-sqlite-tools\", \"registryType\": \"npm\", \"version\": \"0.0.11\"}, \"registry_name\": \"io.github.spences10/mcp-sqlite-tools\", \"released\": \"2026-09-22T14:45:28.415Z\", \"repo\": \"https://github.com/spences10/mcp-sqlite-tools\", \"risky_tools\": [\"execute_read_query\", \"execute_write_query\", \"execute_schema_query\"], \"sandbox_secs\": 14, \"server\": \"mcp-sqlite-tools\", \"stars\": 19, \"tools\": [\"open_database\", \"close_database\", \"list_databases\", \"database_info\", \"list_tables\", \"describe_table\", \"create_table\", \"drop_table\", \"backup_database\", \"vacuum_database\", \"execute_read_query\", \"execute_write_query\", \"execute_schema_query\", \"bulk_insert\", \"begin_transaction\", \"commit_transaction\", \"rollback_transaction\", \"export_schema\", \"import_schema\"], \"version\": \"0.0.11\"}",
+    "provides": [
+      "sqlite",
+      "write"
+    ],
+    "risk": "high",
+    "scope": "PROBATION \u2014 not attached to any bot; owner approval required to wire into a bot config (SECURITY \u00a76)",
+    "updated": "2026-09-24T01:55:41+00:00",
+    "verified": "INFERRED"
+  },
   "mcp:mcp-sqlite3": {
     "id": "mcp:mcp-sqlite3",
     "kind": "mcp",

@@ -1,3 +1,74 @@
 {
- "verdicts": {}
+ "verdicts": {
+  "ai.smithery/afgong-sqlite-mcp-server:1.16.0": {
+   "date": "2026-09-24",
+   "need": "sqlite",
+   "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); release date unknown",
+   "ts": 1790214576.4982991,
+   "verdict": "rejected"
+  },
+  "ai.smithery/wgong-sqlite-mcp-server:1.16.0": {
+   "date": "2026-09-24",
+   "need": "sqlite",
+   "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); release date unknown",
+   "ts": 1790214576.4982991,
+   "verdict": "rejected"
+  },
+  "com.devart/mcp-sqlite:1.1.0": {
+   "date": "2026-09-24",
+   "need": "sqlite",
+   "reason": "no local stdio package (pypi/npm); licence not permissive: NOASSERTION; release date unknown",
+   "ts": 1790214576.4982991,
+   "verdict": "rejected"
+  },
+  "io.github.arifulislamat/database-mcp-sqlite:0.4.2": {
+   "date": "2026-09-24",
+   "need": "sqlite",
+   "reason": "sandbox handshake: no initialize result in 120s",
+   "ts": 1790214576.4982991,
+   "verdict": "rejected"
+  },
+  "io.github.mrfentmen/sqlite-mcp:1.0.0": {
+   "date": "2026-09-24",
+   "need": "sqlite",
+   "reason": "sandbox handshake: no initialize result in 120s",
+   "ts": 1790214576.4982991,
+   "verdict": "rejected"
+  },
+  "io.github.neverinfamous/sqlite-mcp-server:2.6.3": {
+   "date": "2026-09-24",
+   "need": "sqlite",
+   "reason": "licence unknown; release date unknown",
+   "ts": 1790214576.4982991,
+   "verdict": "rejected"
+  },
+  "io.github.ofershap/sqlite:1.0.1": {
+   "date": "2026-09-24",
+   "need": "sqlite",
+   "reason": "sandbox handshake: no initialize result in 120s",
+   "ts": 1790214576.4982991,
+   "verdict": "rejected"
+  },
+  "io.github.rosch100/mcp-encrypted-sqlite:0.4.1": {
+   "date": "2026-09-24",
+   "need": "sqlite",
+   "reason": "no local stdio package (pypi/npm); release date unknown",
+   "ts": 1790214576.4982991,
+   "verdict": "rejected"
+  },
+  "io.github.rosch100/mcp-sqlite:0.2.4": {
+   "date": "2026-09-24",
+   "need": "sqlite",
+   "reason": "no local stdio package (pypi/npm); release date unknown",
+   "ts": 1790214576.4982991,
+   "verdict": "rejected"
+  },
+  "io.github.spences10/mcp-sqlite-tools:0.0.11": {
+   "date": "2026-09-24",
+   "need": "sqlite",
+   "reason": "probation; tools=19 14s",
+   "ts": 1790214576.4982991,
+   "verdict": "approved"
+  }
+ }
 }
