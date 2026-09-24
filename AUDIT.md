@@ -2,35 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 624 | 2026-09-22 19:40:07 | 402de772 | 017 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 28s [done] expect='X_OK' last='X_OK' \| T2 PASS 97s [done] expect='3' last='RESULT: 3' \| T3 PASS 99s [done] expect='3'  |
-| 625 | 2026-09-22 19:40:07 | 402de772 | 017 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 28s [done] expect='X_OK' last='X_OK' \| T2 PASS 97s [done] expect='3' last='RESULT: 3' \| T3 PASS 99s [done] expect='3'  |
-| 626 | 2026-09-22 19:40:07 | 402de772 | 017 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "017", "status": "active", "verified": "VERIFIED"}} |
-| 627 | 2026-09-22 19:40:11 | 83f56639 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 628 | 2026-09-22 19:40:11 | fd8c14fb |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-22T20"}} |
-| 629 | 2026-09-22 19:40:11 | 83f56639 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 630 | 2026-09-22 19:40:15 | 444336fe | 018 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 631 | 2026-09-22 19:44:27 | 444336fe | 018 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 26s [done] expect='X_OK' last='X_OK' \| T2 PASS 86s [done] expect='30' last='RESULT: 30' \| T3 PASS 88s [done] expect='2 |
-| 632 | 2026-09-22 19:44:27 | 444336fe | 018 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 26s [done] expect='X_OK' last='X_OK' \| T2 PASS 86s [done] expect='30' last='RESULT: 30' \| T3 PASS 88s [done] expect='2 |
-| 633 | 2026-09-22 19:44:27 | 444336fe | 018 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "status": "active", "verified": "VERIFIED"}} |
-| 634 | 2026-09-22 19:56:45 | 349607da | 004 | job.enqueued | builder | {"kind": "repair", "payload": {"bot_id": "004"}} |
-| 635 | 2026-09-22 19:56:47 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 636 | 2026-09-22 19:56:57 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": false, "tail": ["1 failed, 20 passed in 2.24s"]} |
-| 637 | 2026-09-22 19:56:57 |  |  | worker.blocked_by_tests | svc-LAPTOP-LRE6PSA8 | {"reason": "core/tests red on current code; refusing to process jobs until code changes"} |
-| 638 | 2026-09-22 20:01:39 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["76 passed in 6.64s"]} |
-| 639 | 2026-09-22 20:01:39 | 349607da | 004 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 640 | 2026-09-22 20:03:03 | 8f4db119 | 001 | job.enqueued | builder | {"kind": "test", "payload": {"bot_id": "001"}} |
-| 641 | 2026-09-22 20:12:07 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["77 passed in 8.24s"]} |
-| 642 | 2026-09-22 20:12:07 | 8f4db119 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 643 | 2026-09-22 20:12:07 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["77 passed in 8.53s"]} |
-| 644 | 2026-09-22 20:15:32 | 60d56672 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 645 | 2026-09-22 20:15:32 | 096d9bb8 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-22T21"}} |
-| 646 | 2026-09-22 20:16:48 | 60d56672 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-gemma26b", "gemini-lite", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen27b", "local3b", |
-| 647 | 2026-09-22 20:17:14 | 349607da | 004 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-120b", "sandbox": "1/4", "rejected": null}, {"round" |
-| 648 | 2026-09-22 20:17:14 | 349607da | 004 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
-| 649 | 2026-09-22 20:17:18 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 650 | 2026-09-22 20:17:52 | 8f4db119 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 29s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 66s [done] report expect='FACTORY' cmd=True \| T3 PASS 62s [d |
-| 651 | 2026-09-22 20:17:52 | 8f4db119 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 7, "total": 7, "status": "active", "verified": "VERIFIED"}} |
-| 652 | 2026-09-22 20:32:16 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 653 | 2026-09-22 20:32:17 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 654 | 2026-09-22 20:32:30 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["78 passed, 1 warning in 7.63s"]} |
 | 655 | 2026-09-22 20:32:30 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["78 passed in 7.63s"]} |
@@ -402,3 +373,32 @@
 | 1021 | 2026-09-24 01:37:56 | 902b8c56 | 007 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 1022 | 2026-09-24 01:37:56 | 000fb61b | 007 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "007", "max_rounds": 2}} |
 | 1023 | 2026-09-24 01:37:56 | 902b8c56 | 007 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "007", "status": "testing", "verified": "UNVERIFIED"}} |
+| 1024 | 2026-09-24 01:38:04 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1025 | 2026-09-24 01:38:20 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["98 passed in 14.17s"]} |
+| 1026 | 2026-09-24 01:38:20 | 84f90993 | 008 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1027 | 2026-09-24 01:38:44 | c5a39c84 | 001 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
+| 1028 | 2026-09-24 01:38:44 | 6ebf5d8b | 002 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
+| 1029 | 2026-09-24 01:38:44 | c20c2407 | 003 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
+| 1030 | 2026-09-24 01:38:44 | 7ee5ebb8 | 004 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
+| 1031 | 2026-09-24 01:38:44 | 9ce55607 | 005 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
+| 1032 | 2026-09-24 01:38:44 | 29002603 | 006 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
+| 1033 | 2026-09-24 01:38:44 | ff6fe1b9 | 007 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
+| 1034 | 2026-09-24 01:38:44 | 1ddf7b9f | 008 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
+| 1035 | 2026-09-24 01:38:44 | ab3a25c4 | 009 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
+| 1036 | 2026-09-24 01:38:44 | 8b60cad0 | 011 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
+| 1037 | 2026-09-24 01:38:44 | 67703501 | 012 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
+| 1038 | 2026-09-24 01:38:44 | 240be6ff | 013 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
+| 1039 | 2026-09-24 01:38:44 | 356da82f | 014 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
+| 1040 | 2026-09-24 01:38:44 | 34c93c2f | 016 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
+| 1041 | 2026-09-24 01:38:44 | 8e9fd24a | 017 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
+| 1042 | 2026-09-24 01:38:44 | 09de5024 | 018 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
+| 1043 | 2026-09-24 01:38:44 | ca4a7aeb | 019 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
+| 1044 | 2026-09-24 01:38:44 | a51e46b5 | 020 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
+| 1045 | 2026-09-24 01:38:44 | 764e7481 | 021 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
+| 1046 | 2026-09-24 01:38:44 | 58a57670 | 022 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
+| 1047 | 2026-09-24 01:38:44 | 6a5c5393 | 023 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
+| 1048 | 2026-09-24 01:38:44 | a735d64e | 024 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
+| 1049 | 2026-09-24 01:38:44 | 356d0905 | 025 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
+| 1050 | 2026-09-24 01:39:31 | 84f90993 | 008 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 15s [done] expect='apple' last='RESULT: apple' \| T3 PASS 26s [done] exp |
+| 1051 | 2026-09-24 01:39:31 | 84f90993 | 008 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 15s [done] expect='apple' last='RESULT: apple' \| T3 PASS 26s [done] exp |
+| 1052 | 2026-09-24 01:39:31 | 84f90993 | 008 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "008", "status": "active", "verified": "VERIFIED"}} |
