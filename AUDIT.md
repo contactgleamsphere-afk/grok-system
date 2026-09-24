@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 882 | 2026-09-24 01:12:16 | 192d34a1 | 005 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "005", "monitor_of": "ec7ed62485264d62b34fc744deeb0c6f", "day": "2026-09-24"}} |
-| 883 | 2026-09-24 01:12:16 | 80275837 | 006 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "006", "monitor_of": "ec7ed62485264d62b34fc744deeb0c6f", "day": "2026-09-24"}} |
-| 884 | 2026-09-24 01:12:17 | 902b8c56 | 007 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "007", "monitor_of": "ec7ed62485264d62b34fc744deeb0c6f", "day": "2026-09-24"}} |
 | 885 | 2026-09-24 01:12:17 | 84f90993 | 008 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "008", "monitor_of": "ec7ed62485264d62b34fc744deeb0c6f", "day": "2026-09-24"}} |
 | 886 | 2026-09-24 01:12:17 | d67880ac | 009 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "009", "monitor_of": "ec7ed62485264d62b34fc744deeb0c6f", "day": "2026-09-24"}} |
 | 887 | 2026-09-24 01:12:17 | b31aa10e | 011 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "011", "monitor_of": "ec7ed62485264d62b34fc744deeb0c6f", "day": "2026-09-24"}} |
@@ -402,3 +399,6 @@
 | 1279 | 2026-09-24 04:22:19 | 42efc9da |  | probe.network_down | fast-LAPTOP-LRE6PSA8 | {"detail": "all 17 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
 | 1280 | 2026-09-24 04:22:19 | 40419dff |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-24T04-retry-retry", "retry_of": "42efc9da202848eba93c2c0b343346b8"}} |
 | 1281 | 2026-09-24 04:22:19 | 42efc9da |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 1282 | 2026-09-24 04:24:32 | 21c6bb9d | 020 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 113s [done] expect='X_OK' last='X_OK' \| T2 PASS 128s [done] expect='DONE' last='DONE' \| T3 PASS 46s [done] expect='CON |
+| 1283 | 2026-09-24 04:24:32 | 21c6bb9d | 020 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 113s [done] expect='X_OK' last='X_OK' \| T2 PASS 128s [done] expect='DONE' last='DONE' \| T3 PASS 46s [done] expect='CON |
+| 1284 | 2026-09-24 04:24:32 | 21c6bb9d | 020 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "020", "status": "active", "verified": "VERIFIED"}} |

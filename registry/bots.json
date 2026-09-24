@@ -809,7 +809,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "workspace-file-lister",
-    "notes": "tests 3/3: T1 PASS 27s [done] expect='X_OK' last='X_OK' | T2 PASS 85s [done] expect='DONE' last='DONE' | T3 PASS 74s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 3/3: T1 PASS 113s [done] expect='X_OK' last='X_OK' | T2 PASS 128s [done] expect='DONE' last='DONE' | T3 PASS 46s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "shell:workspace",
       "fs:write"
@@ -832,7 +832,7 @@
       "exec",
       "write_file"
     ],
-    "updated": "2026-09-22T15:41:12+00:00",
+    "updated": "2026-09-24T03:24:32+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\020-workspace-file-lister"
