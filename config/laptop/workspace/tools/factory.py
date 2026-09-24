@@ -98,6 +98,19 @@ def main(a):
         w = REPO / "tools" / "factory_worker.py"
         r = subprocess.run([sys.executable, str(w), "resume", a[2], "--allow", a[4], "--actor", "owner-via-master"], env=env, cwd=str(REPO), capture_output=True, text=True, timeout=120)
         print((r.stdout + r.stderr)[-600:]); return r.returncode
+    if a[1] == "infra":
+        # D-118: read-only view of the free-infrastructure inventory; the factory never signs up for anything itself.
+        f = REPO / "registry" / "infra.json"
+        if not f.exists(): print("no inventory yet — run `python tools/factory.py queue scout` and ask again in a minute"); return 0
+        rs = json.loads(f.read_text(encoding="utf-8")).get("resources", {})
+        have = sorted(k for k, v in rs.items() if v.get("status") in ("configured", "keyless_ok", "in_use"))
+        print("USING (free): " + ", ".join(have))
+        todo = sorted((k, v) for k, v in rs.items() if v.get("status") in ("missing", "invalid_key"))
+        print(f"OWNER SIGNUP NEEDED ({len(todo)}) — the factory cannot do these; each is free:")
+        for k, v in todo:
+            print(f"- {k} [{v.get('kind')}]: {'KEY INVALID, regenerate' if v.get('status') == 'invalid_key' else ('signup + card verification' if v.get('obtain') == 'signup+card' else 'signup, no card')} at {v.get('signup')}"
+                  + (f"; then set User env {v.get('key')}" if v.get("key") else "") + f" — {v.get('free')}")
+        return 0
     if a[1] in ("queue", "jobs", "audit"):
         w = REPO / "tools" / "factory_worker.py"
         if a[1] == "queue":
