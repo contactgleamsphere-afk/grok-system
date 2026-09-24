@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 713 | 2026-09-22 21:53:29 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 714 | 2026-09-22 21:53:40 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["82 passed in 9.83s"]} |
-| 715 | 2026-09-22 21:53:40 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["82 passed in 10.35s"]} |
-| 716 | 2026-09-22 21:55:42 | 135e45ff |  | job.enqueued | master-001 | {"kind": "create", "payload": {"objective": "reads a text file and counts how many lines contain a valid email address, replying with only t |
 | 717 | 2026-09-22 21:55:45 | 135e45ff |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 718 | 2026-09-22 21:55:47 | 135e45ff | 021 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "email-line-counter", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["groq-gptoss120b", "o |
 | 719 | 2026-09-22 21:59:57 | 135e45ff | 021 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 52s [done] expect='X_OK' last='X_OK' \| T2 PASS 72s [done] expect='2' last='RESULT: 2' \| T3 PASS 68s [done] expect='1'  |
@@ -402,3 +398,7 @@
 | 1110 | 2026-09-24 02:11:27 | e155909a | 017 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 20s [done] expect='X_OK' last='X_OK' \| T2 PASS 53s [done] expect='3' last='RESULT: 3' \| T3 PASS 58s [done] expect='3'  |
 | 1111 | 2026-09-24 02:11:27 | e155909a | 017 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 20s [done] expect='X_OK' last='X_OK' \| T2 PASS 53s [done] expect='3' last='RESULT: 3' \| T3 PASS 58s [done] expect='3'  |
 | 1112 | 2026-09-24 02:11:27 | e155909a | 017 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "017", "status": "active", "verified": "VERIFIED"}} |
+| 1113 | 2026-09-24 02:11:32 | 482340ef | 019 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1114 | 2026-09-24 02:11:57 | bedaa1af | 018 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 19s [done] expect='X_OK' last='X_OK' \| T2 PASS 49s [done] expect='30' last='RESULT: 30' \| T3 PASS 53s [done] expect='2 |
+| 1115 | 2026-09-24 02:11:57 | bedaa1af | 018 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 19s [done] expect='X_OK' last='X_OK' \| T2 PASS 49s [done] expect='30' last='RESULT: 30' \| T3 PASS 53s [done] expect='2 |
+| 1116 | 2026-09-24 02:11:57 | bedaa1af | 018 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "status": "active", "verified": "VERIFIED"}} |
