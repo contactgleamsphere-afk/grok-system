@@ -2,6 +2,7 @@
 
     python tools/factory.py create "<plain-English objective>"   # synchronous (blocks ~2-5 min)
     python tools/factory.py queue create "<objective>" | test <id> | repair <id> | monitor [ids]   # async via job queue
+    python tools/factory.py tools | queue tooldisc "<need>"                                     # D-114: tool catalogue / MCP discovery
     python tools/factory.py queue plan "<multi-stage objective>"   # planner -> one create per stage
     python tools/factory.py queue probe | discover | bench        # model-lane health / new free lanes / quality scores
     python tools/factory.py jobs | audit [bot_id] | report | lanes
@@ -24,6 +25,19 @@ def main(a):
     if a[1] == "list":
         b = json.loads((REPO / "registry" / "bots.json").read_text(encoding="utf-8"))
         for k, v in sorted(b.items()): print(f"{k} {v['name']:20s} {v['status']:9s} {v['verified']:10s} tools={','.join(v['tools'])}")
+        return 0
+    if a[1] == "tools":
+        # D-114: tool catalogue for the owner — builtins + discovered MCP servers with their state. Read-only; approval is CLI-only.
+        t = json.loads((REPO / "registry" / "tools.json").read_text(encoding="utf-8"))
+        print("TOOLS id kind risk state")
+        for k, v in sorted(t.items()):
+            state = v.get("verified", "?")
+            if v.get("kind") == "mcp":
+                try: n = json.loads(v.get("notes") or "{}")
+                except Exception: n = {}
+                state = "APPROVED" if n.get("install") and "PROBATION" not in (v.get("scope") or "") else "PROBATION (owner: approve-tool on the laptop)"
+                state += f" tools={len(n.get('tools') or [])} licence={n.get('licence')}"
+            print(f"{k} {v.get('kind')} {v.get('risk')} {state}")
         return 0
     if a[1] == "lanes":
         # model lanes: health + benchmark rank (D-050). Compact: the master runs on small-context lanes.
