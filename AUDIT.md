@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 822 | 2026-09-22 23:43:29 | 5230a652 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 823 | 2026-09-22 23:43:29 | 4f65b755 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-23T00"}} |
-| 824 | 2026-09-22 23:43:29 | 5230a652 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 825 | 2026-09-22 23:46:06 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 826 | 2026-09-22 23:46:10 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 827 | 2026-09-22 23:46:22 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["92 passed in 11.14s"]} |
 | 828 | 2026-09-22 23:46:22 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["92 passed in 10.72s"]} |
 | 829 | 2026-09-22 23:46:52 | 593061c9 |  | job.enqueued | builder | {"kind": "plan", "payload": {"objective": "Pipeline: take orders.csv, keep only the rows whose status is refunded and write them to refunded |
@@ -402,3 +397,8 @@
 | 1219 | 2026-09-24 03:36:11 | 1f96bf25 | 026 | job.enqueued | owner | {"kind": "rebuild", "payload": {"bot_id": "026", "t": 1790217371}} |
 | 1220 | 2026-09-24 03:37:16 | c18703a7 | 026 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-120b", "sandbox": null, "rejected": "instructions ex |
 | 1221 | 2026-09-24 03:37:16 | c18703a7 | 026 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
+| 1222 | 2026-09-24 03:37:20 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1223 | 2026-09-24 03:37:40 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["107 passed in 16.03s"]} |
+| 1224 | 2026-09-24 03:37:40 | 1f96bf25 | 026 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1225 | 2026-09-24 03:41:47 | 1f96bf25 | 026 | bot.rebuilt | svc-LAPTOP-LRE6PSA8 | {"chain": ["groq-gptoss120b", "gemini-lite31", "groq-gptoss20b", "local3b"], "result": "T1 PASS 17s [done] expect='X_OK' last='X_OK' \| T2 P |
+| 1226 | 2026-09-24 03:41:47 | 1f96bf25 | 026 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "026", "name": "sqlite-query-bot", "pass": 3, "total": 4, "status": "testing", "verified": "UNVERIFIED"}} |

@@ -1051,7 +1051,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "sqlite-query-bot",
-    "notes": "tests 2/4: T1 PASS 15s [done] expect='X_OK' last='X_OK' | T2 FAIL 25s [done] expect='users' last='RESULT: None' | T3 FAIL 136s [done] expect='3' last='NEXT STEP: Verify the correct database file path or name.' | T4 PASS 18s [done] expect='CONFINED' last='RESULT: CONFINED'",
+    "notes": "tests 3/4: T1 PASS 17s [done] expect='X_OK' last='X_OK' | T2 PASS 21s [done] expect='users' last='RESULT: users' | T3 FAIL 189s [done] expect='3' last='RESULT: 0' | T4 PASS 18s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write",
@@ -1060,10 +1060,10 @@
     "purpose": "Answer questions about a SQLite database file in the workspace using read\u2011only queries via the mcp\u2011sqlite3 server.",
     "schedules": [],
     "seal": {
-      "AGENTS.md": "257ace2a1e8c49bf61fec2ff",
+      "AGENTS.md": "bdc357c5e1dea30a18f1d1a3",
       "SOUL.md": "7c7c03299984732dd6a818e5",
       "bot.json": "534d11ea1d9cc81537d2fc1a",
-      "nanobot.patch.json": "da385e3cd3a937617414691e"
+      "nanobot.patch.json": "1d79d249485819157322141a"
     },
     "status": "testing",
     "tests": [
@@ -1077,7 +1077,7 @@
       "write_file",
       "mcp:mcp-sqlite3"
     ],
-    "updated": "2026-09-24T02:31:15+00:00",
+    "updated": "2026-09-24T02:41:47+00:00",
     "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\026-sqlite-query-bot"
