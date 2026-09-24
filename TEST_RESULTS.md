@@ -391,3 +391,5 @@ Selftest laptop: 101 passed (D-105 included).
 | rebuild | T2 PASS (tables → users), T3 FAIL (prompt never named the fixture → D-113) |
 | rearchitect | T1–T4 PASS 4/4, boundary_diff {}, **026 active VERIFIED 03:50** |
 Unit tests: 107 pass (repo + laptop).
+- 04:08 D-115 live: `discover gemini` → 13 flash-class candidates; `gemini-flash-lite-latest` approved (probe 0.94 s, tool loop 2.05 s) → preset synced → bench 4/4 in 42 s (fastest lane on record). Rejected with reasons: gemini-2.5-flash/2.5-flash-lite (404 gone), gemini-flash-latest (503), gemini-3-flash-preview/3.5-flash (no tool call). Zero human action.
+- 04:02 D-114 live: master suite 8/8 (new T7 `tools` → mcp-sqlite3).
