@@ -151,12 +151,16 @@ Rules:
   After the liveness check, expected values must be COMPUTED by the bot from the task (a count, a sum, a filename it
   derived), never a fixed phrase that the instructions themselves would have to dictate (e.g. "Status: PASS"),
   because the repair guard rejects any instruction text that quotes a test's expected value.
+- fixtures (optional, D-111): input files the tests need, materialised by the harness in the workspace before EVERY
+  test, so read-only bots can be tested without fs:write. List of {{"name": "<plain filename>", "text": "<content>"}}
+  or {{"name": "<x>.db", "sql": "<SQL statements creating tables and rows>"}} for SQLite files. Max 4 files, 4 KB each.
+  A test prompt may then simply refer to the file by name. Expected values must still be computed from the fixture.
 - instructions: 40-120 words, concrete, telling the bot how to work and what to never do.
 - name: lowercase slug. id: "{bot_id}".
 
 {catalog}
 
-Return ONLY the JSON object with keys: id, name, purpose, instructions, model_policy, tools, permissions, tests, notes.
+Return ONLY the JSON object with keys: id, name, purpose, instructions, model_policy, tools, permissions, tests, fixtures (optional), notes.
 OBJECTIVE: {objective}"""
 
 

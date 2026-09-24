@@ -248,6 +248,8 @@ class BotFactory:
                  "Format per line: `<prompt> -> <expected substring>`", ""]
         for t in spec["tests"]:
             lines.append(f"- {t}")
+        if spec.get("fixtures"):
+            lines += ["", "Fixtures materialised before every test (D-111): " + ", ".join(f["name"] for f in spec["fixtures"])]
         return "\n".join(lines) + "\n"
 
     @staticmethod

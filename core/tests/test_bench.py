@@ -962,3 +962,28 @@ def test_d110_owner_approval_wires_mcp_only_with_explicit_grant(tmp_path, monkey
     with pytest.raises(FactoryError):
         f.build(dict(spec, id="092", name="sneaky", tools=["read_file", "mcp:other"], permissions=["fs:read", "mcp:other"]))   # probation → refused at build too
     md = (tmp_path / "TOOL_REGISTRY.md").read_text(); assert "| mcp:good-sqlite | APPROVED |" in md and "| mcp:other | probation |" in md
+
+
+def test_d111_fixtures_validated_and_materialised(tmp_path, monkeypatch):
+    """D-111: specs may declare small test fixtures (text or SQLite-from-SQL); botspec bounds them; the materialiser
+    writes them into the workspace, refuses path escapes and bundle names, and rebuilds them idempotently."""
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    from factory.registry import ToolEntry
+    from factory.botspec import validate_spec
+    import factory_fixtures as ff, sqlite3
+    reg.upsert("tools", ToolEntry(id="read_file", kind="builtin", provides=["filesystem"], risk="low", verified="VERIFIED"))
+    spec = {"id": "093", "name": "fx", "purpose": "p" * 12, "instructions": "i" * 40, "model_policy": {"primary": "groq-a", "fallbacks": []},
+            "tools": ["read_file"], "permissions": ["fs:read"], "tests": ["a -> b"],
+            "fixtures": [{"name": "notes.txt", "text": "one\ntwo\n"}, {"name": "shop.db", "sql": "CREATE TABLE t(x); INSERT INTO t VALUES (1),(2),(3);"}]}
+    assert validate_spec(spec, reg) == []
+    assert validate_spec(dict(spec, fixtures=[{"name": "../x.txt", "text": "a"}]), reg)
+    assert validate_spec(dict(spec, fixtures=[{"name": "a.txt", "text": "a", "sql": "b"}]), reg)
+    assert validate_spec(dict(spec, fixtures=[{"name": "a.txt", "sql": "select 1"}]), reg)         # sql needs .db
+    assert validate_spec(dict(spec, fixtures=[{"name": f"f{i}.txt", "text": "a"} for i in range(5)]), reg)
+    bd = tmp_path / "093-fx"; bd.mkdir(); (bd / "bot.json").write_text(json.dumps(spec))
+    r = ff.materialise(bd); assert r == {"written": ["notes.txt", "shop.db"], "skipped": []}
+    assert (bd / "notes.txt").read_text() == "one\ntwo\n"
+    assert sqlite3.connect(bd / "shop.db").execute("select count(*) from t").fetchone()[0] == 3
+    r2 = ff.materialise(bd); assert r2["written"] == ["notes.txt", "shop.db"]                       # idempotent rebuild
+    assert ff.materialise(bd, [{"name": "bot.json", "text": "x"}, {"name": "..\\evil", "text": "x"}])["skipped"] == ["bot.json", "..\\evil"]
+    assert json.loads((bd / "bot.json").read_text())["id"] == "093"                                # bundle untouched

@@ -595,3 +595,10 @@ opt-in per bot: the spec must list the tool AND the permission `mcp:<slug>` (val
 guard sees any MCP addition during repair as a permission change. BotFactory writes `tools.mcpServers` into the sealed
 `nanobot.patch.json`; the runners apply it and clear mcpServers for bots without one. Probation servers are refused at
 validate and again at build.
+
+## D-111 — Declared test fixtures (2026-09-24) — VERIFIED (unit)
+A spec may declare up to 4 small fixtures (`{"name","text"}` or `{"name":"x.db","sql":...}`), validated by botspec
+(plain filename, ≤4 KB, text XOR sql). `tools/factory_fixtures.py` materialises them into the workspace before EVERY
+acceptance test (the artefact sweep clears the workspace after each). Motivation: the first MCP-sqlite bot create was
+correctly security-paused because the architect needed fs:write only to build a test database — read-only bots must
+be testable without write permission. Fixtures are part of the frozen spec, so repair cannot change them.

@@ -79,6 +79,18 @@ def validate_spec(spec: dict[str, Any], registry: Registry) -> list[str]:
                 if tag in t.provides and needed not in perms:
                     problems.append(f"tool '{tid}' is high-risk ({tag}); requires permission '{needed}'")
 
+    fx = spec.get("fixtures") or []                          # D-111 test fixtures
+    if not isinstance(fx, list) or len(fx) > 4:
+        problems.append("fixtures must be a list of at most 4 files")
+    else:
+        for f in fx:
+            if not isinstance(f, dict) or not re.match(r"^[A-Za-z0-9._-]{1,64}$", str(f.get("name", ""))) or str(f.get("name", "")).startswith("."):
+                problems.append(f"fixture name must be a plain filename: {f!r}"[:120]); continue
+            body = f.get("text") if "text" in f else f.get("sql")
+            if not isinstance(body, str) or not body.strip() or len(body) > 4096 or ("text" in f) == ("sql" in f):
+                problems.append(f"fixture {f.get('name')} needs exactly one of text|sql, 1..4096 chars")
+            if "sql" in f and not str(f["name"]).endswith((".db", ".sqlite", ".sqlite3")):
+                problems.append(f"sql fixture {f.get('name')} must be a .db/.sqlite file")
     if not isinstance(spec["tests"], list) or not spec["tests"]:
         problems.append("at least one test required")
     for s in spec.get("schedules", []):
