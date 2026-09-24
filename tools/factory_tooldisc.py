@@ -369,6 +369,12 @@ def run(need: str, max_new: int = 2, dry_run: bool = False, fetch=None, sandboxe
     known = {t.id for t in reg.all("tools")}
     cands = discover(need, fetch)
     verdicts, added = [], []; attempts = 0; t_end = time.time() + 20 * 60
+    # Pass 1 (cheap, API-only): research + evaluate EVERY candidate. Pass 2 (expensive): sandbox the keeps, best
+    # evidence first — keyword fit, then maintenance signals (recent release, stars, fewer deps). Stars still never
+    # approve anything; they only order the sandbox queue (live 2026-09-25: with a first-hit policy the 37k-star
+    # @playwright/mcp was never reached behind a chaos-testing plugin that happened to match both keywords).
+    words = [w for w in re.findall(r"[a-z0-9][a-z0-9-]{2,}", need.lower()) if w not in STOPWORDS]
+    keeps = []
     for c in cands:
         key = f"{c.get('name')}:{c.get('version')}"
         if tool_id(c) in known: verdicts.append((c, "known", "already in registry")); continue
@@ -378,6 +384,10 @@ def run(need: str, max_new: int = 2, dry_run: bool = False, fetch=None, sandboxe
         facts = research(c, fetch)
         v, why = evaluate(c, facts, now)
         if v != "keep": verdicts.append((c, "rejected", "; ".join(why))); continue
+        t = f"{c.get('name', '')} {c.get('title', '')} {c.get('description', '')}".lower()
+        keeps.append((-sum(w in t for w in words), -(facts.get("stars") or 0), facts.get("deps") or 0, c, facts))
+    keeps.sort(key=lambda k: k[:3])
+    for _h, _s, _d, c, facts in keeps:
         if len(added) >= max_new or attempts >= 2 * max_new or time.time() > t_end:
             verdicts.append((c, "deferred", "budget reached (max_new / attempts / 20 min)")); continue
         if not (WIN or sandboxer is not sandbox):

@@ -1168,3 +1168,22 @@ def test_d120_revoke_tool_is_permanent(tmp_path, monkeypatch):
     fetch = lambda url: {"servers": [{"server": {"name": "io.github.x/bad", "version": "2.0", "packages": [{"registryType": "npm", "identifier": "bad"}]}}]} if "modelcontextprotocol" in url else {}
     out = td.run("bad", 1, dry_run=True, fetch=fetch, sandboxer=lambda c: {"ok": True, "tools": ["t"]})
     assert out["added"] == [] and any(v.get("verdict") == "ledger" or "ledger" in str(v) for v in out.get("verdicts", [])) or out["candidates"] == 1
+
+
+def test_d120_sandbox_order_keyword_fit_then_stars(tmp_path, monkeypatch):
+    """D-120: all candidates are researched first; the sandbox queue is ordered by keyword fit, then stars (order
+    only — never approval). With max_new=1 the best-evidenced candidate is the one that gets sandboxed."""
+    import factory_tooldisc as td
+    monkeypatch.setattr(td, "ROOT", tmp_path); (tmp_path / "registry").mkdir()
+    monkeypatch.setattr(td, "LEDGER", tmp_path / "registry" / "tool_candidates.json"); monkeypatch.setattr(td, "TOOLREG_MD", tmp_path / "T.md", raising=False)
+    servers = [{"server": {"name": "io.github.a/playwright-chaos", "title": "", "description": "playwright browser chaos", "version": "1", "repository": {"url": "https://github.com/a/chaos"}, "packages": [{"registryType": "npm", "identifier": "chaos"}]}},
+               {"server": {"name": "io.github.microsoft/playwright-mcp", "title": "Playwright Tools", "description": "browser", "version": "1", "repository": {"url": "https://github.com/microsoft/playwright-mcp"}, "packages": [{"registryType": "npm", "identifier": "@playwright/mcp"}]}}]
+    def fetch(url):
+        if "modelcontextprotocol" in url: return {"servers": servers}
+        if "npmjs" in url: return {"dist-tags": {"latest": "1"}, "versions": {"1": {"dependencies": {"x": "1"}}}, "time": {"1": "2026-09-01T00:00:00Z"}, "license": "MIT"}
+        if "api.github.com/repos/microsoft" in url: return {"full_name": "m/p", "stargazers_count": 37000, "archived": False}
+        if "api.github.com" in url: return {"full_name": "a/c", "stargazers_count": 5, "archived": False}
+        return {}
+    boxed = []
+    out = td.run("playwright browser", 1, dry_run=True, fetch=fetch, sandboxer=lambda c: (boxed.append(c["name"]), {"ok": True, "tools": ["t"], "secs": 1})[1])
+    assert boxed == ["io.github.microsoft/playwright-mcp"] and out["added"] == ["mcp:playwright-mcp"]
