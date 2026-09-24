@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 668 | 2026-09-22 21:18:00 | 096d9bb8 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["local3b", "local4b"], "changed": []}} |
-| 669 | 2026-09-22 21:18:15 | 615d5d9f |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 670 | 2026-09-22 21:18:15 | 615d5d9f |  | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 1, "error": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>\no |
-| 671 | 2026-09-22 21:18:16 | aeb98a0c |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 672 | 2026-09-22 21:18:16 | aeb98a0c |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 673 | 2026-09-22 21:18:17 | 9e271e81 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 674 | 2026-09-22 21:18:17 | 9e271e81 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
@@ -402,3 +398,7 @@
 | 1065 | 2026-09-24 01:46:36 | 754d191f | 006 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": "4/4", "rejected": null}], "boundary_ |
 | 1066 | 2026-09-24 01:46:36 | 754d191f | 006 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 1067 | 2026-09-24 01:46:36 | 754d191f | 006 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "006", "name": "json-to-markdown-table", "status": "active", "verified": "VERIFIED"}} |
+| 1068 | 2026-09-24 01:46:42 | 000fb61b | 007 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1069 | 2026-09-24 01:51:44 | 000fb61b | 007 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
+| 1070 | 2026-09-24 01:51:44 | 000fb61b | 007 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 1071 | 2026-09-24 01:51:44 | 000fb61b | 007 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "007", "status": "active"}} |
