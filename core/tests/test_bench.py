@@ -884,6 +884,9 @@ def test_d108_tool_discovery_rules_and_probation(tmp_path, monkeypatch):
     assert good.kind == "mcp" and good.verified == "INFERRED" and good.risk == "medium" and "PROBATION" in good.scope
     assert sh.risk == "high" and "write" in sh.provides and "run_shell" in sh.notes           # shell-class tools flagged high
     assert reg.get("tools", "mcp:gpl-tool") is None
+    md = (tmp_path / "TOOL_REGISTRY.md").read_text()
+    assert "mcp:good-sqlite" in md and "mcp:shell-tool" in md and md.count("mcp-probation:start") == 1
+    td.write_probation_md(reg); assert (tmp_path / "TOOL_REGISTRY.md").read_text().count("mcp-probation:start") == 1   # idempotent
     led = json.loads((tmp_path / "registry" / "tool_candidates.json").read_text())["verdicts"]
     assert led["io.github.c/gpl-tool:1.0.0"]["verdict"] == "rejected"
     # second run: nothing re-evaluated, nothing re-added

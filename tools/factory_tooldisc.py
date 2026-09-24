@@ -246,6 +246,25 @@ def integrate(reg: Registry, c: dict, facts: dict, hs: dict, need: str) -> ToolE
     return e
 
 
+def write_probation_md(reg: Registry, path: pathlib.Path | None = None) -> None:
+    """Regenerate the auto section of TOOL_REGISTRY.md (between markers) from registry/tools.json kind=mcp entries."""
+    path = path or ROOT / "TOOL_REGISTRY.md"
+    rows = ["| id | risk | verified | licence | released | tools | source |", "|---|---|---|---|---|---|---|"]
+    for t in sorted((t for t in reg.all("tools") if t.kind == "mcp"), key=lambda t: t.id):
+        try: n = json.loads(t.notes)
+        except Exception: n = {}
+        rows.append(f"| {t.id} | {t.risk} | {t.verified} | {n.get('licence')} | {str(n.get('released') or '')[:10]} | {len(n.get('tools') or [])} ({', '.join((n.get('tools') or [])[:4])}…) | {n.get('repo')} |")
+    block = ("<!-- mcp-probation:start -->\n## MCP servers on probation (auto, D-108)\n"
+             "Discovered by `factory_tooldisc.py`; sandbox-verified (stdio handshake, secrets stripped). **Not attached to any bot** — "
+             "owner approval is required to wire one into a bot config.\n\n" + "\n".join(rows) + "\n<!-- mcp-probation:end -->\n")
+    txt = path.read_text(encoding="utf-8") if path.exists() else "# TOOL_REGISTRY\n"
+    if "<!-- mcp-probation:start -->" in txt:
+        txt = re.sub(r"<!-- mcp-probation:start -->.*?<!-- mcp-probation:end -->\n", lambda _: block, txt, flags=re.S)
+    else:
+        txt = txt.rstrip("\n") + "\n\n" + block
+    path.write_text(txt, encoding="utf-8")
+
+
 def run(need: str, max_new: int = 2, dry_run: bool = False, fetch=None, sandboxer=None) -> dict:
     reg = Registry(ROOT / "registry"); ledger = _ledger(); now = time.time(); day = time.strftime("%Y-%m-%d")
     fetch = fetch or _fetch; sandboxer = sandboxer or sandbox
@@ -274,6 +293,7 @@ def run(need: str, max_new: int = 2, dry_run: bool = False, fetch=None, sandboxe
             if v in ("rejected", "approved"):
                 ledger["verdicts"][f"{c.get('name')}:{c.get('version')}"] = {"verdict": v, "reason": r[:200], "ts": now, "date": day, "need": need}
         _save_ledger(ledger)
+        if added: write_probation_md(reg)
     return {"need": need, "candidates": len(cands), "added": added,
             "verdicts": [{"name": c.get("name"), "verdict": v, "reason": r[:160]} for c, v, r in verdicts]}
 

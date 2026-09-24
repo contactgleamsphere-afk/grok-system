@@ -572,7 +572,7 @@ loads the file into every context, D-035 budget). Tests never write memory. MEMO
 Also fixed: D-103 top-up appended remote lanes after a policy-listed local lane; top-ups now insert before the first
 local lane so local is always the tail (regression test in test_d103).
 
-## D-108 — Tool/MCP capability discovery pipeline (2026-09-24) — VERIFIED (unit); live run pending
+## D-108 — Tool/MCP capability discovery pipeline (2026-09-24) — VERIFIED (unit + live: laptop run "sqlite" → mcp-sqlite3 (pypi, 37 tools) and mcp-sqlite-tools (npm, 19 tools) on probation; 3 hosted/no-licence/NOASSERTION rejected, 3 rejected for no stdio answer in 120 s)
 `tools/factory_tooldisc.py` + job kind `tooldisc <need>`: DISCOVER (official MCP registry, keyless) → RESEARCH (PyPI /
 npm / GitHub facts) → EVALUATE (permissive licence, release <365 d, not archived, ≤40 deps, local stdio only — hosted
 "remote" servers rejected as lock-in/data-egress; stars recorded, never decisive) → SANDBOX (throw-away venv or npx
