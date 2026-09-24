@@ -2,27 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 763 | 2026-09-22 23:00:00 | 1e546b89 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "create", "payload": {"objective": "Read orders.csv, filter rows where the 'status' column is 'refunded', and write the resulting r |
-| 764 | 2026-09-22 23:00:00 | 1a129f56 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "create", "payload": {"objective": "Read refunded.csv, sum the values in the 'amount' column, and write a single line to summary.tx |
-| 765 | 2026-09-22 23:00:00 | 197bb3e5 |  | plan.made | svc-LAPTOP-LRE6PSA8 | {"lane": "groq:qwen/qwen3.8-27b", "steps": 2, "queued": [[1, "1e546b89"], [2, "1a129f56"]], "rationale": "The objective explicitly defines a |
-| 766 | 2026-09-22 23:00:00 | 197bb3e5 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"name": "plan:2 steps", "status": "queued 1e546b89,1a129f56"}} |
-| 767 | 2026-09-22 23:00:04 | 1e546b89 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 768 | 2026-09-22 23:00:06 | 1e546b89 | 022 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "csv-refund-filter", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["or-ling-30-flash-vl", |
-| 769 | 2026-09-22 23:04:43 | 1e546b89 | 022 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 28s [done] expect='X_OK' last='X_OK' \| T2 PASS 105s [done] expect='2' last='RESULT: 2' \| T3 PASS 95s [done] expect='2' |
-| 770 | 2026-09-22 23:04:43 | 1e546b89 | 022 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "022", "name": "csv-refund-filter", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
-| 771 | 2026-09-22 23:04:47 | 1a129f56 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 772 | 2026-09-22 23:04:49 | 1a129f56 | 023 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "refund-summarizer", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["or-ling-30-flash-vl", |
-| 773 | 2026-09-22 23:08:55 | 1a129f56 | 023 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 26s [done] expect='X_OK' last='X_OK' \| T2 PASS 87s [done] expect='36.0' last='RESULT: 36.0' \| T3 PASS 82s [done] expec |
-| 774 | 2026-09-22 23:08:55 | 1a129f56 | 023 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "023", "name": "refund-summarizer", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
-| 775 | 2026-09-22 23:09:19 | bb6439ae |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 776 | 2026-09-22 23:09:19 | 5aa3c5cd |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "report", "payload": {"day": "2026-09-23"}} |
-| 777 | 2026-09-22 23:09:19 | 4004bf3d |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "bench", "payload": {"stale_only": true, "max": 2, "day": "2026-09-22"}} |
-| 778 | 2026-09-22 23:09:19 | bb6439ae |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 779 | 2026-09-22 23:09:19 | 4004bf3d |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 780 | 2026-09-22 23:12:53 | 4004bf3d |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-flash36", "result": "2/4", "quota": 0, "secs": 63} |
-| 781 | 2026-09-22 23:12:53 | 4004bf3d |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-lite31", "result": "4/4", "quota": 0, "secs": 73} |
-| 782 | 2026-09-22 23:12:53 | 4004bf3d |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["gemini-flash36", "2/4"], ["gemini-lite31", "4/4"]]}} |
-| 783 | 2026-09-22 23:13:27 | c367ebb5 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 784 | 2026-09-22 23:13:27 | 6349a92d |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-23T00"}} |
 | 785 | 2026-09-22 23:13:47 | c367ebb5 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen2 |
 | 786 | 2026-09-22 23:15:50 | fa0a4093 |  | job.enqueued | builder | {"kind": "run", "payload": {"plan": "197bb3e5", "in": "C:\\AI\\Factory\\workspace\\inbox\\orders1", "cap": 300, "t": 1790115350}} |
@@ -402,3 +381,24 @@
 | 1160 | 2026-09-24 02:23:14 | c1c70d3e | 025 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "025", "status": "active", "verified": "VERIFIED"}} |
 | 1161 | 2026-09-24 02:24:57 | c35f9462 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-flash38", "result": "2/4", "quota": 0, "secs": 128} |
 | 1162 | 2026-09-24 02:24:57 | c35f9462 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["gemini-flash38", "2/4"]]}} |
+| 1163 | 2026-09-24 02:31:11 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1164 | 2026-09-24 02:31:12 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1165 | 2026-09-24 02:31:27 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["103 passed in 13.30s"]} |
+| 1166 | 2026-09-24 02:31:32 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["103 passed in 11.02s"]} |
+| 1167 | 2026-09-24 02:49:26 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1168 | 2026-09-24 02:49:26 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1169 | 2026-09-24 02:49:52 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["103 passed in 18.96s"]} |
+| 1170 | 2026-09-24 02:49:53 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["103 passed in 17.44s"]} |
+| 1171 | 2026-09-24 03:01:33 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1172 | 2026-09-24 03:01:33 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1173 | 2026-09-24 03:01:50 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["105 passed in 15.19s"]} |
+| 1174 | 2026-09-24 03:01:54 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["105 passed in 14.64s"]} |
+| 1175 | 2026-09-24 03:04:04 |  |  | tool.approved | owner | {"tool": "mcp:mcp-sqlite3", "detail": "{\"ok\": true, \"tool\": \"mcp:mcp-sqlite3\", \"install\": {\"command\": \"C:\\\\AI\\\\Factory\\\\mcp |
+| 1176 | 2026-09-24 03:04:58 | efe05c44 |  | job.enqueued | owner | {"kind": "create", "payload": {"objective": "Answer questions about a SQLite database file the user names in the workspace: list its tables  |
+| 1177 | 2026-09-24 03:04:59 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1178 | 2026-09-24 03:05:00 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1179 | 2026-09-24 03:05:19 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["105 passed in 15.96s"]} |
+| 1180 | 2026-09-24 03:05:19 | efe05c44 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1181 | 2026-09-24 03:05:19 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["105 passed in 16.02s"]} |
+| 1182 | 2026-09-24 03:05:21 | efe05c44 |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect: objective needs permissions outside the allowance ['fs:read', 'mcp:mcp-sqlite3']: The bot requires write permission to |
+| 1183 | 2026-09-24 03:05:21 | efe05c44 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: architect: objective needs permissions outside the a |
