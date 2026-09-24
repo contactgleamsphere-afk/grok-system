@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 956 | 2026-09-24 01:28:33 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 957 | 2026-09-24 01:28:38 | c3c35810 | 002 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 958 | 2026-09-24 01:28:39 | c3c35810 | 002 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": null, "rounds": [], "boundary_diff": {}} |
 | 959 | 2026-09-24 01:28:39 | c3c35810 | 002 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: repair only runs on demoted bots (status=active)\nT |
 | 960 | 2026-09-24 01:28:44 | 8b22fe5c |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 961 | 2026-09-24 01:28:44 | 8b22fe5c |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
@@ -402,3 +399,6 @@
 | 1353 | 2026-09-24 22:30:02 | 1ce9e348 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 1354 | 2026-09-24 22:30:12 | 37b08250 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-gemini-flash-lite-latest", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
 | 1355 | 2026-09-24 22:30:12 | 37b08250 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-li |
+| 1356 | 2026-09-24 22:30:22 | 66ca017e |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1357 | 2026-09-24 22:30:39 | bc1ce82b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1358 | 2026-09-24 22:30:39 | bc1ce82b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
