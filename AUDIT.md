@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 784 | 2026-09-22 23:13:27 | 6349a92d |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-23T00"}} |
-| 785 | 2026-09-22 23:13:47 | c367ebb5 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen2 |
-| 786 | 2026-09-22 23:15:50 | fa0a4093 |  | job.enqueued | builder | {"kind": "run", "payload": {"plan": "197bb3e5", "in": "C:\\AI\\Factory\\workspace\\inbox\\orders1", "cap": 300, "t": 1790115350}} |
 | 787 | 2026-09-22 23:15:51 | fa0a4093 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 788 | 2026-09-22 23:17:38 | fa0a4093 | 022 | bot.ran | fast-LAPTOP-LRE6PSA8 | {"plan": "197bb3e5", "step": 1, "ok": true, "produced": ["refunded.csv"], "missing": [], "secs": 52, "reply": "RESULT: refunded.csv", "chain |
 | 789 | 2026-09-22 23:17:38 | fa0a4093 | 023 | bot.ran | fast-LAPTOP-LRE6PSA8 | {"plan": "197bb3e5", "step": 2, "ok": true, "produced": ["summary.txt"], "missing": [], "secs": 53, "reply": "RESULT: 39.5", "chain": "gemin |
@@ -402,3 +399,6 @@
 | 1181 | 2026-09-24 03:05:19 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["105 passed in 16.02s"]} |
 | 1182 | 2026-09-24 03:05:21 | efe05c44 |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect: objective needs permissions outside the allowance ['fs:read', 'mcp:mcp-sqlite3']: The bot requires write permission to |
 | 1183 | 2026-09-24 03:05:21 | efe05c44 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: architect: objective needs permissions outside the a |
+| 1184 | 2026-09-24 03:12:05 | f773c50b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1185 | 2026-09-24 03:12:05 | 49eeafe3 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-24T04"}} |
+| 1186 | 2026-09-24 03:12:05 | f773c50b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
