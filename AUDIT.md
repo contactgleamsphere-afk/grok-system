@@ -2,16 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 852 | 2026-09-23 00:00:45 | 40a753dd |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"name": "run:plan 593061c9", "status": "ok orders.csv,refunded.csv,summary.txt,summary_upper.txt"}} |
-| 853 | 2026-09-23 00:46:16 | 6349a92d |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 854 | 2026-09-23 00:46:16 | 4f65b755 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 855 | 2026-09-23 00:46:17 | 0d9b9aaa |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-23T01"}} |
-| 856 | 2026-09-23 00:46:17 | 4f65b755 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 857 | 2026-09-23 00:46:17 | 6320985a |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-23T01"}} |
-| 858 | 2026-09-24 01:11:59 | 6349a92d |  | probe.network_down | svc-LAPTOP-LRE6PSA8 | {"detail": "all 13 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
-| 859 | 2026-09-24 01:11:59 | 499dd527 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-23T00-retry", "retry_of": "6349a92dea06417c9b6e323550875b4a"}} |
-| 860 | 2026-09-24 01:11:59 | 6349a92d |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 861 | 2026-09-24 01:12:00 | 0d9b9aaa |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 862 | 2026-09-24 01:12:00 | 657a2134 | 018 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "run", "payload": {"bot_id": "018", "task": "Sum order totals per country into totals.csv", "in": "C:\\AI\\Factory\\workspace\\inbo |
 | 863 | 2026-09-24 01:12:00 |  | 018 | schedule.fired | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "fire": "2026-09-23T07:00", "job": "657a2134"} |
 | 864 | 2026-09-24 01:12:00 | 96a47019 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-24T02"}} |
@@ -402,3 +392,13 @@
 | 1249 | 2026-09-24 04:07:49 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["108 passed in 14.96s"]} |
 | 1250 | 2026-09-24 04:07:49 | 865f4e25 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1251 | 2026-09-24 04:07:50 | 865f4e25 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 1252 | 2026-09-24 04:07:51 | 2d873e41 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1253 | 2026-09-24 04:08:11 | 2d873e41 |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-2.5-flash", "reason": "probe gone: [{\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"this model models/gemini-2.5 |
+| 1254 | 2026-09-24 04:08:11 | 2d873e41 |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash-latest", "reason": "probe error: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"this model is currently  |
+| 1255 | 2026-09-24 04:08:11 | 2d873e41 |  | lane.discovered | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash-lite-latest", "reason": "probe 0.94s loop 2.05s", "provider": "gemini"} |
+| 1256 | 2026-09-24 04:08:11 | 2d873e41 |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-2.5-flash-lite", "reason": "probe gone: [{\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"this model models/gemin |
+| 1257 | 2026-09-24 04:08:11 | 2d873e41 |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-3-flash-preview", "reason": "probe no_tool_call: ", "provider": "gemini"} |
+| 1258 | 2026-09-24 04:08:11 | 2d873e41 |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-3.5-flash", "reason": "probe no_tool_call: ", "provider": "gemini"} |
+| 1259 | 2026-09-24 04:08:11 | 2d873e41 |  | config.presets | fast-LAPTOP-LRE6PSA8 | {"added": ["gemini-gemini-flash-lite-latest"]} |
+| 1260 | 2026-09-24 04:08:11 | 5db5434d |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "bench", "payload": {"lanes": ["gemini-gemini-flash-lite-latest"], "day": "2026-09-24"}} |
+| 1261 | 2026-09-24 04:08:11 | 2d873e41 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": ["gemini-gemini-flash-lite-latest"]}} |

@@ -140,6 +140,56 @@
    "ts": 1790209494.1837013,
    "date": "2026-09-24",
    "until": 1790231094.1837013
+  },
+  "gemini:gemini-2.5-flash": {
+   "verdict": "rejected",
+   "reason": "probe gone: [{\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"this model models/gemini-2.5-fl",
+   "ts": 1790219271.116582,
+   "date": "2026-09-24"
+  },
+  "gemini:gemini-flash-latest": {
+   "verdict": "rejected",
+   "reason": "probe error: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"this model is currently experie",
+   "ts": 1790219271.116582,
+   "date": "2026-09-24"
+  },
+  "gemini:gemini-flash-lite-latest": {
+   "verdict": "approved",
+   "reason": "probe 0.94s loop 2.05s",
+   "ts": 1790219271.116582,
+   "date": "2026-09-24"
+  },
+  "gemini:gemini-2.5-flash-lite": {
+   "verdict": "rejected",
+   "reason": "probe gone: [{\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"this model models/gemini-2.5-fl",
+   "ts": 1790219271.116582,
+   "date": "2026-09-24"
+  },
+  "gemini:gemini-3-flash-preview": {
+   "verdict": "rejected",
+   "reason": "probe no_tool_call: ",
+   "ts": 1790219271.116582,
+   "date": "2026-09-24"
+  },
+  "gemini:gemini-3.5-flash": {
+   "verdict": "rejected",
+   "reason": "probe no_tool_call: ",
+   "ts": 1790219271.116582,
+   "date": "2026-09-24"
+  },
+  "gemini:gemini-omni-flash-preview": {
+   "verdict": "deferred",
+   "reason": "probe quota: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"you exceeded your current quota",
+   "ts": 1790219271.116582,
+   "date": "2026-09-24",
+   "until": 1790240871.116582
+  },
+  "provider-quota:gemini": {
+   "verdict": "deferred",
+   "reason": "daily free cap hit during discovery",
+   "ts": 1790219271.116582,
+   "date": "2026-09-24",
+   "until": 1790240871.116582
   }
  }
 }
