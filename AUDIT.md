@@ -2,15 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 982 | 2026-09-24 01:28:58 | 09de5024 | 018 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "018", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
-| 983 | 2026-09-24 01:28:58 | ca4a7aeb | 019 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "019", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
-| 984 | 2026-09-24 01:28:58 | a51e46b5 | 020 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "020", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
-| 985 | 2026-09-24 01:28:58 | 764e7481 | 021 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "021", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
-| 986 | 2026-09-24 01:28:58 | 58a57670 | 022 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "022", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
-| 987 | 2026-09-24 01:28:58 | 6a5c5393 | 023 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "023", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
-| 988 | 2026-09-24 01:28:58 | a735d64e | 024 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "024", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
-| 989 | 2026-09-24 01:28:58 | 356d0905 | 025 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "025", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
-| 990 | 2026-09-24 01:28:58 | bc494d29 |  | monitor.fanout | svc-LAPTOP-LRE6PSA8 | {"bots": ["001", "002", "003", "004", "005", "006", "007", "008", "009", "011", "012", "013", "014", "016", "017", "018", "019", "020", "021 |
 | 991 | 2026-09-24 01:28:58 | bc494d29 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 992 | 2026-09-24 01:29:02 | ad7a13c3 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 993 | 2026-09-24 01:29:40 | e30126b8 |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "dots-studio/dots-3-note-preview:free", "reason": "probe error: URLError", "provider": "openrouter"} |
@@ -402,3 +393,12 @@
 | 1379 | 2026-09-24 23:40:14 | 50cb8d24 |  | job.dedup | svc-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
 | 1380 | 2026-09-24 23:40:35 | d332609a |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "gemini-flash", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
 | 1381 | 2026-09-24 23:40:35 | d332609a |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-l |
+| 1382 | 2026-09-24 23:47:35 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1383 | 2026-09-24 23:47:36 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1384 | 2026-09-24 23:47:56 | 037afd02 |  | job.enqueued | owner | {"kind": "scout", "payload": {"t": 1790290076}} |
+| 1385 | 2026-09-24 23:47:57 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["111 passed in 17.05s"]} |
+| 1386 | 2026-09-24 23:47:57 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["111 passed in 16.38s"]} |
+| 1387 | 2026-09-24 23:47:57 | 037afd02 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1388 | 2026-09-24 23:48:02 | 037afd02 |  | infra.scouted | svc-LAPTOP-LRE6PSA8 | {"summary": {"configured": ["gemini", "groq", "openrouter"], "invalid_key": [], "keyless_ok": ["ollama-local", "ovh-anon", "pollinations"],  |
+| 1389 | 2026-09-24 23:48:02 | 037afd02 |  | owner.needed | svc-LAPTOP-LRE6PSA8 | {"provider": "infra", "reason": "free resources awaiting owner signup/key: ['cerebras', 'nvidia', 'mistral', 'cloudflare-workers-ai', 'zai', |
+| 1390 | 2026-09-24 23:48:02 | 037afd02 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"changed": {"groq": [null, "configured"], "gemini": [null, "configured"], "openrouter": [null, "configured"], "cerebras": [null |
