@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 560 | 2026-09-22 18:40:08 | dbe8c0ee |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 561 | 2026-09-22 18:40:08 | f42e8c49 | 018 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "run", "payload": {"bot_id": "018", "task": "Sum order totals per country into totals.csv", "in": "C:\\AI\\Factory\\workspace\\inbo |
 | 562 | 2026-09-22 18:40:08 |  | 018 | schedule.fired | svc-LAPTOP-LRE6PSA8 | {"sid": "5539cff4", "fire": "2026-09-22T18:40", "job": "f42e8c49"} |
 | 563 | 2026-09-22 18:40:08 | 83f56639 |  | job.dedup | svc-LAPTOP-LRE6PSA8 | {"kind": "tick"} |
 | 564 | 2026-09-22 18:40:08 | dbe8c0ee |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
@@ -402,3 +400,5 @@
 | 957 | 2026-09-24 01:28:38 | c3c35810 | 002 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 958 | 2026-09-24 01:28:39 | c3c35810 | 002 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": null, "rounds": [], "boundary_diff": {}} |
 | 959 | 2026-09-24 01:28:39 | c3c35810 | 002 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: repair only runs on demoted bots (status=active)\nT |
+| 960 | 2026-09-24 01:28:44 | 8b22fe5c |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 961 | 2026-09-24 01:28:44 | 8b22fe5c |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
