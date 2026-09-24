@@ -89,3 +89,23 @@ owner CLI / master 001 chat / scheduled tasks ──add──▶ run/jobs.sqlite
 probe (hourly) → lane BLOCKED → presets synced, chain top-up (D-103), canary monitor of affected bots (D-105)
 → test FAIL (quality) → demote → repair (rounds rotate lanes, D-056; re-verify first, D-059; sandbox 4/4; boundary diff
 empty, D-099) → promote. Availability misses (429/timeout/5xx/empty, D-051/D-075/D-106) are inconclusive, never demote.
+
+## Tool discovery, tunnel resilience, factory self-test, infra scout (2026-09-24, D-108–D-118)
+- **TOOL layer — MCP pipeline** (`tools/factory_tooldisc.py`, `tools/mcp_launch.py`): official MCP registry → filter
+  (stdio, pypi/npm, licence, release age) → sandbox handshake in a throw-away venv / npm cache with a secrets-stripped
+  env → `registry/tool_candidates.json` → PROBATION entry in `registry/tools.json` (`mcp:<slug>`), persistent install
+  under `C:\AI\Factory\mcp\<slug>`. Attachment to a bot requires `approve-tool mcp:<slug>` (owner, CLI only; the master
+  bot cannot approve). `mcp_launch.py` starts the server in the bot workspace so relative paths resolve inside it
+  (known limitation: absolute paths outside the workspace are not blocked by the launcher — the boundary guard is).
+  npm candidates get a 240 s handshake window (cold npx), pypi 120 s.
+- **INFRASTRUCTURE — tunnel**: `scripts/windows/tunnel-supervisor.ps1` (executed by task `AIFactory-Tunnel` via the
+  `tools\tunnel-supervisor.ps1` shim) probes the published URL, waits for internet with an HTTPS check (ICMP fallback,
+  300 s cap), restarts cloudflared and republishes `run/tunnel.txt` through git. Backstop in CORE: worker tick /
+  fast-worker start call `tunnel_selfheal()` (schtasks /Run only when URL=530 and no supervisor process).
+- **FACTORY self-test**: nightly `canary` job — architect → bundle → acceptance runner on a fixed objective in a
+  scratch dir (`BotFactory.build(register=False)`); verdict `factory.canary` in the audit; FAIL is the first line of
+  ATTENTION. Bots are monitored by `monitor`; the factory is monitored by `canary`.
+- **INFRASTRUCTURE — scout**: `tools/factory_scout.py` → `registry/infra.json` + `docs/INFRA.md`: every £0 resource
+  (LLM API / compute / hosting / storage), how obtained, what we hold (validated), owner action list. Weekly `scout`.
+- **Master "tools" command** (`config/laptop/workspace/tools/factory.py tools`): read-only view of registered/probation
+  tools for the master bot; approval stays owner-only.
