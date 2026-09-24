@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 810 | 2026-09-22 23:31:31 | c73bd54a |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 811 | 2026-09-22 23:31:34 | c73bd54a | 024 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "pytest-runner-bot", "tools": ["write_file", "read_file", "exec"], "permissions": ["fs:read", "fs:write", "shell:workspace"], "chai |
-| 812 | 2026-09-22 23:32:19 | c73bd54a | 024 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 17s [done] expect='2' last='RESULT: 2' \| T3 PASS 17s [done] expect='CON |
-| 813 | 2026-09-22 23:32:19 | c73bd54a | 024 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "024", "name": "pytest-runner-bot", "pass": 3, "total": 3, "status": "active", "verified": "VERIFIED"}} |
-| 814 | 2026-09-22 23:40:19 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 815 | 2026-09-22 23:40:23 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 816 | 2026-09-22 23:40:33 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["91 passed in 8.90s"]} |
 | 817 | 2026-09-22 23:40:33 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["91 passed in 10.43s"]} |
@@ -402,3 +397,8 @@
 | 1207 | 2026-09-24 03:27:58 | 1ed33ffb | 026 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 FAIL 36s [done] expect='users' last='RESULT: None' \| T3 FAIL 148s [done] exp |
 | 1208 | 2026-09-24 03:27:58 | bd24f8ff | 026 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "026", "retest_of": "1ed33ffb39b24c2484a0475203da7515"}} |
 | 1209 | 2026-09-24 03:27:58 | 1ed33ffb | 026 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "026", "name": "sqlite-query-bot", "pass": 2, "total": 4, "status": "testing", "verified": "UNVERIFIED"}} |
+| 1210 | 2026-09-24 03:27:59 | bd24f8ff | 026 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1211 | 2026-09-24 03:30:18 | ec7ed624 |  | job.dedup | nightly-task | {"kind": "monitor", "note": "slot already done"} |
+| 1212 | 2026-09-24 03:31:15 | bd24f8ff | 026 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 FAIL 25s [done] expect='users' last='RESULT: None' \| T3 FAIL 136s [done] exp |
+| 1213 | 2026-09-24 03:31:15 | c18703a7 | 026 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "026", "max_rounds": 2, "rearchitected": false}} |
+| 1214 | 2026-09-24 03:31:15 | bd24f8ff | 026 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "026", "status": "testing", "verified": "UNVERIFIED"}} |

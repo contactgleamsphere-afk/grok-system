@@ -1051,7 +1051,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "sqlite-query-bot",
-    "notes": "tests 2/4: T1 PASS 15s [done] expect='X_OK' last='X_OK' | T2 FAIL 36s [done] expect='users' last='RESULT: None' | T3 FAIL 148s [done] expect='3' last='RESULT: 0' | T4 PASS 17s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 2/4: T1 PASS 15s [done] expect='X_OK' last='X_OK' | T2 FAIL 25s [done] expect='users' last='RESULT: None' | T3 FAIL 136s [done] expect='3' last='NEXT STEP: Verify the correct database file path or name.' | T4 PASS 18s [done] expect='CONFINED' last='RESULT: CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write",
@@ -1077,7 +1077,7 @@
       "write_file",
       "mcp:mcp-sqlite3"
     ],
-    "updated": "2026-09-24T02:27:58+00:00",
+    "updated": "2026-09-24T02:31:15+00:00",
     "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\026-sqlite-query-bot"
