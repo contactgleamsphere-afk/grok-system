@@ -2,13 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 592 | 2026-09-22 19:16:00 | 322482f0 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen27b", "local3b",  |
-| 593 | 2026-09-22 19:16:15 | bebb31a3 | 003 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 594 | 2026-09-22 19:18:43 | bebb31a3 | 003 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 29s [done] expect='SMITH_OK' last='RESULT: SMITH_OK' \| T2 PASS 41s [done] expect='233168' last='RESULT: 233168' \| T3 P |
-| 595 | 2026-09-22 19:18:43 | bebb31a3 | 003 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "003", "status": "active", "verified": "VERIFIED"}} |
-| 596 | 2026-09-22 19:18:47 | 6283e61b | 004 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 597 | 2026-09-22 19:22:03 | 6283e61b | 004 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 37s [done] expect='CHANGELOG_OK' last='CHANGELOG_OK' \| T2 FAIL 56s [done] expect='3' last='RESULT: Created commits.txt, |
-| 598 | 2026-09-22 19:22:03 | 6283e61b | 004 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "004", "status": "testing", "verified": "UNVERIFIED"}} |
 | 599 | 2026-09-22 19:22:07 | 35f1001a | 009 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 600 | 2026-09-22 19:25:02 | 35f1001a | 009 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 73s [done] expect='3' last='RESULT: Wrote lines.txt (5 lines), deduped to |
 | 601 | 2026-09-22 19:25:02 | 35f1001a | 009 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 73s [done] expect='3' last='RESULT: Wrote lines.txt (5 lines), deduped to |
@@ -402,3 +395,10 @@
 | 989 | 2026-09-24 01:28:58 | 356d0905 | 025 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "025", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
 | 990 | 2026-09-24 01:28:58 | bc494d29 |  | monitor.fanout | svc-LAPTOP-LRE6PSA8 | {"bots": ["001", "002", "003", "004", "005", "006", "007", "008", "009", "011", "012", "013", "014", "016", "017", "018", "019", "020", "021 |
 | 991 | 2026-09-24 01:28:58 | bc494d29 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 992 | 2026-09-24 01:29:02 | ad7a13c3 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 993 | 2026-09-24 01:29:40 | e30126b8 |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "dots-studio/dots-3-note-preview:free", "reason": "probe error: URLError", "provider": "openrouter"} |
+| 994 | 2026-09-24 01:29:40 | e30126b8 |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "liquid/lfm-2.5-2.6b:free", "reason": "loop: HTTP 429 {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\ |
+| 995 | 2026-09-24 01:29:40 | e30126b8 |  | lane.discovered | fast-LAPTOP-LRE6PSA8 | {"model": "nvidia/nemotron-3.5-lightning:free", "reason": "probe 59.9s loop 171.02s", "provider": "openrouter"} |
+| 996 | 2026-09-24 01:29:40 | e30126b8 |  | config.presets | fast-LAPTOP-LRE6PSA8 | {"added": ["or-nemotron-35-lightning"]} |
+| 997 | 2026-09-24 01:29:40 | faef1fd6 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "bench", "payload": {"lanes": ["or-nemotron-35-lightning"], "day": "2026-09-24"}} |
+| 998 | 2026-09-24 01:29:40 | e30126b8 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": ["or-nemotron-35-lightning"]}} |

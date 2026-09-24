@@ -49,25 +49,22 @@
    "date": "2026-09-24"
   },
   "openrouter:dots-studio/dots-3-note-preview:free": {
-   "verdict": "deferred",
-   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
-   "ts": 1790108680.3095658,
-   "date": "2026-09-22",
-   "until": 1790130280.3095658
+   "verdict": "rejected",
+   "reason": "probe error: URLError",
+   "ts": 1790209494.1837013,
+   "date": "2026-09-24"
   },
   "openrouter:liquid/lfm-2.5-2.6b:free": {
-   "verdict": "deferred",
-   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
-   "ts": 1790108680.3095658,
-   "date": "2026-09-22",
-   "until": 1790130280.3095658
+   "verdict": "rejected",
+   "reason": "loop: HTTP 429 {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"liquid/lfm-2.5-2.6b:free is temporarily rate",
+   "ts": 1790209494.1837013,
+   "date": "2026-09-24"
   },
   "openrouter:nvidia/nemotron-3.5-lightning:free": {
-   "verdict": "deferred",
-   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
-   "ts": 1790108680.3095658,
-   "date": "2026-09-22",
-   "until": 1790130280.3095658
+   "verdict": "approved",
+   "reason": "probe 59.9s loop 171.02s",
+   "ts": 1790209494.1837013,
+   "date": "2026-09-24"
   },
   "openrouter:thinkingmachines/inkling-small:free": {
    "verdict": "rejected",
@@ -77,10 +74,10 @@
   },
   "openrouter:poolside/laguna-s-2.1:free": {
    "verdict": "deferred",
-   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
-   "ts": 1790108680.3095658,
-   "date": "2026-09-22",
-   "until": 1790130280.3095658
+   "reason": "probe quota: {\"error\":{\"message\":\"provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"pool",
+   "ts": 1790209494.1837013,
+   "date": "2026-09-24",
+   "until": 1790231094.1837013
   },
   "openrouter:thinkingmachines/inkling:free": {
    "verdict": "rejected",
@@ -136,6 +133,13 @@
    "ts": 1790108680.3095658,
    "date": "2026-09-22",
    "until": 1790130280.3095658
+  },
+  "provider-quota:openrouter": {
+   "verdict": "deferred",
+   "reason": "daily free cap hit during discovery",
+   "ts": 1790209494.1837013,
+   "date": "2026-09-24",
+   "until": 1790231094.1837013
   }
  }
 }
