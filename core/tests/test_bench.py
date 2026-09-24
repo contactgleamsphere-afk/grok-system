@@ -1021,3 +1021,20 @@ def test_d112_rebuild_keeps_spec_and_reseals(tmp_path, monkeypatch):
     assert "Fixtures materialised" in (tmp_path / "bots" / "094-rb" / "TESTS.md").read_text()
     (tmp_path / "specs" / "094-rb.json").write_text(json.dumps(dict(spec, tools=["exec"])))
     with pytest.raises(FactoryError): fp.cmd_rebuild("094")
+
+
+def test_d115_keyed_provider_catalogues_filtered_to_chat_models(tmp_path, monkeypatch):
+    """D-115: groq/gemini catalogues are discoverable; non-chat models (whisper/tts/guard/embeddings/imagen…) and
+    non-flash gemini are filtered before any probe; known models skipped."""
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    import importlib, factory_discover as fdc; importlib.reload(fdc)
+    groq = {"data": [{"id": "llama-4-maverick-17b", "active": True, "context_window": 131072, "created": 5},
+                     {"id": "whisper-large-v3", "active": True}, {"id": "llama-guard-4-12b", "active": True},
+                     {"id": "playai-tts", "active": True}, {"id": "old-model", "active": False}, {"id": "groq-a", "active": True, "context_window": 32000}]}
+    gem = {"data": [{"id": "models/gemini-3.1-flash", "created": 9}, {"id": "models/gemini-3.1-pro"}, {"id": "models/gemini-embedding-001"},
+                    {"id": "models/gemini-3.1-flash-image"}, {"id": "models/gemini-2.5-flash-native-audio"}, {"id": "models/imagen-4"}]}
+    c1 = fdc.discover("groq", fetch=lambda url: groq, key="k"); c2 = fdc.discover("gemini", fetch=lambda url: gem, key="k")
+    assert [c["model"] for c in c1] == ["llama-4-maverick-17b", "groq-a"] and c1[0]["context"] == 131072
+    assert [c["model"] for c in c2] == ["gemini-3.1-flash"]
+    keep, rej = fdc.evaluate(c1, reg, {"verdicts": {}}, "groq")
+    assert [c["model"] for c in keep] == ["llama-4-maverick-17b"]                    # groq-a already registered

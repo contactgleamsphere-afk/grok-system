@@ -260,7 +260,7 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
         if not p.get("only") and (newly_blocked or len(remote_ok) < fdc.MIN_HEALTHY):
             trig = "blocked:" + ",".join(c["id"] for c in newly_blocked) if newly_blocked else f"healthy={len(remote_ok)}"
             # D-069: free-first scout — also try the other 2026 free providers; without a key each yields a needs_owner notice
-            for prov in ("openrouter", "cerebras", "nvidia", "mistral"):
+            for prov in ("groq", "gemini", "openrouter", "cerebras", "nvidia", "mistral"):     # D-115: keyed providers first
                 store.enqueue("discover", {"provider": prov, "day": datetime.date.today().isoformat(), "trigger": trig}, priority=2, parent=jid, actor=worker)
         if newly_blocked:
             # D-105: canary — bots whose PRIMARY just went BLOCKED now run on a different lane (D-103 top-up); verify them
@@ -348,6 +348,8 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
         store.enqueue("bench", {"stale_only": True, "max": 2, "day": datetime.date.today().isoformat()}, priority=7, parent=jid, actor=worker)
         if datetime.date.today().weekday() == 0:       # D-057 weekly self-review (Mondays; idem by iso week)
             store.enqueue("insight", {"days": 7, "week": datetime.date.today().strftime("%G-W%V")}, priority=8, parent=jid, actor=worker)
+            for prov in ("groq", "gemini", "openrouter"):   # D-115: weekly catalogue sweep of the keyed/free providers even when nothing is blocked
+                store.enqueue("discover", {"provider": prov, "day": datetime.date.today().isoformat(), "trigger": "weekly"}, priority=8, parent=jid, actor=worker)
         # D-055: the factory owns its nightly cycle. If no monitor ran today (Task Scheduler skipped: battery, asleep),
         # enqueue one now — idempotent by day, so a scheduler-triggered monitor is never duplicated.
         today = datetime.date.today().isoformat()

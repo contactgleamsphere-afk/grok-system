@@ -620,3 +620,10 @@ non-security test whose prompt names no fixture when fixtures are declared; the 
 `factory.py tools` (read-only) + `queue tooldisc "<need>"` for the master; AGENTS.md states that approval is an
 owner-only laptop action the master cannot perform, and that a bot may use an APPROVED server only via an explicit
 `--allow mcp:<slug>` grant. Master acceptance suite gains T7 `tools` (expects `mcp-sqlite3`); resealed by the wire script.
+
+## D-115 — Discover new free models on the keyed providers too (2026-09-24) — VERIFIED (unit); live run pending
+`discover` now covers groq and gemini catalogues (`/models`), filtered to chat LLMs (no whisper/tts/guard/embeddings/
+image/audio; gemini = flash class only, the free tier) and to models not already registered. Triggered with the others
+when a lane goes BLOCKED or the healthy pool is thin, plus a weekly sweep (groq, gemini, openrouter) from the report
+job. Same gate as before: real probe + two-turn tool loop → probation → bench. No human action needed for new free
+models on providers we already hold keys for.

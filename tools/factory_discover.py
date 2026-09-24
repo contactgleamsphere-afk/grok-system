@@ -18,7 +18,7 @@ Trigger: the hourly probe BLOCKs a lane, or fewer than MIN_HEALTHY remote lanes 
 Every verdict is returned for the worker's audit trail (event `lane.discovered` / `lane.rejected`).
 """
 from __future__ import annotations
-import json, os, sys, time, pathlib, urllib.request, urllib.error
+import json, os, re, sys, time, pathlib, urllib.request, urllib.error
 ROOT = pathlib.Path(os.environ.get("AIFACTORY_REPO", pathlib.Path(__file__).resolve().parents[1]))
 sys.path.insert(0, str(ROOT / "core")); sys.path.insert(0, str(ROOT / "tools"))
 from factory.registry import Registry, ModelEntry   # noqa: E402
@@ -28,7 +28,10 @@ MIN_HEALTHY = 5
 MIN_CONTEXT = 16_000
 DEFER_S = 6 * 3600          # D-084: quota-deferred candidates are re-evaluated after the free cap has rolled over
 CATALOG = {"openrouter": "https://openrouter.ai/api/v1/models", "cerebras": "https://api.cerebras.ai/v1/models",
-           "nvidia": "https://integrate.api.nvidia.com/v1/models", "mistral": "https://api.mistral.ai/v1/models"}
+           "nvidia": "https://integrate.api.nvidia.com/v1/models", "mistral": "https://api.mistral.ai/v1/models",
+           # D-115: the two keyed providers we already have — new free chat models appear there without anyone telling us
+           "groq": "https://api.groq.com/openai/v1/models", "gemini": "https://generativelanguage.googleapis.com/v1beta/openai/models"}
+NON_CHAT = re.compile(r"whisper|tts|guard|embed|imagen|veo|image|audio|live|native|vision-preview|aqa|learnlm|robotics|computer-use|deep-research|-lite-preview", re.I)
 UNKNOWN_CONTEXT = 32768   # generic /models gives no context_length; the sandbox loop + probation are the real evidence
 LEDGER = ROOT / "registry" / "discovery.json"
 
@@ -48,6 +51,13 @@ def discover(provider: str = "openrouter", fetch=None, key: str | None = None) -
     out = []
     for m in data:
         if provider == "openrouter" and not m["id"].endswith(":free"):
+            continue
+        if provider in ("groq", "gemini"):                      # D-115: chat LLMs only; gemini free tier = flash class
+            mid = str(m["id"]).removeprefix("models/")
+            if NON_CHAT.search(mid) or m.get("active") is False: continue
+            if provider == "gemini" and ("gemini-" not in mid or "flash" not in mid): continue
+            out.append({"model": mid, "context": int(m.get("context_window") or m.get("input_token_limit") or UNKNOWN_CONTEXT),
+                        "tools": True, "created": int(m.get("created") or 0)})
             continue
         if provider == "openrouter":
             out.append({"model": m["id"], "context": int(m.get("context_length") or 0),
