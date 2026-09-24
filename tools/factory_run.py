@@ -44,7 +44,29 @@ def run_bot(bot_id: str, task: str, in_dir: pathlib.Path | None, out_dir: pathli
     res = runner(bot_dir, task, in_dir, out_dir, cap)
     res["ok"] = res.get("status") == "done" and not res.get("quota")
     res["bot"] = bot_id
+    try: res["memory"] = remember(bot_dir, task, res)
+    except Exception as ex: res["memory_error"] = repr(ex)
     return res
+
+
+MEMORY_MAX = 12          # D-107: bounded — nanobot loads MEMORY.md into every context; 12 lines ≈ 400 tokens on free tiers
+
+
+def remember(bot_dir: pathlib.Path, task: str, res: dict, now: float | None = None) -> str:
+    """D-107 Phase 5 memory MVP: the FACTORY (not the model) appends one factual line per real task run to the bundle's
+    memory/MEMORY.md — date, task, outcome, produced files, lane. Bounded to MEMORY_MAX most recent lines. Tests never
+    write memory (the runner clears artefacts); MEMORY.md is outside the seal so this is not integrity drift."""
+    import datetime
+    mem = bot_dir / "memory" / "MEMORY.md"; mem.parent.mkdir(exist_ok=True)
+    head = "# Long-term memory"
+    old = [l for l in (mem.read_text(encoding="utf-8").splitlines() if mem.exists() else []) if l.startswith("- ")]
+    ts = datetime.datetime.fromtimestamp(now or time.time()).strftime("%Y-%m-%d %H:%M")
+    outcome = "ok" if res.get("ok") else ("quota" if res.get("quota") else str(res.get("status") or "failed"))
+    produced = ",".join(res.get("produced") or [])[:120] or "-"
+    line = f"- {ts} run {outcome}: {' '.join(task.split())[:110]} -> {produced} (lane {res.get('chain', '?') if isinstance(res.get('chain'), str) else (res.get('chain') or ['?'])[0]})"
+    lines = (old + [line])[-MEMORY_MAX:]
+    mem.write_text(head + "\nFactory-maintained record of my recent real runs (newest last). Use it to avoid redoing finished work.\n" + "\n".join(lines) + "\n", encoding="utf-8")
+    return line
 
 
 def plan_steps(store: JobStore, plan_prefix: str) -> list[dict]:

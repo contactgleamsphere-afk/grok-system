@@ -178,8 +178,10 @@ class BotFactory:
             cands = [m for m in cands if not (((m.limits or {}).get("bench") or {}).get("total", 0) >= 8
                                               and (m.limits["bench"]["pass"] / m.limits["bench"]["total"]) < 0.5)]
             cands.sort(key=_rank)
+            # insert before the first local lane so local stays the tail (policies often list local4b as a fallback)
+            at = next((i for i, c in enumerate(chain) if models[c].location == "local"), len(chain))
             for m in cands[: self.MIN_REMOTE - len(remote)]:
-                chain.append(m.id); self.last_topup.append(m.id)
+                chain.insert(at, m.id); at += 1; self.last_topup.append(m.id)
         if not any(models[c].location == "local" for c in chain):
             local = sorted((m for m in models.values() if m.location == "local" and m.verified != "BLOCKED"),
                            key=lambda m: -(m.tool_call_score or 0))

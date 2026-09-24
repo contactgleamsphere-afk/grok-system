@@ -807,6 +807,8 @@ def test_d103_chain_tops_up_when_policy_lanes_retired(tmp_path, monkeypatch):
     assert f.last_topup == ["or-c", "groq-a"] and policy == {"primary": "or-gone", "fallbacks": ["gemini-b"]}
     chain2 = f.resolve_chain({"primary": "groq-a", "fallbacks": ["or-c"]})
     assert chain2 == ["groq-a", "or-c", "local3b"] and f.last_topup == []   # healthy policy: untouched
+    chain3 = f.resolve_chain({"primary": "or-gone", "fallbacks": ["local3b"]})
+    assert chain3 == ["or-c", "groq-a", "local3b"] and f.last_topup == ["or-c", "groq-a"]   # local listed in policy stays the tail
 
 
 def test_d105_probe_blocked_primary_triggers_canary_monitor(tmp_path, monkeypatch):
@@ -830,3 +832,19 @@ def test_d105_probe_blocked_primary_triggers_canary_monitor(tmp_path, monkeypatc
     mons = [j for j in st.list(["queued"]) if j["kind"] == "monitor"]
     assert len(mons) == 1 and mons[0]["payload"]["only"] == ["010"] and mons[0]["payload"]["canary_for"] == ["groq-a"]   # 012 paused, 011 unaffected
     assert any(a["event"] == "monitor.canary" for a in st.audit_rows(50))
+
+
+def test_d107_run_memory_bounded_and_factual(tmp_path):
+    """D-107: each real run appends one factual line to memory/MEMORY.md; the file is bounded to MEMORY_MAX lines and
+    keeps the newest; failures are recorded honestly."""
+    import factory_run as fr
+    bd = tmp_path / "010-b"; (bd / "memory").mkdir(parents=True); (bd / "memory" / "MEMORY.md").write_text("# Long-term memory\n")
+    for i in range(fr.MEMORY_MAX + 3):
+        fr.remember(bd, f"process orders-{i}.csv   and summarise", {"ok": True, "status": "done", "produced": [f"summary-{i}.md"], "chain": ["groq-a", "local3b"]}, now=1_800_000_000 + i * 60)
+    fr.remember(bd, "nightly digest", {"ok": False, "status": "done", "quota": 1, "produced": []}, now=1_800_100_000)
+    txt = (bd / "memory" / "MEMORY.md").read_text()
+    lines = [l for l in txt.splitlines() if l.startswith("- ")]
+    assert len(lines) == fr.MEMORY_MAX and txt.startswith("# Long-term memory")
+    assert "orders-0.csv" not in txt and f"orders-{fr.MEMORY_MAX + 2}.csv" in lines[-2]
+    assert lines[-1].startswith("- ") and "run quota: nightly digest -> - (lane ?)" in lines[-1]
+    assert "process orders-5.csv and summarise -> summary-5.md (lane groq-a)" in txt
