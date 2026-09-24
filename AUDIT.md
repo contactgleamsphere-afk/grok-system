@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 725 | 2026-09-22 22:11:16 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 726 | 2026-09-22 22:11:20 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 727 | 2026-09-22 22:11:27 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["84 passed in 8.91s"]} |
-| 728 | 2026-09-22 22:11:33 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["84 passed in 8.20s"]} |
 | 729 | 2026-09-22 22:12:59 | f462fb6b |  | job.dedup | builder | {"kind": "probe"} |
 | 730 | 2026-09-22 22:13:25 | f462fb6b |  | job.resumed | builder | {} |
 | 731 | 2026-09-22 22:13:27 | f462fb6b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +398,7 @@
 | 1122 | 2026-09-24 02:12:34 | ada8b925 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash36", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
 | 1123 | 2026-09-24 02:12:34 | ada8b925 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash38", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
 | 1124 | 2026-09-24 02:12:34 | ada8b925 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-flash38", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gpt |
+| 1125 | 2026-09-24 02:12:41 | e26da376 | 020 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1126 | 2026-09-24 02:14:34 | 482340ef | 019 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 19s [done] expect='X_OK' last='X_OK' \| T2 PASS 54s [done] expect='1' last='RESULT: 1' \| T3 PASS 106s [done] expect='CO |
+| 1127 | 2026-09-24 02:14:34 | 482340ef | 019 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 19s [done] expect='X_OK' last='X_OK' \| T2 PASS 54s [done] expect='1' last='RESULT: 1' \| T3 PASS 106s [done] expect='CO |
+| 1128 | 2026-09-24 02:14:34 | 482340ef | 019 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "019", "status": "active", "verified": "VERIFIED"}} |
