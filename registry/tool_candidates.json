@@ -147,6 +147,13 @@
    "ts": 1790291869.1934988,
    "verdict": "rejected"
   },
+  "io.github.Agent360dk/browser-mcp:1.30.0": {
+   "date": "2026-09-25",
+   "need": "playwright browser",
+   "reason": "policy: anti-detection / bypass tooling (contract: never evade ToS, rate limits or identity checks)",
+   "ts": 1790293133.4482071,
+   "verdict": "rejected"
+  },
   "io.github.DataLeadsPRO/browser-automation:1.0.0": {
    "date": "2026-09-25",
    "need": "browser automation playwright",
@@ -189,12 +196,19 @@
    "ts": 1790291869.1934988,
    "verdict": "rejected"
   },
+  "io.github.feder-cr/invisible-playwright-mcp:*": {
+   "date": "2026-09-25",
+   "need": null,
+   "reason": "revoked by owner: anti-detection/stealth browser (contract: never evade bot checks); registry blurb was sanitised, repo says undetected anti-detect Firefox",
+   "ts": 1790293109.8599818,
+   "verdict": "rejected"
+  },
   "io.github.feder-cr/invisible-playwright-mcp:0.70.0": {
    "date": "2026-09-25",
-   "need": "playwright browser",
-   "reason": "probation; tools=16 144s",
-   "ts": 1790292506.2662032,
-   "verdict": "approved"
+   "need": null,
+   "reason": "revoked by owner: anti-detection/stealth browser (contract: never evade bot checks); registry blurb was sanitised, repo says undetected anti-detect Firefox",
+   "ts": 1790293109.8599818,
+   "verdict": "rejected"
   },
   "io.github.mrfentmen/sqlite-mcp:1.0.0": {
    "date": "2026-09-24",
@@ -243,6 +257,13 @@
    "need": "sqlite",
    "reason": "probation; tools=19 14s",
    "ts": 1790214576.4982991,
+   "verdict": "approved"
+  },
+  "io.github.vola-trebla/playwright-network-chaos-mcp:0.2.1": {
+   "date": "2026-09-25",
+   "need": "playwright browser",
+   "reason": "probation; tools=8 25s",
+   "ts": 1790293133.4482071,
    "verdict": "approved"
   }
  }

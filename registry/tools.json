@@ -24,18 +24,6 @@
     "updated": "2026-09-24T23:20:13+00:00",
     "verified": "INFERRED"
   },
-  "mcp:invisible-playwright-mcp": {
-    "id": "mcp:invisible-playwright-mcp",
-    "kind": "mcp",
-    "notes": "{\"deps\": 13, \"licence\": \"MIT\", \"package\": {\"identifier\": \"invisible-playwright-mcp\", \"registryType\": \"pypi\", \"version\": \"0.70.0\"}, \"registry_name\": \"io.github.feder-cr/invisible-playwright-mcp\", \"released\": \"2026-09-23T17:12:18.953588Z\", \"repo\": \"https://github.com/feder-cr/invisible_playwright_mcp\", \"risky_tools\": [], \"sandbox_secs\": 144, \"server\": \"stealth\", \"stars\": 31653, \"tools\": [\"browser_open\", \"browser_close\", \"browser_list\", \"browser_status\", \"browser_navigate\", \"browser_read_text\", \"browser_snapshot\", \"browser_read_html\", \"browser_take_screenshot\", \"browser_watch\", \"browser_click\", \"browser_click_at\", \"browser_type\", \"browser_select_option\", \"browser_press_key\", \"browser_evaluate\"], \"version\": \"0.70.0\"}",
-    "provides": [
-      "playwright browser"
-    ],
-    "risk": "medium",
-    "scope": "PROBATION \u2014 not attached to any bot; owner approval required to wire into a bot config (SECURITY \u00a76)",
-    "updated": "2026-09-24T23:30:59+00:00",
-    "verified": "INFERRED"
-  },
   "mcp:mcp-sqlite-tools": {
     "id": "mcp:mcp-sqlite-tools",
     "kind": "mcp",
@@ -60,6 +48,18 @@
     "risk": "high",
     "scope": "APPROVED by owner 2026-09-24 \u2014 usable by bots whose spec grants permission mcp:mcp-sqlite3",
     "updated": "2026-09-24T02:04:04+00:00",
+    "verified": "INFERRED"
+  },
+  "mcp:playwright-network-chaos-mcp": {
+    "id": "mcp:playwright-network-chaos-mcp",
+    "kind": "mcp",
+    "notes": "{\"deps\": 3, \"licence\": \"MIT\", \"package\": {\"identifier\": \"playwright-network-chaos-mcp\", \"registryType\": \"npm\", \"version\": \"0.2.1\"}, \"registry_name\": \"io.github.vola-trebla/playwright-network-chaos-mcp\", \"released\": \"2026-05-19T20:39:38.768Z\", \"repo\": \"https://github.com/vola-trebla/playwright-network-chaos-mcp\", \"risky_tools\": [], \"sandbox_secs\": 25, \"server\": \"playwright-network-chaos-mcp\", \"stars\": 1, \"tools\": [\"simulate_api_failure\", \"inject_latency\", \"block_resources\", \"simulate_network_drop\", \"trigger_system_network_error\", \"simulate_stateful_failure\", \"inject_response_corruption\", \"assert_chaos_handled\"], \"version\": \"0.2.1\"}",
+    "provides": [
+      "playwright browser"
+    ],
+    "risk": "medium",
+    "scope": "PROBATION \u2014 not attached to any bot; owner approval required to wire into a bot config (SECURITY \u00a76)",
+    "updated": "2026-09-24T23:39:24+00:00",
     "verified": "INFERRED"
   },
   "read_file": {
