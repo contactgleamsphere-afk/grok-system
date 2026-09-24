@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 871 | 2026-09-24 01:12:07 | 657a2134 | 018 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 872 | 2026-09-24 01:12:10 | 5aa3c5cd |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 873 | 2026-09-24 01:12:10 | 0253aa82 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "report", "payload": {"day": "2026-09-25"}} |
-| 874 | 2026-09-24 01:12:10 | c35f9462 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "bench", "payload": {"stale_only": true, "max": 2, "day": "2026-09-24"}} |
-| 875 | 2026-09-24 01:12:10 | ec7ed624 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "monitor", "payload": {"only": null, "day": "2026-09-24"}} |
 | 876 | 2026-09-24 01:12:10 | 5aa3c5cd |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 877 | 2026-09-24 01:12:16 | ec7ed624 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 878 | 2026-09-24 01:12:16 | 581618e9 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "ec7ed62485264d62b34fc744deeb0c6f", "day": "2026-09-24"}} |
@@ -402,3 +397,8 @@
 | 1268 | 2026-09-24 04:12:08 | 49eeafe3 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1269 | 2026-09-24 04:12:08 | 9a01357c |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-24T05"}} |
 | 1270 | 2026-09-24 04:12:08 | 49eeafe3 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 1271 | 2026-09-24 04:12:14 | c7322101 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1272 | 2026-09-24 04:12:14 | 86ba95ba |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-24T05"}} |
+| 1273 | 2026-09-24 04:12:15 | c7322101 |  | probe.network_down | fast-LAPTOP-LRE6PSA8 | {"detail": "all 17 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
+| 1274 | 2026-09-24 04:12:15 | 42efc9da |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-24T04-retry", "retry_of": "c7322101d26e4ebaace5c5a83c8d56bf"}} |
+| 1275 | 2026-09-24 04:12:15 | c7322101 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
