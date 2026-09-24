@@ -679,7 +679,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "name-sorter",
-    "notes": "tests 4/4: T1 PASS 28s [done] expect='X_OK' last='X_OK' | T2 PASS 97s [done] expect='3' last='RESULT: 3' | T3 PASS 99s [done] expect='3' last='RESULT: 3' | T4 PASS 58s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: T1 PASS 20s [done] expect='X_OK' last='X_OK' | T2 PASS 53s [done] expect='3' last='RESULT: 3' | T3 PASS 58s [done] expect='3' last='RESULT: 3' | T4 PASS 43s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -703,7 +703,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T18:40:07+00:00",
+    "updated": "2026-09-24T01:11:27+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\017-name-sorter"

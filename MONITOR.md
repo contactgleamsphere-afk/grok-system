@@ -53,3 +53,4 @@
 | 2026-09-24 02:01 | 014 error-log-analyzer | 2/4 | active→testing | - |
 | 2026-09-24 02:03 | 001 master | 7/7 | testing→active | - |
 | 2026-09-24 02:08 | 016 workspace-tidy-counter | 4/4 | active→active | - |
+| 2026-09-24 02:11 | 017 name-sorter | 4/4 | active→active | - |
