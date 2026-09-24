@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 720 | 2026-09-22 21:59:57 | 135e45ff | 021 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "021", "name": "email-line-counter", "pass": 4, "total": 4, "status": "active", "verified": "VERIFIED"}} |
-| 721 | 2026-09-22 22:00:00 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 722 | 2026-09-22 22:00:01 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 723 | 2026-09-22 22:00:11 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["83 passed in 9.26s"]} |
-| 724 | 2026-09-22 22:00:15 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["83 passed in 8.98s"]} |
 | 725 | 2026-09-22 22:11:16 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 726 | 2026-09-22 22:11:20 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 727 | 2026-09-22 22:11:27 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["84 passed in 8.91s"]} |
@@ -402,3 +397,8 @@
 | 1117 | 2026-09-24 02:12:04 | 96a47019 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1118 | 2026-09-24 02:12:04 | f773c50b |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-24T03"}} |
 | 1119 | 2026-09-24 02:12:04 | 96a47019 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 1120 | 2026-09-24 02:12:11 | ada8b925 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1121 | 2026-09-24 02:12:11 | 4a052706 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-24T03"}} |
+| 1122 | 2026-09-24 02:12:34 | ada8b925 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash36", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
+| 1123 | 2026-09-24 02:12:34 | ada8b925 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash38", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
+| 1124 | 2026-09-24 02:12:34 | ada8b925 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-flash38", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gpt |
