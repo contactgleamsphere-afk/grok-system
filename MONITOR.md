@@ -60,3 +60,4 @@
 | 2026-09-24 02:19 | 020 workspace-file-lister | 2/3 (quota, inconclusive) | active→active | - |
 | 2026-09-24 02:20 | 022 csv-refund-filter | 4/4 | active→active | - |
 | 2026-09-24 02:22 | 024 pytest-runner-bot | 3/3 | active→active | - |
+| 2026-09-24 02:22 | 023 refund-summarizer | 4/4 | active→active | - |
