@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 548 | 2026-09-22 18:36:06 | 16d02341 | 005 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "005", "name": "csv-quality-auditor", "status": "active", "verified": "VERIFIED"}} |
-| 549 | 2026-09-22 18:36:11 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 550 | 2026-09-22 18:36:22 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["75 passed in 5.32s"]} |
 | 551 | 2026-09-22 18:36:22 | 0ff585a0 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 552 | 2026-09-22 18:36:22 | aba5e667 | 018 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "run", "payload": {"bot_id": "018", "task": "Sum order totals per country into totals.csv", "in": "C:\\AI\\Factory\\workspace\\inbo |
@@ -402,3 +400,5 @@
 | 945 | 2026-09-24 01:24:32 | 26e7235d |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 946 | 2026-09-24 01:24:40 | 39a61954 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 947 | 2026-09-24 01:24:40 | 39a61954 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 948 | 2026-09-24 01:24:46 | 6a46a820 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 949 | 2026-09-24 01:24:46 | 6a46a820 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
