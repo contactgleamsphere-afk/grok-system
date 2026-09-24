@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 599 | 2026-09-22 19:22:07 | 35f1001a | 009 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 600 | 2026-09-22 19:25:02 | 35f1001a | 009 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 73s [done] expect='3' last='RESULT: Wrote lines.txt (5 lines), deduped to |
-| 601 | 2026-09-22 19:25:02 | 35f1001a | 009 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 73s [done] expect='3' last='RESULT: Wrote lines.txt (5 lines), deduped to |
-| 602 | 2026-09-22 19:25:02 | 35f1001a | 009 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "009", "status": "active", "verified": "VERIFIED"}} |
 | 603 | 2026-09-22 19:25:06 | 221106e0 | 011 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 604 | 2026-09-22 19:26:46 | 221106e0 | 011 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 PASS 29s [done] expect='2' last='2' \| T3 PASS 22s [done] expect='3' last='3' |
 | 605 | 2026-09-22 19:26:46 | 221106e0 | 011 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 PASS 29s [done] expect='2' last='2' \| T3 PASS 22s [done] expect='3' last='3' |
@@ -402,3 +398,7 @@
 | 996 | 2026-09-24 01:29:40 | e30126b8 |  | config.presets | fast-LAPTOP-LRE6PSA8 | {"added": ["or-nemotron-35-lightning"]} |
 | 997 | 2026-09-24 01:29:40 | faef1fd6 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "bench", "payload": {"lanes": ["or-nemotron-35-lightning"], "day": "2026-09-24"}} |
 | 998 | 2026-09-24 01:29:40 | e30126b8 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": ["or-nemotron-35-lightning"]}} |
+| 999 | 2026-09-24 01:29:52 | 1eedd036 | 004 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1000 | 2026-09-24 01:31:46 | 1eedd036 | 004 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 22s [done] expect='CHANGELOG_OK' last='CHANGELOG_OK' \| T2 PASS 22s [done] expect='3' last='3' \| T3 PASS 51s [done] exp |
+| 1001 | 2026-09-24 01:31:46 | 1eedd036 | 004 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 22s [done] expect='CHANGELOG_OK' last='CHANGELOG_OK' \| T2 PASS 22s [done] expect='3' last='3' \| T3 PASS 51s [done] exp |
+| 1002 | 2026-09-24 01:31:46 | 1eedd036 | 004 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "004", "status": "active", "verified": "VERIFIED"}} |

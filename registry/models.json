@@ -543,6 +543,24 @@
     "cost_per_1k": 0.0,
     "id": "or-ling-30-flash-sante",
     "limits": {
+      "bench": {
+        "at": "2026-09-24T01:30:34",
+        "pass": 4,
+        "ref": "009",
+        "runs": 1,
+        "secs": 89,
+        "total": 4
+      },
+      "bench_runs": [
+        {
+          "at": "2026-09-24T01:30:34",
+          "pass": 4,
+          "quota": 0,
+          "ref": "009",
+          "secs": 89,
+          "total": 4
+        }
+      ],
       "health": {
         "last_outcome": "ok",
         "last_probe": "2026-09-24T00:24:19",
@@ -559,7 +577,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 0.7,
-    "updated": "2026-09-24T00:24:19+00:00",
+    "updated": "2026-09-24T00:30:34+00:00",
     "verified": "INFERRED"
   },
   "or-ling-30-flash-vl": {

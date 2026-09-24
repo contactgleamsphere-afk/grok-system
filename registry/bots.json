@@ -141,7 +141,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "changelog-writer",
-    "notes": "tests 4/4: repair round 1 via groq:openai/gpt-oss-20b: T1 PASS 135s [done] expect='CHANGELOG_OK' last='CHANGELOG_OK' | T2 PASS 174s [done] expect='3' last='RESULT: 3' | T3 PASS 217s [done] expect='2' last='RESULT: 2' | T4 PASS 92s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: T1 PASS 22s [done] expect='CHANGELOG_OK' last='CHANGELOG_OK' | T2 PASS 22s [done] expect='3' last='3' | T3 PASS 51s [done] expect='2' last='RESULT: 2' | T4 PASS 17s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -165,7 +165,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T20:53:22+00:00",
+    "updated": "2026-09-24T00:31:46+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\004-changelog-writer"
