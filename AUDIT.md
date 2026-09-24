@@ -2,13 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 815 | 2026-09-22 23:40:23 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 816 | 2026-09-22 23:40:33 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["91 passed in 8.90s"]} |
-| 817 | 2026-09-22 23:40:33 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["91 passed in 10.43s"]} |
-| 818 | 2026-09-22 23:42:33 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 819 | 2026-09-22 23:42:33 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 820 | 2026-09-22 23:42:44 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["91 passed in 9.03s"]} |
-| 821 | 2026-09-22 23:42:46 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["91 passed in 8.77s"]} |
 | 822 | 2026-09-22 23:43:29 | 5230a652 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 823 | 2026-09-22 23:43:29 | 4f65b755 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-23T00"}} |
 | 824 | 2026-09-22 23:43:29 | 5230a652 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
@@ -402,3 +395,10 @@
 | 1212 | 2026-09-24 03:31:15 | bd24f8ff | 026 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 FAIL 25s [done] expect='users' last='RESULT: None' \| T3 FAIL 136s [done] exp |
 | 1213 | 2026-09-24 03:31:15 | c18703a7 | 026 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "026", "max_rounds": 2, "rearchitected": false}} |
 | 1214 | 2026-09-24 03:31:15 | bd24f8ff | 026 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "026", "status": "testing", "verified": "UNVERIFIED"}} |
+| 1215 | 2026-09-24 03:31:19 | c18703a7 | 026 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1216 | 2026-09-24 03:35:58 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1217 | 2026-09-24 03:36:10 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": false, "tail": ["1 failed, 48 passed in 10.64s"]} |
+| 1218 | 2026-09-24 03:36:10 |  |  | worker.blocked_by_tests | fast-LAPTOP-LRE6PSA8 | {"reason": "core/tests red on current code; refusing to process jobs until code changes"} |
+| 1219 | 2026-09-24 03:36:11 | 1f96bf25 | 026 | job.enqueued | owner | {"kind": "rebuild", "payload": {"bot_id": "026", "t": 1790217371}} |
+| 1220 | 2026-09-24 03:37:16 | c18703a7 | 026 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-120b", "sandbox": null, "rejected": "instructions ex |
+| 1221 | 2026-09-24 03:37:16 | c18703a7 | 026 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
