@@ -644,3 +644,12 @@ acceptance runner on a fixed objective ("count lines in a named text file", fixt
 dir with `register=False` — no bot id consumed, no registry entry, scratch deleted. Verdict audited as
 `factory.canary` (pass / inconclusive on availability / FAIL); a FAIL puts "FACTORY CANARY FAILED" at the top of
 ATTENTION. Bots are monitored nightly; now the factory that makes them is too.
+
+## D-118 — Infrastructure scout (2026-09-24) — VERIFIED (unit); live run pending
+`tools/factory_scout.py` keeps `registry/infra.json` (machine-readable) + `docs/INFRA.md` (table + ONE owner action
+list) for every known £0 resource across LLM APIs, compute, hosting and storage: how it is obtained (keyless / signup /
+signup+card), what we hold (key configured and validated with `GET /models`, keyless reachable, in use, missing),
+evidence, RESEARCH→VERIFIED. Weekly `scout` job (Monday report) + manual `add scout`; status changes audited as
+`infra.scouted`, newly-missing items once as `owner.needed`; STATUS.md ATTENTION shows the count. Legitimate by
+construction: one GET per keyless endpoint, keys only sent to their own provider, nothing is ever signed up for,
+card-verification tiers (Oracle Always Free, Cloud Run) are owner-only rows.

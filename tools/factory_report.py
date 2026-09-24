@@ -28,6 +28,13 @@ def build() -> dict:
             for k, v in json.loads(led.read_text(encoding="utf-8")).get("verdicts", {}).items():   # D-069: was reading the wrong level
                 if v.get("verdict") == "needs_owner": owner.append(f"ACTION REQUIRED (owner): {k} — {v.get('reason', '')[:140]}")
         except Exception: pass
+    inf = ROOT / "registry" / "infra.json"                                                          # D-118
+    if inf.exists():
+        try:
+            rs = json.loads(inf.read_text(encoding="utf-8")).get("resources", {})
+            miss = sorted(k for k, v in rs.items() if v.get("status") in ("missing", "invalid_key"))
+            if miss: owner.append(f"ACTION REQUIRED (owner): {len(miss)} free resources need a human signup/key — {', '.join(miss[:6])}{'…' if len(miss) > 6 else ''} (docs/INFRA.md)")
+        except Exception: pass
     prob = sorted(t.id for t in reg.all("tools") if t.kind == "mcp" and "PROBATION" in (t.scope or ""))   # D-108/D-110
     if prob:
         owner.append(f"DECISION (owner): {len(prob)} MCP server(s) sandbox-verified, on probation: {', '.join(prob)} — "

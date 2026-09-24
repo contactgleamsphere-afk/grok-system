@@ -1089,3 +1089,35 @@ def test_d117_factory_canary_has_no_registry_footprint(tmp_path, monkeypatch):
     import factory_report as fr; importlib.reload(fr); monkeypatch.setattr(fr, "ROOT", tmp_path)
     monkeypatch.setattr(fr, "Registry", lambda *_a, **_k: reg) if hasattr(fr, "Registry") else None
     rows = st.audit_rows(10); assert sum(a["event"] == "factory.canary" for a in rows) == 2
+
+
+def test_d118_infra_scout_statuses_and_owner_list(tmp_path, monkeypatch):
+    """D-118: keyed+valid → configured; keyed 401 → invalid_key; key absent → missing (owner); keyless 200 → keyless_ok;
+    keyless failure → keyless_down; tunnel probe → in_use; card-required catalogue rows → missing; files written;
+    the scout never sends a key to a keyless endpoint and never calls anything for 'missing' rows."""
+    import factory_scout as fs
+    monkeypatch.setattr(fs, "INFRA", tmp_path / "infra.json"); monkeypatch.setattr(fs, "DOC", tmp_path / "INFRA.md")
+    calls = []
+    def getter(url, key=None, timeout=15):
+        calls.append((url, key))
+        if "groq" in url: assert key == "gk"; return 200, "{}"
+        if "openrouter" in url: return 401, "bad key"
+        if "pollinations" in url: return 200, "[]"
+        if "ovh" in url: return -1, "timeout"
+        if "tunnel" in url: return 404, ""
+        if "github" in url: return 200, "{}"
+        return 200, ""
+    env = {"GROQ_API_KEY": "gk", "OPENROUTER_API_KEY": "bad"}
+    r = fs.run(env=env, getter=getter, tunnel_url="https://tunnel.example")
+    s = r["summary"]
+    assert "groq" in s["configured"] and s["invalid_key"] == ["openrouter"] and "pollinations" in s["keyless_ok"] and "ovh-anon" in s["down"]
+    assert "cloudflare-quick-tunnel" in s["in_use"] and "github" in s["in_use"]
+    assert {"gemini", "cerebras", "nvidia", "mistral", "oracle-always-free"} <= set(s["owner_signup"])
+    assert all(k is None for u, k in calls if "pollinations" in u or "ovh" in u)          # keyless: never send a key
+    assert not any("cerebras" in u or "nvidia" in u for u, _ in calls)                       # missing key: no call
+    d = json.loads((tmp_path / "infra.json").read_text()); assert d["resources"]["groq"]["verified"] == "VERIFIED" and d["resources"]["oracle-always-free"]["verified"] == "RESEARCH"
+    md = (tmp_path / "INFRA.md").read_text(); assert "ACTION REQUIRED (owner)" in md and "openrouter" in md and "INVALID" in md and "GEMINI_API_KEY" in md
+    assert any(k == "openrouter" for k, _, _ in r["owner"])
+    # second run keeps first_seen and is idempotent
+    r2 = fs.run(env=env, getter=getter, tunnel_url="https://tunnel.example")
+    d2 = json.loads((tmp_path / "infra.json").read_text()); assert d2["resources"]["groq"]["first_seen"] == d["resources"]["groq"]["first_seen"]

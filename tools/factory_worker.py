@@ -228,6 +228,18 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
                 store.audit("bot.rearchitect_queued", job_id=jid, bot_id=p["bot_id"], actor=worker, reason=err[:200])
             raise FactoryError(err)
         return res
+    if kind == "scout":
+        # D-118 infra scout: refresh registry/infra.json + docs/INFRA.md; owner items are audited ONCE per change
+        import factory_scout as fsc
+        before = {k: v.get("status") for k, v in fsc._load().get("resources", {}).items()}
+        res = fsc.run()
+        after = {k: v.get("status") for k, v in fsc._load().get("resources", {}).items()}
+        changed = {k: (before.get(k), after[k]) for k in after if before.get(k) != after[k]}
+        store.audit("infra.scouted", job_id=jid, actor=worker, summary=res["summary"], changed=changed)
+        new_owner = [k for k, _u, _e in res["owner"] if before.get(k) not in ("missing", "invalid_key")]
+        if new_owner:
+            store.audit("owner.needed", job_id=jid, actor=worker, provider="infra", reason=f"free resources awaiting owner signup/key: {new_owner} (docs/INFRA.md)")
+        return {"resources": res["resources"], "changed": changed, "owner_items": len(res["owner"])}
     if kind == "canary":
         # D-117: nightly factory self-test (architect → bundle → runner) with no registry footprint. Availability misses
         # (quota/timeouts) are inconclusive like everywhere else; a genuine miss is surfaced in STATUS as a factory fault.
@@ -386,6 +398,7 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
         store.enqueue("canary", {"day": datetime.date.today().isoformat()}, priority=7, parent=jid, actor=worker)   # D-117 nightly factory self-test
         if datetime.date.today().weekday() == 0:       # D-057 weekly self-review (Mondays; idem by iso week)
             store.enqueue("insight", {"days": 7, "week": datetime.date.today().strftime("%G-W%V")}, priority=8, parent=jid, actor=worker)
+            store.enqueue("scout", {"week": datetime.date.today().isocalendar()[1]}, priority=9, parent=jid, actor=worker)   # D-118 weekly infra scout
             for prov in ("groq", "gemini", "openrouter"):   # D-115: weekly catalogue sweep of the keyed/free providers even when nothing is blocked
                 store.enqueue("discover", {"provider": prov, "day": datetime.date.today().isoformat(), "trigger": "weekly"}, priority=8, parent=jid, actor=worker)
         # D-055: the factory owns its nightly cycle. If no monitor ran today (Task Scheduler skipped: battery, asleep),
@@ -631,6 +644,7 @@ def main(a: list[str]) -> int:
             pl = {"objective": a[3], "max": int(opt("--max", 4))}
             if opt("--then-run"): pl["then_run"] = {"in": opt("--then-run")}          # D-066: build, then run on these files
             j = store.enqueue("plan", pl, priority=int(opt("--priority", 5)), actor=opt("--actor", "owner"))
+        elif kind == "scout": j = store.enqueue("scout", {"t": int(time.time())}, priority=6, actor=opt("--actor", "owner"))
         elif kind == "canary": j = store.enqueue("canary", {"day": str(datetime.date.today())}, priority=5, actor=opt("--actor", "owner"))
         elif kind == "rebuild": j = store.enqueue("rebuild", {"bot_id": a[3].zfill(3), "t": int(time.time())}, priority=2, actor=opt("--actor", "owner"))
         elif kind == "rearchitect": j = store.enqueue("rearchitect", {"bot_id": a[3], "feedback": opt("--feedback", ""), "t": int(time.time())}, priority=2, actor=opt("--actor", "owner"))
