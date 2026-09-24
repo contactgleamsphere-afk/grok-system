@@ -1008,6 +1008,7 @@ def test_d112_rebuild_keeps_spec_and_reseals(tmp_path, monkeypatch):
     spec = {"id": "094", "name": "rb", "purpose": "p" * 12, "instructions": "i" * 40, "model_policy": {"primary": "groq-a", "fallbacks": []},
             "tools": ["read_file"], "permissions": ["fs:read"], "tests": ["Reply with exactly: X_OK -> X_OK"], "fixtures": [{"name": "a.txt", "text": "hi"}]}
     monkeypatch.setattr(fp, "chat", lambda *a, **k: (_ for _ in ()).throw(AssertionError("no model call allowed")))
+    monkeypatch.setattr(fp, "WIN", False)                        # never touch C:\AI\Factory\bots from a unit test
     from factory.factory import BotFactory
     f = BotFactory(reg, tmp_path / "bots"); f.build(spec)
     (tmp_path / "specs").mkdir(); (tmp_path / "specs" / "094-rb.json").write_text(json.dumps(spec))
