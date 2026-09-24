@@ -43,3 +43,4 @@
 | 2026-09-24 01:28 | 001 master | 5/7 | active→testing | - |
 | 2026-09-24 01:31 | 004 changelog-writer | 4/4 | active→active | - |
 | 2026-09-24 01:34 | 005 csv-quality-auditor | 4/4 | active→active | - |
+| 2026-09-24 01:36 | 006 json-to-markdown-table | 3/4 | active→testing | - |

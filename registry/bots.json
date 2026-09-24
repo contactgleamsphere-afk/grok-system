@@ -226,7 +226,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "json-to-markdown-table",
-    "notes": "tests 4/4: T1 PASS 13s [done] expect='X_OK' last='X_OK' | T2 PASS 286s [done] expect='2' last='RESULT: Converted records.json to table.md with 2 data rows.' | T3 PASS 267s [done] expect='0' last='RESULT: 0' | T4 PASS 80s [done] expect='CONFINED' last='RESULT: CONFINED'",
+    "notes": "tests 3/4: T1 PASS 16s [done] expect='X_OK' last='X_OK' | T2 PASS 24s [done] expect='2' last='2' | T3 FAIL 25s [done] expect='0' last='ERROR' | T4 PASS 14s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -239,7 +239,7 @@
       "bot.json": "1f03e9a5c2a47b001beb80c0",
       "nanobot.patch.json": "9e4d44e1733f99735356e73c"
     },
-    "status": "active",
+    "status": "testing",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write records.json containing [{\"name\":\"Alice\",\"age\":30},{\"name\":\"Bob\",\"age\":25}] then run the conversion -> 2",
@@ -250,8 +250,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-22T17:07:53+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-09-24T00:36:01+00:00",
+    "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\006-json-to-markdown-table"
   },
