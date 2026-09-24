@@ -616,7 +616,7 @@ Bot 026 T3 ("How many rows are in the users table?") never named `fixture.db`; t
 (each `connect_database` creating an empty file) and answered 0. `spec_consistency` now rejects any non-liveness,
 non-security test whose prompt names no fixture when fixtures are declared; the architect prompt says so explicitly.
 
-## D-114 — Master learns the tool catalogue (2026-09-24) — VERIFIED (unit); live master test pending
+## D-114 — Master learns the tool catalogue (2026-09-24) — VERIFIED (live: master suite 8/8 at 04:02, T7 tools → mcp-sqlite3)
 `factory.py tools` (read-only) + `queue tooldisc "<need>"` for the master; AGENTS.md states that approval is an
 owner-only laptop action the master cannot perform, and that a bot may use an APPROVED server only via an explicit
 `--allow mcp:<slug>` grant. Master acceptance suite gains T7 `tools` (expects `mcp-sqlite3`); resealed by the wire script.
