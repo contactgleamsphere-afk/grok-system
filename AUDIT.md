@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 978 | 2026-09-24 01:28:58 | 240be6ff | 013 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "013", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
-| 979 | 2026-09-24 01:28:58 | 356da82f | 014 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "014", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
-| 980 | 2026-09-24 01:28:58 | 34c93c2f | 016 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "016", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
-| 981 | 2026-09-24 01:28:58 | 8e9fd24a | 017 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "017", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
 | 982 | 2026-09-24 01:28:58 | 09de5024 | 018 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "018", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
 | 983 | 2026-09-24 01:28:58 | ca4a7aeb | 019 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "019", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
 | 984 | 2026-09-24 01:28:58 | a51e46b5 | 020 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "020", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
@@ -402,3 +398,7 @@
 | 1375 | 2026-09-24 23:30:14 | d0196af8 |  | probe.network_down | fast-LAPTOP-LRE6PSA8 | {"detail": "all 17 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
 | 1376 | 2026-09-24 23:30:14 | d332609a |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-24T23-retry", "retry_of": "d0196af899a64a7c82dcf8611b40362e"}} |
 | 1377 | 2026-09-24 23:30:14 | d0196af8 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 1378 | 2026-09-24 23:40:14 | d332609a |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1379 | 2026-09-24 23:40:14 | 50cb8d24 |  | job.dedup | svc-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
+| 1380 | 2026-09-24 23:40:35 | d332609a |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "gemini-flash", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
+| 1381 | 2026-09-24 23:40:35 | d332609a |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-l |
