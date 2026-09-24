@@ -1,6 +1,7 @@
 """factory_tooldisc.py — D-108 tool/MCP capability discovery (DISCOVER → RESEARCH → EVALUATE → SANDBOX → PROBATION).
 
   python tools/factory_tooldisc.py <need> [--max 2] [--dry-run]      e.g. "sqlite", "filesystem", "web search"
+  python tools/factory_tooldisc.py approve mcp:<slug>                 owner-only: probation → APPROVED (persistent install + re-handshake)
 
 Sources (all free, keyless): the official MCP registry (registry.modelcontextprotocol.io), PyPI JSON, the npm registry,
 GitHub's public repo API. Rules are evidence-based, never popularity-only (owner contract): licence must be permissive,
@@ -246,14 +247,64 @@ def integrate(reg: Registry, c: dict, facts: dict, hs: dict, need: str) -> ToolE
     return e
 
 
+# ---------- APPROVE (owner) ----------
+MCP_HOME = pathlib.Path(os.environ.get("AIFACTORY_MCP_HOME") or (r"C:\AI\Factory\mcp" if WIN else str(ROOT / "run" / "mcp")))
+
+
+def install_persistent(t: ToolEntry, notes: dict, timeout: int = 300) -> dict:
+    """Persistent, per-server install outside every bot workspace: pypi → own venv under MCP_HOME; npm → npx pinned
+    version (npx cache). Returns the nanobot command/args plus a fresh handshake from THAT install."""
+    pk = notes["package"]; slug = t.id.split(":", 1)[-1]
+    if pk["registryType"] == "pypi":
+        venv = MCP_HOME / slug / "venv"; venv.parent.mkdir(parents=True, exist_ok=True)
+        if not venv.exists():
+            subprocess.run([sys.executable, "-m", "venv", str(venv)], check=True, capture_output=True, timeout=120)
+        py = venv / ("Scripts" if WIN else "bin") / ("python.exe" if WIN else "python")
+        spec = pk["identifier"] + (f"=={pk['version']}" if pk.get("version") else "")
+        r = subprocess.run([str(py), "-m", "pip", "install", "-q", "--no-cache-dir", "--disable-pip-version-check", spec],
+                           capture_output=True, text=True, timeout=timeout, env=_clean_env())
+        if r.returncode != 0: return {"ok": False, "reason": "pip: " + r.stderr[-300:]}
+        scripts = venv / ("Scripts" if WIN else "bin")
+        names = [pk["identifier"], pk["identifier"].replace("_", "-"), pk["identifier"].replace("-", "_")]
+        exe = next((p for n in names for p in scripts.glob(n + ("*.exe" if WIN else "")) if p.is_file()), None)
+        command, args = (str(exe), []) if exe else (str(py), ["-m", pk["identifier"].replace("-", "_")])
+    else:
+        npx = shutil.which("npx.cmd") or shutil.which("npx")
+        if not npx: return {"ok": False, "reason": "npx not available"}
+        command, args = npx, ["-y", pk["identifier"] + (f"@{pk['version']}" if pk.get("version") else "")]
+    hs = mcp_handshake([command, *args], str(MCP_HOME), _clean_env(), timeout=120)
+    if not hs.get("ok"): return {"ok": False, "reason": "handshake: " + str(hs.get("reason"))}
+    return {"ok": True, "command": command, "args": args, "tools": hs["tools"], "server": hs.get("server")}
+
+
+def approve(tool_id: str, actor: str = "owner", installer=None) -> dict:
+    """Owner decision (SECURITY §6): move a probation MCP server to APPROVED. Installs it persistently, re-verifies the
+    handshake from the persistent install, records the exact command in the registry. Still nothing is wired into a
+    bot — a bot gets it only through a spec that lists the tool AND the permission `mcp:<slug>` (validate_spec)."""
+    reg = Registry(ROOT / "registry"); t = reg.get("tools", tool_id)
+    if t is None or t.kind != "mcp": return {"ok": False, "reason": f"{tool_id} is not a discovered MCP tool"}
+    if actor != "owner": return {"ok": False, "reason": "only the owner approves tools (never the factory or a bot)"}
+    try: notes = json.loads(t.notes)
+    except Exception: notes = {}
+    if "PROBATION" not in (t.scope or "") and notes.get("install"):
+        return {"ok": True, "already": True, "install": notes["install"]}
+    inst = (installer or install_persistent)(t, notes)
+    if not inst.get("ok"): return {"ok": False, "reason": inst.get("reason")}
+    notes["install"] = {"command": inst["command"], "args": inst["args"]}; notes["tools"] = inst["tools"][:40]
+    t.scope = f"APPROVED by owner {time.strftime('%Y-%m-%d')} — usable by bots whose spec grants permission mcp:{tool_id.split(':', 1)[-1]}"
+    t.notes = json.dumps(notes, sort_keys=True)[:2500]; t.verified = "INFERRED"
+    reg.upsert("tools", t); write_probation_md(reg)
+    return {"ok": True, "tool": tool_id, "install": notes["install"], "tools": len(inst["tools"])}
+
+
 def write_probation_md(reg: Registry, path: pathlib.Path | None = None) -> None:
     """Regenerate the auto section of TOOL_REGISTRY.md (between markers) from registry/tools.json kind=mcp entries."""
     path = path or ROOT / "TOOL_REGISTRY.md"
-    rows = ["| id | risk | verified | licence | released | tools | source |", "|---|---|---|---|---|---|---|"]
+    rows = ["| id | state | risk | verified | licence | released | tools | source |", "|---|---|---|---|---|---|---|---|"]
     for t in sorted((t for t in reg.all("tools") if t.kind == "mcp"), key=lambda t: t.id):
         try: n = json.loads(t.notes)
         except Exception: n = {}
-        rows.append(f"| {t.id} | {t.risk} | {t.verified} | {n.get('licence')} | {str(n.get('released') or '')[:10]} | {len(n.get('tools') or [])} ({', '.join((n.get('tools') or [])[:4])}…) | {n.get('repo')} |")
+        rows.append(f"| {t.id} | {'APPROVED' if n.get('install') and 'PROBATION' not in (t.scope or '') else 'probation'} | {t.risk} | {t.verified} | {n.get('licence')} | {str(n.get('released') or '')[:10]} | {len(n.get('tools') or [])} ({', '.join((n.get('tools') or [])[:4])}…) | {n.get('repo')} |")
     block = ("<!-- mcp-probation:start -->\n## MCP servers on probation (auto, D-108)\n"
              "Discovered by `factory_tooldisc.py`; sandbox-verified (stdio handshake, secrets stripped). **Not attached to any bot** — "
              "owner approval is required to wire one into a bot config.\n\n" + "\n".join(rows) + "\n<!-- mcp-probation:end -->\n")
@@ -301,5 +352,6 @@ def run(need: str, max_new: int = 2, dry_run: bool = False, fetch=None, sandboxe
 if __name__ == "__main__":
     a = sys.argv[1:]
     if not a or a[0].startswith("-"): print(__doc__); sys.exit(2)
+    if a[0] == "approve": print(json.dumps(approve(a[1], "owner"), indent=1)); sys.exit(0)
     mx = int(a[a.index("--max") + 1]) if "--max" in a else 2
     print(json.dumps(run(a[0], mx, "--dry-run" in a), indent=1))

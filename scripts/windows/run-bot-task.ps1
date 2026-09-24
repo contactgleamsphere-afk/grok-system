@@ -14,6 +14,8 @@ $live = python C:\AI\Factory\repo\tools\factory_chain.py $BotDir | ConvertFrom-J
 if($live -and $live.primary){ $cfg.agents.defaults.modelPreset=$live.primary; $cfg.agents.defaults.fallbackModels=@($live.fallbacks) }
 else { $cfg.agents.defaults.modelPreset=$patch.agents.defaults.modelPreset; $cfg.agents.defaults.fallbackModels=@($patch.agents.defaults.fallbackModels) }
 $cfg.agents.defaults.maxToolResultChars=1500
+# D-110: owner-approved MCP servers come from the sealed bundle patch; a bot without them gets none (tools.mcpServers cleared)
+if($patch.tools -and $patch.tools.mcpServers){ $cfg.tools.mcpServers=$patch.tools.mcpServers } else { $cfg.tools.mcpServers=@{} }
 New-Item -ItemType Directory -Force C:\AI\Factory\run\botcfg | Out-Null; $botCfg="C:\AI\Factory\run\botcfg\$($bot.id)-task.json"
 [IO.File]::WriteAllText($botCfg,($cfg|ConvertTo-Json -Depth 20),(New-Object Text.UTF8Encoding($false)))
 $env:AIFACTORY_DISABLED_TOOLS=$patch.env.AIFACTORY_DISABLED_TOOLS

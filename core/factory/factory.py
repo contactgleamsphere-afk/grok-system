@@ -101,6 +101,7 @@ class BotFactory:
         bot_dir.mkdir(parents=True, exist_ok=True)
         (bot_dir / "memory").mkdir(exist_ok=True)
 
+        mcp = self.mcp_servers(spec)
         files = {
             "SOUL.md": self._soul(spec),
             "AGENTS.md": self._agents(spec, chain, disabled),
@@ -109,6 +110,7 @@ class BotFactory:
                 "agents": {"defaults": {"modelPreset": chain[0], "fallbackModels": chain[1:]}},
                 "env": {"AIFACTORY_DISABLED_TOOLS": ",".join(disabled),
                         "AIFACTORY_TEMPLATE_DIR": str(bot_dir / "templates")},
+                **({"tools": {"mcpServers": mcp}} if mcp else {}),          # D-110: owner-approved MCP servers only
             }, indent=2),
             "TESTS.md": self._tests(spec),
             "RECOVERY.md": self._recovery(spec, bot_dir),
@@ -200,6 +202,21 @@ class BotFactory:
             if tool not in wanted or perm not in perms:
                 out.append(tool)
         return sorted(set(out))
+
+    def mcp_servers(self, spec: dict[str, Any]) -> dict[str, dict]:
+        """D-110: nanobot `tools.mcpServers` fragment for the spec's MCP tools. Only owner-APPROVED servers carry an
+        `install` block (written by approve-tool); anything else raises — validate_spec should have refused it."""
+        out = {}
+        for tid in spec["tools"]:
+            t = self.registry.get("tools", tid)
+            if t is None or t.kind != "mcp": continue
+            try: n = json.loads(t.notes)
+            except Exception: n = {}
+            inst = n.get("install")
+            if "PROBATION" in (t.scope or "") or not inst:
+                raise FactoryError(f"MCP tool {tid} is not owner-approved/installed; refusing to wire it")
+            out[tid.split(":", 1)[-1]] = {"command": inst["command"], "args": list(inst.get("args") or []), "env": {}}
+        return out
 
     @staticmethod
     def _soul(spec: dict[str, Any]) -> str:

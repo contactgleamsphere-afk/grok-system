@@ -930,3 +930,35 @@ def test_d109_probation_tools_unusable_and_gaps_trigger_discovery(tmp_path, monk
     td = [j for j in st.list(["queued"]) if j["kind"] == "tooldisc"]
     assert sorted(j["payload"]["need"] for j in td) == ["github", "postgres query"] and all(j["payload"]["trigger"].startswith("create:") for j in td)
     assert sum(a["event"] == "capability.gap" for a in st.audit_rows(20)) == 2
+
+
+def test_d110_owner_approval_wires_mcp_only_with_explicit_grant(tmp_path, monkeypatch):
+    """D-110: approve() is owner-only, installs persistently (injected), re-handshakes and records the exact command;
+    validate_spec then requires the explicit permission mcp:<slug>; BotFactory writes tools.mcpServers into the sealed
+    patch only for approved servers and refuses probation ones."""
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    import importlib, factory_tooldisc as td; importlib.reload(td)
+    monkeypatch.setattr(td, "ROOT", tmp_path)
+    from factory.registry import ToolEntry
+    from factory.botspec import validate_spec
+    from factory.factory import BotFactory, FactoryError
+    reg.upsert("tools", ToolEntry(id="read_file", kind="builtin", provides=["filesystem"], risk="low", verified="VERIFIED"))
+    notes = {"package": {"registryType": "pypi", "identifier": "good-sqlite", "version": "1.0.0"}, "tools": ["query"]}
+    reg.upsert("tools", ToolEntry(id="mcp:good-sqlite", kind="mcp", provides=["sqlite"], risk="medium", verified="INFERRED", scope="PROBATION — x", notes=json.dumps(notes)))
+    reg.upsert("tools", ToolEntry(id="mcp:other", kind="mcp", provides=["y"], risk="medium", verified="INFERRED", scope="PROBATION — x", notes=json.dumps(notes)))
+    assert td.approve("mcp:good-sqlite", "worker")["ok"] is False                       # factory can never self-approve
+    fake = lambda t, n: {"ok": True, "command": "/mcp/good-sqlite/venv/bin/python", "args": ["-m", "good_sqlite"], "tools": ["query", "list_tables"], "server": "good"}
+    r = td.approve("mcp:good-sqlite", "owner", installer=fake)
+    assert r["ok"] and r["install"]["args"] == ["-m", "good_sqlite"]
+    t = reg.get("tools", "mcp:good-sqlite"); assert t.scope.startswith("APPROVED by owner") and json.loads(t.notes)["install"]["command"].endswith("python")
+    spec = {"id": "091", "name": "sql-reader", "purpose": "p" * 12, "instructions": "i" * 40, "model_policy": {"primary": "groq-a", "fallbacks": []},
+            "tools": ["read_file", "mcp:good-sqlite"], "permissions": ["fs:read"], "tests": ["a -> b"]}
+    assert any("requires explicit permission 'mcp:good-sqlite'" in x for x in validate_spec(spec, reg))
+    spec["permissions"] = ["fs:read", "mcp:good-sqlite"]
+    assert validate_spec(spec, reg) == []
+    f = BotFactory(reg, tmp_path / "bots"); res = f.build(spec)
+    patch = json.loads((res.bot_dir / "nanobot.patch.json").read_text())
+    assert patch["tools"]["mcpServers"] == {"good-sqlite": {"command": "/mcp/good-sqlite/venv/bin/python", "args": ["-m", "good_sqlite"], "env": {}}}
+    with pytest.raises(FactoryError):
+        f.build(dict(spec, id="092", name="sneaky", tools=["read_file", "mcp:other"], permissions=["fs:read", "mcp:other"]))   # probation → refused at build too
+    md = (tmp_path / "TOOL_REGISTRY.md").read_text(); assert "| mcp:good-sqlite | APPROVED |" in md and "| mcp:other | probation |" in md

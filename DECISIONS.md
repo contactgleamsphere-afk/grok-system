@@ -586,3 +586,12 @@ ACTION REQUIRED. Verdicts (incl. rejections) persist in `registry/tool_candidate
 bot spec (create or repair) without owner approval. When the architect LLM asks for a tool the registry lacks, the
 create job records `capability.gap` and enqueues `tooldisc <need>` (dedup by need/day). Loop: objective → gap →
 discover → sandbox → probation → STATUS "ACTION REQUIRED" → owner approves → (future) wire + re-test.
+
+## D-110 — Owner approval → persistent install → explicit per-bot grant for MCP servers (2026-09-24) — VERIFIED (unit)
+`approve-tool mcp:<slug>` (owner-only; the factory/bots cannot call it — `approve()` rejects any other actor) installs
+the server persistently under `C:\AI\Factory\mcp\<slug>\venv` (pypi) or pins `npx -y pkg@ver` (npm), re-runs the
+stdio handshake from that install, records the exact command in the registry and audits `tool.approved`. Use is still
+opt-in per bot: the spec must list the tool AND the permission `mcp:<slug>` (validate_spec), so the D-099 boundary
+guard sees any MCP addition during repair as a permission change. BotFactory writes `tools.mcpServers` into the sealed
+`nanobot.patch.json`; the runners apply it and clear mcpServers for bots without one. Probation servers are refused at
+validate and again at build.

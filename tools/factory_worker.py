@@ -7,6 +7,7 @@
   python tools/factory_worker.py add monitor
   python tools/factory_worker.py add run <bot_id> --task "..." [--in DIR] [--out DIR]   # D-063 real work
   python tools/factory_worker.py add tooldisc <need> [--max 2]                            # D-108 MCP tool discovery → probation
+  python tools/factory_worker.py approve-tool mcp:<slug>                                    # D-110 owner-only: probation → APPROVED
   python tools/factory_worker.py add run --plan <plan_job> --in DIR                       # run a whole pipeline
   python tools/factory_worker.py add tick                     # D-076: fire due schedules now (self-chains hourly)
   python tools/factory_worker.py add insight [--days 7]      # D-057 factory self-review -> proposals/<date>.md
@@ -554,6 +555,10 @@ def main(a: list[str]) -> int:
         n = run(opt("--worker", f"{socket.gethostname()}-{os.getpid()}"), "--once" in a, int(opt("--idle-exit", 0)),
                 kinds=FAST_KINDS if "--fast-lane" in a else None)   # D-079: second worker serves short jobs only
         print(json.dumps({"processed": n, "queue": store.summary()})); return 0
+    if cmd == "approve-tool":                                   # D-110 owner decision, audited as a permission-class event
+        res = ftd.approve(a[2], "owner")
+        store.audit("tool.approved" if res.get("ok") else "tool.approve_failed", actor="owner", tool=a[2], detail=json.dumps(res)[:400])
+        print(json.dumps(res, indent=1)); return 0 if res.get("ok") else 1
     if cmd == "add":
         kind = a[2]
         if kind in ("create", "plan"):

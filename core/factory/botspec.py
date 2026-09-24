@@ -22,7 +22,7 @@ ALLOWED_PERMISSIONS = {
     "net:fetch", "net:search", "github:read", "github:write", "browser", "schedule",
 }
 HIGH_RISK_TOOL_PERMISSION = {  # tool risk "high" needs one of these explicitly
-    "shell": "shell:workspace", "github": "github:write", "browser": "browser",
+    "shell": "shell:workspace", "github": "github:write", "browser": "browser", "write": "fs:write",
 }
 
 
@@ -57,7 +57,7 @@ def validate_spec(spec: dict[str, Any], registry: Registry) -> list[str]:
                 problems.append(f"fallback '{fb}' not in model registry")
 
     perms = set(spec["permissions"])
-    bad = perms - ALLOWED_PERMISSIONS
+    bad = {x for x in perms if x not in ALLOWED_PERMISSIONS and not x.startswith("mcp:")}   # D-110: mcp:<server> grants
     if bad:
         problems.append(f"unknown permissions: {sorted(bad)}")
     if "shell:system" in perms:
@@ -72,6 +72,8 @@ def validate_spec(spec: dict[str, Any], registry: Registry) -> list[str]:
         if t.kind == "mcp" and "PROBATION" in (t.scope or ""):        # D-108/D-109: discovered, sandboxed, but NOT owner-approved
             problems.append(f"tool '{tid}' is on probation (owner approval required before any bot may use it)")
             continue
+        if t.kind == "mcp" and f"mcp:{tid.split(':', 1)[-1]}" not in perms and tid not in perms:   # D-110: every MCP server is an explicit grant
+            problems.append(f"tool '{tid}' is an MCP server; requires explicit permission '{tid}' in the spec")
         if t.risk == "high":
             for tag, needed in HIGH_RISK_TOOL_PERMISSION.items():
                 if tag in t.provides and needed not in perms:
