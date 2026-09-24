@@ -8,6 +8,7 @@ Usage (laptop or repo):
   python tools/factory_pipeline.py test <bot_id>              # run acceptance tests + record only
   python tools/factory_pipeline.py seal-master [actor]        # D-083: seal master AGENTS.md / tools/factory.py / config tools.exec
   python tools/factory_pipeline.py rearchitect <bot_id>       # D-052: regenerate spec from the original objective
+  python tools/factory_pipeline.py rebuild <bot_id>           # D-112: regenerate the bundle from the SAME spec, re-test
   python tools/factory_pipeline.py spec "<objective>"         # print the generated spec, build nothing
 
 Design rules (see DECISIONS D-021..D-025):
@@ -441,6 +442,31 @@ def cmd_rearchitect(bot_id: str, feedback: str = "", allowed_permissions: list[s
     return report
 
 
+def cmd_rebuild(bot_id: str) -> dict:
+    """D-112: rebuild a bot's bundle IN PLACE from its current spec (no model call, spec unchanged, identity kept) and
+    re-test. Used when the FACTORY changed how bundles are generated (templates, MCP launcher, patch format) — a
+    repair rewrites instructions, a rearchitect rewrites the spec; a rebuild changes neither. Reseals the bundle."""
+    reg = Registry(ROOT / "registry"); bots_root = LAPTOP_BOTS if WIN else ROOT / "bots"
+    f = BotFactory(reg, bots_root); e = reg.get("bots", bot_id)
+    if e is None: raise FactoryError(f"unknown bot {bot_id}")
+    if bot_id == "001": return {"ok": False, "bot_id": bot_id, "error": "the master is not a factory bundle"}
+    sp = ROOT / "specs" / f"{e.id}-{e.name}.json"
+    if not sp.exists(): raise FactoryError(f"no spec on file for {bot_id}")
+    spec = json.loads(sp.read_text(encoding="utf-8")); spec["id"] = bot_id
+    probs = validate_spec(spec, reg)
+    if probs: raise FactoryError(f"spec no longer valid, rebuild refused: {probs}")
+    r = f.build(spec, overwrite=True)
+    report = {"ok": True, "bot_id": bot_id, "name": e.name, "chain": r.chain, "spec": spec, "boundary_diff": {}}
+    if not WIN: report["status"] = reg.get("bots", bot_id).status; return report
+    res = run_tests(r.bot_dir)
+    e2 = f.record_test_result(bot_id, int(res["pass"]), int(res["total"]), res["evidence"])
+    (r.bot_dir / "TEST_RESULTS.md").write_text(res["raw"], encoding="utf-8")
+    write_bot_registry_md(reg, ROOT / "BOT_REGISTRY.md")
+    report.update({"tests": res["evidence"], "pass": res["pass"], "total": res["total"], "status": e2.status, "verified": e2.verified,
+                   "quota": res.get("quota", 0), "timeouts": res.get("timeouts", 0)})
+    return report
+
+
 def cmd_seal_master(actor: str = "builder") -> dict:
     """D-083: record the master's security surface (called by wire-master-factory.ps1 after it writes those files)."""
     reg = Registry(ROOT / "registry"); e = reg.get("bots", "001")
@@ -492,6 +518,8 @@ def main(argv: list[str]) -> int:
             out = cmd_create(arg, opt("--id"), "--dry-run" in argv, "--no-tests" in argv, allow)
         elif cmd == "rearchitect":
             out = cmd_rearchitect(arg, opt("--feedback", ""))
+        elif cmd == "rebuild":
+            out = cmd_rebuild(arg)
         elif cmd == "spec":
             out = cmd_create(arg, opt("--id"), True, True)
         elif cmd == "seal-master":

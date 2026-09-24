@@ -958,7 +958,16 @@ def test_d110_owner_approval_wires_mcp_only_with_explicit_grant(tmp_path, monkey
     assert validate_spec(spec, reg) == []
     f = BotFactory(reg, tmp_path / "bots"); res = f.build(spec)
     patch = json.loads((res.bot_dir / "nanobot.patch.json").read_text())
-    assert patch["tools"]["mcpServers"] == {"good-sqlite": {"command": "/mcp/good-sqlite/venv/bin/python", "args": ["-m", "good_sqlite"], "env": {}}}
+    srv = patch["tools"]["mcpServers"]["good-sqlite"]
+    assert srv["command"] == "/mcp/good-sqlite/venv/bin/python" and srv["args"][0].endswith("mcp_launch.py") and srv["args"][1] == str(res.bot_dir)
+    assert srv["args"][2:] == ["--", "/mcp/good-sqlite/venv/bin/python", "-m", "good_sqlite"] and srv["env"] == {}       # D-112 launched inside the workspace
+    assert "## Workspace" in (res.bot_dir / "AGENTS.md").read_text()
+    # launcher really runs the child in the bot dir with secrets stripped
+    import subprocess as sp, os
+    out = sp.run([sys.executable, str(pathlib.Path(fp.__file__).parent / "mcp_launch.py"), str(res.bot_dir), "--", sys.executable, "-c",
+                  "import os;print(os.getcwd());print(','.join(k for k in os.environ if 'KEY' in k))"], capture_output=True, text=True,
+                 env={**os.environ, "FAKE_API_KEY": "x"}, timeout=30).stdout.splitlines()
+    assert out[0] == str(res.bot_dir.resolve()) and "FAKE_API_KEY" not in out[1]
     with pytest.raises(FactoryError):
         f.build(dict(spec, id="092", name="sneaky", tools=["read_file", "mcp:other"], permissions=["fs:read", "mcp:other"]))   # probation → refused at build too
     md = (tmp_path / "TOOL_REGISTRY.md").read_text(); assert "| mcp:good-sqlite | APPROVED |" in md and "| mcp:other | probation |" in md
@@ -987,3 +996,25 @@ def test_d111_fixtures_validated_and_materialised(tmp_path, monkeypatch):
     r2 = ff.materialise(bd); assert r2["written"] == ["notes.txt", "shop.db"]                       # idempotent rebuild
     assert ff.materialise(bd, [{"name": "bot.json", "text": "x"}, {"name": "..\\evil", "text": "x"}])["skipped"] == ["bot.json", "..\\evil"]
     assert json.loads((bd / "bot.json").read_text())["id"] == "093"                                # bundle untouched
+
+
+def test_d112_rebuild_keeps_spec_and_reseals(tmp_path, monkeypatch):
+    """D-112: rebuild regenerates the bundle from the spec on file without any model call; spec/permissions unchanged,
+    seal recomputed, invalid specs refused."""
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    from factory.registry import ToolEntry
+    from factory.factory import FactoryError
+    reg.upsert("tools", ToolEntry(id="read_file", kind="builtin", provides=["filesystem"], risk="low", verified="VERIFIED"))
+    spec = {"id": "094", "name": "rb", "purpose": "p" * 12, "instructions": "i" * 40, "model_policy": {"primary": "groq-a", "fallbacks": []},
+            "tools": ["read_file"], "permissions": ["fs:read"], "tests": ["Reply with exactly: X_OK -> X_OK"], "fixtures": [{"name": "a.txt", "text": "hi"}]}
+    monkeypatch.setattr(fp, "chat", lambda *a, **k: (_ for _ in ()).throw(AssertionError("no model call allowed")))
+    from factory.factory import BotFactory
+    f = BotFactory(reg, tmp_path / "bots"); f.build(spec)
+    (tmp_path / "specs").mkdir(); (tmp_path / "specs" / "094-rb.json").write_text(json.dumps(spec))
+    (tmp_path / "bots" / "094-rb" / "AGENTS.md").write_text("tampered")
+    r = fp.cmd_rebuild("094")
+    assert r["ok"] and r["boundary_diff"] == {} and "tampered" not in (tmp_path / "bots" / "094-rb" / "AGENTS.md").read_text()
+    assert json.loads((tmp_path / "bots" / "094-rb" / "bot.json").read_text())["permissions"] == ["fs:read"]
+    assert "Fixtures materialised" in (tmp_path / "bots" / "094-rb" / "TESTS.md").read_text()
+    (tmp_path / "specs" / "094-rb.json").write_text(json.dumps(dict(spec, tools=["exec"])))
+    with pytest.raises(FactoryError): fp.cmd_rebuild("094")

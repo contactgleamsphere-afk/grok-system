@@ -202,6 +202,18 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
                 store.audit("bot.rearchitect_queued", job_id=jid, bot_id=p["bot_id"], actor=worker, reason=err[:200])
             raise FactoryError(err)
         return res
+    if kind == "rebuild":
+        # D-112: same spec, new bundle (factory-side generation changed). Boundary diff is empty by construction;
+        # the bundle seal is recomputed by build(). Verdict flows through record_test_result like any test.
+        before = reg_status(p["bot_id"])
+        res = fp.cmd_rebuild(p["bot_id"])
+        if not res.get("ok"): raise FactoryError(res.get("error"))
+        store.audit("bot.rebuilt", job_id=jid, bot_id=p["bot_id"], actor=worker, chain=res.get("chain"), result=res.get("tests"), status=res.get("status"), before=before)
+        if res.get("status") == "active" and before != "active":
+            store.audit("bot.promoted", job_id=jid, bot_id=p["bot_id"], actor=worker, to="active")
+        elif res.get("status") != "active" and before == "active":
+            store.audit("bot.demoted", job_id=jid, bot_id=p["bot_id"], actor=worker, to=res.get("status"))
+        return {k: res.get(k) for k in ("bot_id", "name", "pass", "total", "status", "verified")}
     if kind == "rearchitect":
         before = _spec_of(p["bot_id"])
         if before is None: raise FactoryError(f"unknown bot {p['bot_id']}")
@@ -575,6 +587,7 @@ def main(a: list[str]) -> int:
             pl = {"objective": a[3], "max": int(opt("--max", 4))}
             if opt("--then-run"): pl["then_run"] = {"in": opt("--then-run")}          # D-066: build, then run on these files
             j = store.enqueue("plan", pl, priority=int(opt("--priority", 5)), actor=opt("--actor", "owner"))
+        elif kind == "rebuild": j = store.enqueue("rebuild", {"bot_id": a[3].zfill(3), "t": int(time.time())}, priority=2, actor=opt("--actor", "owner"))
         elif kind == "rearchitect": j = store.enqueue("rearchitect", {"bot_id": a[3], "feedback": opt("--feedback", ""), "t": int(time.time())}, priority=2, actor=opt("--actor", "owner"))
         elif kind in ("test", "repair"): j = store.enqueue(kind, {"bot_id": a[3]}, priority=int(opt("--priority", 4)), actor=opt("--actor", "owner"))
         elif kind == "probe":

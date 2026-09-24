@@ -18,6 +18,7 @@ runner (scripts/windows/run-bot-test.ps1) executes TESTS via `nanobot agent --wo
 from __future__ import annotations
 
 import json
+import sys
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -101,10 +102,10 @@ class BotFactory:
         bot_dir.mkdir(parents=True, exist_ok=True)
         (bot_dir / "memory").mkdir(exist_ok=True)
 
-        mcp = self.mcp_servers(spec)
+        mcp = self.mcp_servers(spec, bot_dir)
         files = {
             "SOUL.md": self._soul(spec),
-            "AGENTS.md": self._agents(spec, chain, disabled),
+            "AGENTS.md": self._agents(spec, chain, disabled, bot_dir, mcp),
             "bot.json": json.dumps({**spec, "resolved_chain": chain, "disabled_tools": disabled}, indent=2),
             "nanobot.patch.json": json.dumps({
                 "agents": {"defaults": {"modelPreset": chain[0], "fallbackModels": chain[1:]}},
@@ -203,7 +204,7 @@ class BotFactory:
                 out.append(tool)
         return sorted(set(out))
 
-    def mcp_servers(self, spec: dict[str, Any]) -> dict[str, dict]:
+    def mcp_servers(self, spec: dict[str, Any], bot_dir: Path | None = None) -> dict[str, dict]:
         """D-110: nanobot `tools.mcpServers` fragment for the spec's MCP tools. Only owner-APPROVED servers carry an
         `install` block (written by approve-tool); anything else raises — validate_spec should have refused it."""
         out = {}
@@ -215,7 +216,10 @@ class BotFactory:
             inst = n.get("install")
             if "PROBATION" in (t.scope or "") or not inst:
                 raise FactoryError(f"MCP tool {tid} is not owner-approved/installed; refusing to wire it")
-            out[tid.split(":", 1)[-1]] = {"command": inst["command"], "args": list(inst.get("args") or []), "env": {}}
+            launcher = Path(__file__).resolve().parents[2] / "tools" / "mcp_launch.py"
+            py = inst["command"] if str(inst["command"]).lower().endswith(("python.exe", "python", "python3")) else sys.executable
+            # D-112: run the server inside the bot workspace (relative paths resolve there; secrets stripped)
+            out[tid.split(":", 1)[-1]] = {"command": py, "args": [str(launcher), str(bot_dir or ""), "--", inst["command"], *list(inst.get("args") or [])], "env": {}}
         return out
 
     @staticmethod
@@ -226,11 +230,13 @@ class BotFactory:
                 "## Style\nBe concise. State VERIFIED vs INFERRED. Never invent tool results.\n")
 
     @staticmethod
-    def _agents(spec: dict[str, Any], chain: list[str], disabled: list[str]) -> str:
+    def _agents(spec: dict[str, Any], chain: list[str], disabled: list[str], bot_dir: Path | None = None, mcp: dict | None = None) -> str:
         allowed = [t for t in spec["tools"]]
         lines = [
             f"# Operating rules — bot {spec['id']} ({spec['name']})", "",
             "## Allowed tools", *[f"- `{t}`" for t in allowed], "",
+            *(["## Workspace", f"Absolute path: `{bot_dir}`. MCP server tools (`mcp_*`) run as separate processes started in this "
+               "directory: refer to workspace files by plain name or by absolute path under it, never elsewhere.", ""] if mcp else []),
             "## Permissions", *[f"- {p}" for p in spec["permissions"]], "",
             "## Model chain (auto-failover)", *[f"{i+1}. `{m}`" for i, m in enumerate(chain)], "",
             "## Hard limits",

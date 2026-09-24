@@ -602,3 +602,11 @@ A spec may declare up to 4 small fixtures (`{"name","text"}` or `{"name":"x.db",
 acceptance test (the artefact sweep clears the workspace after each). Motivation: the first MCP-sqlite bot create was
 correctly security-paused because the architect needed fs:write only to build a test database — read-only bots must
 be testable without write permission. Fixtures are part of the frozen spec, so repair cannot change them.
+
+## D-112 — MCP servers launched inside the bot workspace; `rebuild` job (2026-09-24) — VERIFIED (unit); live pending
+Bot 026 (first MCP bot) failed T2/T3 although the fixture DB existed and the server ran: nanobot starts MCP servers in
+its own cwd, so `connect_database("fixture.db")` created an empty DB elsewhere. `tools/mcp_launch.py` now wraps every
+approved server: chdir to the bot dir, secrets stripped, stdio inherited; AGENTS.md states the absolute workspace path.
+Limitation (INFERRED): a server handed an absolute path outside the workspace is not blocked — such servers stay
+risk=high with an explicit grant. New `rebuild <bot>` (CLI + job): regenerate the bundle from the SAME spec with no
+model call and re-test — for factory-side generation changes; repair (instructions) and rearchitect (spec) unchanged.
