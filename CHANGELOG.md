@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2026-09-24 — outage recovery: liveness, sync safety, retest honesty, chain top-up, canary
+- D-100 report leads with FACTORY liveness (running/stalled/idle-blocked) from worker heartbeat; master brief shows it.
+- D-101 repo-sync: file lock, `merge -X ours`, never `reset --hard` (a lost registry commit re-flipped 002); slot-keyed housekeeping jobs (monitor/probe/report/tick/insight/bench) run once per slot; 23 duplicate sweep tests cancelled. `C:\AI\Factory\tools\repo-sync.ps1` is now a shim to the repo copy.
+- D-102 master test run distinguishes timeouts from misses: all-timeout = inconclusive, no demotion; T6 matcher uses cron fields, not `cron=`.
+- D-103 `resolve_chain` tops up to ≥2 healthy remote lanes when policy lanes are retired/blocked (bots no longer collapse to local and get falsely "repaired").
+- D-104 ATTENTION: liveness first; settled paused/retired bots collapse to a count; BLOCKED reasons one line.
+- D-105 probe → canary `monitor --only` for bots whose primary lane just went BLOCKED.
+- Live evidence: 006 demoted 01:36 → auto-repaired (gpt-oss-20b, sandbox 4/4) → active 01:46; 007 re-verified 01:51; audit hash chain verified on 319 rows, tamper drill pinpoints seq 1069. Tests: 101 pass (repo + laptop).
+
 ## 2026-09-22 — discovery pipeline live, presets mirror, failover proof
 - D-047 `discover` job: OpenRouter free catalogue → filter → real probe + tool loop → probation. Live run added `or-ling-30-flash-vl`, `or-nex-n25-pro` (both VERIFIED after 2 clean probes); `nex-n2.5-mini` rejected; `or-deepseek` retired from presets.
 - D-048 `factory_presets.py`: nanobot `modelPresets` mirrors the registry (17 presets), pruned stale `or-deepseek` and `broken-primary`.
