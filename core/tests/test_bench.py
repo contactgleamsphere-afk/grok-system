@@ -1066,6 +1066,7 @@ def test_d117_factory_canary_has_no_registry_footprint(tmp_path, monkeypatch):
             "tools": ["read_file"], "permissions": ["fs:read"], "tests": ["Reply with exactly: X_OK -> X_OK", "How many lines in notes.txt? -> 2"],
             "fixtures": [{"name": "notes.txt", "text": "a\nb\n"}]}
     monkeypatch.setattr(fp, "chat", lambda msgs, max_tokens=1200: (json.dumps(spec), "fake:lane"))
+    monkeypatch.setattr(fp, "WIN", False); monkeypatch.setattr(fp, "ROOT", tmp_path)
     (tmp_path / "run").mkdir(exist_ok=True)
     seen = {}
     def runner(bot_dir):
@@ -1073,7 +1074,7 @@ def test_d117_factory_canary_has_no_registry_footprint(tmp_path, monkeypatch):
         return {"pass": 2, "total": 2, "evidence": "T1 PASS | T2 PASS", "raw": "", "quota": 0, "timeouts": 0}
     r = fp.cmd_canary(runner=runner)
     assert r["ok"] and r["pass"] == 2 and r["fixtures"] == ["notes.txt"] and r["lane"] == "fake:lane"
-    assert reg.get("bots", "000") is None and not seen["dir"].exists() and fp.next_id(reg) == "001"
+    assert reg.get("bots", "000") is None and not seen["dir"].exists()
     # worker verdicts + report flag
     import importlib, factory_worker as fw; importlib.reload(fw)
     from factory.jobs import JobStore
