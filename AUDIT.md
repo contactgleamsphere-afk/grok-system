@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 967 | 2026-09-24 01:28:58 | c5a39c84 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
-| 968 | 2026-09-24 01:28:58 | 6ebf5d8b | 002 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "002", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
-| 969 | 2026-09-24 01:28:58 | c20c2407 | 003 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "003", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
 | 970 | 2026-09-24 01:28:58 | 7ee5ebb8 | 004 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "004", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
 | 971 | 2026-09-24 01:28:58 | 9ce55607 | 005 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "005", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
 | 972 | 2026-09-24 01:28:58 | 29002603 | 006 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "006", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
@@ -402,3 +399,6 @@
 | 1364 | 2026-09-24 22:30:59 | 3fe01ea5 | 018 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1365 | 2026-09-24 22:31:16 | 3fe01ea5 | 018 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"ok": true, "produced": ["totals.csv"], "secs": 14, "reply": "RESULT: SUCCESS", "chain": "groq-gptoss120b"} |
 | 1366 | 2026-09-24 22:31:16 | 3fe01ea5 | 018 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "name": "run", "status": "ok totals.csv"}} |
+| 1367 | 2026-09-24 22:39:20 | 4a8b6119 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1368 | 2026-09-24 22:39:20 | d0196af8 |  | job.dedup | svc-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
+| 1369 | 2026-09-24 22:39:38 | 4a8b6119 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptos |
