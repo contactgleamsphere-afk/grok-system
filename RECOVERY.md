@@ -30,7 +30,7 @@ Pre-warm the local model before any test that may fall back to it (prevents the 
 `Invoke-RestMethod -Method Post http://127.0.0.1:11434/api/generate -Body (@{model='qwen3:4b';prompt='hi';stream=$false;keep_alive='30m';options=@{num_predict=4}}|ConvertTo-Json) -ContentType 'application/json'`
 
 ## Laptop repo mirror
-`C:\AI\Factory\repo` = clone of GitHub main (no token stored; refresh with `tools\repo-sync.ps1`). The pipeline reads/writes `repo\registry` and `repo\specs`; after a laptop run copy `registry\bots.json` + new `specs\*.json` + `bots\<id>` back into the main repo and commit.
+`C:\AI\Factory\repo` = clone of GitHub main. `C:\AI\Factory\tools\repo-sync.ps1` is a shim that runs `repo\scripts\windows\repo-sync.ps1` (D-101: lock + never reset --hard). The pipeline reads/writes `repo\registry` and `repo\specs`; after a laptop run copy `registry\bots.json` + new `specs\*.json` + `bots\<id>` back into the main repo and commit.
 
 ## Factory worker service (2026-09-21)
 - Start/restart ONLY via `schtasks /Run /TN "AIFactory Worker"` (detached). Processes launched with `Start-Process` from an SSH/PowerShell session die when that session ends — this looked like "worker vanished" three times today.
