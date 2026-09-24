@@ -89,6 +89,32 @@ def _spec_of(bot_id: str) -> dict | None:
     return d
 
 
+def tunnel_selfheal(store: JobStore, jid: str, worker: str, probe=None, runner=None) -> dict:
+    """D-116: the builder's only way in is the cloudflared quick tunnel. 2026-09-24 04:10 the published URL answered
+    HTTP 530 (dead tunnel) for >15 min while the supervisor task was not running — nothing on the laptop noticed. The
+    hourly tick now probes the published URL; on 530/no-answer with no live supervisor it (re)starts the registered
+    task `AIFactory-Tunnel`, which publishes a fresh URL to run/tunnel.txt. Audited; never touches anything else."""
+    import subprocess, urllib.request, urllib.error
+    if not fp.WIN and probe is None: return {"skipped": "laptop only"}
+    url_file = pathlib.Path(r"C:\AI\Factory\run\tunnel.txt") if fp.WIN else ROOT / "run" / "tunnel.txt"
+    url = url_file.read_text(encoding="utf-8").splitlines()[0].strip() if url_file.exists() else ""
+    def _probe(u):
+        try:
+            with urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": "aifactory-tick"}), timeout=15) as r: return r.status
+        except urllib.error.HTTPError as e: return e.code
+        except Exception: return -1
+    code = (probe or _probe)(url) if url else -1
+    if code not in (530, -1): return {"url": url, "code": code, "ok": True}
+    run_ = runner or (lambda cmd: subprocess.run(cmd, capture_output=True, text=True, timeout=60).stdout)
+    sup = run_(["powershell", "-NoProfile", "-Command",
+                "(Get-CimInstance Win32_Process -Filter \"name='powershell.exe'\" | Where-Object { $_.CommandLine -like '*tunnel-supervisor.ps1*' } | Measure-Object).Count"]).strip()
+    alive = sup.isdigit() and int(sup) > 0
+    if alive: return {"url": url, "code": code, "ok": False, "supervisor": "alive (letting it recover)"}
+    out = run_(["schtasks", "/Run", "/TN", "AIFactory-Tunnel"])
+    store.audit("tunnel.restarted", job_id=jid, actor=worker, url=url, code=code, detail=str(out)[:160])
+    return {"url": url, "code": code, "ok": False, "supervisor": "restarted", "detail": str(out)[:160]}
+
+
 def _capability_gaps(store: JobStore, jid: str, worker: str, wanted: list[str]) -> list[str]:
     """D-109: tools the architect asked for that the registry lacks become `tooldisc` jobs (one per need per day —
     the job store dedups identical queued payloads). Discovery only ever reaches PROBATION; nothing is auto-wired."""
@@ -327,6 +353,8 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
     if kind == "tick":
         # D-076: fire due schedules (idempotent per slot); chained hourly like probe/report so it survives restarts
         res = fsch.tick(store, actor=worker)
+        try: res["tunnel"] = tunnel_selfheal(store, jid, worker)          # D-116
+        except Exception as e: res["tunnel"] = {"error": repr(e)[:120]}
         nxt = datetime.datetime.now() + datetime.timedelta(hours=1)
         store.enqueue("tick", {"hour": nxt.strftime("%Y-%m-%dT%H")}, priority=1, parent=jid, actor=worker, not_before=time.time() + 3600)
         return res
@@ -512,7 +540,11 @@ def _respawn() -> None:
 
 def run(worker: str, once: bool = False, idle_exit: int = 0, kinds: tuple[str, ...] | None = None) -> int:
     store = JobStore(DB); idle_since = time.time(); processed = 0; stamp = _code_stamp()
-    if not once: ensure_recurring(store, worker)
+    if not once:
+        ensure_recurring(store, worker)
+        if fp.WIN and "fast" in worker:                       # D-116: one liveness check per (re)start, fast lane only
+            try: tunnel_selfheal(store, None, worker)
+            except Exception: pass
     if not once and not _self_test_gate(store, worker):
         store.audit("worker.blocked_by_tests", actor=worker, reason="core/tests red on current code; refusing to process jobs until code changes")
         # wait for a code change (repo-sync/push), then let the supervisor relaunch us

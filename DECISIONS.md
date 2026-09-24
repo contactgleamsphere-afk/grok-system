@@ -627,3 +627,10 @@ image/audio; gemini = flash class only, the free tier) and to models not already
 when a lane goes BLOCKED or the healthy pool is thin, plus a weekly sweep (groq, gemini, openrouter) from the report
 job. Same gate as before: real probe + two-turn tool loop → probation → bench. No human action needed for new free
 models on providers we already hold keys for.
+
+## D-116 — Tunnel self-heal from inside the factory (2026-09-24) — VERIFIED (unit); live pending
+04:10 the published quick-tunnel URL answered HTTP 530 for >15 min with no supervisor running; the builder was locked
+out while the laptop kept working. The hourly `tick` (and every fast-worker restart) now probes the published URL and,
+if it is dead AND no `tunnel-supervisor.ps1` is alive, runs the registered task `AIFactory-Tunnel` (audit
+`tunnel.restarted`). A live supervisor is left alone to do its own recovery. Deployed through the worker's own
+code-sync path — no SSH needed to ship the fix that restores SSH.

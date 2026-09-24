@@ -1038,3 +1038,19 @@ def test_d115_keyed_provider_catalogues_filtered_to_chat_models(tmp_path, monkey
     assert [c["model"] for c in c2] == ["gemini-3.1-flash"]
     keep, rej = fdc.evaluate(c1, reg, {"verdicts": {}}, "groq")
     assert [c["model"] for c in keep] == ["llama-4-maverick-17b"]                    # groq-a already registered
+
+
+def test_d116_tunnel_selfheal_restarts_task_only_when_dead_and_unsupervised(tmp_path, monkeypatch):
+    """D-116: 530/no answer + no supervisor → schtasks run + audit; healthy URL or live supervisor → no action."""
+    import importlib, factory_worker as fw; importlib.reload(fw)
+    from factory.jobs import JobStore
+    monkeypatch.setattr(fw, "ROOT", tmp_path); (tmp_path / "run").mkdir()
+    (tmp_path / "run" / "tunnel.txt").write_text("https://x.trycloudflare.com\n2026-09-24\n")
+    st = JobStore(tmp_path / "run" / "jobs.sqlite3"); calls = []
+    def runner(cmd): calls.append(cmd); return "0" if "Get-CimInstance" in " ".join(cmd) else "SUCCESS"
+    assert fw.tunnel_selfheal(st, "j", "w", probe=lambda u: 400, runner=runner)["ok"] and calls == []
+    r = fw.tunnel_selfheal(st, "j", "w", probe=lambda u: 530, runner=runner)
+    assert r["supervisor"] == "restarted" and calls[-1][:3] == ["schtasks", "/Run", "/TN"] and calls[-1][3] == "AIFactory-Tunnel"
+    assert any(a["event"] == "tunnel.restarted" for a in st.audit_rows(10))
+    alive = lambda cmd: "1" if "Get-CimInstance" in " ".join(cmd) else "SUCCESS"
+    assert fw.tunnel_selfheal(st, "j", "w", probe=lambda u: -1, runner=alive)["supervisor"].startswith("alive")
