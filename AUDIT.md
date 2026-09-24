@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 862 | 2026-09-24 01:12:00 | 657a2134 | 018 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "run", "payload": {"bot_id": "018", "task": "Sum order totals per country into totals.csv", "in": "C:\\AI\\Factory\\workspace\\inbo |
-| 863 | 2026-09-24 01:12:00 |  | 018 | schedule.fired | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "fire": "2026-09-23T07:00", "job": "657a2134"} |
-| 864 | 2026-09-24 01:12:00 | 96a47019 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-24T02"}} |
-| 865 | 2026-09-24 01:12:00 | 0d9b9aaa |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 866 | 2026-09-24 01:12:04 | 6320985a |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 867 | 2026-09-24 01:12:04 | ada8b925 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-24T02"}} |
 | 868 | 2026-09-24 01:12:07 | 6320985a |  | probe.network_down | svc-LAPTOP-LRE6PSA8 | {"detail": "all 13 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
 | 869 | 2026-09-24 01:12:07 | bdee72b1 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-23T01-retry", "retry_of": "6320985aecca4449a53b8cc8acd81034"}} |
@@ -402,3 +397,8 @@
 | 1259 | 2026-09-24 04:08:11 | 2d873e41 |  | config.presets | fast-LAPTOP-LRE6PSA8 | {"added": ["gemini-gemini-flash-lite-latest"]} |
 | 1260 | 2026-09-24 04:08:11 | 5db5434d |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "bench", "payload": {"lanes": ["gemini-gemini-flash-lite-latest"], "day": "2026-09-24"}} |
 | 1261 | 2026-09-24 04:08:11 | 2d873e41 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": ["gemini-gemini-flash-lite-latest"]}} |
+| 1262 | 2026-09-24 04:08:13 | 5db5434d |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1263 | 2026-09-24 04:08:18 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1264 | 2026-09-24 04:08:34 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["108 passed in 14.89s"]} |
+| 1265 | 2026-09-24 04:08:56 | 5db5434d |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-gemini-flash-lite-latest", "result": "4/4", "quota": 0, "secs": 42} |
+| 1266 | 2026-09-24 04:08:56 | 5db5434d |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["gemini-gemini-flash-lite-latest", "4/4"]]}} |

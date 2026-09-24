@@ -143,6 +143,24 @@
     "cost_per_1k": 0.0,
     "id": "gemini-gemini-flash-lite-latest",
     "limits": {
+      "bench": {
+        "at": "2026-09-24T04:08:56",
+        "pass": 4,
+        "ref": "009",
+        "runs": 1,
+        "secs": 42,
+        "total": 4
+      },
+      "bench_runs": [
+        {
+          "at": "2026-09-24T04:08:56",
+          "pass": 4,
+          "quota": 0,
+          "ref": "009",
+          "secs": 42,
+          "total": 4
+        }
+      ],
       "health": {
         "last_outcome": "ok",
         "last_probe": "2026-09-24T03:07:59",
@@ -159,7 +177,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 0.7,
-    "updated": "2026-09-24T03:07:59+00:00",
+    "updated": "2026-09-24T03:08:56+00:00",
     "verified": "INFERRED"
   },
   "gemini-gemma26b": {
