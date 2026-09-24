@@ -645,7 +645,7 @@ dir with `register=False` — no bot id consumed, no registry entry, scratch del
 `factory.canary` (pass / inconclusive on availability / FAIL); a FAIL puts "FACTORY CANARY FAILED" at the top of
 ATTENTION. Bots are monitored nightly; now the factory that makes them is too.
 
-## D-118 — Infrastructure scout (2026-09-24) — VERIFIED (unit); live run pending
+## D-118 — Infrastructure scout (2026-09-24) — VERIFIED live (job 037afd02, 6 s: 3 keys valid, 3 keyless ok, 2 in use, 12 owner items)
 `tools/factory_scout.py` keeps `registry/infra.json` (machine-readable) + `docs/INFRA.md` (table + ONE owner action
 list) for every known £0 resource across LLM APIs, compute, hosting and storage: how it is obtained (keyless / signup /
 signup+card), what we hold (key configured and validated with `GET /models`, keyless reachable, in use, missing),

@@ -49,3 +49,16 @@ architect gate (`spec_consistency`). Verified with 0 false positives on all 23 l
 ## Audit hash chain (D-091, 2026-09-22)
 `AUDIT.jsonl` rows carry `prev`/`h` (sha256 over seq,ts,job,bot,event,actor,detail,prev). `factory_worker.py audit-verify`
 exits 1 on any edit/removal/reorder. The SQLite table stays the source; the JSONL is the tamper-evident export.
+
+## MCP tools, self-heal and scout boundaries (D-108–D-118, 2026-09-24)
+- **Discovered tools are never trusted by discovery.** Sandboxing runs with a secrets-stripped environment (no *_KEY,
+  *_TOKEN, GH_*, cloud creds), in a temp venv/npm cache, with a hard kill (`taskkill /T /F`) on timeout. The result is
+  PROBATION; only the owner's `approve-tool` (CLI, not reachable from any bot) allows a bot spec to reference it, and
+  the boundary guard still applies to whatever the tool touches.
+- **Tunnel self-heal is not privilege escalation**: `tunnel_selfheal()` only runs the pre-registered scheduled task
+  (`schtasks /Run /TN AIFactory-Tunnel`); it cannot change the task, the script it runs, or the tunnel provider.
+  Supervisor code lives in the repo (reviewable, hash-tracked); the on-disk file is a shim.
+- **Factory canary has no footprint**: `register=False` build in a scratch directory, `fs:read` only, deleted after.
+- **Infra scout is legitimate by construction**: one GET per keyless endpoint, keys sent only to their own provider,
+  no signups/identity/ToS workarounds; card-verification tiers are owner-only rows. Missing keys are reported, never
+  self-applied.
