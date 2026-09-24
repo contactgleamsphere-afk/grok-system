@@ -2,14 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1037 | 2026-09-24 01:38:44 | 67703501 | 012 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
-| 1038 | 2026-09-24 01:38:44 | 240be6ff | 013 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
-| 1039 | 2026-09-24 01:38:44 | 356da82f | 014 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
-| 1040 | 2026-09-24 01:38:44 | 34c93c2f | 016 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
-| 1041 | 2026-09-24 01:38:44 | 8e9fd24a | 017 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
-| 1042 | 2026-09-24 01:38:44 | 09de5024 | 018 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
-| 1043 | 2026-09-24 01:38:44 | ca4a7aeb | 019 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
-| 1044 | 2026-09-24 01:38:44 | a51e46b5 | 020 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
 | 1045 | 2026-09-24 01:38:44 | 764e7481 | 021 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
 | 1046 | 2026-09-24 01:38:44 | 58a57670 | 022 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
 | 1047 | 2026-09-24 01:38:44 | 6a5c5393 | 023 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
@@ -402,3 +394,11 @@
 | 1434 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "io.github.sadri-dridi/playwright-url-ok", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio packag |
 | 1435 | 2026-09-25 00:20:58 | 86969460 |  | owner.needed | svc-LAPTOP-LRE6PSA8 | {"provider": "tools", "reason": "MCP tools on probation for need 'browser automation playwright': ['mcp:crawlio-browser'] \u2014 approve to  |
 | 1436 | 2026-09-25 00:20:58 | 86969460 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": ["mcp:crawlio-browser"]}} |
+| 1437 | 2026-09-25 00:28:03 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1438 | 2026-09-25 00:28:05 | 4901b2db |  | job.enqueued | owner | {"kind": "tooldisc", "payload": {"need": "playwright browser", "max": 1, "day": "2026-09-25"}} |
+| 1439 | 2026-09-25 00:28:26 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["112 passed in 17.90s"]} |
+| 1440 | 2026-09-25 00:28:26 | 4901b2db |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1441 | 2026-09-25 00:28:26 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["112 passed in 17.71s"]} |
+| 1442 | 2026-09-25 00:29:16 | 50cb8d24 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1443 | 2026-09-25 00:29:16 | e7744308 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-25T01"}} |
+| 1444 | 2026-09-25 00:29:51 | 50cb8d24 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-l |
