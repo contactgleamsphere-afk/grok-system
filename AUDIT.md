@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 544 | 2026-09-22 18:08:10 | 16d02341 | 005 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 545 | 2026-09-22 18:24:32 | 0ff585a0 |  | job.enqueued | owner | {"kind": "tick", "payload": {"hour": "2026-09-22T18"}} |
 | 546 | 2026-09-22 18:36:06 | 16d02341 | 005 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [{"round": 1, "lane": "groq:qwen/qwen3.8-27b", "sandbox": "4/4", "rejected": null}], "boundary_di |
 | 547 | 2026-09-22 18:36:06 | 16d02341 | 005 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 548 | 2026-09-22 18:36:06 | 16d02341 | 005 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "005", "name": "csv-quality-auditor", "status": "active", "verified": "VERIFIED"}} |
@@ -402,3 +400,5 @@
 | 941 | 2026-09-24 01:24:24 | bcb0ba61 |  | config.presets | fast-LAPTOP-LRE6PSA8 | {"added": ["or-ling-30-flash-sante", "or-ling-30-flash-fin"]} |
 | 942 | 2026-09-24 01:24:24 | ad7a13c3 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "bench", "payload": {"lanes": ["or-ling-30-flash-sante", "or-ling-30-flash-fin"], "day": "2026-09-24"}} |
 | 943 | 2026-09-24 01:24:24 | bcb0ba61 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": ["or-ling-30-flash-sante", "or-ling-30-flash-fin"]}} |
+| 944 | 2026-09-24 01:24:32 | 26e7235d |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 945 | 2026-09-24 01:24:32 | 26e7235d |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
