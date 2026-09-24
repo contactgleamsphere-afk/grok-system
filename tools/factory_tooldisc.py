@@ -194,7 +194,7 @@ def mcp_handshake(cmd: list[str], cwd: str, env: dict, timeout: int = 60) -> dic
     return {"ok": True, "server": server, "tools": tools}
 
 
-def sandbox(c: dict, timeout: int = 180) -> dict:
+def sandbox(c: dict, timeout: int = 300) -> dict:
     """Throw-away install + handshake with secrets stripped. Laptop only (needs pip/npx). Never touches the factory venv."""
     pk = c["package"]; tmp = tempfile.mkdtemp(prefix="aif-tool-")
     env = _clean_env(); t0 = time.time()
@@ -218,7 +218,8 @@ def sandbox(c: dict, timeout: int = 180) -> dict:
             spec = pk["identifier"] + (f"@{pk['version']}" if pk.get("version") else "")
             cmd = [npx, "-y", spec]
         cmd += [str(a.get("value") or a.get("default") or "") for a in (pk.get("packageArguments") or []) if a.get("type") == "positional" and (a.get("value") or a.get("default"))]
-        hs = mcp_handshake(cmd, tmp, env, timeout=min(timeout, 120))
+        # npm packages download + install inside the handshake window (cold cache): give them 240 s, pip ones 120 s.
+        hs = mcp_handshake(cmd, tmp, env, timeout=min(timeout, 120 if pk.get("registryType") == "pypi" else 240))
         hs["stage"] = "handshake"; hs["secs"] = int(time.time() - t0); hs["cmd"] = cmd[:3]
         return hs
     except subprocess.TimeoutExpired:
@@ -272,7 +273,7 @@ def install_persistent(t: ToolEntry, notes: dict, timeout: int = 300) -> dict:
         npx = shutil.which("npx.cmd") or shutil.which("npx")
         if not npx: return {"ok": False, "reason": "npx not available"}
         command, args = npx, ["-y", pk["identifier"] + (f"@{pk['version']}" if pk.get("version") else "")]
-    hs = mcp_handshake([command, *args], str(MCP_HOME), _clean_env(), timeout=120)
+    hs = mcp_handshake([command, *args], str(MCP_HOME), _clean_env(), timeout=120 if pk.get("registryType") == "pypi" else 240)
     if not hs.get("ok"): return {"ok": False, "reason": "handshake: " + str(hs.get("reason"))}
     return {"ok": True, "command": command, "args": args, "tools": hs["tools"], "server": hs.get("server")}
 
