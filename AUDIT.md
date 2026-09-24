@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 761 | 2026-09-22 22:59:58 | 197bb3e5 |  | job.enqueued | master-001 | {"kind": "plan", "payload": {"objective": "Create a pipeline: first bot reads a CSV of orders and writes only rows where status is refunded  |
-| 762 | 2026-09-22 22:59:59 | 197bb3e5 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 763 | 2026-09-22 23:00:00 | 1e546b89 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "create", "payload": {"objective": "Read orders.csv, filter rows where the 'status' column is 'refunded', and write the resulting r |
 | 764 | 2026-09-22 23:00:00 | 1a129f56 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "create", "payload": {"objective": "Read refunded.csv, sum the values in the 'amount' column, and write a single line to summary.tx |
 | 765 | 2026-09-22 23:00:00 | 197bb3e5 |  | plan.made | svc-LAPTOP-LRE6PSA8 | {"lane": "groq:qwen/qwen3.8-27b", "steps": 2, "queued": [[1, "1e546b89"], [2, "1a129f56"]], "rationale": "The objective explicitly defines a |
@@ -402,3 +400,5 @@
 | 1158 | 2026-09-24 02:23:14 | c1c70d3e | 025 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='LIVENESS_OK' last='LIVENESS_OK' \| T2 PASS 36s [done] expect='HELLO WORLD' last='RESULT: HELLO WORLD' |
 | 1159 | 2026-09-24 02:23:14 | c1c70d3e | 025 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='LIVENESS_OK' last='LIVENESS_OK' \| T2 PASS 36s [done] expect='HELLO WORLD' last='RESULT: HELLO WORLD' |
 | 1160 | 2026-09-24 02:23:14 | c1c70d3e | 025 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "025", "status": "active", "verified": "VERIFIED"}} |
+| 1161 | 2026-09-24 02:24:57 | c35f9462 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-flash38", "result": "2/4", "quota": 0, "secs": 128} |
+| 1162 | 2026-09-24 02:24:57 | c35f9462 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["gemini-flash38", "2/4"]]}} |
