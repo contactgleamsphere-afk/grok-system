@@ -112,6 +112,13 @@
    "ts": 1790291869.1934988,
    "verdict": "rejected"
   },
+  "com.pulsemcp/playwright-stealth:0.2.3": {
+   "date": "2026-09-25",
+   "need": "playwright browser",
+   "reason": "policy: anti-detection / bypass tooling (contract: never evade ToS, rate limits or identity checks)",
+   "ts": 1790292506.2662032,
+   "verdict": "rejected"
+  },
   "com.saasbrowser/saas-browser:1.0.1": {
    "date": "2026-09-25",
    "need": "browser automation playwright",
@@ -181,6 +188,13 @@
    "reason": "no local stdio package (pypi/npm); release date unknown",
    "ts": 1790291869.1934988,
    "verdict": "rejected"
+  },
+  "io.github.feder-cr/invisible-playwright-mcp:0.70.0": {
+   "date": "2026-09-25",
+   "need": "playwright browser",
+   "reason": "probation; tools=16 144s",
+   "ts": 1790292506.2662032,
+   "verdict": "approved"
   },
   "io.github.mrfentmen/sqlite-mcp:1.0.0": {
    "date": "2026-09-24",

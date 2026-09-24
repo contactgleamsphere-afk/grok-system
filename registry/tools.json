@@ -24,6 +24,18 @@
     "updated": "2026-09-24T23:20:13+00:00",
     "verified": "INFERRED"
   },
+  "mcp:invisible-playwright-mcp": {
+    "id": "mcp:invisible-playwright-mcp",
+    "kind": "mcp",
+    "notes": "{\"deps\": 13, \"licence\": \"MIT\", \"package\": {\"identifier\": \"invisible-playwright-mcp\", \"registryType\": \"pypi\", \"version\": \"0.70.0\"}, \"registry_name\": \"io.github.feder-cr/invisible-playwright-mcp\", \"released\": \"2026-09-23T17:12:18.953588Z\", \"repo\": \"https://github.com/feder-cr/invisible_playwright_mcp\", \"risky_tools\": [], \"sandbox_secs\": 144, \"server\": \"stealth\", \"stars\": 31653, \"tools\": [\"browser_open\", \"browser_close\", \"browser_list\", \"browser_status\", \"browser_navigate\", \"browser_read_text\", \"browser_snapshot\", \"browser_read_html\", \"browser_take_screenshot\", \"browser_watch\", \"browser_click\", \"browser_click_at\", \"browser_type\", \"browser_select_option\", \"browser_press_key\", \"browser_evaluate\"], \"version\": \"0.70.0\"}",
+    "provides": [
+      "playwright browser"
+    ],
+    "risk": "medium",
+    "scope": "PROBATION \u2014 not attached to any bot; owner approval required to wire into a bot config (SECURITY \u00a76)",
+    "updated": "2026-09-24T23:30:59+00:00",
+    "verified": "INFERRED"
+  },
   "mcp:mcp-sqlite-tools": {
     "id": "mcp:mcp-sqlite-tools",
     "kind": "mcp",

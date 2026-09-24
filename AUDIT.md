@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1048 | 2026-09-24 01:38:44 | a735d64e | 024 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
-| 1049 | 2026-09-24 01:38:44 | 356d0905 | 025 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
-| 1050 | 2026-09-24 01:39:31 | 84f90993 | 008 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 15s [done] expect='apple' last='RESULT: apple' \| T3 PASS 26s [done] exp |
-| 1051 | 2026-09-24 01:39:31 | 84f90993 | 008 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 15s [done] expect='apple' last='RESULT: apple' \| T3 PASS 26s [done] exp |
 | 1052 | 2026-09-24 01:39:31 | 84f90993 | 008 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "008", "status": "active", "verified": "VERIFIED"}} |
 | 1053 | 2026-09-24 01:39:37 | d67880ac | 009 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1054 | 2026-09-24 01:41:40 | d67880ac | 009 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='RESULT: X_OK' \| T2 PASS 54s [done] expect='3' last='RESULT: 3' \| T3 PASS 43s [done] exp |
@@ -402,3 +398,7 @@
 | 1445 | 2026-09-25 00:29:56 | 14d4a04c |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1446 | 2026-09-25 00:29:56 | 190e3258 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-25T01"}} |
 | 1447 | 2026-09-25 00:29:56 | 14d4a04c |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 1448 | 2026-09-25 00:31:25 | 4901b2db |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.pulsemcp/playwright-stealth", "reason": "policy: anti-detection / bypass tooling (contract: never evade ToS, rate limits or id |
+| 1449 | 2026-09-25 00:31:25 | 4901b2db |  | tool.discovered | svc-LAPTOP-LRE6PSA8 | {"tool": "io.github.feder-cr/invisible-playwright-mcp", "reason": "probation; tools=16 144s", "need": "playwright browser"} |
+| 1450 | 2026-09-25 00:31:25 | 4901b2db |  | owner.needed | svc-LAPTOP-LRE6PSA8 | {"provider": "tools", "reason": "MCP tools on probation for need 'playwright browser': ['mcp:invisible-playwright-mcp'] \u2014 approve to wi |
+| 1451 | 2026-09-25 00:31:25 | 4901b2db |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": ["mcp:invisible-playwright-mcp"]}} |
