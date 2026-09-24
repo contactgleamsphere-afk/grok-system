@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 562 | 2026-09-22 18:40:08 |  | 018 | schedule.fired | svc-LAPTOP-LRE6PSA8 | {"sid": "5539cff4", "fire": "2026-09-22T18:40", "job": "f42e8c49"} |
-| 563 | 2026-09-22 18:40:08 | 83f56639 |  | job.dedup | svc-LAPTOP-LRE6PSA8 | {"kind": "tick"} |
 | 564 | 2026-09-22 18:40:08 | dbe8c0ee |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 565 | 2026-09-22 18:40:20 | aba5e667 | 018 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 566 | 2026-09-22 18:41:45 | aba5e667 | 018 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"ok": true, "produced": ["totals.csv"], "secs": 83, "reply": "RESULT: totals.csv", "chain": "groq-gptoss120b"} |
@@ -402,3 +400,5 @@
 | 959 | 2026-09-24 01:28:39 | c3c35810 | 002 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: repair only runs on demoted bots (status=active)\nT |
 | 960 | 2026-09-24 01:28:44 | 8b22fe5c |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 961 | 2026-09-24 01:28:44 | 8b22fe5c |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 962 | 2026-09-24 01:28:48 | f800e68b |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 963 | 2026-09-24 01:28:48 | f800e68b |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
