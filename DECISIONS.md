@@ -552,3 +552,9 @@ lanes excluded). Runtime routing only: the spec's `model_policy` stays frozen; `
 Liveness leads the ATTENTION list; retired bots and paused bots untouched for >3 days collapse into a single count
 line; BLOCKED lane reasons are one-line/80 chars. The master's 900-char brief was spending a third of its budget on
 010/015 and multi-line JSON errors.
+
+## D-105 — Canary monitor when a primary lane goes BLOCKED (2026-09-24) — VERIFIED (unit)
+The probe handler now enqueues a targeted `monitor --only <bots>` for every active bot whose `model_policy.primary`
+just flipped to BLOCKED (audit `monitor.canary`). Those bots run on a D-103 top-up lane from that moment; the canary
+verifies them today rather than at the nightly sweep. Paused/retired bots and 001 are excluded; payload carries
+`only` so it is exempt from the D-101 slot dedup but still idempotent by payload hash.

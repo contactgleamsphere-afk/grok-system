@@ -807,3 +807,26 @@ def test_d103_chain_tops_up_when_policy_lanes_retired(tmp_path, monkeypatch):
     assert f.last_topup == ["or-c", "groq-a"] and policy == {"primary": "or-gone", "fallbacks": ["gemini-b"]}
     chain2 = f.resolve_chain({"primary": "groq-a", "fallbacks": ["or-c"]})
     assert chain2 == ["groq-a", "or-c", "local3b"] and f.last_topup == []   # healthy policy: untouched
+
+
+def test_d105_probe_blocked_primary_triggers_canary_monitor(tmp_path, monkeypatch):
+    """D-105: when a probe flips a lane to BLOCKED, the bots whose policy primary was that lane get a targeted monitor
+    today (they now run on a top-up lane, D-103) instead of waiting for the nightly sweep."""
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    from factory.registry import BotEntry
+    for bid, prim in (("010", "groq-a"), ("011", "gemini-b"), ("012", "groq-a")):
+        reg.upsert("bots", BotEntry(id=bid, name="b" + bid, purpose="p", status="active" if bid != "012" else "paused",
+                                    model_policy={"primary": prim, "fallbacks": ["or-c"]}, tools=[], permissions={}, workspace="w"))
+    import importlib, factory_worker as fw; importlib.reload(fw)
+    from factory.jobs import JobStore
+    monkeypatch.setattr(fw, "ROOT", tmp_path); monkeypatch.setattr(fw, "_sync_presets", lambda: None)
+    monkeypatch.setattr(fw.fdc, "MIN_HEALTHY", 0)
+    rows = [{"id": "gemini-b", "outcome": "ok"}, {"id": "or-c", "outcome": "ok"}]
+    monkeypatch.setattr(fw.fpr, "run", lambda only=None: {"probed": 3, "healthy": ["gemini-b"], "rows": rows,
+                        "changed": [{"id": "groq-a", "outcome": "error", "before": "OK", "after": "BLOCKED", "detail": "503"}]})
+    st = JobStore(tmp_path / "run" / "jobs.sqlite3"); monkeypatch.setattr(fw, "DB", tmp_path / "run" / "jobs.sqlite3")
+    pj = st.enqueue("probe", {"hour": "2026-09-24T02"}, priority=1); c = st.claim("w", 300)
+    fw.handle(c, st, "w")
+    mons = [j for j in st.list(["queued"]) if j["kind"] == "monitor"]
+    assert len(mons) == 1 and mons[0]["payload"]["only"] == ["010"] and mons[0]["payload"]["canary_for"] == ["groq-a"]   # 012 paused, 011 unaffected
+    assert any(a["event"] == "monitor.canary" for a in st.audit_rows(50))

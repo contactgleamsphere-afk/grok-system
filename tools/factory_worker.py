@@ -230,6 +230,15 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
             # D-069: free-first scout — also try the other 2026 free providers; without a key each yields a needs_owner notice
             for prov in ("openrouter", "cerebras", "nvidia", "mistral"):
                 store.enqueue("discover", {"provider": prov, "day": datetime.date.today().isoformat(), "trigger": trig}, priority=2, parent=jid, actor=worker)
+        if newly_blocked:
+            # D-105: canary — bots whose PRIMARY just went BLOCKED now run on a different lane (D-103 top-up); verify them
+            # today instead of discovering the regression at the next nightly sweep. Targeted monitor, dedup by day+set.
+            gone = {c["id"] for c in newly_blocked}
+            reg_ = Registry(ROOT / "registry")
+            affected = sorted(b.id for b in reg_.all("bots") if b.status == "active" and b.id != "001" and (b.model_policy or {}).get("primary") in gone)
+            if affected:
+                store.enqueue("monitor", {"only": affected, "day": datetime.date.today().isoformat(), "canary_for": sorted(gone)}, priority=3, parent=jid, actor=worker)
+                store.audit("monitor.canary", job_id=jid, actor=worker, lanes=sorted(gone), bots=affected)
         return {"probed": res["probed"], "healthy": res["healthy"], "changed": [(c["id"], c["after"]) for c in res["changed"]], "retired": [r["id"] for r in res.get("retired", [])]}
     if kind == "discover":
         res = fdc.run(p.get("provider", "openrouter"), int(p.get("max", 2)))
