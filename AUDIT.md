@@ -2,17 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 922 | 2026-09-24 01:23:26 | ada8b925 |  | job.dedup | fast-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
-| 923 | 2026-09-24 01:23:43 | 499dd527 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash36", "outcome": "no_tool_call", "before": "VERIFIED", "after": "BLOCKED", "detail": null} |
-| 924 | 2026-09-24 01:23:43 | 499dd527 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "or-ling-30-flash-vl", "outcome": "gone", "before": "VERIFIED", "after": "BLOCKED", "detail": "{\"error\":{\"message\":\"this mode |
-| 925 | 2026-09-24 01:23:43 | bcb0ba61 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "openrouter", "day": "2026-09-24", "trigger": "blocked:gemini-flash36,or-ling-30-flash-vl"}} |
-| 926 | 2026-09-24 01:23:43 | 26e7235d |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "cerebras", "day": "2026-09-24", "trigger": "blocked:gemini-flash36,or-ling-30-flash-vl"}} |
-| 927 | 2026-09-24 01:23:43 | 39a61954 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-09-24", "trigger": "blocked:gemini-flash36,or-ling-30-flash-vl"}} |
-| 928 | 2026-09-24 01:23:43 | 6a46a820 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-09-24", "trigger": "blocked:gemini-flash36,or-ling-30-flash-vl"}} |
-| 929 | 2026-09-24 01:23:43 | 499dd527 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen27b", "local3b",  |
-| 930 | 2026-09-24 01:23:51 | bdee72b1 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 931 | 2026-09-24 01:23:51 | ada8b925 |  | job.dedup | fast-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
-| 932 | 2026-09-24 01:24:07 | bdee72b1 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash38", "outcome": "error", "before": "VERIFIED", "after": "BLOCKED", "detail": "[{\n  \"error\": {\n    \"code\": 503,\ |
 | 933 | 2026-09-24 01:24:07 | e30126b8 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "openrouter", "day": "2026-09-24", "trigger": "blocked:gemini-flash38"}} |
 | 934 | 2026-09-24 01:24:07 | 8b22fe5c |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "cerebras", "day": "2026-09-24", "trigger": "blocked:gemini-flash38"}} |
 | 935 | 2026-09-24 01:24:07 | f800e68b |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-09-24", "trigger": "blocked:gemini-flash38"}} |
@@ -402,3 +391,14 @@
 | 1319 | 2026-09-24 04:42:22 | c76efa69 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1320 | 2026-09-24 04:42:43 | c76efa69 |  | factory.canary | svc-LAPTOP-LRE6PSA8 | {"verdict": "pass", "lane": "groq:openai/gpt-oss-20b", "chain": ["gemini-gemini-flash-lite-latest", "gemini-lite31", "groq-gptoss120b", "loc |
 | 1321 | 2026-09-24 04:42:43 | c76efa69 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"pass": 2, "total": 2}} |
+| 1322 | 2026-09-24 06:54:41 | 9a01357c |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1323 | 2026-09-24 06:54:41 | 86ba95ba |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1324 | 2026-09-24 06:54:42 | 37b08250 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-24T07"}} |
+| 1325 | 2026-09-24 06:54:42 | e7340c6e |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-24T07"}} |
+| 1326 | 2026-09-24 06:54:42 | 9a01357c |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 1327 | 2026-09-24 22:29:10 | 86ba95ba |  | job.lease_expired | svc-LAPTOP-LRE6PSA8 | {} |
+| 1328 | 2026-09-24 22:29:11 | 86ba95ba |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 2} |
+| 1329 | 2026-09-24 22:29:11 | d0196af8 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-24T23"}} |
+| 1330 | 2026-09-24 22:29:15 | 86ba95ba |  | probe.network_down | fast-LAPTOP-LRE6PSA8 | {"detail": "all 17 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
+| 1331 | 2026-09-24 22:29:16 | 4a8b6119 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-24T05-retry", "retry_of": "86ba95baf63f4a388b1baef16836aa7d"}} |
+| 1332 | 2026-09-24 22:29:16 | 86ba95ba |  | job.orphaned_result | fast-LAPTOP-LRE6PSA8 | {"summary": "{'probed': 19, 'network_down': True, 'detail': 'all 17 remote lanes across 3 providers errored in one sweep -> local network ou |
