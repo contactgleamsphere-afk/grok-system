@@ -37,18 +37,16 @@
    "date": "2026-09-22"
   },
   "openrouter:inclusionai/ling-3.0-flash-sante:free": {
-   "verdict": "deferred",
-   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
-   "ts": 1790108680.3095658,
-   "date": "2026-09-22",
-   "until": 1790130280.3095658
+   "verdict": "approved",
+   "reason": "probe 1.22s loop 3.94s",
+   "ts": 1790209453.2989383,
+   "date": "2026-09-24"
   },
   "openrouter:inclusionai/ling-3.0-flash-fin:free": {
-   "verdict": "deferred",
-   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
-   "ts": 1790108680.3095658,
-   "date": "2026-09-22",
-   "until": 1790130280.3095658
+   "verdict": "approved",
+   "reason": "probe 1.71s loop 3.01s",
+   "ts": 1790209453.2989383,
+   "date": "2026-09-24"
   },
   "openrouter:dots-studio/dots-3-note-preview:free": {
    "verdict": "deferred",
