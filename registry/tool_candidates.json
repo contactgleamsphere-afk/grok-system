@@ -1,10 +1,31 @@
 {
  "verdicts": {
+  "ai.agentutility/mcp-browser-workflow:0.1.1": {
+   "date": "2026-09-25",
+   "need": "browser automation playwright",
+   "reason": "sandbox handshake: no initialize result in 240s",
+   "ts": 1790291869.1934988,
+   "verdict": "rejected"
+  },
+  "ai.smithery/ImRonAI-mcp-server-browserbase:2.0.0": {
+   "date": "2026-09-25",
+   "need": "browser automation playwright",
+   "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); release date unknown",
+   "ts": 1790291869.1934988,
+   "verdict": "rejected"
+  },
   "ai.smithery/afgong-sqlite-mcp-server:1.16.0": {
    "date": "2026-09-24",
    "need": "sqlite",
    "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); release date unknown",
    "ts": 1790214576.4982991,
+   "verdict": "rejected"
+  },
+  "ai.smithery/browserbasehq-mcp-browserbase:2.2.0": {
+   "date": "2026-09-25",
+   "need": "browser automation playwright",
+   "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); release date unknown; repository archived",
+   "ts": 1790291869.1934988,
    "verdict": "rejected"
   },
   "ai.smithery/wgong-sqlite-mcp-server:1.16.0": {
@@ -14,6 +35,62 @@
    "ts": 1790214576.4982991,
    "verdict": "rejected"
   },
+  "app.crawlio/crawlio-browser:1.11.0": {
+   "date": "2026-09-25",
+   "need": "browser automation playwright",
+   "reason": "probation; tools=7 23s",
+   "ts": 1790291869.1934988,
+   "verdict": "approved"
+  },
+  "co.civai.nova/browsergpt-agent:1.0.0": {
+   "date": "2026-09-25",
+   "need": "browser automation playwright",
+   "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); licence unknown; release date unknown",
+   "ts": 1790291869.1934988,
+   "verdict": "rejected"
+  },
+  "com.browser-use/browser-use:0.13.5": {
+   "date": "2026-09-25",
+   "need": "browser automation playwright",
+   "reason": "61 dependencies > 40",
+   "ts": 1790291869.1934988,
+   "verdict": "rejected"
+  },
+  "com.browserforest/browser-forest:1.0.0": {
+   "date": "2026-09-25",
+   "need": "browser automation playwright",
+   "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); licence unknown; release date unknown",
+   "ts": 1790291869.1934988,
+   "verdict": "rejected"
+  },
+  "com.browserssh/browser-ssh:1.0.0": {
+   "date": "2026-09-25",
+   "need": "browser automation playwright",
+   "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); licence unknown; release date unknown",
+   "ts": 1790291869.1934988,
+   "verdict": "rejected"
+  },
+  "com.clauxel.autobrowserapproval/autobrowserapproval-mcp:1.0.0": {
+   "date": "2026-09-25",
+   "need": "browser automation playwright",
+   "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); licence not permissive: NOASSERTION; release date unknown",
+   "ts": 1790291869.1934988,
+   "verdict": "rejected"
+  },
+  "com.clauxel.browserspendguard/browserspendguard-mcp:1.0.0": {
+   "date": "2026-09-25",
+   "need": "browser automation playwright",
+   "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); licence not permissive: NOASSERTION; release date unknown",
+   "ts": 1790291869.1934988,
+   "verdict": "rejected"
+  },
+  "com.clauxel.playwrightselectorguard/playwrightselectorguard-mcp:1.0.0": {
+   "date": "2026-09-25",
+   "need": "browser automation playwright",
+   "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); licence not permissive: NOASSERTION; release date unknown",
+   "ts": 1790291869.1934988,
+   "verdict": "rejected"
+  },
   "com.devart/mcp-sqlite:1.1.0": {
    "date": "2026-09-24",
    "need": "sqlite",
@@ -21,11 +98,88 @@
    "ts": 1790214576.4982991,
    "verdict": "rejected"
   },
+  "com.mcpbundles/remote-browser:1.0.0": {
+   "date": "2026-09-25",
+   "need": "browser automation playwright",
+   "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); licence unknown; release date unknown",
+   "ts": 1790291869.1934988,
+   "verdict": "rejected"
+  },
+  "com.playwrightgen/playwrightgen:1.0.0": {
+   "date": "2026-09-25",
+   "need": "browser automation playwright",
+   "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); licence unknown; release date unknown",
+   "ts": 1790291869.1934988,
+   "verdict": "rejected"
+  },
+  "com.saasbrowser/saas-browser:1.0.1": {
+   "date": "2026-09-25",
+   "need": "browser automation playwright",
+   "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); licence unknown; release date unknown",
+   "ts": 1790291869.1934988,
+   "verdict": "rejected"
+  },
+  "com.stagenth/browser:1.1.0": {
+   "date": "2026-09-25",
+   "need": "browser automation playwright",
+   "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); licence unknown; release date unknown",
+   "ts": 1790291869.1934988,
+   "verdict": "rejected"
+  },
+  "com.thenextgennexus/playwright-mcp-server:1.0.0": {
+   "date": "2026-09-25",
+   "need": "browser automation playwright",
+   "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); licence unknown; release date unknown",
+   "ts": 1790291869.1934988,
+   "verdict": "rejected"
+  },
+  "dev.provinglab/browser-citation-capture:1.24.2": {
+   "date": "2026-09-25",
+   "need": "browser automation playwright",
+   "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); licence unknown; release date unknown",
+   "ts": 1790291869.1934988,
+   "verdict": "rejected"
+  },
+  "io.github.DataLeadsPRO/browser-automation:1.0.0": {
+   "date": "2026-09-25",
+   "need": "browser automation playwright",
+   "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); licence not permissive: NOASSERTION; release date unknown",
+   "ts": 1790291869.1934988,
+   "verdict": "rejected"
+  },
+  "io.github.OyadotAI/oya-browser:1.0.124": {
+   "date": "2026-09-25",
+   "need": "browser automation playwright",
+   "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); licence not permissive: NOASSERTION; release date unknown",
+   "ts": 1790291869.1934988,
+   "verdict": "rejected"
+  },
+  "io.github.Shreyas-Profile/browser-mcp:0.2.0": {
+   "date": "2026-09-25",
+   "need": "browser automation playwright",
+   "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); release date unknown",
+   "ts": 1790291869.1934988,
+   "verdict": "rejected"
+  },
+  "io.github.TeamDev-IP/jxbrowser-mcp:1.0.0": {
+   "date": "2026-09-25",
+   "need": "browser automation playwright",
+   "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); licence unknown; release date unknown",
+   "ts": 1790291869.1934988,
+   "verdict": "rejected"
+  },
   "io.github.arifulislamat/database-mcp-sqlite:0.4.2": {
    "date": "2026-09-24",
    "need": "sqlite",
    "reason": "sandbox handshake: no initialize result in 120s",
    "ts": 1790214576.4982991,
+   "verdict": "rejected"
+  },
+  "io.github.brainfuel/mcp-browser:1.0.1": {
+   "date": "2026-09-25",
+   "need": "browser automation playwright",
+   "reason": "no local stdio package (pypi/npm); release date unknown",
+   "ts": 1790291869.1934988,
    "verdict": "rejected"
   },
   "io.github.mrfentmen/sqlite-mcp:1.0.0": {
@@ -61,6 +215,13 @@
    "need": "sqlite",
    "reason": "no local stdio package (pypi/npm); release date unknown",
    "ts": 1790214576.4982991,
+   "verdict": "rejected"
+  },
+  "io.github.sadri-dridi/playwright-url-ok:1.0.0": {
+   "date": "2026-09-25",
+   "need": "browser automation playwright",
+   "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); licence unknown; release date unknown",
+   "ts": 1790291869.1934988,
    "verdict": "rejected"
   },
   "io.github.spences10/mcp-sqlite-tools:0.0.11": {

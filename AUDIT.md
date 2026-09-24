@@ -2,35 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1008 | 2026-09-24 01:34:30 | 192d34a1 | 005 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 48s [done] expect='1' last='RESULT: 1' \| T3 PASS 63s [done] expect='0'  |
-| 1009 | 2026-09-24 01:34:30 | 192d34a1 | 005 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 48s [done] expect='1' last='RESULT: 1' \| T3 PASS 63s [done] expect='0'  |
-| 1010 | 2026-09-24 01:34:30 | 192d34a1 | 005 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "005", "status": "active", "verified": "VERIFIED"}} |
-| 1011 | 2026-09-24 01:34:38 | 80275837 | 006 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1012 | 2026-09-24 01:36:01 | 80275837 | 006 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 16s [done] expect='X_OK' last='X_OK' \| T2 PASS 24s [done] expect='2' last='2' \| T3 FAIL 25s [done] expect='0' last='ER |
-| 1013 | 2026-09-24 01:36:01 | 80275837 | 006 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 16s [done] expect='X_OK' last='X_OK' \| T2 PASS 24s [done] expect='2' last='2' \| T3 FAIL 25s [done] expect='0' last='ER |
-| 1014 | 2026-09-24 01:36:01 | 80275837 | 006 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 1015 | 2026-09-24 01:36:01 | 754d191f | 006 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "006", "max_rounds": 2}} |
-| 1016 | 2026-09-24 01:36:01 | 80275837 | 006 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "006", "status": "testing", "verified": "UNVERIFIED"}} |
-| 1017 | 2026-09-24 01:36:09 | 902b8c56 | 007 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1018 | 2026-09-24 01:37:37 | c3c35810 |  | job.cancelled | owner | {} |
-| 1019 | 2026-09-24 01:37:56 | 902b8c56 | 007 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] expect='X_OK' last='X_OK' \| T2 PASS 36s [done] expect='2' last='2' \| T3 FAIL 42s [done] expect='0' last='\u |
-| 1020 | 2026-09-24 01:37:56 | 902b8c56 | 007 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] expect='X_OK' last='X_OK' \| T2 PASS 36s [done] expect='2' last='2' \| T3 FAIL 42s [done] expect='0' last='\u |
-| 1021 | 2026-09-24 01:37:56 | 902b8c56 | 007 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 1022 | 2026-09-24 01:37:56 | 000fb61b | 007 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "007", "max_rounds": 2}} |
-| 1023 | 2026-09-24 01:37:56 | 902b8c56 | 007 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "007", "status": "testing", "verified": "UNVERIFIED"}} |
-| 1024 | 2026-09-24 01:38:04 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1025 | 2026-09-24 01:38:20 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["98 passed in 14.17s"]} |
-| 1026 | 2026-09-24 01:38:20 | 84f90993 | 008 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1027 | 2026-09-24 01:38:44 | c5a39c84 | 001 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
-| 1028 | 2026-09-24 01:38:44 | 6ebf5d8b | 002 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
-| 1029 | 2026-09-24 01:38:44 | c20c2407 | 003 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
-| 1030 | 2026-09-24 01:38:44 | 7ee5ebb8 | 004 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
-| 1031 | 2026-09-24 01:38:44 | 9ce55607 | 005 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
-| 1032 | 2026-09-24 01:38:44 | 29002603 | 006 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
-| 1033 | 2026-09-24 01:38:44 | ff6fe1b9 | 007 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
-| 1034 | 2026-09-24 01:38:44 | 1ddf7b9f | 008 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
-| 1035 | 2026-09-24 01:38:44 | ab3a25c4 | 009 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
-| 1036 | 2026-09-24 01:38:44 | 8b60cad0 | 011 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
 | 1037 | 2026-09-24 01:38:44 | 67703501 | 012 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
 | 1038 | 2026-09-24 01:38:44 | 240be6ff | 013 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
 | 1039 | 2026-09-24 01:38:44 | 356da82f | 014 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
@@ -402,3 +373,32 @@
 | 1405 | 2026-09-25 00:06:49 | 92411237 |  | job.enqueued | owner | {"kind": "tooldisc", "payload": {"need": "browser automation playwright", "max": 1, "day": "2026-09-25"}} |
 | 1406 | 2026-09-25 00:06:49 | 92411237 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1407 | 2026-09-25 00:06:52 | 92411237 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 1408 | 2026-09-25 00:17:27 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1409 | 2026-09-25 00:17:29 | 86969460 |  | job.enqueued | owner | {"kind": "tooldisc", "payload": {"need": "browser automation playwright", "max": 1, "day": "2026-09-25"}} |
+| 1410 | 2026-09-25 00:17:49 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["112 passed in 16.75s"]} |
+| 1411 | 2026-09-25 00:17:49 | 86969460 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1412 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "ai.agentutility/mcp-browser-workflow", "reason": "sandbox handshake: no initialize result in 240s", "need": "browser automation pl |
+| 1413 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "ai.smithery/ImRonAI-mcp-server-browserbase", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio pac |
+| 1414 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "ai.smithery/browserbasehq-mcp-browserbase", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio pack |
+| 1415 | 2026-09-25 00:20:58 | 86969460 |  | tool.discovered | svc-LAPTOP-LRE6PSA8 | {"tool": "app.crawlio/crawlio-browser", "reason": "probation; tools=7 23s", "need": "browser automation playwright"} |
+| 1416 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "co.civai.nova/browsergpt-agent", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/n |
+| 1417 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.browser-use/browser-use", "reason": "61 dependencies > 40", "need": "browser automation playwright"} |
+| 1418 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.browserforest/browser-forest", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi |
+| 1419 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.browserssh/browser-ssh", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); |
+| 1420 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.clauxel.autobrowserapproval/autobrowserapproval-mcp", "reason": "remote-only (hosted; data leaves the machine, lock-in); no lo |
+| 1421 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.clauxel.browserspendguard/browserspendguard-mcp", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local  |
+| 1422 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.mcpbundles/remote-browser", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/np |
+| 1423 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.saasbrowser/saas-browser", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm |
+| 1424 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.stagenth/browser", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); licen |
+| 1425 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "dev.provinglab/browser-citation-capture", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio packag |
+| 1426 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "io.github.DataLeadsPRO/browser-automation", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio pack |
+| 1427 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "io.github.OyadotAI/oya-browser", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/n |
+| 1428 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "io.github.Shreyas-Profile/browser-mcp", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package  |
+| 1429 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "io.github.TeamDev-IP/jxbrowser-mcp", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (py |
+| 1430 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "io.github.brainfuel/mcp-browser", "reason": "no local stdio package (pypi/npm); release date unknown", "need": "browser automation |
+| 1431 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.clauxel.playwrightselectorguard/playwrightselectorguard-mcp", "reason": "remote-only (hosted; data leaves the machine, lock-in |
+| 1432 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.playwrightgen/playwrightgen", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/ |
+| 1433 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.thenextgennexus/playwright-mcp-server", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio pack |
+| 1434 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "io.github.sadri-dridi/playwright-url-ok", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio packag |
+| 1435 | 2026-09-25 00:20:58 | 86969460 |  | owner.needed | svc-LAPTOP-LRE6PSA8 | {"provider": "tools", "reason": "MCP tools on probation for need 'browser automation playwright': ['mcp:crawlio-browser'] \u2014 approve to  |
+| 1436 | 2026-09-25 00:20:58 | 86969460 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": ["mcp:crawlio-browser"]}} |

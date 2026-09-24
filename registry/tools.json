@@ -11,6 +11,19 @@
     "updated": "2026-09-18T17:28:28+00:00",
     "verified": "VERIFIED"
   },
+  "mcp:crawlio-browser": {
+    "id": "mcp:crawlio-browser",
+    "kind": "mcp",
+    "notes": "{\"deps\": 7, \"licence\": \"Apache-2.0\", \"package\": {\"identifier\": \"crawlio-browser\", \"registryType\": \"npm\", \"version\": \"1.11.0\"}, \"registry_name\": \"app.crawlio/crawlio-browser\", \"released\": \"2026-08-10T05:29:47.321Z\", \"repo\": \"https://github.com/Crawlio-app/crawlio-browser\", \"risky_tools\": [\"execute\"], \"sandbox_secs\": 23, \"server\": \"crawlio-browser\", \"stars\": 7, \"tools\": [\"search\", \"execute\", \"observe\", \"get_job_result\", \"list_jobs\", \"cancel_job\", \"connect_tab\"], \"version\": \"1.11.0\"}",
+    "provides": [
+      "browser automation playwright",
+      "write"
+    ],
+    "risk": "high",
+    "scope": "PROBATION \u2014 not attached to any bot; owner approval required to wire into a bot config (SECURITY \u00a76)",
+    "updated": "2026-09-24T23:20:13+00:00",
+    "verified": "INFERRED"
+  },
   "mcp:mcp-sqlite-tools": {
     "id": "mcp:mcp-sqlite-tools",
     "kind": "mcp",
