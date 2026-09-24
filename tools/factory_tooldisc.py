@@ -31,11 +31,13 @@ WIN = os.name == "nt"
 
 def _fetch(url: str, timeout: int = 20) -> dict | None:
     req = urllib.request.Request(url, headers={"User-Agent": "aifactory-tooldisc/1.0", "Accept": "application/json"})
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as r:
-            return json.loads(r.read().decode("utf-8", "replace"))
-    except Exception:
-        return None
+    for attempt in (1, 2):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return json.loads(r.read().decode("utf-8", "replace"))
+        except Exception:
+            if attempt == 1: time.sleep(2)
+    return None
 
 
 def _ledger() -> dict:
@@ -134,36 +136,64 @@ def _clean_env() -> dict:
     return env
 
 
+def _kill_tree(p: subprocess.Popen) -> None:
+    try:
+        if WIN: subprocess.run(["taskkill", "/PID", str(p.pid), "/T", "/F"], capture_output=True, timeout=30)
+        else: p.kill()
+    except Exception: pass
+
+
 def mcp_handshake(cmd: list[str], cwd: str, env: dict, timeout: int = 60) -> dict:
-    """Speak MCP over stdio: initialize → notifications/initialized → tools/list. Returns tool names or the failure."""
+    """Speak MCP over stdio: initialize → notifications/initialized → tools/list. Returns tool names or the failure.
+    Reads stdout on a thread and kills the whole process tree on timeout (npx/uvx spawn the real server as a grandchild
+    that keeps the pipe open — a plain subprocess.run(timeout=) hangs forever there; seen live 2026-09-24)."""
+    import threading
     msgs = [{"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {"protocolVersion": "2025-06-18", "capabilities": {},
                                                                           "clientInfo": {"name": "aifactory-sandbox", "version": "1"}}},
             {"jsonrpc": "2.0", "method": "notifications/initialized"},
             {"jsonrpc": "2.0", "id": 2, "method": "tools/list", "params": {}}]
-    payload = "".join(json.dumps(m) + "\n" for m in msgs)
     try:
-        p = subprocess.run(cmd, input=payload, capture_output=True, text=True, encoding="utf-8", errors="replace",
-                           cwd=cwd, env=env, timeout=timeout)
-        out = p.stdout
-    except subprocess.TimeoutExpired as e:
-        out = (e.stdout or b"").decode("utf-8", "replace") if isinstance(e.stdout, bytes) else (e.stdout or "")
-        if not out.strip(): return {"ok": False, "reason": f"no response in {timeout}s"}
+        p = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=cwd, env=env,
+                             text=True, encoding="utf-8", errors="replace", bufsize=1)
     except Exception as e:
         return {"ok": False, "reason": f"spawn failed: {e!r}"[:200]}
-    tools, server = None, None
-    for line in out.splitlines():
-        line = line.strip()
-        if not line.startswith("{"): continue
-        try: m = json.loads(line)
-        except Exception: continue
-        if m.get("id") == 1: server = ((m.get("result") or {}).get("serverInfo") or {}).get("name")
-        if m.get("id") == 2: tools = [t.get("name") for t in ((m.get("result") or {}).get("tools") or [])]
-    if tools is None:
-        return {"ok": False, "reason": "no tools/list result", "stderr": (p.stderr if 'p' in locals() else "")[-300:]}
+    got: dict = {}; lines: list[str] = []; done = threading.Event()
+
+    def reader():
+        try:
+            for line in p.stdout:
+                line = line.strip(); lines.append(line[:300])
+                if not line.startswith("{"): continue
+                try: m = json.loads(line)
+                except Exception: continue
+                if m.get("id") in (1, 2): got[m["id"]] = m
+                if 2 in got: break
+        finally:
+            done.set()
+    threading.Thread(target=reader, daemon=True).start()
+    try:
+        for m in msgs:
+            p.stdin.write(json.dumps(m) + "\n"); p.stdin.flush()
+            if m.get("id") == 1:                       # give the server a moment to answer initialize before the rest
+                t_end = time.time() + timeout
+                while 1 not in got and time.time() < t_end and not done.is_set(): time.sleep(0.2)
+        t_end = time.time() + timeout
+        while 2 not in got and time.time() < t_end and not done.is_set(): time.sleep(0.2)
+    except Exception as e:
+        got.setdefault("err", repr(e)[:120])
+    finally:
+        _kill_tree(p)
+        try: err = p.stderr.read()[-300:] if p.stderr else ""
+        except Exception: err = ""
+    if 2 not in got:
+        return {"ok": False, "reason": ("no tools/list result" if 1 in got else f"no initialize result in {timeout}s"),
+                "stderr": err, "stdout_tail": lines[-3:]}
+    server = ((got[1].get("result") or {}).get("serverInfo") or {}).get("name") if 1 in got else None
+    tools = [t.get("name") for t in ((got[2].get("result") or {}).get("tools") or [])]
     return {"ok": True, "server": server, "tools": tools}
 
 
-def sandbox(c: dict, timeout: int = 300) -> dict:
+def sandbox(c: dict, timeout: int = 180) -> dict:
     """Throw-away install + handshake with secrets stripped. Laptop only (needs pip/npx). Never touches the factory venv."""
     pk = c["package"]; tmp = tempfile.mkdtemp(prefix="aif-tool-")
     env = _clean_env(); t0 = time.time()
@@ -221,7 +251,7 @@ def run(need: str, max_new: int = 2, dry_run: bool = False, fetch=None, sandboxe
     fetch = fetch or _fetch; sandboxer = sandboxer or sandbox
     known = {t.id for t in reg.all("tools")}
     cands = discover(need, fetch)
-    verdicts, added = [], []
+    verdicts, added = [], []; attempts = 0; t_end = time.time() + 20 * 60
     for c in cands:
         key = f"{c.get('name')}:{c.get('version')}"
         if tool_id(c) in known: verdicts.append((c, "known", "already in registry")); continue
@@ -230,10 +260,11 @@ def run(need: str, max_new: int = 2, dry_run: bool = False, fetch=None, sandboxe
         facts = research(c, fetch)
         v, why = evaluate(c, facts, now)
         if v != "keep": verdicts.append((c, "rejected", "; ".join(why))); continue
-        if len(added) >= max_new: verdicts.append((c, "deferred", "max_new reached")); continue
+        if len(added) >= max_new or attempts >= 2 * max_new or time.time() > t_end:
+            verdicts.append((c, "deferred", "budget reached (max_new / attempts / 20 min)")); continue
         if not (WIN or sandboxer is not sandbox):
             verdicts.append((c, "deferred", "sandbox runs on the laptop only")); continue
-        hs = sandboxer(c)
+        attempts += 1; hs = sandboxer(c)
         if not hs.get("ok"): verdicts.append((c, "rejected", f"sandbox {hs.get('stage')}: {hs.get('reason', '')[:120]}")); continue
         verdicts.append((c, "approved", f"probation; tools={len(hs.get('tools', []))} {hs.get('secs')}s"))
         if not dry_run: added.append(integrate(reg, c, facts, hs, need).id)

@@ -894,4 +894,7 @@ def test_d108_tool_discovery_rules_and_probation(tmp_path, monkeypatch):
     fake = tmp_path / "fake_mcp.py"; fake.write_text("import sys,json\nfor line in sys.stdin:\n    m=json.loads(line)\n    if m.get('id')==1: print(json.dumps({'jsonrpc':'2.0','id':1,'result':{'serverInfo':{'name':'fake'}}}),flush=True)\n    if m.get('id')==2: print(json.dumps({'jsonrpc':'2.0','id':2,'result':{'tools':[{'name':'ping'}]}}),flush=True)\n")
     hs = td.mcp_handshake([sys.executable, str(fake)], str(tmp_path), td._clean_env(), timeout=20)
     assert hs == {"ok": True, "server": "fake", "tools": ["ping"]}
+    mute = tmp_path / "mute.py"; mute.write_text("import time\ntime.sleep(600)\n")
+    t0 = time.time(); hs2 = td.mcp_handshake([sys.executable, str(mute)], str(tmp_path), td._clean_env(), timeout=2)
+    assert not hs2["ok"] and "no initialize result" in hs2["reason"] and time.time() - t0 < 15   # tree killed, no hang
     assert not any("KEY" in k for k in td._clean_env())
