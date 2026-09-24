@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 964 | 2026-09-24 01:28:52 | aa0b21ba |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 965 | 2026-09-24 01:28:52 | aa0b21ba |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 966 | 2026-09-24 01:28:58 | bc494d29 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 967 | 2026-09-24 01:28:58 | c5a39c84 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
 | 968 | 2026-09-24 01:28:58 | 6ebf5d8b | 002 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "002", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
 | 969 | 2026-09-24 01:28:58 | c20c2407 | 003 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "003", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
@@ -402,3 +399,6 @@
 | 1361 | 2026-09-24 22:30:49 | 541f6f6e |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 1362 | 2026-09-24 22:30:55 | d350d0ae |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1363 | 2026-09-24 22:30:55 | d350d0ae |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 1364 | 2026-09-24 22:30:59 | 3fe01ea5 | 018 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1365 | 2026-09-24 22:31:16 | 3fe01ea5 | 018 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"ok": true, "produced": ["totals.csv"], "secs": 14, "reply": "RESULT: SUCCESS", "chain": "groq-gptoss120b"} |
+| 1366 | 2026-09-24 22:31:16 | 3fe01ea5 | 018 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "name": "run", "status": "ok totals.csv"}} |
