@@ -539,3 +539,11 @@ Post-wake sweep demoted master 001 on 5/7: T2 `report` timed out at 241 s (cold 
 T6 failed only because the master paraphrased `cron=` into a unicode dash while the command itself ran (cmd=True).
 `run_master_tests` now reports `timeouts`; `cmd_test("001")` applies the D-075 rule (all misses timeouts ⇒
 inconclusive, retest in 2 h, no demotion). T6 expects any cron field (`* *`).
+
+## D-103 — Live chain top-up when a bot's policy lanes are gone (2026-09-24) — VERIFIED (unit)
+Overnight OpenRouter removed ling-30-flash ("gone" → BLOCKED) and gemini-flash36/38 went BLOCKED; bots whose policy was
+built around them collapsed onto the local 3B tail, failed edge-case tests (006/007 "expect 0") and were sent to
+instruction repair — the wrong fix for a lane problem. `resolve_chain` now tops the live chain up to 2 healthy remote
+lanes from the registry's current best (bench pass-rate → tool-call score; BLOCKED, cooled, no_tool_call and weak
+lanes excluded). Runtime routing only: the spec's `model_policy` stays frozen; `factory_chain` reports
+`source=live+topup:<lanes>` so every test/run records that it happened.

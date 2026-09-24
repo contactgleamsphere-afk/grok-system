@@ -787,3 +787,23 @@ def test_d102_master_timeouts_are_inconclusive(tmp_path, monkeypatch):
     # timeout parsing from the script's evidence line
     import re
     assert len(re.findall(r"T\d+ FAIL \d+s \[TIMEOUT\]", ev)) == 1
+
+
+def test_d103_chain_tops_up_when_policy_lanes_retired(tmp_path, monkeypatch):
+    """D-103: when a bot's policy lanes are BLOCKED/cooled, the live chain is topped up to 2 healthy remote lanes from the
+    registry's best (bench-ranked, weak excluded) before the local tail — the spec's policy is not modified."""
+    reg, fb, fp = _reg(tmp_path, monkeypatch)
+    from factory.factory import BotFactory
+    from factory.registry import ModelEntry
+    mk = lambda i, **kw: ModelEntry(id=i, provider="openrouter", model=i, capabilities=["chat", "tools"], context_window=32000, location="remote", verified="VERIFIED", **kw)
+    reg.upsert("models", mk("or-gone", tool_call_score=0.9)); e = reg.get("models", "or-gone"); e.verified = "BLOCKED"; reg.upsert("models", e)
+    reg.upsert("models", mk("or-weak", tool_call_score=0.95)); e = reg.get("models", "or-weak"); e.limits = {"bench": {"pass": 2, "total": 8}}; reg.upsert("models", e)
+    e = reg.get("models", "or-c"); e.limits = {"bench": {"pass": 4, "total": 4}}; reg.upsert("models", e)
+    e = reg.get("models", "gemini-b"); e.limits = {"health": {"quota_until": time.time() + 600}}; reg.upsert("models", e)
+    f = BotFactory(reg, tmp_path / "bots")
+    policy = {"primary": "or-gone", "fallbacks": ["gemini-b"]}
+    chain = f.resolve_chain(policy)
+    assert chain == ["or-c", "groq-a", "local3b"], chain              # topped up: best bench first, then by score; weak + cooled + blocked excluded
+    assert f.last_topup == ["or-c", "groq-a"] and policy == {"primary": "or-gone", "fallbacks": ["gemini-b"]}
+    chain2 = f.resolve_chain({"primary": "groq-a", "fallbacks": ["or-c"]})
+    assert chain2 == ["groq-a", "or-c", "local3b"] and f.last_topup == []   # healthy policy: untouched

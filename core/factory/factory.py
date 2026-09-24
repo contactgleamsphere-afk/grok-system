@@ -146,10 +146,12 @@ class BotFactory:
         return entry
 
     # ---------- helpers ----------
+    MIN_REMOTE = 2                      # D-103
+
     def resolve_chain(self, model_policy: dict[str, Any]) -> list[str]:
         """primary + fallbacks, dropping BLOCKED models, always ending in a local model if one exists."""
         models = {m.id: m for m in self.registry.all("models")}
-        chain: list[str] = []
+        chain: list[str] = []; self.last_topup: list[str] = []
         import time as _t
         now = _t.time()
         for mid in [model_policy["primary"], *model_policy.get("fallbacks", [])]:
@@ -159,6 +161,25 @@ class BotFactory:
             if float((m.limits or {}).get("health", {}).get("quota_until", 0) or 0) > now:   # D-037: quota-cooled lane
                 continue
             chain.append(mid)
+        # D-103: a policy whose remote lanes have all been retired/cooled must not collapse onto the local tail (weak)
+        # and then be "repaired" for a lane problem. Top up to MIN_REMOTE healthy remote lanes from the registry's
+        # current best (bench pass-rate, then tool-call score; weak lanes <50% over >=8 tests excluded). Runtime routing
+        # only — the spec's model_policy is untouched (frozen field, D-029); factory_chain reports source "live+topup".
+        remote = [c for c in chain if models[c].location == "remote"]
+        if len(remote) < self.MIN_REMOTE:
+            def _rank(m):
+                b = (m.limits or {}).get("bench") or {}
+                rate = (b["pass"] / b["total"]) if b.get("total") else None
+                return (0 if rate is not None else 1, -(rate or 0), -(m.tool_call_score or 0))
+            cands = [m for m in models.values() if m.location == "remote" and m.verified != "BLOCKED" and m.id not in chain
+                     and "tools" in (m.capabilities or [])
+                     and float((m.limits or {}).get("health", {}).get("quota_until", 0) or 0) <= now
+                     and (m.limits or {}).get("health", {}).get("last_outcome") not in ("no_tool_call", "gone", "error")]
+            cands = [m for m in cands if not (((m.limits or {}).get("bench") or {}).get("total", 0) >= 8
+                                              and (m.limits["bench"]["pass"] / m.limits["bench"]["total"]) < 0.5)]
+            cands.sort(key=_rank)
+            for m in cands[: self.MIN_REMOTE - len(remote)]:
+                chain.append(m.id); self.last_topup.append(m.id)
         if not any(models[c].location == "local" for c in chain):
             local = sorted((m for m in models.values() if m.location == "local" and m.verified != "BLOCKED"),
                            key=lambda m: -(m.tool_call_score or 0))

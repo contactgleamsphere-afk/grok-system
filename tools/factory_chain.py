@@ -16,8 +16,9 @@ def live_chain(bot_dir: pathlib.Path) -> dict:
     try:
         from factory.registry import Registry
         from factory.factory import BotFactory
-        chain = BotFactory(Registry(ROOT / "registry"), bot_dir.parent).resolve_chain(spec["model_policy"])
-        src = "live"
+        f = BotFactory(Registry(ROOT / "registry"), bot_dir.parent)
+        chain = f.resolve_chain(spec["model_policy"])
+        src = "live+topup:" + ",".join(f.last_topup) if getattr(f, "last_topup", None) else "live"   # D-103
     except Exception:
         chain, src = frozen, "frozen"
     if not chain:
