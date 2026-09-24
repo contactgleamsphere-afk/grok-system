@@ -2,12 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 662 | 2026-09-22 21:17:57 | 096d9bb8 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 663 | 2026-09-22 21:17:57 | f462fb6b |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-22T22"}} |
-| 664 | 2026-09-22 21:18:00 | 615d5d9f |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "openrouter", "day": "2026-09-22", "trigger": "healthy=0"}} |
-| 665 | 2026-09-22 21:18:00 | aeb98a0c |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "cerebras", "day": "2026-09-22", "trigger": "healthy=0"}} |
-| 666 | 2026-09-22 21:18:00 | 9e271e81 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-09-22", "trigger": "healthy=0"}} |
-| 667 | 2026-09-22 21:18:00 | 72cfc51f |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-09-22", "trigger": "healthy=0"}} |
 | 668 | 2026-09-22 21:18:00 | 096d9bb8 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["local3b", "local4b"], "changed": []}} |
 | 669 | 2026-09-22 21:18:15 | 615d5d9f |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 670 | 2026-09-22 21:18:15 | 615d5d9f |  | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 1, "error": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>\no |
@@ -402,3 +396,9 @@
 | 1059 | 2026-09-24 01:41:51 |  |  | worker.blocked_by_tests | fast-LAPTOP-LRE6PSA8 | {"reason": "core/tests red on current code; refusing to process jobs until code changes"} |
 | 1060 | 2026-09-24 01:43:02 | faef1fd6 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-nemotron-35-lightning", "result": "2/4", "quota": 0, "secs": 564} |
 | 1061 | 2026-09-24 01:43:03 | faef1fd6 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["or-nemotron-35-lightning", "2/4"]]}} |
+| 1062 | 2026-09-24 01:43:07 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1063 | 2026-09-24 01:43:25 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["100 passed in 13.98s"]} |
+| 1064 | 2026-09-24 01:43:25 | 754d191f | 006 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1065 | 2026-09-24 01:46:36 | 754d191f | 006 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": "4/4", "rejected": null}], "boundary_ |
+| 1066 | 2026-09-24 01:46:36 | 754d191f | 006 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 1067 | 2026-09-24 01:46:36 | 754d191f | 006 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "006", "name": "json-to-markdown-table", "status": "active", "verified": "VERIFIED"}} |

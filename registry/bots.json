@@ -217,16 +217,14 @@
     "model_policy": {
       "fallbacks": [
         "gemini-flash",
-        "gemini-flash38",
         "groq-gptoss20b",
-        "or-deepseek",
         "gemini-lite",
         "local4b"
       ],
       "primary": "groq-gptoss120b"
     },
     "name": "json-to-markdown-table",
-    "notes": "tests 3/4: T1 PASS 16s [done] expect='X_OK' last='X_OK' | T2 PASS 24s [done] expect='2' last='2' | T3 FAIL 25s [done] expect='0' last='ERROR' | T4 PASS 14s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: repair round 1 via groq:openai/gpt-oss-20b: T1 PASS 13s [done] expect='X_OK' last='X_OK' | T2 PASS 50s [done] expect='2' last='2' | T3 PASS 47s [done] expect='0' last='0' | T4 PASS 15s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -234,12 +232,12 @@
     "purpose": "Convert a JSON array in records.json to a Markdown table in table.md and report the number of data rows written.",
     "schedules": [],
     "seal": {
-      "AGENTS.md": "f7dcba14ae5d9b3cc3fe7fd6",
-      "SOUL.md": "6d60bf5e902aa91835d5ba91",
-      "bot.json": "1f03e9a5c2a47b001beb80c0",
-      "nanobot.patch.json": "9e4d44e1733f99735356e73c"
+      "AGENTS.md": "cbf477ea624b62505e54d305",
+      "SOUL.md": "4225d454114aa230861f283a",
+      "bot.json": "67acf3c5d40b71f22721774d",
+      "nanobot.patch.json": "60e775a6eb6c329e38763277"
     },
-    "status": "testing",
+    "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write records.json containing [{\"name\":\"Alice\",\"age\":30},{\"name\":\"Bob\",\"age\":25}] then run the conversion -> 2",
@@ -250,8 +248,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-24T00:36:01+00:00",
-    "verified": "UNVERIFIED",
+    "updated": "2026-09-24T00:46:36+00:00",
+    "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\006-json-to-markdown-table"
   },
