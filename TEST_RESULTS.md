@@ -366,3 +366,14 @@ Chat → job fbeb65ad → bot 018 (4/4) → auto run ca31fcf3 → totals.csv cor
 - Found & fixed from the evidence: (a) D-101 git race — an unlocked out-of-band repo-sync during the worker's rebase hard-reset away the 002 demotion commit (reflog 4f563a4); (b) D-101 duplicate nightly sweep (catch-up task + report handler) → 23 duplicate tests cancelled; (c) D-102 master demoted on a 241 s timeout + a paraphrased `cron=`; (d) D-103 chains collapsing to local when policy lanes are retired (or-ling "gone", flash36/38 BLOCKED overnight).
 - Discovery loop reacted to the BLOCKED lanes on its own: `lane.discovered` or-ling-30-flash-sante / -fin, presets added, bench queued (01:24).
 - Laptop self-test: 100 passed (01:43).
+
+## 2026-09-24 02:10 — autonomous repair loop, live (laptop, no human input) — VERIFIED
+| bot | demoted | cause | repair | promoted |
+|---|---|---|---|---|
+| 006 | 01:36 | T3 expect 0 genuine FAIL | round 1 groq gpt-oss-20b, sandbox 4/4, boundary diff {} | 01:46 |
+| 007 | 01:37 | T3 FAIL | D-059 re-verify passed, no rewrite (rounds []) | 01:51 |
+| 014 | 02:01 | T3/T4 FAIL (wrote file instead of replying; empty reply) | round 1 gpt-oss-20b 3/4 → round 2 rotated to gemini-3.1-flash-lite 4/4 (D-056) | 02:08 |
+| 001 (master) | 01:28 (pre-D-102) | T2/T6 timeouts under rate-limit | retest 02:03: 7/7 PASS with `* *` matcher | active |
+Audit chain: `audit-verify` ok on 319 hashed rows; tamper drill (1 char in a copy) → `first_bad seq 1069 "row altered"`.
+Tunnel rotated 02:02 (quick-tunnel URL changed); laptop republished `run/tunnel.txt` itself; SSH back within 2 min.
+Selftest laptop: 101 passed (D-105 included).
