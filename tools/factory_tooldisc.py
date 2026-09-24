@@ -21,6 +21,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "core"))
 from factory.registry import Registry, ToolEntry   # noqa: E402
 
 MCP_REG = "https://registry.modelcontextprotocol.io/v0.1/servers"
+POLICY_BLOCK = re.compile(r"stealth|anti-?detect|undetect|bypass|captcha[- ]?solv|fingerprint spoof|evade|evasion", re.I)
 STOPWORDS = {"the", "and", "for", "with", "server", "mcp", "tool", "tools", "automation", "access", "via", "using", "from", "into"}
 PERMISSIVE = ("MIT", "APACHE", "BSD", "ISC", "MPL", "UNLICENSE", "0BSD", "CC0")
 RECENT_DAYS = 365
@@ -79,6 +80,10 @@ def discover(need: str, fetch=None, limit: int = 30) -> list[dict]:
                     "description": (v.get("description") or "")[:200], "repo": (v.get("repository") or {}).get("url"),
                     "package": pk, "remote_only": not pk and bool(v.get("remotes")),
                     "status": meta.get("status"), "updated": meta.get("updatedAt")})
+    # Rank by how many of the need's keywords the name/description mention (stable: registry order within a tie), so
+    # "browser automation playwright" evaluates playwright servers before generic browser bridges.
+    def hits(c): t = f"{c['name']} {c['title']} {c['description']}".lower(); return sum(w in t for w in words)
+    out.sort(key=lambda c: -hits(c))
     return out
 
 
@@ -127,6 +132,8 @@ def _days_since(iso: str | None, now: float) -> float | None:
 def evaluate(c: dict, facts: dict, now: float | None = None) -> tuple[str, list[str]]:
     """'keep' or 'rejected' with reasons. Evidence rules; stars are recorded but never decide."""
     now = now or time.time(); why = []
+    text = f"{c.get('name', '')} {c.get('title', '')} {c.get('description', '')}".lower()
+    if POLICY_BLOCK.search(text): why.append("policy: anti-detection / bypass tooling (contract: never evade ToS, rate limits or identity checks)")
     if c.get("remote_only"): why.append("remote-only (hosted; data leaves the machine, lock-in)")
     if not c.get("package"): why.append("no local stdio package (pypi/npm)")
     if c.get("status") not in (None, "active"): why.append(f"registry status {c.get('status')}")

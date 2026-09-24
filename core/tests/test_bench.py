@@ -1139,4 +1139,11 @@ def test_d120_tooldisc_multiword_need_queries_each_keyword():
     qs = [urllib.parse.unquote(u.split("search=")[1].split("&")[0]) for u in calls]
     assert qs[0] == "browser automation playwright" and set(qs[1:]) == {"browser", "playwright"}
     assert [c["name"] for c in out] == ["io.github.microsoft/playwright-mcp", "com.x/browser"]
-    assert out[0]["package"]["identifier"] == "@playwright/mcp"          # first sighting (with the npm package) wins
+    assert out[0]["package"]["identifier"] == "@playwright/mcp"          # the sighting that lists the npm package wins
+    # policy: anti-detection tooling is rejected before any sandboxing
+    v, why = td.evaluate({"name": "com.x/playwright-stealth", "title": "", "description": "undetectable browser", "package": {"registryType": "npm"}},
+                         {"licence": "MIT", "released": "2026-09-01T00:00:00Z", "deps": 3})
+    assert v == "rejected" and any("policy" in w for w in why)
+    v2, _ = td.evaluate({"name": "io.github.microsoft/playwright-mcp", "title": "Playwright Tools for MCP", "description": "", "package": {"registryType": "npm"}},
+                        {"licence": "Apache-2.0", "released": "2026-09-01T00:00:00Z", "deps": 3})
+    assert v2 == "keep"
