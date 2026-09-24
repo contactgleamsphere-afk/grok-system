@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 975 | 2026-09-24 01:28:58 | ab3a25c4 | 009 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "009", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
-| 976 | 2026-09-24 01:28:58 | 8b60cad0 | 011 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "011", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
-| 977 | 2026-09-24 01:28:58 | 67703501 | 012 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "012", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
 | 978 | 2026-09-24 01:28:58 | 240be6ff | 013 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "013", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
 | 979 | 2026-09-24 01:28:58 | 356da82f | 014 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "014", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
 | 980 | 2026-09-24 01:28:58 | 34c93c2f | 016 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "016", "monitor_of": "bc494d298add4d7a90181803429c5b8a", "day": "2026-09-24"}} |
@@ -402,3 +399,6 @@
 | 1372 | 2026-09-24 23:29:45 | 7946d979 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1373 | 2026-09-24 23:29:47 | 14d4a04c |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-25T00"}} |
 | 1374 | 2026-09-24 23:29:47 | 7946d979 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 1375 | 2026-09-24 23:30:14 | d0196af8 |  | probe.network_down | fast-LAPTOP-LRE6PSA8 | {"detail": "all 17 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
+| 1376 | 2026-09-24 23:30:14 | d332609a |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-24T23-retry", "retry_of": "d0196af899a64a7c82dcf8611b40362e"}} |
+| 1377 | 2026-09-24 23:30:14 | d0196af8 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
