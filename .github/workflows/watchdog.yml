@@ -1,0 +1,47 @@
+name: laptop-watchdog
+# D-119: an observer that does NOT live on the laptop. The laptop pushes a state commit after every job and at least
+# hourly (tick). If main has had no laptop commit for > 2 h, open (or update) ONE issue — GitHub e-mails the owner —
+# and close it automatically when the laptop is back. Free tier, same account, no secrets beyond GITHUB_TOKEN.
+on:
+  schedule: [{ cron: "*/30 * * * *" }]
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 200 }
+      - name: evaluate laptop heartbeat
+        id: hb
+        run: |
+          last=$(git log -1 --format=%ct --grep='^state: ' --grep='^tunnel: ' main)
+          now=$(date +%s); age=$(( (now - ${last:-0}) / 60 ))
+          echo "age_min=$age" >> "$GITHUB_OUTPUT"
+          echo "last=$(git log -1 --format='%cI %s' --grep='^state: ' --grep='^tunnel: ' main)" >> "$GITHUB_OUTPUT"
+          echo "laptop heartbeat age: $age min"
+      - name: open/update or close the outage issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          AGE: ${{ steps.hb.outputs.age_min }}
+          LAST: ${{ steps.hb.outputs.last }}
+        run: |
+          set -e
+          open=$(gh issue list --repo "$GITHUB_REPOSITORY" --label laptop-offline --state open --json number --jq '.[0].number // empty')
+          if [ "$AGE" -gt 120 ]; then
+            body="No state/tunnel commit from the laptop for ${AGE} min (last: ${LAST}).
+
+**Likely cause:** laptop asleep, lid closed, or Wi-Fi down. **Action (physical):** wake it / reconnect; the tunnel supervisor and worker recover on their own.
+Checked by the laptop-watchdog workflow every 30 min; this issue closes itself when commits resume."
+            if [ -z "$open" ]; then
+              gh label create laptop-offline --repo "$GITHUB_REPOSITORY" --color B60205 --description "laptop heartbeat missing" 2>/dev/null || true
+              gh issue create --repo "$GITHUB_REPOSITORY" --title "Laptop offline: no factory heartbeat for ${AGE} min" --label laptop-offline --body "$body"
+            else
+              gh issue comment "$open" --repo "$GITHUB_REPOSITORY" --body "Still offline: ${AGE} min (last: ${LAST})."
+            fi
+          elif [ -n "$open" ]; then
+            gh issue close "$open" --repo "$GITHUB_REPOSITORY" --comment "Laptop is back: heartbeat ${AGE} min ago (${LAST})."
+          fi
