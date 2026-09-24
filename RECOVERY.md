@@ -42,7 +42,7 @@ Pre-warm the local model before any test that may fall back to it (prevents the 
 ## Tunnel hostname rotated (seen 2026-09-22 03:26)
 Symptom from the builder side: `dial tcp: lookup <old>.trycloudflare.com: no such host` then `websocket: bad handshake` for ~2-3 min.
 Cause: cloudflared quick tunnels rotate on reconnect. The tunnel supervisor republishes `run/tunnel.txt` to GitHub; `~/bin/laptop` reads it before every connect.
-Action: none — retry after 60 s. If it persists >10 min, the laptop is asleep/offline (task AIFactory-Tunnel runs as SYSTEM at boot).
+Action: none — retry after 60 s. If it persists >10 min, the laptop is asleep/offline (task AIFactory-Tunnel runs as SYSTEM at boot). `C:\AI\Factory\tools\tunnel-supervisor.ps1` is a shim to `repo\scripts\windows\tunnel-supervisor.ps1` (D-116b: HTTPS reachability test, 300 s cap). Backstop: the hourly `tick` restarts the task if the URL answers 530 and no supervisor is alive (D-116, audit `tunnel.restarted`). Restarting the task by hand: `schtasks /End /TN AIFactory-Tunnel; schtasks /Run /TN AIFactory-Tunnel` (run `/Run` directly, not via Start-Process).
 
 ## Nightly monitor did not run
 Check `Get-ScheduledTaskInfo 'AIFactory Monitor'` (LastRunTime) and `factory_worker.py jobs | Select-String monitor`.
