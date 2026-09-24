@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 657 | 2026-09-22 20:33:20 | 349607da | 004 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 658 | 2026-09-22 20:43:26 | 349607da |  | job.lease_expired | fast-LAPTOP-LRE6PSA8 | {} |
-| 659 | 2026-09-22 20:43:26 | fd8c14fb |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 660 | 2026-09-22 20:43:26 | 60e46601 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-22T21"}} |
-| 661 | 2026-09-22 20:43:26 | fd8c14fb |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 662 | 2026-09-22 21:17:57 | 096d9bb8 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 663 | 2026-09-22 21:17:57 | f462fb6b |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-22T22"}} |
 | 664 | 2026-09-22 21:18:00 | 615d5d9f |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "openrouter", "day": "2026-09-22", "trigger": "healthy=0"}} |
@@ -402,3 +397,8 @@
 | 1054 | 2026-09-24 01:41:40 | d67880ac | 009 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='RESULT: X_OK' \| T2 PASS 54s [done] expect='3' last='RESULT: 3' \| T3 PASS 43s [done] exp |
 | 1055 | 2026-09-24 01:41:40 | d67880ac | 009 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='RESULT: X_OK' \| T2 PASS 54s [done] expect='3' last='RESULT: 3' \| T3 PASS 43s [done] exp |
 | 1056 | 2026-09-24 01:41:40 | d67880ac | 009 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "009", "status": "active", "verified": "VERIFIED"}} |
+| 1057 | 2026-09-24 01:41:48 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1058 | 2026-09-24 01:41:51 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": false, "tail": ["."]} |
+| 1059 | 2026-09-24 01:41:51 |  |  | worker.blocked_by_tests | fast-LAPTOP-LRE6PSA8 | {"reason": "core/tests red on current code; refusing to process jobs until code changes"} |
+| 1060 | 2026-09-24 01:43:02 | faef1fd6 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-nemotron-35-lightning", "result": "2/4", "quota": 0, "secs": 564} |
+| 1061 | 2026-09-24 01:43:03 | faef1fd6 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["or-nemotron-35-lightning", "2/4"]]}} |
