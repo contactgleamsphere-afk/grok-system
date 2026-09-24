@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1005 | 2026-09-24 01:33:32 | ad7a13c3 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-ling-30-flash-fin", "result": "4/4", "quota": 0, "secs": 100} |
-| 1006 | 2026-09-24 01:33:32 | ad7a13c3 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["or-ling-30-flash-sante", "4/4"], ["or-ling-30-flash-fin", "4/4"]]}} |
-| 1007 | 2026-09-24 01:33:37 | faef1fd6 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1008 | 2026-09-24 01:34:30 | 192d34a1 | 005 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 48s [done] expect='1' last='RESULT: 1' \| T3 PASS 63s [done] expect='0'  |
 | 1009 | 2026-09-24 01:34:30 | 192d34a1 | 005 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 48s [done] expect='1' last='RESULT: 1' \| T3 PASS 63s [done] expect='0'  |
 | 1010 | 2026-09-24 01:34:30 | 192d34a1 | 005 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "005", "status": "active", "verified": "VERIFIED"}} |
@@ -402,3 +399,6 @@
 | 1402 | 2026-09-24 23:59:13 | ff48e3c4 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1403 | 2026-09-25 00:02:14 | ff48e3c4 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-flash", "result": "2/4", "quota": 0, "secs": 180} |
 | 1404 | 2026-09-25 00:02:15 | ff48e3c4 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["gemini-flash", "2/4"]]}} |
+| 1405 | 2026-09-25 00:06:49 | 92411237 |  | job.enqueued | owner | {"kind": "tooldisc", "payload": {"need": "browser automation playwright", "max": 1, "day": "2026-09-25"}} |
+| 1406 | 2026-09-25 00:06:49 | 92411237 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1407 | 2026-09-25 00:06:52 | 92411237 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
