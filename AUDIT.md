@@ -2,14 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 844 | 2026-09-22 23:58:49 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 845 | 2026-09-22 23:59:01 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["93 passed in 9.94s"]} |
-| 846 | 2026-09-22 23:59:01 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["93 passed in 8.76s"]} |
-| 847 | 2026-09-22 23:59:31 | 40a753dd |  | job.resumed | builder | {} |
-| 848 | 2026-09-22 23:59:31 | 40a753dd |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 849 | 2026-09-23 00:00:45 | 40a753dd | 022 | bot.ran | fast-LAPTOP-LRE6PSA8 | {"plan": "593061c9", "step": 1, "ok": true, "produced": ["refunded.csv"], "missing": [], "secs": 11, "reply": "RESULT: success", "chain": "g |
-| 850 | 2026-09-23 00:00:45 | 40a753dd | 023 | bot.ran | fast-LAPTOP-LRE6PSA8 | {"plan": "593061c9", "step": 2, "ok": true, "produced": ["summary.txt"], "missing": [], "secs": 12, "reply": "RESULT: 39.5", "chain": "groq- |
-| 851 | 2026-09-23 00:00:45 | 40a753dd | 025 | bot.ran | fast-LAPTOP-LRE6PSA8 | {"plan": "593061c9", "step": 3, "ok": true, "produced": ["summary_upper.txt"], "missing": [], "secs": 48, "reply": "RESULT: 39.5", "chain":  |
 | 852 | 2026-09-23 00:00:45 | 40a753dd |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"name": "run:plan 593061c9", "status": "ok orders.csv,refunded.csv,summary.txt,summary_upper.txt"}} |
 | 853 | 2026-09-23 00:46:16 | 6349a92d |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 854 | 2026-09-23 00:46:16 | 4f65b755 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +394,11 @@
 | 1241 | 2026-09-24 04:00:09 | 31f4e431 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1242 | 2026-09-24 04:02:32 | 31f4e431 | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 27s [done] report expect='FACTORY' cmd=True \| T3 PASS 22s [d |
 | 1243 | 2026-09-24 04:02:32 | 31f4e431 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 8, "total": 8, "status": "active", "verified": "VERIFIED"}} |
+| 1244 | 2026-09-24 04:07:28 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1245 | 2026-09-24 04:07:30 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1246 | 2026-09-24 04:07:46 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["108 passed in 16.10s"]} |
+| 1247 | 2026-09-24 04:07:48 | 865f4e25 |  | job.enqueued | owner | {"kind": "discover", "payload": {"provider": "groq", "day": "2026-09-24", "trigger": "manual"}} |
+| 1248 | 2026-09-24 04:07:48 | 2d873e41 |  | job.enqueued | owner | {"kind": "discover", "payload": {"provider": "gemini", "day": "2026-09-24", "trigger": "manual"}} |
+| 1249 | 2026-09-24 04:07:49 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["108 passed in 14.96s"]} |
+| 1250 | 2026-09-24 04:07:49 | 865f4e25 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1251 | 2026-09-24 04:07:50 | 865f4e25 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
