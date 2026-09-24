@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 672 | 2026-09-22 21:18:16 | aeb98a0c |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 673 | 2026-09-22 21:18:17 | 9e271e81 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 674 | 2026-09-22 21:18:17 | 9e271e81 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 675 | 2026-09-22 21:18:17 | 72cfc51f |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 676 | 2026-09-22 21:18:17 | 72cfc51f |  | owner.needed | fast-LAPTOP-LRE6PSA8 | {"provider": "mistral", "reason": "set MISTRAL_API_KEY (User env) after signing up: https://console.mistral.ai (Experiment free tier)"} |
 | 677 | 2026-09-22 21:18:17 | 72cfc51f |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 678 | 2026-09-22 21:19:42 | 615d5d9f |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 2} |
@@ -402,3 +398,7 @@
 | 1069 | 2026-09-24 01:51:44 | 000fb61b | 007 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
 | 1070 | 2026-09-24 01:51:44 | 000fb61b | 007 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 1071 | 2026-09-24 01:51:44 | 000fb61b | 007 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "007", "status": "active"}} |
+| 1072 | 2026-09-24 01:51:49 | b31aa10e | 011 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1073 | 2026-09-24 01:55:19 | b31aa10e | 011 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 81s [done] expect='2' last='2' \| T3 PASS 74s [done] expect='3' last='3' |
+| 1074 | 2026-09-24 01:55:19 | b31aa10e | 011 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 81s [done] expect='2' last='2' \| T3 PASS 74s [done] expect='3' last='3' |
+| 1075 | 2026-09-24 01:55:19 | b31aa10e | 011 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "011", "status": "active", "verified": "VERIFIED"}} |
