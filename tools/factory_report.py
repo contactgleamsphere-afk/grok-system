@@ -28,6 +28,10 @@ def build() -> dict:
             for k, v in json.loads(led.read_text(encoding="utf-8")).get("verdicts", {}).items():   # D-069: was reading the wrong level
                 if v.get("verdict") == "needs_owner": owner.append(f"ACTION REQUIRED (owner): {k} — {v.get('reason', '')[:140]}")
         except Exception: pass
+    prob = sorted(t.id for t in reg.all("tools") if t.kind == "mcp" and "PROBATION" in (t.scope or ""))   # D-108/D-110
+    if prob:
+        owner.append(f"DECISION (owner): {len(prob)} MCP server(s) sandbox-verified, on probation: {', '.join(prob)} — "
+                     f"`factory_worker.py approve-tool <id>` to make them grantable to bots, or leave them (nothing uses them)")
     st = ROOT / "run" / "selftest.json"          # D-074
     try:
         stj = json.loads(st.read_text(encoding="utf-8"))
