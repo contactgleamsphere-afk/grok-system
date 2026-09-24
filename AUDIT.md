@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1045 | 2026-09-24 01:38:44 | 764e7481 | 021 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
-| 1046 | 2026-09-24 01:38:44 | 58a57670 | 022 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
-| 1047 | 2026-09-24 01:38:44 | 6a5c5393 | 023 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
 | 1048 | 2026-09-24 01:38:44 | a735d64e | 024 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
 | 1049 | 2026-09-24 01:38:44 | 356d0905 | 025 | job.cancelled | builder | {"reason": "duplicate nightly sweep (D-101)"} |
 | 1050 | 2026-09-24 01:39:31 | 84f90993 | 008 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 15s [done] expect='apple' last='RESULT: apple' \| T3 PASS 26s [done] exp |
@@ -402,3 +399,6 @@
 | 1442 | 2026-09-25 00:29:16 | 50cb8d24 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1443 | 2026-09-25 00:29:16 | e7744308 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-25T01"}} |
 | 1444 | 2026-09-25 00:29:51 | 50cb8d24 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-l |
+| 1445 | 2026-09-25 00:29:56 | 14d4a04c |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1446 | 2026-09-25 00:29:56 | 190e3258 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-25T01"}} |
+| 1447 | 2026-09-25 00:29:56 | 14d4a04c |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
