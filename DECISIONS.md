@@ -565,7 +565,7 @@ the nanobot config banner, under `timeouts` (availability) and prints `AVAILERR`
 makes an all-availability miss inconclusive (status untouched) instead of demoting and "repairing" a bot whose lane
 was down (014 T4, 02:01). Lane health itself is handled by probe → BLOCKED → D-103 top-up → D-105 canary.
 
-## D-107 — Phase 5 memory MVP: factory-written run memory (2026-09-24) — VERIFIED (unit)
+## D-107 — Phase 5 memory MVP: factory-written run memory (2026-09-24) — VERIFIED (unit + live: 012 run 02:20, total.txt=21, memory line written on lane gemini-gemma26b)
 After every real `run`, the factory (not the model) appends one factual line to the bundle's `memory/MEMORY.md`
 (time, task, outcome ok/quota/failed, produced files, lane), bounded to the 12 newest lines (~400 tokens; nanobot
 loads the file into every context, D-035 budget). Tests never write memory. MEMORY.md is outside the seal (D-068).

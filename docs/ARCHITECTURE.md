@@ -77,3 +77,15 @@ owner CLI / master 001 chat / scheduled tasks ──add──▶ run/jobs.sqlite
                                              failure → classify (transient/quota/model/logic/security) → retry / route / pause
                                              every event → audit table → AUDIT.md ; state files → git (laptop state commits)
 ```
+
+## Memory layer (2026-09-24, D-107 — MVP)
+- Per-bot: `bots/<id>/memory/MEMORY.md` is loaded by nanobot into every context. The **factory** writes it (one factual
+  line per real `run`: time, task, outcome, produced files, lane), bounded to 12 lines so free-tier context budgets are
+  respected (D-035). Bots do not self-edit memory; tests never write it; it sits outside the bundle seal (D-068).
+- Factory-level memory is the audit chain (`run/jobs.sqlite3` + `audit/*.jsonl`, hash-chained) and the registries.
+- Vector memory (Qdrant/Chroma + local embeddings) remains an optional later capability; nothing in the loop needs it yet.
+
+## Self-healing loop (as proven live 2026-09-24)
+probe (hourly) → lane BLOCKED → presets synced, chain top-up (D-103), canary monitor of affected bots (D-105)
+→ test FAIL (quality) → demote → repair (rounds rotate lanes, D-056; re-verify first, D-059; sandbox 4/4; boundary diff
+empty, D-099) → promote. Availability misses (429/timeout/5xx/empty, D-051/D-075/D-106) are inconclusive, never demote.

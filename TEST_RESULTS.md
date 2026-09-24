@@ -377,3 +377,4 @@ Chat → job fbeb65ad → bot 018 (4/4) → auto run ca31fcf3 → totals.csv cor
 Audit chain: `audit-verify` ok on 319 hashed rows; tamper drill (1 char in a copy) → `first_bad seq 1069 "row altered"`.
 Tunnel rotated 02:02 (quick-tunnel URL changed); laptop republished `run/tunnel.txt` itself; SSH back within 2 min.
 Selftest laptop: 101 passed (D-105 included).
+- 02:20 D-107 live: `run 012` on inbox mem-drill (5+7+9) → RESULT 21, total.txt produced, lane gemini-gemma26b, MEMORY.md line written. D-106 runner check: 012 suite 4/4 with new AVAILERR path, RESULTJSON parsed. Laptop selftest 102 passed.
