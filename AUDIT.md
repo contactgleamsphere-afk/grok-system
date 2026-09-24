@@ -2,19 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 790 | 2026-09-22 23:17:38 | fa0a4093 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"name": "run:plan 197bb3e5", "status": "ok orders.csv,refunded.csv,summary.txt"}} |
-| 791 | 2026-09-22 23:24:17 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 792 | 2026-09-22 23:24:19 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 793 | 2026-09-22 23:24:31 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["89 passed in 9.59s"]} |
-| 794 | 2026-09-22 23:24:31 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["89 passed in 10.34s"]} |
-| 795 | 2026-09-22 23:25:08 | bb3c746e |  | job.enqueued | builder | {"kind": "create", "payload": {"objective": "--objective"}} |
-| 796 | 2026-09-22 23:25:11 | bb3c746e |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 797 | 2026-09-22 23:25:12 | bb3c746e |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect: objective needs permissions outside the allowance ['fs:read', 'fs:write', 'net:search', 'net:fetch']: The objective is |
-| 798 | 2026-09-22 23:25:12 | bb3c746e |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: architect: objective needs permissions outside the a |
-| 799 | 2026-09-22 23:27:51 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 800 | 2026-09-22 23:27:51 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 801 | 2026-09-22 23:28:02 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["90 passed in 9.35s"]} |
-| 802 | 2026-09-22 23:28:04 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["90 passed in 8.71s"]} |
 | 803 | 2026-09-22 23:28:37 | bb3c746e |  | job.cancelled | owner | {} |
 | 804 | 2026-09-22 23:28:38 | 8216dd6e |  | job.enqueued | builder | {"kind": "create", "payload": {"objective": "Run pytest in the workspace and report how many tests passed"}} |
 | 805 | 2026-09-22 23:28:39 | 8216dd6e |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +389,16 @@
 | 1187 | 2026-09-24 03:12:14 | 4a052706 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1188 | 2026-09-24 03:12:14 | c7322101 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-24T04"}} |
 | 1189 | 2026-09-24 03:12:35 | 4a052706 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-flash38", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gpt |
+| 1190 | 2026-09-24 03:15:34 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1191 | 2026-09-24 03:15:36 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1192 | 2026-09-24 03:15:48 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": false, "tail": ["1 failed, 47 passed in 10.18s"]} |
+| 1193 | 2026-09-24 03:15:48 |  |  | worker.blocked_by_tests | svc-LAPTOP-LRE6PSA8 | {"reason": "core/tests red on current code; refusing to process jobs until code changes"} |
+| 1194 | 2026-09-24 03:15:49 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": false, "tail": ["1 failed, 47 passed in 10.98s"]} |
+| 1195 | 2026-09-24 03:15:49 |  |  | worker.blocked_by_tests | fast-LAPTOP-LRE6PSA8 | {"reason": "core/tests red on current code; refusing to process jobs until code changes"} |
+| 1196 | 2026-09-24 03:15:50 | efe05c44 |  | job.cancelled | owner | {} |
+| 1197 | 2026-09-24 03:15:51 | ab489546 |  | job.enqueued | owner | {"kind": "create", "payload": {"objective": "Answer questions about a SQLite database file in the workspace using the mcp:mcp-sqlite3 server |
+| 1198 | 2026-09-24 03:17:38 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["106 passed in 15.93s"]} |
+| 1199 | 2026-09-24 03:17:39 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["106 passed in 16.15s"]} |
+| 1200 | 2026-09-24 03:17:39 | ab489546 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1201 | 2026-09-24 03:17:42 | ab489546 |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect: objective needs permissions outside the allowance ['fs:read', 'mcp:mcp-sqlite3']: fs:write is required for the mcp:mcp |
+| 1202 | 2026-09-24 03:17:42 | ab489546 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: architect: objective needs permissions outside the a |
