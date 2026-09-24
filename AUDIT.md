@@ -2,12 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 991 | 2026-09-24 01:28:58 | bc494d29 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 992 | 2026-09-24 01:29:02 | ad7a13c3 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 993 | 2026-09-24 01:29:40 | e30126b8 |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "dots-studio/dots-3-note-preview:free", "reason": "probe error: URLError", "provider": "openrouter"} |
-| 994 | 2026-09-24 01:29:40 | e30126b8 |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "liquid/lfm-2.5-2.6b:free", "reason": "loop: HTTP 429 {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\ |
-| 995 | 2026-09-24 01:29:40 | e30126b8 |  | lane.discovered | fast-LAPTOP-LRE6PSA8 | {"model": "nvidia/nemotron-3.5-lightning:free", "reason": "probe 59.9s loop 171.02s", "provider": "openrouter"} |
-| 996 | 2026-09-24 01:29:40 | e30126b8 |  | config.presets | fast-LAPTOP-LRE6PSA8 | {"added": ["or-nemotron-35-lightning"]} |
 | 997 | 2026-09-24 01:29:40 | faef1fd6 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "bench", "payload": {"lanes": ["or-nemotron-35-lightning"], "day": "2026-09-24"}} |
 | 998 | 2026-09-24 01:29:40 | e30126b8 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": ["or-nemotron-35-lightning"]}} |
 | 999 | 2026-09-24 01:29:52 | 1eedd036 | 004 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +396,9 @@
 | 1388 | 2026-09-24 23:48:02 | 037afd02 |  | infra.scouted | svc-LAPTOP-LRE6PSA8 | {"summary": {"configured": ["gemini", "groq", "openrouter"], "invalid_key": [], "keyless_ok": ["ollama-local", "ovh-anon", "pollinations"],  |
 | 1389 | 2026-09-24 23:48:02 | 037afd02 |  | owner.needed | svc-LAPTOP-LRE6PSA8 | {"provider": "infra", "reason": "free resources awaiting owner signup/key: ['cerebras', 'nvidia', 'mistral', 'cloudflare-workers-ai', 'zai', |
 | 1390 | 2026-09-24 23:48:02 | 037afd02 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"changed": {"groq": [null, "configured"], "gemini": [null, "configured"], "openrouter": [null, "configured"], "cerebras": [null |
+| 1391 | 2026-09-24 23:58:43 | 9504d124 |  | job.enqueued | owner | {"kind": "insight", "payload": {"days": 7, "t": 1790290722}} |
+| 1392 | 2026-09-24 23:58:46 | 9504d124 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1393 | 2026-09-24 23:58:46 | d0196af8 |  | job.dedup | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "note": "slot already done"} |
+| 1394 | 2026-09-24 23:58:46 | ff48e3c4 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "bench", "payload": {"lanes": ["gemini-flash"], "day": "2026-09-24", "trigger": "insight"}} |
+| 1395 | 2026-09-24 23:58:46 | 9504d124 |  | factory.proposals | svc-LAPTOP-LRE6PSA8 | {"count": 7, "kinds": ["medium:lanes", "medium:lanes", "high:architect", "medium:quality", "low:lanes", "low:lanes", "info:security"], "auto |
+| 1396 | 2026-09-24 23:58:46 | 9504d124 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"name": "insight:7 proposals", "status": "auto probe:d0196af8,bench:ff48e3c4"}} |

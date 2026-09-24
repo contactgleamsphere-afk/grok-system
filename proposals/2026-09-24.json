@@ -1,0 +1,222 @@
+{
+ "evidence": {
+  "days": 7,
+  "tests_run": 81,
+  "fails": {
+   "wrong_answer": 20,
+   "timeout": 7,
+   "quota": 2,
+   "capability_missing": 3,
+   "shell_error": 1,
+   "context_overflow": 2
+  },
+  "fail_examples": {
+   "wrong_answer": [
+    {
+     "bot": "026",
+     "test": 2,
+     "expect": "users",
+     "last": "RESULT: None"
+    },
+    {
+     "bot": "026",
+     "test": 3,
+     "expect": "3",
+     "last": "NEXT STEP: Verify the correct database file path or name."
+    },
+    {
+     "bot": "026",
+     "test": 2,
+     "expect": "users",
+     "last": "RESULT: None"
+    }
+   ],
+   "timeout": [
+    {
+     "bot": "020",
+     "test": 2,
+     "expect": "DONE",
+     "last": ""
+    },
+    {
+     "bot": "005",
+     "test": 2,
+     "expect": "1",
+     "last": ""
+    },
+    {
+     "bot": "005",
+     "test": 3,
+     "expect": "0",
+     "last": ""
+    }
+   ],
+   "quota": [
+    {
+     "bot": "004",
+     "test": 2,
+     "expect": "3",
+     "last": "RESULT: Created commits.txt, generated CHANGELOG.md, and replied with the total "
+    },
+    {
+     "bot": "004",
+     "test": 3,
+     "expect": "2",
+     "last": "RESULT: Successfully created commits.txt, generated CHANGELOG.md, and reported  "
+    }
+   ],
+   "capability_missing": [
+    {
+     "bot": "019",
+     "test": 2,
+     "expect": "1",
+     "last": "CAPABILITY_MISSING: pytest"
+    },
+    {
+     "bot": "012",
+     "test": 2,
+     "expect": "60",
+     "last": "RESULT: CAPABILITY_MISSING: write_file"
+    },
+    {
+     "bot": "012",
+     "test": 2,
+     "expect": "60",
+     "last": "CAPABILITY_MISSING: write_file"
+    }
+   ],
+   "shell_error": [
+    {
+     "bot": "007",
+     "test": 1,
+     "expect": "X_OK",
+     "last": "+ FullyQualifiedErrorId : NativeCommandError"
+    }
+   ],
+   "context_overflow": [
+    {
+     "bot": "007",
+     "test": 2,
+     "expect": "2",
+     "last": "after request fitting for bot007-t2-200353: 6586/6408 via tiktoken"
+    },
+    {
+     "bot": "007",
+     "test": 3,
+     "expect": "0",
+     "last": "after request fitting for bot007-t3-200541: 7200/6408 via tiktoken"
+    }
+   ]
+  },
+  "repairs": {
+   "total": 28,
+   "ok": 16,
+   "rounds": 23,
+   "rejected_candidates": 5
+  },
+  "paused": [],
+  "failed_classes": {},
+  "unbenched_lanes": [
+   "gemini-flash"
+  ],
+  "weak_lanes": [
+   {
+    "id": "gemini-flash36",
+    "score": "2/4"
+   },
+   {
+    "id": "gemini-flash38",
+    "score": "2/4"
+   },
+   {
+    "id": "gemini-lite",
+    "score": "1/4"
+   },
+   {
+    "id": "groq-qwen27b",
+    "score": "2/4"
+   }
+  ],
+  "security_violations": [
+   "architect: objective needs permissions outside the allowance ['fs:read', 'mcp:mcp-sqlite3']: fs:write is required for the mcp:mcp-sqlite3 tool, which is needed ",
+   "architect: objective needs permissions outside the allowance ['fs:read', 'mcp:mcp-sqlite3']: The bot requires write permission to create a SQLite database file ",
+   "architect: objective needs permissions outside the allowance ['fs:read', 'fs:write', 'net:search', 'net:fetch']: shell:workspace is needed to execute pytest in ",
+   "architect: objective needs permissions outside the allowance ['fs:read', 'fs:write', 'net:search', 'net:fetch']: The objective is missing (empty string), so it ",
+   "architect: objective needs permissions outside the allowance ['fs:read', 'fs:write', 'net:search', 'net:fetch']: The objective requires executing the pytest com",
+   "architect: objective needs permissions outside the allowance ['fs:read', 'fs:write', 'net:search', 'net:fetch']: exec permission (shell:workspace) is needed to ",
+   "architect: objective needs permissions outside the allowance ['fs:read', 'shell:workspace']: The objective requires deleting files anywhere on the machine, whic",
+   "architect: objective needs permissions outside the allowance ['fs:read', 'fs:write', 'net:search', 'net:fetch']: shell:workspace permission is needed to execute",
+   "create: spec requested permissions beyond job allowance: ['shell:workspace']"
+  ],
+  "bots": {
+   "total": 26,
+   "active": 24
+  }
+ },
+ "proposals": [
+  {
+   "kind": "lanes",
+   "severity": "medium",
+   "evidence": "2 failures where the prompt no longer fit the lane's context ([{'bot': '007', 'test': 2, 'expect': '2', 'last': 'after request fitting for bot007-t2-200353: 6586/6408 via tiktoken'}, {'bot': '007', 'test': 3, 'expect': '0', 'last': 'after request fitting for bot007-t3-200541: 7200/6408 via tiktoken'}])",
+   "suggestion": "A small-TPM lane was primary for a bot with a long tool contract/history. Check config hygiene (D-035) and maxToolResultChars; consider excluding <16k-context lanes from chains of bots with >2 tools.",
+   "auto_actionable": null
+  },
+  {
+   "kind": "lanes",
+   "severity": "medium",
+   "evidence": "7 test timeouts in 7d ([{'bot': '020', 'test': 2, 'expect': 'DONE', 'last': ''}, {'bot': '005', 'test': 2, 'expect': '1', 'last': ''}])",
+   "suggestion": "Timeouts are usually a slow/over-loaded primary. Compare bench `secs` per lane and consider lowering per-test cap from 300 s only after the chain's median is known.",
+   "auto_actionable": {
+    "kind": "probe",
+    "payload": {
+     "only": [],
+     "hour": "2026-09-24T23"
+    }
+   }
+  },
+  {
+   "kind": "architect",
+   "severity": "high",
+   "evidence": "3 CAPABILITY_MISSING failures ([{'bot': '019', 'test': 2, 'expect': '1', 'last': 'CAPABILITY_MISSING: pytest'}, {'bot': '012', 'test': 2, 'expect': '60', 'last': 'RESULT: CAPABILITY_MISSING: write_file'}])",
+   "suggestion": "spec_consistency (D-052/D-093) covers write/read/web/shell hints; if these prompts use other verbs, extend its patterns.",
+   "auto_actionable": null
+  },
+  {
+   "kind": "quality",
+   "severity": "medium",
+   "evidence": "20 genuinely wrong answers of 35 failures",
+   "suggestion": "Most failures are reasoning quality, not plumbing. Primary and builder lanes are already bench-ranked (D-050/D-095); check whether the weak lanes below are still in chains.",
+   "auto_actionable": null
+  },
+  {
+   "kind": "lanes",
+   "severity": "low",
+   "evidence": "lanes without a quality score: ['gemini-flash']",
+   "suggestion": "Benchmark them so default_fallbacks() can rank them.",
+   "auto_actionable": {
+    "kind": "bench",
+    "payload": {
+     "lanes": [
+      "gemini-flash"
+     ],
+     "day": "2026-09-24",
+     "trigger": "insight"
+    }
+   }
+  },
+  {
+   "kind": "lanes",
+   "severity": "low",
+   "evidence": "lanes scoring <75% on the reference suite: [{'id': 'gemini-flash36', 'score': '2/4'}, {'id': 'gemini-flash38', 'score': '2/4'}, {'id': 'gemini-lite', 'score': '1/4'}, {'id': 'groq-qwen27b', 'score': '2/4'}]",
+   "suggestion": "They sit at the tail of the chain; lanes <50% over a full window are auto-demoted from chains by D-096 (see registry notes).",
+   "auto_actionable": null
+  },
+  {
+   "kind": "security",
+   "severity": "info",
+   "evidence": "9 security violations caught: [\"architect: objective needs permissions outside the allowance ['fs:read', 'mcp:mcp-sqlite3']: fs:write is required for the mcp:mcp-sqlite3 tool, which is needed \", \"architect: objective needs permissions outside the allowance ['fs:read', 'mcp:mcp-sqlite3']: The bot requires write permission to create a SQLite database file \"]",
+   "suggestion": "No action \u2014 the gate worked. Listed so the owner sees what was refused.",
+   "auto_actionable": null
+  }
+ ]
+}
