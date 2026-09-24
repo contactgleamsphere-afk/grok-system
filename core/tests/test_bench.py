@@ -983,7 +983,7 @@ def test_d111_fixtures_validated_and_materialised(tmp_path, monkeypatch):
     bd = tmp_path / "093-fx"; bd.mkdir(); (bd / "bot.json").write_text(json.dumps(spec))
     r = ff.materialise(bd); assert r == {"written": ["notes.txt", "shop.db"], "skipped": []}
     assert (bd / "notes.txt").read_text() == "one\ntwo\n"
-    assert sqlite3.connect(bd / "shop.db").execute("select count(*) from t").fetchone()[0] == 3
+    con = sqlite3.connect(bd / "shop.db"); assert con.execute("select count(*) from t").fetchone()[0] == 3; con.close()
     r2 = ff.materialise(bd); assert r2["written"] == ["notes.txt", "shop.db"]                       # idempotent rebuild
     assert ff.materialise(bd, [{"name": "bot.json", "text": "x"}, {"name": "..\\evil", "text": "x"}])["skipped"] == ["bot.json", "..\\evil"]
     assert json.loads((bd / "bot.json").read_text())["id"] == "093"                                # bundle untouched

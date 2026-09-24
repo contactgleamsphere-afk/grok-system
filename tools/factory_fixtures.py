@@ -22,7 +22,10 @@ def materialise(bot_dir: pathlib.Path, fixtures: list[dict] | None = None) -> di
         dest = (bot_dir / name)
         if not name or "/" in name or "\\" in name or name in BUNDLE or dest.resolve().parent != bot_dir.resolve():
             skipped.append(name); continue
-        if dest.exists(): dest.unlink()
+        if dest.exists():
+            try: dest.unlink()
+            except PermissionError:                      # Windows: a previous test's server still holds the file
+                skipped.append(name + " (locked)"); continue
         if "sql" in f:
             con = sqlite3.connect(dest)
             try: con.executescript(str(f["sql"])[:4096]); con.commit()
