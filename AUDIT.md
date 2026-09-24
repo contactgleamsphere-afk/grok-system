@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 757 | 2026-09-22 22:55:12 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 758 | 2026-09-22 22:55:16 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 759 | 2026-09-22 22:55:23 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["88 passed in 9.80s"]} |
-| 760 | 2026-09-22 22:55:29 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["88 passed in 8.78s"]} |
 | 761 | 2026-09-22 22:59:58 | 197bb3e5 |  | job.enqueued | master-001 | {"kind": "plan", "payload": {"objective": "Create a pipeline: first bot reads a CSV of orders and writes only rows where status is refunded  |
 | 762 | 2026-09-22 22:59:59 | 197bb3e5 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 763 | 2026-09-22 23:00:00 | 1e546b89 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "create", "payload": {"objective": "Read orders.csv, filter rows where the 'status' column is 'refunded', and write the resulting r |
@@ -402,3 +398,7 @@
 | 1154 | 2026-09-24 02:22:44 | 820f7ef9 | 023 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 44s [done] expect='36.0' last='RESULT: 36.0' \| T3 PASS 49s [done] expec |
 | 1155 | 2026-09-24 02:22:44 | 820f7ef9 | 023 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 44s [done] expect='36.0' last='RESULT: 36.0' \| T3 PASS 49s [done] expec |
 | 1156 | 2026-09-24 02:22:44 | 820f7ef9 | 023 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "023", "status": "active", "verified": "VERIFIED"}} |
+| 1157 | 2026-09-24 02:22:47 | c35f9462 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1158 | 2026-09-24 02:23:14 | c1c70d3e | 025 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='LIVENESS_OK' last='LIVENESS_OK' \| T2 PASS 36s [done] expect='HELLO WORLD' last='RESULT: HELLO WORLD' |
+| 1159 | 2026-09-24 02:23:14 | c1c70d3e | 025 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='LIVENESS_OK' last='LIVENESS_OK' \| T2 PASS 36s [done] expect='HELLO WORLD' last='RESULT: HELLO WORLD' |
+| 1160 | 2026-09-24 02:23:14 | c1c70d3e | 025 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "025", "status": "active", "verified": "VERIFIED"}} |
