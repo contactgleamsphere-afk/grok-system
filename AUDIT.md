@@ -2,13 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 943 | 2026-09-24 01:24:24 | bcb0ba61 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": ["or-ling-30-flash-sante", "or-ling-30-flash-fin"]}} |
-| 944 | 2026-09-24 01:24:32 | 26e7235d |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 945 | 2026-09-24 01:24:32 | 26e7235d |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 946 | 2026-09-24 01:24:40 | 39a61954 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 947 | 2026-09-24 01:24:40 | 39a61954 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 948 | 2026-09-24 01:24:46 | 6a46a820 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 949 | 2026-09-24 01:24:46 | 6a46a820 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 950 | 2026-09-24 01:24:54 | e30126b8 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 951 | 2026-09-24 01:28:26 | 581618e9 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 239s [done] liveness expect='MASTER_OK' cmd=True \| T2 FAIL 241s [TIMEOUT] report expect='FACTORY' cmd=False \| T3 PASS  |
 | 952 | 2026-09-24 01:28:26 | 581618e9 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 239s [done] liveness expect='MASTER_OK' cmd=True \| T2 FAIL 241s [TIMEOUT] report expect='FACTORY' cmd=False \| T3 PASS  |
@@ -402,3 +395,10 @@
 | 1340 | 2026-09-24 22:29:25 | 541f6f6e |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-09-24", "trigger": "blocked:gemini-gemini-flash-lite-latest,or-ling-30-f |
 | 1341 | 2026-09-24 22:29:25 | d350d0ae |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-09-24", "trigger": "blocked:gemini-gemini-flash-lite-latest,or-ling-30- |
 | 1342 | 2026-09-24 22:29:25 | 86ba95ba |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["local3b", "local4b"], "changed": [["gemini-gemini-flash-lite-latest", "BLOCKED"], ["or-ling-30-flash-fin", "BLOCKE |
+| 1343 | 2026-09-24 22:29:37 | 37b08250 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1344 | 2026-09-24 22:29:37 | d0196af8 |  | job.dedup | fast-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
+| 1345 | 2026-09-24 22:29:43 | e7340c6e |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1346 | 2026-09-24 22:29:43 | 3fe01ea5 | 018 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "run", "payload": {"bot_id": "018", "task": "Sum order totals per country into totals.csv", "in": "C:\\AI\\Factory\\workspace\\inbo |
+| 1347 | 2026-09-24 22:29:43 |  | 018 | schedule.fired | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "fire": "2026-09-24T07:00", "job": "3fe01ea5"} |
+| 1348 | 2026-09-24 22:29:44 | 7946d979 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-24T23"}} |
+| 1349 | 2026-09-24 22:29:44 | e7340c6e |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
