@@ -31,7 +31,7 @@ CATALOG = {"openrouter": "https://openrouter.ai/api/v1/models", "cerebras": "htt
            "nvidia": "https://integrate.api.nvidia.com/v1/models", "mistral": "https://api.mistral.ai/v1/models",
            # D-115: the two keyed providers we already have — new free chat models appear there without anyone telling us
            "groq": "https://api.groq.com/openai/v1/models", "gemini": "https://generativelanguage.googleapis.com/v1beta/openai/models"}
-NON_CHAT = re.compile(r"whisper|tts|guard|embed|imagen|veo|image|audio|live|native|vision-preview|aqa|learnlm|robotics|computer-use|deep-research|-lite-preview", re.I)
+NON_CHAT = re.compile(r"whisper|tts|orpheus|guard|embed|imagen|veo|image|audio|live|native|vision-preview|aqa|learnlm|robotics|computer-use|deep-research|-lite-preview", re.I)
 UNKNOWN_CONTEXT = 32768   # generic /models gives no context_length; the sandbox loop + probation are the real evidence
 LEDGER = ROOT / "registry" / "discovery.json"
 
