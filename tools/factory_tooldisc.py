@@ -21,6 +21,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "core"))
 from factory.registry import Registry, ToolEntry   # noqa: E402
 
 MCP_REG = "https://registry.modelcontextprotocol.io/v0.1/servers"
+STOPWORDS = {"the", "and", "for", "with", "server", "mcp", "tool", "tools", "automation", "access", "via", "using", "from", "into"}
 PERMISSIVE = ("MIT", "APACHE", "BSD", "ISC", "MPL", "UNLICENSE", "0BSD", "CC0")
 RECENT_DAYS = 365
 MAX_DEPS = 40
@@ -55,9 +56,20 @@ def _save_ledger(l: dict) -> None:
 def discover(need: str, fetch=None, limit: int = 30) -> list[dict]:
     """Official MCP registry search → normalised candidates. Keeps only local stdio packages (pypi or npm)."""
     fetch = fetch or _fetch
-    d = fetch(f"{MCP_REG}?search={urllib.request.quote(need)}&version=latest&limit={limit}") or {}
+    # The registry search is a name substring match: "browser automation playwright" → 0 hits, "playwright" → 13.
+    # Query the phrase first, then each significant word, merge by server name (order = phrase hits, then per word).
+    words = [w for w in re.findall(r"[a-z0-9][a-z0-9-]{2,}", need.lower()) if w not in STOPWORDS]
+    queries = [need] + [w for w in words if w != need.lower()]
+    servers: dict[str, dict] = {}
+    for q in queries[:5]:
+        d = fetch(f"{MCP_REG}?search={urllib.request.quote(q)}&version=latest&limit={limit}") or {}
+        for s in d.get("servers", []):
+            n = (s.get("server") or {}).get("name")
+            if not n: continue
+            if n not in servers or (not (servers[n].get("server") or {}).get("packages") and (s.get("server") or {}).get("packages")):
+                servers.setdefault(n, s); servers[n] = s      # keep first position, prefer the sighting that lists packages
     out = []
-    for s in d.get("servers", []):
+    for s in servers.values():
         v = s.get("server", {}); meta = (s.get("_meta") or {}).get("io.modelcontextprotocol.registry/official", {})
         pk = None
         for p in v.get("packages", []) or []:

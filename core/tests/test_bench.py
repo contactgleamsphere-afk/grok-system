@@ -1,3 +1,4 @@
+import urllib.parse
 import json
 import datetime, sys, pathlib, time
 import pytest
@@ -1121,3 +1122,21 @@ def test_d118_infra_scout_statuses_and_owner_list(tmp_path, monkeypatch):
     # second run keeps first_seen and is idempotent
     r2 = fs.run(env=env, getter=getter, tunnel_url="https://tunnel.example")
     d2 = json.loads((tmp_path / "infra.json").read_text()); assert d2["resources"]["groq"]["first_seen"] == d["resources"]["groq"]["first_seen"]
+
+
+def test_d120_tooldisc_multiword_need_queries_each_keyword():
+    """D-120: the MCP registry search is a name-substring match, so a multi-word need must fan out per keyword and
+    merge unique servers (phrase first). Stopwords like 'automation' are not queried."""
+    import factory_tooldisc as td
+    calls = []
+    def fetch(url):
+        calls.append(url)
+        q = urllib.parse.unquote(url.split("search=")[1].split("&")[0])
+        if q == "playwright": return {"servers": [{"server": {"name": "io.github.microsoft/playwright-mcp", "version": "0.0.82", "packages": [{"registryType": "npm", "identifier": "@playwright/mcp"}]}}]}
+        if q == "browser": return {"servers": [{"server": {"name": "io.github.microsoft/playwright-mcp", "version": "0.0.82", "packages": []}}, {"server": {"name": "com.x/browser", "version": "1", "packages": []}}]}
+        return {"servers": []}
+    out = td.discover("browser automation playwright", fetch)
+    qs = [urllib.parse.unquote(u.split("search=")[1].split("&")[0]) for u in calls]
+    assert qs[0] == "browser automation playwright" and set(qs[1:]) == {"browser", "playwright"}
+    assert [c["name"] for c in out] == ["io.github.microsoft/playwright-mcp", "com.x/browser"]
+    assert out[0]["package"]["identifier"] == "@playwright/mcp"          # first sighting (with the npm package) wins
