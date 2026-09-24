@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 919 | 2026-09-24 01:23:11 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 920 | 2026-09-24 01:23:26 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["97 passed in 12.63s"]} |
-| 921 | 2026-09-24 01:23:26 | 499dd527 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 922 | 2026-09-24 01:23:26 | ada8b925 |  | job.dedup | fast-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
 | 923 | 2026-09-24 01:23:43 | 499dd527 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash36", "outcome": "no_tool_call", "before": "VERIFIED", "after": "BLOCKED", "detail": null} |
 | 924 | 2026-09-24 01:23:43 | 499dd527 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "or-ling-30-flash-vl", "outcome": "gone", "before": "VERIFIED", "after": "BLOCKED", "detail": "{\"error\":{\"message\":\"this mode |
@@ -402,3 +399,6 @@
 | 1316 | 2026-09-24 04:42:15 | 7e3cce23 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 1317 | 2026-09-24 04:42:18 | 10338bdf |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1318 | 2026-09-24 04:42:18 | 10338bdf |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 1319 | 2026-09-24 04:42:22 | c76efa69 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1320 | 2026-09-24 04:42:43 | c76efa69 |  | factory.canary | svc-LAPTOP-LRE6PSA8 | {"verdict": "pass", "lane": "groq:openai/gpt-oss-20b", "chain": ["gemini-gemini-flash-lite-latest", "gemini-lite31", "groq-gptoss120b", "loc |
+| 1321 | 2026-09-24 04:42:43 | c76efa69 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"pass": 2, "total": 2}} |
