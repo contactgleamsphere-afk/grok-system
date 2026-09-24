@@ -610,3 +610,8 @@ approved server: chdir to the bot dir, secrets stripped, stdio inherited; AGENTS
 Limitation (INFERRED): a server handed an absolute path outside the workspace is not blocked — such servers stay
 risk=high with an explicit grant. New `rebuild <bot>` (CLI + job): regenerate the bundle from the SAME spec with no
 model call and re-test — for factory-side generation changes; repair (instructions) and rearchitect (spec) unchanged.
+
+## D-113 — Tests that use fixtures must name them (2026-09-24) — VERIFIED (unit)
+Bot 026 T3 ("How many rows are in the users table?") never named `fixture.db`; the bot guessed users.db/data.db/app.db
+(each `connect_database` creating an empty file) and answered 0. `spec_consistency` now rejects any non-liveness,
+non-security test whose prompt names no fixture when fixtures are declared; the architect prompt says so explicitly.

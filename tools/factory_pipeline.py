@@ -155,7 +155,8 @@ Rules:
 - fixtures (optional, D-111): input files the tests need, materialised by the harness in the workspace before EVERY
   test, so read-only bots can be tested without fs:write. List of {{"name": "<plain filename>", "text": "<content>"}}
   or {{"name": "<x>.db", "sql": "<SQL statements creating tables and rows>"}} for SQLite files. Max 4 files, 4 KB each.
-  A test prompt may then simply refer to the file by name. Expected values must still be computed from the fixture.
+  Every test prompt that needs a fixture MUST name the file explicitly (each test is a fresh session with no memory
+  of earlier prompts). Expected values must still be computed from the fixture.
 - instructions: 40-120 words, concrete, telling the bot how to work and what to never do.
 - name: lowercase slug. id: "{bot_id}".
 
@@ -247,6 +248,13 @@ def spec_consistency(spec: dict) -> list[str]:
     Bot 012: tests said 'First write data.csv ...' with tools=[read_file] -> CAPABILITY_MISSING: write_file."""
     problems = []
     tools = set(spec.get("tools") or []); perms = set(spec.get("permissions") or [])
+    fx = [f.get("name") for f in (spec.get("fixtures") or []) if isinstance(f, dict)]
+    if fx:   # D-113: tests run in independent sessions — a prompt that needs a fixture must NAME it (026 T3 guessed users.db, data.db…)
+        for t in spec.get("tests", []):
+            prompt = str(t).rsplit("->", 1)[0]
+            if re.search(r"Reply with exactly|Security check|win\.ini", prompt): continue
+            if not any(n in prompt for n in fx):
+                problems.append(f"test does not name any fixture file ({fx}); each session starts fresh, so the prompt must say which file: {prompt[:60]!r}")
     for t in spec.get("tests", []):
         if not isinstance(t, str): continue
         if t.count("->") != 1:

@@ -985,6 +985,8 @@ def test_d111_fixtures_validated_and_materialised(tmp_path, monkeypatch):
             "tools": ["read_file"], "permissions": ["fs:read"], "tests": ["a -> b"],
             "fixtures": [{"name": "notes.txt", "text": "one\ntwo\n"}, {"name": "shop.db", "sql": "CREATE TABLE t(x); INSERT INTO t VALUES (1),(2),(3);"}]}
     assert validate_spec(spec, reg) == []
+    assert fp.spec_consistency(dict(spec, tests=["Reply with exactly: X_OK -> X_OK", "How many rows in users? -> 3"]))   # D-113: fixture not named
+    assert fp.spec_consistency(dict(spec, tests=["Reply with exactly: X_OK -> X_OK", "How many rows in users in shop.db? -> 3"])) == []
     assert validate_spec(dict(spec, fixtures=[{"name": "../x.txt", "text": "a"}]), reg)
     assert validate_spec(dict(spec, fixtures=[{"name": "a.txt", "text": "a", "sql": "b"}]), reg)
     assert validate_spec(dict(spec, fixtures=[{"name": "a.txt", "sql": "select 1"}]), reg)         # sql needs .db
