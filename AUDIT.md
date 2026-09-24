@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 564 | 2026-09-22 18:40:08 | dbe8c0ee |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 565 | 2026-09-22 18:40:20 | aba5e667 | 018 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 566 | 2026-09-22 18:41:45 | aba5e667 | 018 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"ok": true, "produced": ["totals.csv"], "secs": 83, "reply": "RESULT: totals.csv", "chain": "groq-gptoss120b"} |
 | 567 | 2026-09-22 18:41:45 | aba5e667 | 018 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "name": "run", "status": "ok totals.csv"}} |
 | 568 | 2026-09-22 18:41:58 | f42e8c49 | 018 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +400,5 @@
 | 961 | 2026-09-24 01:28:44 | 8b22fe5c |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 962 | 2026-09-24 01:28:48 | f800e68b |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 963 | 2026-09-24 01:28:48 | f800e68b |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 964 | 2026-09-24 01:28:52 | aa0b21ba |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 965 | 2026-09-24 01:28:52 | aa0b21ba |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
