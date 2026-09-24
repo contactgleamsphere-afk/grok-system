@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 653 | 2026-09-22 20:32:17 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 654 | 2026-09-22 20:32:30 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["78 passed, 1 warning in 7.63s"]} |
-| 655 | 2026-09-22 20:32:30 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["78 passed in 7.63s"]} |
-| 656 | 2026-09-22 20:33:16 | 349607da |  | job.resumed | builder | {} |
 | 657 | 2026-09-22 20:33:20 | 349607da | 004 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 658 | 2026-09-22 20:43:26 | 349607da |  | job.lease_expired | fast-LAPTOP-LRE6PSA8 | {} |
 | 659 | 2026-09-22 20:43:26 | fd8c14fb |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +398,7 @@
 | 1050 | 2026-09-24 01:39:31 | 84f90993 | 008 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 15s [done] expect='apple' last='RESULT: apple' \| T3 PASS 26s [done] exp |
 | 1051 | 2026-09-24 01:39:31 | 84f90993 | 008 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 15s [done] expect='apple' last='RESULT: apple' \| T3 PASS 26s [done] exp |
 | 1052 | 2026-09-24 01:39:31 | 84f90993 | 008 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "008", "status": "active", "verified": "VERIFIED"}} |
+| 1053 | 2026-09-24 01:39:37 | d67880ac | 009 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1054 | 2026-09-24 01:41:40 | d67880ac | 009 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='RESULT: X_OK' \| T2 PASS 54s [done] expect='3' last='RESULT: 3' \| T3 PASS 43s [done] exp |
+| 1055 | 2026-09-24 01:41:40 | d67880ac | 009 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='RESULT: X_OK' \| T2 PASS 54s [done] expect='3' last='RESULT: 3' \| T3 PASS 43s [done] exp |
+| 1056 | 2026-09-24 01:41:40 | d67880ac | 009 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "009", "status": "active", "verified": "VERIFIED"}} |
