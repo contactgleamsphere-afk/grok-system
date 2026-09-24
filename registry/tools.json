@@ -27,14 +27,14 @@
   "mcp:mcp-sqlite3": {
     "id": "mcp:mcp-sqlite3",
     "kind": "mcp",
-    "notes": "{\"deps\": 21, \"licence\": \"MIT\", \"package\": {\"identifier\": \"mcp-sqlite3\", \"registryType\": \"pypi\", \"version\": \"0.1.3\"}, \"registry_name\": \"io.github.daedalus/mcp-sqlite3\", \"released\": \"2026-03-31T06:38:06.184426Z\", \"repo\": \"https://github.com/daedalus/mcp-sqlite3\", \"risky_tools\": [\"execute_query\", \"execute_many\", \"execute_script\", \"delete_rows\"], \"sandbox_secs\": 135, \"server\": \"mcp-sqlite3\", \"stars\": 1, \"tools\": [\"get_sqlite_version\", \"get_sqlite3_version\", \"complete_sql_statement\", \"connect_database\", \"close_connection\", \"commit\", \"rollback\", \"execute_query\", \"execute_many\", \"execute_script\", \"fetch_results\", \"list_tables\", \"get_table_info\", \"get_columns\", \"get_indexes\", \"get_primary_keys\", \"get_foreign_keys\", \"create_table\", \"drop_table\", \"rename_table\", \"alter_table_add_column\", \"vacuum\", \"insert_row\", \"update_rows\", \"delete_rows\"], \"version\": \"0.1.3\"}",
+    "notes": "{\"deps\": 21, \"install\": {\"args\": [\"-m\", \"mcp_sqlite3\"], \"command\": \"C:\\\\AI\\\\Factory\\\\mcp\\\\mcp-sqlite3\\\\venv\\\\Scripts\\\\python.exe\"}, \"licence\": \"MIT\", \"package\": {\"identifier\": \"mcp-sqlite3\", \"registryType\": \"pypi\", \"version\": \"0.1.3\"}, \"registry_name\": \"io.github.daedalus/mcp-sqlite3\", \"released\": \"2026-03-31T06:38:06.184426Z\", \"repo\": \"https://github.com/daedalus/mcp-sqlite3\", \"risky_tools\": [\"execute_query\", \"execute_many\", \"execute_script\", \"delete_rows\"], \"sandbox_secs\": 135, \"server\": \"mcp-sqlite3\", \"stars\": 1, \"tools\": [\"get_sqlite_version\", \"get_sqlite3_version\", \"complete_sql_statement\", \"connect_database\", \"close_connection\", \"commit\", \"rollback\", \"execute_query\", \"execute_many\", \"execute_script\", \"fetch_results\", \"list_tables\", \"get_table_info\", \"get_columns\", \"get_indexes\", \"get_primary_keys\", \"get_foreign_keys\", \"create_table\", \"drop_table\", \"rename_table\", \"alter_table_add_column\", \"vacuum\", \"insert_row\", \"update_rows\", \"delete_rows\", \"select_rows\", \"create_python_function\", \"create_python_aggregate\", \"drop_function\", \"backup_database\", \"restore_database\", \"serialize_database\", \"deserialize_database\", \"get_table_sql\", \"export_sql_dump\", \"register_adapter\", \"register_converter\"], \"version\": \"0.1.3\"}",
     "provides": [
       "sqlite",
       "write"
     ],
     "risk": "high",
-    "scope": "PROBATION \u2014 not attached to any bot; owner approval required to wire into a bot config (SECURITY \u00a76)",
-    "updated": "2026-09-24T01:35:59+00:00",
+    "scope": "APPROVED by owner 2026-09-24 \u2014 usable by bots whose spec grants permission mcp:mcp-sqlite3",
+    "updated": "2026-09-24T02:04:04+00:00",
     "verified": "INFERRED"
   },
   "read_file": {
