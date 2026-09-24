@@ -360,3 +360,9 @@ Chat → job fbeb65ad → bot 018 (4/4) → auto run ca31fcf3 → totals.csv cor
 
 ## D-087 proof — 2026-09-23 00:03 (after Groq TPD reset)
 `run_tests(bot 007, lane=groq-gptoss20b)` pinned: T1 PASS 9 s, **T2 PASS 15 s** (the 6,586-token prompt that previously died locally with ContextWindowExceeded), T3/T4 `rate_limit_exceeded` (8k TPM consumed by T2; pinned runs do not fall back by design) → pass 2 / total 4 / quota 2 — availability, not quality (D-051).
+
+## 25-hour outage → unattended recovery — 2026-09-23 00:05 → 2026-09-24 01:11 (live)
+- Laptop offline ~25 h. On wake (01:11): worker task relaunched, `probe.network_down` recognised the first sweep as a local outage (health untouched), the missed 07:00 schedule fired **exactly once** (bot 018 ran, `schedule.fired`), hourly chains re-armed, nightly report/bench/monitor ran, D-100 liveness = `running`.
+- Found & fixed from the evidence: (a) D-101 git race — an unlocked out-of-band repo-sync during the worker's rebase hard-reset away the 002 demotion commit (reflog 4f563a4); (b) D-101 duplicate nightly sweep (catch-up task + report handler) → 23 duplicate tests cancelled; (c) D-102 master demoted on a 241 s timeout + a paraphrased `cron=`; (d) D-103 chains collapsing to local when policy lanes are retired (or-ling "gone", flash36/38 BLOCKED overnight).
+- Discovery loop reacted to the BLOCKED lanes on its own: `lane.discovered` or-ling-30-flash-sante / -fin, presets added, bench queued (01:24).
+- Laptop self-test: 100 passed (01:43).
