@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 913 | 2026-09-24 01:20:31 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 914 | 2026-09-24 01:20:46 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["96 passed in 12.76s"]} |
 | 915 | 2026-09-24 01:20:46 | 36a3539c | 003 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 916 | 2026-09-24 01:23:03 | 36a3539c | 003 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='SMITH_OK' last='SMITH_OK' \| T2 PASS 60s [done] expect='233168' last='RESULT: 233168' \| T3 PASS 30s  |
 | 917 | 2026-09-24 01:23:03 | 36a3539c | 003 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='SMITH_OK' last='SMITH_OK' \| T2 PASS 60s [done] expect='233168' last='RESULT: 233168' \| T3 PASS 30s  |
@@ -402,3 +400,5 @@
 | 1310 | 2026-09-24 04:42:06 | 769af551 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 1311 | 2026-09-24 04:42:09 | 9c9d8b05 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1312 | 2026-09-24 04:42:09 | 9c9d8b05 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 1313 | 2026-09-24 04:42:12 | 57739895 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1314 | 2026-09-24 04:42:12 | 57739895 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
