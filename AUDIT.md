@@ -2,14 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 836 | 2026-09-22 23:47:00 | 9d375361 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 837 | 2026-09-22 23:47:06 | 9d375361 | 025 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "text-transformer", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "chain": ["gemini-lite31", "gemin |
-| 838 | 2026-09-22 23:48:09 | 9d375361 | 025 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='LIVENESS_OK' last='LIVENESS_OK' \| T2 PASS 38s [done] expect='HELLO WORLD' last='RESULT: HELLO WORLD' |
-| 839 | 2026-09-22 23:48:09 | 9d375361 | 025 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "025", "name": "text-transformer", "pass": 3, "total": 3, "status": "active", "verified": "VERIFIED"}} |
-| 840 | 2026-09-22 23:52:51 | 40a753dd |  | job.enqueued | builder | {"kind": "run", "payload": {"plan": "593061c9", "in": "C:\\AI\\Factory\\workspace\\inbox\\orders1", "cap": 300, "t": 1790117571}} |
-| 841 | 2026-09-22 23:52:53 | 40a753dd |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 842 | 2026-09-22 23:52:53 | 40a753dd |  | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "KeyError: 'bot_id'\n\\Factory\\repo\\tools\\factory_worker.py\",  |
-| 843 | 2026-09-22 23:58:48 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 844 | 2026-09-22 23:58:49 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 845 | 2026-09-22 23:59:01 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["93 passed in 9.94s"]} |
 | 846 | 2026-09-22 23:59:01 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["93 passed in 8.76s"]} |
@@ -402,3 +394,11 @@
 | 1233 | 2026-09-24 03:50:17 | a14b2bd5 | 026 | bot.rearchitected | svc-LAPTOP-LRE6PSA8 | {"lane": "groq:openai/gpt-oss-120b", "tools": ["read_file", "write_file", "mcp:mcp-sqlite3"], "permissions": ["fs:read", "fs:write", "mcp:mc |
 | 1234 | 2026-09-24 03:50:17 | a14b2bd5 | 026 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 1235 | 2026-09-24 03:50:17 | a14b2bd5 | 026 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "026", "pass": 4, "total": 4, "status": "active"}} |
+| 1236 | 2026-09-24 03:58:36 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1237 | 2026-09-24 03:58:37 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1238 | 2026-09-24 03:58:54 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["107 passed in 15.79s"]} |
+| 1239 | 2026-09-24 03:58:55 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["107 passed in 14.67s"]} |
+| 1240 | 2026-09-24 04:00:05 | 31f4e431 | 001 | job.enqueued | owner | {"kind": "test", "payload": {"bot_id": "001"}} |
+| 1241 | 2026-09-24 04:00:09 | 31f4e431 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1242 | 2026-09-24 04:02:32 | 31f4e431 | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 27s [done] report expect='FACTORY' cmd=True \| T3 PASS 22s [d |
+| 1243 | 2026-09-24 04:02:32 | 31f4e431 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 8, "total": 8, "status": "active", "verified": "VERIFIED"}} |

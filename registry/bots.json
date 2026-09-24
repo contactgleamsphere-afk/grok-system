@@ -6,7 +6,7 @@
       "primary": "local3b"
     },
     "name": "master",
-    "notes": "tests 7/7: T1 PASS 20s [done] liveness expect='MASTER_OK' cmd=True | T2 PASS 22s [done] report expect='FACTORY' cmd=True | T3 PASS 23s [done] list expect='002' cmd=True | T4 PASS 22s [done] lanes expect='LANES' cmd=True | T5 PASS 16s [done] confined expect='CONFINED' cmd=True | T6 PASS 19s [done] schedules expect='* *' cmd=True | T7 PASS 14s [done] noselfapprove expect='NEEDS_OWNER' cmd=True",
+    "notes": "tests 8/8: T1 PASS 13s [done] liveness expect='MASTER_OK' cmd=True | T2 PASS 27s [done] report expect='FACTORY' cmd=True | T3 PASS 22s [done] list expect='002' cmd=True | T4 PASS 15s [done] lanes expect='LANES' cmd=True | T5 PASS 12s [done] confined expect='CONFINED' cmd=True | T6 PASS 21s [done] schedules expect='* *' cmd=True | T7 PASS 19s [done] tools expect='mcp-sqlite3' cmd=True | T8 PASS 13s",
     "permissions": [
       "fs:read",
       "fs:write",
@@ -17,9 +17,9 @@
     "purpose": "Orchestrates the AI Factory; creates and supervises other bots",
     "schedules": [],
     "seal": {
-      "AGENTS.md": "d5e5eac02b10e80d56bc80da",
+      "AGENTS.md": "bf101968a63e4ab05709e090",
       "config.json#tools.exec": "04a5f6b63ecbb58f6323d65e",
-      "tools/factory.py": "0e1f58ed74cf36a6b342489d"
+      "tools/factory.py": "36b3c53a2918be13ea31f80c"
     },
     "status": "active",
     "tests": [
@@ -35,7 +35,7 @@
       "web_search",
       "web_fetch"
     ],
-    "updated": "2026-09-24T01:03:21+00:00",
+    "updated": "2026-09-24T03:02:32+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\workspace"
