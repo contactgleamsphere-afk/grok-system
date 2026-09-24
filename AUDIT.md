@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 603 | 2026-09-22 19:25:06 | 221106e0 | 011 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 604 | 2026-09-22 19:26:46 | 221106e0 | 011 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 PASS 29s [done] expect='2' last='2' \| T3 PASS 22s [done] expect='3' last='3' |
-| 605 | 2026-09-22 19:26:46 | 221106e0 | 011 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 PASS 29s [done] expect='2' last='2' \| T3 PASS 22s [done] expect='3' last='3' |
-| 606 | 2026-09-22 19:26:46 | 221106e0 | 011 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "011", "status": "active", "verified": "VERIFIED"}} |
 | 607 | 2026-09-22 19:26:51 | 086db9b1 | 012 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 608 | 2026-09-22 19:27:59 | 086db9b1 | 012 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 21s [done] expect='60' last='RESULT: Summed amount column to 60.' \| T3  |
 | 609 | 2026-09-22 19:27:59 | 086db9b1 | 012 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 21s [done] expect='60' last='RESULT: Summed amount column to 60.' \| T3  |
@@ -402,3 +398,7 @@
 | 1000 | 2026-09-24 01:31:46 | 1eedd036 | 004 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 22s [done] expect='CHANGELOG_OK' last='CHANGELOG_OK' \| T2 PASS 22s [done] expect='3' last='3' \| T3 PASS 51s [done] exp |
 | 1001 | 2026-09-24 01:31:46 | 1eedd036 | 004 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 22s [done] expect='CHANGELOG_OK' last='CHANGELOG_OK' \| T2 PASS 22s [done] expect='3' last='3' \| T3 PASS 51s [done] exp |
 | 1002 | 2026-09-24 01:31:46 | 1eedd036 | 004 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "004", "status": "active", "verified": "VERIFIED"}} |
+| 1003 | 2026-09-24 01:31:56 | 192d34a1 | 005 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1004 | 2026-09-24 01:33:32 | ad7a13c3 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-ling-30-flash-sante", "result": "4/4", "quota": 0, "secs": 89} |
+| 1005 | 2026-09-24 01:33:32 | ad7a13c3 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-ling-30-flash-fin", "result": "4/4", "quota": 0, "secs": 100} |
+| 1006 | 2026-09-24 01:33:32 | ad7a13c3 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["or-ling-30-flash-sante", "4/4"], ["or-ling-30-flash-fin", "4/4"]]}} |
