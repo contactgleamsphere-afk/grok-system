@@ -8,6 +8,7 @@
   python tools/factory_worker.py add run <bot_id> --task "..." [--in DIR] [--out DIR]   # D-063 real work
   python tools/factory_worker.py add tooldisc <need> [--max 2]                            # D-108 MCP tool discovery → probation
   python tools/factory_worker.py approve-tool mcp:<slug>                                    # D-110 owner-only: probation → APPROVED
+  python tools/factory_worker.py revoke-tool mcp:<slug> --reason "<why>"                    # D-120: owner-only: remove + never re-add
   python tools/factory_worker.py add run --plan <plan_job> --in DIR                       # run a whole pipeline
   python tools/factory_worker.py add tick                     # D-076: fire due schedules now (self-chains hourly)
   python tools/factory_worker.py add insight [--days 7]      # D-057 factory self-review -> proposals/<date>.md
@@ -627,6 +628,10 @@ def main(a: list[str]) -> int:
     if cmd == "approve-tool":                                   # D-110 owner decision, audited as a permission-class event
         res = ftd.approve(a[2], "owner")
         store.audit("tool.approved" if res.get("ok") else "tool.approve_failed", actor="owner", tool=a[2], detail=json.dumps(res)[:400])
+        print(json.dumps(res, indent=1)); return 0 if res.get("ok") else 1
+    if cmd == "revoke-tool":                                    # owner-only: remove a discovered MCP server for good
+        res = ftd.revoke(a[2], opt("--reason", "owner decision"), "owner")
+        store.audit("tool.revoked" if res.get("ok") else "tool.revoke_failed", actor="owner", tool=a[2], detail=json.dumps(res)[:400])
         print(json.dumps(res, indent=1)); return 0 if res.get("ok") else 1
     if cmd == "add":
         kind = a[2]

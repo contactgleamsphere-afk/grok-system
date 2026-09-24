@@ -21,7 +21,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "core"))
 from factory.registry import Registry, ToolEntry   # noqa: E402
 
 MCP_REG = "https://registry.modelcontextprotocol.io/v0.1/servers"
-POLICY_BLOCK = re.compile(r"stealth|anti-?detect|undetect|bypass|captcha[- ]?solv|fingerprint spoof|evade|evasion", re.I)
+POLICY_BLOCK = re.compile(r"stealth|anti-?detect|undetect|invisible to anti|bypass|no captchas|without captchas|captcha[- ]?solv|fingerprint spoof|evade|evasion|not to be detected", re.I)
 STOPWORDS = {"the", "and", "for", "with", "server", "mcp", "tool", "tools", "automation", "access", "via", "using", "from", "into"}
 PERMISSIVE = ("MIT", "APACHE", "BSD", "ISC", "MPL", "UNLICENSE", "0BSD", "CC0")
 RECENT_DAYS = 365
@@ -91,7 +91,7 @@ def discover(need: str, fetch=None, limit: int = 30) -> list[dict]:
 def research(c: dict, fetch=None) -> dict:
     """Facts from the package index and the repo. Every field may be None; evaluate() treats unknown as a finding."""
     fetch = fetch or _fetch
-    f = {"licence": None, "released": None, "deps": None, "yanked": False, "archived": None, "stars": None, "pushed": None}
+    f = {"licence": None, "released": None, "deps": None, "yanked": False, "archived": None, "stars": None, "pushed": None, "blurb": ""}
     pk = c.get("package") or {}
     if pk.get("registryType") == "pypi":
         d = fetch(f"https://pypi.org/pypi/{pk['identifier']}/json")
@@ -101,6 +101,7 @@ def research(c: dict, fetch=None) -> dict:
             cls = [x for x in info.get("classifiers", []) if x.startswith("License ::")]
             f["licence"] = (lic if len(lic) < 40 else "") or (cls[-1].split("::")[-1].strip() if cls else None) or (info.get("license_expression") or None)
             f["deps"] = len(info.get("requires_dist") or [])
+            f["blurb"] += " " + str(info.get("summary") or "") + " " + " ".join(info.get("keywords") or "" if isinstance(info.get("keywords"), str) else info.get("keywords") or [])
             f["released"] = max((x.get("upload_time_iso_8601", "") for x in rel), default=None) or None
             f["yanked"] = any(x.get("yanked") for x in rel)
     elif pk.get("registryType") == "npm":
@@ -109,6 +110,7 @@ def research(c: dict, fetch=None) -> dict:
             latest = (d.get("dist-tags") or {}).get("latest"); ver = (d.get("versions") or {}).get(latest, {})
             f["licence"] = d.get("license") if isinstance(d.get("license"), str) else (ver.get("license") if isinstance(ver.get("license"), str) else None)
             f["deps"] = len(ver.get("dependencies") or {})
+            f["blurb"] += " " + str(d.get("description") or "") + " " + " ".join(ver.get("keywords") or [])
             f["released"] = (d.get("time") or {}).get(latest)
     m = re.match(r"https?://github\.com/([^/]+)/([^/#?]+)", c.get("repo") or "")
     if m:
@@ -116,6 +118,8 @@ def research(c: dict, fetch=None) -> dict:
         if d and "full_name" in d:
             f["archived"] = bool(d.get("archived")); f["stars"] = d.get("stargazers_count"); f["pushed"] = d.get("pushed_at")
             f["licence"] = f["licence"] or ((d.get("license") or {}).get("spdx_id"))
+            f["blurb"] += " " + str(d.get("description") or "") + " " + " ".join(d.get("topics") or [])
+    f["blurb"] = f["blurb"].strip()[:600]
     return f
 
 
@@ -132,7 +136,9 @@ def _days_since(iso: str | None, now: float) -> float | None:
 def evaluate(c: dict, facts: dict, now: float | None = None) -> tuple[str, list[str]]:
     """'keep' or 'rejected' with reasons. Evidence rules; stars are recorded but never decide."""
     now = now or time.time(); why = []
-    text = f"{c.get('name', '')} {c.get('title', '')} {c.get('description', '')}".lower()
+    # The registry blurb can be sanitised; the repo description/topics and the package summary usually are not
+    # (live 2026-09-25: "invisible-playwright-mcp" = "undetected anti-detect stealth Firefox … no captchas").
+    text = f"{c.get('name', '')} {c.get('title', '')} {c.get('description', '')} {facts.get('blurb', '')}".lower()
     if POLICY_BLOCK.search(text): why.append("policy: anti-detection / bypass tooling (contract: never evade ToS, rate limits or identity checks)")
     if c.get("remote_only"): why.append("remote-only (hosted; data leaves the machine, lock-in)")
     if not c.get("package"): why.append("no local stdio package (pypi/npm)")
@@ -317,6 +323,27 @@ def approve(tool_id: str, actor: str = "owner", installer=None) -> dict:
     return {"ok": True, "tool": tool_id, "install": notes["install"], "tools": len(inst["tools"])}
 
 
+def revoke(tool_id: str, reason: str, actor: str = "owner") -> dict:
+    """Remove a discovered MCP server (probation or approved) from the registry, record a permanent 'rejected' verdict
+    in the ledger so discovery never re-adds that name, and note any bot whose spec still lists it (those specs fail
+    validate_spec on the next rebuild — nothing is silently edited). Owner-only, audited by the caller."""
+    if actor != "owner": return {"ok": False, "reason": "only the owner revokes tools"}
+    reg = Registry(ROOT / "registry"); t = reg.get("tools", tool_id)
+    if t is None or t.kind != "mcp": return {"ok": False, "reason": f"{tool_id} is not a discovered MCP tool"}
+    try: notes = json.loads(t.notes)
+    except Exception: notes = {}
+    name, ver = notes.get("registry_name") or tool_id, notes.get("version")
+    l = _ledger(); l.setdefault("verdicts", {})[f"{name}:{ver}"] = {"verdict": "rejected", "reason": f"revoked by owner: {reason}"[:200],
+                                                                    "ts": time.time(), "date": time.strftime("%Y-%m-%d"), "need": notes.get("need")}
+    l["verdicts"][f"{name}:*"] = dict(l["verdicts"][f"{name}:{ver}"])          # any future version too
+    _save_ledger(l)
+    users = [b.id for b in reg.all("bots") if tool_id in (b.tools or [])]
+    reg.remove("tools", tool_id); write_probation_md(reg)
+    inst = MCP_HOME / tool_id.split(":", 1)[-1]
+    if inst.exists(): shutil.rmtree(inst, ignore_errors=True)
+    return {"ok": True, "tool": tool_id, "ledger": f"{name}:*", "bots_still_listing_it": users, "install_removed": str(inst)}
+
+
 def write_probation_md(reg: Registry, path: pathlib.Path | None = None) -> None:
     """Regenerate the auto section of TOOL_REGISTRY.md (between markers) from registry/tools.json kind=mcp entries."""
     path = path or ROOT / "TOOL_REGISTRY.md"
@@ -345,8 +372,9 @@ def run(need: str, max_new: int = 2, dry_run: bool = False, fetch=None, sandboxe
     for c in cands:
         key = f"{c.get('name')}:{c.get('version')}"
         if tool_id(c) in known: verdicts.append((c, "known", "already in registry")); continue
-        prev = ledger["verdicts"].get(key)
-        if prev and now - prev.get("ts", 0) < LEDGER_DAYS * 86400: verdicts.append((c, "ledger", prev["verdict"])); continue
+        prev = ledger["verdicts"].get(key) or ledger["verdicts"].get(f"{c.get('name')}:*")     # ':*' = revoked by owner, permanent
+        if prev and (prev.get("reason", "").startswith("revoked") or now - prev.get("ts", 0) < LEDGER_DAYS * 86400):
+            verdicts.append((c, "ledger", prev["verdict"])); continue
         facts = research(c, fetch)
         v, why = evaluate(c, facts, now)
         if v != "keep": verdicts.append((c, "rejected", "; ".join(why))); continue

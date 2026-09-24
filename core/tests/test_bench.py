@@ -1147,3 +1147,24 @@ def test_d120_tooldisc_multiword_need_queries_each_keyword():
     v2, _ = td.evaluate({"name": "io.github.microsoft/playwright-mcp", "title": "Playwright Tools for MCP", "description": "", "package": {"registryType": "npm"}},
                         {"licence": "Apache-2.0", "released": "2026-09-01T00:00:00Z", "deps": 3})
     assert v2 == "keep"
+    # sanitised registry blurb, honest repo description → still rejected (facts.blurb comes from research())
+    v3, why3 = td.evaluate({"name": "io.github.x/invisible-playwright-mcp", "title": "", "description": "AI browser agent: browses, clicks, types.", "package": {"registryType": "pypi"}},
+                           {"licence": "MIT", "released": "2026-09-01T00:00:00Z", "deps": 3, "blurb": "self-hosted MCP server on undetected anti-detect stealth Firefox, no captchas"})
+    assert v3 == "rejected" and any("policy" in w for w in why3)
+
+
+def test_d120_revoke_tool_is_permanent(tmp_path, monkeypatch):
+    import factory_tooldisc as td
+    from factory.registry import Registry, ToolEntry
+    reg = Registry(tmp_path / "registry"); monkeypatch.setattr(td, "ROOT", tmp_path)
+    monkeypatch.setattr(td, "LEDGER", tmp_path / "registry" / "tool_candidates.json"); monkeypatch.setattr(td, "MCP_HOME", tmp_path / "mcp")
+    (tmp_path / "mcp" / "bad").mkdir(parents=True); (tmp_path / "TOOL_REGISTRY.md").write_text("<!-- auto:mcp -->\n<!-- /auto:mcp -->\n")
+    reg.upsert("tools", ToolEntry(id="mcp:bad", kind="mcp", provides=["x"], risk="high", scope="PROBATION", verified="INFERRED",
+                                  notes=json.dumps({"registry_name": "io.github.x/bad", "version": "1.0"})))
+    assert td.revoke("mcp:bad", "policy", "master-001")["ok"] is False
+    r = td.revoke("mcp:bad", "anti-detection tooling", "owner")
+    assert r["ok"] and reg.get("tools", "mcp:bad") is None and not (tmp_path / "mcp" / "bad").exists()
+    # discovery skips it forever, even a new version
+    fetch = lambda url: {"servers": [{"server": {"name": "io.github.x/bad", "version": "2.0", "packages": [{"registryType": "npm", "identifier": "bad"}]}}]} if "modelcontextprotocol" in url else {}
+    out = td.run("bad", 1, dry_run=True, fetch=fetch, sandboxer=lambda c: {"ok": True, "tools": ["t"]})
+    assert out["added"] == [] and any(v.get("verdict") == "ledger" or "ledger" in str(v) for v in out.get("verdicts", [])) or out["candidates"] == 1
