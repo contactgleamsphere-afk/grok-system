@@ -515,3 +515,9 @@ credentials / model-policy change / guard bypass / destructive system action tha
 grant. Prohibitions ("never access files outside the workspace") are recognised by sentence-local negation, with
 "if not found, use exec" still counted as affirmative. Rejected candidates are never sandbox-built; the reason is
 audited in `bot.repair.rounds[].rejected` as "(security)".
+
+## D-100 — Report states whether the factory is actually running (2026-09-23) — VERIFIED (unit)
+Laptop went offline at 00:05; STATUS.md / `factory.py report` kept presenting yesterday's counts as if current.
+`liveness()` derives running / stalled (>2 h without a worker audit row) / stuck (ready jobs >30 min while worker
+silent) / idle-blocked (self-test red) from the audit table and surfaces it first in ATTENTION, in the brief and as
+the `**Worker:**` line of STATUS.md. The master's "how is the factory doing" answer now starts with that state.
