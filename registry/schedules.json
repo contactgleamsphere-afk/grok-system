@@ -6,7 +6,7 @@
     "cron": "0 7 * * *",
     "enabled": true,
     "in": "C:\\AI\\Factory\\workspace\\inbox\\orders",
-    "last_fire": null,
+    "last_fire": "2026-09-23T07:00",
     "next": "2026-09-23T07:00",
     "runs": 0,
     "task": "Sum order totals per country into totals.csv"
