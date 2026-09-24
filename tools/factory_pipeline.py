@@ -129,7 +129,8 @@ def _cool_from_error(provider: str, model: str, txt: str) -> None:
 def _catalog(reg: Registry) -> str:
     tools = reg.all("tools")
     models = [m for m in reg.all("models") if m.verified != "BLOCKED"]
-    t = "\n".join(f"- {x.id}: provides {x.provides}, risk {x.risk}, scope {x.scope}" for x in tools)
+    tools = [x for x in tools if not (x.kind == "mcp" and "PROBATION" in (x.scope or ""))]   # D-110: probation servers are not offered
+    t = "\n".join(f"- {x.id}: provides {x.provides}, risk {x.risk}, scope {x.scope}" + (f" (MCP server: requires permission {x.id}; its tools appear to the bot as mcp_{x.id.split(':', 1)[-1].replace('-', '_')}_*)" if x.kind == "mcp" else "") for x in tools)
     m = ", ".join(sorted(x.id for x in models))
     return f"TOOLS (only these ids may be used):\n{t}\n\nMODEL PRESETS (only these ids): {m}"
 
