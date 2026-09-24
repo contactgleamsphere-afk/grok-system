@@ -39,17 +39,19 @@ def build() -> dict:
     recent = [j for j in jobs if now - float(j["updated"]) < 86400]
     audit = store.audit_rows(limit=25)
     live = liveness(store, jobs, now)                                   # D-100
-    if live["state"] != "running":
-        owner.insert(0, f"FACTORY {live['state'].upper()}: {live['reason']}")
+    head = [f"FACTORY {live['state'].upper()}: {live['reason']}"] if live["state"] != "running" else []
     return {"generated": datetime.datetime.now().isoformat(timespec="seconds"),
             "bots": {"active": sum(b["status"] == "active" for b in bots), "total": len(bots), "list": bots},
             "queue": store.summary(),
             "jobs_24h": [{"id": j["id"][:8], "kind": j["kind"], "state": j["state"], "attempts": j["attempts"], "class": j.get("failure_class"),
                           "bot": j["payload"].get("bot_id"), "objective": (j["payload"].get("objective") or "")[:70]} for j in recent],
             "lanes": lanes, "healthy_lanes": [l["id"] for l in lanes if l["state"] == "ok"],
-            "attention": [f"job {j['id'][:8]} {j['kind']} paused ({j.get('failure_class')})" for j in jobs if j["state"] == "paused"]
-                         + [f"bot {b['id']} {b['name']} is {b['status']}" for b in bots if b["status"] not in ("active",) and b["id"] != "001"]
-                         + [f"lane {l['id']} BLOCKED: {l['reason']}" for l in lanes if l["state"] == "BLOCKED" and l.get("reason")]
+            "attention": head + [f"job {j['id'][:8]} {j['kind']} paused ({j.get('failure_class')})" for j in jobs if j["state"] == "paused"]
+                         + [f"bot {b['id']} {b['name']} is {b['status']}" for b in bots if b["status"] not in ("active", "retired") and b["id"] != "001"
+                            and not (b["status"] == "paused" and now - _updated_ts(reg.get("bots", b["id"])) > 3 * 86400)]   # D-104: settled paused/retired bots are counts, not alarms
+                         + ([f"{sum(b['status'] == 'retired' for b in bots)} retired / {sum(b['status'] == 'paused' for b in bots)} paused bots (see Bots table)"]
+                            if any(b["status"] in ("retired", "paused") for b in bots) else [])
+                         + [f"lane {l['id']} BLOCKED: {' '.join(str(l['reason']).split())[:80]}" for l in lanes if l["state"] == "BLOCKED" and l.get("reason")]
                          + owner,
             "liveness": live,
             "bench": [{"id": i, "score": f"{b['pass']}/{b['total']}", "secs": b.get("secs"), "runs": b.get("runs", 1)} for i, b in bench],
@@ -58,6 +60,11 @@ def build() -> dict:
 
 STALE_WORKER_S = 2 * 3600      # hourly probe/tick chain + 15-min task tick: >2 h of silence means nobody is executing
 STUCK_QUEUE_S = 30 * 60        # a queued job older than this while a worker is alive = pick loop broken
+
+
+def _updated_ts(entry) -> float:
+    try: return datetime.datetime.fromisoformat(str(getattr(entry, "updated", ""))).timestamp()
+    except Exception: return 0.0
 
 
 def liveness(store, jobs: list[dict], now: float) -> dict:
@@ -79,7 +86,7 @@ def liveness(store, jobs: list[dict], now: float) -> dict:
     if not selftest_ok:
         state, reason = "idle-blocked", "worker self-test gate is red; nothing is processed until the tests pass"
     elif age is None or age > STALE_WORKER_S:
-        state, reason = "stalled", f"no worker activity for {int((age or 0) // 60)} min (laptop asleep/offline or worker task dead)"
+        state, reason = "stalled", (f"no worker activity for {int(age // 60)} min" if age else "no worker activity on record") + " (laptop asleep/offline or worker task dead)"
     elif queued and oldest_ready > STUCK_QUEUE_S and age > STUCK_QUEUE_S:
         state, reason = "stuck", f"{len(queued)} ready jobs waiting {int(oldest_ready // 60)} min while the worker is silent"
     else:

@@ -547,3 +547,8 @@ instruction repair — the wrong fix for a lane problem. `resolve_chain` now top
 lanes from the registry's current best (bench pass-rate → tool-call score; BLOCKED, cooled, no_tool_call and weak
 lanes excluded). Runtime routing only: the spec's `model_policy` stays frozen; `factory_chain` reports
 `source=live+topup:<lanes>` so every test/run records that it happened.
+
+## D-104 — Attention list: signal over noise (2026-09-24) — VERIFIED (unit)
+Liveness leads the ATTENTION list; retired bots and paused bots untouched for >3 days collapse into a single count
+line; BLOCKED lane reasons are one-line/80 chars. The master's 900-char brief was spending a third of its budget on
+010/015 and multi-line JSON errors.
