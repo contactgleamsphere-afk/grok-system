@@ -2,13 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 803 | 2026-09-22 23:28:37 | bb3c746e |  | job.cancelled | owner | {} |
-| 804 | 2026-09-22 23:28:38 | 8216dd6e |  | job.enqueued | builder | {"kind": "create", "payload": {"objective": "Run pytest in the workspace and report how many tests passed"}} |
-| 805 | 2026-09-22 23:28:39 | 8216dd6e |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 806 | 2026-09-22 23:28:41 | 8216dd6e |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect: objective needs permissions outside the allowance ['fs:read', 'fs:write', 'net:search', 'net:fetch']: shell:workspace  |
-| 807 | 2026-09-22 23:28:41 | 8216dd6e |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: architect: objective needs permissions outside the a |
-| 808 | 2026-09-22 23:31:27 | 8216dd6e |  | job.cancelled | owner | {} |
-| 809 | 2026-09-22 23:31:27 | c73bd54a |  | job.enqueued | owner | {"kind": "create", "payload": {"objective": "Given a Python test file test_x.py in the workspace, run it with 'python -m pytest -q test_x.py |
 | 810 | 2026-09-22 23:31:31 | c73bd54a |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 811 | 2026-09-22 23:31:34 | c73bd54a | 024 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "pytest-runner-bot", "tools": ["write_file", "read_file", "exec"], "permissions": ["fs:read", "fs:write", "shell:workspace"], "chai |
 | 812 | 2026-09-22 23:32:19 | c73bd54a | 024 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 17s [done] expect='2' last='RESULT: 2' \| T3 PASS 17s [done] expect='CON |
@@ -402,3 +395,10 @@
 | 1200 | 2026-09-24 03:17:39 | ab489546 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1201 | 2026-09-24 03:17:42 | ab489546 |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect: objective needs permissions outside the allowance ['fs:read', 'mcp:mcp-sqlite3']: fs:write is required for the mcp:mcp |
 | 1202 | 2026-09-24 03:17:42 | ab489546 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: architect: objective needs permissions outside the a |
+| 1203 | 2026-09-24 03:24:13 | ab489546 |  | job.cancelled | owner | {} |
+| 1204 | 2026-09-24 03:24:13 | 1ed33ffb |  | job.enqueued | owner | {"kind": "create", "payload": {"objective": "Answer questions about a SQLite database file in the workspace using the mcp:mcp-sqlite3 server |
+| 1205 | 2026-09-24 03:24:16 | 1ed33ffb |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1206 | 2026-09-24 03:24:21 | 1ed33ffb | 026 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "sqlite-query-bot", "tools": ["read_file", "write_file", "mcp:mcp-sqlite3"], "permissions": ["fs:read", "fs:write", "mcp:mcp-sqlite |
+| 1207 | 2026-09-24 03:27:58 | 1ed33ffb | 026 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 FAIL 36s [done] expect='users' last='RESULT: None' \| T3 FAIL 148s [done] exp |
+| 1208 | 2026-09-24 03:27:58 | bd24f8ff | 026 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "026", "retest_of": "1ed33ffb39b24c2484a0475203da7515"}} |
+| 1209 | 2026-09-24 03:27:58 | 1ed33ffb | 026 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "026", "name": "sqlite-query-bot", "pass": 2, "total": 4, "status": "testing", "verified": "UNVERIFIED"}} |
