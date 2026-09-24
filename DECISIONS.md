@@ -628,9 +628,12 @@ when a lane goes BLOCKED or the healthy pool is thin, plus a weekly sweep (groq,
 job. Same gate as before: real probe + two-turn tool loop → probation → bench. No human action needed for new free
 models on providers we already hold keys for.
 
-## D-116 — Tunnel self-heal from inside the factory (2026-09-24) — VERIFIED (unit); live pending
+## D-116 — Tunnel self-heal from inside the factory (2026-09-24) — VERIFIED (unit); live: correctly deferred to the supervisor
 04:10 the published quick-tunnel URL answered HTTP 530 for >15 min with no supervisor running; the builder was locked
 out while the laptop kept working. The hourly `tick` (and every fast-worker restart) now probes the published URL and,
 if it is dead AND no `tunnel-supervisor.ps1` is alive, runs the registered task `AIFactory-Tunnel` (audit
 `tunnel.restarted`). A live supervisor is left alone to do its own recovery. Deployed through the worker's own
 code-sync path — no SSH needed to ship the fix that restores SSH.
+Live finding (04:25): the supervisor WAS alive and restarted the tunnel itself; the 15-min gap was its "wait for
+internet" loop pinging 1.1.1.1 (ICMP) for 580 s while HTTPS worked throughout. D-116b: supervisor now tests HTTPS
+(api.github.com) first, ICMP as fallback, wait capped at 300 s. The tick check stays as the backstop for a dead supervisor.

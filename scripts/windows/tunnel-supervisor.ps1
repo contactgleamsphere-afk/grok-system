@@ -66,7 +66,10 @@ while($true){
   else { Stop-Process -Id $p.Id -Force -ErrorAction SilentlyContinue; Start-Sleep 2 }
   Write-SupLog "restart: $reason"
   # wait for internet before relaunch (avoid burning quick-tunnel creates while offline)
-  $w=0; while(-not (Test-Connection 1.1.1.1 -Count 1 -Quiet) -and $w -lt 600){ Start-Sleep 10; $w+=10 }
+  # D-116b: ICMP is not "internet" — on 2026-09-24 04:11 ping 1.1.1.1 failed for 580 s while HTTPS worked the whole
+  # time (the worker kept pushing to GitHub), so the tunnel stayed down 10 min longer than needed. Test HTTPS first.
+  function Test-Net { try{ Invoke-WebRequest -Uri 'https://api.github.com' -UseBasicParsing -TimeoutSec 8 | Out-Null; return $true }catch{ if($_.Exception.Response){ return $true } } ; return (Test-Connection 1.1.1.1 -Count 1 -Quiet) }
+  $w=0; while(-not (Test-Net) -and $w -lt 300){ Start-Sleep 10; $w+=10 }
   if($w -gt 0){ Write-SupLog "network back after ${w}s" }
   Start-Sleep 10
 }
