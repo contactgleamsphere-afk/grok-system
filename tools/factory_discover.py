@@ -124,6 +124,7 @@ def sandbox_loop(base: str, key: str, model: str, timeout: int = 60) -> dict:
 
 def preset_id(provider: str, model: str) -> str:
     slug = model.split("/")[-1].replace(":free", "").replace(".", "").replace("_", "-")
+    if slug.startswith(provider + "-"): slug = slug[len(provider) + 1:]      # gemini-flash-lite → gemini-flash-lite, not gemini-gemini-…
     return f"{ {'openrouter': 'or', 'cerebras': 'cb', 'nvidia': 'nv', 'mistral': 'mi'}.get(provider, provider) }-{slug}"[:40]
 
 
