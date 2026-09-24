@@ -2,16 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 900 | 2026-09-24 01:12:18 | c1c70d3e | 025 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "025", "monitor_of": "ec7ed62485264d62b34fc744deeb0c6f", "day": "2026-09-24"}} |
-| 901 | 2026-09-24 01:12:18 | ec7ed624 |  | monitor.fanout | svc-LAPTOP-LRE6PSA8 | {"bots": ["001", "002", "003", "004", "005", "006", "007", "008", "009", "011", "012", "013", "014", "016", "017", "018", "019", "020", "021 |
-| 902 | 2026-09-24 01:12:18 | ec7ed624 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 903 | 2026-09-24 01:12:20 | 581618e9 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 904 | 2026-09-24 01:12:23 | 657a2134 | 018 | bot.ran | fast-LAPTOP-LRE6PSA8 | {"ok": true, "produced": [], "secs": 8, "reply": "", "chain": "groq-gptoss120b"} |
-| 905 | 2026-09-24 01:12:23 | 657a2134 | 018 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "name": "run", "status": "ok "}} |
-| 906 | 2026-09-24 01:12:29 | c50593d5 | 002 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 907 | 2026-09-24 01:12:45 | bc494d29 |  | job.enqueued | nightly-task | {"kind": "monitor", "payload": {"only": null, "day": "2026-09-24"}} |
-| 908 | 2026-09-24 01:20:22 | c50593d5 | 002 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 230s [done] expect='SCOUT_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\002.json' \| T2 FAIL 240s [done] expect= |
-| 909 | 2026-09-24 01:20:22 | c50593d5 | 002 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 230s [done] expect='SCOUT_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\002.json' \| T2 FAIL 240s [done] expect= |
 | 910 | 2026-09-24 01:20:22 | c50593d5 | 002 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 911 | 2026-09-24 01:20:22 | c3c35810 | 002 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "002", "max_rounds": 2}} |
 | 912 | 2026-09-24 01:20:22 | c50593d5 | 002 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "002", "status": "testing", "verified": "UNVERIFIED"}} |
@@ -402,3 +392,13 @@
 | 1297 | 2026-09-24 04:32:40 | 7e3cce23 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-09-24", "trigger": "blocked:gemini-flash"}} |
 | 1298 | 2026-09-24 04:32:40 | 10338bdf |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-09-24", "trigger": "blocked:gemini-flash"}} |
 | 1299 | 2026-09-24 04:32:40 | 40419dff |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-li |
+| 1300 | 2026-09-24 04:32:46 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": false, "tail": ["1 failed, 51 passed in 10.29s"]} |
+| 1301 | 2026-09-24 04:32:46 |  |  | worker.blocked_by_tests | svc-LAPTOP-LRE6PSA8 | {"reason": "core/tests red on current code; refusing to process jobs until code changes"} |
+| 1302 | 2026-09-24 04:32:46 | c76efa69 |  | job.enqueued | owner | {"kind": "canary", "payload": {"day": "2026-09-24"}} |
+| 1303 | 2026-09-24 04:32:47 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1304 | 2026-09-24 04:32:47 |  |  | worker.blocked_by_tests | fast-LAPTOP-LRE6PSA8 | {"reason": "core/tests red on current code; refusing to process jobs until code changes"} |
+| 1305 | 2026-09-24 04:42:06 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["110 passed in 15.82s"]} |
+| 1306 | 2026-09-24 04:42:06 | 769af551 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1307 | 2026-09-24 04:42:06 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["110 passed in 15.57s"]} |
+| 1308 | 2026-09-24 04:42:06 | eb45cb88 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1309 | 2026-09-24 04:42:06 | eb45cb88 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
