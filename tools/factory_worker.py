@@ -719,7 +719,8 @@ def main(a: list[str]) -> int:
             if opt("--then-run"): pl["then_run"] = {"in": opt("--then-run")}          # D-066: build, then run on these files
             j = store.enqueue("plan", pl, priority=int(opt("--priority", 5)), actor=opt("--actor", "owner"))
         elif kind == "selfpatch":
-            if opt("--request"): j = store.enqueue("selfpatch", {"request": opt("--request"), "t": int(time.time())}, priority=5, actor=opt("--actor", "owner"))
+            # same request text = same job for the day (the master acceptance test and repeated chat asks must not pile up PRs)
+            if opt("--request"): j = store.enqueue("selfpatch", {"request": opt("--request"), "day": str(datetime.date.today())}, priority=5, actor=opt("--actor", "owner"))
             else: j = store.enqueue("selfpatch", {"date": opt("--date", str(datetime.date.today())), "index": int(opt("--index", 1))}, priority=5, actor=opt("--actor", "owner"))
         elif kind == "scout": j = store.enqueue("scout", {"t": int(time.time())}, priority=6, actor=opt("--actor", "owner"))
         elif kind == "canary": j = store.enqueue("canary", {"day": str(datetime.date.today())}, priority=5, actor=opt("--actor", "owner"))
