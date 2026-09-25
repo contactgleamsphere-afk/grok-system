@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1307 | 2026-09-24 04:42:06 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["110 passed in 15.57s"]} |
-| 1308 | 2026-09-24 04:42:06 | eb45cb88 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1309 | 2026-09-24 04:42:06 | eb45cb88 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 1310 | 2026-09-24 04:42:06 | 769af551 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 1311 | 2026-09-24 04:42:09 | 9c9d8b05 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1312 | 2026-09-24 04:42:09 | 9c9d8b05 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 1313 | 2026-09-24 04:42:12 | 57739895 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +398,7 @@
 | 1704 | 2026-09-25 04:03:26 | 72522ac3 | 021 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 31s [done] expect='X_OK' last='X_OK' \| T2 PASS 46s [done] expect='2' last='2' \| T3 FAIL 6s [done] expect='1' last='Usi |
 | 1705 | 2026-09-25 04:03:26 | d62f34ea | 021 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "021", "retest_of": "72522ac3aab24ff0bee10f6aec1dbe28", "after_quota": "72522ac3aab24ff0bee10f6aec1db |
 | 1706 | 2026-09-25 04:03:26 | 72522ac3 | 021 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "021", "status": "active", "verified": "VERIFIED"}} |
+| 1707 | 2026-09-25 04:03:28 | 35e53778 | 023 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1708 | 2026-09-25 04:08:08 | 35e53778 | 023 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 21s [done] expect='X_OK' last='X_OK' \| T2 PASS 86s [done] expect='36.0' last='RESULT: 36.0' \| T3 PASS 127s [done] expe |
+| 1709 | 2026-09-25 04:08:08 | 35e53778 | 023 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 21s [done] expect='X_OK' last='X_OK' \| T2 PASS 86s [done] expect='36.0' last='RESULT: 36.0' \| T3 PASS 127s [done] expe |
+| 1710 | 2026-09-25 04:08:08 | 35e53778 | 023 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "023", "status": "active", "verified": "VERIFIED"}} |
