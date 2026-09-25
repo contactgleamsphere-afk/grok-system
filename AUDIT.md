@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1326 | 2026-09-24 06:54:42 | 9a01357c |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 1327 | 2026-09-24 22:29:10 | 86ba95ba |  | job.lease_expired | svc-LAPTOP-LRE6PSA8 | {} |
 | 1328 | 2026-09-24 22:29:11 | 86ba95ba |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 2} |
 | 1329 | 2026-09-24 22:29:11 | d0196af8 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-24T23"}} |
 | 1330 | 2026-09-24 22:29:15 | 86ba95ba |  | probe.network_down | fast-LAPTOP-LRE6PSA8 | {"detail": "all 17 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
@@ -402,3 +400,5 @@
 | 1723 | 2026-09-25 04:10:32 | 3f73d2dd | 026 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 19s [done] expect='X_OK' last='X_OK' \| T2 PASS 23s [done] expect='3' last='RESULT: 3' \| T3 PASS 23s [done] expect='use |
 | 1724 | 2026-09-25 04:10:32 | 3f73d2dd | 026 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 19s [done] expect='X_OK' last='X_OK' \| T2 PASS 23s [done] expect='3' last='RESULT: 3' \| T3 PASS 23s [done] expect='use |
 | 1725 | 2026-09-25 04:10:32 | 3f73d2dd | 026 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "026", "status": "active", "verified": "VERIFIED"}} |
+| 1726 | 2026-09-25 04:10:35 | 6ba4e1dc |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1727 | 2026-09-25 04:10:35 | 6ba4e1dc |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": []}} |
