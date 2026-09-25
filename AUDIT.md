@@ -2,19 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1063 | 2026-09-24 01:43:25 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["100 passed in 13.98s"]} |
-| 1064 | 2026-09-24 01:43:25 | 754d191f | 006 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1065 | 2026-09-24 01:46:36 | 754d191f | 006 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": "4/4", "rejected": null}], "boundary_ |
-| 1066 | 2026-09-24 01:46:36 | 754d191f | 006 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
-| 1067 | 2026-09-24 01:46:36 | 754d191f | 006 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "006", "name": "json-to-markdown-table", "status": "active", "verified": "VERIFIED"}} |
-| 1068 | 2026-09-24 01:46:42 | 000fb61b | 007 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1069 | 2026-09-24 01:51:44 | 000fb61b | 007 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
-| 1070 | 2026-09-24 01:51:44 | 000fb61b | 007 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
-| 1071 | 2026-09-24 01:51:44 | 000fb61b | 007 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "007", "status": "active"}} |
-| 1072 | 2026-09-24 01:51:49 | b31aa10e | 011 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1073 | 2026-09-24 01:55:19 | b31aa10e | 011 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 81s [done] expect='2' last='2' \| T3 PASS 74s [done] expect='3' last='3' |
-| 1074 | 2026-09-24 01:55:19 | b31aa10e | 011 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 81s [done] expect='2' last='2' \| T3 PASS 74s [done] expect='3' last='3' |
-| 1075 | 2026-09-24 01:55:19 | b31aa10e | 011 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "011", "status": "active", "verified": "VERIFIED"}} |
 | 1076 | 2026-09-24 01:55:23 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 1077 | 2026-09-24 01:55:44 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["100 passed in 13.92s"]} |
 | 1078 | 2026-09-24 01:55:44 | e6ebfe8c | 012 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +389,16 @@
 | 1460 | 2026-09-25 00:39:46 | 6e4d634b |  | tool.rejected | fast-LAPTOP-LRE6PSA8 | {"tool": "io.github.Agent360dk/browser-mcp", "reason": "policy: anti-detection / bypass tooling (contract: never evade ToS, rate limits or i |
 | 1461 | 2026-09-25 00:39:46 | 6e4d634b |  | owner.needed | fast-LAPTOP-LRE6PSA8 | {"provider": "tools", "reason": "MCP tools on probation for need 'playwright browser': ['mcp:playwright-network-chaos-mcp'] \u2014 approve t |
 | 1462 | 2026-09-25 00:39:46 | 6e4d634b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": ["mcp:playwright-network-chaos-mcp"]}} |
+| 1463 | 2026-09-25 00:46:50 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1464 | 2026-09-25 00:46:51 |  |  | tool.revoked | owner | {"tool": "mcp:playwright-network-chaos-mcp", "detail": "{\"ok\": true, \"tool\": \"mcp:playwright-network-chaos-mcp\", \"ledger\": \"io.gith |
+| 1465 | 2026-09-25 00:46:52 | d6be18bd |  | job.enqueued | owner | {"kind": "tooldisc", "payload": {"need": "playwright browser", "max": 1, "day": "2026-09-25"}} |
+| 1466 | 2026-09-25 00:46:53 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1467 | 2026-09-25 00:46:55 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": false, "tail": ["........................"]} |
+| 1468 | 2026-09-25 00:46:55 |  |  | worker.blocked_by_tests | fast-LAPTOP-LRE6PSA8 | {"reason": "core/tests red on current code; refusing to process jobs until code changes"} |
+| 1469 | 2026-09-25 00:46:57 |  |  | worker.blocked_by_tests | svc-LAPTOP-LRE6PSA8 | {"reason": "core/tests red on current code; refusing to process jobs until code changes"} |
+| 1470 | 2026-09-25 01:01:19 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["114 passed in 16.94s"]} |
+| 1471 | 2026-09-25 01:01:19 | d6be18bd |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1472 | 2026-09-25 01:01:19 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["114 passed in 16.70s"]} |
+| 1473 | 2026-09-25 01:06:21 | d6be18bd |  | tool.discovered | svc-LAPTOP-LRE6PSA8 | {"tool": "io.github.aethynio/aethyn-browser-mcp", "reason": "probation; tools=10 260s", "need": "playwright browser"} |
+| 1474 | 2026-09-25 01:06:21 | d6be18bd |  | owner.needed | svc-LAPTOP-LRE6PSA8 | {"provider": "tools", "reason": "MCP tools on probation for need 'playwright browser': ['mcp:aethyn-browser-mcp'] \u2014 approve to wire int |
+| 1475 | 2026-09-25 01:06:21 | d6be18bd |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": ["mcp:aethyn-browser-mcp"]}} |

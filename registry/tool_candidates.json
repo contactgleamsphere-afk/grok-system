@@ -182,6 +182,13 @@
    "ts": 1790291869.1934988,
    "verdict": "rejected"
   },
+  "io.github.aethynio/aethyn-browser-mcp:0.1.1": {
+   "date": "2026-09-25",
+   "need": "playwright browser",
+   "reason": "probation; tools=10 260s",
+   "ts": 1790294479.2279892,
+   "verdict": "approved"
+  },
   "io.github.arifulislamat/database-mcp-sqlite:0.4.2": {
    "date": "2026-09-24",
    "need": "sqlite",
