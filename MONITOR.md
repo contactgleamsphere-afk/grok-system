@@ -64,3 +64,4 @@
 | 2026-09-24 02:23 | 025 text-transformer | 3/3 | active→active | - |
 | 2026-09-24 04:24 | 020 workspace-file-lister | 3/3 | active→active | - |
 | 2026-09-25 01:12 | 002 research-scout | 0/2 | active→testing | - |
+| 2026-09-25 01:13 | 003 code-smith | 1/4 | active→testing | - |
