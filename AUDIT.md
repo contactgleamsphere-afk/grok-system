@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1471 | 2026-09-25 01:01:19 | d6be18bd |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1472 | 2026-09-25 01:01:19 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["114 passed in 16.70s"]} |
 | 1473 | 2026-09-25 01:06:21 | d6be18bd |  | tool.discovered | svc-LAPTOP-LRE6PSA8 | {"tool": "io.github.aethynio/aethyn-browser-mcp", "reason": "probation; tools=10 260s", "need": "playwright browser"} |
 | 1474 | 2026-09-25 01:06:21 | d6be18bd |  | owner.needed | svc-LAPTOP-LRE6PSA8 | {"provider": "tools", "reason": "MCP tools on probation for need 'playwright browser': ['mcp:aethyn-browser-mcp'] \u2014 approve to wire int |
 | 1475 | 2026-09-25 01:06:21 | d6be18bd |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": ["mcp:aethyn-browser-mcp"]}} |
@@ -402,3 +400,5 @@
 | 1868 | 2026-09-25 21:00:48 | 5146a28d |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 1869 | 2026-09-25 21:00:52 | f0d2836f |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1870 | 2026-09-25 21:00:52 | f0d2836f |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 1871 | 2026-09-25 21:00:56 | af65672a |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1872 | 2026-09-25 21:00:56 | af65672a |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
