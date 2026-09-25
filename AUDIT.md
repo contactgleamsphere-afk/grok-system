@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1323 | 2026-09-24 06:54:41 | 86ba95ba |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1324 | 2026-09-24 06:54:42 | 37b08250 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-24T07"}} |
-| 1325 | 2026-09-24 06:54:42 | e7340c6e |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-24T07"}} |
 | 1326 | 2026-09-24 06:54:42 | 9a01357c |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 1327 | 2026-09-24 22:29:10 | 86ba95ba |  | job.lease_expired | svc-LAPTOP-LRE6PSA8 | {} |
 | 1328 | 2026-09-24 22:29:11 | 86ba95ba |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 2} |
@@ -402,3 +399,6 @@
 | 1720 | 2026-09-25 04:09:51 | e3d0b490 | 025 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] expect='LIVENESS_OK' last='LIVENESS_OK' \| T2 PASS 20s [done] expect='HELLO WORLD' last='RESULT: HELLO WORLD' |
 | 1721 | 2026-09-25 04:09:51 | e3d0b490 | 025 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] expect='LIVENESS_OK' last='LIVENESS_OK' \| T2 PASS 20s [done] expect='HELLO WORLD' last='RESULT: HELLO WORLD' |
 | 1722 | 2026-09-25 04:09:51 | e3d0b490 | 025 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "025", "status": "active", "verified": "VERIFIED"}} |
+| 1723 | 2026-09-25 04:10:32 | 3f73d2dd | 026 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 19s [done] expect='X_OK' last='X_OK' \| T2 PASS 23s [done] expect='3' last='RESULT: 3' \| T3 PASS 23s [done] expect='use |
+| 1724 | 2026-09-25 04:10:32 | 3f73d2dd | 026 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 19s [done] expect='X_OK' last='X_OK' \| T2 PASS 23s [done] expect='3' last='RESULT: 3' \| T3 PASS 23s [done] expect='use |
+| 1725 | 2026-09-25 04:10:32 | 3f73d2dd | 026 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "026", "status": "active", "verified": "VERIFIED"}} |
