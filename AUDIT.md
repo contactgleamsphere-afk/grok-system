@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1469 | 2026-09-25 00:46:57 |  |  | worker.blocked_by_tests | svc-LAPTOP-LRE6PSA8 | {"reason": "core/tests red on current code; refusing to process jobs until code changes"} |
-| 1470 | 2026-09-25 01:01:19 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["114 passed in 16.94s"]} |
 | 1471 | 2026-09-25 01:01:19 | d6be18bd |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1472 | 2026-09-25 01:01:19 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["114 passed in 16.70s"]} |
 | 1473 | 2026-09-25 01:06:21 | d6be18bd |  | tool.discovered | svc-LAPTOP-LRE6PSA8 | {"tool": "io.github.aethynio/aethyn-browser-mcp", "reason": "probation; tools=10 260s", "need": "playwright browser"} |
@@ -402,3 +400,5 @@
 | 1866 | 2026-09-25 21:00:48 | 00afddce |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 1867 | 2026-09-25 21:00:48 | 5146a28d |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1868 | 2026-09-25 21:00:48 | 5146a28d |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 1869 | 2026-09-25 21:00:52 | f0d2836f |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1870 | 2026-09-25 21:00:52 | f0d2836f |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
