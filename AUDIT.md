@@ -2,12 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1243 | 2026-09-24 04:02:32 | 31f4e431 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 8, "total": 8, "status": "active", "verified": "VERIFIED"}} |
-| 1244 | 2026-09-24 04:07:28 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1245 | 2026-09-24 04:07:30 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1246 | 2026-09-24 04:07:46 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["108 passed in 16.10s"]} |
-| 1247 | 2026-09-24 04:07:48 | 865f4e25 |  | job.enqueued | owner | {"kind": "discover", "payload": {"provider": "groq", "day": "2026-09-24", "trigger": "manual"}} |
-| 1248 | 2026-09-24 04:07:48 | 2d873e41 |  | job.enqueued | owner | {"kind": "discover", "payload": {"provider": "gemini", "day": "2026-09-24", "trigger": "manual"}} |
 | 1249 | 2026-09-24 04:07:49 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["108 passed in 14.96s"]} |
 | 1250 | 2026-09-24 04:07:49 | 865f4e25 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1251 | 2026-09-24 04:07:50 | 865f4e25 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
@@ -402,3 +396,9 @@
 | 1640 | 2026-09-25 03:36:53 | 88222656 | 016 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "rearchitect", "payload": {"bot_id": "016", "feedback": "logic: spec/tests inconsistent, repair cannot change tools: bot reported C |
 | 1641 | 2026-09-25 03:36:53 | cc163779 | 016 | bot.rearchitect_queued | svc-LAPTOP-LRE6PSA8 | {"reason": "logic: spec/tests inconsistent, repair cannot change tools: bot reported CAPABILITY_MISSING"} |
 | 1642 | 2026-09-25 03:36:53 | cc163779 | 016 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: logic: spec/tests inconsistent, repair cannot chang |
+| 1643 | 2026-09-25 03:36:56 | 88222656 | 016 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1644 | 2026-09-25 03:38:13 | 88222656 | 016 | bot.rearchitected | svc-LAPTOP-LRE6PSA8 | {"lane": "groq:openai/gpt-oss-20b", "tools": ["exec"], "permissions": ["fs:read", "shell:workspace"], "boundary_diff": {"permissions_added": |
+| 1645 | 2026-09-25 03:38:13 | 88222656 | 016 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 1646 | 2026-09-25 03:38:13 | cc163779 |  | job.cancelled | svc-LAPTOP-LRE6PSA8 | {} |
+| 1647 | 2026-09-25 03:38:13 | cc163779 | 016 | job.superseded | svc-LAPTOP-LRE6PSA8 | {"by": "88222656c78f49cfb2a6e4f6e5b47c26"} |
+| 1648 | 2026-09-25 03:38:13 | 88222656 | 016 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "016", "pass": 4, "total": 4, "status": "active"}} |
