@@ -60,6 +60,9 @@ def build() -> dict:
         outage = {"at": out_.get("ts"), **{k: od.get(k) for k in ("gap_min", "silent_since", "cause")}}
         if now - float(out_["ts"]) < 86400:
             head.append(f"OUTAGE in the last 24 h: down {od.get('gap_min')} min from {str(od.get('silent_since'))[:16]} — {od.get('cause')}")
+    tam = next((r for r in rows600 if r["event"] in ("audit.verified", "audit.TAMPERED")), None)     # D-123
+    if tam and tam["event"] == "audit.TAMPERED":
+        head.insert(0, f"AUDIT CHAIN BROKEN at {str(tam.get('ts'))[:16]}: audit/*.jsonl no longer verifies — treat history after the break as untrusted (see `audit-verify`)")
     can = next((r for r in rows600 if r["event"] == "factory.canary"), None)       # D-117
     canary = None
     if can:

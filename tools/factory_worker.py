@@ -409,6 +409,8 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
                     kinds=[f"{x['severity']}:{x['kind']}" for x in res["proposals"]], auto=acted, path=res["paths"].get("md"))
         return {"name": f"insight:{len(res['proposals'])} proposals", "status": "auto " + ",".join(f"{k}:{i}" for k, i in acted) if acted else "review", "path": res["paths"].get("md")}
     if kind == "report":
+        v = JobStore.audit_verify(ROOT / "audit")                                   # D-123 nightly tamper check of the durable trail
+        store.audit("audit.verified" if v["ok"] else "audit.TAMPERED", job_id=jid, actor=worker, rows=v["rows"], hashed=v["hashed"], first_bad=v.get("first_bad"))
         r = frp.build(); (ROOT / "STATUS.md").write_text(frp.markdown(r), encoding="utf-8")
         nxt = datetime.datetime.now() + datetime.timedelta(days=1)
         store.enqueue("report", {"day": nxt.strftime("%Y-%m-%d")}, priority=6, parent=jid, actor=worker, not_before=time.time() + 86400)
