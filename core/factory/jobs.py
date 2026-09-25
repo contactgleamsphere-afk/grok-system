@@ -37,7 +37,7 @@ def classify_failure(msg: str) -> str:
     return "logic"
 
 
-ONCE_PER_SLOT = ("monitor", "probe", "report", "tick", "insight", "bench", "canary", "scout")
+ONCE_PER_SLOT = ("monitor", "probe", "report", "tick", "insight", "bench", "canary", "scout", "selfpatch")
 
 
 class JobStore:

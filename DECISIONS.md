@@ -662,3 +662,40 @@ every 30 min measures the age of the last laptop `state:`/`tunnel:` commit and, 
 `laptop-offline` (GitHub e-mails the owner — the physical-action channel), comments while it persists and closes it
 when heartbeats resume. Drill: dispatched with threshold 1 → issue #1 opened ("no factory heartbeat for 6 min"),
 re-dispatched with default → closed with "Laptop is back". registry/infra.json: github-actions → in_use.
+
+## D-120 — Tool discovery: keyword fan-out, evidence-ordered sandboxing, policy filter, owner revoke (2026-09-25) — VERIFIED live
+Live runs for "browser automation playwright" exposed four gaps, each fixed and re-proven the same night:
+1. The MCP registry search is a name-substring match (phrase → 0 hits). `discover()` now queries the phrase and each
+   keyword, merging by server name. 2. First-hit-wins sandboxing picked whatever matched first (crawlio bridge, a
+   network-chaos plugin). Now every candidate is researched (API only), and the sandbox queue is ordered by keyword fit
+   then maintenance evidence (stars, deps) — stars order, never approve. 3. Two "approved" servers were anti-detection
+   tooling whose registry blurb was sanitised (`invisible-playwright-mcp`: "undetected anti-detect stealth Firefox, no
+   captchas", 31k stars; `aethyn-browser-mcp`: residential proxies + identity rotation). `evaluate()` now applies a
+   POLICY_BLOCK regex to the researched repo description/topics and package summary as well — contract §free-first:
+   never evade ToS, rate limits, identity or bot checks. 4. `revoke-tool mcp:<slug> --reason` (owner-only, audited
+   `tool.revoked`): removes the registry entry and install, writes a permanent `name:*` ledger block.
+Result: `mcp:playwright-mcp` (Microsoft, Apache-2.0, 37k stars, 2 deps, 25 tools, 15 s handshake) on probation,
+awaiting owner `approve-tool`. Also: worker self-test gate retries once and re-checks red results every 15 min.
+
+## D-121 — Outages are recorded with a cause (2026-09-25) — VERIFIED (unit); live pending laptop return
+Two outages in one night (04:42–22:29, then 01:23–) left only holes in the audit trail. At worker (re)start,
+`record_outage()` measures the silence; past 30 min it writes ONE `factory.outage` row: gap, last event, and the
+Windows System-log power/boot events in the window classified into a cause — kernel-power 41 / 6008 = power loss or
+battery flat, 1074 = planned restart (Windows Update), 42 = sleep, 6005 = reboot, none = network/tunnel loss while
+running. STATUS.md shows "OUTAGE in the last 24 h … — cause" for a day. Evidence before this outage: laptop on battery
+(`PowerOnline=False`) and TiWorker in ShutdownProcessing — the owner was told to keep it on mains.
+
+## D-122 — Self-improvement stage 2: the factory proposes code as a pull request, never applies it (2026-09-25) — VERIFIED (unit + real git); live pending
+`tools/factory_selfpatch.py` + job `selfpatch`: a proposal (from the weekly self-review, or an owner request) → an LLM
+lane drafts exact find/replace edits for ONE file → security envelope (only listed non-security files; never
+guard/registry/jobs/worker/config/scripts/workflows; no lines mentioning permissions/allowance/approve/keys/shell/net;
+no new subprocess/socket/urllib/ctypes/eval/exec; ≤80 changed lines; must compile) → applied in a throw-away git
+worktree on `proposal/<date>-<slug>` → `core/tests` must pass there → branch pushed → PR opened with the evidence →
+GitHub Actions CI re-runs the suite on the branch → the OWNER merges or closes. `main` is never written by the
+factory. The weekly insight enqueues at most one selfpatch (top code-level proposal). Audited as `factory.selfpatch`.
+This is the contract's propose→sandbox→test→review→approve loop with GitHub as the review gate.
+
+## D-123 — Audit chain verified nightly and in CI (2026-09-25) — VERIFIED (CI run on 6c7546f: 117 tests + `audit-verify` ok, 1549 rows / 797 hashed)
+The D-091 hash chain existed but nothing checked it unattended. Now the nightly report job runs `audit_verify` and
+writes `audit.verified` / `audit.TAMPERED` (STATUS puts "AUDIT CHAIN BROKEN" first), and the GitHub Actions CI job
+verifies `audit/*.jsonl` on every push that touches it — a check that runs on a machine the laptop cannot alter.

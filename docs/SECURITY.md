@@ -62,3 +62,12 @@ exits 1 on any edit/removal/reorder. The SQLite table stays the source; the JSON
 - **Infra scout is legitimate by construction**: one GET per keyless endpoint, keys sent only to their own provider,
   no signups/identity/ToS workarounds; card-verification tiers are owner-only rows. Missing keys are reported, never
   self-applied.
+
+## Self-patching envelope (D-122, 2026-09-25)
+The factory may now *draft* code, but only inside an envelope that makes privilege expansion structurally impossible:
+one file per patch from an allow-list of non-security modules (never `guard.py`, `registry.py`, `jobs.py`,
+`factory_worker.py`, `config/`, `scripts/`, `.github/`, security docs); no edit may touch a line mentioning
+permissions, allowances, approvals, shell/net scopes, keys or seals; no new `subprocess`/`socket`/`urllib`/`ctypes`/
+`eval`/`exec`/`importlib`; ≤80 changed lines; must compile; `core/tests` must pass in an isolated worktree; the
+result is a branch + pull request and CI run — never a write to `main`. Merge is the owner's act on GitHub, so the
+audit of *what changed and who approved it* lives in git history as well as `factory.selfpatch`.

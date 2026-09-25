@@ -1190,3 +1190,68 @@ def test_d120_sandbox_order_keyword_fit_then_stars(tmp_path, monkeypatch):
     boxed = []
     out = td.run("playwright browser", 1, dry_run=True, fetch=fetch, sandboxer=lambda c: (boxed.append(c["name"]), {"ok": True, "tools": ["t"], "secs": 1})[1])
     assert boxed == ["io.github.microsoft/playwright-mcp"] and out["added"] == ["mcp:playwright-mcp"]
+
+
+def test_d121_outage_recorded_with_cause(tmp_path, monkeypatch):
+    """D-121: a silent audit trail > 30 min at worker start produces one factory.outage row whose cause comes from
+    the power/boot events (41 → battery/power loss); a short gap records nothing."""
+    import importlib, factory_worker as fw; importlib.reload(fw)
+    from factory.jobs import JobStore
+    st = JobStore(tmp_path / "jobs.sqlite3")
+    t0 = 1_800_000_000.0
+    st.audit("job.done", actor="w"); st.db.execute("UPDATE audit SET ts=?", (t0,)); st.db.commit()
+    assert fw.record_outage(st, "w", now=t0 + 600, events=[]) is None
+    d = fw.record_outage(st, "w", now=t0 + 5 * 3600, events=[{"t": t0 + 100, "Id": 41, "m": "The system has rebooted without cleanly shutting down first."}])
+    assert d["gap_min"] == 300 and "kernel-power 41" in d["cause"] and d["last_event"] == "job.done"
+    rows = st.audit_rows(5); assert rows[0]["event"] == "factory.outage"
+    d2 = fw.record_outage(st, "w", now=float(rows[0]["ts"]) + 4000, events=[{"Id": 1074, "m": "restart"}])
+    assert d2 and "Windows Update" in d2["cause"]
+    d3 = fw.record_outage(st, "w", now=float(st.audit_rows(1)[0]["ts"]) + 4000, events=[])
+    assert "network/tunnel" in d3["cause"]
+
+
+def test_d122_selfpatch_envelope():
+    import factory_selfpatch as sp
+    src = "def f(x):\n    return x + 1\n\n\ndef g(y):\n    return y * 2\n"
+    ok = {"file": "tools/factory_insight.py", "edits": [{"find": "    return x + 1\n", "replace": "    return x + 2\n"}]}
+    err, new = sp.check_envelope(ok, src); assert err is None and "x + 2" in new
+    assert sp.check_envelope({"file": "core/factory/guard.py", "edits": ok["edits"]}, src)[0].startswith("file not patchable")
+    assert "not unique" in sp.check_envelope({"file": ok["file"], "edits": [{"find": "return", "replace": "x"}]}, src)[0]
+    assert "forbidden code" in sp.check_envelope({"file": ok["file"], "edits": [{"find": "    return x + 1\n", "replace": "    import subprocess\n    return x\n"}]}, src)[0]
+    assert "security-relevant" in sp.check_envelope({"file": ok["file"], "edits": [{"find": "    return x + 1\n", "replace": "    allowed_permissions = []\n    return x\n"}]}, src)[0]
+    assert "does not compile" in sp.check_envelope({"file": ok["file"], "edits": [{"find": "    return x + 1\n", "replace": "    return (x + 1\n"}]}, src)[0]
+    big = {"file": ok["file"], "edits": [{"find": "    return x + 1\n", "replace": "    pass\n" * 90}]}
+    assert "changed lines" in sp.check_envelope(big, src)[0]
+
+
+def test_d122_selfpatch_end_to_end_pr_never_touches_main(tmp_path, monkeypatch):
+    """Real git repo in tmp: draft (fake lane) → envelope → worktree → tests (fake) → push (fake) → PR (fake).
+    main is unchanged; the branch commit contains exactly the one-file edit."""
+    import subprocess, factory_selfpatch as sp
+    repo = tmp_path / "repo"; repo.mkdir()
+    def git(*a): return subprocess.run(["git", *a], cwd=str(repo), capture_output=True, text=True, check=True)
+    git("init", "-q", "-b", "main"); git("config", "user.email", "t@t"); git("config", "user.name", "t")
+    (repo / "tools").mkdir(); (repo / "tools" / "factory_insight.py").write_text("LIMIT = 3\n\n\ndef weak(x):\n    return x < LIMIT\n")
+    git("add", "."); git("commit", "-q", "-m", "init")
+    origin = tmp_path / "origin.git"; subprocess.run(["git", "init", "-q", "--bare", str(origin)], check=True)
+    git("remote", "add", "origin", str(origin)); git("push", "-q", "origin", "main")
+    monkeypatch.setattr(sp, "ROOT", repo)
+    prop = {"kind": "quality", "severity": "medium", "evidence": "threshold too low", "suggestion": "raise LIMIT to 4"}
+    draft = {"file": "tools/factory_insight.py", "summary": "raise LIMIT to 4", "edits": [{"find": "LIMIT = 3\n", "replace": "LIMIT = 4\n"}]}
+    pushed = {}
+    res = sp.run(prop, "quality-limit", chat=lambda m, max_tokens=0: (json.dumps(draft), "fake:lane"),
+                 tester=lambda wt: (True, "9 passed"), pusher=lambda wt, br: (pushed.setdefault("br", br), (True, "ok"))[1],
+                 pr=lambda br, title, body, tok: {"ok": True, "url": "https://github.com/x/pull/9"})
+    assert res["ok"] and res["pr"] == "https://github.com/x/pull/9" and res["branch"].startswith("proposal/") and pushed["br"] == res["branch"]
+    assert (repo / "tools" / "factory_insight.py").read_text().startswith("LIMIT = 3")          # main untouched
+    show = subprocess.run(["git", "show", "--stat", "--format=%s", res["branch"]], cwd=str(repo), capture_output=True, text=True).stdout
+    assert "proposal: raise LIMIT to 4" in show and "1 file changed" in show
+    assert not (repo / "run" / "selfpatch" / res["branch"].split("/")[-1]).exists()          # worktree cleaned
+    # red tests → no push, no PR
+    res2 = sp.run(prop, "quality-limit-2", chat=lambda m, max_tokens=0: (json.dumps(draft), "fake:lane"),
+                  tester=lambda wt: (False, "1 failed"), pusher=lambda wt, br: (_ for _ in ()).throw(AssertionError("must not push")), pr=None)
+    assert not res2["ok"] and "tests red" in res2["reason"]
+    # envelope breach → nothing happens
+    bad = dict(draft, edits=[{"find": "LIMIT = 3\n", "replace": "import subprocess\nLIMIT = 4\n"}])
+    res3 = sp.run(prop, "quality-limit-3", chat=lambda m, max_tokens=0: (json.dumps(bad), "fake:lane"), tester=None, pusher=None, pr=None)
+    assert not res3["ok"] and res3["reason"].startswith("envelope") and res3["branch"] is None

@@ -1,21 +1,25 @@
 # BUILD_STATE
 
-_Last updated: 2026-09-24 03:55 — by Arena agent (architect/builder). Source of truth for "what actually exists"._
+_Last updated: 2026-09-25 02:40 — by Arena agent (architect/builder). Source of truth for "what actually exists"._
 
-## Phase table
-| Phase | Name | Status | Evidence |
-|---|---|---|---|
-| 0 | Discovery, baseline, tool-call test | ✅ DONE (Arena over SSH) | TEST_RESULTS.md, benchmarks/2026-09-18 |
-| 1 | Foundation: nanobot 0.3.5 + Ollama + qwen2.5:3b | ✅ VERIFIED | owner report 2026-09-18: `PHASE1_OK`, WebUI 127.0.0.1:8765 |
-| 2 | Core: registries, router, bot-spec contract, Master identity, security hardening | ✅ identity deployed + config hardened on laptop; core code tested in sandbox | config/laptop/config.current.json |
-| 3 | Model router: keyed free-tier Master lane + OVH anon + local | 🟡 IN PROGRESS — OVH lanes live; keyed lanes staged; **failover test not yet passed** | docs/FREE_PROVIDERS_2026-09-19.md, D-010 |
-| 4 | Tool layer / MCP | pending | |
-| 5 | Memory | pending | |
-| 6 | Coding agent | pending | |
-| 7 | Browser agent | pending | |
-| 8 | Bot Factory (spec → running bot) | ✅ VERIFIED (002–007) | BOT_REGISTRY.md, AUDIT.md |
-| 10–11 | Monitoring + Self-improvement v0 (queue-driven) | ✅ VERIFIED live 2026-09-21 | TEST_RESULTS.md, D-029..D-034 |
-| 9–12 | Multimodal, Deployment, Monitoring, Self-improvement | pending | |
+## Phase table (rewritten 2026-09-25 against live evidence; history below is kept as written)
+| Layer / phase | Status | Evidence |
+|---|---|---|
+| 0–1 Foundation: nanobot 0.3.5 + Ollama + local models, laptop as host | ✅ VERIFIED | TEST_RESULTS 2026-09-18/19 |
+| 2 CORE: registries (bots/models/tools/schedules/infra), bot-spec contract, boundary guard, seals, audit hash chain | ✅ VERIFIED | core/tests (117), D-031/032/068/091/099, D-123 CI verify |
+| 3 MODEL router: 12 healthy lanes (groq/gemini/local; openrouter cooled), hourly probe, quota cooldown, bench-ranked chains, discovery + probation + retirement | ✅ VERIFIED live daily | STATUS.md lanes, D-042/050/058/069/095/096/115 |
+| 4 TOOL layer: builtins + MCP pipeline (registry → sandbox → probation → owner approve/revoke), policy filter | ✅ VERIFIED live (mcp-sqlite tools; playwright-mcp on probation) | D-108–D-114, D-120 |
+| 5 MEMORY: factory-written run memory per bot (MVP) | 🟡 MVP VERIFIED | D-107 |
+| 6 Coding agent | ⬜ not started (bots have exec:workspace only; no coding-agent bot type) | — |
+| 7 Browser agent | 🟡 tool discovered (`mcp:playwright-mcp`, Apache-2.0) — awaiting owner `approve-tool`, then a browser-capable bot | D-120 |
+| 8 FACTORY: objective → spec → bundle → tests → register → monitor → repair/rearchitect/rebuild; plans; schedules; canary | ✅ VERIFIED live (26 bots, 24 active) | BOT_REGISTRY.md, D-065–D-117 |
+| 9 Multimodal | ⬜ not started | — |
+| 10 Deployment: laptop-only (scheduled tasks, tunnel supervisor, self-heal); off-laptop CI + watchdog on GitHub Actions | 🟡 single host by design; 12 free hosts inventoried for the owner | D-116/119, docs/INFRA.md |
+| 11 Monitoring: nightly monitor, hourly tick, STATUS.md, liveness, outage forensics, watchdog issue | ✅ VERIFIED live | D-100/104/121, D-119 |
+| 12 Self-improvement: weekly self-review → proposals → auto-actions for approved mechanisms; code changes as PRs only | ✅ stage 1 VERIFIED live; 🟡 stage 2 (PR) VERIFIED unit + real git, first live PR pending laptop return | D-057, D-122 |
+| Master 001 (chat → factory) | ✅ 9/9 acceptance live 2026-09-25 00:07 (10th test added for selfpatch) | scripts/windows/run-master-tests.ps1 |
+
+**Open owner items (nothing blocks the factory):** approve `mcp:playwright-mcp`; keep the laptop on mains (two battery/power outages 24–25 Sep); optional free signups listed in docs/INFRA.md (Cerebras, NVIDIA, Mistral first).
 
 ## VERIFIED
 - Laptop LAPTOP-LRE6PSA8: Win 11 Home 26200, Ryzen 5 7520U 4c/8t, ~14 GB RAM, Radeon 610M iGPU, 288 GB free, Python 3.11.9, Node 24.19, Git 2.55, no Docker, no WSL.

@@ -10,3 +10,7 @@
 | Docker / WSL | — | not installed | future sandboxing | BLOCKED |
 
 | factory_bench | tools/factory_bench.py | lane quality benchmark (D-050): pinned single-lane run of the reference suite → limits.bench; `--rank` | VERIFIED 2026-09-22 |
+| tools/factory_scout.py | INFRASTRUCTURE | free-resource inventory (registry/infra.json, docs/INFRA.md); weekly `scout` job | VERIFIED live 2026-09-25 (D-118) |
+| tools/factory_selfpatch.py | FACTORY | proposal → envelope-checked code edit → worktree tests → branch + PR; never writes main | VERIFIED unit+real git 2026-09-25 (D-122); live pending |
+| .github/workflows/ci.yml, watchdog.yml | INFRASTRUCTURE | off-laptop unit suite on push/PR; laptop-offline issue every 30 min | VERIFIED live 2026-09-24 (D-119) |
+| factory_pipeline.cmd_canary / job `canary` | FACTORY | nightly architect→bundle→tests self-test with no registry footprint | VERIFIED live 2026-09-24 (D-117) |

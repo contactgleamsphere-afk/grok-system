@@ -12,6 +12,7 @@
   python tools/factory_worker.py add run --plan <plan_job> --in DIR                       # run a whole pipeline
   python tools/factory_worker.py add tick                     # D-076: fire due schedules now (self-chains hourly)
   python tools/factory_worker.py add insight [--days 7]      # D-057 factory self-review -> proposals/<date>.md
+  python tools/factory_worker.py add selfpatch --date <d> --index <n> | --request "<change>"   # D-122 code proposal -> PR (owner merges)
   python tools/factory_worker.py add bench [--lanes a,b] [--stale-only] [--max N]   # D-050 lane quality
   python tools/factory_worker.py status | audit-verify (D-091 hash chain) | jobs | resume <job_id> [--allow fs:read,shell:workspace] | cancel <job_id> | release <job_id> [--uncount] | audit [bot_id] [--width N]
 
@@ -229,6 +230,17 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
                 store.audit("bot.rearchitect_queued", job_id=jid, bot_id=p["bot_id"], actor=worker, reason=err[:200])
             raise FactoryError(err)
         return res
+    if kind == "selfpatch":
+        # D-122: propose code as a PR (never applied to main). One proposal per job; result audited either way.
+        import factory_selfpatch as fsp
+        if p.get("request"): prop, slug = {"kind": "owner-request", "severity": "medium", "evidence": "owner request", "suggestion": p["request"]}, f"owner-{jid[:8]}"
+        else: prop, slug = fsp.load_proposal(p["date"], int(p["index"]))
+        res = fsp.run(prop, slug)
+        store.audit("factory.selfpatch", job_id=jid, actor=worker, ok=res.get("ok"), file=res.get("file"), lane=res.get("lane"), branch=res.get("branch"),
+                    pr=res.get("pr"), reason=res.get("reason"), summary=res.get("summary"), tests=res.get("tests"), secs=res.get("secs"))
+        if res.get("ok") and not res.get("pr"):
+            store.audit("owner.needed", job_id=jid, actor=worker, provider="selfpatch", reason=f"branch {res.get('branch')} pushed but no PR could be opened: {(res.get('pr_status') or {}).get('reason')}")
+        return {k: res.get(k) for k in ("ok", "file", "branch", "pr", "reason", "summary")}
     if kind == "scout":
         # D-118 infra scout: refresh registry/infra.json + docs/INFRA.md; owner items are audited ONCE per change
         import factory_scout as fsc
@@ -384,6 +396,11 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
         # D-057 self-improvement stage 1: evidence -> proposals/<date>.md. Only pre-approved mechanisms are auto-enqueued.
         res = fin.run(int(p.get("days", 7)), write=True)
         acted = []
+        # D-122: the top code-level proposal becomes ONE PR draft per review (owner merges or closes; main untouched)
+        code_kinds = ("architect", "template", "repair", "quality")
+        top = next((i + 1 for i, x in enumerate(res["proposals"]) if x["kind"] in code_kinds and not x.get("auto_actionable")), None)
+        if top and res["paths"].get("json"):
+            store.enqueue("selfpatch", {"date": pathlib.Path(res["paths"]["json"]).stem, "index": top}, priority=9, parent=jid, actor=worker)
         for pr in res["proposals"]:
             aa = pr.get("auto_actionable")
             if aa:
@@ -392,6 +409,8 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
                     kinds=[f"{x['severity']}:{x['kind']}" for x in res["proposals"]], auto=acted, path=res["paths"].get("md"))
         return {"name": f"insight:{len(res['proposals'])} proposals", "status": "auto " + ",".join(f"{k}:{i}" for k, i in acted) if acted else "review", "path": res["paths"].get("md")}
     if kind == "report":
+        v = JobStore.audit_verify(ROOT / "audit")                                   # D-123 nightly tamper check of the durable trail
+        store.audit("audit.verified" if v["ok"] else "audit.TAMPERED", job_id=jid, actor=worker, rows=v["rows"], hashed=v["hashed"], first_bad=v.get("first_bad"))
         r = frp.build(); (ROOT / "STATUS.md").write_text(frp.markdown(r), encoding="utf-8")
         nxt = datetime.datetime.now() + datetime.timedelta(days=1)
         store.enqueue("report", {"day": nxt.strftime("%Y-%m-%d")}, priority=6, parent=jid, actor=worker, not_before=time.time() + 86400)
@@ -571,9 +590,50 @@ def _respawn() -> None:
     except Exception: pass
 
 
+OUTAGE_GAP_S = 30 * 60
+
+
+def _windows_power_events(since: float) -> list[dict]:
+    """System-log power/boot events after `since` (best effort, WIN only): 41 kernel-power (unexpected loss of power),
+    6008 unexpected shutdown, 1074 user/update-initiated restart, 6005 event log started (boot), 42 sleep, 1 wake."""
+    if os.name != "nt": return []
+    import subprocess
+    ps = ("Get-WinEvent -FilterHashtable @{LogName='System'; Id=41,42,1074,6005,6006,6008} -MaxEvents 30 -ErrorAction SilentlyContinue | "
+          "Where-Object { $_.TimeCreated -gt (Get-Date '1970-01-01').AddSeconds(%d).ToLocalTime() } | "
+          "Select-Object @{n='t';e={[int][double]::Parse((Get-Date $_.TimeCreated -UFormat %%s))}}, Id, @{n='m';e={$_.Message.Substring(0,[Math]::Min(120,$_.Message.Length))}} | ConvertTo-Json -Compress") % int(since)
+    try:
+        r = subprocess.run(["powershell", "-NoProfile", "-Command", ps], capture_output=True, text=True, timeout=60)
+        d = json.loads(r.stdout or "[]"); return d if isinstance(d, list) else [d]
+    except Exception:
+        return []
+
+
+def record_outage(store: "JobStore", worker: str, now: float | None = None, events=None) -> dict | None:
+    """D-121: at (re)start, if the audit trail has been silent for > 30 min the factory was down. Record ONE
+    `factory.outage` row with the gap, the last thing it was doing, and the Windows power/boot events in that
+    window (battery loss = kernel-power 41 / 6008; Windows Update restart = 1074; sleep/wake = 42/1) so STATUS and the
+    owner get a cause, not just a hole in the timeline."""
+    now = now or time.time()
+    rows = store.audit_rows(limit=1)
+    if not rows: return None
+    last = rows[0]
+    if now - float(last["ts"]) < OUTAGE_GAP_S: return None
+    ev = events if events is not None else _windows_power_events(float(last["ts"]) - 3600)
+    ids = [int(e.get("Id", 0)) for e in ev]
+    cause = ("power loss / battery flat (kernel-power 41)" if 41 in ids else "unexpected shutdown (6008)" if 6008 in ids
+             else "planned restart, e.g. Windows Update (1074)" if 1074 in ids else "sleep/hibernate (42)" if 42 in ids
+             else "reboot (6005) — cause not logged" if 6005 in ids else "no shutdown event — network/tunnel loss while running")
+    d = {"gap_min": int((now - float(last["ts"])) / 60), "silent_since": time.strftime("%Y-%m-%dT%H:%M:%S", time.localtime(float(last["ts"]))),
+         "last_event": last["event"], "cause": cause, "events": [{"t": e.get("t"), "id": e.get("Id"), "m": (e.get("m") or "")[:80]} for e in ev][:8]}
+    store.audit("factory.outage", actor=worker, **d)
+    return d
+
+
 def run(worker: str, once: bool = False, idle_exit: int = 0, kinds: tuple[str, ...] | None = None) -> int:
     store = JobStore(DB); idle_since = time.time(); processed = 0; stamp = _code_stamp()
     if not once:
+        try: record_outage(store, worker)                     # D-121: explain the hole in the timeline, if any
+        except Exception: pass
         ensure_recurring(store, worker)
         if fp.WIN and "fast" in worker:                       # D-116: one liveness check per (re)start, fast lane only
             try: tunnel_selfheal(store, None, worker)
@@ -658,6 +718,10 @@ def main(a: list[str]) -> int:
             pl = {"objective": a[3], "max": int(opt("--max", 4))}
             if opt("--then-run"): pl["then_run"] = {"in": opt("--then-run")}          # D-066: build, then run on these files
             j = store.enqueue("plan", pl, priority=int(opt("--priority", 5)), actor=opt("--actor", "owner"))
+        elif kind == "selfpatch":
+            # same request text = same job for the day (the master acceptance test and repeated chat asks must not pile up PRs)
+            if opt("--request"): j = store.enqueue("selfpatch", {"request": opt("--request"), "day": str(datetime.date.today())}, priority=5, actor=opt("--actor", "owner"))
+            else: j = store.enqueue("selfpatch", {"date": opt("--date", str(datetime.date.today())), "index": int(opt("--index", 1))}, priority=5, actor=opt("--actor", "owner"))
         elif kind == "scout": j = store.enqueue("scout", {"t": int(time.time())}, priority=6, actor=opt("--actor", "owner"))
         elif kind == "canary": j = store.enqueue("canary", {"day": str(datetime.date.today())}, priority=5, actor=opt("--actor", "owner"))
         elif kind == "rebuild": j = store.enqueue("rebuild", {"bot_id": a[3].zfill(3), "t": int(time.time())}, priority=2, actor=opt("--actor", "owner"))

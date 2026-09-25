@@ -2,8 +2,8 @@ name: ci
 # D-119: off-laptop regression gate on the free GitHub Actions tier (same account, no new signup).
 on:
   push:
-    branches: [main]
-    paths: ["core/**", "tools/**", "config/**", ".github/workflows/ci.yml"]
+    branches: [main, "proposal/**"]
+    paths: ["core/**", "tools/**", "config/**", "audit/**", ".github/workflows/ci.yml"]
   pull_request:
   workflow_dispatch:
 permissions:
@@ -21,3 +21,5 @@ jobs:
         with: { python-version: "3.11" }
       - run: pip install -q pytest
       - run: python -m pytest core/tests -q
+      - name: verify audit hash chain (D-091/D-123) off-laptop
+        run: python tools/factory_worker.py audit-verify
