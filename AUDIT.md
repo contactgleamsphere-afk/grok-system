@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1432 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.playwrightgen/playwrightgen", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/ |
-| 1433 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.thenextgennexus/playwright-mcp-server", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio pack |
-| 1434 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "io.github.sadri-dridi/playwright-url-ok", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio packag |
 | 1435 | 2026-09-25 00:20:58 | 86969460 |  | owner.needed | svc-LAPTOP-LRE6PSA8 | {"provider": "tools", "reason": "MCP tools on probation for need 'browser automation playwright': ['mcp:crawlio-browser'] \u2014 approve to  |
 | 1436 | 2026-09-25 00:20:58 | 86969460 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": ["mcp:crawlio-browser"]}} |
 | 1437 | 2026-09-25 00:28:03 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
@@ -402,3 +399,6 @@
 | 1829 | 2026-09-25 20:10:16 | a1ec1245 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "monitor", "payload": {"only": ["014"], "day": "2026-09-25", "canary_for": ["or-nex-n25-pro"]}} |
 | 1830 | 2026-09-25 20:10:16 | 96ccf58b |  | monitor.canary | fast-LAPTOP-LRE6PSA8 | {"lanes": ["or-nex-n25-pro"], "bots": ["014"]} |
 | 1831 | 2026-09-25 20:10:16 | 96ccf58b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptos |
+| 1832 | 2026-09-25 20:10:20 | 134bba89 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1833 | 2026-09-25 20:10:20 | 01537a5d |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1834 | 2026-09-25 20:10:21 | 134bba89 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
