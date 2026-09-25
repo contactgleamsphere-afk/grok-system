@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1190 | 2026-09-24 03:15:34 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1191 | 2026-09-24 03:15:36 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1192 | 2026-09-24 03:15:48 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": false, "tail": ["1 failed, 47 passed in 10.18s"]} |
-| 1193 | 2026-09-24 03:15:48 |  |  | worker.blocked_by_tests | svc-LAPTOP-LRE6PSA8 | {"reason": "core/tests red on current code; refusing to process jobs until code changes"} |
 | 1194 | 2026-09-24 03:15:49 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": false, "tail": ["1 failed, 47 passed in 10.98s"]} |
 | 1195 | 2026-09-24 03:15:49 |  |  | worker.blocked_by_tests | fast-LAPTOP-LRE6PSA8 | {"reason": "core/tests red on current code; refusing to process jobs until code changes"} |
 | 1196 | 2026-09-24 03:15:50 | efe05c44 |  | job.cancelled | owner | {} |
@@ -402,3 +398,7 @@
 | 1587 | 2026-09-25 02:57:59 | 99ef519c |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 1588 | 2026-09-25 02:58:02 | c0780098 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1589 | 2026-09-25 02:58:02 | c0780098 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 1590 | 2026-09-25 02:58:05 | 5d804e5d | 007 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1591 | 2026-09-25 03:02:07 | 5d804e5d | 007 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 PASS 151s [done] expect='2' last='2' \| T3 PASS 52s [done] expect='0' last='0 |
+| 1592 | 2026-09-25 03:02:07 | 5d804e5d | 007 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 PASS 151s [done] expect='2' last='2' \| T3 PASS 52s [done] expect='0' last='0 |
+| 1593 | 2026-09-25 03:02:07 | 5d804e5d | 007 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "007", "status": "active", "verified": "VERIFIED"}} |
