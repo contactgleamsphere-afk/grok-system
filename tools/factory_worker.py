@@ -511,16 +511,25 @@ def _self_test_gate(store: "JobStore", worker: str) -> bool:
     cache = ROOT / "run" / "selftest.json"; stamp = _code_stamp()
     try:
         c = json.loads(cache.read_text(encoding="utf-8"))
-        if c.get("stamp") == stamp: return bool(c.get("ok"))
+        if c.get("stamp") == stamp:
+            # A red result is re-checked every 15 min (live 2026-09-25: a run that collided with a concurrent CLI
+            # command produced a truncated red result and blocked the queue although the suite was green).
+            fresh = time.time() - time.mktime(time.strptime(c.get("at", "2000-01-01T00:00:00"), "%Y-%m-%dT%H:%M:%S")) < 900
+            if c.get("ok") or fresh: return bool(c.get("ok"))
     except Exception:
         pass
-    try:
-        r = subprocess.run([sys.executable, "-m", "pytest", str(ROOT / "core" / "tests"), "-q", "-p", "no:cacheprovider", "-x"],
-                           cwd=str(ROOT), capture_output=True, text=True, timeout=600, env={**os.environ, "AIFACTORY_REPO": str(ROOT)})
-        if "No module named pytest" in (r.stderr or ""): ok, tail = True, "pytest not installed - skipped"
-        else: ok, tail = r.returncode == 0, (r.stdout or r.stderr).strip().splitlines()[-1:] 
-    except Exception as e:
-        ok, tail = True, f"selftest error {type(e).__name__} - skipped"
+    ok, tail = True, ""
+    for attempt in (1, 2):                                   # one retry for transient failures before blocking
+        try:
+            r = subprocess.run([sys.executable, "-m", "pytest", str(ROOT / "core" / "tests"), "-q", "-p", "no:cacheprovider", "-x"],
+                               cwd=str(ROOT), capture_output=True, text=True, timeout=600, env={**os.environ, "AIFACTORY_REPO": str(ROOT)})
+            if "No module named pytest" in (r.stderr or ""): ok, tail = True, "pytest not installed - skipped"; break
+            lines = [ln for ln in (r.stdout or r.stderr).strip().splitlines() if ln.strip()]
+            ok, tail = r.returncode == 0, [ln for ln in lines if "passed" in ln or "failed" in ln or "error" in ln.lower()][-2:] or lines[-1:]
+        except Exception as e:
+            ok, tail = True, f"selftest error {type(e).__name__} - skipped"
+        if ok: break
+        time.sleep(20)
     cache.parent.mkdir(exist_ok=True); cache.write_text(json.dumps({"stamp": stamp, "ok": ok, "tail": tail, "at": time.strftime("%Y-%m-%dT%H:%M:%S")}), encoding="utf-8")
     store.audit("worker.selftest", actor=worker, ok=ok, tail=tail)
     return ok
