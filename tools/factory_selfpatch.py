@@ -71,15 +71,16 @@ def draft(proposal: dict, file: str, src: str, chat=None, feedback: str = "", sk
     msg = PROMPT % (", ".join(PATCHABLE), proposal.get("kind"), proposal.get("severity"), proposal.get("evidence", "")[:800],
                     proposal.get("suggestion", "")[:800], file, _numbered(src))
     if feedback: msg += f"\nPREVIOUS ATTEMPT WAS REJECTED: {feedback}\nQuote `find` text EXACTLY as in the file (same backslashes, quotes and spaces); pick a shorter unique anchor if needed.\n"
-    try: text, lane = chat([{"role": "user", "content": msg}], max_tokens=1800, skip=skip)
-    except TypeError: text, lane = chat([{"role": "user", "content": msg}], max_tokens=1800)
+    try: text, lane = chat([{"role": "user", "content": msg}], max_tokens=3000, skip=skip)
+    except TypeError: text, lane = chat([{"role": "user", "content": msg}], max_tokens=3000)
     return _parse(text), lane, text[:400]
 
 
 def _parse(text: str) -> dict | None:
     """Models wrap JSON in fences and put Python source (with \\b, \\s, \\d …) inside strings — invalid JSON escapes.
     Try strict, then with invalid escapes doubled, then non-strict (raw newlines)."""
-    t = re.sub(r"^```(?:json)?\s*|\s*```$", "", text.strip(), flags=re.M)
+    t = re.sub(r"<thought>.*?</thought>", "", text, flags=re.S)                  # gemma reasoning blocks
+    t = re.sub(r"^```(?:json)?\s*|\s*```$", "", t.strip(), flags=re.M)
     m = re.search(r"\{.*\}", t, re.S)
     if not m: return None
     cand = m.group(0)
