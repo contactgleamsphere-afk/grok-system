@@ -2,14 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1457 | 2026-09-25 00:38:53 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["113 passed in 18.57s"]} |
-| 1458 | 2026-09-25 00:38:53 | 6e4d634b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1459 | 2026-09-25 00:39:46 | 6e4d634b |  | tool.discovered | fast-LAPTOP-LRE6PSA8 | {"tool": "io.github.vola-trebla/playwright-network-chaos-mcp", "reason": "probation; tools=8 25s", "need": "playwright browser"} |
-| 1460 | 2026-09-25 00:39:46 | 6e4d634b |  | tool.rejected | fast-LAPTOP-LRE6PSA8 | {"tool": "io.github.Agent360dk/browser-mcp", "reason": "policy: anti-detection / bypass tooling (contract: never evade ToS, rate limits or i |
-| 1461 | 2026-09-25 00:39:46 | 6e4d634b |  | owner.needed | fast-LAPTOP-LRE6PSA8 | {"provider": "tools", "reason": "MCP tools on probation for need 'playwright browser': ['mcp:playwright-network-chaos-mcp'] \u2014 approve t |
-| 1462 | 2026-09-25 00:39:46 | 6e4d634b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": ["mcp:playwright-network-chaos-mcp"]}} |
-| 1463 | 2026-09-25 00:46:50 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1464 | 2026-09-25 00:46:51 |  |  | tool.revoked | owner | {"tool": "mcp:playwright-network-chaos-mcp", "detail": "{\"ok\": true, \"tool\": \"mcp:playwright-network-chaos-mcp\", \"ledger\": \"io.gith |
 | 1465 | 2026-09-25 00:46:52 | d6be18bd |  | job.enqueued | owner | {"kind": "tooldisc", "payload": {"need": "playwright browser", "max": 1, "day": "2026-09-25"}} |
 | 1466 | 2026-09-25 00:46:53 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 1467 | 2026-09-25 00:46:55 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": false, "tail": ["........................"]} |
@@ -402,3 +394,11 @@
 | 1854 | 2026-09-25 20:59:57 | 54829a12 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1855 | 2026-09-25 20:59:58 | a7ddc40b |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-25T21"}} |
 | 1856 | 2026-09-25 20:59:58 | 54829a12 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 1857 | 2026-09-25 21:00:44 | 865a2980 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "gemini-flash36", "outcome": "no_tool_call", "before": "VERIFIED", "after": "BLOCKED", "detail": null} |
+| 1858 | 2026-09-25 21:00:44 | 00afddce |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "groq", "day": "2026-09-25", "trigger": "blocked:gemini-flash36"}} |
+| 1859 | 2026-09-25 21:00:44 | 5146a28d |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "gemini", "day": "2026-09-25", "trigger": "blocked:gemini-flash36"}} |
+| 1860 | 2026-09-25 21:00:44 | f0d2836f |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "openrouter", "day": "2026-09-25", "trigger": "blocked:gemini-flash36"}} |
+| 1861 | 2026-09-25 21:00:44 | af65672a |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "cerebras", "day": "2026-09-25", "trigger": "blocked:gemini-flash36"}} |
+| 1862 | 2026-09-25 21:00:44 | 4c6af4e8 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-09-25", "trigger": "blocked:gemini-flash36"}} |
+| 1863 | 2026-09-25 21:00:44 | 5245a37e |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-09-25", "trigger": "blocked:gemini-flash36"}} |
+| 1864 | 2026-09-25 21:00:44 | 865a2980 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptos |
