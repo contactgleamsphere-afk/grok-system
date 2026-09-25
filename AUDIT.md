@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1394 | 2026-09-24 23:58:46 | ff48e3c4 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "bench", "payload": {"lanes": ["gemini-flash"], "day": "2026-09-24", "trigger": "insight"}} |
-| 1395 | 2026-09-24 23:58:46 | 9504d124 |  | factory.proposals | svc-LAPTOP-LRE6PSA8 | {"count": 7, "kinds": ["medium:lanes", "medium:lanes", "high:architect", "medium:quality", "low:lanes", "low:lanes", "info:security"], "auto |
-| 1396 | 2026-09-24 23:58:46 | 9504d124 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"name": "insight:7 proposals", "status": "auto probe:d0196af8,bench:ff48e3c4"}} |
-| 1397 | 2026-09-24 23:58:51 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 1398 | 2026-09-24 23:58:52 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 1399 | 2026-09-24 23:58:57 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": false, "tail": ["........................"]} |
 | 1400 | 2026-09-24 23:58:57 |  |  | worker.blocked_by_tests | fast-LAPTOP-LRE6PSA8 | {"reason": "core/tests red on current code; refusing to process jobs until code changes"} |
@@ -402,3 +398,7 @@
 | 1791 | 2026-09-25 13:24:19 | 0a541bde |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite |
 | 1792 | 2026-09-25 13:24:22 | 426bd52b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1793 | 2026-09-25 13:24:22 | 426bd52b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 1794 | 2026-09-25 13:24:23 | 624ec5f9 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1795 | 2026-09-25 13:24:24 | 624ec5f9 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 1796 | 2026-09-25 13:24:25 | 29f3da03 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1797 | 2026-09-25 13:24:25 | 29f3da03 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
