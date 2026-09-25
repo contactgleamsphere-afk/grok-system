@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1202 | 2026-09-24 03:17:42 | ab489546 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: architect: objective needs permissions outside the a |
-| 1203 | 2026-09-24 03:24:13 | ab489546 |  | job.cancelled | owner | {} |
-| 1204 | 2026-09-24 03:24:13 | 1ed33ffb |  | job.enqueued | owner | {"kind": "create", "payload": {"objective": "Answer questions about a SQLite database file in the workspace using the mcp:mcp-sqlite3 server |
-| 1205 | 2026-09-24 03:24:16 | 1ed33ffb |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1206 | 2026-09-24 03:24:21 | 1ed33ffb | 026 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "sqlite-query-bot", "tools": ["read_file", "write_file", "mcp:mcp-sqlite3"], "permissions": ["fs:read", "fs:write", "mcp:mcp-sqlite |
 | 1207 | 2026-09-24 03:27:58 | 1ed33ffb | 026 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 FAIL 36s [done] expect='users' last='RESULT: None' \| T3 FAIL 148s [done] exp |
 | 1208 | 2026-09-24 03:27:58 | bd24f8ff | 026 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "026", "retest_of": "1ed33ffb39b24c2484a0475203da7515"}} |
@@ -402,3 +398,7 @@
 | 1599 | 2026-09-25 03:05:11 | 0fe79cdf | 003 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
 | 1600 | 2026-09-25 03:05:11 | 0fe79cdf | 003 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 1601 | 2026-09-25 03:05:11 | 0fe79cdf | 003 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "003", "status": "active"}} |
+| 1602 | 2026-09-25 03:05:21 | 29346aa8 | 004 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1603 | 2026-09-25 03:08:35 | bd7cfb9e | 009 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 35s [done] expect='X_OK' last='RESULT: X_OK' \| T2 PASS 85s [done] expect='3' last='RESULT: 3' \| T3 PASS 66s [done] exp |
+| 1604 | 2026-09-25 03:08:35 | bd7cfb9e | 009 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 35s [done] expect='X_OK' last='RESULT: X_OK' \| T2 PASS 85s [done] expect='3' last='RESULT: 3' \| T3 PASS 66s [done] exp |
+| 1605 | 2026-09-25 03:08:35 | bd7cfb9e | 009 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "009", "status": "active", "verified": "VERIFIED"}} |
