@@ -29,7 +29,9 @@ def classify_failure(msg: str) -> str:
         return "security"
     if any(k in m for k in ("429", "quota", "rate limit", "tokens per day", "tpd", "rpd", "daily")):
         return "quota"
-    if any(k in m for k in ("timeout", "timed out", "connection", "tunnel", "temporarily", "503", "502", "runner error")):
+    # "runner produced no RESULTJSON" = the PowerShell runner died before printing (live 2026-09-25: Windows Update
+    # rebooted mid-monitor) — infrastructure, retried; never a reason to pause a verified bot.
+    if any(k in m for k in ("timeout", "timed out", "connection", "tunnel", "temporarily", "503", "502", "runner error", "no resultjson", "killed", "interrupted")):
         return "transient"
     if any(k in m for k in ("empty content", "not json", "usable instructions", "could not produce a valid spec",
                             "invalid spec", "parsing failed", "failed_generation", "context")):

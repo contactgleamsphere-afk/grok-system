@@ -1255,3 +1255,9 @@ def test_d122_selfpatch_end_to_end_pr_never_touches_main(tmp_path, monkeypatch):
     bad = dict(draft, edits=[{"find": "LIMIT = 3\n", "replace": "import subprocess\nLIMIT = 4\n"}])
     res3 = sp.run(prop, "quality-limit-3", chat=lambda m, max_tokens=0: (json.dumps(bad), "fake:lane"), tester=None, pusher=None, pr=None)
     assert not res3["ok"] and res3["reason"].startswith("envelope") and res3["branch"] is None
+
+
+def test_d124_runner_death_is_transient_not_logic():
+    from factory.jobs import classify_failure
+    assert classify_failure("RuntimeError: runner produced no RESULTJSON:\nbot 006 ...") == "transient"
+    assert classify_failure("RuntimeError: T2 wrong answer") == "logic"

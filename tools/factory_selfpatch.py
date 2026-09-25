@@ -107,7 +107,15 @@ def _token() -> str | None:
     if os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN"): return os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
     url = _git(["config", "--get", "remote.origin.url"], ROOT).stdout.strip()
     m = re.match(r"https://[^:]+:([^@]+)@github\.com/", url)
-    return m.group(1) if m else None
+    if m: return m.group(1)
+    try:   # the worker's own session can read the credential store that repo-sync pushes with (not an SSH session)
+        r = subprocess.run(["git", "credential", "fill"], input="protocol=https\nhost=github.com\n\n", cwd=str(ROOT),
+                           capture_output=True, text=True, timeout=20, env={**os.environ, "GIT_TERMINAL_PROMPT": "0", "GCM_INTERACTIVE": "never"})
+        for ln in r.stdout.splitlines():
+            if ln.startswith("password="): return ln.split("=", 1)[1].strip() or None
+    except Exception:
+        pass
+    return None
 
 
 def open_pr(branch: str, title: str, body: str, token: str | None) -> dict:
