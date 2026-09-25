@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1502 | 2026-09-25 01:12:19 | 667ce093 | 014 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "014", "monitor_of": "de1d7fdc5d12431cbc4d260218c9875d", "day": "2026-09-25"}} |
-| 1503 | 2026-09-25 01:12:19 | 4b8fb54e | 016 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "016", "monitor_of": "de1d7fdc5d12431cbc4d260218c9875d", "day": "2026-09-25"}} |
-| 1504 | 2026-09-25 01:12:19 | 5ba4ca8c | 017 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "017", "monitor_of": "de1d7fdc5d12431cbc4d260218c9875d", "day": "2026-09-25"}} |
 | 1505 | 2026-09-25 01:12:19 | e5ef19df | 018 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "018", "monitor_of": "de1d7fdc5d12431cbc4d260218c9875d", "day": "2026-09-25"}} |
 | 1506 | 2026-09-25 01:12:19 | 13956caf | 019 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "019", "monitor_of": "de1d7fdc5d12431cbc4d260218c9875d", "day": "2026-09-25"}} |
 | 1507 | 2026-09-25 01:12:19 | 3b53fab8 | 020 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "020", "monitor_of": "de1d7fdc5d12431cbc4d260218c9875d", "day": "2026-09-25"}} |
@@ -402,3 +399,6 @@
 | 1899 | 2026-09-25 21:59:58 | a7ddc40b |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1900 | 2026-09-25 21:59:58 | 6611e45e |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-25T22"}} |
 | 1901 | 2026-09-25 21:59:58 | a7ddc40b |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 1902 | 2026-09-25 22:09:49 | 24db754c |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1903 | 2026-09-25 22:09:49 | 2e9399d2 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-25T23"}} |
+| 1904 | 2026-09-25 22:10:07 | 24db754c |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gpto |
