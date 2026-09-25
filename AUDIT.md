@@ -2,19 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1158 | 2026-09-24 02:23:14 | c1c70d3e | 025 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='LIVENESS_OK' last='LIVENESS_OK' \| T2 PASS 36s [done] expect='HELLO WORLD' last='RESULT: HELLO WORLD' |
-| 1159 | 2026-09-24 02:23:14 | c1c70d3e | 025 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='LIVENESS_OK' last='LIVENESS_OK' \| T2 PASS 36s [done] expect='HELLO WORLD' last='RESULT: HELLO WORLD' |
-| 1160 | 2026-09-24 02:23:14 | c1c70d3e | 025 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "025", "status": "active", "verified": "VERIFIED"}} |
-| 1161 | 2026-09-24 02:24:57 | c35f9462 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-flash38", "result": "2/4", "quota": 0, "secs": 128} |
-| 1162 | 2026-09-24 02:24:57 | c35f9462 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["gemini-flash38", "2/4"]]}} |
-| 1163 | 2026-09-24 02:31:11 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1164 | 2026-09-24 02:31:12 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1165 | 2026-09-24 02:31:27 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["103 passed in 13.30s"]} |
-| 1166 | 2026-09-24 02:31:32 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["103 passed in 11.02s"]} |
-| 1167 | 2026-09-24 02:49:26 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1168 | 2026-09-24 02:49:26 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1169 | 2026-09-24 02:49:52 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["103 passed in 18.96s"]} |
-| 1170 | 2026-09-24 02:49:53 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["103 passed in 17.44s"]} |
 | 1171 | 2026-09-24 03:01:33 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 1172 | 2026-09-24 03:01:33 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 1173 | 2026-09-24 03:01:50 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["105 passed in 15.19s"]} |
@@ -402,3 +389,16 @@
 | 1555 | 2026-09-25 02:54:06 | 190e3258 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1556 | 2026-09-25 02:54:06 | abed8a6c |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-25T03"}} |
 | 1557 | 2026-09-25 02:54:06 | 190e3258 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 1558 | 2026-09-25 02:54:15 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1559 | 2026-09-25 02:55:07 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": false, "tail": ["..."]} |
+| 1560 | 2026-09-25 02:55:07 |  |  | worker.blocked_by_tests | fast-LAPTOP-LRE6PSA8 | {"reason": "core/tests red on current code; refusing to process jobs until code changes"} |
+| 1561 | 2026-09-25 02:56:02 | e7744308 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "or-ling-30-flash-fin", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
+| 1562 | 2026-09-25 02:56:02 | e7744308 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "or-ling-30-flash-sante", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
+| 1563 | 2026-09-25 02:56:02 | e7744308 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "or-nemotron-35-lightning", "outcome": "error", "before": "INFERRED", "after": "BLOCKED", "detail": "TimeoutError"} |
+| 1564 | 2026-09-25 02:56:02 | 738a787a |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "groq", "day": "2026-09-25", "trigger": "blocked:or-nemotron-35-lightning"}} |
+| 1565 | 2026-09-25 02:56:02 | 55ab81e6 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "gemini", "day": "2026-09-25", "trigger": "blocked:or-nemotron-35-lightning"}} |
+| 1566 | 2026-09-25 02:56:02 | c7800973 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "openrouter", "day": "2026-09-25", "trigger": "blocked:or-nemotron-35-lightning"}} |
+| 1567 | 2026-09-25 02:56:02 | cbe38d31 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "cerebras", "day": "2026-09-25", "trigger": "blocked:or-nemotron-35-lightning"}} |
+| 1568 | 2026-09-25 02:56:02 | 99ef519c |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-09-25", "trigger": "blocked:or-nemotron-35-lightning"}} |
+| 1569 | 2026-09-25 02:56:02 | c0780098 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-09-25", "trigger": "blocked:or-nemotron-35-lightning"}} |
+| 1570 | 2026-09-25 02:56:02 | e7744308 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite |
