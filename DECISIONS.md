@@ -694,3 +694,8 @@ worktree on `proposal/<date>-<slug>` → `core/tests` must pass there → branch
 GitHub Actions CI re-runs the suite on the branch → the OWNER merges or closes. `main` is never written by the
 factory. The weekly insight enqueues at most one selfpatch (top code-level proposal). Audited as `factory.selfpatch`.
 This is the contract's propose→sandbox→test→review→approve loop with GitHub as the review gate.
+
+## D-123 — Audit chain verified nightly and in CI (2026-09-25) — VERIFIED (CI run on 6c7546f: 117 tests + `audit-verify` ok, 1549 rows / 797 hashed)
+The D-091 hash chain existed but nothing checked it unattended. Now the nightly report job runs `audit_verify` and
+writes `audit.verified` / `audit.TAMPERED` (STATUS puts "AUDIT CHAIN BROKEN" first), and the GitHub Actions CI job
+verifies `audit/*.jsonl` on every push that touches it — a check that runs on a machine the laptop cannot alter.
