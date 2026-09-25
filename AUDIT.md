@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1194 | 2026-09-24 03:15:49 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": false, "tail": ["1 failed, 47 passed in 10.98s"]} |
-| 1195 | 2026-09-24 03:15:49 |  |  | worker.blocked_by_tests | fast-LAPTOP-LRE6PSA8 | {"reason": "core/tests red on current code; refusing to process jobs until code changes"} |
-| 1196 | 2026-09-24 03:15:50 | efe05c44 |  | job.cancelled | owner | {} |
-| 1197 | 2026-09-24 03:15:51 | ab489546 |  | job.enqueued | owner | {"kind": "create", "payload": {"objective": "Answer questions about a SQLite database file in the workspace using the mcp:mcp-sqlite3 server |
 | 1198 | 2026-09-24 03:17:38 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["106 passed in 15.93s"]} |
 | 1199 | 2026-09-24 03:17:39 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["106 passed in 16.15s"]} |
 | 1200 | 2026-09-24 03:17:39 | ab489546 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +398,7 @@
 | 1591 | 2026-09-25 03:02:07 | 5d804e5d | 007 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 PASS 151s [done] expect='2' last='2' \| T3 PASS 52s [done] expect='0' last='0 |
 | 1592 | 2026-09-25 03:02:07 | 5d804e5d | 007 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 PASS 151s [done] expect='2' last='2' \| T3 PASS 52s [done] expect='0' last='0 |
 | 1593 | 2026-09-25 03:02:07 | 5d804e5d | 007 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "007", "status": "active", "verified": "VERIFIED"}} |
+| 1594 | 2026-09-25 03:02:10 | 8f56eb65 | 008 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1595 | 2026-09-25 03:04:51 | 8f56eb65 | 008 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 18s [done] expect='X_OK' last='X_OK' \| T2 PASS 51s [done] expect='apple' last='RESULT: apple' \| T3 PASS 61s [done] exp |
+| 1596 | 2026-09-25 03:04:51 | 8f56eb65 | 008 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 18s [done] expect='X_OK' last='X_OK' \| T2 PASS 51s [done] expect='apple' last='RESULT: apple' \| T3 PASS 61s [done] exp |
+| 1597 | 2026-09-25 03:04:51 | 8f56eb65 | 008 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "008", "status": "active", "verified": "VERIFIED"}} |

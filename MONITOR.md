@@ -69,3 +69,4 @@
 | 2026-09-25 01:16 | 004 changelog-writer | 2/4 | active→testing | - |
 | 2026-09-25 01:18 | 005 csv-quality-auditor | 4/4 | active→active | - |
 | 2026-09-25 03:02 | 007 todo-extractor | 4/4 | active→active | - |
+| 2026-09-25 03:04 | 008 word-frequency-bot | 4/4 | active→active | - |
