@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1448 | 2026-09-25 00:31:25 | 4901b2db |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.pulsemcp/playwright-stealth", "reason": "policy: anti-detection / bypass tooling (contract: never evade ToS, rate limits or id |
-| 1449 | 2026-09-25 00:31:25 | 4901b2db |  | tool.discovered | svc-LAPTOP-LRE6PSA8 | {"tool": "io.github.feder-cr/invisible-playwright-mcp", "reason": "probation; tools=16 144s", "need": "playwright browser"} |
-| 1450 | 2026-09-25 00:31:25 | 4901b2db |  | owner.needed | svc-LAPTOP-LRE6PSA8 | {"provider": "tools", "reason": "MCP tools on probation for need 'playwright browser': ['mcp:invisible-playwright-mcp'] \u2014 approve to wi |
-| 1451 | 2026-09-25 00:31:25 | 4901b2db |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": ["mcp:invisible-playwright-mcp"]}} |
 | 1452 | 2026-09-25 00:38:29 |  |  | tool.revoked | owner | {"tool": "mcp:invisible-playwright-mcp", "detail": "{\"ok\": true, \"tool\": \"mcp:invisible-playwright-mcp\", \"ledger\": \"io.github.feder |
 | 1453 | 2026-09-25 00:38:30 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 1454 | 2026-09-25 00:38:30 | 6e4d634b |  | job.enqueued | owner | {"kind": "tooldisc", "payload": {"need": "playwright browser", "max": 1, "day": "2026-09-25"}} |
@@ -402,3 +398,7 @@
 | 1845 | 2026-09-25 20:10:43 | 6acda974 | 014 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "014", "monitor_of": "a1ec1245d09c465fb7daaec24fbd41f2", "day": "2026-09-25"}} |
 | 1846 | 2026-09-25 20:10:43 | a1ec1245 |  | monitor.fanout | svc-LAPTOP-LRE6PSA8 | {"bots": ["014"], "jobs": ["6acda974"]} |
 | 1847 | 2026-09-25 20:10:43 | a1ec1245 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 1848 | 2026-09-25 20:10:48 | 6acda974 | 014 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1849 | 2026-09-25 20:12:29 | 6acda974 | 014 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 14s [done] expect='5' last='RESULT: 5' \| T3 PASS 63s [done] expect='Time |
+| 1850 | 2026-09-25 20:12:29 | 6acda974 | 014 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 14s [done] expect='5' last='RESULT: 5' \| T3 PASS 63s [done] expect='Time |
+| 1851 | 2026-09-25 20:12:29 | 6acda974 | 014 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "014", "status": "active", "verified": "VERIFIED"}} |
