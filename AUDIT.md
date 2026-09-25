@@ -2,13 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1404 | 2026-09-25 00:02:15 | ff48e3c4 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["gemini-flash", "2/4"]]}} |
-| 1405 | 2026-09-25 00:06:49 | 92411237 |  | job.enqueued | owner | {"kind": "tooldisc", "payload": {"need": "browser automation playwright", "max": 1, "day": "2026-09-25"}} |
-| 1406 | 2026-09-25 00:06:49 | 92411237 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1407 | 2026-09-25 00:06:52 | 92411237 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
-| 1408 | 2026-09-25 00:17:27 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1409 | 2026-09-25 00:17:29 | 86969460 |  | job.enqueued | owner | {"kind": "tooldisc", "payload": {"need": "browser automation playwright", "max": 1, "day": "2026-09-25"}} |
-| 1410 | 2026-09-25 00:17:49 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["112 passed in 16.75s"]} |
 | 1411 | 2026-09-25 00:17:49 | 86969460 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1412 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "ai.agentutility/mcp-browser-workflow", "reason": "sandbox handshake: no initialize result in 240s", "need": "browser automation pl |
 | 1413 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "ai.smithery/ImRonAI-mcp-server-browserbase", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio pac |
@@ -402,3 +395,10 @@
 | 1801 | 2026-09-25 13:24:31 | c14ad4dd |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 1802 | 2026-09-25 13:24:33 | 23979c6a |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1803 | 2026-09-25 13:24:33 | 23979c6a |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 1804 | 2026-09-25 14:20:17 | a35b45be | 020 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1805 | 2026-09-25 19:59:42 | a35b45be |  | job.lease_expired | svc-LAPTOP-LRE6PSA8 | {} |
+| 1806 | 2026-09-25 19:59:42 | 4f127831 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1807 | 2026-09-25 19:59:42 | 865a2980 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-25T20"}} |
+| 1808 | 2026-09-25 19:59:44 | 4f127831 |  | probe.network_down | svc-LAPTOP-LRE6PSA8 | {"detail": "all 16 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
+| 1809 | 2026-09-25 19:59:44 | 96ccf58b |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-25T14-retry", "retry_of": "4f127831509c447c8aaaba0702a59478"}} |
+| 1810 | 2026-09-25 19:59:44 | 4f127831 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
