@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1279 | 2026-09-24 04:22:19 | 42efc9da |  | probe.network_down | fast-LAPTOP-LRE6PSA8 | {"detail": "all 17 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
-| 1280 | 2026-09-24 04:22:19 | 40419dff |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-24T04-retry-retry", "retry_of": "42efc9da202848eba93c2c0b343346b8"}} |
 | 1281 | 2026-09-24 04:22:19 | 42efc9da |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 1282 | 2026-09-24 04:24:32 | 21c6bb9d | 020 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 113s [done] expect='X_OK' last='X_OK' \| T2 PASS 128s [done] expect='DONE' last='DONE' \| T3 PASS 46s [done] expect='CON |
 | 1283 | 2026-09-24 04:24:32 | 21c6bb9d | 020 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 113s [done] expect='X_OK' last='X_OK' \| T2 PASS 128s [done] expect='DONE' last='DONE' \| T3 PASS 46s [done] expect='CON |
@@ -402,3 +400,5 @@
 | 1676 | 2026-09-25 03:57:03 | abed8a6c |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 1677 | 2026-09-25 03:57:05 | 5866157b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1678 | 2026-09-25 03:57:06 | 5866157b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 1679 | 2026-09-25 03:57:08 | 71d0bcfc |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1680 | 2026-09-25 03:57:08 | 71d0bcfc |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
