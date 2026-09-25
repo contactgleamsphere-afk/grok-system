@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1198 | 2026-09-24 03:17:38 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["106 passed in 15.93s"]} |
-| 1199 | 2026-09-24 03:17:39 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["106 passed in 16.15s"]} |
-| 1200 | 2026-09-24 03:17:39 | ab489546 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1201 | 2026-09-24 03:17:42 | ab489546 |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect: objective needs permissions outside the allowance ['fs:read', 'mcp:mcp-sqlite3']: fs:write is required for the mcp:mcp |
 | 1202 | 2026-09-24 03:17:42 | ab489546 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: architect: objective needs permissions outside the a |
 | 1203 | 2026-09-24 03:24:13 | ab489546 |  | job.cancelled | owner | {} |
 | 1204 | 2026-09-24 03:24:13 | 1ed33ffb |  | job.enqueued | owner | {"kind": "create", "payload": {"objective": "Answer questions about a SQLite database file in the workspace using the mcp:mcp-sqlite3 server |
@@ -402,3 +398,7 @@
 | 1595 | 2026-09-25 03:04:51 | 8f56eb65 | 008 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 18s [done] expect='X_OK' last='X_OK' \| T2 PASS 51s [done] expect='apple' last='RESULT: apple' \| T3 PASS 61s [done] exp |
 | 1596 | 2026-09-25 03:04:51 | 8f56eb65 | 008 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 18s [done] expect='X_OK' last='X_OK' \| T2 PASS 51s [done] expect='apple' last='RESULT: apple' \| T3 PASS 61s [done] exp |
 | 1597 | 2026-09-25 03:04:51 | 8f56eb65 | 008 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "008", "status": "active", "verified": "VERIFIED"}} |
+| 1598 | 2026-09-25 03:04:56 | bd7cfb9e | 009 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1599 | 2026-09-25 03:05:11 | 0fe79cdf | 003 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
+| 1600 | 2026-09-25 03:05:11 | 0fe79cdf | 003 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 1601 | 2026-09-25 03:05:11 | 0fe79cdf | 003 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "003", "status": "active"}} |
