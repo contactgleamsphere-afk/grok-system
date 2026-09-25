@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1334 | 2026-09-24 22:29:25 | 86ba95ba |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "or-ling-30-flash-fin", "outcome": "error", "before": "INFERRED", "after": "BLOCKED", "detail": "URLError"} |
-| 1335 | 2026-09-24 22:29:25 | 86ba95ba |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "or-ling-30-flash-sante", "outcome": "error", "before": "INFERRED", "after": "BLOCKED", "detail": "URLError"} |
-| 1336 | 2026-09-24 22:29:25 | 2107158e |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "groq", "day": "2026-09-24", "trigger": "blocked:gemini-gemini-flash-lite-latest,or-ling-30-fla |
 | 1337 | 2026-09-24 22:29:25 | 1ce9e348 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "gemini", "day": "2026-09-24", "trigger": "blocked:gemini-gemini-flash-lite-latest,or-ling-30-f |
 | 1338 | 2026-09-24 22:29:25 | 66ca017e |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "openrouter", "day": "2026-09-24", "trigger": "blocked:gemini-gemini-flash-lite-latest,or-ling- |
 | 1339 | 2026-09-24 22:29:25 | bc1ce82b |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "cerebras", "day": "2026-09-24", "trigger": "blocked:gemini-gemini-flash-lite-latest,or-ling-30 |
@@ -402,3 +399,6 @@
 | 1731 | 2026-09-25 04:55:18 | 509087ef |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1732 | 2026-09-25 04:55:18 | 321d882a |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-25T05"}} |
 | 1733 | 2026-09-25 04:55:28 | 509087ef |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss1 |
+| 1734 | 2026-09-25 04:57:06 | 586e9f0e |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1735 | 2026-09-25 04:57:06 | 5249b5ec |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-25T05"}} |
+| 1736 | 2026-09-25 04:57:06 | 586e9f0e |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
