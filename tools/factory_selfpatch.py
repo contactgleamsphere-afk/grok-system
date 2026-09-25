@@ -63,13 +63,16 @@ def pick_file(proposal: dict) -> str:
     return "tools/factory_insight.py"
 
 
-def draft(proposal: dict, file: str, src: str, chat=None) -> tuple[dict | None, str, str]:
-    """→ (edits_json | None, lane, raw). One attempt per lane via the pipeline's failover chat()."""
+def draft(proposal: dict, file: str, src: str, chat=None, feedback: str = "", skip: set | None = None) -> tuple[dict | None, str, str]:
+    """→ (edits_json | None, lane, raw). One attempt per call via the pipeline's failover chat(); `feedback` carries the
+    previous envelope error so the next attempt (on a different lane when possible) can correct it."""
     import factory_pipeline as fp
     chat = chat or fp.chat
     msg = PROMPT % (", ".join(PATCHABLE), proposal.get("kind"), proposal.get("severity"), proposal.get("evidence", "")[:800],
                     proposal.get("suggestion", "")[:800], file, _numbered(src))
-    text, lane = chat([{"role": "user", "content": msg}], max_tokens=1800)
+    if feedback: msg += f"\nPREVIOUS ATTEMPT WAS REJECTED: {feedback}\nQuote `find` text EXACTLY as in the file (same backslashes, quotes and spaces); pick a shorter unique anchor if needed.\n"
+    try: text, lane = chat([{"role": "user", "content": msg}], max_tokens=1800, skip=skip)
+    except TypeError: text, lane = chat([{"role": "user", "content": msg}], max_tokens=1800)
     m = re.search(r"\{.*\}", text, re.S)
     if not m: return None, lane, text[:400]
     try: return json.loads(m.group(0)), lane, text[:400]
@@ -135,14 +138,19 @@ def open_pr(branch: str, title: str, body: str, token: str | None) -> dict:
 def run(proposal: dict, slug: str, chat=None, tester=None, pusher=None, pr=None) -> dict:
     """End to end for ONE proposal. tester(worktree)->(ok, tail); pusher(worktree, branch)->(ok, msg); pr(...)->dict."""
     t0 = time.time(); file = pick_file(proposal); src = (ROOT / file).read_text(encoding="utf-8")
-    patch, lane, raw = draft(proposal, file, src, chat)
-    out = {"ok": False, "file": file, "lane": lane, "branch": None, "pr": None}
-    if not patch: out["reason"] = f"no usable draft: {raw[:160]}"; return out
-    if patch.get("file") and patch["file"] != file:
-        if patch["file"] in PATCHABLE and (ROOT / patch["file"]).exists(): file = patch["file"]; src = (ROOT / file).read_text(encoding="utf-8"); out["file"] = file
-    patch["file"] = file
-    err, new = check_envelope(patch, src)
-    if err: out["reason"] = f"envelope: {err}"; out["summary"] = patch.get("summary"); return out
+    out = {"ok": False, "file": file, "lane": None, "branch": None, "pr": None, "attempts": 0}
+    feedback, skip, patch, new = "", set(), None, src
+    for attempt in range(3):                                   # live 2026-09-25: first draft misquoted regex escapes → retry with the error
+        out["attempts"] = attempt + 1
+        patch, lane, raw = draft(proposal, file, src, chat, feedback, skip); out["lane"] = lane; skip.add(lane)
+        if not patch: feedback = f"no usable JSON: {raw[:120]}"; continue
+        if patch.get("file") and patch["file"] != file and patch["file"] in PATCHABLE and (ROOT / patch["file"]).exists():
+            file = patch["file"]; src = (ROOT / file).read_text(encoding="utf-8"); out["file"] = file
+        patch["file"] = file
+        err, new = check_envelope(patch, src)
+        if not err: break
+        feedback = err; out["summary"] = patch.get("summary"); patch = None
+    if not patch: out["reason"] = f"envelope after {out['attempts']} attempts: {feedback}"; return out
     branch = f"proposal/{datetime.date.today().isoformat()}-{re.sub(r'[^a-z0-9]+', '-', slug.lower())[:40]}"
     wt = ROOT / "run" / "selfpatch" / branch.split("/")[-1]
     out["branch"] = branch; out["summary"] = patch.get("summary")
