@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1180 | 2026-09-24 03:05:19 | efe05c44 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1181 | 2026-09-24 03:05:19 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["105 passed in 16.02s"]} |
 | 1182 | 2026-09-24 03:05:21 | efe05c44 |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect: objective needs permissions outside the allowance ['fs:read', 'mcp:mcp-sqlite3']: The bot requires write permission to |
 | 1183 | 2026-09-24 03:05:21 | efe05c44 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: architect: objective needs permissions outside the a |
 | 1184 | 2026-09-24 03:12:05 | f773c50b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +400,5 @@
 | 1577 | 2026-09-25 02:57:45 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["118 passed in 30.82s"]} |
 | 1578 | 2026-09-25 02:57:45 | 738a787a |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1579 | 2026-09-25 02:57:45 | 738a787a |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 1580 | 2026-09-25 02:57:49 | 55ab81e6 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1581 | 2026-09-25 02:57:49 | 55ab81e6 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
