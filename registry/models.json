@@ -387,12 +387,14 @@
       ],
       "health": {
         "failures": 0,
-        "last_outcome": "ok",
+        "last_outcome": "quota",
         "last_probe": "2026-09-25T01:54:06",
         "latency_s": 0.61,
         "note": "D-086: 20:17Z sweep discarded (local network outage)",
-        "ok": true,
-        "quota_seen": "2026-09-24T01:05:52"
+        "ok": false,
+        "quota_kind": "tpm",
+        "quota_seen": "2026-09-25T02:12:57",
+        "quota_until": 1790303277.0053742
       }
     },
     "location": "remote",
@@ -402,7 +404,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-25T01:56:01+00:00",
+    "updated": "2026-09-25T02:12:57+00:00",
     "verified": "VERIFIED"
   },
   "groq-gptoss20b": {
@@ -435,11 +437,13 @@
       ],
       "health": {
         "failures": 0,
-        "last_outcome": "ok",
+        "last_outcome": "quota",
         "last_probe": "2026-09-25T01:54:06",
         "latency_s": 0.38,
-        "ok": true,
-        "quota_seen": "2026-09-22T21:53:53"
+        "ok": false,
+        "quota_kind": "tpm",
+        "quota_seen": "2026-09-25T02:12:56",
+        "quota_until": 1790303276.7248776
       }
     },
     "location": "remote",
@@ -449,7 +453,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-25T01:56:01+00:00",
+    "updated": "2026-09-25T02:12:56+00:00",
     "verified": "VERIFIED"
   },
   "groq-qwen27b": {

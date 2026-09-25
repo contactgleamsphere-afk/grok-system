@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1210 | 2026-09-24 03:27:59 | bd24f8ff | 026 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1211 | 2026-09-24 03:30:18 | ec7ed624 |  | job.dedup | nightly-task | {"kind": "monitor", "note": "slot already done"} |
-| 1212 | 2026-09-24 03:31:15 | bd24f8ff | 026 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 FAIL 25s [done] expect='users' last='RESULT: None' \| T3 FAIL 136s [done] exp |
-| 1213 | 2026-09-24 03:31:15 | c18703a7 | 026 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "026", "max_rounds": 2, "rearchitected": false}} |
 | 1214 | 2026-09-24 03:31:15 | bd24f8ff | 026 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "026", "status": "testing", "verified": "UNVERIFIED"}} |
 | 1215 | 2026-09-24 03:31:19 | c18703a7 | 026 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1216 | 2026-09-24 03:35:58 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
@@ -402,3 +398,7 @@
 | 1607 | 2026-09-25 03:11:49 | 8dac341b | 011 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 19s [done] expect='X_OK' last='X_OK' \| T2 PASS 69s [done] expect='2' last='RESULT: 2' \| T3 PASS 73s [done] expect='3'  |
 | 1608 | 2026-09-25 03:11:49 | 8dac341b | 011 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 19s [done] expect='X_OK' last='X_OK' \| T2 PASS 69s [done] expect='2' last='RESULT: 2' \| T3 PASS 73s [done] expect='3'  |
 | 1609 | 2026-09-25 03:11:49 | 8dac341b | 011 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "011", "status": "active", "verified": "VERIFIED"}} |
+| 1610 | 2026-09-25 03:11:52 | 2cb15941 | 012 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1611 | 2026-09-25 03:13:14 | 29346aa8 | 004 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
+| 1612 | 2026-09-25 03:13:14 | 29346aa8 | 004 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 1613 | 2026-09-25 03:13:14 | 29346aa8 | 004 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "004", "status": "active"}} |
