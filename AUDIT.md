@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1473 | 2026-09-25 01:06:21 | d6be18bd |  | tool.discovered | svc-LAPTOP-LRE6PSA8 | {"tool": "io.github.aethynio/aethyn-browser-mcp", "reason": "probation; tools=10 260s", "need": "playwright browser"} |
-| 1474 | 2026-09-25 01:06:21 | d6be18bd |  | owner.needed | svc-LAPTOP-LRE6PSA8 | {"provider": "tools", "reason": "MCP tools on probation for need 'playwright browser': ['mcp:aethyn-browser-mcp'] \u2014 approve to wire int |
 | 1475 | 2026-09-25 01:06:21 | d6be18bd |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": ["mcp:aethyn-browser-mcp"]}} |
 | 1476 | 2026-09-25 01:11:13 |  |  | tool.revoked | owner | {"tool": "mcp:aethyn-browser-mcp", "detail": "{\"ok\": true, \"tool\": \"mcp:aethyn-browser-mcp\", \"ledger\": \"io.github.aethynio/aethyn-b |
 | 1477 | 2026-09-25 01:11:14 | c858bfee |  | job.enqueued | owner | {"kind": "tooldisc", "payload": {"need": "playwright browser", "max": 1, "day": "2026-09-25"}} |
@@ -402,3 +400,5 @@
 | 1870 | 2026-09-25 21:00:52 | f0d2836f |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 1871 | 2026-09-25 21:00:56 | af65672a |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1872 | 2026-09-25 21:00:56 | af65672a |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 1873 | 2026-09-25 21:01:00 | 4c6af4e8 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1874 | 2026-09-25 21:01:00 | 4c6af4e8 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
