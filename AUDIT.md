@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1414 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "ai.smithery/browserbasehq-mcp-browserbase", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio pack |
-| 1415 | 2026-09-25 00:20:58 | 86969460 |  | tool.discovered | svc-LAPTOP-LRE6PSA8 | {"tool": "app.crawlio/crawlio-browser", "reason": "probation; tools=7 23s", "need": "browser automation playwright"} |
-| 1416 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "co.civai.nova/browsergpt-agent", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/n |
-| 1417 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.browser-use/browser-use", "reason": "61 dependencies > 40", "need": "browser automation playwright"} |
 | 1418 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.browserforest/browser-forest", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi |
 | 1419 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.browserssh/browser-ssh", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); |
 | 1420 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.clauxel.autobrowserapproval/autobrowserapproval-mcp", "reason": "remote-only (hosted; data leaves the machine, lock-in); no lo |
@@ -402,3 +398,7 @@
 | 1811 | 2026-09-25 19:59:48 | b7558c0f |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1812 | 2026-09-25 19:59:52 | 54829a12 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-25T20"}} |
 | 1813 | 2026-09-25 19:59:52 | b7558c0f |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 1814 | 2026-09-25 20:00:00 | a35b45be | 020 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 2} |
+| 1815 | 2026-09-25 20:02:28 | a35b45be | 020 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 124s [done] expect='DONE' last='DONE' \| T3 PASS 12s [done] expect='CONF |
+| 1816 | 2026-09-25 20:02:28 | a35b45be | 020 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 124s [done] expect='DONE' last='DONE' \| T3 PASS 12s [done] expect='CONF |
+| 1817 | 2026-09-25 20:02:28 | a35b45be | 020 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "020", "status": "active", "verified": "VERIFIED"}} |
