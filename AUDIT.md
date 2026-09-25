@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1328 | 2026-09-24 22:29:11 | 86ba95ba |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 2} |
-| 1329 | 2026-09-24 22:29:11 | d0196af8 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-24T23"}} |
-| 1330 | 2026-09-24 22:29:15 | 86ba95ba |  | probe.network_down | fast-LAPTOP-LRE6PSA8 | {"detail": "all 17 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
 | 1331 | 2026-09-24 22:29:16 | 4a8b6119 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-24T05-retry", "retry_of": "86ba95baf63f4a388b1baef16836aa7d"}} |
 | 1332 | 2026-09-24 22:29:16 | 86ba95ba |  | job.orphaned_result | fast-LAPTOP-LRE6PSA8 | {"summary": "{'probed': 19, 'network_down': True, 'detail': 'all 17 remote lanes across 3 providers errored in one sweep -> local network ou |
 | 1333 | 2026-09-24 22:29:25 | 86ba95ba |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "gemini-gemini-flash-lite-latest", "outcome": "error", "before": "INFERRED", "after": "BLOCKED", "detail": "URLError"} |
@@ -402,3 +399,6 @@
 | 1725 | 2026-09-25 04:10:32 | 3f73d2dd | 026 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "026", "status": "active", "verified": "VERIFIED"}} |
 | 1726 | 2026-09-25 04:10:35 | 6ba4e1dc |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1727 | 2026-09-25 04:10:35 | 6ba4e1dc |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": []}} |
+| 1728 | 2026-09-25 04:10:38 | 1b095896 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1729 | 2026-09-25 04:11:09 | 1b095896 |  | factory.canary | svc-LAPTOP-LRE6PSA8 | {"verdict": "pass", "lane": "groq:openai/gpt-oss-20b", "chain": ["gemini-gemini-flash-lite-latest", "gemini-lite31", "or-nex-n25-pro", "or-l |
+| 1730 | 2026-09-25 04:11:09 | 1b095896 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"pass": 2, "total": 2}} |
