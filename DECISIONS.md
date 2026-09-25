@@ -699,3 +699,8 @@ This is the contract's propose→sandbox→test→review→approve loop with Git
 The D-091 hash chain existed but nothing checked it unattended. Now the nightly report job runs `audit_verify` and
 writes `audit.verified` / `audit.TAMPERED` (STATUS puts "AUDIT CHAIN BROKEN" first), and the GitHub Actions CI job
 verifies `audit/*.jsonl` on every push that touches it — a check that runs on a machine the laptop cannot alter.
+D-122 live status 2026-09-25 03:40: drafts on gemini lanes produce envelope-valid edits (attempt 1: worktree tests
+118 passed in 47 s); push failed only because the SSH session cannot see the User-scope GITHUB_TOKEN → now read the
+same way repo-sync does; two later runs hit model-format issues (invalid JSON escapes, gemma `<thought>` blocks,
+token truncation) → tolerant parser, thought-stripping, 3000-token budget. First real PR still pending: laptop battery
+at 10 % and discharging, run stopped to avoid a half-pushed branch.
