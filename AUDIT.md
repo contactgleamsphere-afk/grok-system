@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1411 | 2026-09-25 00:17:49 | 86969460 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1412 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "ai.agentutility/mcp-browser-workflow", "reason": "sandbox handshake: no initialize result in 240s", "need": "browser automation pl |
-| 1413 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "ai.smithery/ImRonAI-mcp-server-browserbase", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio pac |
 | 1414 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "ai.smithery/browserbasehq-mcp-browserbase", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio pack |
 | 1415 | 2026-09-25 00:20:58 | 86969460 |  | tool.discovered | svc-LAPTOP-LRE6PSA8 | {"tool": "app.crawlio/crawlio-browser", "reason": "probation; tools=7 23s", "need": "browser automation playwright"} |
 | 1416 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "co.civai.nova/browsergpt-agent", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/n |
@@ -402,3 +399,6 @@
 | 1808 | 2026-09-25 19:59:44 | 4f127831 |  | probe.network_down | svc-LAPTOP-LRE6PSA8 | {"detail": "all 16 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
 | 1809 | 2026-09-25 19:59:44 | 96ccf58b |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-25T14-retry", "retry_of": "4f127831509c447c8aaaba0702a59478"}} |
 | 1810 | 2026-09-25 19:59:44 | 4f127831 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 1811 | 2026-09-25 19:59:48 | b7558c0f |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1812 | 2026-09-25 19:59:52 | 54829a12 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-25T20"}} |
+| 1813 | 2026-09-25 19:59:52 | b7558c0f |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
