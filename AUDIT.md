@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1452 | 2026-09-25 00:38:29 |  |  | tool.revoked | owner | {"tool": "mcp:invisible-playwright-mcp", "detail": "{\"ok\": true, \"tool\": \"mcp:invisible-playwright-mcp\", \"ledger\": \"io.github.feder |
-| 1453 | 2026-09-25 00:38:30 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1454 | 2026-09-25 00:38:30 | 6e4d634b |  | job.enqueued | owner | {"kind": "tooldisc", "payload": {"need": "playwright browser", "max": 1, "day": "2026-09-25"}} |
-| 1455 | 2026-09-25 00:38:31 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1456 | 2026-09-25 00:38:53 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["113 passed in 19.94s"]} |
 | 1457 | 2026-09-25 00:38:53 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["113 passed in 18.57s"]} |
 | 1458 | 2026-09-25 00:38:53 | 6e4d634b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1459 | 2026-09-25 00:39:46 | 6e4d634b |  | tool.discovered | fast-LAPTOP-LRE6PSA8 | {"tool": "io.github.vola-trebla/playwright-network-chaos-mcp", "reason": "probation; tools=8 25s", "need": "playwright browser"} |
@@ -402,3 +397,8 @@
 | 1849 | 2026-09-25 20:12:29 | 6acda974 | 014 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 14s [done] expect='5' last='RESULT: 5' \| T3 PASS 63s [done] expect='Time |
 | 1850 | 2026-09-25 20:12:29 | 6acda974 | 014 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 14s [done] expect='5' last='RESULT: 5' \| T3 PASS 63s [done] expect='Time |
 | 1851 | 2026-09-25 20:12:29 | 6acda974 | 014 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "014", "status": "active", "verified": "VERIFIED"}} |
+| 1852 | 2026-09-25 20:59:46 | 865a2980 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1853 | 2026-09-25 20:59:46 | 80e90b9b |  | job.dedup | svc-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
+| 1854 | 2026-09-25 20:59:57 | 54829a12 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1855 | 2026-09-25 20:59:58 | a7ddc40b |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-25T21"}} |
+| 1856 | 2026-09-25 20:59:58 | 54829a12 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
