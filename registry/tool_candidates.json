@@ -259,12 +259,19 @@
    "ts": 1790214576.4982991,
    "verdict": "approved"
   },
+  "io.github.vola-trebla/playwright-network-chaos-mcp:*": {
+   "date": "2026-09-25",
+   "need": null,
+   "reason": "revoked by owner: not a browser agent (network chaos test plugin); irrelevant to the need",
+   "ts": 1790293611.67004,
+   "verdict": "rejected"
+  },
   "io.github.vola-trebla/playwright-network-chaos-mcp:0.2.1": {
    "date": "2026-09-25",
-   "need": "playwright browser",
-   "reason": "probation; tools=8 25s",
-   "ts": 1790293133.4482071,
-   "verdict": "approved"
+   "need": null,
+   "reason": "revoked by owner: not a browser agent (network chaos test plugin); irrelevant to the need",
+   "ts": 1790293611.67004,
+   "verdict": "rejected"
   }
  }
 }
