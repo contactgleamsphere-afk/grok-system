@@ -2,7 +2,7 @@ name: ci
 # D-119: off-laptop regression gate on the free GitHub Actions tier (same account, no new signup).
 on:
   push:
-    branches: [main]
+    branches: [main, "proposal/**"]
     paths: ["core/**", "tools/**", "config/**", ".github/workflows/ci.yml"]
   pull_request:
   workflow_dispatch:

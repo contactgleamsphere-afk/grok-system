@@ -12,6 +12,7 @@
   python tools/factory_worker.py add run --plan <plan_job> --in DIR                       # run a whole pipeline
   python tools/factory_worker.py add tick                     # D-076: fire due schedules now (self-chains hourly)
   python tools/factory_worker.py add insight [--days 7]      # D-057 factory self-review -> proposals/<date>.md
+  python tools/factory_worker.py add selfpatch --date <d> --index <n> | --request "<change>"   # D-122 code proposal -> PR (owner merges)
   python tools/factory_worker.py add bench [--lanes a,b] [--stale-only] [--max N]   # D-050 lane quality
   python tools/factory_worker.py status | audit-verify (D-091 hash chain) | jobs | resume <job_id> [--allow fs:read,shell:workspace] | cancel <job_id> | release <job_id> [--uncount] | audit [bot_id] [--width N]
 
@@ -229,6 +230,17 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
                 store.audit("bot.rearchitect_queued", job_id=jid, bot_id=p["bot_id"], actor=worker, reason=err[:200])
             raise FactoryError(err)
         return res
+    if kind == "selfpatch":
+        # D-122: propose code as a PR (never applied to main). One proposal per job; result audited either way.
+        import factory_selfpatch as fsp
+        if p.get("request"): prop, slug = {"kind": "owner-request", "severity": "medium", "evidence": "owner request", "suggestion": p["request"]}, f"owner-{jid[:8]}"
+        else: prop, slug = fsp.load_proposal(p["date"], int(p["index"]))
+        res = fsp.run(prop, slug)
+        store.audit("factory.selfpatch", job_id=jid, actor=worker, ok=res.get("ok"), file=res.get("file"), lane=res.get("lane"), branch=res.get("branch"),
+                    pr=res.get("pr"), reason=res.get("reason"), summary=res.get("summary"), tests=res.get("tests"), secs=res.get("secs"))
+        if res.get("ok") and not res.get("pr"):
+            store.audit("owner.needed", job_id=jid, actor=worker, provider="selfpatch", reason=f"branch {res.get('branch')} pushed but no PR could be opened: {(res.get('pr_status') or {}).get('reason')}")
+        return {k: res.get(k) for k in ("ok", "file", "branch", "pr", "reason", "summary")}
     if kind == "scout":
         # D-118 infra scout: refresh registry/infra.json + docs/INFRA.md; owner items are audited ONCE per change
         import factory_scout as fsc
@@ -384,6 +396,11 @@ def handle(job: dict, store: JobStore, worker: str) -> dict:
         # D-057 self-improvement stage 1: evidence -> proposals/<date>.md. Only pre-approved mechanisms are auto-enqueued.
         res = fin.run(int(p.get("days", 7)), write=True)
         acted = []
+        # D-122: the top code-level proposal becomes ONE PR draft per review (owner merges or closes; main untouched)
+        code_kinds = ("architect", "template", "repair", "quality")
+        top = next((i + 1 for i, x in enumerate(res["proposals"]) if x["kind"] in code_kinds and not x.get("auto_actionable")), None)
+        if top and res["paths"].get("json"):
+            store.enqueue("selfpatch", {"date": pathlib.Path(res["paths"]["json"]).stem, "index": top}, priority=9, parent=jid, actor=worker)
         for pr in res["proposals"]:
             aa = pr.get("auto_actionable")
             if aa:
@@ -699,6 +716,9 @@ def main(a: list[str]) -> int:
             pl = {"objective": a[3], "max": int(opt("--max", 4))}
             if opt("--then-run"): pl["then_run"] = {"in": opt("--then-run")}          # D-066: build, then run on these files
             j = store.enqueue("plan", pl, priority=int(opt("--priority", 5)), actor=opt("--actor", "owner"))
+        elif kind == "selfpatch":
+            if opt("--request"): j = store.enqueue("selfpatch", {"request": opt("--request"), "t": int(time.time())}, priority=5, actor=opt("--actor", "owner"))
+            else: j = store.enqueue("selfpatch", {"date": opt("--date", str(datetime.date.today())), "index": int(opt("--index", 1))}, priority=5, actor=opt("--actor", "owner"))
         elif kind == "scout": j = store.enqueue("scout", {"t": int(time.time())}, priority=6, actor=opt("--actor", "owner"))
         elif kind == "canary": j = store.enqueue("canary", {"day": str(datetime.date.today())}, priority=5, actor=opt("--actor", "owner"))
         elif kind == "rebuild": j = store.enqueue("rebuild", {"bot_id": a[3].zfill(3), "t": int(time.time())}, priority=2, actor=opt("--actor", "owner"))

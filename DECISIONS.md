@@ -684,3 +684,13 @@ Windows System-log power/boot events in the window classified into a cause — k
 battery flat, 1074 = planned restart (Windows Update), 42 = sleep, 6005 = reboot, none = network/tunnel loss while
 running. STATUS.md shows "OUTAGE in the last 24 h … — cause" for a day. Evidence before this outage: laptop on battery
 (`PowerOnline=False`) and TiWorker in ShutdownProcessing — the owner was told to keep it on mains.
+
+## D-122 — Self-improvement stage 2: the factory proposes code as a pull request, never applies it (2026-09-25) — VERIFIED (unit + real git); live pending
+`tools/factory_selfpatch.py` + job `selfpatch`: a proposal (from the weekly self-review, or an owner request) → an LLM
+lane drafts exact find/replace edits for ONE file → security envelope (only listed non-security files; never
+guard/registry/jobs/worker/config/scripts/workflows; no lines mentioning permissions/allowance/approve/keys/shell/net;
+no new subprocess/socket/urllib/ctypes/eval/exec; ≤80 changed lines; must compile) → applied in a throw-away git
+worktree on `proposal/<date>-<slug>` → `core/tests` must pass there → branch pushed → PR opened with the evidence →
+GitHub Actions CI re-runs the suite on the branch → the OWNER merges or closes. `main` is never written by the
+factory. The weekly insight enqueues at most one selfpatch (top code-level proposal). Audited as `factory.selfpatch`.
+This is the contract's propose→sandbox→test→review→approve loop with GitHub as the review gate.
