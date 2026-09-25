@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1238 | 2026-09-24 03:58:54 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["107 passed in 15.79s"]} |
-| 1239 | 2026-09-24 03:58:55 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["107 passed in 14.67s"]} |
-| 1240 | 2026-09-24 04:00:05 | 31f4e431 | 001 | job.enqueued | owner | {"kind": "test", "payload": {"bot_id": "001"}} |
-| 1241 | 2026-09-24 04:00:09 | 31f4e431 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1242 | 2026-09-24 04:02:32 | 31f4e431 | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 27s [done] report expect='FACTORY' cmd=True \| T3 PASS 22s [d |
 | 1243 | 2026-09-24 04:02:32 | 31f4e431 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 8, "total": 8, "status": "active", "verified": "VERIFIED"}} |
 | 1244 | 2026-09-24 04:07:28 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 1245 | 2026-09-24 04:07:30 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
@@ -402,3 +397,8 @@
 | 1635 | 2026-09-25 03:36:49 | 4b8fb54e | 016 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 1636 | 2026-09-25 03:36:49 | cc163779 | 016 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "016", "max_rounds": 2}} |
 | 1637 | 2026-09-25 03:36:49 | 4b8fb54e | 016 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "016", "status": "testing", "verified": "UNVERIFIED"}} |
+| 1638 | 2026-09-25 03:36:53 | cc163779 | 016 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1639 | 2026-09-25 03:36:53 | cc163779 | 016 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [], "boundary_diff": {}} |
+| 1640 | 2026-09-25 03:36:53 | 88222656 | 016 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "rearchitect", "payload": {"bot_id": "016", "feedback": "logic: spec/tests inconsistent, repair cannot change tools: bot reported C |
+| 1641 | 2026-09-25 03:36:53 | cc163779 | 016 | bot.rearchitect_queued | svc-LAPTOP-LRE6PSA8 | {"reason": "logic: spec/tests inconsistent, repair cannot change tools: bot reported CAPABILITY_MISSING"} |
+| 1642 | 2026-09-25 03:36:53 | cc163779 | 016 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: logic: spec/tests inconsistent, repair cannot chang |
