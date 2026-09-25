@@ -2,7 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1418 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.browserforest/browser-forest", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi |
 | 1419 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.browserssh/browser-ssh", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); |
 | 1420 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.clauxel.autobrowserapproval/autobrowserapproval-mcp", "reason": "remote-only (hosted; data leaves the machine, lock-in); no lo |
 | 1421 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.clauxel.browserspendguard/browserspendguard-mcp", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local  |
@@ -402,3 +401,4 @@
 | 1815 | 2026-09-25 20:02:28 | a35b45be | 020 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 124s [done] expect='DONE' last='DONE' \| T3 PASS 12s [done] expect='CONF |
 | 1816 | 2026-09-25 20:02:28 | a35b45be | 020 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 124s [done] expect='DONE' last='DONE' \| T3 PASS 12s [done] expect='CONF |
 | 1817 | 2026-09-25 20:02:28 | a35b45be | 020 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "020", "status": "active", "verified": "VERIFIED"}} |
+| 1818 | 2026-09-25 20:05:30 | a35b45be | 020 | job.orphaned_result | fast-LAPTOP-LRE6PSA8 | {"error": "Command '['powershell', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', 'C:\\\\AI\\\\Factory\\\\repo\\\\scripts\\\\windows\\ |
