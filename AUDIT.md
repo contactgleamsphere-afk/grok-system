@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1116 | 2026-09-24 02:11:57 | bedaa1af | 018 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "status": "active", "verified": "VERIFIED"}} |
-| 1117 | 2026-09-24 02:12:04 | 96a47019 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1118 | 2026-09-24 02:12:04 | f773c50b |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-24T03"}} |
 | 1119 | 2026-09-24 02:12:04 | 96a47019 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 1120 | 2026-09-24 02:12:11 | ada8b925 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1121 | 2026-09-24 02:12:11 | 4a052706 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-24T03"}} |
@@ -402,3 +399,6 @@
 | 1513 | 2026-09-25 01:12:19 | 3f73d2dd | 026 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "026", "monitor_of": "de1d7fdc5d12431cbc4d260218c9875d", "day": "2026-09-25"}} |
 | 1514 | 2026-09-25 01:12:19 | de1d7fdc |  | monitor.fanout | svc-LAPTOP-LRE6PSA8 | {"bots": ["001", "002", "003", "004", "005", "006", "007", "008", "009", "011", "012", "013", "014", "016", "017", "018", "019", "020", "021 |
 | 1515 | 2026-09-25 01:12:19 | de1d7fdc |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 1516 | 2026-09-25 01:12:22 | c858bfee |  | tool.discovered | fast-LAPTOP-LRE6PSA8 | {"tool": "io.github.microsoft/playwright-mcp", "reason": "probation; tools=25 15s", "need": "playwright browser"} |
+| 1517 | 2026-09-25 01:12:22 | c858bfee |  | owner.needed | fast-LAPTOP-LRE6PSA8 | {"provider": "tools", "reason": "MCP tools on probation for need 'playwright browser': ['mcp:playwright-mcp'] \u2014 approve to wire into a  |
+| 1518 | 2026-09-25 01:12:22 | c858bfee |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": ["mcp:playwright-mcp"]}} |

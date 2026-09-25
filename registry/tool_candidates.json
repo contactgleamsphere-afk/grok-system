@@ -224,6 +224,13 @@
    "ts": 1790293109.8599818,
    "verdict": "rejected"
   },
+  "io.github.microsoft/playwright-mcp:0.0.82": {
+   "date": "2026-09-25",
+   "need": "playwright browser",
+   "reason": "probation; tools=25 15s",
+   "ts": 1790295095.7936616,
+   "verdict": "approved"
+  },
   "io.github.mrfentmen/sqlite-mcp:1.0.0": {
    "date": "2026-09-24",
    "need": "sqlite",

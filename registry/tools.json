@@ -50,6 +50,19 @@
     "updated": "2026-09-24T02:04:04+00:00",
     "verified": "INFERRED"
   },
+  "mcp:playwright-mcp": {
+    "id": "mcp:playwright-mcp",
+    "kind": "mcp",
+    "notes": "{\"deps\": 2, \"licence\": \"Apache-2.0\", \"package\": {\"identifier\": \"@playwright/mcp\", \"registryType\": \"npm\", \"version\": \"0.0.82\"}, \"registry_name\": \"io.github.microsoft/playwright-mcp\", \"released\": \"2026-09-18T23:38:28.161Z\", \"repo\": \"https://github.com/microsoft/playwright-mcp\", \"risky_tools\": [\"browser_run_code_unsafe\"], \"sandbox_secs\": 15, \"server\": \"Playwright\", \"stars\": 37545, \"tools\": [\"browser_close\", \"browser_resize\", \"browser_console_messages\", \"browser_handle_dialog\", \"browser_emulate_media\", \"browser_evaluate\", \"browser_file_upload\", \"browser_drop\", \"browser_find\", \"browser_fill_form\", \"browser_press_key\", \"browser_type\", \"browser_navigate\", \"browser_navigate_back\", \"browser_network_requests\", \"browser_network_request\", \"browser_run_code_unsafe\", \"browser_take_screenshot\", \"browser_snapshot\", \"browser_click\", \"browser_drag\", \"browser_hover\", \"browser_select_option\", \"browser_tabs\", \"browser_wait_for\"], \"version\": \"0.0.82\"}",
+    "provides": [
+      "playwright browser",
+      "write"
+    ],
+    "risk": "high",
+    "scope": "PROBATION \u2014 not attached to any bot; owner approval required to wire into a bot config (SECURITY \u00a76)",
+    "updated": "2026-09-25T00:12:22+00:00",
+    "verified": "INFERRED"
+  },
   "read_file": {
     "id": "read_file",
     "kind": "builtin",
