@@ -2,19 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1076 | 2026-09-24 01:55:23 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1077 | 2026-09-24 01:55:44 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["100 passed in 13.92s"]} |
-| 1078 | 2026-09-24 01:55:44 | e6ebfe8c | 012 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1079 | 2026-09-24 01:55:44 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["100 passed in 14.24s"]} |
-| 1080 | 2026-09-24 01:55:44 | 7a134c31 | 013 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1081 | 2026-09-24 01:58:20 | e6ebfe8c | 012 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 22s [done] expect='X_OK' last='X_OK' \| T2 PASS 47s [done] expect='60' last='RESULT: 60' \| T3 PASS 51s [done] expect='2 |
-| 1082 | 2026-09-24 01:58:20 | e6ebfe8c | 012 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 22s [done] expect='X_OK' last='X_OK' \| T2 PASS 47s [done] expect='60' last='RESULT: 60' \| T3 PASS 51s [done] expect='2 |
-| 1083 | 2026-09-24 01:58:20 | e6ebfe8c | 012 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "012", "status": "active", "verified": "VERIFIED"}} |
-| 1084 | 2026-09-24 01:58:25 | 06b13d4d | 014 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1085 | 2026-09-24 02:00:46 | 7a134c31 | 013 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 39s [done] expect='X_OK' last='X_OK' \| T2 PASS 58s [done] expect='1' last='RESULT: 1' \| T3 PASS 71s [done] expect='0'  |
-| 1086 | 2026-09-24 02:00:46 | 7a134c31 | 013 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 39s [done] expect='X_OK' last='X_OK' \| T2 PASS 58s [done] expect='1' last='RESULT: 1' \| T3 PASS 71s [done] expect='0'  |
-| 1087 | 2026-09-24 02:00:46 | 7a134c31 | 013 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "013", "status": "active", "verified": "VERIFIED"}} |
-| 1088 | 2026-09-24 02:00:50 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 1089 | 2026-09-24 02:01:05 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["101 passed in 12.85s"]} |
 | 1090 | 2026-09-24 02:01:05 | 7b4d176b | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1091 | 2026-09-24 02:01:26 | 06b13d4d | 014 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 23s [done] expect='X_OK' last='X_OK' \| T2 PASS 96s [done] expect='5' last='5' \| T3 FAIL 41s [done] expect='Timeout' la |
@@ -402,3 +389,16 @@
 | 1473 | 2026-09-25 01:06:21 | d6be18bd |  | tool.discovered | svc-LAPTOP-LRE6PSA8 | {"tool": "io.github.aethynio/aethyn-browser-mcp", "reason": "probation; tools=10 260s", "need": "playwright browser"} |
 | 1474 | 2026-09-25 01:06:21 | d6be18bd |  | owner.needed | svc-LAPTOP-LRE6PSA8 | {"provider": "tools", "reason": "MCP tools on probation for need 'playwright browser': ['mcp:aethyn-browser-mcp'] \u2014 approve to wire int |
 | 1475 | 2026-09-25 01:06:21 | d6be18bd |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": ["mcp:aethyn-browser-mcp"]}} |
+| 1476 | 2026-09-25 01:11:13 |  |  | tool.revoked | owner | {"tool": "mcp:aethyn-browser-mcp", "detail": "{\"ok\": true, \"tool\": \"mcp:aethyn-browser-mcp\", \"ledger\": \"io.github.aethynio/aethyn-b |
+| 1477 | 2026-09-25 01:11:14 | c858bfee |  | job.enqueued | owner | {"kind": "tooldisc", "payload": {"need": "playwright browser", "max": 1, "day": "2026-09-25"}} |
+| 1478 | 2026-09-25 01:11:14 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1479 | 2026-09-25 01:11:16 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1480 | 2026-09-25 01:11:35 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["114 passed in 17.93s"]} |
+| 1481 | 2026-09-25 01:11:35 | c858bfee |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1482 | 2026-09-25 01:11:37 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["114 passed in 16.05s"]} |
+| 1483 | 2026-09-25 01:12:12 | 0253aa82 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1484 | 2026-09-25 01:12:12 | 463bbc9b |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "report", "payload": {"day": "2026-09-26"}} |
+| 1485 | 2026-09-25 01:12:12 | 6ba4e1dc |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "bench", "payload": {"stale_only": true, "max": 2, "day": "2026-09-25"}} |
+| 1486 | 2026-09-25 01:12:12 | 1b095896 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "canary", "payload": {"day": "2026-09-25"}} |
+| 1487 | 2026-09-25 01:12:12 | de1d7fdc |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "monitor", "payload": {"only": null, "day": "2026-09-25"}} |
+| 1488 | 2026-09-25 01:12:12 | 0253aa82 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |

@@ -1,14 +1,21 @@
-# FACTORY STATUS — 2026-09-22T23:09:19
+# FACTORY STATUS — 2026-09-25T01:12:12
 
-**Bots:** 21/23 active   **Queue:** {"cancelled": 12, "done": 108, "queued": 2, "running": 1}   **Healthy lanes:** gemini-flash36, gemini-gemma26b, gemini-lite, gemini-lite31, groq-qwen27b, local3b, local4b
+**Worker:** running — last worker activity 0 min ago
+
+**Bots:** 24/26 active   **Queue:** {"cancelled": 41, "done": 215, "queued": 2, "running": 2}   **Healthy lanes:** gemini-flash, gemini-flash36, gemini-flash38, gemini-gemini-flash-lite-latest, gemini-gemma26b, gemini-lite, gemini-lite31, groq-gptoss120b, groq-gptoss20b, groq-qwen27b, local3b, local4b
 
 ## Needs attention
 - bot 010 dedupe-failover-probe is paused
-- bot 015 system-cleanup is retired
-- lane or-deepseek BLOCKED: gone: {"error":{"message":"this model is unavailable for free. the paid version is available now - use this slug instead: deepseek/deepseek-v4-flash-0731","code":404}
+- 1 retired / 1 paused bots (see Bots table)
+- lane or-deepseek BLOCKED: gone: {"error":{"message":"this model is unavailable for free. the paid version 
+- lane or-ling-30-flash-fin BLOCKED: failed probation: error
+- lane or-ling-30-flash-sante BLOCKED: failed probation: error
+- lane or-ling-30-flash-vl BLOCKED: gone: {"error":{"message":"this model is unavailable for free. the paid version 
 - ACTION REQUIRED (owner): provider:cerebras — set CEREBRAS_API_KEY (User env) after signing up: https://cloud.cerebras.ai (free tier ~1M tokens/day)
 - ACTION REQUIRED (owner): provider:nvidia — set NVIDIA_API_KEY (User env) after signing up: https://build.nvidia.com (free ~40 rpm, tool-capable models)
 - ACTION REQUIRED (owner): provider:mistral — set MISTRAL_API_KEY (User env) after signing up: https://console.mistral.ai (Experiment free tier)
+- ACTION REQUIRED (owner): 12 free resources need a human signup/key — cerebras, cloudflare-r2, cloudflare-workers, cloudflare-workers-ai, google-cloud-run, hf-router… (docs/INFRA.md)
+- DECISION (owner): 2 MCP server(s) sandbox-verified, on probation: mcp:crawlio-browser, mcp:mcp-sqlite-tools — `factory_worker.py approve-tool <id>` to make them grantable to bots, or leave them (nothing uses them)
 
 ## Bots
 | id | name | status | verified | permissions |
@@ -36,144 +43,179 @@
 | 021 | email-line-counter | active | VERIFIED | fs:read, fs:write |
 | 022 | csv-refund-filter | active | VERIFIED | fs:read, fs:write |
 | 023 | refund-summarizer | active | VERIFIED | fs:read, fs:write |
+| 024 | pytest-runner-bot | active | VERIFIED | fs:read, fs:write, shell:workspace |
+| 025 | text-transformer | active | VERIFIED | fs:read, fs:write |
+| 026 | sqlite-query-bot | active | VERIFIED | fs:read, fs:write, mcp:mcp-sqlite3 |
 
 ## Jobs (24h)
 | id | kind | state | att | class | bot | objective |
 |---|---|---|---|---|---|---|
-| bb6439ae | report | running | 1 | - | - |  |
-| 92e8b32f | test | done | 1 | - | 001 |  |
-| 67adfc9d | discover | done | 1 | - | - |  |
-| acde44a1 | probe | done | 1 | - | - |  |
-| d5446b51 | probe | done | 1 | - | - |  |
-| 9dac2656 | test | done | 1 | - | 010 |  |
-| e1c354b2 | bench | done | 1 | - | - |  |
-| 29937ab3 | bench | done | 1 | - | - |  |
-| a8c013ad | bench | done | 1 | - | - |  |
-| 17fe6af1 | test | done | 1 | - | 001 |  |
-| 67df837c | create | done | 1 | - | - | Word-frequency bot: given a workspace file text.txt, write freq.txt wi |
-| 57000908 | create | done | 1 | - | - | Create a CSV column-sum bot: given a workspace file data.csv with a he |
-| f5cf590e | test | done | 2 | - | 012 |  |
-| 8359fbe8 | repair | cancelled | 2 | logic | 012 |  |
-| fbbc40db | rearchitect | done | 1 | - | 012 |  |
-| 25a47cdb | plan | done | 1 | - | - | log-triage pipeline: first a bot that reads app.log and writes errors. |
-| ff5312d9 | create | done | 1 | - | - | Read app.log, filter lines containing 'ERROR', and write them to error |
-| f9ae8ab7 | create | done | 1 | - | - | Read errors.txt, count the total lines, identify the three most common |
-| e39e05e4 | test | done | 1 | - | 013 |  |
-| e43a9934 | repair | done | 1 | logic | 013 |  |
-| f78710c5 | create | cancelled | 1 | security | - | Create a system-cleanup bot that uses exec to run PowerShell commands  |
-| 7e8fe2ef | create | cancelled | 1 | security | - | Create a system-cleanup bot that uses exec to run PowerShell commands  |
-| 1bb54312 | create | done | 1 | - | - | Create a workspace-tidy bot that uses exec (PowerShell) to count the . |
-| b59e7101 | monitor | done | 1 | - | - |  |
-| c959e323 | test | cancelled | 0 | - | 003 |  |
-| e826d8e4 | test | cancelled | 0 | - | 004 |  |
-| 66005b63 | test | cancelled | 0 | - | 005 |  |
-| 2013c930 | test | cancelled | 0 | - | 009 |  |
-| 04f8c4f9 | repair | cancelled | 1 | logic | 001 |  |
-| ac855168 | repair | done | 1 | - | 003 |  |
-| 3f313b96 | repair | done | 1 | - | 004 |  |
-| f2321ed5 | repair | done | 1 | - | 005 |  |
-| a7af2653 | repair | done | 1 | - | 006 |  |
-| 200a8275 | repair | done | 1 | - | 007 |  |
-| 16e3b204 | repair | done | 1 | - | 008 |  |
-| 2cc34059 | repair | done | 1 | - | 009 |  |
-| 136c6448 | repair | done | 1 | - | 012 |  |
-| dffdd22d | repair | cancelled | 1 | logic | 016 |  |
-| d2db2ed1 | monitor | done | 1 | - | - |  |
-| 5552a0d9 | rearchitect | done | 1 | security | 016 |  |
-| 3173de79 | monitor | done | 1 | - | - |  |
-| 6b1adac9 | test | done | 1 | - | 016 |  |
-| 854ab0a2 | run | done | 1 | - | - |  |
-| ab214a76 | run | done | 1 | - | 013 |  |
-| f230e382 | run | done | 1 | - | - |  |
-| 1c4af272 | create | done | 2 | - | - | Create a bot that reads names.txt (one name per line) and writes sorte |
-| 28cfb1d6 | test | done | 1 | - | 017 |  |
-| fbeb65ad | create | done | 1 | - | - | reads orders.csv and writes totals.csv with one row per country and th |
-| ca31fcf3 | run | done | 1 | - | 018 |  |
-| 0c438fbd | run | done | 1 | - | 018 |  |
-| ad285655 | probe | done | 1 | - | - |  |
-| 6f50b9fd | bench | done | 2 | - | - |  |
-| 123271bb | create | done | 1 | security | - | A bot that runs the project's unit test command (pytest) in the worksp |
-| c5bb159c | monitor | done | 2 | - | - |  |
-| 8e53c5b9 | test | done | 1 | - | 019 |  |
-| e89cc0ba | create | done | 1 | - | - | List files in workspace using shell dir command and write to files.txt |
-| b04c9e84 | test | done | 1 | - | 019 |  |
-| 1d7ee2ef | repair | cancelled | 1 | logic | 019 |  |
-| a6d74a2f | test | done | 1 | - | 001 |  |
-| b9aa0298 | test | done | 1 | - | 002 |  |
-| 9a315c7a | test | done | 1 | - | 005 |  |
-| b7916bd1 | test | done | 1 | - | 006 |  |
-| a1d1feda | test | done | 1 | - | 007 |  |
-| c791b4b3 | test | done | 1 | - | 008 |  |
-| 35f1001a | test | done | 1 | - | 009 |  |
-| 221106e0 | test | done | 1 | - | 011 |  |
-| 086db9b1 | test | done | 1 | - | 012 |  |
-| a011a038 | test | done | 1 | - | 013 |  |
-| 8f64a64f | test | done | 1 | - | 014 |  |
-| 75abeab4 | test | done | 1 | - | 016 |  |
-| 402de772 | test | done | 1 | - | 017 |  |
-| 444336fe | test | done | 1 | - | 018 |  |
-| e40889f8 | rearchitect | done | 1 | - | 019 |  |
-| b1ca6779 | test | done | 1 | - | 019 |  |
-| 7bfeca2a | repair | cancelled | 0 | logic | 019 |  |
-| 16d02341 | repair | done | 1 | logic | 005 |  |
-| 746d5a79 | test | done | 1 | - | 019 |  |
-| 0ff585a0 | tick | done | 1 | - | - |  |
-| aba5e667 | run | done | 1 | - | 018 |  |
-| 83f56639 | tick | done | 1 | - | - |  |
-| dbe8c0ee | tick | done | 1 | - | - |  |
-| f42e8c49 | run | done | 1 | - | 018 |  |
-| bebb31a3 | test | done | 1 | - | 003 |  |
-| 6283e61b | test | done | 1 | - | 004 |  |
-| 71fc0ded | repair | done | 1 | - | 008 |  |
-| 322482f0 | probe | done | 1 | - | - |  |
-| 60d56672 | probe | done | 1 | - | - |  |
-| fd8c14fb | tick | done | 1 | - | - |  |
-| 349607da | repair | done | 2 | logic | 004 |  |
-| 8f4db119 | test | done | 1 | - | 001 |  |
-| 096d9bb8 | probe | done | 1 | - | - |  |
-| 60e46601 | tick | done | 1 | - | - |  |
-| f462fb6b | probe | done | 1 | - | - |  |
-| 615d5d9f | discover | done | 3 | transient | - |  |
-| aeb98a0c | discover | done | 1 | - | - |  |
-| 9e271e81 | discover | done | 1 | - | - |  |
-| 72cfc51f | discover | done | 1 | - | - |  |
-| 51e8edf3 | tick | done | 1 | - | - |  |
-| 135e45ff | create | done | 1 | - | - | reads a text file and counts how many lines contain a valid email addr |
-| c367ebb5 | probe | queued | 0 | - | - |  |
-| 5230a652 | tick | queued | 0 | - | - |  |
-| 197bb3e5 | plan | done | 1 | - | - | Create a pipeline: first bot reads a CSV of orders and writes only row |
-| 1e546b89 | create | done | 1 | - | - | Read orders.csv, filter rows where the 'status' column is 'refunded',  |
-| 1a129f56 | create | done | 1 | - | - | Read refunded.csv, sum the values in the 'amount' column, and write a  |
+| 499dd527 | probe | done | 1 | - | - |  |
+| 657a2134 | run | done | 1 | - | 018 |  |
+| 96a47019 | tick | done | 1 | - | - |  |
+| ada8b925 | probe | done | 1 | - | - |  |
+| bdee72b1 | probe | done | 1 | - | - |  |
+| 0253aa82 | report | running | 1 | - | - |  |
+| c35f9462 | bench | done | 1 | - | - |  |
+| ec7ed624 | monitor | done | 1 | - | - |  |
+| 581618e9 | test | done | 1 | - | 001 |  |
+| c50593d5 | test | done | 1 | - | 002 |  |
+| 36a3539c | test | done | 1 | - | 003 |  |
+| 1eedd036 | test | done | 1 | - | 004 |  |
+| 192d34a1 | test | done | 1 | - | 005 |  |
+| 80275837 | test | done | 1 | - | 006 |  |
+| 902b8c56 | test | done | 1 | - | 007 |  |
+| 84f90993 | test | done | 1 | - | 008 |  |
+| d67880ac | test | done | 1 | - | 009 |  |
+| b31aa10e | test | done | 1 | - | 011 |  |
+| e6ebfe8c | test | done | 1 | - | 012 |  |
+| 7a134c31 | test | done | 1 | - | 013 |  |
+| 06b13d4d | test | done | 1 | - | 014 |  |
+| 6ea2de2b | test | done | 1 | - | 016 |  |
+| e155909a | test | done | 1 | - | 017 |  |
+| bedaa1af | test | done | 1 | - | 018 |  |
+| 482340ef | test | done | 1 | - | 019 |  |
+| e26da376 | test | done | 1 | - | 020 |  |
+| a6fa92d2 | test | done | 1 | - | 021 |  |
+| c8eb6c89 | test | done | 1 | - | 022 |  |
+| 820f7ef9 | test | done | 1 | - | 023 |  |
+| 87f2fbc2 | test | done | 1 | - | 024 |  |
+| c1c70d3e | test | done | 1 | - | 025 |  |
+| bc494d29 | monitor | done | 1 | - | - |  |
+| c3c35810 | repair | cancelled | 1 | logic | 002 |  |
+| bcb0ba61 | discover | done | 1 | - | - |  |
+| 26e7235d | discover | done | 1 | - | - |  |
+| 39a61954 | discover | done | 1 | - | - |  |
+| 6a46a820 | discover | done | 1 | - | - |  |
+| e30126b8 | discover | done | 1 | - | - |  |
+| 8b22fe5c | discover | done | 1 | - | - |  |
+| f800e68b | discover | done | 1 | - | - |  |
+| aa0b21ba | discover | done | 1 | - | - |  |
+| ad7a13c3 | bench | done | 1 | - | - |  |
+| 7b4d176b | test | done | 1 | - | 001 |  |
+| c5a39c84 | test | cancelled | 0 | - | 001 |  |
+| 6ebf5d8b | test | cancelled | 0 | - | 002 |  |
+| c20c2407 | test | cancelled | 0 | - | 003 |  |
+| 7ee5ebb8 | test | cancelled | 0 | - | 004 |  |
+| 9ce55607 | test | cancelled | 0 | - | 005 |  |
+| 29002603 | test | cancelled | 0 | - | 006 |  |
+| ff6fe1b9 | test | cancelled | 0 | - | 007 |  |
+| 1ddf7b9f | test | cancelled | 0 | - | 008 |  |
+| ab3a25c4 | test | cancelled | 0 | - | 009 |  |
+| 8b60cad0 | test | cancelled | 0 | - | 011 |  |
+| 67703501 | test | cancelled | 0 | - | 012 |  |
+| 240be6ff | test | cancelled | 0 | - | 013 |  |
+| 356da82f | test | cancelled | 0 | - | 014 |  |
+| 34c93c2f | test | cancelled | 0 | - | 016 |  |
+| 8e9fd24a | test | cancelled | 0 | - | 017 |  |
+| 09de5024 | test | cancelled | 0 | - | 018 |  |
+| ca4a7aeb | test | cancelled | 0 | - | 019 |  |
+| a51e46b5 | test | cancelled | 0 | - | 020 |  |
+| 764e7481 | test | cancelled | 0 | - | 021 |  |
+| 58a57670 | test | cancelled | 0 | - | 022 |  |
+| 6a5c5393 | test | cancelled | 0 | - | 023 |  |
+| a735d64e | test | cancelled | 0 | - | 024 |  |
+| 356d0905 | test | cancelled | 0 | - | 025 |  |
+| faef1fd6 | bench | done | 1 | - | - |  |
+| 754d191f | repair | done | 1 | - | 006 |  |
+| 000fb61b | repair | done | 1 | - | 007 |  |
+| d01464cb | repair | done | 1 | - | 014 |  |
+| f773c50b | tick | done | 1 | - | - |  |
+| 4a052706 | probe | done | 1 | - | - |  |
+| 7ae30d43 | run | done | 1 | - | 012 |  |
+| 21c6bb9d | test | done | 1 | - | 020 |  |
+| efe05c44 | create | cancelled | 1 | security | - | Answer questions about a SQLite database file the user names in the wo |
+| 49eeafe3 | tick | done | 1 | - | - |  |
+| c7322101 | probe | done | 1 | - | - |  |
+| ab489546 | create | cancelled | 1 | security | - | Answer questions about a SQLite database file in the workspace using t |
+| 1ed33ffb | create | done | 1 | - | - | Answer questions about a SQLite database file in the workspace using t |
+| bd24f8ff | test | done | 1 | - | 026 |  |
+| c18703a7 | repair | cancelled | 1 | logic | 026 |  |
+| 1f96bf25 | rebuild | done | 1 | - | 026 |  |
+| a14b2bd5 | rearchitect | done | 1 | - | 026 |  |
+| 31f4e431 | test | done | 1 | - | 001 |  |
+| 865f4e25 | discover | done | 1 | - | - |  |
+| 2d873e41 | discover | done | 1 | - | - |  |
+| 5db5434d | bench | done | 1 | - | - |  |
+| 9a01357c | tick | done | 1 | - | - |  |
+| 86ba95ba | probe | done | 2 | - | - |  |
+| 42efc9da | probe | done | 1 | - | - |  |
+| 40419dff | probe | done | 1 | - | - |  |
+| 769af551 | discover | done | 1 | - | - |  |
+| eb45cb88 | discover | done | 1 | - | - |  |
+| 9c9d8b05 | discover | done | 1 | - | - |  |
+| 57739895 | discover | done | 1 | - | - |  |
+| 7e3cce23 | discover | done | 1 | - | - |  |
+| 10338bdf | discover | done | 1 | - | - |  |
+| c76efa69 | canary | done | 1 | - | - |  |
+| 37b08250 | probe | done | 1 | - | - |  |
+| e7340c6e | tick | done | 1 | - | - |  |
+| d0196af8 | probe | done | 1 | - | - |  |
+| 4a8b6119 | probe | done | 1 | - | - |  |
+| 2107158e | discover | done | 1 | - | - |  |
+| 1ce9e348 | discover | done | 1 | - | - |  |
+| 66ca017e | discover | done | 1 | - | - |  |
+| bc1ce82b | discover | done | 1 | - | - |  |
+| 541f6f6e | discover | done | 1 | - | - |  |
+| d350d0ae | discover | done | 1 | - | - |  |
+| 3fe01ea5 | run | done | 1 | - | 018 |  |
+| 7946d979 | tick | done | 1 | - | - |  |
+| 50cb8d24 | probe | done | 1 | - | - |  |
+| 14d4a04c | tick | done | 1 | - | - |  |
+| d332609a | probe | done | 1 | - | - |  |
+| 037afd02 | scout | done | 1 | - | - |  |
+| 9504d124 | insight | done | 1 | - | - |  |
+| ff48e3c4 | bench | done | 1 | - | - |  |
+| 92411237 | tooldisc | done | 1 | - | - |  |
+| 86969460 | tooldisc | done | 1 | - | - |  |
+| 4901b2db | tooldisc | done | 1 | - | - |  |
+| e7744308 | probe | queued | 0 | - | - |  |
+| 190e3258 | tick | queued | 0 | - | - |  |
+| 6e4d634b | tooldisc | done | 1 | - | - |  |
+| d6be18bd | tooldisc | done | 1 | - | - |  |
+| c858bfee | tooldisc | running | 1 | - | - |  |
 
 ## Lane quality (D-050, reference suite, rolling window)
 | lane | score | secs | runs |
 |---|---|---|---|
+| gemini-gemini-flash-lite-latest | 4/4 | 42 | 1 |
 | or-ling-30-flash-vl | 4/4 | 62 | 1 |
+| gemini-lite31 | 4/4 | 73 | 1 |
 | or-nex-n25-pro | 4/4 | 84 | 1 |
+| or-ling-30-flash-sante | 4/4 | 89 | 1 |
 | groq-gptoss120b | 8/8 | 99 | 2 |
+| or-ling-30-flash-fin | 4/4 | 100 | 1 |
 | groq-gptoss20b | 4/4 | 106 | 1 |
+| or-nemotron-35-lightning | 2/2 | 564 | 1 |
 | gemini-gemma26b | 3/4 | 73 | 1 |
+| gemini-flash36 | 2/4 | 63 | 1 |
+| gemini-flash38 | 2/4 | 128 | 1 |
 | groq-qwen27b | 2/4 | 147 | 1 |
+| gemini-flash | 2/4 | 180 | 1 |
 | gemini-lite | 1/4 | 618 | 1 |
 
 ## Lanes
 | id | provider | state | latency s |
 |---|---|---|---|
-| gemini-flash | gemini | quota | - |
-| gemini-flash36 | gemini | ok | 1.64 |
-| gemini-flash38 | gemini | quota | - |
-| gemini-gemma26b | gemini | ok | 1.21 |
-| gemini-lite | gemini | ok | 0.65 |
-| gemini-lite31 | gemini | ok | 1.21 |
-| groq-gptoss120b | groq | cooldown | 0.64 |
-| groq-gptoss20b | groq | cooldown | 0.69 |
-| groq-qwen27b | groq | ok | 2.27 |
+| gemini-flash | gemini | ok | 10.98 |
+| gemini-flash36 | gemini | ok | 2.18 |
+| gemini-flash38 | gemini | ok | 6.29 |
+| gemini-gemini-flash-lite-latest | gemini | ok | 2.02 |
+| gemini-gemma26b | gemini | ok | 1.66 |
+| gemini-lite | gemini | ok | 1.64 |
+| gemini-lite31 | gemini | ok | 3.6 |
+| groq-gptoss120b | groq | ok | 1.86 |
+| groq-gptoss20b | groq | ok | 1.53 |
+| groq-qwen27b | groq | ok | 0.42 |
 | local3b | ollama | ok | - |
 | local4b | ollama | ok | - |
 | or-deepseek | openrouter | BLOCKED | - |
-| or-ling-30-flash-vl | openrouter | quota | 2.78 |
-| or-nex-n25-pro | openrouter | quota | 1.53 |
-| or-qwen27b | openrouter | quota | - |
+| or-ling-30-flash-fin | openrouter | BLOCKED | 1.71 |
+| or-ling-30-flash-sante | openrouter | BLOCKED | 1.22 |
+| or-ling-30-flash-vl | openrouter | BLOCKED | 2.78 |
+| or-nemotron-35-lightning | openrouter | cooldown | 59.9 |
+| or-nex-n25-pro | openrouter | cooldown | 2.18 |
+| or-qwen27b | openrouter | cooldown | - |
 | ovh-gptoss20b | custom | BLOCKED | - |
 | ovh-llama70b | custom | BLOCKED | - |
 | ovh-mistral24b | custom | BLOCKED | - |

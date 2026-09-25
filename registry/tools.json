@@ -11,18 +11,6 @@
     "updated": "2026-09-18T17:28:28+00:00",
     "verified": "VERIFIED"
   },
-  "mcp:aethyn-browser-mcp": {
-    "id": "mcp:aethyn-browser-mcp",
-    "kind": "mcp",
-    "notes": "{\"deps\": 3, \"licence\": \"MIT\", \"package\": {\"identifier\": \"aethyn-browser-mcp\", \"registryType\": \"npm\", \"version\": \"0.1.1\"}, \"registry_name\": \"io.github.aethynio/aethyn-browser-mcp\", \"released\": \"2026-07-11T18:15:45.077Z\", \"repo\": \"https://github.com/aethynio/aethyn-browser-mcp\", \"risky_tools\": [], \"sandbox_secs\": 260, \"server\": \"aethyn-browser-mcp\", \"stars\": 3, \"tools\": [\"aethyn_launch_browser\", \"aethyn_navigate\", \"aethyn_get_content\", \"aethyn_snapshot\", \"aethyn_click\", \"aethyn_type\", \"aethyn_check_exit_ip\", \"aethyn_new_identity\", \"aethyn_close\", \"aethyn_list_countries\"], \"version\": \"0.1.1\"}",
-    "provides": [
-      "playwright browser"
-    ],
-    "risk": "medium",
-    "scope": "PROBATION \u2014 not attached to any bot; owner approval required to wire into a bot config (SECURITY \u00a76)",
-    "updated": "2026-09-25T00:06:21+00:00",
-    "verified": "INFERRED"
-  },
   "mcp:crawlio-browser": {
     "id": "mcp:crawlio-browser",
     "kind": "mcp",
