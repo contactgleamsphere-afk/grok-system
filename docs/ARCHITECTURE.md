@@ -109,3 +109,10 @@ empty, D-099) → promote. Availability misses (429/timeout/5xx/empty, D-051/D-0
   (LLM API / compute / hosting / storage), how obtained, what we hold (validated), owner action list. Weekly `scout`.
 - **Master "tools" command** (`config/laptop/workspace/tools/factory.py tools`): read-only view of registered/probation
   tools for the master bot; approval stays owner-only.
+
+## Self-improvement stage 2 and outage forensics (2026-09-25, D-121/D-122)
+- **FACTORY — selfpatch** (`tools/factory_selfpatch.py`): proposal → LLM draft (find/replace edits) → envelope →
+  worktree `run/selfpatch/<slug>` on branch `proposal/<date>-<slug>` → pytest → push → PR. Weekly insight enqueues ≤1;
+  owner can request one (`add selfpatch --request "…"`). GitHub PR = review gate, Actions CI = second sandbox.
+- **CORE — outage record** (`record_outage()` at worker start): silence >30 min → `factory.outage` with cause from
+  Windows power/boot events; surfaced in STATUS for 24 h.
