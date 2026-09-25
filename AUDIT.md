@@ -2,12 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1152 | 2026-09-24 02:22:01 | 87f2fbc2 | 024 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "024", "status": "active", "verified": "VERIFIED"}} |
-| 1153 | 2026-09-24 02:22:07 | c1c70d3e | 025 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1154 | 2026-09-24 02:22:44 | 820f7ef9 | 023 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 44s [done] expect='36.0' last='RESULT: 36.0' \| T3 PASS 49s [done] expec |
-| 1155 | 2026-09-24 02:22:44 | 820f7ef9 | 023 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 44s [done] expect='36.0' last='RESULT: 36.0' \| T3 PASS 49s [done] expec |
-| 1156 | 2026-09-24 02:22:44 | 820f7ef9 | 023 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "023", "status": "active", "verified": "VERIFIED"}} |
-| 1157 | 2026-09-24 02:22:47 | c35f9462 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1158 | 2026-09-24 02:23:14 | c1c70d3e | 025 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='LIVENESS_OK' last='LIVENESS_OK' \| T2 PASS 36s [done] expect='HELLO WORLD' last='RESULT: HELLO WORLD' |
 | 1159 | 2026-09-24 02:23:14 | c1c70d3e | 025 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='LIVENESS_OK' last='LIVENESS_OK' \| T2 PASS 36s [done] expect='HELLO WORLD' last='RESULT: HELLO WORLD' |
 | 1160 | 2026-09-24 02:23:14 | c1c70d3e | 025 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "025", "status": "active", "verified": "VERIFIED"}} |
@@ -402,3 +396,9 @@
 | 1549 | 2026-09-25 01:18:35 | f649f932 | 005 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "005", "status": "active", "verified": "VERIFIED"}} |
 | 1550 | 2026-09-25 01:18:43 | 5d14608a | 006 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1551 | 2026-09-25 01:19:12 | 5d14608a | 006 | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "RuntimeError: runner produced no RESULTJSON:\nbot 006 json-to-mar |
+| 1552 | 2026-09-25 02:54:06 | 0fe79cdf |  | job.lease_expired | svc-LAPTOP-LRE6PSA8 | {} |
+| 1553 | 2026-09-25 02:54:06 | e7744308 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1554 | 2026-09-25 02:54:06 | 6f04db95 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-25T03"}} |
+| 1555 | 2026-09-25 02:54:06 | 190e3258 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1556 | 2026-09-25 02:54:06 | abed8a6c |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-25T03"}} |
+| 1557 | 2026-09-25 02:54:06 | 190e3258 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
