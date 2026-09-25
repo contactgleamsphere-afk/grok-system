@@ -520,7 +520,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "log-error-filter",
-    "notes": "tests 3/4: T1 FAIL 21s [done] expect='X_OK' last='RESULT: 1' | T2 PASS 27s [done] expect='1' last='RESULT: 1' | T3 PASS 28s [done] expect='0' last='RESULT: 0' | T4 PASS 29s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: repair re-verify 2026-09-25: T1 PASS 8s [done] expect='X_OK' last='X_OK' | T2 PASS 15s [done] expect='1' last='RESULT: 1' | T3 PASS 40s [done] expect='0' last='RESULT: 0' | T4 PASS 12s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -533,7 +533,7 @@
       "bot.json": "a681ce478df6a20a1ad5d29b",
       "nanobot.patch.json": "574ad358997be0854a13ebc5"
     },
-    "status": "testing",
+    "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write app.log containing 'INFO start\nERROR fail\nINFO end' then filter ERROR lines to errors.txt and reply with the count of lines in errors.txt -> 1",
@@ -544,8 +544,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-25T04:32:29+00:00",
-    "verified": "UNVERIFIED",
+    "updated": "2026-09-25T04:33:49+00:00",
+    "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\013-log-error-filter"
   },

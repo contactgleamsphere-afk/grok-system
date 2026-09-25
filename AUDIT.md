@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1343 | 2026-09-24 22:29:37 | 37b08250 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1344 | 2026-09-24 22:29:37 | d0196af8 |  | job.dedup | fast-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
-| 1345 | 2026-09-24 22:29:43 | e7340c6e |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1346 | 2026-09-24 22:29:43 | 3fe01ea5 | 018 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "run", "payload": {"bot_id": "018", "task": "Sum order totals per country into totals.csv", "in": "C:\\AI\\Factory\\workspace\\inbo |
 | 1347 | 2026-09-24 22:29:43 |  | 018 | schedule.fired | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "fire": "2026-09-24T07:00", "job": "3fe01ea5"} |
 | 1348 | 2026-09-24 22:29:44 | 7946d979 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-24T23"}} |
 | 1349 | 2026-09-24 22:29:44 | e7340c6e |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
@@ -402,3 +398,7 @@
 | 1740 | 2026-09-25 05:32:29 | c3cae46b | 013 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 1741 | 2026-09-25 05:32:29 | 9c18c9e9 | 013 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "013", "max_rounds": 2}} |
 | 1742 | 2026-09-25 05:32:29 | c3cae46b | 013 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "013", "status": "testing", "verified": "UNVERIFIED"}} |
+| 1743 | 2026-09-25 05:32:32 | 9c18c9e9 | 013 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1744 | 2026-09-25 05:33:49 | 9c18c9e9 | 013 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
+| 1745 | 2026-09-25 05:33:49 | 9c18c9e9 | 013 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 1746 | 2026-09-25 05:33:49 | 9c18c9e9 | 013 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "013", "status": "active"}} |
