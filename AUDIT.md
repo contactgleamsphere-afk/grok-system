@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1150 | 2026-09-24 02:22:01 | 87f2fbc2 | 024 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 14s [done] expect='X_OK' last='X_OK' \| T2 PASS 27s [done] expect='2' last='RESULT: 2' \| T3 PASS 27s [done] expect='CON |
-| 1151 | 2026-09-24 02:22:01 | 87f2fbc2 | 024 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 14s [done] expect='X_OK' last='X_OK' \| T2 PASS 27s [done] expect='2' last='RESULT: 2' \| T3 PASS 27s [done] expect='CON |
 | 1152 | 2026-09-24 02:22:01 | 87f2fbc2 | 024 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "024", "status": "active", "verified": "VERIFIED"}} |
 | 1153 | 2026-09-24 02:22:07 | c1c70d3e | 025 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1154 | 2026-09-24 02:22:44 | 820f7ef9 | 023 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 44s [done] expect='36.0' last='RESULT: 36.0' \| T3 PASS 49s [done] expec |
@@ -402,3 +400,5 @@
 | 1547 | 2026-09-25 01:18:35 | f649f932 | 005 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] expect='X_OK' last='X_OK' \| T2 PASS 58s [done] expect='1' last='1' \| T3 PASS 59s [done] expect='0' last='RE |
 | 1548 | 2026-09-25 01:18:35 | f649f932 | 005 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] expect='X_OK' last='X_OK' \| T2 PASS 58s [done] expect='1' last='1' \| T3 PASS 59s [done] expect='0' last='RE |
 | 1549 | 2026-09-25 01:18:35 | f649f932 | 005 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "005", "status": "active", "verified": "VERIFIED"}} |
+| 1550 | 2026-09-25 01:18:43 | 5d14608a | 006 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1551 | 2026-09-25 01:19:12 | 5d14608a | 006 | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "RuntimeError: runner produced no RESULTJSON:\nbot 006 json-to-mar |
