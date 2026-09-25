@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1315 | 2026-09-24 04:42:15 | 7e3cce23 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1316 | 2026-09-24 04:42:15 | 7e3cce23 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 1317 | 2026-09-24 04:42:18 | 10338bdf |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1318 | 2026-09-24 04:42:18 | 10338bdf |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 1319 | 2026-09-24 04:42:22 | c76efa69 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1320 | 2026-09-24 04:42:43 | c76efa69 |  | factory.canary | svc-LAPTOP-LRE6PSA8 | {"verdict": "pass", "lane": "groq:openai/gpt-oss-20b", "chain": ["gemini-gemini-flash-lite-latest", "gemini-lite31", "groq-gptoss120b", "loc |
@@ -402,3 +399,6 @@
 | 1712 | 2026-09-25 04:08:58 | e766a89e | 024 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 11s [done] expect='X_OK' last='X_OK' \| T2 PASS 18s [done] expect='2' last='RESULT: 2' \| T3 PASS 17s [done] expect='CON |
 | 1713 | 2026-09-25 04:08:58 | e766a89e | 024 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 11s [done] expect='X_OK' last='X_OK' \| T2 PASS 18s [done] expect='2' last='RESULT: 2' \| T3 PASS 17s [done] expect='CON |
 | 1714 | 2026-09-25 04:08:58 | e766a89e | 024 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "024", "status": "active", "verified": "VERIFIED"}} |
+| 1715 | 2026-09-25 04:08:58 | 2332bee3 | 022 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 27s [done] expect='X_OK' last='X_OK' \| T2 PASS 183s [done] expect='2' last='RESULT: 2' \| T3 PASS 108s [done] expect='2 |
+| 1716 | 2026-09-25 04:08:58 | 2332bee3 | 022 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 27s [done] expect='X_OK' last='X_OK' \| T2 PASS 183s [done] expect='2' last='RESULT: 2' \| T3 PASS 108s [done] expect='2 |
+| 1717 | 2026-09-25 04:08:58 | 2332bee3 | 022 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "022", "status": "active", "verified": "VERIFIED"}} |
