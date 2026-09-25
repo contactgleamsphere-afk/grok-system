@@ -55,7 +55,7 @@
       "primary": "groq-gptoss20b"
     },
     "name": "research-scout",
-    "notes": "tests 0/2: T1 FAIL 7s [done] expect='SCOUT_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\002.json' | T2 FAIL 16s [done] expect='0.3.5' last='\u00e2\u2020\u00b3 search \"nanobot-ai PyPI\"'",
+    "notes": "tests 2/2: repair re-verify 2026-09-25: T1 PASS 12s [done] expect='SCOUT_OK' last='SCOUT_OK' | T2 PASS 109s [done] expect='0.3.5' last='0.3.5'",
     "permissions": [
       "net:search",
       "net:fetch",
@@ -69,7 +69,7 @@
       "bot.json": "85475bef96a8a231d1de1d70",
       "nanobot.patch.json": "ddd567c818a942271fad69e5"
     },
-    "status": "testing",
+    "status": "active",
     "tests": [
       "Reply with exactly: SCOUT_OK -> SCOUT_OK",
       "Use web search to find the current stable version of the Python package nanobot-ai on PyPI and reply with only the version number. -> 0.3.5"
@@ -79,8 +79,8 @@
       "web_fetch",
       "read_file"
     ],
-    "updated": "2026-09-25T00:12:56+00:00",
-    "verified": "UNVERIFIED",
+    "updated": "2026-09-25T00:16:47+00:00",
+    "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "/home/user/grok-system/bots/002-research-scout"
   },
