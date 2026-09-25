@@ -2,19 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1419 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.browserssh/browser-ssh", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); |
-| 1420 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.clauxel.autobrowserapproval/autobrowserapproval-mcp", "reason": "remote-only (hosted; data leaves the machine, lock-in); no lo |
-| 1421 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.clauxel.browserspendguard/browserspendguard-mcp", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local  |
-| 1422 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.mcpbundles/remote-browser", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/np |
-| 1423 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.saasbrowser/saas-browser", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm |
-| 1424 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.stagenth/browser", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/npm); licen |
-| 1425 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "dev.provinglab/browser-citation-capture", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio packag |
-| 1426 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "io.github.DataLeadsPRO/browser-automation", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio pack |
-| 1427 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "io.github.OyadotAI/oya-browser", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/n |
-| 1428 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "io.github.Shreyas-Profile/browser-mcp", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package  |
-| 1429 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "io.github.TeamDev-IP/jxbrowser-mcp", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (py |
-| 1430 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "io.github.brainfuel/mcp-browser", "reason": "no local stdio package (pypi/npm); release date unknown", "need": "browser automation |
-| 1431 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.clauxel.playwrightselectorguard/playwrightselectorguard-mcp", "reason": "remote-only (hosted; data leaves the machine, lock-in |
 | 1432 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.playwrightgen/playwrightgen", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio package (pypi/ |
 | 1433 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.thenextgennexus/playwright-mcp-server", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio pack |
 | 1434 | 2026-09-25 00:20:58 | 86969460 |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "io.github.sadri-dridi/playwright-url-ok", "reason": "remote-only (hosted; data leaves the machine, lock-in); no local stdio packag |
@@ -402,3 +389,16 @@
 | 1816 | 2026-09-25 20:02:28 | a35b45be | 020 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 124s [done] expect='DONE' last='DONE' \| T3 PASS 12s [done] expect='CONF |
 | 1817 | 2026-09-25 20:02:28 | a35b45be | 020 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "020", "status": "active", "verified": "VERIFIED"}} |
 | 1818 | 2026-09-25 20:05:30 | a35b45be | 020 | job.orphaned_result | fast-LAPTOP-LRE6PSA8 | {"error": "Command '['powershell', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', 'C:\\\\AI\\\\Factory\\\\repo\\\\scripts\\\\windows\\ |
+| 1819 | 2026-09-25 20:09:44 | 96ccf58b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1820 | 2026-09-25 20:09:45 | 80e90b9b |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-25T21"}} |
+| 1821 | 2026-09-25 20:10:16 | 96ccf58b |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash36", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
+| 1822 | 2026-09-25 20:10:16 | 96ccf58b |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "or-nex-n25-pro", "outcome": "gone", "before": "VERIFIED", "after": "BLOCKED", "detail": "{\"error\":{\"message\":\"no endpoints f |
+| 1823 | 2026-09-25 20:10:16 | 134bba89 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "groq", "day": "2026-09-25", "trigger": "blocked:or-nex-n25-pro"}} |
+| 1824 | 2026-09-25 20:10:16 | 01537a5d |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "gemini", "day": "2026-09-25", "trigger": "blocked:or-nex-n25-pro"}} |
+| 1825 | 2026-09-25 20:10:16 | 3fa27047 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "openrouter", "day": "2026-09-25", "trigger": "blocked:or-nex-n25-pro"}} |
+| 1826 | 2026-09-25 20:10:16 | 2bbe411d |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "cerebras", "day": "2026-09-25", "trigger": "blocked:or-nex-n25-pro"}} |
+| 1827 | 2026-09-25 20:10:16 | a7cf454b |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-09-25", "trigger": "blocked:or-nex-n25-pro"}} |
+| 1828 | 2026-09-25 20:10:16 | e9039318 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-09-25", "trigger": "blocked:or-nex-n25-pro"}} |
+| 1829 | 2026-09-25 20:10:16 | a1ec1245 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "monitor", "payload": {"only": ["014"], "day": "2026-09-25", "canary_for": ["or-nex-n25-pro"]}} |
+| 1830 | 2026-09-25 20:10:16 | 96ccf58b |  | monitor.canary | fast-LAPTOP-LRE6PSA8 | {"lanes": ["or-nex-n25-pro"], "bots": ["014"]} |
+| 1831 | 2026-09-25 20:10:16 | 96ccf58b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptos |
