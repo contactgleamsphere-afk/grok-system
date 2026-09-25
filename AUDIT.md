@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1214 | 2026-09-24 03:31:15 | bd24f8ff | 026 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "026", "status": "testing", "verified": "UNVERIFIED"}} |
-| 1215 | 2026-09-24 03:31:19 | c18703a7 | 026 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1216 | 2026-09-24 03:35:58 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 1217 | 2026-09-24 03:36:10 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": false, "tail": ["1 failed, 48 passed in 10.64s"]} |
 | 1218 | 2026-09-24 03:36:10 |  |  | worker.blocked_by_tests | fast-LAPTOP-LRE6PSA8 | {"reason": "core/tests red on current code; refusing to process jobs until code changes"} |
 | 1219 | 2026-09-24 03:36:11 | 1f96bf25 | 026 | job.enqueued | owner | {"kind": "rebuild", "payload": {"bot_id": "026", "t": 1790217371}} |
@@ -402,3 +399,6 @@
 | 1611 | 2026-09-25 03:13:14 | 29346aa8 | 004 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
 | 1612 | 2026-09-25 03:13:14 | 29346aa8 | 004 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 1613 | 2026-09-25 03:13:14 | 29346aa8 | 004 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "004", "status": "active"}} |
+| 1614 | 2026-09-25 03:13:17 | 1952fb1c |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1615 | 2026-09-25 03:13:19 | 1952fb1c |  | factory.selfpatch | svc-LAPTOP-LRE6PSA8 | {"ok": false, "file": "tools/factory_pipeline.py", "lane": "gemini:gemini-flash-lite-latest", "branch": null, "pr": null, "reason": "envelop |
+| 1616 | 2026-09-25 03:13:19 | 1952fb1c |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
