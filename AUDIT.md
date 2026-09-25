@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1357 | 2026-09-24 22:30:39 | bc1ce82b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1358 | 2026-09-24 22:30:39 | bc1ce82b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 1359 | 2026-09-24 22:30:46 | 66ca017e |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
-| 1360 | 2026-09-24 22:30:49 | 541f6f6e |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1361 | 2026-09-24 22:30:49 | 541f6f6e |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 1362 | 2026-09-24 22:30:55 | d350d0ae |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1363 | 2026-09-24 22:30:55 | d350d0ae |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
@@ -402,3 +398,7 @@
 | 1754 | 2026-09-25 11:23:05 | 7847f8ec | 014 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1755 | 2026-09-25 11:23:15 | 321d882a |  | model.retired | fast-LAPTOP-LRE6PSA8 | {"model": "or-deepseek", "reason": "gone: {\"error\":{\"message\":\"this model is unavailable for free. the paid version "} |
 | 1756 | 2026-09-25 11:23:15 | 321d882a |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite |
+| 1757 | 2026-09-25 11:23:18 | 3d281d06 | 020 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1758 | 2026-09-25 11:25:27 | 7847f8ec | 014 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] expect='X_OK' last='X_OK' \| T2 PASS 28s [done] expect='5' last='RESULT: 5' \| T3 PASS 71s [done] expect='Tim |
+| 1759 | 2026-09-25 11:25:27 | 7847f8ec | 014 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] expect='X_OK' last='X_OK' \| T2 PASS 28s [done] expect='5' last='RESULT: 5' \| T3 PASS 71s [done] expect='Tim |
+| 1760 | 2026-09-25 11:25:27 | 7847f8ec | 014 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "014", "status": "active", "verified": "VERIFIED"}} |
