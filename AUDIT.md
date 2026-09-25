@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1398 | 2026-09-24 23:58:52 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1399 | 2026-09-24 23:58:57 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": false, "tail": ["........................"]} |
 | 1400 | 2026-09-24 23:58:57 |  |  | worker.blocked_by_tests | fast-LAPTOP-LRE6PSA8 | {"reason": "core/tests red on current code; refusing to process jobs until code changes"} |
 | 1401 | 2026-09-24 23:59:13 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["111 passed in 17.75s"]} |
 | 1402 | 2026-09-24 23:59:13 | ff48e3c4 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +400,5 @@
 | 1795 | 2026-09-25 13:24:24 | 624ec5f9 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 1796 | 2026-09-25 13:24:25 | 29f3da03 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1797 | 2026-09-25 13:24:25 | 29f3da03 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 1798 | 2026-09-25 13:24:28 | a3514a3e |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1799 | 2026-09-25 13:24:28 | a3514a3e |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
