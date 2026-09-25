@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1290 | 2026-09-24 04:32:21 | 86ba95ba |  | job.dedup | fast-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
-| 1291 | 2026-09-24 04:32:32 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 1292 | 2026-09-24 04:32:40 | 40419dff |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash", "outcome": "error", "before": "VERIFIED", "after": "BLOCKED", "detail": "[{\n  \"error\": {\n    \"code\": 503,\n  |
 | 1293 | 2026-09-24 04:32:40 | 769af551 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "groq", "day": "2026-09-24", "trigger": "blocked:gemini-flash"}} |
 | 1294 | 2026-09-24 04:32:40 | eb45cb88 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "gemini", "day": "2026-09-24", "trigger": "blocked:gemini-flash"}} |
@@ -402,3 +400,5 @@
 | 1687 | 2026-09-25 03:57:13 | 52fea279 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 1688 | 2026-09-25 03:57:16 | 279f51c7 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1689 | 2026-09-25 03:57:16 | 279f51c7 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 1690 | 2026-09-25 03:57:18 | d540257b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1691 | 2026-09-25 03:57:18 | d540257b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
