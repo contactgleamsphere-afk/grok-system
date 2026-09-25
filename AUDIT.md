@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1400 | 2026-09-24 23:58:57 |  |  | worker.blocked_by_tests | fast-LAPTOP-LRE6PSA8 | {"reason": "core/tests red on current code; refusing to process jobs until code changes"} |
-| 1401 | 2026-09-24 23:59:13 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["111 passed in 17.75s"]} |
 | 1402 | 2026-09-24 23:59:13 | ff48e3c4 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1403 | 2026-09-25 00:02:14 | ff48e3c4 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-flash", "result": "2/4", "quota": 0, "secs": 180} |
 | 1404 | 2026-09-25 00:02:15 | ff48e3c4 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["gemini-flash", "2/4"]]}} |
@@ -402,3 +400,5 @@
 | 1797 | 2026-09-25 13:24:25 | 29f3da03 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 1798 | 2026-09-25 13:24:28 | a3514a3e |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1799 | 2026-09-25 13:24:28 | a3514a3e |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 1800 | 2026-09-25 13:24:31 | c14ad4dd |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1801 | 2026-09-25 13:24:31 | c14ad4dd |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
