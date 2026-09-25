@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1444 | 2026-09-25 00:29:51 | 50cb8d24 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-l |
-| 1445 | 2026-09-25 00:29:56 | 14d4a04c |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1446 | 2026-09-25 00:29:56 | 190e3258 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-25T01"}} |
-| 1447 | 2026-09-25 00:29:56 | 14d4a04c |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 1448 | 2026-09-25 00:31:25 | 4901b2db |  | tool.rejected | svc-LAPTOP-LRE6PSA8 | {"tool": "com.pulsemcp/playwright-stealth", "reason": "policy: anti-detection / bypass tooling (contract: never evade ToS, rate limits or id |
 | 1449 | 2026-09-25 00:31:25 | 4901b2db |  | tool.discovered | svc-LAPTOP-LRE6PSA8 | {"tool": "io.github.feder-cr/invisible-playwright-mcp", "reason": "probation; tools=16 144s", "need": "playwright browser"} |
 | 1450 | 2026-09-25 00:31:25 | 4901b2db |  | owner.needed | svc-LAPTOP-LRE6PSA8 | {"provider": "tools", "reason": "MCP tools on probation for need 'playwright browser': ['mcp:invisible-playwright-mcp'] \u2014 approve to wi |
@@ -402,3 +398,7 @@
 | 1841 | 2026-09-25 20:10:34 | a7cf454b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 1842 | 2026-09-25 20:10:38 | e9039318 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1843 | 2026-09-25 20:10:38 | e9039318 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 1844 | 2026-09-25 20:10:43 | a1ec1245 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1845 | 2026-09-25 20:10:43 | 6acda974 | 014 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "014", "monitor_of": "a1ec1245d09c465fb7daaec24fbd41f2", "day": "2026-09-25"}} |
+| 1846 | 2026-09-25 20:10:43 | a1ec1245 |  | monitor.fanout | svc-LAPTOP-LRE6PSA8 | {"bots": ["014"], "jobs": ["6acda974"]} |
+| 1847 | 2026-09-25 20:10:43 | a1ec1245 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
