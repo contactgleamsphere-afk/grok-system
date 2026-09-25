@@ -74,3 +74,4 @@
 | 2026-09-25 03:11 | 011 word-frequency-counter | 4/4 | active→active | - |
 | 2026-09-25 03:14 | 012 csv-column-sum | 4/4 | active→active | - |
 | 2026-09-25 03:30 | 013 log-error-filter | 2/4 (quota, inconclusive) | active→active | - |
+| 2026-09-25 03:36 | 016 workspace-tidy-counter | 2/4 | active→testing | - |

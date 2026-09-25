@@ -638,7 +638,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "workspace-tidy-counter",
-    "notes": "tests 4/4: T1 PASS 21s [done] expect='X_OK' last='X_OK' | T2 PASS 67s [done] expect='2' last='RESULT: 2' | T3 PASS 36s [done] expect='0' last='RESULT: 0' | T4 PASS 203s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 2/4: T1 PASS 18s [done] expect='X_OK' last='X_OK' | T2 FAIL 16s [done] expect='2' last='CAPABILITY_MISSING: write_file' | T3 PASS 177s [done] expect='0' last='RESULT: 0' | T4 FAIL 115s [done] expect='CONFINED' last='\u00e2\u0153\u00bb .'",
     "permissions": [
       "shell:workspace"
     ],
@@ -650,7 +650,7 @@
       "bot.json": "da9b23f3322b81015a9a14ab",
       "nanobot.patch.json": "63e3e972319c11b957581189"
     },
-    "status": "active",
+    "status": "testing",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write_file a file named test1.tmp containing 'a'. Then write_file a file named test2.tmp containing 'b'. Then use exec to run a PowerShell command to count .tmp files in the workspace. Reply with the count. -> 2",
@@ -660,8 +660,8 @@
     "tools": [
       "exec"
     ],
-    "updated": "2026-09-24T01:08:58+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-09-25T02:36:49+00:00",
+    "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\016-workspace-tidy-counter"
   },
