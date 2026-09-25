@@ -2,15 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1171 | 2026-09-24 03:01:33 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1172 | 2026-09-24 03:01:33 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1173 | 2026-09-24 03:01:50 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["105 passed in 15.19s"]} |
-| 1174 | 2026-09-24 03:01:54 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["105 passed in 14.64s"]} |
-| 1175 | 2026-09-24 03:04:04 |  |  | tool.approved | owner | {"tool": "mcp:mcp-sqlite3", "detail": "{\"ok\": true, \"tool\": \"mcp:mcp-sqlite3\", \"install\": {\"command\": \"C:\\\\AI\\\\Factory\\\\mcp |
-| 1176 | 2026-09-24 03:04:58 | efe05c44 |  | job.enqueued | owner | {"kind": "create", "payload": {"objective": "Answer questions about a SQLite database file the user names in the workspace: list its tables  |
-| 1177 | 2026-09-24 03:04:59 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1178 | 2026-09-24 03:05:00 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1179 | 2026-09-24 03:05:19 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["105 passed in 15.96s"]} |
 | 1180 | 2026-09-24 03:05:19 | efe05c44 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1181 | 2026-09-24 03:05:19 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["105 passed in 16.02s"]} |
 | 1182 | 2026-09-24 03:05:21 | efe05c44 |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect: objective needs permissions outside the allowance ['fs:read', 'mcp:mcp-sqlite3']: The bot requires write permission to |
@@ -402,3 +393,12 @@
 | 1568 | 2026-09-25 02:56:02 | 99ef519c |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-09-25", "trigger": "blocked:or-nemotron-35-lightning"}} |
 | 1569 | 2026-09-25 02:56:02 | c0780098 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-09-25", "trigger": "blocked:or-nemotron-35-lightning"}} |
 | 1570 | 2026-09-25 02:56:02 | e7744308 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite |
+| 1571 | 2026-09-25 02:56:05 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1572 | 2026-09-25 02:56:09 |  |  | worker.blocked_by_tests | svc-LAPTOP-LRE6PSA8 | {"reason": "core/tests red on current code; refusing to process jobs until code changes"} |
+| 1573 | 2026-09-25 02:56:46 | 5d14608a |  | job.released | owner | {"uncount": false} |
+| 1574 | 2026-09-25 02:56:47 | 1952fb1c |  | job.enqueued | owner | {"kind": "selfpatch", "payload": {"date": "2026-09-24", "index": 3}} |
+| 1575 | 2026-09-25 02:57:44 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["118 passed in 30.50s"]} |
+| 1576 | 2026-09-25 02:57:44 | 0fe79cdf | 003 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 2} |
+| 1577 | 2026-09-25 02:57:45 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["118 passed in 30.82s"]} |
+| 1578 | 2026-09-25 02:57:45 | 738a787a |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1579 | 2026-09-25 02:57:45 | 738a787a |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
