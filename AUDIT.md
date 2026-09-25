@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1436 | 2026-09-25 00:20:58 | 86969460 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": ["mcp:crawlio-browser"]}} |
-| 1437 | 2026-09-25 00:28:03 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1438 | 2026-09-25 00:28:05 | 4901b2db |  | job.enqueued | owner | {"kind": "tooldisc", "payload": {"need": "playwright browser", "max": 1, "day": "2026-09-25"}} |
-| 1439 | 2026-09-25 00:28:26 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["112 passed in 17.90s"]} |
 | 1440 | 2026-09-25 00:28:26 | 4901b2db |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1441 | 2026-09-25 00:28:26 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["112 passed in 17.71s"]} |
 | 1442 | 2026-09-25 00:29:16 | 50cb8d24 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +398,7 @@
 | 1833 | 2026-09-25 20:10:20 | 01537a5d |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1834 | 2026-09-25 20:10:21 | 134bba89 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 1835 | 2026-09-25 20:10:21 | 01537a5d |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 1836 | 2026-09-25 20:10:25 | 3fa27047 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1837 | 2026-09-25 20:10:26 | 3fa27047 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 1838 | 2026-09-25 20:10:30 | 2bbe411d |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1839 | 2026-09-25 20:10:30 | 2bbe411d |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
