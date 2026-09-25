@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1318 | 2026-09-24 04:42:18 | 10338bdf |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 1319 | 2026-09-24 04:42:22 | c76efa69 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1320 | 2026-09-24 04:42:43 | c76efa69 |  | factory.canary | svc-LAPTOP-LRE6PSA8 | {"verdict": "pass", "lane": "groq:openai/gpt-oss-20b", "chain": ["gemini-gemini-flash-lite-latest", "gemini-lite31", "groq-gptoss120b", "loc |
-| 1321 | 2026-09-24 04:42:43 | c76efa69 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"pass": 2, "total": 2}} |
-| 1322 | 2026-09-24 06:54:41 | 9a01357c |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1323 | 2026-09-24 06:54:41 | 86ba95ba |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1324 | 2026-09-24 06:54:42 | 37b08250 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-24T07"}} |
 | 1325 | 2026-09-24 06:54:42 | e7340c6e |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-24T07"}} |
@@ -402,3 +397,8 @@
 | 1715 | 2026-09-25 04:08:58 | 2332bee3 | 022 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 27s [done] expect='X_OK' last='X_OK' \| T2 PASS 183s [done] expect='2' last='RESULT: 2' \| T3 PASS 108s [done] expect='2 |
 | 1716 | 2026-09-25 04:08:58 | 2332bee3 | 022 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 27s [done] expect='X_OK' last='X_OK' \| T2 PASS 183s [done] expect='2' last='RESULT: 2' \| T3 PASS 108s [done] expect='2 |
 | 1717 | 2026-09-25 04:08:58 | 2332bee3 | 022 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "022", "status": "active", "verified": "VERIFIED"}} |
+| 1718 | 2026-09-25 04:09:01 | e3d0b490 | 025 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1719 | 2026-09-25 04:09:04 | 3f73d2dd | 026 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1720 | 2026-09-25 04:09:51 | e3d0b490 | 025 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] expect='LIVENESS_OK' last='LIVENESS_OK' \| T2 PASS 20s [done] expect='HELLO WORLD' last='RESULT: HELLO WORLD' |
+| 1721 | 2026-09-25 04:09:51 | e3d0b490 | 025 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] expect='LIVENESS_OK' last='LIVENESS_OK' \| T2 PASS 20s [done] expect='HELLO WORLD' last='RESULT: HELLO WORLD' |
+| 1722 | 2026-09-25 04:09:51 | e3d0b490 | 025 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "025", "status": "active", "verified": "VERIFIED"}} |
