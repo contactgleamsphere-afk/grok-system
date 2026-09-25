@@ -77,3 +77,4 @@
 | 2026-09-25 03:36 | 016 workspace-tidy-counter | 2/4 | active→testing | - |
 | 2026-09-25 03:44 | 014 error-log-analyzer | 2/4 (quota, inconclusive) | active→active | - |
 | 2026-09-25 03:46 | 017 name-sorter | 3/4 | active→testing | - |
+| 2026-09-25 03:55 | 018 csv-country-totals | 4/4 | active→active | - |
