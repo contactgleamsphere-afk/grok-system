@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1515 | 2026-09-25 01:12:19 | de1d7fdc |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 1516 | 2026-09-25 01:12:22 | c858bfee |  | tool.discovered | fast-LAPTOP-LRE6PSA8 | {"tool": "io.github.microsoft/playwright-mcp", "reason": "probation; tools=25 15s", "need": "playwright browser"} |
-| 1517 | 2026-09-25 01:12:22 | c858bfee |  | owner.needed | fast-LAPTOP-LRE6PSA8 | {"provider": "tools", "reason": "MCP tools on probation for need 'playwright browser': ['mcp:playwright-mcp'] \u2014 approve to wire into a  |
-| 1518 | 2026-09-25 01:12:22 | c858bfee |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": ["mcp:playwright-mcp"]}} |
 | 1519 | 2026-09-25 01:12:23 | c22c4f11 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1520 | 2026-09-25 01:12:31 | 3bb0fc5b | 002 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1521 | 2026-09-25 01:12:56 | 3bb0fc5b | 002 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 7s [done] expect='SCOUT_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\002.json' \| T2 FAIL 16s [done] expect='0. |
@@ -402,3 +398,7 @@
 | 1912 | 2026-09-26 00:00:03 | fc8525b1 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1913 | 2026-09-26 00:00:03 | 1a1d091d |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-26T01"}} |
 | 1914 | 2026-09-26 00:00:03 | fc8525b1 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 1915 | 2026-09-26 00:37:15 | 595134d5 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1916 | 2026-09-26 00:37:15 | 476304a5 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-26T01"}} |
+| 1917 | 2026-09-26 00:37:30 | 595134d5 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
+| 1918 | 2026-09-26 00:37:30 | 595134d5 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite |
