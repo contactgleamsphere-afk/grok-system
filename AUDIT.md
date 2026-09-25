@@ -2,12 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1136 | 2026-09-24 02:19:43 | e26da376 | 020 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 18s [done] expect='X_OK' last='X_OK' \| T2 FAIL 307s [TIMEOUT] expect='DONE' last='' \| T3 PASS 94s [done] expect='CONFI |
-| 1137 | 2026-09-24 02:19:43 | 21c6bb9d | 020 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "020", "retest_of": "e26da376c0fc43bf8f30a1ad800da243", "after_quota": "e26da376c0fc43bf8f30a1ad800da |
-| 1138 | 2026-09-24 02:19:43 | e26da376 | 020 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "020", "status": "active", "verified": "VERIFIED"}} |
-| 1139 | 2026-09-24 02:19:59 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1140 | 2026-09-24 02:20:21 | c8eb6c89 | 022 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 70s [done] expect='2' last='RESULT: 2' \| T3 PASS 113s [done] expect='2' |
-| 1141 | 2026-09-24 02:20:21 | c8eb6c89 | 022 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 70s [done] expect='2' last='RESULT: 2' \| T3 PASS 113s [done] expect='2' |
 | 1142 | 2026-09-24 02:20:21 | c8eb6c89 | 022 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "022", "status": "active", "verified": "VERIFIED"}} |
 | 1143 | 2026-09-24 02:20:21 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["102 passed in 17.23s"]} |
 | 1144 | 2026-09-24 02:20:21 | 7ae30d43 | 012 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +396,9 @@
 | 1533 | 2026-09-25 01:14:41 | c22c4f11 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 16s [done] report expect='FACTORY' cmd=True \| T3 PASS 17s [d |
 | 1534 | 2026-09-25 01:14:41 | c22c4f11 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 16s [done] report expect='FACTORY' cmd=True \| T3 PASS 17s [d |
 | 1535 | 2026-09-25 01:14:41 | c22c4f11 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 9, "status": "active", "verified": "VERIFIED"}} |
+| 1536 | 2026-09-25 01:14:46 | abe5c895 | 002 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1537 | 2026-09-25 01:16:04 | 7591a1b5 | 004 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 10s [done] expect='CHANGELOG_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\004.json' \| T2 FAIL 16s [done] expec |
+| 1538 | 2026-09-25 01:16:04 | 7591a1b5 | 004 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 10s [done] expect='CHANGELOG_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\004.json' \| T2 FAIL 16s [done] expec |
+| 1539 | 2026-09-25 01:16:04 | 7591a1b5 | 004 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
+| 1540 | 2026-09-25 01:16:04 | 29346aa8 | 004 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "004", "max_rounds": 2}} |
+| 1541 | 2026-09-25 01:16:04 | 7591a1b5 | 004 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "004", "status": "testing", "verified": "UNVERIFIED"}} |
