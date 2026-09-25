@@ -183,7 +183,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "csv-quality-auditor",
-    "notes": "tests 4/4: T1 PASS 13s [done] expect='X_OK' last='X_OK' | T2 PASS 48s [done] expect='1' last='RESULT: 1' | T3 PASS 63s [done] expect='0' last='RESULT: 0' | T4 PASS 25s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: T1 PASS 12s [done] expect='X_OK' last='X_OK' | T2 PASS 58s [done] expect='1' last='1' | T3 PASS 59s [done] expect='0' last='RESULT: 0' | T4 PASS 12s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -207,7 +207,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-24T00:34:30+00:00",
+    "updated": "2026-09-25T00:18:35+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\005-csv-quality-auditor"

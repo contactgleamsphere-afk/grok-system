@@ -3,10 +3,10 @@
 | id | name | status | verified | chain | tools | last test |
 |---|---|---|---|---|---|---|
 | 001 | master | active | VERIFIED | local3b | exec, read_file, write_file, web_search, web_fetch | tests 9/9: T1 PASS 15s [done] liveness expect='MASTER_OK' cmd=True | T2 PASS 16s |
-| 002 | research-scout | testing | UNVERIFIED | groq-gptoss20b > gemini-lite > gemini-flash > gemini-flash38 > or-deepseek > gemini-lite31 > groq-qwen27b > local4b | web_search, web_fetch, read_file | tests 0/2: T1 FAIL 7s [done] expect='SCOUT_OK' last='Using config: C:\AI\Factory |
+| 002 | research-scout | active | VERIFIED | groq-gptoss20b > gemini-lite > gemini-flash > gemini-flash38 > or-deepseek > gemini-lite31 > groq-qwen27b > local4b | web_search, web_fetch, read_file | tests 2/2: repair re-verify 2026-09-25: T1 PASS 12s [done] expect='SCOUT_OK' las |
 | 003 | code-smith | testing | UNVERIFIED | groq-gptoss120b > gemini-flash > gemini-flash38 > groq-gptoss20b > gemini-lite > local4b | write_file, read_file, exec | tests 1/4: T1 FAIL 7s [done] expect='SMITH_OK' last='Using config: C:\AI\Factory |
 | 004 | changelog-writer | testing | UNVERIFIED | groq-gptoss120b > gemini-flash > gemini-flash38 > groq-gptoss20b > gemini-lite > local4b | read_file, write_file | tests 2/4: T1 FAIL 10s [done] expect='CHANGELOG_OK' last='Using config: C:\AI\Fa |
-| 005 | csv-quality-auditor | active | VERIFIED | groq-gptoss120b > gemini-flash > gemini-flash38 > groq-gptoss20b > gemini-lite > local4b | read_file, write_file | tests 4/4: T1 PASS 13s [done] expect='X_OK' last='X_OK' | T2 PASS 48s [done] exp |
+| 005 | csv-quality-auditor | active | VERIFIED | groq-gptoss120b > gemini-flash > gemini-flash38 > groq-gptoss20b > gemini-lite > local4b | read_file, write_file | tests 4/4: T1 PASS 12s [done] expect='X_OK' last='X_OK' | T2 PASS 58s [done] exp |
 | 006 | json-to-markdown-table | active | VERIFIED | groq-gptoss120b > gemini-flash > groq-gptoss20b > gemini-lite > local4b | read_file, write_file | tests 4/4: repair round 1 via groq:openai/gpt-oss-20b: T1 PASS 13s [done] expect |
 | 007 | todo-extractor | active | VERIFIED | groq-gptoss120b > gemini-flash > gemini-flash38 > groq-gptoss20b > or-deepseek > gemini-lite > local4b | read_file, write_file | tests 4/4: repair re-verify 2026-09-24: T1 PASS 38s [done] expect='X_OK' last='X |
 | 008 | word-frequency-bot | active | VERIFIED | groq-gptoss120b > gemini-flash > gemini-flash38 > groq-gptoss20b > gemini-lite > local4b | read_file, write_file | tests 4/4: T1 PASS 13s [done] expect='X_OK' last='X_OK' | T2 PASS 15s [done] exp |

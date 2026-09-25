@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1146 | 2026-09-24 02:20:29 | 820f7ef9 | 023 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1147 | 2026-09-24 02:20:39 | 7ae30d43 | 012 | bot.ran | fast-LAPTOP-LRE6PSA8 | {"ok": true, "produced": ["total.txt"], "secs": 16, "reply": "RESULT: 21", "chain": "gemini-gemma26b"} |
-| 1148 | 2026-09-24 02:20:39 | 7ae30d43 | 012 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "012", "name": "run", "status": "ok total.txt"}} |
-| 1149 | 2026-09-24 02:20:47 | 87f2fbc2 | 024 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1150 | 2026-09-24 02:22:01 | 87f2fbc2 | 024 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 14s [done] expect='X_OK' last='X_OK' \| T2 PASS 27s [done] expect='2' last='RESULT: 2' \| T3 PASS 27s [done] expect='CON |
 | 1151 | 2026-09-24 02:22:01 | 87f2fbc2 | 024 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 14s [done] expect='X_OK' last='X_OK' \| T2 PASS 27s [done] expect='2' last='RESULT: 2' \| T3 PASS 27s [done] expect='CON |
 | 1152 | 2026-09-24 02:22:01 | 87f2fbc2 | 024 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "024", "status": "active", "verified": "VERIFIED"}} |
@@ -402,3 +398,7 @@
 | 1543 | 2026-09-25 01:16:47 | abe5c895 | 002 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
 | 1544 | 2026-09-25 01:16:47 | abe5c895 | 002 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 1545 | 2026-09-25 01:16:47 | abe5c895 | 002 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "002", "status": "active"}} |
+| 1546 | 2026-09-25 01:16:52 | 0fe79cdf | 003 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1547 | 2026-09-25 01:18:35 | f649f932 | 005 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] expect='X_OK' last='X_OK' \| T2 PASS 58s [done] expect='1' last='1' \| T3 PASS 59s [done] expect='0' last='RE |
+| 1548 | 2026-09-25 01:18:35 | f649f932 | 005 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] expect='X_OK' last='X_OK' \| T2 PASS 58s [done] expect='1' last='1' \| T3 PASS 59s [done] expect='0' last='RE |
+| 1549 | 2026-09-25 01:18:35 | f649f932 | 005 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "005", "status": "active", "verified": "VERIFIED"}} |
