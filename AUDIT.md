@@ -2,13 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1221 | 2026-09-24 03:37:16 | c18703a7 | 026 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
-| 1222 | 2026-09-24 03:37:20 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1223 | 2026-09-24 03:37:40 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["107 passed in 16.03s"]} |
-| 1224 | 2026-09-24 03:37:40 | 1f96bf25 | 026 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1225 | 2026-09-24 03:41:47 | 1f96bf25 | 026 | bot.rebuilt | svc-LAPTOP-LRE6PSA8 | {"chain": ["groq-gptoss120b", "gemini-lite31", "groq-gptoss20b", "local3b"], "result": "T1 PASS 17s [done] expect='X_OK' last='X_OK' \| T2 P |
-| 1226 | 2026-09-24 03:41:47 | 1f96bf25 | 026 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "026", "name": "sqlite-query-bot", "pass": 3, "total": 4, "status": "testing", "verified": "UNVERIFIED"}} |
-| 1227 | 2026-09-24 03:47:31 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 1228 | 2026-09-24 03:47:48 | c18703a7 |  | job.cancelled | owner | {} |
 | 1229 | 2026-09-24 03:47:48 | a14b2bd5 | 026 | job.enqueued | owner | {"kind": "rearchitect", "payload": {"bot_id": "026", "feedback": "Every test prompt that uses the fixture database must name the file fixtur |
 | 1230 | 2026-09-24 03:47:52 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["107 passed in 16.49s"]} |
@@ -402,3 +395,10 @@
 | 1618 | 2026-09-25 03:14:04 | 2cb15941 | 012 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 26s [done] expect='X_OK' last='RESULT: replied with X_OK' \| T2 PASS 41s [done] expect='60' last='RESULT: summed amount  |
 | 1619 | 2026-09-25 03:14:04 | 2cb15941 | 012 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 26s [done] expect='X_OK' last='RESULT: replied with X_OK' \| T2 PASS 41s [done] expect='60' last='RESULT: summed amount  |
 | 1620 | 2026-09-25 03:14:04 | 2cb15941 | 012 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "012", "status": "active", "verified": "VERIFIED"}} |
+| 1621 | 2026-09-25 03:14:08 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
+| 1622 | 2026-09-25 03:15:01 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": false, "tail": ["...."]} |
+| 1623 | 2026-09-25 03:15:01 |  |  | worker.blocked_by_tests | fast-LAPTOP-LRE6PSA8 | {"reason": "core/tests red on current code; refusing to process jobs until code changes"} |
+| 1624 | 2026-09-25 03:30:40 | 31459526 | 013 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 173s [done] expect='X_OK' last='X_OK' \| T2 FAIL 306s [TIMEOUT] expect='1' last='' \| T3 FAIL 310s [TIMEOUT] expect='0'  |
+| 1625 | 2026-09-25 03:30:40 | 31459526 | 013 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 173s [done] expect='X_OK' last='X_OK' \| T2 FAIL 306s [TIMEOUT] expect='1' last='' \| T3 FAIL 310s [TIMEOUT] expect='0'  |
+| 1626 | 2026-09-25 03:30:40 | c3cae46b | 013 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "013", "retest_of": "3145952631084d619cea6973dfe45bb6", "after_quota": "3145952631084d619cea6973dfe45 |
+| 1627 | 2026-09-25 03:30:40 | 31459526 | 013 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "013", "status": "active", "verified": "VERIFIED"}} |
