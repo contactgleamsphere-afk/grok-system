@@ -190,6 +190,12 @@
    "ts": 1790285397.8792408,
    "date": "2026-09-24",
    "until": 1790306997.8792408
+  },
+  "openrouter:deepseek/deepseek-v4-flash-0731:free": {
+   "verdict": "rejected",
+   "reason": "retired after 3 days gone: gone: {\"error\":{\"message\":\"this model is unavailable for free. the paid version ",
+   "ts": 1790331778.0917437,
+   "date": "2026-09-25"
   }
  }
 }

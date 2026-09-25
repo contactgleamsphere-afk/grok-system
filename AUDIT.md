@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1354 | 2026-09-24 22:30:12 | 37b08250 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-gemini-flash-lite-latest", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
-| 1355 | 2026-09-24 22:30:12 | 37b08250 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-li |
-| 1356 | 2026-09-24 22:30:22 | 66ca017e |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1357 | 2026-09-24 22:30:39 | bc1ce82b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1358 | 2026-09-24 22:30:39 | bc1ce82b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 1359 | 2026-09-24 22:30:46 | 66ca017e |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
@@ -402,3 +399,6 @@
 | 1751 | 2026-09-25 11:22:59 |  | 018 | schedule.fired | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "fire": "2026-09-25T07:00", "job": "dae5c79f"} |
 | 1752 | 2026-09-25 11:23:04 | e354bd05 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-25T12"}} |
 | 1753 | 2026-09-25 11:23:04 | 5249b5ec |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 1754 | 2026-09-25 11:23:05 | 7847f8ec | 014 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1755 | 2026-09-25 11:23:15 | 321d882a |  | model.retired | fast-LAPTOP-LRE6PSA8 | {"model": "or-deepseek", "reason": "gone: {\"error\":{\"message\":\"this model is unavailable for free. the paid version "} |
+| 1756 | 2026-09-25 11:23:15 | 321d882a |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite |
