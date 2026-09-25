@@ -73,10 +73,24 @@ def draft(proposal: dict, file: str, src: str, chat=None, feedback: str = "", sk
     if feedback: msg += f"\nPREVIOUS ATTEMPT WAS REJECTED: {feedback}\nQuote `find` text EXACTLY as in the file (same backslashes, quotes and spaces); pick a shorter unique anchor if needed.\n"
     try: text, lane = chat([{"role": "user", "content": msg}], max_tokens=1800, skip=skip)
     except TypeError: text, lane = chat([{"role": "user", "content": msg}], max_tokens=1800)
-    m = re.search(r"\{.*\}", text, re.S)
-    if not m: return None, lane, text[:400]
-    try: return json.loads(m.group(0)), lane, text[:400]
-    except Exception as e: return None, lane, f"bad json: {e}"
+    return _parse(text), lane, text[:400]
+
+
+def _parse(text: str) -> dict | None:
+    """Models wrap JSON in fences and put Python source (with \\b, \\s, \\d …) inside strings — invalid JSON escapes.
+    Try strict, then with invalid escapes doubled, then non-strict (raw newlines)."""
+    t = re.sub(r"^```(?:json)?\s*|\s*```$", "", text.strip(), flags=re.M)
+    m = re.search(r"\{.*\}", t, re.S)
+    if not m: return None
+    cand = m.group(0)
+    for fix in (lambda x: x, lambda x: re.sub(r'\\(?![\\/"bfnrtu])', r"\\\\", x)):
+        for strict in (True, False):
+            try:
+                d = json.loads(fix(cand), strict=strict)
+                if isinstance(d, dict) and d.get("edits"): return d
+            except Exception:
+                continue
+    return None
 
 
 def check_envelope(patch: dict, src: str) -> tuple[str | None, str]:
