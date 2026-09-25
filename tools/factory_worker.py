@@ -571,9 +571,50 @@ def _respawn() -> None:
     except Exception: pass
 
 
+OUTAGE_GAP_S = 30 * 60
+
+
+def _windows_power_events(since: float) -> list[dict]:
+    """System-log power/boot events after `since` (best effort, WIN only): 41 kernel-power (unexpected loss of power),
+    6008 unexpected shutdown, 1074 user/update-initiated restart, 6005 event log started (boot), 42 sleep, 1 wake."""
+    if os.name != "nt": return []
+    import subprocess
+    ps = ("Get-WinEvent -FilterHashtable @{LogName='System'; Id=41,42,1074,6005,6006,6008} -MaxEvents 30 -ErrorAction SilentlyContinue | "
+          "Where-Object { $_.TimeCreated -gt (Get-Date '1970-01-01').AddSeconds(%d).ToLocalTime() } | "
+          "Select-Object @{n='t';e={[int][double]::Parse((Get-Date $_.TimeCreated -UFormat %%s))}}, Id, @{n='m';e={$_.Message.Substring(0,[Math]::Min(120,$_.Message.Length))}} | ConvertTo-Json -Compress") % int(since)
+    try:
+        r = subprocess.run(["powershell", "-NoProfile", "-Command", ps], capture_output=True, text=True, timeout=60)
+        d = json.loads(r.stdout or "[]"); return d if isinstance(d, list) else [d]
+    except Exception:
+        return []
+
+
+def record_outage(store: "JobStore", worker: str, now: float | None = None, events=None) -> dict | None:
+    """D-121: at (re)start, if the audit trail has been silent for > 30 min the factory was down. Record ONE
+    `factory.outage` row with the gap, the last thing it was doing, and the Windows power/boot events in that
+    window (battery loss = kernel-power 41 / 6008; Windows Update restart = 1074; sleep/wake = 42/1) so STATUS and the
+    owner get a cause, not just a hole in the timeline."""
+    now = now or time.time()
+    rows = store.audit_rows(limit=1)
+    if not rows: return None
+    last = rows[0]
+    if now - float(last["ts"]) < OUTAGE_GAP_S: return None
+    ev = events if events is not None else _windows_power_events(float(last["ts"]) - 3600)
+    ids = [int(e.get("Id", 0)) for e in ev]
+    cause = ("power loss / battery flat (kernel-power 41)" if 41 in ids else "unexpected shutdown (6008)" if 6008 in ids
+             else "planned restart, e.g. Windows Update (1074)" if 1074 in ids else "sleep/hibernate (42)" if 42 in ids
+             else "reboot (6005) — cause not logged" if 6005 in ids else "no shutdown event — network/tunnel loss while running")
+    d = {"gap_min": int((now - float(last["ts"])) / 60), "silent_since": time.strftime("%Y-%m-%dT%H:%M:%S", time.localtime(float(last["ts"]))),
+         "last_event": last["event"], "cause": cause, "events": [{"t": e.get("t"), "id": e.get("Id"), "m": (e.get("m") or "")[:80]} for e in ev][:8]}
+    store.audit("factory.outage", actor=worker, **d)
+    return d
+
+
 def run(worker: str, once: bool = False, idle_exit: int = 0, kinds: tuple[str, ...] | None = None) -> int:
     store = JobStore(DB); idle_since = time.time(); processed = 0; stamp = _code_stamp()
     if not once:
+        try: record_outage(store, worker)                     # D-121: explain the hole in the timeline, if any
+        except Exception: pass
         ensure_recurring(store, worker)
         if fp.WIN and "fast" in worker:                       # D-116: one liveness check per (re)start, fast lane only
             try: tunnel_selfheal(store, None, worker)

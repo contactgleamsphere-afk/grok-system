@@ -51,7 +51,16 @@ def build() -> dict:
     audit = store.audit_rows(limit=25)
     live = liveness(store, jobs, now)                                   # D-100
     head = [f"FACTORY {live['state'].upper()}: {live['reason']}"] if live["state"] != "running" else []
-    can = next((r for r in store.audit_rows(limit=600) if r["event"] == "factory.canary"), None)       # D-117
+    rows600 = store.audit_rows(limit=600)
+    out_ = next((r for r in rows600 if r["event"] == "factory.outage"), None)                          # D-121
+    outage = None
+    if out_:
+        try: od = json.loads(out_["detail"]) if isinstance(out_.get("detail"), str) else (out_.get("detail") or {})
+        except Exception: od = {}
+        outage = {"at": out_.get("ts"), **{k: od.get(k) for k in ("gap_min", "silent_since", "cause")}}
+        if now - float(out_["ts"]) < 86400:
+            head.append(f"OUTAGE in the last 24 h: down {od.get('gap_min')} min from {str(od.get('silent_since'))[:16]} — {od.get('cause')}")
+    can = next((r for r in rows600 if r["event"] == "factory.canary"), None)       # D-117
     canary = None
     if can:
         try: d = json.loads(can["detail"]) if isinstance(can.get("detail"), str) else (can.get("detail") or {})
@@ -61,7 +70,7 @@ def build() -> dict:
             head.append(f"FACTORY CANARY FAILED at {str(can.get('ts'))[:16]} (lane {d.get('lane')}): the factory itself, not a bot, is broken — see AUDIT factory.canary")
     return {"generated": datetime.datetime.now().isoformat(timespec="seconds"),
             "bots": {"active": sum(b["status"] == "active" for b in bots), "total": len(bots), "list": bots},
-            "queue": store.summary(), "canary": canary,
+            "queue": store.summary(), "canary": canary, "outage": outage,
             "jobs_24h": [{"id": j["id"][:8], "kind": j["kind"], "state": j["state"], "attempts": j["attempts"], "class": j.get("failure_class"),
                           "bot": j["payload"].get("bot_id"), "objective": (j["payload"].get("objective") or "")[:70]} for j in recent],
             "lanes": lanes, "healthy_lanes": [l["id"] for l in lanes if l["state"] == "ok"],

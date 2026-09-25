@@ -1190,3 +1190,21 @@ def test_d120_sandbox_order_keyword_fit_then_stars(tmp_path, monkeypatch):
     boxed = []
     out = td.run("playwright browser", 1, dry_run=True, fetch=fetch, sandboxer=lambda c: (boxed.append(c["name"]), {"ok": True, "tools": ["t"], "secs": 1})[1])
     assert boxed == ["io.github.microsoft/playwright-mcp"] and out["added"] == ["mcp:playwright-mcp"]
+
+
+def test_d121_outage_recorded_with_cause(tmp_path, monkeypatch):
+    """D-121: a silent audit trail > 30 min at worker start produces one factory.outage row whose cause comes from
+    the power/boot events (41 → battery/power loss); a short gap records nothing."""
+    import importlib, factory_worker as fw; importlib.reload(fw)
+    from factory.jobs import JobStore
+    st = JobStore(tmp_path / "jobs.sqlite3")
+    t0 = 1_800_000_000.0
+    st.audit("job.done", actor="w"); st.db.execute("UPDATE audit SET ts=?", (t0,)); st.db.commit()
+    assert fw.record_outage(st, "w", now=t0 + 600, events=[]) is None
+    d = fw.record_outage(st, "w", now=t0 + 5 * 3600, events=[{"t": t0 + 100, "Id": 41, "m": "The system has rebooted without cleanly shutting down first."}])
+    assert d["gap_min"] == 300 and "kernel-power 41" in d["cause"] and d["last_event"] == "job.done"
+    rows = st.audit_rows(5); assert rows[0]["event"] == "factory.outage"
+    d2 = fw.record_outage(st, "w", now=float(rows[0]["ts"]) + 4000, events=[{"Id": 1074, "m": "restart"}])
+    assert d2 and "Windows Update" in d2["cause"]
+    d3 = fw.record_outage(st, "w", now=float(st.audit_rows(1)[0]["ts"]) + 4000, events=[])
+    assert "network/tunnel" in d3["cause"]

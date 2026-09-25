@@ -676,3 +676,11 @@ Live runs for "browser automation playwright" exposed four gaps, each fixed and 
    `tool.revoked`): removes the registry entry and install, writes a permanent `name:*` ledger block.
 Result: `mcp:playwright-mcp` (Microsoft, Apache-2.0, 37k stars, 2 deps, 25 tools, 15 s handshake) on probation,
 awaiting owner `approve-tool`. Also: worker self-test gate retries once and re-checks red results every 15 min.
+
+## D-121 — Outages are recorded with a cause (2026-09-25) — VERIFIED (unit); live pending laptop return
+Two outages in one night (04:42–22:29, then 01:23–) left only holes in the audit trail. At worker (re)start,
+`record_outage()` measures the silence; past 30 min it writes ONE `factory.outage` row: gap, last event, and the
+Windows System-log power/boot events in the window classified into a cause — kernel-power 41 / 6008 = power loss or
+battery flat, 1074 = planned restart (Windows Update), 42 = sleep, 6005 = reboot, none = network/tunnel loss while
+running. STATUS.md shows "OUTAGE in the last 24 h … — cause" for a day. Evidence before this outage: laptop on battery
+(`PowerOnline=False`) and TiWorker in ShutdownProcessing — the owner was told to keep it on mains.
