@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1487 | 2026-09-25 01:12:12 | de1d7fdc |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "monitor", "payload": {"only": null, "day": "2026-09-25"}} |
-| 1488 | 2026-09-25 01:12:12 | 0253aa82 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 1489 | 2026-09-25 01:12:19 | de1d7fdc |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1490 | 2026-09-25 01:12:19 | c22c4f11 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "de1d7fdc5d12431cbc4d260218c9875d", "day": "2026-09-25"}} |
 | 1491 | 2026-09-25 01:12:19 | 3bb0fc5b | 002 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "002", "monitor_of": "de1d7fdc5d12431cbc4d260218c9875d", "day": "2026-09-25"}} |
 | 1492 | 2026-09-25 01:12:19 | 080bdd3e | 003 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "003", "monitor_of": "de1d7fdc5d12431cbc4d260218c9875d", "day": "2026-09-25"}} |
 | 1493 | 2026-09-25 01:12:19 | 7591a1b5 | 004 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "004", "monitor_of": "de1d7fdc5d12431cbc4d260218c9875d", "day": "2026-09-25"}} |
@@ -402,3 +398,7 @@
 | 1884 | 2026-09-25 21:10:12 | b691ec23 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-09-25", "trigger": "blocked:gemini-flash"}} |
 | 1885 | 2026-09-25 21:10:12 | 8958c7c2 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-09-25", "trigger": "blocked:gemini-flash"}} |
 | 1886 | 2026-09-25 21:10:12 | 80e90b9b |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gpto |
+| 1887 | 2026-09-25 21:10:14 | 263c1d32 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1888 | 2026-09-25 21:10:15 | 263c1d32 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 1889 | 2026-09-25 21:10:16 | d0076ca3 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1890 | 2026-09-25 21:10:16 | d0076ca3 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
