@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1379 | 2026-09-24 23:40:14 | 50cb8d24 |  | job.dedup | svc-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
-| 1380 | 2026-09-24 23:40:35 | d332609a |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "gemini-flash", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
-| 1381 | 2026-09-24 23:40:35 | d332609a |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-l |
-| 1382 | 2026-09-24 23:47:35 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1383 | 2026-09-24 23:47:36 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 1384 | 2026-09-24 23:47:56 | 037afd02 |  | job.enqueued | owner | {"kind": "scout", "payload": {"t": 1790290076}} |
 | 1385 | 2026-09-24 23:47:57 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["111 passed in 17.05s"]} |
 | 1386 | 2026-09-24 23:47:57 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["111 passed in 16.38s"]} |
@@ -402,3 +397,8 @@
 | 1776 | 2026-09-25 12:24:03 | e354bd05 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 1777 | 2026-09-25 12:24:15 | 03fe2791 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "gemini-flash36", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
 | 1778 | 2026-09-25 12:24:15 | 03fe2791 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-l |
+| 1779 | 2026-09-25 13:23:58 | 0a541bde |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1780 | 2026-09-25 13:23:58 | 4f127831 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-25T14"}} |
+| 1781 | 2026-09-25 13:24:05 | e1e4c7f4 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1782 | 2026-09-25 13:24:05 | b7558c0f |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-25T14"}} |
+| 1783 | 2026-09-25 13:24:05 | e1e4c7f4 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
