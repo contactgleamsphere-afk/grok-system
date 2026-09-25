@@ -477,7 +477,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "csv-column-sum",
-    "notes": "tests 4/4: T1 PASS 22s [done] expect='X_OK' last='X_OK' | T2 PASS 47s [done] expect='60' last='RESULT: 60' | T3 PASS 51s [done] expect='22' last='RESULT: 22' | T4 PASS 35s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: T1 PASS 26s [done] expect='X_OK' last='RESULT: replied with X_OK' | T2 PASS 41s [done] expect='60' last='RESULT: summed amount column to 60' | T3 PASS 44s [done] expect='22' last='RESULT: summed amount column to 22' | T4 PASS 18s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -501,7 +501,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-24T00:58:20+00:00",
+    "updated": "2026-09-25T02:14:04+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\012-csv-column-sum"

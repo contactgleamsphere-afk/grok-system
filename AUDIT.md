@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1217 | 2026-09-24 03:36:10 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": false, "tail": ["1 failed, 48 passed in 10.64s"]} |
-| 1218 | 2026-09-24 03:36:10 |  |  | worker.blocked_by_tests | fast-LAPTOP-LRE6PSA8 | {"reason": "core/tests red on current code; refusing to process jobs until code changes"} |
-| 1219 | 2026-09-24 03:36:11 | 1f96bf25 | 026 | job.enqueued | owner | {"kind": "rebuild", "payload": {"bot_id": "026", "t": 1790217371}} |
-| 1220 | 2026-09-24 03:37:16 | c18703a7 | 026 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-120b", "sandbox": null, "rejected": "instructions ex |
 | 1221 | 2026-09-24 03:37:16 | c18703a7 | 026 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
 | 1222 | 2026-09-24 03:37:20 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 1223 | 2026-09-24 03:37:40 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["107 passed in 16.03s"]} |
@@ -402,3 +398,7 @@
 | 1614 | 2026-09-25 03:13:17 | 1952fb1c |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1615 | 2026-09-25 03:13:19 | 1952fb1c |  | factory.selfpatch | svc-LAPTOP-LRE6PSA8 | {"ok": false, "file": "tools/factory_pipeline.py", "lane": "gemini:gemini-flash-lite-latest", "branch": null, "pr": null, "reason": "envelop |
 | 1616 | 2026-09-25 03:13:19 | 1952fb1c |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 1617 | 2026-09-25 03:13:22 | 31459526 | 013 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1618 | 2026-09-25 03:14:04 | 2cb15941 | 012 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 26s [done] expect='X_OK' last='RESULT: replied with X_OK' \| T2 PASS 41s [done] expect='60' last='RESULT: summed amount  |
+| 1619 | 2026-09-25 03:14:04 | 2cb15941 | 012 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 26s [done] expect='X_OK' last='RESULT: replied with X_OK' \| T2 PASS 41s [done] expect='60' last='RESULT: summed amount  |
+| 1620 | 2026-09-25 03:14:04 | 2cb15941 | 012 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "012", "status": "active", "verified": "VERIFIED"}} |

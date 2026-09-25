@@ -72,3 +72,4 @@
 | 2026-09-25 03:04 | 008 word-frequency-bot | 4/4 | active→active | - |
 | 2026-09-25 03:08 | 009 line-dedupe-bot | 4/4 | active→active | - |
 | 2026-09-25 03:11 | 011 word-frequency-counter | 4/4 | active→active | - |
+| 2026-09-25 03:14 | 012 csv-column-sum | 4/4 | active→active | - |
