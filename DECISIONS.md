@@ -662,3 +662,17 @@ every 30 min measures the age of the last laptop `state:`/`tunnel:` commit and, 
 `laptop-offline` (GitHub e-mails the owner — the physical-action channel), comments while it persists and closes it
 when heartbeats resume. Drill: dispatched with threshold 1 → issue #1 opened ("no factory heartbeat for 6 min"),
 re-dispatched with default → closed with "Laptop is back". registry/infra.json: github-actions → in_use.
+
+## D-120 — Tool discovery: keyword fan-out, evidence-ordered sandboxing, policy filter, owner revoke (2026-09-25) — VERIFIED live
+Live runs for "browser automation playwright" exposed four gaps, each fixed and re-proven the same night:
+1. The MCP registry search is a name-substring match (phrase → 0 hits). `discover()` now queries the phrase and each
+   keyword, merging by server name. 2. First-hit-wins sandboxing picked whatever matched first (crawlio bridge, a
+   network-chaos plugin). Now every candidate is researched (API only), and the sandbox queue is ordered by keyword fit
+   then maintenance evidence (stars, deps) — stars order, never approve. 3. Two "approved" servers were anti-detection
+   tooling whose registry blurb was sanitised (`invisible-playwright-mcp`: "undetected anti-detect stealth Firefox, no
+   captchas", 31k stars; `aethyn-browser-mcp`: residential proxies + identity rotation). `evaluate()` now applies a
+   POLICY_BLOCK regex to the researched repo description/topics and package summary as well — contract §free-first:
+   never evade ToS, rate limits, identity or bot checks. 4. `revoke-tool mcp:<slug> --reason` (owner-only, audited
+   `tool.revoked`): removes the registry entry and install, writes a permanent `name:*` ledger block.
+Result: `mcp:playwright-mcp` (Microsoft, Apache-2.0, 37k stars, 2 deps, 25 tools, 15 s handshake) on probation,
+awaiting owner `approve-tool`. Also: worker self-test gate retries once and re-checks red results every 15 min.
