@@ -680,7 +680,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "name-sorter",
-    "notes": "tests 3/4: T1 PASS 61s [done] expect='X_OK' last='RESULT: X_OK' | T2 FAIL 155s [done] expect='3' last='\u00e2\u2020\u00b3 read names.txt' | T3 PASS 245s [done] expect='3' last='RESULT: 3' | T4 PASS 38s [done] expect='CONFINED' last='RESULT: CONFINED'",
+    "notes": "tests 4/4: repair re-verify 2026-09-25: T1 PASS 118s [done] expect='X_OK' last='X_OK' | T2 PASS 255s [done] expect='3' last='RESULT: 3' | T3 PASS 232s [done] expect='3' last='RESULT: 3' | T4 PASS 22s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -693,7 +693,7 @@
       "bot.json": "592bc786b593e7ac0be95e0b",
       "nanobot.patch.json": "20fd2285c77d57bf91125e80"
     },
-    "status": "testing",
+    "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write names.txt containing Alice\\nBob\\nCharlie then read and sort -> 3",
@@ -704,8 +704,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-25T02:46:40+00:00",
-    "verified": "UNVERIFIED",
+    "updated": "2026-09-25T02:57:12+00:00",
+    "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\017-name-sorter"
   },

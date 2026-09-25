@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1283 | 2026-09-24 04:24:32 | 21c6bb9d | 020 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 113s [done] expect='X_OK' last='X_OK' \| T2 PASS 128s [done] expect='DONE' last='DONE' \| T3 PASS 46s [done] expect='CON |
-| 1284 | 2026-09-24 04:24:32 | 21c6bb9d | 020 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "020", "status": "active", "verified": "VERIFIED"}} |
-| 1285 | 2026-09-24 04:26:12 |  |  | worker.restart | fast-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1286 | 2026-09-24 04:26:12 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1287 | 2026-09-24 04:26:31 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["109 passed in 16.20s"]} |
 | 1288 | 2026-09-24 04:26:31 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["109 passed in 14.63s"]} |
 | 1289 | 2026-09-24 04:32:21 | 40419dff |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1290 | 2026-09-24 04:32:21 | 86ba95ba |  | job.dedup | fast-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
@@ -402,3 +397,8 @@
 | 1680 | 2026-09-25 03:57:08 | 71d0bcfc |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 1681 | 2026-09-25 03:57:11 | 9b42f1aa |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1682 | 2026-09-25 03:57:11 | 9b42f1aa |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 1683 | 2026-09-25 03:57:12 | 9b60274b | 017 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
+| 1684 | 2026-09-25 03:57:12 | 9b60274b | 017 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 1685 | 2026-09-25 03:57:12 | 9b60274b | 017 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "017", "status": "active"}} |
+| 1686 | 2026-09-25 03:57:13 | 52fea279 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1687 | 2026-09-25 03:57:13 | 52fea279 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
