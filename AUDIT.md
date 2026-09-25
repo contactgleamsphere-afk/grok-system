@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1465 | 2026-09-25 00:46:52 | d6be18bd |  | job.enqueued | owner | {"kind": "tooldisc", "payload": {"need": "playwright browser", "max": 1, "day": "2026-09-25"}} |
-| 1466 | 2026-09-25 00:46:53 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1467 | 2026-09-25 00:46:55 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": false, "tail": ["........................"]} |
-| 1468 | 2026-09-25 00:46:55 |  |  | worker.blocked_by_tests | fast-LAPTOP-LRE6PSA8 | {"reason": "core/tests red on current code; refusing to process jobs until code changes"} |
 | 1469 | 2026-09-25 00:46:57 |  |  | worker.blocked_by_tests | svc-LAPTOP-LRE6PSA8 | {"reason": "core/tests red on current code; refusing to process jobs until code changes"} |
 | 1470 | 2026-09-25 01:01:19 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["114 passed in 16.94s"]} |
 | 1471 | 2026-09-25 01:01:19 | d6be18bd |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +398,7 @@
 | 1862 | 2026-09-25 21:00:44 | 4c6af4e8 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-09-25", "trigger": "blocked:gemini-flash36"}} |
 | 1863 | 2026-09-25 21:00:44 | 5245a37e |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-09-25", "trigger": "blocked:gemini-flash36"}} |
 | 1864 | 2026-09-25 21:00:44 | 865a2980 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptos |
+| 1865 | 2026-09-25 21:00:47 | 00afddce |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1866 | 2026-09-25 21:00:48 | 00afddce |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 1867 | 2026-09-25 21:00:48 | 5146a28d |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1868 | 2026-09-25 21:00:48 | 5146a28d |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
