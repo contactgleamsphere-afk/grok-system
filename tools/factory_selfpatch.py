@@ -108,6 +108,13 @@ def _git(args: list[str], cwd: pathlib.Path, timeout: int = 120) -> subprocess.C
 
 def _token() -> str | None:
     if os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN"): return os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
+    if os.name == "nt":   # same source repo-sync pushes with: the owner's User-scope GITHUB_TOKEN (not visible in an SSH session's env)
+        try:
+            r = subprocess.run(["powershell", "-NoProfile", "-Command", "[Environment]::GetEnvironmentVariable('GITHUB_TOKEN','User')"],
+                               capture_output=True, text=True, timeout=20)
+            if r.stdout.strip(): return r.stdout.strip()
+        except Exception:
+            pass
     url = _git(["config", "--get", "remote.origin.url"], ROOT).stdout.strip()
     m = re.match(r"https://[^:]+:([^@]+)@github\.com/", url)
     if m: return m.group(1)
@@ -187,8 +194,10 @@ def _pytest(wt: pathlib.Path) -> tuple[bool, str]:
 
 
 def _push(wt: pathlib.Path, branch: str) -> tuple[bool, str]:
-    r = _git(["push", "-q", "-f", "origin", f"HEAD:refs/heads/{branch}"], wt, timeout=180)
-    return r.returncode == 0, (r.stderr or r.stdout)[-200:]
+    tok = _token()
+    url = f"https://x-access-token:{tok}@github.com/{REPO}.git" if tok else "origin"
+    r = _git(["-c", "credential.helper=", "push", "-q", "-f", url, f"HEAD:refs/heads/{branch}"], wt, timeout=180)
+    return r.returncode == 0, (r.stderr or r.stdout)[-200:].replace(tok or "\0", "***")
 
 
 def load_proposal(date: str, index: int) -> tuple[dict, str]:
