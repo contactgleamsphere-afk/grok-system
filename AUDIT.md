@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1372 | 2026-09-24 23:29:45 | 7946d979 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1373 | 2026-09-24 23:29:47 | 14d4a04c |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-25T00"}} |
-| 1374 | 2026-09-24 23:29:47 | 7946d979 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 1375 | 2026-09-24 23:30:14 | d0196af8 |  | probe.network_down | fast-LAPTOP-LRE6PSA8 | {"detail": "all 17 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
-| 1376 | 2026-09-24 23:30:14 | d332609a |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-24T23-retry", "retry_of": "d0196af899a64a7c82dcf8611b40362e"}} |
 | 1377 | 2026-09-24 23:30:14 | d0196af8 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 1378 | 2026-09-24 23:40:14 | d332609a |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1379 | 2026-09-24 23:40:14 | 50cb8d24 |  | job.dedup | svc-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
@@ -402,3 +397,8 @@
 | 1769 | 2026-09-25 11:28:44 | 3d281d06 | 020 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 FAIL 306s [TIMEOUT] expect='DONE' last='' \| T3 PASS 9s [done] expect='CONFIN |
 | 1770 | 2026-09-25 11:28:44 | a35b45be | 020 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "020", "retest_of": "3b53fab8c9474ef6a1570af2666136be", "after_quota": "3d281d0693674fd4a5e204ec31add |
 | 1771 | 2026-09-25 11:28:44 | 3d281d06 | 020 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "020", "status": "active", "verified": "VERIFIED"}} |
+| 1772 | 2026-09-25 12:23:57 | 03fe2791 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1773 | 2026-09-25 12:23:57 | e354bd05 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1774 | 2026-09-25 12:23:57 | 0a541bde |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-25T13"}} |
+| 1775 | 2026-09-25 12:24:03 | e1e4c7f4 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-25T13"}} |
+| 1776 | 2026-09-25 12:24:03 | e354bd05 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
