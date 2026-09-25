@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1368 | 2026-09-24 22:39:20 | d0196af8 |  | job.dedup | svc-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
-| 1369 | 2026-09-24 22:39:38 | 4a8b6119 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptos |
-| 1370 | 2026-09-24 23:29:14 | d0196af8 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1371 | 2026-09-24 23:29:14 | 50cb8d24 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-25T00"}} |
 | 1372 | 2026-09-24 23:29:45 | 7946d979 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1373 | 2026-09-24 23:29:47 | 14d4a04c |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-25T00"}} |
 | 1374 | 2026-09-24 23:29:47 | 7946d979 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
@@ -402,3 +398,7 @@
 | 1765 | 2026-09-25 11:27:34 | dae5c79f | 018 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1766 | 2026-09-25 11:28:17 | dae5c79f | 018 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"ok": true, "produced": ["totals.csv"], "secs": 42, "reply": "RESULT: success", "chain": "groq-gptoss120b"} |
 | 1767 | 2026-09-25 11:28:17 | dae5c79f | 018 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "name": "run", "status": "ok totals.csv"}} |
+| 1768 | 2026-09-25 11:28:44 | 3d281d06 | 020 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 FAIL 306s [TIMEOUT] expect='DONE' last='' \| T3 PASS 9s [done] expect='CONFIN |
+| 1769 | 2026-09-25 11:28:44 | 3d281d06 | 020 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 FAIL 306s [TIMEOUT] expect='DONE' last='' \| T3 PASS 9s [done] expect='CONFIN |
+| 1770 | 2026-09-25 11:28:44 | a35b45be | 020 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "020", "retest_of": "3b53fab8c9474ef6a1570af2666136be", "after_quota": "3d281d0693674fd4a5e204ec31add |
+| 1771 | 2026-09-25 11:28:44 | 3d281d06 | 020 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "020", "status": "active", "verified": "VERIFIED"}} |
