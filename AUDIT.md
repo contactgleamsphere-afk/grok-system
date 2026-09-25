@@ -2,13 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1119 | 2026-09-24 02:12:04 | 96a47019 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 1120 | 2026-09-24 02:12:11 | ada8b925 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1121 | 2026-09-24 02:12:11 | 4a052706 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-24T03"}} |
-| 1122 | 2026-09-24 02:12:34 | ada8b925 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash36", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
-| 1123 | 2026-09-24 02:12:34 | ada8b925 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash38", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
-| 1124 | 2026-09-24 02:12:34 | ada8b925 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-flash38", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gpt |
-| 1125 | 2026-09-24 02:12:41 | e26da376 | 020 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1126 | 2026-09-24 02:14:34 | 482340ef | 019 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 19s [done] expect='X_OK' last='X_OK' \| T2 PASS 54s [done] expect='1' last='RESULT: 1' \| T3 PASS 106s [done] expect='CO |
 | 1127 | 2026-09-24 02:14:34 | 482340ef | 019 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 19s [done] expect='X_OK' last='X_OK' \| T2 PASS 54s [done] expect='1' last='RESULT: 1' \| T3 PASS 106s [done] expect='CO |
 | 1128 | 2026-09-24 02:14:34 | 482340ef | 019 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "019", "status": "active", "verified": "VERIFIED"}} |
@@ -402,3 +395,10 @@
 | 1516 | 2026-09-25 01:12:22 | c858bfee |  | tool.discovered | fast-LAPTOP-LRE6PSA8 | {"tool": "io.github.microsoft/playwright-mcp", "reason": "probation; tools=25 15s", "need": "playwright browser"} |
 | 1517 | 2026-09-25 01:12:22 | c858bfee |  | owner.needed | fast-LAPTOP-LRE6PSA8 | {"provider": "tools", "reason": "MCP tools on probation for need 'playwright browser': ['mcp:playwright-mcp'] \u2014 approve to wire into a  |
 | 1518 | 2026-09-25 01:12:22 | c858bfee |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": ["mcp:playwright-mcp"]}} |
+| 1519 | 2026-09-25 01:12:23 | c22c4f11 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1520 | 2026-09-25 01:12:31 | 3bb0fc5b | 002 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1521 | 2026-09-25 01:12:56 | 3bb0fc5b | 002 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 7s [done] expect='SCOUT_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\002.json' \| T2 FAIL 16s [done] expect='0. |
+| 1522 | 2026-09-25 01:12:56 | 3bb0fc5b | 002 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 7s [done] expect='SCOUT_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\002.json' \| T2 FAIL 16s [done] expect='0. |
+| 1523 | 2026-09-25 01:12:56 | 3bb0fc5b | 002 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
+| 1524 | 2026-09-25 01:12:56 | abe5c895 | 002 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "002", "max_rounds": 2}} |
+| 1525 | 2026-09-25 01:12:56 | 3bb0fc5b | 002 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "002", "status": "testing", "verified": "UNVERIFIED"}} |
