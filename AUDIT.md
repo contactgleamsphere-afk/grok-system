@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1331 | 2026-09-24 22:29:16 | 4a8b6119 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-24T05-retry", "retry_of": "86ba95baf63f4a388b1baef16836aa7d"}} |
-| 1332 | 2026-09-24 22:29:16 | 86ba95ba |  | job.orphaned_result | fast-LAPTOP-LRE6PSA8 | {"summary": "{'probed': 19, 'network_down': True, 'detail': 'all 17 remote lanes across 3 providers errored in one sweep -> local network ou |
-| 1333 | 2026-09-24 22:29:25 | 86ba95ba |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "gemini-gemini-flash-lite-latest", "outcome": "error", "before": "INFERRED", "after": "BLOCKED", "detail": "URLError"} |
 | 1334 | 2026-09-24 22:29:25 | 86ba95ba |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "or-ling-30-flash-fin", "outcome": "error", "before": "INFERRED", "after": "BLOCKED", "detail": "URLError"} |
 | 1335 | 2026-09-24 22:29:25 | 86ba95ba |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "or-ling-30-flash-sante", "outcome": "error", "before": "INFERRED", "after": "BLOCKED", "detail": "URLError"} |
 | 1336 | 2026-09-24 22:29:25 | 2107158e |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "groq", "day": "2026-09-24", "trigger": "blocked:gemini-gemini-flash-lite-latest,or-ling-30-fla |
@@ -402,3 +399,6 @@
 | 1728 | 2026-09-25 04:10:38 | 1b095896 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1729 | 2026-09-25 04:11:09 | 1b095896 |  | factory.canary | svc-LAPTOP-LRE6PSA8 | {"verdict": "pass", "lane": "groq:openai/gpt-oss-20b", "chain": ["gemini-gemini-flash-lite-latest", "gemini-lite31", "or-nex-n25-pro", "or-l |
 | 1730 | 2026-09-25 04:11:09 | 1b095896 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"pass": 2, "total": 2}} |
+| 1731 | 2026-09-25 04:55:18 | 509087ef |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1732 | 2026-09-25 04:55:18 | 321d882a |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-25T05"}} |
+| 1733 | 2026-09-25 04:55:28 | 509087ef |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss1 |
