@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1442 | 2026-09-25 00:29:16 | 50cb8d24 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1443 | 2026-09-25 00:29:16 | e7744308 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-25T01"}} |
 | 1444 | 2026-09-25 00:29:51 | 50cb8d24 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-l |
 | 1445 | 2026-09-25 00:29:56 | 14d4a04c |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1446 | 2026-09-25 00:29:56 | 190e3258 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-25T01"}} |
@@ -402,3 +400,5 @@
 | 1839 | 2026-09-25 20:10:30 | 2bbe411d |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 1840 | 2026-09-25 20:10:34 | a7cf454b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1841 | 2026-09-25 20:10:34 | a7cf454b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 1842 | 2026-09-25 20:10:38 | e9039318 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1843 | 2026-09-25 20:10:38 | e9039318 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
