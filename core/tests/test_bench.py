@@ -1151,6 +1151,9 @@ def test_d120_tooldisc_multiword_need_queries_each_keyword():
     v3, why3 = td.evaluate({"name": "io.github.x/invisible-playwright-mcp", "title": "", "description": "AI browser agent: browses, clicks, types.", "package": {"registryType": "pypi"}},
                            {"licence": "MIT", "released": "2026-09-01T00:00:00Z", "deps": 3, "blurb": "self-hosted MCP server on undetected anti-detect stealth Firefox, no captchas"})
     assert v3 == "rejected" and any("policy" in w for w in why3)
+    v4, _ = td.evaluate({"name": "io.github.x/aethyn-browser-mcp", "title": "", "description": "Local Playwright browser through residential proxies — agent picks country + sticky identity", "package": {"registryType": "npm"}},
+                        {"licence": "MIT", "released": "2026-09-01T00:00:00Z", "deps": 3})
+    assert v4 == "rejected"                                                # identity rotation / proxy evasion
 
 
 def test_d120_revoke_tool_is_permanent(tmp_path, monkeypatch):

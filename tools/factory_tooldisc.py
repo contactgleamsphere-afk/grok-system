@@ -21,7 +21,8 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "core"))
 from factory.registry import Registry, ToolEntry   # noqa: E402
 
 MCP_REG = "https://registry.modelcontextprotocol.io/v0.1/servers"
-POLICY_BLOCK = re.compile(r"stealth|anti-?detect|undetect|invisible to anti|bypass|no captchas|without captchas|captcha[- ]?solv|fingerprint spoof|evade|evasion|not to be detected", re.I)
+POLICY_BLOCK = re.compile(r"stealth|anti-?detect|undetect|invisible to anti|bypass|no captchas|without captchas|captcha[- ]?solv|fingerprint spoof"
+                          r"|evade|evasion|not to be detected|residential prox|rotat\w* (ip|identit|proxy)|new identit|sticky identit|exit ip", re.I)
 STOPWORDS = {"the", "and", "for", "with", "server", "mcp", "tool", "tools", "automation", "access", "via", "using", "from", "into"}
 PERMISSIVE = ("MIT", "APACHE", "BSD", "ISC", "MPL", "UNLICENSE", "0BSD", "CC0")
 RECENT_DAYS = 365
@@ -385,7 +386,7 @@ def run(need: str, max_new: int = 2, dry_run: bool = False, fetch=None, sandboxe
         v, why = evaluate(c, facts, now)
         if v != "keep": verdicts.append((c, "rejected", "; ".join(why))); continue
         t = f"{c.get('name', '')} {c.get('title', '')} {c.get('description', '')}".lower()
-        keeps.append((-sum(w in t for w in words), -(facts.get("stars") or 0), facts.get("deps") or 0, c, facts))
+        keeps.append((-min(1, sum(w in t for w in words)), -(facts.get("stars") or 0), facts.get("deps") or 0, c, facts))   # any keyword fit, then evidence
     keeps.sort(key=lambda k: k[:3])
     for _h, _s, _d, c, facts in keeps:
         if len(added) >= max_new or attempts >= 2 * max_new or time.time() > t_end:
