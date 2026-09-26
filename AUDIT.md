@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1695 | 2026-09-25 04:01:20 | 13956caf | 019 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 36s [done] expect='X_OK' last='X_OK' \| T2 PASS 99s [done] expect='1' last='RESULT: 1' \| T3 PASS 102s [done] expect='CO |
-| 1696 | 2026-09-25 04:01:20 | 13956caf | 019 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "019", "status": "active", "verified": "VERIFIED"}} |
-| 1697 | 2026-09-25 04:01:23 | 72522ac3 | 021 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1698 | 2026-09-25 04:03:07 | 3b53fab8 | 020 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 19s [done] expect='X_OK' last='X_OK' \| T2 FAIL 305s [TIMEOUT] expect='DONE' last='' \| T3 PASS 19s [done] expect='CONFI |
 | 1699 | 2026-09-25 04:03:07 | 3b53fab8 | 020 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 19s [done] expect='X_OK' last='X_OK' \| T2 FAIL 305s [TIMEOUT] expect='DONE' last='' \| T3 PASS 19s [done] expect='CONFI |
 | 1700 | 2026-09-25 04:03:07 | 3d281d06 | 020 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "020", "retest_of": "3b53fab8c9474ef6a1570af2666136be", "after_quota": "3b53fab8c9474ef6a1570af266613 |
 | 1701 | 2026-09-25 04:03:07 | 3b53fab8 | 020 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "020", "status": "active", "verified": "VERIFIED"}} |
@@ -402,3 +398,7 @@
 | 2092 | 2026-09-26 01:55:52 | 1262b64a | 022 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
 | 2093 | 2026-09-26 01:55:52 | 1262b64a | 022 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 2094 | 2026-09-26 01:55:52 | 1262b64a | 022 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "022", "status": "active"}} |
+| 2095 | 2026-09-26 01:55:55 | 1a04d2e0 | 023 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2096 | 2026-09-26 01:57:23 | 1a04d2e0 | 023 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
+| 2097 | 2026-09-26 01:57:23 | 1a04d2e0 | 023 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 2098 | 2026-09-26 01:57:23 | 1a04d2e0 | 023 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "023", "status": "active"}} |
