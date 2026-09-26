@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1600 | 2026-09-25 03:05:11 | 0fe79cdf | 003 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
-| 1601 | 2026-09-25 03:05:11 | 0fe79cdf | 003 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "003", "status": "active"}} |
-| 1602 | 2026-09-25 03:05:21 | 29346aa8 | 004 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1603 | 2026-09-25 03:08:35 | bd7cfb9e | 009 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 35s [done] expect='X_OK' last='RESULT: X_OK' \| T2 PASS 85s [done] expect='3' last='RESULT: 3' \| T3 PASS 66s [done] exp |
 | 1604 | 2026-09-25 03:08:35 | bd7cfb9e | 009 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 35s [done] expect='X_OK' last='RESULT: X_OK' \| T2 PASS 85s [done] expect='3' last='RESULT: 3' \| T3 PASS 66s [done] exp |
 | 1605 | 2026-09-25 03:08:35 | bd7cfb9e | 009 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "009", "status": "active", "verified": "VERIFIED"}} |
 | 1606 | 2026-09-25 03:08:39 | 8dac341b | 011 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +398,7 @@
 | 1997 | 2026-09-26 01:29:17 | f0215dbb | 004 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
 | 1998 | 2026-09-26 01:29:17 | f0215dbb | 004 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 1999 | 2026-09-26 01:29:17 | f0215dbb | 004 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "004", "status": "active"}} |
+| 2000 | 2026-09-26 01:29:20 | 6c7820ef | 008 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2001 | 2026-09-26 01:30:26 | 5a54744d | 007 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 50s [done] expect='X_OK' last='X_OK' \| T2 PASS 148s [done] expect='2' last='RESULT: Extracted 2 TODO/FIXME items into t |
+| 2002 | 2026-09-26 01:30:26 | 5a54744d | 007 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 50s [done] expect='X_OK' last='X_OK' \| T2 PASS 148s [done] expect='2' last='RESULT: Extracted 2 TODO/FIXME items into t |
+| 2003 | 2026-09-26 01:30:26 | 5a54744d | 007 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "007", "status": "active", "verified": "VERIFIED"}} |

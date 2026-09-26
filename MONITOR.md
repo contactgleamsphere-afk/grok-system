@@ -98,3 +98,4 @@
 | 2026-09-26 01:16 | 004 changelog-writer | 1/4 | active→testing | - |
 | 2026-09-26 01:19 | 005 csv-quality-auditor | 4/4 | active→active | - |
 | 2026-09-26 01:23 | 006 json-to-markdown-table | 4/4 | active→active | - |
+| 2026-09-26 01:30 | 007 todo-extractor | 4/4 | active→active | - |
