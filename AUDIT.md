@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1691 | 2026-09-25 03:57:18 | d540257b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 1692 | 2026-09-25 03:57:21 | 13956caf | 019 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1693 | 2026-09-25 03:57:21 | 3b53fab8 | 020 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1694 | 2026-09-25 04:01:20 | 13956caf | 019 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 36s [done] expect='X_OK' last='X_OK' \| T2 PASS 99s [done] expect='1' last='RESULT: 1' \| T3 PASS 102s [done] expect='CO |
 | 1695 | 2026-09-25 04:01:20 | 13956caf | 019 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 36s [done] expect='X_OK' last='X_OK' \| T2 PASS 99s [done] expect='1' last='RESULT: 1' \| T3 PASS 102s [done] expect='CO |
 | 1696 | 2026-09-25 04:01:20 | 13956caf | 019 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "019", "status": "active", "verified": "VERIFIED"}} |
 | 1697 | 2026-09-25 04:01:23 | 72522ac3 | 021 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +398,7 @@
 | 2088 | 2026-09-26 01:53:26 | 8fecfd97 | 020 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
 | 2089 | 2026-09-26 01:53:26 | 8fecfd97 | 020 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 2090 | 2026-09-26 01:53:26 | 8fecfd97 | 020 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "020", "status": "active"}} |
+| 2091 | 2026-09-26 01:53:30 | 1262b64a | 022 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2092 | 2026-09-26 01:55:52 | 1262b64a | 022 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
+| 2093 | 2026-09-26 01:55:52 | 1262b64a | 022 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 2094 | 2026-09-26 01:55:52 | 1262b64a | 022 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "022", "status": "active"}} |
