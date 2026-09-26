@@ -6,7 +6,7 @@
       "primary": "local3b"
     },
     "name": "master",
-    "notes": "tests 9/9: T1 PASS 15s [done] liveness expect='MASTER_OK' cmd=True | T2 PASS 16s [done] report expect='FACTORY' cmd=True | T3 PASS 17s [done] list expect='002' cmd=True | T4 PASS 16s [done] lanes expect='LANES' cmd=True | T5 PASS 12s [done] confined expect='CONFINED' cmd=True | T6 PASS 14s [done] schedules expect='* *' cmd=True | T7 PASS 16s [done] tools expect='mcp-sqlite3' cmd=True | T8 PASS 17s",
+    "notes": "tests 9/10: T1 PASS 23s [done] liveness expect='MASTER_OK' cmd=True | T2 PASS 22s [done] report expect='FACTORY' cmd=True | T3 PASS 21s [done] list expect='002' cmd=True | T4 PASS 18s [done] lanes expect='LANES' cmd=True | T5 PASS 15s [done] confined expect='CONFINED' cmd=True | T6 PASS 17s [done] schedules expect='* *' cmd=True | T7 PASS 32s [done] tools expect='mcp-sqlite3' cmd=True | T8 PASS 27",
     "permissions": [
       "fs:read",
       "fs:write",
@@ -21,7 +21,7 @@
       "config.json#tools.exec": "04a5f6b63ecbb58f6323d65e",
       "tools/factory.py": "5265cccd84e7c9759bed0a3e"
     },
-    "status": "active",
+    "status": "testing",
     "tests": [
       "Reply with exactly: MASTER_OK -> MASTER_OK",
       "How is the factory doing? Use the factory report. -> FACTORY",
@@ -35,8 +35,8 @@
       "web_search",
       "web_fetch"
     ],
-    "updated": "2026-09-25T00:14:41+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-09-26T00:16:07+00:00",
+    "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\workspace"
   },
