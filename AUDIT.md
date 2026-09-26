@@ -2,12 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1575 | 2026-09-25 02:57:44 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["118 passed in 30.50s"]} |
-| 1576 | 2026-09-25 02:57:44 | 0fe79cdf | 003 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 2} |
-| 1577 | 2026-09-25 02:57:45 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["118 passed in 30.82s"]} |
-| 1578 | 2026-09-25 02:57:45 | 738a787a |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1579 | 2026-09-25 02:57:45 | 738a787a |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
-| 1580 | 2026-09-25 02:57:49 | 55ab81e6 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1581 | 2026-09-25 02:57:49 | 55ab81e6 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 1582 | 2026-09-25 02:57:52 | c7800973 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1583 | 2026-09-25 02:57:52 | c7800973 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
@@ -402,3 +396,9 @@
 | 1972 | 2026-09-26 01:16:07 | bfe3fe75 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 1973 | 2026-09-26 01:16:07 | 26dc19fc | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "53c3678652324baaa481371161004062", "retry_of": "bfe3fe75b6174004983684a9df120ba |
 | 1974 | 2026-09-26 01:16:07 | bfe3fe75 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 1975 | 2026-09-26 01:16:11 | 0458f029 | 002 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1976 | 2026-09-26 01:16:13 | 59b0d294 | 004 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 26s [done] expect='CHANGELOG_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\004.json' \| T2 FAIL 26s [done] expec |
+| 1977 | 2026-09-26 01:16:13 | 59b0d294 | 004 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 26s [done] expect='CHANGELOG_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\004.json' \| T2 FAIL 26s [done] expec |
+| 1978 | 2026-09-26 01:16:13 | 59b0d294 | 004 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
+| 1979 | 2026-09-26 01:16:13 | f0215dbb | 004 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "004", "max_rounds": 2}} |
+| 1980 | 2026-09-26 01:16:13 | 59b0d294 | 004 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "004", "status": "testing", "verified": "UNVERIFIED"}} |
