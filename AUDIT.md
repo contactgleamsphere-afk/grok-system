@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1625 | 2026-09-25 03:30:40 | 31459526 | 013 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 173s [done] expect='X_OK' last='X_OK' \| T2 FAIL 306s [TIMEOUT] expect='1' last='' \| T3 FAIL 310s [TIMEOUT] expect='0'  |
-| 1626 | 2026-09-25 03:30:40 | c3cae46b | 013 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "013", "retest_of": "3145952631084d619cea6973dfe45bb6", "after_quota": "3145952631084d619cea6973dfe45 |
 | 1627 | 2026-09-25 03:30:40 | 31459526 | 013 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "013", "status": "active", "verified": "VERIFIED"}} |
 | 1628 | 2026-09-25 03:30:44 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
 | 1629 | 2026-09-25 03:31:19 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["118 passed in 29.35s"]} |
@@ -402,3 +400,5 @@
 | 2022 | 2026-09-26 01:38:40 | 6c7820ef | 008 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 52s [done] expect='X_OK' last='X_OK' \| T2 PASS 211s [done] expect='apple' last='RESULT: apple' \| T3 PASS 208s [done] e |
 | 2023 | 2026-09-26 01:38:40 | 6c7820ef | 008 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 52s [done] expect='X_OK' last='X_OK' \| T2 PASS 211s [done] expect='apple' last='RESULT: apple' \| T3 PASS 208s [done] e |
 | 2024 | 2026-09-26 01:38:40 | 6c7820ef | 008 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "008", "status": "active", "verified": "VERIFIED"}} |
+| 2025 | 2026-09-26 01:38:43 | f0a5d1b8 | 014 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2026 | 2026-09-26 01:39:16 | 476304a5 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptos |
