@@ -2,7 +2,7 @@
 
 | id | name | status | verified | chain | tools | last test |
 |---|---|---|---|---|---|---|
-| 001 | master | testing | UNVERIFIED | local3b | exec, read_file, write_file, web_search, web_fetch | tests 9/10: T1 PASS 23s [done] liveness expect='MASTER_OK' cmd=True | T2 PASS 22 |
+| 001 | master | testing | UNVERIFIED | local3b | exec, read_file, write_file, web_search, web_fetch | tests 9/10: T1 PASS 14s [done] liveness expect='MASTER_OK' cmd=True | T2 PASS 18 |
 | 002 | research-scout | testing | UNVERIFIED | groq-gptoss20b > gemini-lite > gemini-flash > gemini-flash38 > or-deepseek > gemini-lite31 > groq-qwen27b > local4b | web_search, web_fetch, read_file | tests 1/2: T1 PASS 21s [done] expect='SCOUT_OK' last='SCOUT_OK' | T2 FAIL 23s [d |
 | 003 | code-smith | active | VERIFIED | groq-gptoss120b > gemini-flash > gemini-flash38 > groq-gptoss20b > gemini-lite > local4b | write_file, read_file, exec | tests 4/4: repair re-verify 2026-09-26: T1 PASS 39s [done] expect='SMITH_OK' las |
 | 004 | changelog-writer | active | VERIFIED | groq-gptoss120b > gemini-flash > gemini-flash38 > groq-gptoss20b > gemini-lite > local4b | read_file, write_file | tests 4/4: repair re-verify 2026-09-26: T1 PASS 39s [done] expect='CHANGELOG_OK' |
