@@ -820,6 +820,11 @@
     "cost_per_1k": 0.0,
     "id": "or-qwen27b",
     "limits": {
+      "bench_last_inconclusive": {
+        "at": "2026-09-26T01:59:53",
+        "quota": 4,
+        "total": 4
+      },
       "health": {
         "failures": 0,
         "last_outcome": "ok",
@@ -838,7 +843,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-26T00:39:16+00:00",
+    "updated": "2026-09-26T00:59:53+00:00",
     "verified": "VERIFIED"
   },
   "ovh-gptoss20b": {

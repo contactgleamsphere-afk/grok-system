@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1703 | 2026-09-25 04:03:26 | 72522ac3 | 021 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 31s [done] expect='X_OK' last='X_OK' \| T2 PASS 46s [done] expect='2' last='2' \| T3 FAIL 6s [done] expect='1' last='Usi |
-| 1704 | 2026-09-25 04:03:26 | 72522ac3 | 021 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 31s [done] expect='X_OK' last='X_OK' \| T2 PASS 46s [done] expect='2' last='2' \| T3 FAIL 6s [done] expect='1' last='Usi |
-| 1705 | 2026-09-25 04:03:26 | d62f34ea | 021 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "021", "retest_of": "72522ac3aab24ff0bee10f6aec1dbe28", "after_quota": "72522ac3aab24ff0bee10f6aec1db |
 | 1706 | 2026-09-25 04:03:26 | 72522ac3 | 021 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "021", "status": "active", "verified": "VERIFIED"}} |
 | 1707 | 2026-09-25 04:03:28 | 35e53778 | 023 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1708 | 2026-09-25 04:08:08 | 35e53778 | 023 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 21s [done] expect='X_OK' last='X_OK' \| T2 PASS 86s [done] expect='36.0' last='RESULT: 36.0' \| T3 PASS 127s [done] expe |
@@ -402,3 +399,6 @@
 | 2100 | 2026-09-26 01:57:30 | 4207163b | 027 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "self-review-bot", "tools": ["read_file", "write_file", "web_search", "web_fetch"], "permissions": ["fs:read", "fs:write", "net:sea |
 | 2101 | 2026-09-26 01:58:12 | 4207163b | 027 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 14s [done] expect='2' last='RESULT: 2' \| T3 PASS 13s [done] expect='CON |
 | 2102 | 2026-09-26 01:58:12 | 4207163b | 027 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "027", "name": "self-review-bot", "pass": 3, "total": 3, "status": "active", "verified": "VERIFIED"}} |
+| 2103 | 2026-09-26 01:58:15 | 6e64545f |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2104 | 2026-09-26 01:59:53 | 6e64545f |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-qwen27b", "result": "2/4", "quota": 2, "secs": 96} |
+| 2105 | 2026-09-26 01:59:53 | 6e64545f |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["or-qwen27b", "2/4 q2"]]}} |
