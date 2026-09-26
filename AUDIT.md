@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1608 | 2026-09-25 03:11:49 | 8dac341b | 011 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 19s [done] expect='X_OK' last='X_OK' \| T2 PASS 69s [done] expect='2' last='RESULT: 2' \| T3 PASS 73s [done] expect='3'  |
-| 1609 | 2026-09-25 03:11:49 | 8dac341b | 011 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "011", "status": "active", "verified": "VERIFIED"}} |
-| 1610 | 2026-09-25 03:11:52 | 2cb15941 | 012 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1611 | 2026-09-25 03:13:14 | 29346aa8 | 004 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
 | 1612 | 2026-09-25 03:13:14 | 29346aa8 | 004 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 1613 | 2026-09-25 03:13:14 | 29346aa8 | 004 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "004", "status": "active"}} |
 | 1614 | 2026-09-25 03:13:17 | 1952fb1c |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +398,7 @@
 | 2005 | 2026-09-26 01:33:00 | 7ac8fd19 | 009 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 29s [done] expect='3' last='RESULT: Wrote lines.txt (5 lines), deduped t |
 | 2006 | 2026-09-26 01:33:00 | 7ac8fd19 | 009 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 29s [done] expect='3' last='RESULT: Wrote lines.txt (5 lines), deduped t |
 | 2007 | 2026-09-26 01:33:00 | 7ac8fd19 | 009 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "009", "status": "active", "verified": "VERIFIED"}} |
+| 2008 | 2026-09-26 01:33:06 | 0ec08f9d | 011 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2009 | 2026-09-26 01:34:53 | 0ec08f9d | 011 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 19s [done] expect='X_OK' last='X_OK' \| T2 PASS 38s [done] expect='2' last='2' \| T3 PASS 24s [done] expect='3' last='3' |
+| 2010 | 2026-09-26 01:34:53 | 0ec08f9d | 011 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 19s [done] expect='X_OK' last='X_OK' \| T2 PASS 38s [done] expect='2' last='2' \| T3 PASS 24s [done] expect='3' last='3' |
+| 2011 | 2026-09-26 01:34:53 | 0ec08f9d | 011 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "011", "status": "active", "verified": "VERIFIED"}} |
