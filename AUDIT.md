@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1581 | 2026-09-25 02:57:49 | 55ab81e6 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 1582 | 2026-09-25 02:57:52 | c7800973 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1583 | 2026-09-25 02:57:52 | c7800973 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 1584 | 2026-09-25 02:57:56 | cbe38d31 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1585 | 2026-09-25 02:57:56 | cbe38d31 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 1586 | 2026-09-25 02:57:59 | 99ef519c |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +399,6 @@
 | 1978 | 2026-09-26 01:16:13 | 59b0d294 | 004 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 1979 | 2026-09-26 01:16:13 | f0215dbb | 004 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "004", "max_rounds": 2}} |
 | 1980 | 2026-09-26 01:16:13 | 59b0d294 | 004 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "004", "status": "testing", "verified": "UNVERIFIED"}} |
+| 1981 | 2026-09-26 01:16:18 | 767f285f | 005 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1982 | 2026-09-26 01:16:46 | 0458f029 | 002 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-120b", "sandbox": null, "rejected": ["fallback 'or-d |
+| 1983 | 2026-09-26 01:16:46 | 0458f029 | 002 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
