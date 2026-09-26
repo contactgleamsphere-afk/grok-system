@@ -2,13 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1522 | 2026-09-25 01:12:56 | 3bb0fc5b | 002 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 7s [done] expect='SCOUT_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\002.json' \| T2 FAIL 16s [done] expect='0. |
-| 1523 | 2026-09-25 01:12:56 | 3bb0fc5b | 002 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 1524 | 2026-09-25 01:12:56 | abe5c895 | 002 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "002", "max_rounds": 2}} |
-| 1525 | 2026-09-25 01:12:56 | 3bb0fc5b | 002 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "002", "status": "testing", "verified": "UNVERIFIED"}} |
-| 1526 | 2026-09-25 01:13:04 | 080bdd3e | 003 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1527 | 2026-09-25 01:13:53 | 080bdd3e | 003 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 7s [done] expect='SMITH_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\003.json' \| T2 FAIL 16s [done] expect='23 |
-| 1528 | 2026-09-25 01:13:54 | 080bdd3e | 003 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 7s [done] expect='SMITH_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\003.json' \| T2 FAIL 16s [done] expect='23 |
 | 1529 | 2026-09-25 01:13:54 | 080bdd3e | 003 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 1530 | 2026-09-25 01:13:54 | 0fe79cdf | 003 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "003", "max_rounds": 2}} |
 | 1531 | 2026-09-25 01:13:54 | 080bdd3e | 003 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "003", "status": "testing", "verified": "UNVERIFIED"}} |
@@ -402,3 +395,10 @@
 | 1919 | 2026-09-26 01:00:07 | 1a1d091d |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1920 | 2026-09-26 01:00:07 | 268e463f |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-26T02"}} |
 | 1921 | 2026-09-26 01:00:07 | 1a1d091d |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 1922 | 2026-09-26 01:12:13 | 463bbc9b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1923 | 2026-09-26 01:12:13 | 463bbc9b |  | audit.verified | fast-LAPTOP-LRE6PSA8 | {"rows": 1921, "hashed": 1169, "first_bad": null} |
+| 1924 | 2026-09-26 01:12:13 | c632d578 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "report", "payload": {"day": "2026-09-27"}} |
+| 1925 | 2026-09-26 01:12:13 | 6e64545f |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "bench", "payload": {"stale_only": true, "max": 2, "day": "2026-09-26"}} |
+| 1926 | 2026-09-26 01:12:13 | 15dcb4d1 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "canary", "payload": {"day": "2026-09-26"}} |
+| 1927 | 2026-09-26 01:12:13 | 53c36786 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "monitor", "payload": {"only": null, "day": "2026-09-26"}} |
+| 1928 | 2026-09-26 01:12:13 | 463bbc9b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
