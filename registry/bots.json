@@ -810,7 +810,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "workspace-file-lister",
-    "notes": "tests 3/3: T1 PASS 10s [done] expect='X_OK' last='X_OK' | T2 PASS 124s [done] expect='DONE' last='DONE' | T3 PASS 12s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 2/3: T1 PASS 20s [done] expect='X_OK' last='X_OK' | T2 FAIL 207s [done] expect='DONE' last='\u00e2\u2020\u00b3 write files.txt' | T3 PASS 12s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "shell:workspace",
       "fs:write"
@@ -823,7 +823,7 @@
       "bot.json": "876a6eca4b2bfe2643bba965",
       "nanobot.patch.json": "d78e83c8c57e381d04c973b4"
     },
-    "status": "active",
+    "status": "testing",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write a file named test_input.txt containing the text 'hello'. Then list files in the workspace using the shell dir command and write the output to files.txt. Finally, reply with exactly: DONE -> DONE",
@@ -833,8 +833,8 @@
       "exec",
       "write_file"
     ],
-    "updated": "2026-09-25T19:02:28+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-09-26T00:46:51+00:00",
+    "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\020-workspace-file-lister"
   },

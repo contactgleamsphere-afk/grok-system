@@ -110,3 +110,4 @@
 | 2026-09-26 01:42 | 018 csv-country-totals | 4/4 | active→active | - |
 | 2026-09-26 01:44 | 019 pytest-runner | 3/3 | active→active | - |
 | 2026-09-26 01:46 | 021 email-line-counter | 4/4 | active→active | - |
+| 2026-09-26 01:46 | 020 workspace-file-lister | 2/3 | active→testing | - |
