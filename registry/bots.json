@@ -141,7 +141,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "changelog-writer",
-    "notes": "tests 1/4: T1 FAIL 26s [done] expect='CHANGELOG_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\004.json' | T2 FAIL 26s [done] expect='3' last='\u00e2\u2020\u00b3 write CHANGELOG.md' | T3 FAIL 36s [done] expect='2' last='\u00e2\u2020\u00b3 write CHANGELOG.md' | T4 PASS 19s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: repair re-verify 2026-09-26: T1 PASS 39s [done] expect='CHANGELOG_OK' last='CHANGELOG_OK' | T2 PASS 154s [done] expect='3' last='RESULT: 3' | T3 PASS 208s [done] expect='2' last='RESULT: 2' | T4 PASS 51s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -154,7 +154,7 @@
       "bot.json": "226d116f97111cf4ef9c5611",
       "nanobot.patch.json": "2c2df538b877ad3396c6c007"
     },
-    "status": "testing",
+    "status": "active",
     "tests": [
       "Reply with exactly: CHANGELOG_OK -> CHANGELOG_OK",
       "First use write_file to create commits.txt containing exactly these three lines: add new login / fix crash on start / update documentation (one per line). Then do your job: write CHANGELOG.md and reply with only the number of entries written. -> 3",
@@ -165,8 +165,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-26T00:16:13+00:00",
-    "verified": "UNVERIFIED",
+    "updated": "2026-09-26T00:29:17+00:00",
+    "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\004-changelog-writer"
   },
