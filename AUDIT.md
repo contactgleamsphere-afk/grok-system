@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1588 | 2026-09-25 02:58:02 | c0780098 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1589 | 2026-09-25 02:58:02 | c0780098 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 1590 | 2026-09-25 02:58:05 | 5d804e5d | 007 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1591 | 2026-09-25 03:02:07 | 5d804e5d | 007 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 PASS 151s [done] expect='2' last='2' \| T3 PASS 52s [done] expect='0' last='0 |
 | 1592 | 2026-09-25 03:02:07 | 5d804e5d | 007 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 PASS 151s [done] expect='2' last='2' \| T3 PASS 52s [done] expect='0' last='0 |
 | 1593 | 2026-09-25 03:02:07 | 5d804e5d | 007 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "007", "status": "active", "verified": "VERIFIED"}} |
 | 1594 | 2026-09-25 03:02:10 | 8f56eb65 | 008 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +398,7 @@
 | 1985 | 2026-09-26 01:19:22 | 767f285f | 005 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 76s [done] expect='1' last='RESULT: 1' \| T3 PASS 79s [done] expect='0'  |
 | 1986 | 2026-09-26 01:19:22 | 767f285f | 005 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 76s [done] expect='1' last='RESULT: 1' \| T3 PASS 79s [done] expect='0'  |
 | 1987 | 2026-09-26 01:19:22 | 767f285f | 005 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "005", "status": "active", "verified": "VERIFIED"}} |
+| 1988 | 2026-09-26 01:19:25 | 6a700484 | 006 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 1989 | 2026-09-26 01:21:40 | f3102263 | 003 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
+| 1990 | 2026-09-26 01:21:40 | f3102263 | 003 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 1991 | 2026-09-26 01:21:40 | f3102263 | 003 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "003", "status": "active"}} |
