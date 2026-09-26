@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1680 | 2026-09-25 03:57:08 | 71d0bcfc |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 1681 | 2026-09-25 03:57:11 | 9b42f1aa |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1682 | 2026-09-25 03:57:11 | 9b42f1aa |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 1683 | 2026-09-25 03:57:12 | 9b60274b | 017 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
 | 1684 | 2026-09-25 03:57:12 | 9b60274b | 017 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 1685 | 2026-09-25 03:57:12 | 9b60274b | 017 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "017", "status": "active"}} |
 | 1686 | 2026-09-25 03:57:13 | 52fea279 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +398,7 @@
 | 2077 | 2026-09-26 01:50:31 | 26dc19fc | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 2078 | 2026-09-26 01:50:31 | 9eb7524a | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "53c3678652324baaa481371161004062", "retry_of": "26dc19fca79c45b78edd0a01873a089 |
 | 2079 | 2026-09-26 01:50:31 | 26dc19fc | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 2080 | 2026-09-26 01:50:35 | 8fecfd97 | 020 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2081 | 2026-09-26 01:51:14 | 57ca83b6 | 025 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 16s [done] expect='LIVENESS_OK' last='LIVENESS_OK' \| T2 PASS 20s [done] expect='HELLO WORLD' last='RESULT: HELLO WORLD' |
+| 2082 | 2026-09-26 01:51:14 | 57ca83b6 | 025 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 16s [done] expect='LIVENESS_OK' last='LIVENESS_OK' \| T2 PASS 20s [done] expect='HELLO WORLD' last='RESULT: HELLO WORLD' |
+| 2083 | 2026-09-26 01:51:14 | 57ca83b6 | 025 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "025", "status": "active", "verified": "VERIFIED"}} |
