@@ -92,3 +92,4 @@
 | 2026-09-25 11:28 | 020 workspace-file-lister | 2/3 (quota, inconclusive) | active→active | - |
 | 2026-09-25 20:02 | 020 workspace-file-lister | 3/3 | active→active | - |
 | 2026-09-25 20:12 | 014 error-log-analyzer | 4/4 | active→active | - |
+| 2026-09-26 01:13 | 002 research-scout | 1/2 | active→testing | - |
