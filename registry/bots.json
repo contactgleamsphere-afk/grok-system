@@ -224,7 +224,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "json-to-markdown-table",
-    "notes": "tests 4/4: repair round 1 via groq:openai/gpt-oss-20b: T1 PASS 13s [done] expect='X_OK' last='X_OK' | T2 PASS 50s [done] expect='2' last='2' | T3 PASS 47s [done] expect='0' last='0' | T4 PASS 15s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: T1 PASS 12s [done] expect='X_OK' last='X_OK' | T2 PASS 47s [done] expect='2' last='RESULT: 2' | T3 PASS 83s [done] expect='0' last='RESULT: 0' | T4 PASS 124s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -248,7 +248,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-24T00:46:36+00:00",
+    "updated": "2026-09-26T00:23:52+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\006-json-to-markdown-table"
