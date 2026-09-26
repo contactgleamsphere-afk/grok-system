@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1627 | 2026-09-25 03:30:40 | 31459526 | 013 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "013", "status": "active", "verified": "VERIFIED"}} |
-| 1628 | 2026-09-25 03:30:44 |  |  | worker.restart | svc-LAPTOP-LRE6PSA8 | {"reason": "code changed on disk"} |
-| 1629 | 2026-09-25 03:31:19 |  |  | worker.selftest | fast-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["118 passed in 29.35s"]} |
-| 1630 | 2026-09-25 03:31:19 | 667ce093 | 014 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1631 | 2026-09-25 03:31:20 |  |  | worker.selftest | svc-LAPTOP-LRE6PSA8 | {"ok": true, "tail": ["118 passed in 30.39s"]} |
 | 1632 | 2026-09-25 03:31:20 | 4b8fb54e | 016 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1633 | 2026-09-25 03:36:49 | 4b8fb54e | 016 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 18s [done] expect='X_OK' last='X_OK' \| T2 FAIL 16s [done] expect='2' last='CAPABILITY_MISSING: write_file' \| T3 PASS 1 |
@@ -402,3 +398,7 @@
 | 2024 | 2026-09-26 01:38:40 | 6c7820ef | 008 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "008", "status": "active", "verified": "VERIFIED"}} |
 | 2025 | 2026-09-26 01:38:43 | f0a5d1b8 | 014 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2026 | 2026-09-26 01:39:16 | 476304a5 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptos |
+| 2027 | 2026-09-26 01:39:20 | efaa0786 | 016 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2028 | 2026-09-26 01:39:58 | f0a5d1b8 | 014 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 14s [done] expect='X_OK' last='X_OK' \| T2 PASS 22s [done] expect='5' last='RESULT: 5' \| T3 PASS 17s [done] expect='Tim |
+| 2029 | 2026-09-26 01:39:58 | f0a5d1b8 | 014 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 14s [done] expect='X_OK' last='X_OK' \| T2 PASS 22s [done] expect='5' last='RESULT: 5' \| T3 PASS 17s [done] expect='Tim |
+| 2030 | 2026-09-26 01:39:58 | f0a5d1b8 | 014 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "014", "status": "active", "verified": "VERIFIED"}} |
