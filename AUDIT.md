@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1639 | 2026-09-25 03:36:53 | cc163779 | 016 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [], "boundary_diff": {}} |
-| 1640 | 2026-09-25 03:36:53 | 88222656 | 016 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "rearchitect", "payload": {"bot_id": "016", "feedback": "logic: spec/tests inconsistent, repair cannot change tools: bot reported C |
-| 1641 | 2026-09-25 03:36:53 | cc163779 | 016 | bot.rearchitect_queued | svc-LAPTOP-LRE6PSA8 | {"reason": "logic: spec/tests inconsistent, repair cannot change tools: bot reported CAPABILITY_MISSING"} |
-| 1642 | 2026-09-25 03:36:53 | cc163779 | 016 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: logic: spec/tests inconsistent, repair cannot chang |
 | 1643 | 2026-09-25 03:36:56 | 88222656 | 016 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1644 | 2026-09-25 03:38:13 | 88222656 | 016 | bot.rearchitected | svc-LAPTOP-LRE6PSA8 | {"lane": "groq:openai/gpt-oss-20b", "tools": ["exec"], "permissions": ["fs:read", "shell:workspace"], "boundary_diff": {"permissions_added": |
 | 1645 | 2026-09-25 03:38:13 | 88222656 | 016 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
@@ -402,3 +398,7 @@
 | 2036 | 2026-09-26 01:41:46 | 16882d86 | 017 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 28s [done] expect='3' last='RESULT: 3' \| T3 PASS 41s [done] expect='3'  |
 | 2037 | 2026-09-26 01:41:46 | 16882d86 | 017 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 28s [done] expect='3' last='RESULT: 3' \| T3 PASS 41s [done] expect='3'  |
 | 2038 | 2026-09-26 01:41:46 | 16882d86 | 017 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "017", "status": "active", "verified": "VERIFIED"}} |
+| 2039 | 2026-09-26 01:41:49 | 1f01caca | 019 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2040 | 2026-09-26 01:42:46 | 087596d0 | 018 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 33s [done] expect='30' last='RESULT: 30' \| T3 PASS 55s [done] expect='2 |
+| 2041 | 2026-09-26 01:42:46 | 087596d0 | 018 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 33s [done] expect='30' last='RESULT: 30' \| T3 PASS 55s [done] expect='2 |
+| 2042 | 2026-09-26 01:42:46 | 087596d0 | 018 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "status": "active", "verified": "VERIFIED"}} |
