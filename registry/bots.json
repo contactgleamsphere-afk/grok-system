@@ -893,7 +893,7 @@
       "primary": "or-ling-30-flash-vl"
     },
     "name": "csv-refund-filter",
-    "notes": "tests 4/4: T1 PASS 27s [done] expect='X_OK' last='X_OK' | T2 PASS 183s [done] expect='2' last='RESULT: 2' | T3 PASS 108s [done] expect='2' last='RESULT: 2' | T4 PASS 28s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 2/4: T1 PASS 14s [done] expect='X_OK' last='X_OK' | T2 FAIL 18s [done] expect='2' last='\u00e2\u2020\u00b3 read orders.csv' | T3 FAIL 17s [done] expect='2' last='\u00e2\u2020\u00b3 write orders.csv' | T4 PASS 13s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -906,7 +906,7 @@
       "bot.json": "cfd34e404df5e9fa975313b4",
       "nanobot.patch.json": "a36f306e6e380606ef9e6144"
     },
-    "status": "active",
+    "status": "testing",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write orders.csv containing 'id,status\\n1,active\\n2,refunded\\n3,refunded\\n4,active'. Then read orders.csv, filter rows where status is refunded, and write them to refunded.csv. Finally, read refunded.csv and reply with the count of data rows (excluding header). -> 2",
@@ -917,8 +917,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-25T03:08:58+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-09-26T00:47:59+00:00",
+    "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\022-csv-refund-filter"
   },
