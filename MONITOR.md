@@ -101,3 +101,4 @@
 | 2026-09-26 01:30 | 007 todo-extractor | 4/4 | active→active | - |
 | 2026-09-26 01:33 | 009 line-dedupe-bot | 4/4 | active→active | - |
 | 2026-09-26 01:34 | 011 word-frequency-counter | 4/4 | active→active | - |
+| 2026-09-26 01:36 | 012 csv-column-sum | 4/4 | active→active | - |
