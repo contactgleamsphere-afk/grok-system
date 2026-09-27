@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2077 | 2026-09-26 01:50:31 | 26dc19fc | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 2078 | 2026-09-26 01:50:31 | 9eb7524a | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "53c3678652324baaa481371161004062", "retry_of": "26dc19fca79c45b78edd0a01873a089 |
-| 2079 | 2026-09-26 01:50:31 | 26dc19fc | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 2080 | 2026-09-26 01:50:35 | 8fecfd97 | 020 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2081 | 2026-09-26 01:51:14 | 57ca83b6 | 025 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 16s [done] expect='LIVENESS_OK' last='LIVENESS_OK' \| T2 PASS 20s [done] expect='HELLO WORLD' last='RESULT: HELLO WORLD' |
 | 2082 | 2026-09-26 01:51:14 | 57ca83b6 | 025 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 16s [done] expect='LIVENESS_OK' last='LIVENESS_OK' \| T2 PASS 20s [done] expect='HELLO WORLD' last='RESULT: HELLO WORLD' |
 | 2083 | 2026-09-26 01:51:14 | 57ca83b6 | 025 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "025", "status": "active", "verified": "VERIFIED"}} |
@@ -402,3 +398,7 @@
 | 2474 | 2026-09-27 06:57:21 | 79a92474 | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 2475 | 2026-09-27 06:57:21 | 54f4b925 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "53c3678652324baaa481371161004062", "retry_of": "79a9247459a64927b12f4da154e3266 |
 | 2476 | 2026-09-27 06:57:21 | 79a92474 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 8, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 2477 | 2026-09-27 06:58:55 | 0aa16583 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2478 | 2026-09-27 06:58:55 | f787abb2 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-27T07"}} |
+| 2479 | 2026-09-27 06:59:21 | be53085a | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2480 | 2026-09-27 07:00:04 | 0aa16583 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-flash38", "gemini-gemma26b", "gemini-lite31", "groq-gptoss120b", "groq-gp |
