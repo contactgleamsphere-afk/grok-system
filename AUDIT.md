@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2288 | 2026-09-27 02:37:15 | 9938d282 | 022 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 2289 | 2026-09-27 02:38:36 | 9938d282 | 022 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 12s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\022.json' \| T2 FAIL 25s [done] expect='2' la |
-| 2290 | 2026-09-27 02:38:36 | 9938d282 | 022 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 12s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\022.json' \| T2 FAIL 25s [done] expect='2' la |
 | 2291 | 2026-09-27 02:38:36 | 9938d282 | 022 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 2292 | 2026-09-27 02:38:36 | 0f7762f5 | 022 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "022", "max_rounds": 2}} |
 | 2293 | 2026-09-27 02:38:36 | 9938d282 | 022 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "022", "status": "testing", "verified": "UNVERIFIED"}} |
@@ -402,3 +399,6 @@
 | 2685 | 2026-09-27 15:55:33 | 9b8338f6 | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 2686 | 2026-09-27 15:55:33 | 6bcf758e | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "0583e758b8ba40f096402204cf0f82b0", "retry_of": "9b8338f66883443994f9da2ffed1161 |
 | 2687 | 2026-09-27 15:55:33 | 9b8338f6 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 8, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 2688 | 2026-09-27 16:02:29 | 609cbe8c |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2689 | 2026-09-27 16:02:29 | b9103be1 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-27T17"}} |
+| 2690 | 2026-09-27 16:02:53 | 609cbe8c |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash38", "gemini-gemma26b", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen27b", "local3b |
