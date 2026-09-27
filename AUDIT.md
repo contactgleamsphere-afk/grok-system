@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2230 | 2026-09-27 02:21:24 | bb708ee5 | 005 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 2231 | 2026-09-27 02:23:07 | d4c54a80 | 012 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 48s [done] expect='60' last='RESULT: Summed amount column from data.csv,  |
-| 2232 | 2026-09-27 02:23:07 | d4c54a80 | 012 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 48s [done] expect='60' last='RESULT: Summed amount column from data.csv,  |
 | 2233 | 2026-09-27 02:23:07 | d4c54a80 | 012 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "012", "status": "active", "verified": "VERIFIED"}} |
 | 2234 | 2026-09-27 02:23:10 | d91b2b7f | 013 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2235 | 2026-09-27 02:26:49 | bb708ee5 | 005 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
@@ -402,3 +399,6 @@
 | 2627 | 2026-09-27 11:50:11 | c8a06098 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 2628 | 2026-09-27 11:50:11 | 8de834d5 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "0583e758b8ba40f096402204cf0f82b0", "retry_of": "c8a0609840bb4342ad3948caa116799 |
 | 2629 | 2026-09-27 11:50:11 | c8a06098 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 8, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 2630 | 2026-09-27 11:59:01 | 88c99a0b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2631 | 2026-09-27 11:59:01 | 092262db |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-27T12"}} |
+| 2632 | 2026-09-27 11:59:19 | 88c99a0b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash38", "gemini-gemma26b", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq-qw |
