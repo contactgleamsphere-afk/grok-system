@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2264 | 2026-09-27 02:31:44 | 47d7895c | 013 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 2265 | 2026-09-27 02:33:41 | 47d7895c | 013 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
-| 2266 | 2026-09-27 02:33:41 | 47d7895c | 013 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
-| 2267 | 2026-09-27 02:33:41 | 47d7895c | 013 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "013", "status": "active"}} |
 | 2268 | 2026-09-27 02:33:42 | f2186a09 | 018 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 50s [done] expect='30' last='RESULT: 30' \| T3 PASS 56s [done] expect='20 |
 | 2269 | 2026-09-27 02:33:42 | f2186a09 | 018 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 50s [done] expect='30' last='RESULT: 30' \| T3 PASS 56s [done] expect='20 |
 | 2270 | 2026-09-27 02:33:42 | f2186a09 | 018 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "status": "active", "verified": "VERIFIED"}} |
@@ -402,3 +398,7 @@
 | 2661 | 2026-09-27 15:01:53 | 7560f693 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 2662 | 2026-09-27 15:01:53 | e5b67ac6 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "53c3678652324baaa481371161004062", "retry_of": "7560f69369e84164bc0dedc30b9cfaa |
 | 2663 | 2026-09-27 15:01:53 | 7560f693 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 2664 | 2026-09-27 15:01:55 | 0c4528ad | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2665 | 2026-09-27 15:02:27 | 06a21c84 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2666 | 2026-09-27 15:02:27 | 609cbe8c |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-27T16"}} |
+| 2667 | 2026-09-27 15:02:46 | 06a21c84 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-flash38", "gemini-gemma26b", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq- |
