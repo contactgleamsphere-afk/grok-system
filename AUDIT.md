@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2302 | 2026-09-27 02:39:52 | 80ab802c | 023 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 FAIL 40s [done] expect='36.0' last='\u00e2\u2020\u00b3 write summary.txt' \| T |
-| 2303 | 2026-09-27 02:39:52 | 80ab802c | 023 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 2304 | 2026-09-27 02:39:52 | cc46a3c1 | 023 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "023", "max_rounds": 2}} |
 | 2305 | 2026-09-27 02:39:52 | 80ab802c | 023 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "023", "status": "testing", "verified": "UNVERIFIED"}} |
 | 2306 | 2026-09-27 02:39:56 | f77b5429 | 024 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2307 | 2026-09-27 02:40:22 | f77b5429 | 024 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 FAIL 4s [done] expect='2' last='Using config: C:\\AI\\Factory\\run\\botcfg\\02 |
@@ -402,3 +399,6 @@
 | 2699 | 2026-09-27 16:38:52 | 6bcf758e | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 32s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 58s [done] report expect='FACTORY' cmd=True \| T3 PASS 59s [d |
 | 2700 | 2026-09-27 16:38:52 | 5622d1ef | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "6bcf758e5e1d47099cbdb599abb2f786", "after_quota": "6bcf758e5e1d47099cbdb599abb2f |
 | 2701 | 2026-09-27 16:38:52 | 6bcf758e | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 2702 | 2026-09-27 16:50:53 | d125629c |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2703 | 2026-09-27 16:50:53 | 31503b5a |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-27T17"}} |
+| 2704 | 2026-09-27 16:50:53 | d125629c |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
