@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1830 | 2026-09-25 20:10:16 | 96ccf58b |  | monitor.canary | fast-LAPTOP-LRE6PSA8 | {"lanes": ["or-nex-n25-pro"], "bots": ["014"]} |
-| 1831 | 2026-09-25 20:10:16 | 96ccf58b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptos |
-| 1832 | 2026-09-25 20:10:20 | 134bba89 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1833 | 2026-09-25 20:10:20 | 01537a5d |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1834 | 2026-09-25 20:10:21 | 134bba89 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 1835 | 2026-09-25 20:10:21 | 01537a5d |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 1836 | 2026-09-25 20:10:25 | 3fa27047 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +398,7 @@
 | 2227 | 2026-09-27 02:20:39 | d4c54a80 | 012 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2228 | 2026-09-27 02:21:20 | 510ea5e2 | 004 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": null, "rejected": ["fallback 'or-de |
 | 2229 | 2026-09-27 02:21:20 | 510ea5e2 | 004 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
+| 2230 | 2026-09-27 02:21:24 | bb708ee5 | 005 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2231 | 2026-09-27 02:23:07 | d4c54a80 | 012 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 48s [done] expect='60' last='RESULT: Summed amount column from data.csv,  |
+| 2232 | 2026-09-27 02:23:07 | d4c54a80 | 012 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 48s [done] expect='60' last='RESULT: Summed amount column from data.csv,  |
+| 2233 | 2026-09-27 02:23:07 | d4c54a80 | 012 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "012", "status": "active", "verified": "VERIFIED"}} |
