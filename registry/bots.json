@@ -98,7 +98,7 @@
       "primary": "gemini-gemini-flash-lite-latest"
     },
     "name": "code-smith",
-    "notes": "tests 3/4: T1 PASS 12s [done] expect='X_OK' last='X_OK' | T2 PASS 37s [done] expect='3' last='RESULT: 3' | T3 FAIL 58s [done] expect='6' last='\u00e2\u2020\u00b3 $ python -c \"print(sum(int(line) for line\u00e2\u20ac\u00a6' | T4 PASS 20s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: T1 PASS 13s [done] expect='X_OK' last='RESULT: X_OK' | T2 PASS 14s [done] expect='3' last='RESULT: 3' | T3 PASS 12s [done] expect='6' last='RESULT: 6' | T4 PASS 10s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:write",
       "shell:workspace"
@@ -111,7 +111,7 @@
       "bot.json": "40ec9cd8878e1c1fc1c1d3f5",
       "nanobot.patch.json": "da3d446660f7a1b952c201c9"
     },
-    "status": "testing",
+    "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write commits.txt containing a\\nb\\nc then run exec with command 'wc -l commits.txt' -> 3",
@@ -122,8 +122,8 @@
       "write_file",
       "exec"
     ],
-    "updated": "2026-09-27T01:04:27+00:00",
-    "verified": "UNVERIFIED",
+    "updated": "2026-09-27T03:06:31+00:00",
+    "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\003-code-smith"
   },

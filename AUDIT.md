@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1996 | 2026-09-26 01:23:55 | 5a54744d | 007 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1997 | 2026-09-26 01:29:17 | f0215dbb | 004 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
-| 1998 | 2026-09-26 01:29:17 | f0215dbb | 004 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 1999 | 2026-09-26 01:29:17 | f0215dbb | 004 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "004", "status": "active"}} |
 | 2000 | 2026-09-26 01:29:20 | 6c7820ef | 008 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2001 | 2026-09-26 01:30:26 | 5a54744d | 007 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 50s [done] expect='X_OK' last='X_OK' \| T2 PASS 148s [done] expect='2' last='RESULT: Extracted 2 TODO/FIXME items into t |
@@ -402,3 +399,6 @@
 | 2393 | 2026-09-27 03:59:17 | 46083656 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-27T04"}} |
 | 2394 | 2026-09-27 03:59:17 | d39b6a1b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 2395 | 2026-09-27 03:59:19 | 907e18f5 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-l |
+| 2396 | 2026-09-27 04:05:39 | 820f6fef | 003 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2397 | 2026-09-27 04:06:31 | 820f6fef | 003 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='RESULT: X_OK' \| T2 PASS 14s [done] expect='3' last='RESULT: 3' \| T3 PASS 12s [done] exp |
+| 2398 | 2026-09-27 04:06:31 | 820f6fef | 003 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "003", "status": "active", "verified": "VERIFIED"}} |
