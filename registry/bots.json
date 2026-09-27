@@ -722,7 +722,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "csv-country-totals",
-    "notes": "tests 4/4: T1 PASS 13s [done] expect='X_OK' last='X_OK' | T2 PASS 33s [done] expect='30' last='RESULT: 30' | T3 PASS 55s [done] expect='200' last='RESULT: 200' | T4 PASS 17s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: T1 PASS 9s [done] expect='X_OK' last='X_OK' | T2 PASS 50s [done] expect='30' last='RESULT: 30' | T3 PASS 56s [done] expect='200' last='RESULT: 200' | T4 PASS 17s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -746,7 +746,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-26T00:42:46+00:00",
+    "updated": "2026-09-27T01:33:42+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\018-csv-country-totals"
