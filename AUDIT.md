@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2056 | 2026-09-26 01:46:51 | a461a21a | 020 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "020", "status": "testing", "verified": "UNVERIFIED"}} |
-| 2057 | 2026-09-26 01:46:55 | 73874f7b | 022 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 2058 | 2026-09-26 01:47:59 | 73874f7b | 022 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 14s [done] expect='X_OK' last='X_OK' \| T2 FAIL 18s [done] expect='2' last='\u00e2\u2020\u00b3 read orders.csv' \| T3 FA |
 | 2059 | 2026-09-26 01:47:59 | 73874f7b | 022 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 14s [done] expect='X_OK' last='X_OK' \| T2 FAIL 18s [done] expect='2' last='\u00e2\u2020\u00b3 read orders.csv' \| T3 FA |
 | 2060 | 2026-09-26 01:47:59 | 73874f7b | 022 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 2061 | 2026-09-26 01:47:59 | 1262b64a | 022 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "022", "max_rounds": 2}} |
@@ -402,3 +399,6 @@
 | 2453 | 2026-09-27 05:58:53 | 98cc149b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2454 | 2026-09-27 05:58:53 | 0aa16583 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-27T06"}} |
 | 2455 | 2026-09-27 05:59:17 | 98cc149b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-flash38", "gemini-gemma26b", "gemini-lite31", "groq-gptoss120b", "groq-gp |
+| 2456 | 2026-09-27 05:59:20 | d0e2b03f |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2457 | 2026-09-27 05:59:21 | 1a46a047 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-27T06"}} |
+| 2458 | 2026-09-27 05:59:21 | d0e2b03f |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
