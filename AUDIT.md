@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1939 | 2026-09-26 01:12:18 | 0ec08f9d | 011 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "011", "monitor_of": "53c3678652324baaa481371161004062", "day": "2026-09-26"}} |
-| 1940 | 2026-09-26 01:12:18 | 98574231 | 012 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "012", "monitor_of": "53c3678652324baaa481371161004062", "day": "2026-09-26"}} |
-| 1941 | 2026-09-26 01:12:18 | 1c3d0592 | 013 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "013", "monitor_of": "53c3678652324baaa481371161004062", "day": "2026-09-26"}} |
-| 1942 | 2026-09-26 01:12:18 | f0a5d1b8 | 014 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "014", "monitor_of": "53c3678652324baaa481371161004062", "day": "2026-09-26"}} |
 | 1943 | 2026-09-26 01:12:18 | efaa0786 | 016 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "016", "monitor_of": "53c3678652324baaa481371161004062", "day": "2026-09-26"}} |
 | 1944 | 2026-09-26 01:12:18 | 16882d86 | 017 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "017", "monitor_of": "53c3678652324baaa481371161004062", "day": "2026-09-26"}} |
 | 1945 | 2026-09-26 01:12:18 | 087596d0 | 018 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "018", "monitor_of": "53c3678652324baaa481371161004062", "day": "2026-09-26"}} |
@@ -402,3 +398,7 @@
 | 2336 | 2026-09-27 02:48:02 | a1d92047 | 021 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2337 | 2026-09-27 02:50:59 | a1d92047 | 021 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": null, "rejected": ["fallback 'or-li |
 | 2338 | 2026-09-27 02:50:59 | a1d92047 | 021 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
+| 2339 | 2026-09-27 02:51:03 | 0f7762f5 | 022 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2340 | 2026-09-27 02:53:02 | 0f7762f5 | 022 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
+| 2341 | 2026-09-27 02:53:02 | 0f7762f5 | 022 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 2342 | 2026-09-27 02:53:02 | 0f7762f5 | 022 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "022", "status": "active"}} |
