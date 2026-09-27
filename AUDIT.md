@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2168 | 2026-09-27 02:02:11 | 80c15c41 | 003 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "rearchitect", "payload": {"bot_id": "003", "feedback": "logic: spec/tests inconsistent, tests expect a literal the instructions mu |
-| 2169 | 2026-09-27 02:02:11 | 6af00a36 | 003 | bot.rearchitect_queued | svc-LAPTOP-LRE6PSA8 | {"reason": "logic: spec/tests inconsistent, tests expect a literal the instructions must mention (no passing candidate in 2 rounds)"} |
-| 2170 | 2026-09-27 02:02:11 | 6af00a36 | 003 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: logic: spec/tests inconsistent, tests expect a lite |
 | 2171 | 2026-09-27 02:02:14 | 80c15c41 | 003 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2172 | 2026-09-27 02:04:26 | 9eb7524a | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 32s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 20s [done] report expect='FACTORY' cmd=True \| T3 PASS 17s [d |
 | 2173 | 2026-09-27 02:04:27 | 9eb7524a | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 32s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 20s [done] report expect='FACTORY' cmd=True \| T3 PASS 17s [d |
@@ -402,3 +399,6 @@
 | 2565 | 2026-09-27 09:48:50 | 3a141540 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 2566 | 2026-09-27 09:48:50 | 252fcb22 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "53c3678652324baaa481371161004062", "retry_of": "3a141540203743ea9af464c36751263 |
 | 2567 | 2026-09-27 09:48:50 | 3a141540 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 2568 | 2026-09-27 09:59:00 | c2605129 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2569 | 2026-09-27 09:59:00 | bc6c1367 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-27T10"}} |
+| 2570 | 2026-09-27 09:59:19 | c2605129 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-li |
