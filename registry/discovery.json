@@ -74,10 +74,10 @@
   },
   "openrouter:poolside/laguna-s-2.1:free": {
    "verdict": "deferred",
-   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
-   "ts": 1790363425.4638238,
-   "date": "2026-09-25",
-   "until": 1790385025.4638238
+   "reason": "probe quota: {\"error\":{\"message\":\"provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"pool",
+   "ts": 1790524993.4391093,
+   "date": "2026-09-27",
+   "until": 1790546593.4391093
   },
   "openrouter:thinkingmachines/inkling:free": {
    "verdict": "rejected",
@@ -137,9 +137,9 @@
   "provider-quota:openrouter": {
    "verdict": "deferred",
    "reason": "daily free cap hit during discovery",
-   "ts": 1790363425.4638238,
-   "date": "2026-09-25",
-   "until": 1790385025.4638238
+   "ts": 1790524993.4391093,
+   "date": "2026-09-27",
+   "until": 1790546593.4391093
   },
   "gemini:gemini-2.5-flash": {
    "verdict": "rejected",
