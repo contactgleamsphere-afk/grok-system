@@ -2,12 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1838 | 2026-09-25 20:10:30 | 2bbe411d |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1839 | 2026-09-25 20:10:30 | 2bbe411d |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 1840 | 2026-09-25 20:10:34 | a7cf454b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1841 | 2026-09-25 20:10:34 | a7cf454b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 1842 | 2026-09-25 20:10:38 | e9039318 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1843 | 2026-09-25 20:10:38 | e9039318 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 1844 | 2026-09-25 20:10:43 | a1ec1245 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1845 | 2026-09-25 20:10:43 | 6acda974 | 014 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "014", "monitor_of": "a1ec1245d09c465fb7daaec24fbd41f2", "day": "2026-09-25"}} |
 | 1846 | 2026-09-25 20:10:43 | a1ec1245 |  | monitor.fanout | svc-LAPTOP-LRE6PSA8 | {"bots": ["014"], "jobs": ["6acda974"]} |
@@ -402,3 +396,9 @@
 | 2235 | 2026-09-27 02:26:49 | bb708ee5 | 005 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
 | 2236 | 2026-09-27 02:26:49 | bb708ee5 | 005 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 2237 | 2026-09-27 02:26:49 | bb708ee5 | 005 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "005", "status": "active"}} |
+| 2238 | 2026-09-27 02:26:53 | 7efd58c0 | 007 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2239 | 2026-09-27 02:27:38 | d91b2b7f | 013 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 89s [done] expect='X_OK' last='RESULT: 1' \| T2 PASS 73s [done] expect='1' last='RESULT: 1' \| T3 PASS 91s [done] expect |
+| 2240 | 2026-09-27 02:27:38 | d91b2b7f | 013 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 89s [done] expect='X_OK' last='RESULT: 1' \| T2 PASS 73s [done] expect='1' last='RESULT: 1' \| T3 PASS 91s [done] expect |
+| 2241 | 2026-09-27 02:27:38 | d91b2b7f | 013 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
+| 2242 | 2026-09-27 02:27:38 | 47d7895c | 013 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "013", "max_rounds": 2}} |
+| 2243 | 2026-09-27 02:27:38 | d91b2b7f | 013 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "013", "status": "testing", "verified": "UNVERIFIED"}} |
