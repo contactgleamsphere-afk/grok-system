@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1852 | 2026-09-25 20:59:46 | 865a2980 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1853 | 2026-09-25 20:59:46 | 80e90b9b |  | job.dedup | svc-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
-| 1854 | 2026-09-25 20:59:57 | 54829a12 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1855 | 2026-09-25 20:59:58 | a7ddc40b |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-25T21"}} |
 | 1856 | 2026-09-25 20:59:58 | 54829a12 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 1857 | 2026-09-25 21:00:44 | 865a2980 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "gemini-flash36", "outcome": "no_tool_call", "before": "VERIFIED", "after": "BLOCKED", "detail": null} |
 | 1858 | 2026-09-25 21:00:44 | 00afddce |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "groq", "day": "2026-09-25", "trigger": "blocked:gemini-flash36"}} |
@@ -402,3 +398,7 @@
 | 2249 | 2026-09-27 02:29:35 | fc5bc316 | 016 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 10s [done] expect='2' last='RESULT: 2' \| T3 PASS 11s [done] expect='3'  |
 | 2250 | 2026-09-27 02:29:35 | fc5bc316 | 016 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 10s [done] expect='2' last='RESULT: 2' \| T3 PASS 11s [done] expect='3'  |
 | 2251 | 2026-09-27 02:29:35 | fc5bc316 | 016 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "016", "status": "active", "verified": "VERIFIED"}} |
+| 2252 | 2026-09-27 02:29:39 | 7cdaf7c8 | 017 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2253 | 2026-09-27 02:29:56 | 7efd58c0 | 007 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
+| 2254 | 2026-09-27 02:29:56 | 7efd58c0 | 007 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 2255 | 2026-09-27 02:29:56 | 7efd58c0 | 007 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "007", "status": "active"}} |
