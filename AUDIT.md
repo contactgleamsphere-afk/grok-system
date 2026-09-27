@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2253 | 2026-09-27 02:29:56 | 7efd58c0 | 007 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
-| 2254 | 2026-09-27 02:29:56 | 7efd58c0 | 007 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
-| 2255 | 2026-09-27 02:29:56 | 7efd58c0 | 007 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "007", "status": "active"}} |
-| 2256 | 2026-09-27 02:30:00 | e0e759b6 | 011 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2257 | 2026-09-27 02:31:25 | 7cdaf7c8 | 017 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 11s [done] expect='X_OK' last='X_OK' \| T2 PASS 26s [done] expect='3' last='RESULT: 3' \| T3 PASS 19s [done] expect='3'  |
 | 2258 | 2026-09-27 02:31:25 | 7cdaf7c8 | 017 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 11s [done] expect='X_OK' last='X_OK' \| T2 PASS 26s [done] expect='3' last='RESULT: 3' \| T3 PASS 19s [done] expect='3'  |
 | 2259 | 2026-09-27 02:31:25 | 7cdaf7c8 | 017 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "017", "status": "active", "verified": "VERIFIED"}} |
@@ -402,3 +398,7 @@
 | 2650 | 2026-09-27 14:02:24 | 06a21c84 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-27T15"}} |
 | 2651 | 2026-09-27 14:50:46 | cc6dbeee |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-27T15"}} |
 | 2652 | 2026-09-27 14:50:46 | ed16b7b3 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 2653 | 2026-09-27 14:50:51 | 092262db |  | job.lease_expired | svc-LAPTOP-LRE6PSA8 | {} |
+| 2654 | 2026-09-27 14:50:51 | 092262db |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 2} |
+| 2655 | 2026-09-27 14:50:51 | 06a21c84 |  | job.dedup | svc-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
+| 2656 | 2026-09-27 14:52:00 | 092262db |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-flash38", "gemini-gemma26b", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq- |
