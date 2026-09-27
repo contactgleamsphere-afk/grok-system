@@ -139,3 +139,4 @@
 | 2026-09-27 02:38 | 022 csv-refund-filter | 1/4 | active→testing | - |
 | 2026-09-27 02:39 | 001 master | 9/10 | testing→testing | - |
 | 2026-09-27 02:39 | 023 refund-summarizer | 1/4 | active→testing | - |
+| 2026-09-27 02:40 | 024 pytest-runner-bot | 2/3 (quota, inconclusive) | active→active | - |
