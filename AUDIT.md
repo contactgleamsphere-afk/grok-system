@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2342 | 2026-09-27 02:53:02 | 0f7762f5 | 022 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "022", "status": "active"}} |
-| 2343 | 2026-09-27 02:53:05 | cc46a3c1 | 023 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 2344 | 2026-09-27 02:54:52 | cc46a3c1 | 023 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
-| 2345 | 2026-09-27 02:54:52 | cc46a3c1 | 023 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 2346 | 2026-09-27 02:54:52 | cc46a3c1 | 023 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "023", "status": "active"}} |
 | 2347 | 2026-09-27 02:54:56 | f1f6536d | 025 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2348 | 2026-09-27 02:55:49 | f1f6536d | 025 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
@@ -402,3 +398,7 @@
 | 2739 | 2026-09-27 17:50:55 | 31503b5a |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2740 | 2026-09-27 17:50:55 | 9c6c39a8 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-27T18"}} |
 | 2741 | 2026-09-27 17:50:55 | 31503b5a |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 2742 | 2026-09-27 18:02:35 | dc082234 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2743 | 2026-09-27 18:02:35 | f65a08d6 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-27T19"}} |
+| 2744 | 2026-09-27 18:02:58 | dc082234 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash36", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
+| 2745 | 2026-09-27 18:02:58 | dc082234 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-flash38", "gemini-gemma26b", "gemini-lite31", "groq-gptoss120b", "groq-gp |
