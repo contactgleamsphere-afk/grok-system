@@ -1051,7 +1051,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "sqlite-query-bot",
-    "notes": "tests 4/4: T1 PASS 28s [done] expect='X_OK' last='X_OK' | T2 PASS 26s [done] expect='3' last='RESULT: 3' | T3 PASS 27s [done] expect='users' last='RESULT: users' | T4 PASS 25s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 2/4: T1 FAIL 10s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\026.json' | T2 FAIL 15s [done] expect='3' last='with transport 'stdio'' | T3 PASS 19s [done] expect='users' last='RESULT: users' | T4 PASS 17s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write",
@@ -1065,7 +1065,7 @@
       "bot.json": "bf9fcb698918858c3aec0569",
       "nanobot.patch.json": "1d79d249485819157322141a"
     },
-    "status": "active",
+    "status": "testing",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "Using fixture.db, how many rows are in the users table? -> 3",
@@ -1077,8 +1077,8 @@
       "write_file",
       "mcp:mcp-sqlite3"
     ],
-    "updated": "2026-09-26T00:53:06+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-09-27T01:42:03+00:00",
+    "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\026-sqlite-query-bot"
   },

@@ -141,3 +141,4 @@
 | 2026-09-27 02:39 | 023 refund-summarizer | 1/4 | active→testing | - |
 | 2026-09-27 02:40 | 024 pytest-runner-bot | 2/3 (quota, inconclusive) | active→active | - |
 | 2026-09-27 02:40 | 025 text-transformer | 1/3 | active→testing | - |
+| 2026-09-27 02:42 | 026 sqlite-query-bot | 2/4 | active→testing | - |
