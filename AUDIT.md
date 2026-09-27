@@ -2,12 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1797 | 2026-09-25 13:24:25 | 29f3da03 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
-| 1798 | 2026-09-25 13:24:28 | a3514a3e |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1799 | 2026-09-25 13:24:28 | a3514a3e |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 1800 | 2026-09-25 13:24:31 | c14ad4dd |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1801 | 2026-09-25 13:24:31 | c14ad4dd |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 1802 | 2026-09-25 13:24:33 | 23979c6a |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1803 | 2026-09-25 13:24:33 | 23979c6a |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 1804 | 2026-09-25 14:20:17 | a35b45be | 020 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1805 | 2026-09-25 19:59:42 | a35b45be |  | job.lease_expired | svc-LAPTOP-LRE6PSA8 | {} |
@@ -402,3 +396,9 @@
 | 2194 | 2026-09-27 02:08:20 | 84b99924 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 2195 | 2026-09-27 02:08:20 | fd15dd84 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "0583e758b8ba40f096402204cf0f82b0", "retry_of": "84b999246062475198d5b12e79a523c |
 | 2196 | 2026-09-27 02:08:20 | 84b99924 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 2197 | 2026-09-27 02:08:24 | 510ea5e2 | 004 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2198 | 2026-09-27 02:09:31 | 498a5257 | 005 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 FAIL 50s [done] expect='1' last='\u00e2\u2020\u00b3 read data.csv' \| T3 PASS  |
+| 2199 | 2026-09-27 02:09:31 | 498a5257 | 005 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 FAIL 50s [done] expect='1' last='\u00e2\u2020\u00b3 read data.csv' \| T3 PASS  |
+| 2200 | 2026-09-27 02:09:31 | 498a5257 | 005 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
+| 2201 | 2026-09-27 02:09:31 | bb708ee5 | 005 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "005", "max_rounds": 2}} |
+| 2202 | 2026-09-27 02:09:31 | 498a5257 | 005 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "005", "status": "testing", "verified": "UNVERIFIED"}} |
