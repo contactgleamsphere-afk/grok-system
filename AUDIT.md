@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2109 | 2026-09-26 02:00:10 | 268e463f |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 2110 | 2026-09-26 02:00:56 | 15dcb4d1 |  | factory.canary | svc-LAPTOP-LRE6PSA8 | {"verdict": "FAIL", "lane": "gemini:gemini-3.1-flash-lite", "chain": ["gemini-gemini-flash-lite-latest", "gemini-lite31", "or-ling-30-flash- |
-| 2111 | 2026-09-26 02:00:56 | 15dcb4d1 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"pass": 2, "total": 3}} |
 | 2112 | 2026-09-27 01:58:45 | afc49d7c |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2113 | 2026-09-27 01:58:45 | 5854ee45 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-27T02"}} |
 | 2114 | 2026-09-27 01:58:52 | eeba28ae |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +399,6 @@
 | 2506 | 2026-09-27 07:58:57 | f787abb2 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2507 | 2026-09-27 07:58:57 | 4d79dc8f |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-27T08"}} |
 | 2508 | 2026-09-27 07:59:32 | f787abb2 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-flash38", "gemini-gemma26b", "gemini-lite31", "groq-gptoss120b", "groq-gp |
+| 2509 | 2026-09-27 08:00:11 | 47b0dda6 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2510 | 2026-09-27 08:00:11 | d8fc6601 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-27T09"}} |
+| 2511 | 2026-09-27 08:00:11 | 47b0dda6 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
