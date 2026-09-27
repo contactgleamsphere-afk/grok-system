@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1834 | 2026-09-25 20:10:21 | 134bba89 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
-| 1835 | 2026-09-25 20:10:21 | 01537a5d |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
-| 1836 | 2026-09-25 20:10:25 | 3fa27047 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1837 | 2026-09-25 20:10:26 | 3fa27047 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 1838 | 2026-09-25 20:10:30 | 2bbe411d |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1839 | 2026-09-25 20:10:30 | 2bbe411d |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 1840 | 2026-09-25 20:10:34 | a7cf454b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +398,7 @@
 | 2231 | 2026-09-27 02:23:07 | d4c54a80 | 012 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 48s [done] expect='60' last='RESULT: Summed amount column from data.csv,  |
 | 2232 | 2026-09-27 02:23:07 | d4c54a80 | 012 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 48s [done] expect='60' last='RESULT: Summed amount column from data.csv,  |
 | 2233 | 2026-09-27 02:23:07 | d4c54a80 | 012 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "012", "status": "active", "verified": "VERIFIED"}} |
+| 2234 | 2026-09-27 02:23:10 | d91b2b7f | 013 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2235 | 2026-09-27 02:26:49 | bb708ee5 | 005 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
+| 2236 | 2026-09-27 02:26:49 | bb708ee5 | 005 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 2237 | 2026-09-27 02:26:49 | bb708ee5 | 005 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "005", "status": "active"}} |
