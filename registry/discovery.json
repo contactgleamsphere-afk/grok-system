@@ -1,10 +1,10 @@
 {
  "verdicts": {
   "openrouter:inclusionai/ling-3.0-flash-vl:free": {
-   "verdict": "approved",
-   "reason": "probe 2.53s loop 5.02s",
-   "ts": 1790033243.8181138,
-   "date": "2026-09-22"
+   "verdict": "rejected",
+   "reason": "retired after 3 days gone: gone: {\"error\":{\"message\":\"this model is unavailable for free. the paid version ",
+   "ts": 1790470725.713797,
+   "date": "2026-09-27"
   },
   "openrouter:nex-agi/nex-n2.5-mini:free": {
    "verdict": "rejected",

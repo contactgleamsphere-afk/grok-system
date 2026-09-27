@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1719 | 2026-09-25 04:09:04 | 3f73d2dd | 026 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1720 | 2026-09-25 04:09:51 | e3d0b490 | 025 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] expect='LIVENESS_OK' last='LIVENESS_OK' \| T2 PASS 20s [done] expect='HELLO WORLD' last='RESULT: HELLO WORLD' |
-| 1721 | 2026-09-25 04:09:51 | e3d0b490 | 025 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] expect='LIVENESS_OK' last='LIVENESS_OK' \| T2 PASS 20s [done] expect='HELLO WORLD' last='RESULT: HELLO WORLD' |
-| 1722 | 2026-09-25 04:09:51 | e3d0b490 | 025 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "025", "status": "active", "verified": "VERIFIED"}} |
 | 1723 | 2026-09-25 04:10:32 | 3f73d2dd | 026 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 19s [done] expect='X_OK' last='X_OK' \| T2 PASS 23s [done] expect='3' last='RESULT: 3' \| T3 PASS 23s [done] expect='use |
 | 1724 | 2026-09-25 04:10:32 | 3f73d2dd | 026 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 19s [done] expect='X_OK' last='X_OK' \| T2 PASS 23s [done] expect='3' last='RESULT: 3' \| T3 PASS 23s [done] expect='use |
 | 1725 | 2026-09-25 04:10:32 | 3f73d2dd | 026 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "026", "status": "active", "verified": "VERIFIED"}} |
@@ -402,3 +398,7 @@
 | 2116 | 2026-09-27 01:58:58 |  | 018 | schedule.fired | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "fire": "2026-09-26T07:00", "job": "afa33da8"} |
 | 2117 | 2026-09-27 01:59:11 | 85375329 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-27T02"}} |
 | 2118 | 2026-09-27 01:59:11 | eeba28ae |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 2119 | 2026-09-27 01:59:16 | 9eb7524a | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2120 | 2026-09-27 01:59:18 | afc49d7c |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "or-nemotron-35-lightning", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
+| 2121 | 2026-09-27 01:59:18 | afc49d7c |  | model.retired | svc-LAPTOP-LRE6PSA8 | {"model": "or-ling-30-flash-vl", "reason": "gone: {\"error\":{\"message\":\"this model is unavailable for free. the paid version "} |
+| 2122 | 2026-09-27 01:59:18 | afc49d7c |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-li |
