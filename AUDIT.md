@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2220 | 2026-09-27 02:19:06 | 5613a43c | 009 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "009", "status": "active", "verified": "VERIFIED"}} |
-| 2221 | 2026-09-27 02:19:10 | 3416fe9b | 011 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 2222 | 2026-09-27 02:20:34 | 3416fe9b | 011 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 8s [done] expect='X_OK' last='X_OK' \| T2 FAIL 24s [done] expect='2' last='\u00e2\u0153\u00bb Write freq.txt.' \| T3 PAS |
-| 2223 | 2026-09-27 02:20:34 | 3416fe9b | 011 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 8s [done] expect='X_OK' last='X_OK' \| T2 FAIL 24s [done] expect='2' last='\u00e2\u0153\u00bb Write freq.txt.' \| T3 PAS |
-| 2224 | 2026-09-27 02:20:34 | 3416fe9b | 011 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 2225 | 2026-09-27 02:20:34 | e0e759b6 | 011 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "011", "max_rounds": 2}} |
 | 2226 | 2026-09-27 02:20:34 | 3416fe9b | 011 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "011", "status": "testing", "verified": "UNVERIFIED"}} |
 | 2227 | 2026-09-27 02:20:39 | d4c54a80 | 012 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +397,8 @@
 | 2617 | 2026-09-27 11:31:44 | 5a2b3caf | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 2618 | 2026-09-27 11:31:44 | a7a3251b | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "53c3678652324baaa481371161004062", "retry_of": "5a2b3caf17da429385cf6775a1a0b0e |
 | 2619 | 2026-09-27 11:31:44 | 5a2b3caf | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 2620 | 2026-09-27 11:40:26 | c8a06098 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2621 | 2026-09-27 11:49:04 | 374622aa | 027 | job.enqueued | master-001 | {"kind": "run", "payload": {"bot_id": "027", "task": "summarize the factory's weekly self-review and include a count of created bots", "in": |
+| 2622 | 2026-09-27 11:49:08 | 374622aa | 027 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2623 | 2026-09-27 11:49:41 | 374622aa | 027 | bot.ran | fast-LAPTOP-LRE6PSA8 | {"ok": true, "produced": [], "secs": 32, "reply": "Using config: C:\\AI\\Factory\\run\\botcfg\\027-task.json", "chain": "gemini-gemini-flash |
+| 2624 | 2026-09-27 11:49:41 | 374622aa | 027 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "027", "name": "run", "status": "ok "}} |
