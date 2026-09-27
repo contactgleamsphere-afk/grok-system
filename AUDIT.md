@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1803 | 2026-09-25 13:24:33 | 23979c6a |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 1804 | 2026-09-25 14:20:17 | a35b45be | 020 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1805 | 2026-09-25 19:59:42 | a35b45be |  | job.lease_expired | svc-LAPTOP-LRE6PSA8 | {} |
-| 1806 | 2026-09-25 19:59:42 | 4f127831 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1807 | 2026-09-25 19:59:42 | 865a2980 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-25T20"}} |
 | 1808 | 2026-09-25 19:59:44 | 4f127831 |  | probe.network_down | svc-LAPTOP-LRE6PSA8 | {"detail": "all 16 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
 | 1809 | 2026-09-25 19:59:44 | 96ccf58b |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-25T14-retry", "retry_of": "4f127831509c447c8aaaba0702a59478"}} |
@@ -402,3 +398,7 @@
 | 2200 | 2026-09-27 02:09:31 | 498a5257 | 005 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 2201 | 2026-09-27 02:09:31 | bb708ee5 | 005 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "005", "max_rounds": 2}} |
 | 2202 | 2026-09-27 02:09:31 | 498a5257 | 005 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "005", "status": "testing", "verified": "UNVERIFIED"}} |
+| 2203 | 2026-09-27 02:09:36 | c59bd289 | 006 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2204 | 2026-09-27 02:11:55 | c59bd289 | 006 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 22s [done] expect='X_OK' last='X_OK' \| T2 PASS 57s [done] expect='2' last='2' \| T3 PASS 50s [done] expect='0' last='0' |
+| 2205 | 2026-09-27 02:11:55 | c59bd289 | 006 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 22s [done] expect='X_OK' last='X_OK' \| T2 PASS 57s [done] expect='2' last='2' \| T3 PASS 50s [done] expect='0' last='0' |
+| 2206 | 2026-09-27 02:11:55 | c59bd289 | 006 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "006", "status": "active", "verified": "VERIFIED"}} |
