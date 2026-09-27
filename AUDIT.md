@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2174 | 2026-09-27 02:04:27 | 9eb7524a | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 2175 | 2026-09-27 02:04:27 | e6729e00 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "53c3678652324baaa481371161004062", "retry_of": "9eb7524a860b4238ac2959a3808efcd |
-| 2176 | 2026-09-27 02:04:27 | 9eb7524a | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 2177 | 2026-09-27 02:04:27 | 80c15c41 | 003 | bot.rearchitected | svc-LAPTOP-LRE6PSA8 | {"lane": "groq:openai/gpt-oss-20b", "tools": ["write_file", "exec"], "permissions": ["fs:write", "shell:workspace"], "boundary_diff": {"mode |
-| 2178 | 2026-09-27 02:04:27 | 5bee2f1f | 003 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "003", "retest_of": "80c15c41c6114e5c9171e688978ba456", "rearchitected": true}} |
 | 2179 | 2026-09-27 02:04:27 | 80c15c41 | 003 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "003", "pass": 3, "total": 4, "status": "testing"}} |
 | 2180 | 2026-09-27 02:04:32 | 5bee2f1f | 003 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2181 | 2026-09-27 02:04:32 | 84b99924 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +397,8 @@
 | 2571 | 2026-09-27 10:00:15 | ae01ea66 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2572 | 2026-09-27 10:00:16 | 6def4486 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-27T11"}} |
 | 2573 | 2026-09-27 10:00:16 | ae01ea66 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 2574 | 2026-09-27 10:01:13 | de920621 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2575 | 2026-09-27 10:03:28 | 503129d5 | 027 | job.enqueued | master-001 | {"kind": "run", "payload": {"bot_id": "027", "task": "Perform weekly self-review", "in": null, "out": null, "cap": 300, "t": 1790499808}} |
+| 2576 | 2026-09-27 10:03:29 | 503129d5 | 027 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2577 | 2026-09-27 10:04:11 | 503129d5 | 027 | bot.ran | fast-LAPTOP-LRE6PSA8 | {"ok": true, "produced": [], "secs": 41, "reply": "RESULT: 0", "chain": "gemini-gemini-flash-lite-latest"} |
+| 2578 | 2026-09-27 10:04:11 | 503129d5 | 027 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "027", "name": "run", "status": "ok "}} |
