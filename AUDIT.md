@@ -2,7 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1965 | 2026-09-26 01:14:20 | f1597a23 | 003 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 14s [done] expect='SMITH_OK' last='SMITH_OK' \| T2 FAIL 18s [done] expect='233168' last='\u00e2\u0153\u00bb Now run pyth |
 | 1966 | 2026-09-26 01:14:20 | f1597a23 | 003 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 1967 | 2026-09-26 01:14:20 | f3102263 | 003 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "003", "max_rounds": 2}} |
 | 1968 | 2026-09-26 01:14:20 | f1597a23 | 003 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "003", "status": "testing", "verified": "UNVERIFIED"}} |
@@ -402,3 +401,4 @@
 | 2362 | 2026-09-27 02:59:14 | 85375329 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2363 | 2026-09-27 02:59:15 | d39b6a1b |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-27T03"}} |
 | 2364 | 2026-09-27 02:59:15 | 85375329 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 2365 | 2026-09-27 02:59:22 | 5854ee45 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-l |
