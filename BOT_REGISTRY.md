@@ -2,9 +2,9 @@
 
 | id | name | status | verified | chain | tools | last test |
 |---|---|---|---|---|---|---|
-| 001 | master | testing | UNVERIFIED | local3b | exec, read_file, write_file, web_search, web_fetch | tests 9/10: T1 PASS 14s [done] liveness expect='MASTER_OK' cmd=True | T2 PASS 18 |
+| 001 | master | testing | UNVERIFIED | local3b | exec, read_file, write_file, web_search, web_fetch | tests 9/10: T1 PASS 32s [done] liveness expect='MASTER_OK' cmd=True | T2 PASS 20 |
 | 002 | research-scout | testing | UNVERIFIED | groq-gptoss20b > gemini-lite > gemini-flash > gemini-flash38 > or-deepseek > gemini-lite31 > groq-qwen27b > local4b | web_search, web_fetch, read_file | tests 1/2: T1 PASS 21s [done] expect='SCOUT_OK' last='SCOUT_OK' | T2 FAIL 23s [d |
-| 003 | code-smith | testing | UNVERIFIED | groq-gptoss120b > gemini-flash > gemini-flash38 > groq-gptoss20b > gemini-lite > local4b | write_file, read_file, exec | tests 1/4: T1 FAIL 3s [done] expect='SMITH_OK' last='' | T2 FAIL 17s [done] expe |
+| 003 | code-smith | testing | UNVERIFIED | gemini-gemini-flash-lite-latest > gemini-lite31 > or-ling-30-flash-sante > groq-gptoss120b > or-ling-30-flash-fin > groq-gptoss20b > local3b | write_file, exec | tests 3/4: T1 PASS 12s [done] expect='X_OK' last='X_OK' | T2 PASS 37s [done] exp |
 | 004 | changelog-writer | active | VERIFIED | groq-gptoss120b > gemini-flash > gemini-flash38 > groq-gptoss20b > gemini-lite > local4b | read_file, write_file | tests 4/4: repair re-verify 2026-09-26: T1 PASS 39s [done] expect='CHANGELOG_OK' |
 | 005 | csv-quality-auditor | active | VERIFIED | groq-gptoss120b > gemini-flash > gemini-flash38 > groq-gptoss20b > gemini-lite > local4b | read_file, write_file | tests 4/4: T1 PASS 13s [done] expect='X_OK' last='X_OK' | T2 PASS 76s [done] exp |
 | 006 | json-to-markdown-table | active | VERIFIED | groq-gptoss120b > gemini-flash > groq-gptoss20b > gemini-lite > local4b | read_file, write_file | tests 4/4: T1 PASS 12s [done] expect='X_OK' last='X_OK' | T2 PASS 47s [done] exp |
