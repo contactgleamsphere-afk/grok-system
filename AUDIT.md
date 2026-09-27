@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1723 | 2026-09-25 04:10:32 | 3f73d2dd | 026 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 19s [done] expect='X_OK' last='X_OK' \| T2 PASS 23s [done] expect='3' last='RESULT: 3' \| T3 PASS 23s [done] expect='use |
-| 1724 | 2026-09-25 04:10:32 | 3f73d2dd | 026 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 19s [done] expect='X_OK' last='X_OK' \| T2 PASS 23s [done] expect='3' last='RESULT: 3' \| T3 PASS 23s [done] expect='use |
-| 1725 | 2026-09-25 04:10:32 | 3f73d2dd | 026 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "026", "status": "active", "verified": "VERIFIED"}} |
 | 1726 | 2026-09-25 04:10:35 | 6ba4e1dc |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1727 | 2026-09-25 04:10:35 | 6ba4e1dc |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": []}} |
 | 1728 | 2026-09-25 04:10:38 | 1b095896 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +399,6 @@
 | 2120 | 2026-09-27 01:59:18 | afc49d7c |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "or-nemotron-35-lightning", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
 | 2121 | 2026-09-27 01:59:18 | afc49d7c |  | model.retired | svc-LAPTOP-LRE6PSA8 | {"model": "or-ling-30-flash-vl", "reason": "gone: {\"error\":{\"message\":\"this model is unavailable for free. the paid version "} |
 | 2122 | 2026-09-27 01:59:18 | afc49d7c |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-li |
+| 2123 | 2026-09-27 01:59:22 | afa33da8 | 018 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2124 | 2026-09-27 01:59:50 | afa33da8 | 018 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"ok": true, "produced": [], "secs": 26, "reply": "\u00e2\u2020\u00b3 read orders.csv", "chain": "groq-gptoss120b"} |
+| 2125 | 2026-09-27 01:59:50 | afa33da8 | 018 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "name": "run", "status": "ok "}} |
