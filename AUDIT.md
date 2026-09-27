@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1871 | 2026-09-25 21:00:56 | af65672a |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1872 | 2026-09-25 21:00:56 | af65672a |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 1873 | 2026-09-25 21:01:00 | 4c6af4e8 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1874 | 2026-09-25 21:01:00 | 4c6af4e8 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 1875 | 2026-09-25 21:01:04 | 5245a37e |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1876 | 2026-09-25 21:01:04 | 5245a37e |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 1877 | 2026-09-25 21:09:49 | 80e90b9b |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1878 | 2026-09-25 21:09:49 | 24db754c |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-25T22"}} |
@@ -402,3 +397,8 @@
 | 2268 | 2026-09-27 02:33:42 | f2186a09 | 018 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 50s [done] expect='30' last='RESULT: 30' \| T3 PASS 56s [done] expect='20 |
 | 2269 | 2026-09-27 02:33:42 | f2186a09 | 018 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 50s [done] expect='30' last='RESULT: 30' \| T3 PASS 56s [done] expect='20 |
 | 2270 | 2026-09-27 02:33:42 | f2186a09 | 018 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "status": "active", "verified": "VERIFIED"}} |
+| 2271 | 2026-09-27 02:33:44 | 36534eea | 019 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2272 | 2026-09-27 02:33:48 | 60f6d165 | 020 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2273 | 2026-09-27 02:36:03 | 36534eea | 019 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 90s [done] expect='1' last='RESULT: 1' \| T3 PASS 39s [done] expect='CONF |
+| 2274 | 2026-09-27 02:36:03 | 36534eea | 019 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 90s [done] expect='1' last='RESULT: 1' \| T3 PASS 39s [done] expect='CONF |
+| 2275 | 2026-09-27 02:36:03 | 36534eea | 019 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "019", "status": "active", "verified": "VERIFIED"}} |
