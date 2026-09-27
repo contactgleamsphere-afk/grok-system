@@ -2,12 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1821 | 2026-09-25 20:10:16 | 96ccf58b |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash36", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
-| 1822 | 2026-09-25 20:10:16 | 96ccf58b |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "or-nex-n25-pro", "outcome": "gone", "before": "VERIFIED", "after": "BLOCKED", "detail": "{\"error\":{\"message\":\"no endpoints f |
-| 1823 | 2026-09-25 20:10:16 | 134bba89 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "groq", "day": "2026-09-25", "trigger": "blocked:or-nex-n25-pro"}} |
-| 1824 | 2026-09-25 20:10:16 | 01537a5d |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "gemini", "day": "2026-09-25", "trigger": "blocked:or-nex-n25-pro"}} |
-| 1825 | 2026-09-25 20:10:16 | 3fa27047 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "openrouter", "day": "2026-09-25", "trigger": "blocked:or-nex-n25-pro"}} |
-| 1826 | 2026-09-25 20:10:16 | 2bbe411d |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "cerebras", "day": "2026-09-25", "trigger": "blocked:or-nex-n25-pro"}} |
 | 1827 | 2026-09-25 20:10:16 | a7cf454b |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-09-25", "trigger": "blocked:or-nex-n25-pro"}} |
 | 1828 | 2026-09-25 20:10:16 | e9039318 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-09-25", "trigger": "blocked:or-nex-n25-pro"}} |
 | 1829 | 2026-09-25 20:10:16 | a1ec1245 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "monitor", "payload": {"only": ["014"], "day": "2026-09-25", "canary_for": ["or-nex-n25-pro"]}} |
@@ -402,3 +396,9 @@
 | 2218 | 2026-09-27 02:19:06 | 5613a43c | 009 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 60s [done] expect='3' last='RESULT: 3' \| T3 PASS 52s [done] expect='1' l |
 | 2219 | 2026-09-27 02:19:06 | 5613a43c | 009 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 60s [done] expect='3' last='RESULT: 3' \| T3 PASS 52s [done] expect='1' l |
 | 2220 | 2026-09-27 02:19:06 | 5613a43c | 009 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "009", "status": "active", "verified": "VERIFIED"}} |
+| 2221 | 2026-09-27 02:19:10 | 3416fe9b | 011 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2222 | 2026-09-27 02:20:34 | 3416fe9b | 011 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 8s [done] expect='X_OK' last='X_OK' \| T2 FAIL 24s [done] expect='2' last='\u00e2\u0153\u00bb Write freq.txt.' \| T3 PAS |
+| 2223 | 2026-09-27 02:20:34 | 3416fe9b | 011 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 8s [done] expect='X_OK' last='X_OK' \| T2 FAIL 24s [done] expect='2' last='\u00e2\u0153\u00bb Write freq.txt.' \| T3 PAS |
+| 2224 | 2026-09-27 02:20:34 | 3416fe9b | 011 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
+| 2225 | 2026-09-27 02:20:34 | e0e759b6 | 011 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "011", "max_rounds": 2}} |
+| 2226 | 2026-09-27 02:20:34 | 3416fe9b | 011 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "011", "status": "testing", "verified": "UNVERIFIED"}} |
