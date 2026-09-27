@@ -2,7 +2,7 @@
 
 | id | name | status | verified | chain | tools | last test |
 |---|---|---|---|---|---|---|
-| 001 | master | testing | UNVERIFIED | local3b | exec, read_file, write_file, web_search, web_fetch | tests 9/10: T1 PASS 10s [done] liveness expect='MASTER_OK' cmd=True | T2 PASS 18 |
+| 001 | master | testing | UNVERIFIED | local3b | exec, read_file, write_file, web_search, web_fetch | tests 9/10: T1 PASS 12s [done] liveness expect='MASTER_OK' cmd=True | T2 PASS 12 |
 | 002 | research-scout | testing | UNVERIFIED | groq-gptoss20b > gemini-lite > gemini-flash > gemini-flash38 > or-deepseek > gemini-lite31 > groq-qwen27b > local4b | web_search, web_fetch, read_file | tests 1/2: T1 PASS 21s [done] expect='SCOUT_OK' last='SCOUT_OK' | T2 FAIL 23s [d |
 | 003 | code-smith | testing | UNVERIFIED | gemini-gemini-flash-lite-latest > gemini-lite31 > or-ling-30-flash-sante > groq-gptoss120b > or-ling-30-flash-fin > groq-gptoss20b > local3b | write_file, exec | tests 3/4: T1 PASS 12s [done] expect='X_OK' last='X_OK' | T2 PASS 37s [done] exp |
 | 004 | changelog-writer | testing | UNVERIFIED | groq-gptoss120b > gemini-flash > gemini-flash38 > groq-gptoss20b > gemini-lite > local4b | read_file, write_file | tests 1/4: T1 FAIL 19s [done] expect='CHANGELOG_OK' last='Using config: C:\AI\Fa |
@@ -23,9 +23,9 @@
 | 019 | pytest-runner | active | VERIFIED | groq-gptoss120b > or-ling-30-flash-vl > or-nex-n25-pro > groq-gptoss20b > gemini-gemma26b > groq-qwen27b > local3b | exec, write_file, read_file | tests 3/3: T1 PASS 9s [done] expect='X_OK' last='X_OK' | T2 PASS 90s [done] expe |
 | 020 | workspace-file-lister | testing | UNVERIFIED | groq-gptoss120b > or-ling-30-flash-vl > or-nex-n25-pro > groq-gptoss20b > gemini-gemma26b > groq-qwen27b > local3b | exec, write_file | tests 2/3: T1 PASS 9s [done] expect='X_OK' last='X_OK' | T2 FAIL 130s [done] exp |
 | 021 | email-line-counter | testing | UNVERIFIED | groq-gptoss120b > or-ling-30-flash-vl > or-nex-n25-pro > groq-gptoss20b > gemini-gemma26b > groq-qwen27b > local3b | read_file, write_file | tests 0/4: T1 FAIL 10s [done] expect='X_OK' last='Using config: C:\AI\Factory\ru |
-| 022 | csv-refund-filter | testing | UNVERIFIED | or-ling-30-flash-vl > or-nex-n25-pro > gemini-gemma26b > groq-qwen27b > local3b | read_file, write_file | tests 1/4: T1 FAIL 12s [done] expect='X_OK' last='Using config: C:\AI\Factory\ru |
-| 023 | refund-summarizer | testing | UNVERIFIED | or-ling-30-flash-vl > or-nex-n25-pro > gemini-gemma26b > groq-qwen27b > local3b | read_file, write_file | tests 1/4: T1 PASS 9s [done] expect='X_OK' last='X_OK' | T2 FAIL 40s [done] expe |
+| 022 | csv-refund-filter | active | VERIFIED | or-ling-30-flash-vl > or-nex-n25-pro > gemini-gemma26b > groq-qwen27b > local3b | read_file, write_file | tests 4/4: repair re-verify 2026-09-27: T1 PASS 8s [done] expect='X_OK' last='X_ |
+| 023 | refund-summarizer | active | VERIFIED | or-ling-30-flash-vl > or-nex-n25-pro > gemini-gemma26b > groq-qwen27b > local3b | read_file, write_file | tests 4/4: repair re-verify 2026-09-27: T1 PASS 8s [done] expect='X_OK' last='X_ |
 | 024 | pytest-runner-bot | active | VERIFIED | gemini-lite31 > gemini-gemma26b > local3b | write_file, read_file, exec | tests 3/3: T1 PASS 16s [done] expect='X_OK' last='X_OK' | T2 PASS 22s [done] exp |
-| 025 | text-transformer | testing | UNVERIFIED | gemini-lite31 > gemini-gemma26b > local3b | read_file, write_file | tests 1/3: T1 FAIL 7s [done] expect='LIVENESS_OK' last='Using config: C:\AI\Fact |
-| 026 | sqlite-query-bot | testing | UNVERIFIED | groq-gptoss120b > gemini-lite31 > groq-gptoss20b > local3b | read_file, write_file, mcp:mcp-sqlite3 | tests 2/4: T1 FAIL 10s [done] expect='X_OK' last='Using config: C:\AI\Factory\ru |
+| 025 | text-transformer | active | VERIFIED | gemini-lite31 > gemini-gemma26b > local3b | read_file, write_file | tests 3/3: repair re-verify 2026-09-27: T1 PASS 8s [done] expect='LIVENESS_OK' l |
+| 026 | sqlite-query-bot | active | VERIFIED | groq-gptoss120b > gemini-lite31 > groq-gptoss20b > local3b | read_file, write_file, mcp:mcp-sqlite3 | tests 4/4: repair re-verify 2026-09-27: T1 PASS 15s [done] expect='X_OK' last='X |
 | 027 | self-review-bot | active | VERIFIED | gemini-gemini-flash-lite-latest > gemini-lite31 > or-ling-30-flash-sante > or-ling-30-flash-fin > local3b | read_file, write_file, web_search, web_fetch | tests 3/3: T1 PASS 13s [done] expect='X_OK' last='X_OK' | T2 PASS 14s [done] exp |
