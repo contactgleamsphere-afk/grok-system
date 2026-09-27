@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2279 | 2026-09-27 02:36:19 | 60f6d165 | 020 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 2280 | 2026-09-27 02:36:19 | c04521f6 | 020 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "020", "max_rounds": 2}} |
-| 2281 | 2026-09-27 02:36:19 | 60f6d165 | 020 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "020", "status": "testing", "verified": "UNVERIFIED"}} |
-| 2282 | 2026-09-27 02:36:22 | b2ce3a78 | 021 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2283 | 2026-09-27 02:37:11 | b2ce3a78 | 021 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 10s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\021.json' \| T2 FAIL 13s [done] expect='2' la |
 | 2284 | 2026-09-27 02:37:11 | b2ce3a78 | 021 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 10s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\021.json' \| T2 FAIL 13s [done] expect='2' la |
 | 2285 | 2026-09-27 02:37:11 | b2ce3a78 | 021 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
@@ -402,3 +398,7 @@
 | 2676 | 2026-09-27 15:44:20 | e5b67ac6 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 2677 | 2026-09-27 15:44:20 | bfdd1597 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "53c3678652324baaa481371161004062", "retry_of": "e5b67ac6d094472cb066975a0041952 |
 | 2678 | 2026-09-27 15:44:20 | e5b67ac6 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 8, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 2679 | 2026-09-27 15:44:21 | 9b8338f6 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2680 | 2026-09-27 15:50:51 | cc6dbeee |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2681 | 2026-09-27 15:50:52 | d125629c |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-27T16"}} |
+| 2682 | 2026-09-27 15:50:52 | cc6dbeee |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
