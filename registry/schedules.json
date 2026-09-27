@@ -4,7 +4,7 @@
     "bot_id": "027",
     "created": "2026-09-27T03:48:30",
     "cron": "0 9 * * 1",
-    "enabled": true,
+    "enabled": false,
     "in": null,
     "last_fire": null,
     "next": "2026-09-28T09:00",
@@ -22,5 +22,17 @@
     "next": "2026-09-28T07:00",
     "runs": 4,
     "task": "Sum order totals per country into totals.csv"
+  },
+  "c9e4d22f": {
+    "actor": "master-001",
+    "bot_id": "027",
+    "created": "2026-09-27T10:37:09",
+    "cron": "0 9 * * 1",
+    "enabled": true,
+    "in": null,
+    "last_fire": null,
+    "next": "2026-09-28T09:00",
+    "runs": 0,
+    "task": "Perform weekly self-review, including a count of all bots created in the factory to date"
   }
 }
