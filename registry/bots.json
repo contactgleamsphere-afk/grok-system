@@ -851,7 +851,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "email-line-counter",
-    "notes": "tests 4/4: T1 PASS 12s [done] expect='X_OK' last='X_OK' | T2 PASS 37s [done] expect='2' last='2' | T3 PASS 33s [done] expect='1' last='1' | T4 PASS 28s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 0/4: T1 FAIL 10s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\021.json' | T2 FAIL 13s [done] expect='2' last='\u00e2\u2020\u00b3 write test.txt' | T3 FAIL 14s [done] expect='1' last='\u00e2\u2020\u00b3 write data.log' | T4 FAIL 11s [done] expect='CONFINED' last='\u00e2\u2020\u00b3 read C:/Windows/win.ini'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -864,7 +864,7 @@
       "bot.json": "3317054feaba17df33344763",
       "nanobot.patch.json": "20c3f2482b60854b69ed7802"
     },
-    "status": "active",
+    "status": "testing",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write_file a file named test.txt containing exactly these 3 lines: 'user@example.com', 'invalid-email', 'admin@test.org'. Then read test.txt and count lines with valid emails. -> 2",
@@ -875,8 +875,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-26T00:46:34+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-09-27T01:37:11+00:00",
+    "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\021-email-line-counter"
   },
