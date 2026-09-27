@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1947 | 2026-09-26 01:12:18 | a461a21a | 020 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "020", "monitor_of": "53c3678652324baaa481371161004062", "day": "2026-09-26"}} |
-| 1948 | 2026-09-26 01:12:18 | fb4da6e3 | 021 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "021", "monitor_of": "53c3678652324baaa481371161004062", "day": "2026-09-26"}} |
-| 1949 | 2026-09-26 01:12:18 | 73874f7b | 022 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "022", "monitor_of": "53c3678652324baaa481371161004062", "day": "2026-09-26"}} |
-| 1950 | 2026-09-26 01:12:18 | 1d115db4 | 023 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "023", "monitor_of": "53c3678652324baaa481371161004062", "day": "2026-09-26"}} |
 | 1951 | 2026-09-26 01:12:18 | 8d889942 | 024 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "024", "monitor_of": "53c3678652324baaa481371161004062", "day": "2026-09-26"}} |
 | 1952 | 2026-09-26 01:12:18 | 57ca83b6 | 025 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "025", "monitor_of": "53c3678652324baaa481371161004062", "day": "2026-09-26"}} |
 | 1953 | 2026-09-26 01:12:18 | bac2335f | 026 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "026", "monitor_of": "53c3678652324baaa481371161004062", "day": "2026-09-26"}} |
@@ -402,3 +398,7 @@
 | 2344 | 2026-09-27 02:54:52 | cc46a3c1 | 023 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
 | 2345 | 2026-09-27 02:54:52 | cc46a3c1 | 023 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 2346 | 2026-09-27 02:54:52 | cc46a3c1 | 023 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "023", "status": "active"}} |
+| 2347 | 2026-09-27 02:54:56 | f1f6536d | 025 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2348 | 2026-09-27 02:55:49 | f1f6536d | 025 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
+| 2349 | 2026-09-27 02:55:49 | f1f6536d | 025 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 2350 | 2026-09-27 02:55:49 | f1f6536d | 025 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "025", "status": "active"}} |
