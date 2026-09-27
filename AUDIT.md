@@ -2,7 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1995 | 2026-09-26 01:23:52 | 6a700484 | 006 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "006", "status": "active", "verified": "VERIFIED"}} |
 | 1996 | 2026-09-26 01:23:55 | 5a54744d | 007 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1997 | 2026-09-26 01:29:17 | f0215dbb | 004 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
 | 1998 | 2026-09-26 01:29:17 | f0215dbb | 004 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
@@ -402,3 +401,4 @@
 | 2392 | 2026-09-27 03:59:16 | d39b6a1b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2393 | 2026-09-27 03:59:17 | 46083656 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-27T04"}} |
 | 2394 | 2026-09-27 03:59:17 | d39b6a1b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 2395 | 2026-09-27 03:59:19 | 907e18f5 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-l |
