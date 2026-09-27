@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1848 | 2026-09-25 20:10:48 | 6acda974 | 014 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1849 | 2026-09-25 20:12:29 | 6acda974 | 014 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 14s [done] expect='5' last='RESULT: 5' \| T3 PASS 63s [done] expect='Time |
-| 1850 | 2026-09-25 20:12:29 | 6acda974 | 014 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 14s [done] expect='5' last='RESULT: 5' \| T3 PASS 63s [done] expect='Time |
-| 1851 | 2026-09-25 20:12:29 | 6acda974 | 014 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "014", "status": "active", "verified": "VERIFIED"}} |
 | 1852 | 2026-09-25 20:59:46 | 865a2980 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1853 | 2026-09-25 20:59:46 | 80e90b9b |  | job.dedup | svc-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
 | 1854 | 2026-09-25 20:59:57 | 54829a12 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +398,7 @@
 | 2245 | 2026-09-27 02:28:50 | e36bba9b | 014 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] expect='X_OK' last='X_OK' \| T2 PASS 20s [done] expect='5' last='RESULT: 5' \| T3 PASS 19s [done] expect='Tim |
 | 2246 | 2026-09-27 02:28:50 | e36bba9b | 014 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] expect='X_OK' last='X_OK' \| T2 PASS 20s [done] expect='5' last='RESULT: 5' \| T3 PASS 19s [done] expect='Tim |
 | 2247 | 2026-09-27 02:28:50 | e36bba9b | 014 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "014", "status": "active", "verified": "VERIFIED"}} |
+| 2248 | 2026-09-27 02:28:54 | fc5bc316 | 016 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2249 | 2026-09-27 02:29:35 | fc5bc316 | 016 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 10s [done] expect='2' last='RESULT: 2' \| T3 PASS 11s [done] expect='3'  |
+| 2250 | 2026-09-27 02:29:35 | fc5bc316 | 016 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 10s [done] expect='2' last='RESULT: 2' \| T3 PASS 11s [done] expect='3'  |
+| 2251 | 2026-09-27 02:29:35 | fc5bc316 | 016 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "016", "status": "active", "verified": "VERIFIED"}} |
