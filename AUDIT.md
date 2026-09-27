@@ -2,12 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1888 | 2026-09-25 21:10:15 | 263c1d32 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
-| 1889 | 2026-09-25 21:10:16 | d0076ca3 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1890 | 2026-09-25 21:10:16 | d0076ca3 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 1891 | 2026-09-25 21:10:19 | 03adb38c |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1892 | 2026-09-25 21:10:20 | 03adb38c |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 1893 | 2026-09-25 21:10:23 | 9efc5dbb |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1894 | 2026-09-25 21:10:23 | 9efc5dbb |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 1895 | 2026-09-25 21:10:27 | b691ec23 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1896 | 2026-09-25 21:10:27 | b691ec23 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
@@ -402,3 +396,9 @@
 | 2285 | 2026-09-27 02:37:11 | b2ce3a78 | 021 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 2286 | 2026-09-27 02:37:11 | a1d92047 | 021 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "021", "max_rounds": 2}} |
 | 2287 | 2026-09-27 02:37:11 | b2ce3a78 | 021 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "021", "status": "testing", "verified": "UNVERIFIED"}} |
+| 2288 | 2026-09-27 02:37:15 | 9938d282 | 022 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2289 | 2026-09-27 02:38:36 | 9938d282 | 022 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 12s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\022.json' \| T2 FAIL 25s [done] expect='2' la |
+| 2290 | 2026-09-27 02:38:36 | 9938d282 | 022 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 12s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\022.json' \| T2 FAIL 25s [done] expect='2' la |
+| 2291 | 2026-09-27 02:38:36 | 9938d282 | 022 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
+| 2292 | 2026-09-27 02:38:36 | 0f7762f5 | 022 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "022", "max_rounds": 2}} |
+| 2293 | 2026-09-27 02:38:36 | 9938d282 | 022 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "022", "status": "testing", "verified": "UNVERIFIED"}} |
