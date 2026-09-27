@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1960 | 2026-09-26 01:13:09 | a0acd66c | 002 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 1961 | 2026-09-26 01:13:09 | 0458f029 | 002 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "002", "max_rounds": 2}} |
-| 1962 | 2026-09-26 01:13:09 | a0acd66c | 002 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "002", "status": "testing", "verified": "UNVERIFIED"}} |
-| 1963 | 2026-09-26 01:13:14 | f1597a23 | 003 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 1964 | 2026-09-26 01:14:20 | f1597a23 | 003 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 14s [done] expect='SMITH_OK' last='SMITH_OK' \| T2 FAIL 18s [done] expect='233168' last='\u00e2\u0153\u00bb Now run pyth |
 | 1965 | 2026-09-26 01:14:20 | f1597a23 | 003 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 14s [done] expect='SMITH_OK' last='SMITH_OK' \| T2 FAIL 18s [done] expect='233168' last='\u00e2\u0153\u00bb Now run pyth |
 | 1966 | 2026-09-26 01:14:20 | f1597a23 | 003 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 1967 | 2026-09-26 01:14:20 | f3102263 | 003 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "003", "max_rounds": 2}} |
@@ -402,3 +397,8 @@
 | 2357 | 2026-09-27 02:57:04 | dac94e57 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2358 | 2026-09-27 02:57:26 | dac94e57 |  | factory.canary | svc-LAPTOP-LRE6PSA8 | {"verdict": "pass", "lane": "groq:openai/gpt-oss-20b", "chain": ["gemini-gemini-flash-lite-latest", "gemini-lite31", "or-ling-30-flash-sante |
 | 2359 | 2026-09-27 02:57:26 | dac94e57 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"pass": 2, "total": 2}} |
+| 2360 | 2026-09-27 02:58:47 | 5854ee45 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2361 | 2026-09-27 02:58:47 | 907e18f5 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-27T03"}} |
+| 2362 | 2026-09-27 02:59:14 | 85375329 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2363 | 2026-09-27 02:59:15 | d39b6a1b |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-27T03"}} |
+| 2364 | 2026-09-27 02:59:15 | 85375329 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
