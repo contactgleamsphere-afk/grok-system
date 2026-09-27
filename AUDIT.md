@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2032 | 2026-09-26 01:40:42 | efaa0786 | 016 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 40s [done] expect='2' last='RESULT: 2' \| T3 PASS 14s [done] expect='3'  |
-| 2033 | 2026-09-26 01:40:42 | efaa0786 | 016 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 40s [done] expect='2' last='RESULT: 2' \| T3 PASS 14s [done] expect='3'  |
-| 2034 | 2026-09-26 01:40:42 | efaa0786 | 016 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "016", "status": "active", "verified": "VERIFIED"}} |
 | 2035 | 2026-09-26 01:40:46 | 087596d0 | 018 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2036 | 2026-09-26 01:41:46 | 16882d86 | 017 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 28s [done] expect='3' last='RESULT: 3' \| T3 PASS 41s [done] expect='3'  |
 | 2037 | 2026-09-26 01:41:46 | 16882d86 | 017 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='X_OK' \| T2 PASS 28s [done] expect='3' last='RESULT: 3' \| T3 PASS 41s [done] expect='3'  |
@@ -402,3 +399,6 @@
 | 2429 | 2026-09-27 04:56:19 | 3469d573 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 2430 | 2026-09-27 04:56:19 | a26847c2 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "0583e758b8ba40f096402204cf0f82b0", "retry_of": "3469d573998544cb94faaf3e6964fb2 |
 | 2431 | 2026-09-27 04:56:19 | 3469d573 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 2432 | 2026-09-27 04:56:23 | d811bbf9 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2433 | 2026-09-27 04:56:24 | d811bbf9 |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect: objective needs permissions outside the allowance ['fs:read', 'fs:write', 'net:search', 'net:fetch']: The objective re |
+| 2434 | 2026-09-27 04:56:24 | d811bbf9 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: architect: objective needs permissions outside the a |
