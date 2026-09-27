@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2366 | 2026-09-27 03:09:42 | 032aaab8 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 2367 | 2026-09-27 03:12:26 | 032aaab8 | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 12s [done] report expect='FACTORY' cmd=True \| T3 PASS 13s [d |
 | 2368 | 2026-09-27 03:12:26 | 032aaab8 | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 12s [done] report expect='FACTORY' cmd=True \| T3 PASS 13s [d |
 | 2369 | 2026-09-27 03:12:26 | 032aaab8 | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 2370 | 2026-09-27 03:12:26 | 173b85f9 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "53c3678652324baaa481371161004062", "retry_of": "032aaab806684f8cba5a389d30c7400 |
@@ -402,3 +400,5 @@
 | 2763 | 2026-09-27 21:14:48 | 6d750294 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2764 | 2026-09-27 21:15:02 | d3e50c5d |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-27T22"}} |
 | 2765 | 2026-09-27 21:15:02 | 6d750294 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 2766 | 2026-09-27 21:15:08 | 35361536 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2767 | 2026-09-27 21:15:18 | f65a08d6 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-l |
