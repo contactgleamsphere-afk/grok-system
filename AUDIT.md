@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2147 | 2026-09-27 01:59:58 | 7cdaf7c8 | 017 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "017", "monitor_of": "0583e758b8ba40f096402204cf0f82b0", "day": "2026-09-27"}} |
-| 2148 | 2026-09-27 01:59:58 | f2186a09 | 018 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "018", "monitor_of": "0583e758b8ba40f096402204cf0f82b0", "day": "2026-09-27"}} |
-| 2149 | 2026-09-27 01:59:58 | 36534eea | 019 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "019", "monitor_of": "0583e758b8ba40f096402204cf0f82b0", "day": "2026-09-27"}} |
 | 2150 | 2026-09-27 01:59:58 | 60f6d165 | 020 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "020", "monitor_of": "0583e758b8ba40f096402204cf0f82b0", "day": "2026-09-27"}} |
 | 2151 | 2026-09-27 01:59:58 | b2ce3a78 | 021 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "021", "monitor_of": "0583e758b8ba40f096402204cf0f82b0", "day": "2026-09-27"}} |
 | 2152 | 2026-09-27 01:59:58 | 9938d282 | 022 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "022", "monitor_of": "0583e758b8ba40f096402204cf0f82b0", "day": "2026-09-27"}} |
@@ -402,3 +399,6 @@
 | 2544 | 2026-09-27 08:58:57 | 4d79dc8f |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2545 | 2026-09-27 08:58:57 | c2605129 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-27T09"}} |
 | 2546 | 2026-09-27 08:59:20 | 4d79dc8f |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-l |
+| 2547 | 2026-09-27 09:00:13 | d8fc6601 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2548 | 2026-09-27 09:00:13 | ae01ea66 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-27T10"}} |
+| 2549 | 2026-09-27 09:00:13 | d8fc6601 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
