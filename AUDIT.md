@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1936 | 2026-09-26 01:12:18 | 5a54744d | 007 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "007", "monitor_of": "53c3678652324baaa481371161004062", "day": "2026-09-26"}} |
-| 1937 | 2026-09-26 01:12:18 | 6c7820ef | 008 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "008", "monitor_of": "53c3678652324baaa481371161004062", "day": "2026-09-26"}} |
-| 1938 | 2026-09-26 01:12:18 | 7ac8fd19 | 009 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "009", "monitor_of": "53c3678652324baaa481371161004062", "day": "2026-09-26"}} |
 | 1939 | 2026-09-26 01:12:18 | 0ec08f9d | 011 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "011", "monitor_of": "53c3678652324baaa481371161004062", "day": "2026-09-26"}} |
 | 1940 | 2026-09-26 01:12:18 | 98574231 | 012 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "012", "monitor_of": "53c3678652324baaa481371161004062", "day": "2026-09-26"}} |
 | 1941 | 2026-09-26 01:12:18 | 1c3d0592 | 013 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "013", "monitor_of": "53c3678652324baaa481371161004062", "day": "2026-09-26"}} |
@@ -402,3 +399,6 @@
 | 2333 | 2026-09-27 02:42:37 | 399f0206 | 027 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "027", "status": "active", "verified": "VERIFIED"}} |
 | 2334 | 2026-09-27 02:47:58 | c04521f6 | 020 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": null, "rejected": ["fallback 'or-li |
 | 2335 | 2026-09-27 02:47:58 | c04521f6 | 020 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
+| 2336 | 2026-09-27 02:48:02 | a1d92047 | 021 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2337 | 2026-09-27 02:50:59 | a1d92047 | 021 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": null, "rejected": ["fallback 'or-li |
+| 2338 | 2026-09-27 02:50:59 | a1d92047 | 021 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
