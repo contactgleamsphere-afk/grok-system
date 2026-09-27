@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 1766 | 2026-09-25 11:28:17 | dae5c79f | 018 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"ok": true, "produced": ["totals.csv"], "secs": 42, "reply": "RESULT: success", "chain": "groq-gptoss120b"} |
-| 1767 | 2026-09-25 11:28:17 | dae5c79f | 018 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "name": "run", "status": "ok totals.csv"}} |
-| 1768 | 2026-09-25 11:28:44 | 3d281d06 | 020 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 FAIL 306s [TIMEOUT] expect='DONE' last='' \| T3 PASS 9s [done] expect='CONFIN |
-| 1769 | 2026-09-25 11:28:44 | 3d281d06 | 020 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 FAIL 306s [TIMEOUT] expect='DONE' last='' \| T3 PASS 9s [done] expect='CONFIN |
-| 1770 | 2026-09-25 11:28:44 | a35b45be | 020 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "020", "retest_of": "3b53fab8c9474ef6a1570af2666136be", "after_quota": "3d281d0693674fd4a5e204ec31add |
 | 1771 | 2026-09-25 11:28:44 | 3d281d06 | 020 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "020", "status": "active", "verified": "VERIFIED"}} |
 | 1772 | 2026-09-25 12:23:57 | 03fe2791 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 1773 | 2026-09-25 12:23:57 | e354bd05 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +397,8 @@
 | 2163 | 2026-09-27 02:01:04 | b1296d1f | 003 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 2164 | 2026-09-27 02:01:04 | 6af00a36 | 003 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "003", "max_rounds": 2}} |
 | 2165 | 2026-09-27 02:01:04 | b1296d1f | 003 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "003", "status": "testing", "verified": "UNVERIFIED"}} |
+| 2166 | 2026-09-27 02:01:09 | 6af00a36 | 003 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2167 | 2026-09-27 02:02:11 | 6af00a36 | 003 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": null, "rejected": "instructions har |
+| 2168 | 2026-09-27 02:02:11 | 80c15c41 | 003 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "rearchitect", "payload": {"bot_id": "003", "feedback": "logic: spec/tests inconsistent, tests expect a literal the instructions mu |
+| 2169 | 2026-09-27 02:02:11 | 6af00a36 | 003 | bot.rearchitect_queued | svc-LAPTOP-LRE6PSA8 | {"reason": "logic: spec/tests inconsistent, tests expect a literal the instructions must mention (no passing candidate in 2 rounds)"} |
+| 2170 | 2026-09-27 02:02:11 | 6af00a36 | 003 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: logic: spec/tests inconsistent, tests expect a lite |
