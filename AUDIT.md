@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2428 | 2026-09-27 04:56:19 | 3469d573 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 14s [done] report expect='FACTORY' cmd=True \| T3 PASS 16s [d |
-| 2429 | 2026-09-27 04:56:19 | 3469d573 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 2430 | 2026-09-27 04:56:19 | a26847c2 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "0583e758b8ba40f096402204cf0f82b0", "retry_of": "3469d573998544cb94faaf3e6964fb2 |
 | 2431 | 2026-09-27 04:56:19 | 3469d573 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 2432 | 2026-09-27 04:56:23 | d811bbf9 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2433 | 2026-09-27 04:56:24 | d811bbf9 |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect: objective needs permissions outside the allowance ['fs:read', 'fs:write', 'net:search', 'net:fetch']: The objective re |
@@ -402,3 +399,6 @@
 | 2825 | 2026-09-28 01:30:34 | eff17c52 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2826 | 2026-09-28 01:30:35 | 81cad91a |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-28T02"}} |
 | 2827 | 2026-09-28 01:30:35 | 66e79d3e |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 2828 | 2026-09-28 01:40:32 | c705cf8c |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2829 | 2026-09-28 01:40:32 | fc453a3f |  | job.dedup | fast-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
+| 2830 | 2026-09-28 01:41:00 | c705cf8c |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-flash38", "gemini-gemma26b", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen27b", "local3 |
