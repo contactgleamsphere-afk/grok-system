@@ -224,3 +224,4 @@
 | 2026-09-29 18:45 | 005 csv-quality-auditor | 1/4 | testing→testing | - |
 | 2026-09-29 18:49 | 001 master | 9/10 | testing→testing | - |
 | 2026-09-29 18:53 | 001 master | 9/10 | testing→testing | - |
+| 2026-09-29 19:02 | 006 json-to-markdown-table | 4/4 | testing→active | - |
