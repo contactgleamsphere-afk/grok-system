@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2734 | 2026-09-27 17:50:00 | de7ade5c | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 16s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 61s [done] report expect='FACTORY' cmd=True \| T3 PASS 61s [d |
-| 2735 | 2026-09-27 17:50:00 | de7ade5c | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 16s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 61s [done] report expect='FACTORY' cmd=True \| T3 PASS 61s [d |
-| 2736 | 2026-09-27 17:50:00 | de7ade5c | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 2737 | 2026-09-27 17:50:00 | 7989ffdc | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "53c3678652324baaa481371161004062", "retry_of": "de7ade5c374548bf8b5256ea2af12d9 |
 | 2738 | 2026-09-27 17:50:00 | de7ade5c | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 8, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 2739 | 2026-09-27 17:50:55 | 31503b5a |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +399,6 @@
 | 3131 | 2026-09-29 19:02:12 | 4d8b6f21 | 006 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 75s [done] expect='X_OK' last='X_OK' \| T2 PASS 152s [done] expect='2' last='2' \| T3 PASS 231s [done] expect='0' last=' |
 | 3132 | 2026-09-29 19:02:12 | 4d8b6f21 | 006 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 75s [done] expect='X_OK' last='X_OK' \| T2 PASS 152s [done] expect='2' last='2' \| T3 PASS 231s [done] expect='0' last=' |
 | 3133 | 2026-09-29 19:02:12 | 4d8b6f21 | 006 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "006", "status": "active", "verified": "VERIFIED"}} |
+| 3134 | 2026-09-29 19:02:18 | 4f6d66a5 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3135 | 2026-09-29 19:02:18 | bddec4ba |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-29T20"}} |
+| 3136 | 2026-09-29 19:03:35 | 4f6d66a5 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptos |
