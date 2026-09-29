@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2652 | 2026-09-27 14:50:46 | ed16b7b3 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 2653 | 2026-09-27 14:50:51 | 092262db |  | job.lease_expired | svc-LAPTOP-LRE6PSA8 | {} |
-| 2654 | 2026-09-27 14:50:51 | 092262db |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 2} |
-| 2655 | 2026-09-27 14:50:51 | 06a21c84 |  | job.dedup | svc-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
-| 2656 | 2026-09-27 14:52:00 | 092262db |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-flash38", "gemini-gemma26b", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq- |
 | 2657 | 2026-09-27 14:52:06 | 7560f693 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2658 | 2026-09-27 14:52:15 | 092262db |  | job.orphaned_result | fast-LAPTOP-LRE6PSA8 | {"summary": "{'probed': 20, 'healthy': ['gemini-flash', 'gemini-flash38', 'gemini-gemini-flash-lite-latest', 'gemini-gemma26b', 'gemini-lite |
 | 2659 | 2026-09-27 15:01:53 | 7560f693 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 14s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 76s [done] report expect='FACTORY' cmd=True \| T3 PASS 63s [d |
@@ -402,3 +397,8 @@
 | 3049 | 2026-09-29 18:39:26 | 6a59bbe3 | 023 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 3050 | 2026-09-29 18:39:26 | 8615298f | 023 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "023", "max_rounds": 2}} |
 | 3051 | 2026-09-29 18:39:26 | 6a59bbe3 | 023 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "023", "status": "testing", "verified": "UNVERIFIED"}} |
+| 3052 | 2026-09-29 18:39:30 | 5929288f | 024 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3053 | 2026-09-29 18:40:03 | 5929288f | 024 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 8s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\024.json' \| T2 FAIL 12s [done] expect='2' las |
+| 3054 | 2026-09-29 18:40:03 | 5929288f | 024 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 8s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\024.json' \| T2 FAIL 12s [done] expect='2' las |
+| 3055 | 2026-09-29 18:40:03 | 9ddad2e1 | 024 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "024", "retest_of": "5929288ffa7f4d548094388c6e23f2f1", "after_quota": "5929288ffa7f4d548094388c6e23f |
+| 3056 | 2026-09-29 18:40:03 | 5929288f | 024 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "024", "status": "active", "verified": "VERIFIED"}} |
