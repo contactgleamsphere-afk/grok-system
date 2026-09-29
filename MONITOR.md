@@ -233,3 +233,4 @@
 | 2026-09-29 19:11 | 013 log-error-filter | 4/4 | active→active | - |
 | 2026-09-29 19:11 | 016 workspace-tidy-counter | 4/4 | active→active | - |
 | 2026-09-29 19:11 | 014 error-log-analyzer | 4/4 | active→active | - |
+| 2026-09-29 19:13 | 018 csv-country-totals | 4/4 | active→active | - |
