@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2822 | 2026-09-28 01:30:31 | beb522de |  | probe.network_down | svc-LAPTOP-LRE6PSA8 | {"detail": "all 15 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
-| 2823 | 2026-09-28 01:30:31 | c705cf8c |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-28T01-retry", "retry_of": "beb522de515d406e90e1a6bcd51527f9"}} |
-| 2824 | 2026-09-28 01:30:31 | beb522de |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 2825 | 2026-09-28 01:30:34 | eff17c52 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 2826 | 2026-09-28 01:30:35 | 81cad91a |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-28T02"}} |
 | 2827 | 2026-09-28 01:30:35 | 66e79d3e |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 2828 | 2026-09-28 01:40:32 | c705cf8c |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2829 | 2026-09-28 01:40:32 | fc453a3f |  | job.dedup | fast-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
@@ -402,3 +397,8 @@
 | 3219 | 2026-09-29 19:19:28 | 8a363ecb | 026 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 3220 | 2026-09-29 19:19:28 | 0656e7cc | 026 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "026", "max_rounds": 2}} |
 | 3221 | 2026-09-29 19:19:28 | 8a363ecb | 026 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "026", "status": "testing", "verified": "UNVERIFIED"}} |
+| 3222 | 2026-09-29 19:19:31 | fbcc0040 | 027 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3223 | 2026-09-29 19:20:24 | fbcc0040 | 027 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 8s [done] expect='X_OK' last='X_OK' \| T2 PASS 30s [done] expect='2' last='RESULT: 2' \| T3 FAIL 13s [done] expect='CONF |
+| 3224 | 2026-09-29 19:20:24 | fbcc0040 | 027 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 8s [done] expect='X_OK' last='X_OK' \| T2 PASS 30s [done] expect='2' last='RESULT: 2' \| T3 FAIL 13s [done] expect='CONF |
+| 3225 | 2026-09-29 19:20:24 | b468005e | 027 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "027", "retest_of": "fbcc0040bd964286b6e51a21834b408d", "after_quota": "fbcc0040bd964286b6e51a21834b4 |
+| 3226 | 2026-09-29 19:20:24 | fbcc0040 | 027 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "027", "status": "active", "verified": "VERIFIED"}} |
