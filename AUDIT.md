@@ -2,16 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2452 | 2026-09-27 05:44:29 | a26847c2 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 8, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 2453 | 2026-09-27 05:58:53 | 98cc149b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 2454 | 2026-09-27 05:58:53 | 0aa16583 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-27T06"}} |
-| 2455 | 2026-09-27 05:59:17 | 98cc149b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-flash38", "gemini-gemma26b", "gemini-lite31", "groq-gptoss120b", "groq-gp |
-| 2456 | 2026-09-27 05:59:20 | d0e2b03f |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 2457 | 2026-09-27 05:59:21 | 1a46a047 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-27T06"}} |
-| 2458 | 2026-09-27 05:59:21 | d0e2b03f |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 2459 | 2026-09-27 06:03:21 | 336820f6 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 2460 | 2026-09-27 06:16:52 | 336820f6 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 31s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 57s [done] report expect='FACTORY' cmd=True \| T3 PASS 100s [ |
-| 2461 | 2026-09-27 06:16:52 | 336820f6 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 31s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 57s [done] report expect='FACTORY' cmd=True \| T3 PASS 100s [ |
 | 2462 | 2026-09-27 06:16:52 | 336820f6 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 2463 | 2026-09-27 06:16:52 | 79a92474 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "53c3678652324baaa481371161004062", "retry_of": "336820f6d0394d0c9986d1a1f20ebf2 |
 | 2464 | 2026-09-27 06:16:52 | 336820f6 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 8, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
@@ -402,3 +392,13 @@
 | 2849 | 2026-09-29 18:01:49 |  | 027 | schedule.fired | fast-LAPTOP-LRE6PSA8 | {"sid": "c9e4d22f", "fire": "2026-09-28T09:00", "job": "c256f1f3"} |
 | 2850 | 2026-09-29 18:01:50 | 7f41dddc |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-29T19"}} |
 | 2851 | 2026-09-29 18:01:50 | 81cad91a |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 2852 | 2026-09-29 18:01:57 | 5013c9f9 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2853 | 2026-09-29 18:02:54 | fc453a3f |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "or-ling-30-flash-fin", "outcome": "gone", "before": "VERIFIED", "after": "BLOCKED", "detail": "{\"error\":{\"message\":\"this mod |
+| 2854 | 2026-09-29 18:02:54 | fc453a3f |  | model.retired | svc-LAPTOP-LRE6PSA8 | {"model": "or-nex-n25-pro", "reason": "gone: {\"error\":{\"message\":\"this model is unavailable for free. the paid version "} |
+| 2855 | 2026-09-29 18:02:54 | b62be530 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "groq", "day": "2026-09-29", "trigger": "blocked:or-ling-30-flash-fin"}} |
+| 2856 | 2026-09-29 18:02:54 | c9e9f708 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "gemini", "day": "2026-09-29", "trigger": "blocked:or-ling-30-flash-fin"}} |
+| 2857 | 2026-09-29 18:02:54 | feed78f0 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "openrouter", "day": "2026-09-29", "trigger": "blocked:or-ling-30-flash-fin"}} |
+| 2858 | 2026-09-29 18:02:54 | 00a18cc0 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "cerebras", "day": "2026-09-29", "trigger": "blocked:or-ling-30-flash-fin"}} |
+| 2859 | 2026-09-29 18:02:54 | a237fa20 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-09-29", "trigger": "blocked:or-ling-30-flash-fin"}} |
+| 2860 | 2026-09-29 18:02:54 | de32e89e |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-09-29", "trigger": "blocked:or-ling-30-flash-fin"}} |
+| 2861 | 2026-09-29 18:02:54 | fc453a3f |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "groq-gptoss120b", "groq-gptoss20b", "groq-qwe |
