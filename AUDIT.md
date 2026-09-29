@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2852 | 2026-09-29 18:01:57 | 5013c9f9 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 2853 | 2026-09-29 18:02:54 | fc453a3f |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "or-ling-30-flash-fin", "outcome": "gone", "before": "VERIFIED", "after": "BLOCKED", "detail": "{\"error\":{\"message\":\"this mod |
 | 2854 | 2026-09-29 18:02:54 | fc453a3f |  | model.retired | svc-LAPTOP-LRE6PSA8 | {"model": "or-nex-n25-pro", "reason": "gone: {\"error\":{\"message\":\"this model is unavailable for free. the paid version "} |
 | 2855 | 2026-09-29 18:02:54 | b62be530 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "groq", "day": "2026-09-29", "trigger": "blocked:or-ling-30-flash-fin"}} |
 | 2856 | 2026-09-29 18:02:54 | c9e9f708 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "gemini", "day": "2026-09-29", "trigger": "blocked:or-ling-30-flash-fin"}} |
@@ -402,3 +400,5 @@
 | 3249 | 2026-09-29 19:26:35 | 252a5b8d | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 3250 | 2026-09-29 19:26:35 | 176c95ca | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "33d3730f13e945aa8839588d7a0ec4b7", "retry_of": "252a5b8dab6d4dda9c57864ab31d7eb |
 | 3251 | 2026-09-29 19:26:35 | 252a5b8d | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 3252 | 2026-09-29 19:26:36 | 0656e7cc | 026 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": null, "rejected": ["fallback 'or-ne |
+| 3253 | 2026-09-29 19:26:36 | 0656e7cc | 026 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
