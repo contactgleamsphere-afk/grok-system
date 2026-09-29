@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2872 | 2026-09-29 18:03:36 | a237fa20 |  | owner.needed | svc-LAPTOP-LRE6PSA8 | {"provider": "nvidia", "reason": "set NVIDIA_API_KEY (User env) after signing up: https://build.nvidia.com (free ~40 rpm, tool-capable model |
-| 2873 | 2026-09-29 18:03:36 | a237fa20 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 2874 | 2026-09-29 18:03:44 | de32e89e |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2875 | 2026-09-29 18:03:45 | de32e89e |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 2876 | 2026-09-29 18:03:51 | c6ebd328 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2877 | 2026-09-29 18:03:51 | 579491c3 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "c6ebd328452848dd8bc03064b97b6ff1", "day": "2026-09-28"}} |
@@ -402,3 +399,6 @@
 | 3269 | 2026-09-29 19:58:35 | 73c0022b | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 35s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 61s [done] report expect='FACTORY' cmd=True \| T3 PASS 58s [d |
 | 3270 | 2026-09-29 19:58:35 | 2c510b7c | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "73c0022bd5074aad890aa36856ac76d0", "after_quota": "73c0022bd5074aad890aa36856ac7 |
 | 3271 | 2026-09-29 19:58:35 | 73c0022b | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 3272 | 2026-09-29 19:58:39 | 69f3367a | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3273 | 2026-09-29 19:58:40 | 0d658a6f | 027 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"ok": true, "produced": [], "secs": 35, "reply": "\u00e2\u2020\u00b3 read bots/bot028/README.md", "chain": "gemini-gemini-flash-lite-latest |
+| 3274 | 2026-09-29 19:58:40 | 0d658a6f | 027 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "027", "name": "run", "status": "ok "}} |
