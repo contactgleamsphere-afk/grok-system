@@ -213,3 +213,4 @@
 | 2026-09-29 18:34 | 019 pytest-runner | 3/3 | active→active | - |
 | 2026-09-29 18:35 | 018 csv-country-totals | 4/4 | active→active | - |
 | 2026-09-29 18:39 | 022 csv-refund-filter | 4/4 | active→active | - |
+| 2026-09-29 18:39 | 023 refund-summarizer | 2/4 | active→testing | - |
