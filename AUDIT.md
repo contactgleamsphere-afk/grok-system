@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2727 | 2026-09-27 17:03:27 | fe7e90ca |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 2728 | 2026-09-27 17:08:23 | 9da18f93 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 14s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 58s [done] report expect='FACTORY' cmd=True \| T3 PASS 59s [d |
-| 2729 | 2026-09-27 17:08:23 | 9da18f93 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 14s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 58s [done] report expect='FACTORY' cmd=True \| T3 PASS 59s [d |
 | 2730 | 2026-09-27 17:08:23 | 9da18f93 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 2731 | 2026-09-27 17:08:23 | de7ade5c | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "53c3678652324baaa481371161004062", "retry_of": "9da18f9325354658b95fe186c6c6e2d |
 | 2732 | 2026-09-27 17:08:23 | 9da18f93 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 8, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
@@ -402,3 +399,6 @@
 | 3124 | 2026-09-29 18:53:03 | 061a0266 | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 3125 | 2026-09-29 18:53:03 | a0577b9d | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "c6ebd328452848dd8bc03064b97b6ff1", "retry_of": "061a0266b60141249679d771b2f460a |
 | 3126 | 2026-09-29 18:53:03 | 061a0266 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 3127 | 2026-09-29 18:53:07 | 4d8b6f21 | 006 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3128 | 2026-09-29 18:57:11 | 9d53582f | 005 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": null, "rejected": ["fallback 'or-de |
+| 3129 | 2026-09-29 18:57:11 | 9d53582f | 005 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
