@@ -205,3 +205,4 @@
 | 2026-09-29 18:20 | 008 word-frequency-bot | 4/4 | active→active | - |
 | 2026-09-29 18:25 | 009 line-dedupe-bot | 4/4 | active→active | - |
 | 2026-09-29 18:26 | 011 word-frequency-counter | 4/4 | active→active | - |
+| 2026-09-29 18:28 | 012 csv-column-sum | 4/4 | active→active | - |
