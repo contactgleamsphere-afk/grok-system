@@ -308,7 +308,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "word-frequency-bot",
-    "notes": "tests 4/4: T1 PASS 15s [done] expect='X_OK' last='X_OK' | T2 PASS 88s [done] expect='apple' last='RESULT: apple' | T3 PASS 92s [done] expect='dog' last='RESULT: dog' | T4 PASS 15s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: T1 PASS 8s [done] expect='X_OK' last='X_OK' | T2 PASS 229s [done] expect='apple' last='apple' | T3 PASS 60s [done] expect='dog' last='dog' | T4 PASS 16s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -332,7 +332,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-29T17:20:28+00:00",
+    "updated": "2026-09-29T18:08:58+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\008-word-frequency-bot"
