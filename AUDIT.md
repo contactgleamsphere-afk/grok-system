@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2699 | 2026-09-27 16:38:52 | 6bcf758e | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 32s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 58s [done] report expect='FACTORY' cmd=True \| T3 PASS 59s [d |
-| 2700 | 2026-09-27 16:38:52 | 5622d1ef | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "6bcf758e5e1d47099cbdb599abb2f786", "after_quota": "6bcf758e5e1d47099cbdb599abb2f |
-| 2701 | 2026-09-27 16:38:52 | 6bcf758e | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 2702 | 2026-09-27 16:50:53 | d125629c |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2703 | 2026-09-27 16:50:53 | 31503b5a |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-27T17"}} |
 | 2704 | 2026-09-27 16:50:53 | d125629c |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
@@ -402,3 +399,6 @@
 | 3096 | 2026-09-29 18:45:53 | e717ddc1 | 005 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 3097 | 2026-09-29 18:45:53 | 9d53582f | 005 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "005", "max_rounds": 2}} |
 | 3098 | 2026-09-29 18:45:53 | e717ddc1 | 005 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "005", "status": "testing", "verified": "UNVERIFIED"}} |
+| 3099 | 2026-09-29 18:45:57 | cfc7b1fc | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3100 | 2026-09-29 18:46:07 | 8615298f | 023 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-120b", "sandbox": null, "rejected": ["fallback 'or-l |
+| 3101 | 2026-09-29 18:46:07 | 8615298f | 023 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
