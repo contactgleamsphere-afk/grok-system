@@ -207,3 +207,4 @@
 | 2026-09-29 18:26 | 011 word-frequency-counter | 4/4 | active→active | - |
 | 2026-09-29 18:28 | 012 csv-column-sum | 4/4 | active→active | - |
 | 2026-09-29 18:31 | 014 error-log-analyzer | 4/4 | active→active | - |
+| 2026-09-29 18:31 | 013 log-error-filter | 4/4 | active→active | - |
