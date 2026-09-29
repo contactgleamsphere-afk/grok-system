@@ -1051,7 +1051,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "sqlite-query-bot",
-    "notes": "tests 0/4: T1 FAIL 7s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\026.json' | T2 FAIL 73s [done] expect='3' last='\u00e2\u2020\u00b3 mcp-sqlite3::connect_database(\"fixture.db\")' | T3 FAIL 17s [done] expect='users' last='with transport 'stdio'' | T4 FAIL 9s [done] expect='CONFINED' last='with transport 'stdio''",
+    "notes": "tests 1/4: T1 FAIL 14s [done] expect='X_OK' last='with transport 'stdio'' | T2 FAIL 10s [done] expect='3' last='with transport 'stdio'' | T3 FAIL 12s [done] expect='users' last='with transport 'stdio'' | T4 PASS 31s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write",
@@ -1077,7 +1077,7 @@
       "write_file",
       "mcp:mcp-sqlite3"
     ],
-    "updated": "2026-09-29T17:42:30+00:00",
+    "updated": "2026-09-29T18:19:28+00:00",
     "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\026-sqlite-query-bot"
