@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2875 | 2026-09-29 18:03:45 | de32e89e |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 2876 | 2026-09-29 18:03:51 | c6ebd328 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 2877 | 2026-09-29 18:03:51 | 579491c3 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "c6ebd328452848dd8bc03064b97b6ff1", "day": "2026-09-28"}} |
 | 2878 | 2026-09-29 18:03:51 | 1ecb9227 | 003 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "003", "monitor_of": "c6ebd328452848dd8bc03064b97b6ff1", "day": "2026-09-28"}} |
 | 2879 | 2026-09-29 18:03:51 | 0f59f40f | 005 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "005", "monitor_of": "c6ebd328452848dd8bc03064b97b6ff1", "day": "2026-09-28"}} |
 | 2880 | 2026-09-29 18:03:51 | 09146563 | 006 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "006", "monitor_of": "c6ebd328452848dd8bc03064b97b6ff1", "day": "2026-09-28"}} |
@@ -402,3 +399,6 @@
 | 3272 | 2026-09-29 19:58:39 | 69f3367a | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3273 | 2026-09-29 19:58:40 | 0d658a6f | 027 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"ok": true, "produced": [], "secs": 35, "reply": "\u00e2\u2020\u00b3 read bots/bot028/README.md", "chain": "gemini-gemini-flash-lite-latest |
 | 3274 | 2026-09-29 19:58:40 | 0d658a6f | 027 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "027", "name": "run", "status": "ok "}} |
+| 3275 | 2026-09-29 20:02:19 | bddec4ba |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3276 | 2026-09-29 20:02:19 | 06281ead |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-29T21"}} |
+| 3277 | 2026-09-29 20:05:14 | bddec4ba |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen27b", "local3b", "local4b", "or-l |
