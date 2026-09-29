@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2553 | 2026-09-27 09:16:06 | bf0a98ba | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 2554 | 2026-09-27 09:16:06 | 3a141540 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "53c3678652324baaa481371161004062", "retry_of": "bf0a98ba75b74197a47e5d732f0d3db |
-| 2555 | 2026-09-27 09:16:06 | bf0a98ba | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 2556 | 2026-09-27 09:28:34 | a3b36969 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 2557 | 2026-09-27 09:31:13 | a3b36969 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 12s [done] report expect='FACTORY' cmd=True \| T3 PASS 14s [do |
 | 2558 | 2026-09-27 09:31:13 | a3b36969 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 12s [done] report expect='FACTORY' cmd=True \| T3 PASS 14s [do |
 | 2559 | 2026-09-27 09:31:13 | a3b36969 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 2560 | 2026-09-27 09:31:13 | de920621 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "0583e758b8ba40f096402204cf0f82b0", "retry_of": "a3b369698fe34da2b35cfce368b64ed |
@@ -402,3 +397,8 @@
 | 2950 | 2026-09-29 18:07:42 | ec968d47 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2951 | 2026-09-29 18:08:47 | 1826bc15 | 003 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-120b", "sandbox": "1/4", "rejected": null}, {"round" |
 | 2952 | 2026-09-29 18:08:47 | 1826bc15 | 003 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
+| 2953 | 2026-09-29 18:08:52 | 3ec8a25d |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2954 | 2026-09-29 18:08:59 | 3ec8a25d | 028 | bot.created | svc-LAPTOP-LRE6PSA8 | {"name": "weekly-self-review", "tools": ["read_file", "write_file", "web_search"], "permissions": ["fs:read", "fs:write", "net:search", "net |
+| 2955 | 2026-09-29 18:09:45 | 3ec8a25d | 028 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 7s [done] expect='X_OK' last='' \| T2 PASS 24s [done] expect='3' last='RESULT: 3' \| T3 FAIL 2s [done] expect='5' last=' |
+| 2956 | 2026-09-29 18:09:45 | da8c8c2d | 028 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "028", "retest_of": "3ec8a25d148b49e5aad06a0ec23fa5fb"}} |
+| 2957 | 2026-09-29 18:09:45 | 3ec8a25d | 028 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "028", "name": "weekly-self-review", "pass": 2, "total": 4, "status": "testing", "verified": "UNVERIFIED"}} |
