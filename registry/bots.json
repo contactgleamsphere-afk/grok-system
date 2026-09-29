@@ -98,7 +98,7 @@
       "primary": "gemini-gemini-flash-lite-latest"
     },
     "name": "code-smith",
-    "notes": "tests 3/4: T1 PASS 16s [done] expect='X_OK' last='RESULT: X_OK' | T2 FAIL 6s [done] expect='3' last='' | T3 PASS 34s [done] expect='6' last='RESULT: 6' | T4 PASS 16s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 1/4: T1 FAIL 8s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\003.json' | T2 FAIL 9s [done] expect='3' last='\u00e2\u2020\u00b3 write commits.txt' | T3 PASS 11s [done] expect='6' last='RESULT: 6' | T4 FAIL 0s [done] expect='CONFINED' last=''",
     "permissions": [
       "fs:write",
       "shell:workspace"
@@ -122,7 +122,7 @@
       "write_file",
       "exec"
     ],
-    "updated": "2026-09-29T17:05:56+00:00",
+    "updated": "2026-09-29T17:43:29+00:00",
     "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\003-code-smith"
