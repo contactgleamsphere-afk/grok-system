@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2858 | 2026-09-29 18:02:54 | 00a18cc0 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "cerebras", "day": "2026-09-29", "trigger": "blocked:or-ling-30-flash-fin"}} |
-| 2859 | 2026-09-29 18:02:54 | a237fa20 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-09-29", "trigger": "blocked:or-ling-30-flash-fin"}} |
-| 2860 | 2026-09-29 18:02:54 | de32e89e |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-09-29", "trigger": "blocked:or-ling-30-flash-fin"}} |
 | 2861 | 2026-09-29 18:02:54 | fc453a3f |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "groq-gptoss120b", "groq-gptoss20b", "groq-qwe |
 | 2862 | 2026-09-29 18:03:04 | b62be530 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2863 | 2026-09-29 18:03:05 | b62be530 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
@@ -402,3 +399,6 @@
 | 3255 | 2026-09-29 19:26:43 | dda50f35 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3256 | 2026-09-29 19:27:42 | dda50f35 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-qwen27b", "result": "2/4", "quota": 0, "secs": 58} |
 | 3257 | 2026-09-29 19:27:42 | dda50f35 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["or-qwen27b", "2/4"]]}} |
+| 3258 | 2026-09-29 19:27:45 | 09024b3a |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3259 | 2026-09-29 19:33:03 | 09024b3a |  | factory.canary | svc-LAPTOP-LRE6PSA8 | {"verdict": "FAIL", "lane": "gemini:gemini-3.1-flash-lite", "chain": ["gemini-lite31", "or-ling-30-flash-sante", "or-nemotron-35-lightning", |
+| 3260 | 2026-09-29 19:33:03 | 09024b3a |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"pass": 1, "total": 2}} |
