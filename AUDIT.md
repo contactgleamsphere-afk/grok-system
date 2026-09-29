@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2940 | 2026-09-29 18:05:56 | 1ecb9227 | 003 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 2941 | 2026-09-29 18:05:56 | 1826bc15 | 003 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "003", "max_rounds": 2}} |
-| 2942 | 2026-09-29 18:05:56 | 1ecb9227 | 003 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "003", "status": "testing", "verified": "UNVERIFIED"}} |
-| 2943 | 2026-09-29 18:06:04 | 1826bc15 | 003 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2944 | 2026-09-29 18:07:10 | 3ec8a25d |  | job.enqueued | master-001 | {"kind": "create", "payload": {"objective": "Perform weekly self-review, including a count of all bots created in the factory"}} |
 | 2945 | 2026-09-29 18:07:33 | 5013c9f9 | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 16s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 66s [done] report expect='FACTORY' cmd=True \| T3 PASS 14s [d |
 | 2946 | 2026-09-29 18:07:33 | 5013c9f9 | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 16s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 66s [done] report expect='FACTORY' cmd=True \| T3 PASS 14s [d |
@@ -402,3 +398,7 @@
 | 3337 | 2026-09-29 23:04:35 | 5aba35ca |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 3338 | 2026-09-29 23:04:38 | 0e05bf69 | 025 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3339 | 2026-09-29 23:05:08 | 371e13d0 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-l |
+| 3340 | 2026-09-29 23:05:11 | b468005e | 027 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3341 | 2026-09-29 23:05:32 | 0e05bf69 | 025 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] expect='LIVENESS_OK' last='LIVENESS_OK' \| T2 PASS 26s [done] expect='HELLO WORLD' last='RESULT: HELLO WORLD' |
+| 3342 | 2026-09-29 23:05:32 | 0e05bf69 | 025 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] expect='LIVENESS_OK' last='LIVENESS_OK' \| T2 PASS 26s [done] expect='HELLO WORLD' last='RESULT: HELLO WORLD' |
+| 3343 | 2026-09-29 23:05:32 | 0e05bf69 | 025 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "025", "status": "active", "verified": "VERIFIED"}} |
