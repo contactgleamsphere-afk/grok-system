@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2842 | 2026-09-29 18:01:48 |  |  | factory.outage | svc-LAPTOP-LRE6PSA8 | {"gap_min": 2075, "silent_since": "2026-09-28T07:26:17", "last_event": "job.enqueued", "cause": "power loss / battery flat (kernel-power 41) |
-| 2843 | 2026-09-29 18:01:48 | fc453a3f |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 2844 | 2026-09-29 18:01:48 | 4f6d66a5 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-29T19"}} |
-| 2845 | 2026-09-29 18:01:49 | 81cad91a |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2846 | 2026-09-29 18:01:49 | 9b18bfe0 | 018 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "run", "payload": {"bot_id": "018", "task": "Sum order totals per country into totals.csv", "in": "C:\\AI\\Factory\\workspace\\inbo |
 | 2847 | 2026-09-29 18:01:49 |  | 018 | schedule.fired | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "fire": "2026-09-29T07:00", "job": "9b18bfe0"} |
 | 2848 | 2026-09-29 18:01:49 | c256f1f3 | 027 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "run", "payload": {"bot_id": "027", "task": "Perform weekly self-review, including a count of all bots created in the factory to da |
@@ -402,3 +398,7 @@
 | 3239 | 2026-09-29 19:22:00 | d229874c | 023 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3240 | 2026-09-29 19:23:37 | d229874c | 023 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": null, "rejected": ["fallback 'or-li |
 | 3241 | 2026-09-29 19:23:37 | d229874c | 023 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
+| 3242 | 2026-09-29 19:23:40 | 472caf57 | 024 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3243 | 2026-09-29 19:24:55 | 472caf57 | 024 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
+| 3244 | 2026-09-29 19:24:55 | 472caf57 | 024 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 3245 | 2026-09-29 19:24:55 | 472caf57 | 024 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "024", "status": "active"}} |
