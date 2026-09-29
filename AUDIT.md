@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2583 | 2026-09-27 10:04:27 | de920621 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 2584 | 2026-09-27 10:18:51 | 252fcb22 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 2585 | 2026-09-27 10:21:45 | 252fcb22 | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 13s [done] report expect='FACTORY' cmd=True \| T3 PASS 14s [d |
 | 2586 | 2026-09-27 10:21:45 | 252fcb22 | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 13s [done] report expect='FACTORY' cmd=True \| T3 PASS 14s [d |
 | 2587 | 2026-09-27 10:21:45 | 252fcb22 | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 2588 | 2026-09-27 10:21:45 | bf357b8a | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "53c3678652324baaa481371161004062", "retry_of": "252fcb22a1dc4d539abc824783c9e9c |
@@ -402,3 +399,6 @@
 | 2980 | 2026-09-29 18:14:25 | 09146563 | 006 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 2981 | 2026-09-29 18:14:25 | 5def33a0 | 006 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "006", "max_rounds": 2}} |
 | 2982 | 2026-09-29 18:14:25 | 09146563 | 006 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "006", "status": "testing", "verified": "UNVERIFIED"}} |
+| 2983 | 2026-09-29 18:14:34 | 5def33a0 | 006 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2984 | 2026-09-29 18:15:47 | 5def33a0 | 006 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-120b", "sandbox": null, "rejected": ["fallback 'or-d |
+| 2985 | 2026-09-29 18:15:47 | 5def33a0 | 006 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
