@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2503 | 2026-09-27 07:52:33 | 4e1421d0 | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 2504 | 2026-09-27 07:52:33 | 2ac81df9 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "0583e758b8ba40f096402204cf0f82b0", "retry_of": "4e1421d0957a4dc6b83b8498880d8ac |
-| 2505 | 2026-09-27 07:52:33 | 4e1421d0 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 8, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 2506 | 2026-09-27 07:58:57 | f787abb2 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2507 | 2026-09-27 07:58:57 | 4d79dc8f |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-27T08"}} |
 | 2508 | 2026-09-27 07:59:32 | f787abb2 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-flash38", "gemini-gemma26b", "gemini-lite31", "groq-gptoss120b", "groq-gp |
@@ -402,3 +399,6 @@
 | 2900 | 2026-09-29 18:03:57 | 9b18bfe0 | 018 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2901 | 2026-09-29 18:04:11 | 9b18bfe0 | 018 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"ok": true, "produced": [], "secs": 13, "reply": "Using config: C:\\AI\\Factory\\run\\botcfg\\018-task.json", "chain": "groq-gptoss120b"} |
 | 2902 | 2026-09-29 18:04:11 | 9b18bfe0 | 018 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "name": "run", "status": "ok "}} |
+| 2903 | 2026-09-29 18:04:16 | c256f1f3 | 027 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2904 | 2026-09-29 18:04:29 | c256f1f3 | 027 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"ok": true, "produced": [], "secs": 11, "reply": "Using config: C:\\AI\\Factory\\run\\botcfg\\027-task.json", "chain": "gemini-gemini-flash |
+| 2905 | 2026-09-29 18:04:29 | c256f1f3 | 027 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "027", "name": "run", "status": "ok "}} |
