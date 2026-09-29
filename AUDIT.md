@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2904 | 2026-09-29 18:04:29 | c256f1f3 | 027 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"ok": true, "produced": [], "secs": 11, "reply": "Using config: C:\\AI\\Factory\\run\\botcfg\\027-task.json", "chain": "gemini-gemini-flash |
-| 2905 | 2026-09-29 18:04:29 | c256f1f3 | 027 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "027", "name": "run", "status": "ok "}} |
-| 2906 | 2026-09-29 18:04:32 | 934b7127 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 2907 | 2026-09-29 18:04:32 | 934b7127 |  | audit.verified | svc-LAPTOP-LRE6PSA8 | {"rows": 2905, "hashed": 2153, "first_bad": null} |
 | 2908 | 2026-09-29 18:04:32 | d85823bb |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "report", "payload": {"day": "2026-09-30"}} |
 | 2909 | 2026-09-29 18:04:32 | dda50f35 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "bench", "payload": {"stale_only": true, "max": 2, "day": "2026-09-29"}} |
 | 2910 | 2026-09-29 18:04:32 | 09024b3a |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "canary", "payload": {"day": "2026-09-29"}} |
@@ -402,3 +398,7 @@
 | 3301 | 2026-09-29 21:05:21 | f4e79228 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3302 | 2026-09-29 21:05:22 | 6c2fff78 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-29T22"}} |
 | 3303 | 2026-09-29 21:05:22 | f4e79228 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 3304 | 2026-09-29 21:14:06 | 46a02802 | 017 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3305 | 2026-09-29 21:15:36 | 46a02802 | 017 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 7s [done] expect='X_OK' last='X_OK' \| T2 PASS 21s [done] expect='3' last='RESULT: 3' \| T3 PASS 23s [done] expect='3' l |
+| 3306 | 2026-09-29 21:15:36 | 46a02802 | 017 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 7s [done] expect='X_OK' last='X_OK' \| T2 PASS 21s [done] expect='3' last='RESULT: 3' \| T3 PASS 23s [done] expect='3' l |
+| 3307 | 2026-09-29 21:15:36 | 46a02802 | 017 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "017", "status": "active", "verified": "VERIFIED"}} |

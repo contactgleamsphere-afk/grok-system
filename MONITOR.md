@@ -250,3 +250,4 @@
 | 2026-09-29 20:11 | 001 master | 9/10 (quota, inconclusive) | testing→testing | - |
 | 2026-09-29 20:22 | 001 master | 9/10 (quota, inconclusive) | testing→testing | - |
 | 2026-09-29 20:41 | 024 pytest-runner-bot | 3/3 | active→active | - |
+| 2026-09-29 21:15 | 017 name-sorter | 4/4 | active→active | - |
