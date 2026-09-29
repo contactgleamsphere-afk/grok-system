@@ -183,11 +183,14 @@
       ],
       "health": {
         "failures": 0,
-        "last_outcome": "ok",
+        "last_outcome": "quota",
         "last_probe": "2026-09-29T18:02:18",
         "latency_s": 0.57,
-        "ok": true,
+        "ok": false,
         "probation": 1,
+        "quota_kind": "tpm",
+        "quota_seen": "2026-09-29T18:23:28",
+        "quota_until": 1790707108.0797207,
         "reason": "failed probation: error"
       },
       "rpd_scope": "gemini free tier (see SIGNUP)"
@@ -199,7 +202,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 0.9994197156065852,
-    "updated": "2026-09-29T18:03:35+00:00",
+    "updated": "2026-09-29T18:23:28+00:00",
     "verified": "VERIFIED"
   },
   "gemini-gemma26b": {
