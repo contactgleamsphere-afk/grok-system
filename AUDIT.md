@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2718 | 2026-09-27 17:03:07 | 70f44c73 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 2719 | 2026-09-27 17:03:08 | 70f44c73 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
-| 2720 | 2026-09-27 17:03:13 | 3f1cce3e |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2721 | 2026-09-27 17:03:14 | 3f1cce3e |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 2722 | 2026-09-27 17:03:19 | 2de17048 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2723 | 2026-09-27 17:03:19 | 2de17048 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
@@ -402,3 +399,6 @@
 | 3115 | 2026-09-29 18:49:11 | cfc7b1fc | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 3116 | 2026-09-29 18:49:11 | 252a5b8d | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "33d3730f13e945aa8839588d7a0ec4b7", "retry_of": "cfc7b1fcf2dc49f98b4dcfba530c0e9 |
 | 3117 | 2026-09-29 18:49:11 | cfc7b1fc | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 3118 | 2026-09-29 18:49:16 | 061a0266 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3119 | 2026-09-29 18:51:03 | 2ae8b6da | 003 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": "1/4", "rejected": null}, {"round": |
+| 3120 | 2026-09-29 18:51:03 | 2ae8b6da | 003 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
