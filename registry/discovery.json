@@ -21,8 +21,8 @@
   "provider:cerebras": {
    "verdict": "needs_owner",
    "reason": "set CEREBRAS_API_KEY (User env) after signing up: https://cloud.cerebras.ai (free tier ~1M tokens/day)",
-   "ts": 1790064389.7761254,
-   "date": "2026-09-22"
+   "ts": 1790701410.1727846,
+   "date": "2026-09-29"
   },
   "provider:nvidia": {
    "verdict": "needs_owner",
