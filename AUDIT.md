@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2573 | 2026-09-27 10:00:16 | ae01ea66 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 2574 | 2026-09-27 10:01:13 | de920621 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 2575 | 2026-09-27 10:03:28 | 503129d5 | 027 | job.enqueued | master-001 | {"kind": "run", "payload": {"bot_id": "027", "task": "Perform weekly self-review", "in": null, "out": null, "cap": 300, "t": 1790499808}} |
-| 2576 | 2026-09-27 10:03:29 | 503129d5 | 027 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2577 | 2026-09-27 10:04:11 | 503129d5 | 027 | bot.ran | fast-LAPTOP-LRE6PSA8 | {"ok": true, "produced": [], "secs": 41, "reply": "RESULT: 0", "chain": "gemini-gemini-flash-lite-latest"} |
 | 2578 | 2026-09-27 10:04:11 | 503129d5 | 027 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "027", "name": "run", "status": "ok "}} |
 | 2579 | 2026-09-27 10:04:27 | de920621 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 13s [done] report expect='FACTORY' cmd=True \| T3 PASS 14s [d |
@@ -402,3 +398,7 @@
 | 2970 | 2026-09-29 18:12:09 | ec968d47 | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 2971 | 2026-09-29 18:12:09 | 23ec7b81 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "53c3678652324baaa481371161004062", "retry_of": "ec968d47c9244c56a1754735a4739fe |
 | 2972 | 2026-09-29 18:12:09 | ec968d47 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 2973 | 2026-09-29 18:12:14 | 2a020aa6 | 005 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2974 | 2026-09-29 18:12:20 | 579491c3 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2975 | 2026-09-29 18:13:09 | 2a020aa6 | 005 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-120b", "sandbox": null, "rejected": ["fallback 'or-d |
+| 2976 | 2026-09-29 18:13:09 | 2a020aa6 | 005 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
