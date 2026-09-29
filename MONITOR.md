@@ -235,3 +235,4 @@
 | 2026-09-29 19:11 | 014 error-log-analyzer | 4/4 | active→active | - |
 | 2026-09-29 19:13 | 018 csv-country-totals | 4/4 | active→active | - |
 | 2026-09-29 19:14 | 017 name-sorter | 3/4 (quota, inconclusive) | active→active | - |
+| 2026-09-29 19:14 | 019 pytest-runner | 0/3 | active→testing | - |
