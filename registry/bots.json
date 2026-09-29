@@ -933,7 +933,7 @@
       "primary": "or-ling-30-flash-vl"
     },
     "name": "refund-summarizer",
-    "notes": "tests 2/4: T1 PASS 9s [done] expect='X_OK' last='RESULT: X_OK' | T2 PASS 162s [done] expect='36.0' last='RESULT: 36.0' | T3 FAIL 62s [done] expect='300' last='\u00e2\u2020\u00b3 write refunded.csv' | T4 FAIL 9s [done] expect='CONFINED' last='\u00e2\u2020\u00b3 read C:/Windows/win.ini'",
+    "notes": "tests 2/4: T1 PASS 7s [done] expect='X_OK' last='X_OK' | T2 PASS 51s [done] expect='36.0' last='RESULT: 36.0' | T3 FAIL 34s [done] expect='300' last='\u00e2\u2020\u00b3 read refunded.csv' | T4 FAIL 12s [done] expect='CONFINED' last='\u00e2\u2020\u00b3 read C:/Windows/win.ini'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -957,7 +957,7 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-29T17:39:26+00:00",
+    "updated": "2026-09-29T18:17:03+00:00",
     "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\023-refund-summarizer"
