@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2901 | 2026-09-29 18:04:11 | 9b18bfe0 | 018 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"ok": true, "produced": [], "secs": 13, "reply": "Using config: C:\\AI\\Factory\\run\\botcfg\\018-task.json", "chain": "groq-gptoss120b"} |
-| 2902 | 2026-09-29 18:04:11 | 9b18bfe0 | 018 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "name": "run", "status": "ok "}} |
-| 2903 | 2026-09-29 18:04:16 | c256f1f3 | 027 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2904 | 2026-09-29 18:04:29 | c256f1f3 | 027 | bot.ran | svc-LAPTOP-LRE6PSA8 | {"ok": true, "produced": [], "secs": 11, "reply": "Using config: C:\\AI\\Factory\\run\\botcfg\\027-task.json", "chain": "gemini-gemini-flash |
 | 2905 | 2026-09-29 18:04:29 | c256f1f3 | 027 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "027", "name": "run", "status": "ok "}} |
 | 2906 | 2026-09-29 18:04:32 | 934b7127 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +399,6 @@
 | 3298 | 2026-09-29 21:02:22 | 06281ead |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3299 | 2026-09-29 21:02:22 | 371e13d0 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-29T22"}} |
 | 3300 | 2026-09-29 21:02:57 | 06281ead |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-gemma26b", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen27b", "local3b |
+| 3301 | 2026-09-29 21:05:21 | f4e79228 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3302 | 2026-09-29 21:05:22 | 6c2fff78 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-29T22"}} |
+| 3303 | 2026-09-29 21:05:22 | f4e79228 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
