@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2606 | 2026-09-27 11:00:17 | 793c48be |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-27T12"}} |
-| 2607 | 2026-09-27 11:00:17 | 6def4486 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 2608 | 2026-09-27 11:07:26 | 2414722a | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 2609 | 2026-09-27 11:10:24 | 2414722a | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 18s [done] report expect='FACTORY' cmd=True \| T3 PASS 15s [d |
 | 2610 | 2026-09-27 11:10:24 | 2414722a | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 18s [done] report expect='FACTORY' cmd=True \| T3 PASS 15s [d |
 | 2611 | 2026-09-27 11:10:24 | 2414722a | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 2612 | 2026-09-27 11:10:24 | c8a06098 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "0583e758b8ba40f096402204cf0f82b0", "retry_of": "2414722acddf437db9611fb4fc99920 |
@@ -402,3 +398,7 @@
 | 3003 | 2026-09-29 18:23:08 | 38b3cc11 | 007 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
 | 3004 | 2026-09-29 18:23:08 | 38b3cc11 | 007 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 3005 | 2026-09-29 18:23:08 | 38b3cc11 | 007 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "007", "status": "active"}} |
+| 3006 | 2026-09-29 18:23:13 | e6462e61 | 011 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3007 | 2026-09-29 18:25:48 | 09ce9ce4 | 009 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 23s [done] expect='X_OK' last='X_OK' \| T2 PASS 87s [done] expect='3' last='RESULT: 3' \| T3 PASS 149s [done] expect='1' |
+| 3008 | 2026-09-29 18:25:48 | 09ce9ce4 | 009 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 23s [done] expect='X_OK' last='X_OK' \| T2 PASS 87s [done] expect='3' last='RESULT: 3' \| T3 PASS 149s [done] expect='1' |
+| 3009 | 2026-09-29 18:25:49 | 09ce9ce4 | 009 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "009", "status": "active", "verified": "VERIFIED"}} |
