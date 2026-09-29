@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2474 | 2026-09-27 06:57:21 | 79a92474 | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 2475 | 2026-09-27 06:57:21 | 54f4b925 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "53c3678652324baaa481371161004062", "retry_of": "79a9247459a64927b12f4da154e3266 |
 | 2476 | 2026-09-27 06:57:21 | 79a92474 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 8, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 2477 | 2026-09-27 06:58:55 | 0aa16583 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2478 | 2026-09-27 06:58:55 | f787abb2 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-27T07"}} |
@@ -402,3 +400,5 @@
 | 2871 | 2026-09-29 18:03:36 | a237fa20 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2872 | 2026-09-29 18:03:36 | a237fa20 |  | owner.needed | svc-LAPTOP-LRE6PSA8 | {"provider": "nvidia", "reason": "set NVIDIA_API_KEY (User env) after signing up: https://build.nvidia.com (free ~40 rpm, tool-capable model |
 | 2873 | 2026-09-29 18:03:36 | a237fa20 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 2874 | 2026-09-29 18:03:44 | de32e89e |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 2875 | 2026-09-29 18:03:45 | de32e89e |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
