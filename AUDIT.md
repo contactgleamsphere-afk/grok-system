@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2970 | 2026-09-29 18:12:09 | ec968d47 | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 2971 | 2026-09-29 18:12:09 | 23ec7b81 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "53c3678652324baaa481371161004062", "retry_of": "ec968d47c9244c56a1754735a4739fe |
-| 2972 | 2026-09-29 18:12:09 | ec968d47 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 2973 | 2026-09-29 18:12:14 | 2a020aa6 | 005 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2974 | 2026-09-29 18:12:20 | 579491c3 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2975 | 2026-09-29 18:13:09 | 2a020aa6 | 005 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-120b", "sandbox": null, "rejected": ["fallback 'or-d |
@@ -402,3 +399,6 @@
 | 3367 | 2026-09-29 23:28:33 | 6629b411 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3368 | 2026-09-29 23:34:47 | 02a7996c | 028 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": "2/4", "rejected": null}, {"round": |
 | 3369 | 2026-09-29 23:34:47 | 02a7996c | 028 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
+| 3370 | 2026-09-29 23:34:50 | 061295ee |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3371 | 2026-09-29 23:34:50 | 6e8c618f |  | job.dedup | svc-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
+| 3372 | 2026-09-29 23:35:38 | 061295ee |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-gemma26b", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen27b", "local3b", "local4b", "or- |
