@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2938 | 2026-09-29 18:05:56 | 1ecb9227 | 003 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 16s [done] expect='X_OK' last='RESULT: X_OK' \| T2 FAIL 6s [done] expect='3' last='' \| T3 PASS 34s [done] expect='6' la |
-| 2939 | 2026-09-29 18:05:56 | 1ecb9227 | 003 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 16s [done] expect='X_OK' last='RESULT: X_OK' \| T2 FAIL 6s [done] expect='3' last='' \| T3 PASS 34s [done] expect='6' la |
 | 2940 | 2026-09-29 18:05:56 | 1ecb9227 | 003 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 2941 | 2026-09-29 18:05:56 | 1826bc15 | 003 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "003", "max_rounds": 2}} |
 | 2942 | 2026-09-29 18:05:56 | 1ecb9227 | 003 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "003", "status": "testing", "verified": "UNVERIFIED"}} |
@@ -402,3 +400,5 @@
 | 3335 | 2026-09-29 23:04:35 | 5aba35ca |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3336 | 2026-09-29 23:04:35 | 5aba35ca |  | owner.needed | svc-LAPTOP-LRE6PSA8 | {"provider": "mistral", "reason": "set MISTRAL_API_KEY (User env) after signing up: https://console.mistral.ai (Experiment free tier)"} |
 | 3337 | 2026-09-29 23:04:35 | 5aba35ca |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 3338 | 2026-09-29 23:04:38 | 0e05bf69 | 025 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3339 | 2026-09-29 23:05:08 | 371e13d0 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-l |
