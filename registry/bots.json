@@ -1094,7 +1094,7 @@
       "primary": "gemini-gemini-flash-lite-latest"
     },
     "name": "self-review-bot",
-    "notes": "tests 1/3: T1 FAIL 8s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\027.json' | T2 PASS 12s [done] expect='2' last='RESULT: 2' | T3 FAIL 2s [done] expect='CONFINED' last=''",
+    "notes": "tests 3/3: repair re-verify 2026-09-29: T1 PASS 9s [done] expect='X_OK' last='RESULT: X_OK' | T2 PASS 10s [done] expect='2' last='RESULT: 2' | T3 PASS 30s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write",
@@ -1109,7 +1109,7 @@
       "bot.json": "9296c6e2564d4dd95cb24a92",
       "nanobot.patch.json": "33d9d421c55980d2655036e1"
     },
-    "status": "testing",
+    "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write review.txt containing 'completed task one, completed task two' then read review.txt and count occurrences of 'completed' -> 2",
@@ -1121,8 +1121,8 @@
       "web_search",
       "web_fetch"
     ],
-    "updated": "2026-09-29T17:42:56+00:00",
-    "verified": "UNVERIFIED",
+    "updated": "2026-09-29T17:48:22+00:00",
+    "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\027-self-review-bot"
   },

@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2708 | 2026-09-27 17:02:57 | b9103be1 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash36", "outcome": "no_tool_call", "before": "VERIFIED", "after": "BLOCKED", "detail": null} |
-| 2709 | 2026-09-27 17:02:57 | ca9b6391 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "groq", "day": "2026-09-27", "trigger": "blocked:gemini-flash36"}} |
-| 2710 | 2026-09-27 17:02:57 | 70f44c73 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "gemini", "day": "2026-09-27", "trigger": "blocked:gemini-flash36"}} |
-| 2711 | 2026-09-27 17:02:57 | 3f1cce3e |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "openrouter", "day": "2026-09-27", "trigger": "blocked:gemini-flash36"}} |
 | 2712 | 2026-09-27 17:02:57 | 2de17048 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "cerebras", "day": "2026-09-27", "trigger": "blocked:gemini-flash36"}} |
 | 2713 | 2026-09-27 17:02:57 | 88cf4134 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-09-27", "trigger": "blocked:gemini-flash36"}} |
 | 2714 | 2026-09-27 17:02:57 | fe7e90ca |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-09-27", "trigger": "blocked:gemini-flash36"}} |
@@ -402,3 +398,7 @@
 | 3105 | 2026-09-29 18:46:48 | c3aed36d | 026 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3106 | 2026-09-29 18:47:29 | c3aed36d | 026 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": null, "rejected": ["fallback 'or-ne |
 | 3107 | 2026-09-29 18:47:29 | c3aed36d | 026 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
+| 3108 | 2026-09-29 18:47:33 | 8a77eba4 | 027 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3109 | 2026-09-29 18:48:22 | 8a77eba4 | 027 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
+| 3110 | 2026-09-29 18:48:22 | 8a77eba4 | 027 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 3111 | 2026-09-29 18:48:22 | 8a77eba4 | 027 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "027", "status": "active"}} |
