@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2983 | 2026-09-29 18:14:34 | 5def33a0 | 006 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 2984 | 2026-09-29 18:15:47 | 5def33a0 | 006 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-120b", "sandbox": null, "rejected": ["fallback 'or-d |
-| 2985 | 2026-09-29 18:15:47 | 5def33a0 | 006 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
 | 2986 | 2026-09-29 18:15:52 | 0f19ad75 | 007 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2987 | 2026-09-29 18:16:51 | 579491c3 | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 14s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 18s [done] report expect='FACTORY' cmd=True \| T3 PASS 18s [d |
 | 2988 | 2026-09-29 18:16:51 | 579491c3 | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 14s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 18s [done] report expect='FACTORY' cmd=True \| T3 PASS 18s [d |
@@ -402,3 +399,6 @@
 | 3380 | 2026-09-29 23:49:55 | 192072d9 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 32s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 54s [done] report expect='FACTORY' cmd=True \| T3 PASS 57s [d |
 | 3381 | 2026-09-29 23:49:55 | 738502df | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "176c95caba3343fab32ab61b8260265c", "after_quota": "192072d9b51b4cd8b18da9f771412 |
 | 3382 | 2026-09-29 23:49:55 | 192072d9 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 3383 | 2026-09-30 00:03:50 | f354476d |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3384 | 2026-09-30 00:03:50 | 75453770 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-30T01"}} |
+| 3385 | 2026-09-30 00:03:50 | f354476d |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
