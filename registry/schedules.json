@@ -18,9 +18,9 @@
     "cron": "0 7 * * *",
     "enabled": true,
     "in": "C:\\AI\\Factory\\workspace\\inbox\\orders",
-    "last_fire": "2026-09-27T07:00",
-    "next": "2026-09-28T07:00",
-    "runs": 4,
+    "last_fire": "2026-09-29T07:00",
+    "next": "2026-09-30T07:00",
+    "runs": 5,
     "task": "Sum order totals per country into totals.csv"
   },
   "c9e4d22f": {
@@ -30,9 +30,9 @@
     "cron": "0 9 * * 1",
     "enabled": true,
     "in": null,
-    "last_fire": null,
-    "next": "2026-09-28T09:00",
-    "runs": 0,
+    "last_fire": "2026-09-28T09:00",
+    "next": "2026-10-05T09:00",
+    "runs": 1,
     "task": "Perform weekly self-review, including a count of all bots created in the factory to date"
   }
 }
