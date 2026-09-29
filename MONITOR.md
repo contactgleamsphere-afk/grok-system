@@ -232,3 +232,4 @@
 | 2026-09-29 19:10 | 012 csv-column-sum | 4/4 | active→active | - |
 | 2026-09-29 19:11 | 013 log-error-filter | 4/4 | active→active | - |
 | 2026-09-29 19:11 | 016 workspace-tidy-counter | 4/4 | active→active | - |
+| 2026-09-29 19:11 | 014 error-log-analyzer | 4/4 | active→active | - |
