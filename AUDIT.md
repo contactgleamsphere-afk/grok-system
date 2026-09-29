@@ -2,18 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2913 | 2026-09-29 18:04:37 | 33d3730f |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 2914 | 2026-09-29 18:04:37 | cfc7b1fc | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "33d3730f13e945aa8839588d7a0ec4b7", "day": "2026-09-29"}} |
-| 2915 | 2026-09-29 18:04:37 | 96c4c77a | 003 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "003", "monitor_of": "33d3730f13e945aa8839588d7a0ec4b7", "day": "2026-09-29"}} |
-| 2916 | 2026-09-29 18:04:37 | e717ddc1 | 005 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "005", "monitor_of": "33d3730f13e945aa8839588d7a0ec4b7", "day": "2026-09-29"}} |
-| 2917 | 2026-09-29 18:04:37 | 4d8b6f21 | 006 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "006", "monitor_of": "33d3730f13e945aa8839588d7a0ec4b7", "day": "2026-09-29"}} |
-| 2918 | 2026-09-29 18:04:37 | 3b04ee67 | 007 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "007", "monitor_of": "33d3730f13e945aa8839588d7a0ec4b7", "day": "2026-09-29"}} |
-| 2919 | 2026-09-29 18:04:37 | 2f8c68e5 | 008 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "008", "monitor_of": "33d3730f13e945aa8839588d7a0ec4b7", "day": "2026-09-29"}} |
-| 2920 | 2026-09-29 18:04:37 | 92b55be6 | 009 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "009", "monitor_of": "33d3730f13e945aa8839588d7a0ec4b7", "day": "2026-09-29"}} |
-| 2921 | 2026-09-29 18:04:37 | a0ca3faa | 011 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "011", "monitor_of": "33d3730f13e945aa8839588d7a0ec4b7", "day": "2026-09-29"}} |
-| 2922 | 2026-09-29 18:04:37 | 46a9742e | 012 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "012", "monitor_of": "33d3730f13e945aa8839588d7a0ec4b7", "day": "2026-09-29"}} |
-| 2923 | 2026-09-29 18:04:37 | c1be9289 | 013 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "013", "monitor_of": "33d3730f13e945aa8839588d7a0ec4b7", "day": "2026-09-29"}} |
-| 2924 | 2026-09-29 18:04:37 | 3053504b | 014 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "014", "monitor_of": "33d3730f13e945aa8839588d7a0ec4b7", "day": "2026-09-29"}} |
 | 2925 | 2026-09-29 18:04:37 | 9746e6aa | 016 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "016", "monitor_of": "33d3730f13e945aa8839588d7a0ec4b7", "day": "2026-09-29"}} |
 | 2926 | 2026-09-29 18:04:37 | e70a2e86 | 017 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "017", "monitor_of": "33d3730f13e945aa8839588d7a0ec4b7", "day": "2026-09-29"}} |
 | 2927 | 2026-09-29 18:04:37 | 38770f25 | 018 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "018", "monitor_of": "33d3730f13e945aa8839588d7a0ec4b7", "day": "2026-09-29"}} |
@@ -402,3 +390,15 @@
 | 3310 | 2026-09-29 22:31:49 | 6c2fff78 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3311 | 2026-09-29 23:03:47 | f354476d |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-30T00"}} |
 | 3312 | 2026-09-29 23:03:47 | 6c2fff78 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 3313 | 2026-09-29 23:04:01 | 371e13d0 |  | job.lease_expired | fast-LAPTOP-LRE6PSA8 | {} |
+| 3314 | 2026-09-29 23:04:01 | 371e13d0 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 2} |
+| 3315 | 2026-09-29 23:04:01 | 6e8c618f |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-09-30T00"}} |
+| 3316 | 2026-09-29 23:04:10 | 371e13d0 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "gemini-flash", "outcome": "error", "before": "VERIFIED", "after": "BLOCKED", "detail": "URLError"} |
+| 3317 | 2026-09-29 23:04:10 | 371e13d0 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "gemini-flash38", "outcome": "error", "before": "VERIFIED", "after": "BLOCKED", "detail": "URLError"} |
+| 3318 | 2026-09-29 23:04:10 | b40fe03b |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "groq", "day": "2026-09-29", "trigger": "blocked:gemini-flash,gemini-flash38"}} |
+| 3319 | 2026-09-29 23:04:10 | e9cd9f78 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "gemini", "day": "2026-09-29", "trigger": "blocked:gemini-flash,gemini-flash38"}} |
+| 3320 | 2026-09-29 23:04:10 | 5fafc702 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "openrouter", "day": "2026-09-29", "trigger": "blocked:gemini-flash,gemini-flash38"}} |
+| 3321 | 2026-09-29 23:04:10 | 48df5e9e |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "cerebras", "day": "2026-09-29", "trigger": "blocked:gemini-flash,gemini-flash38"}} |
+| 3322 | 2026-09-29 23:04:10 | 4a3cb682 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-09-29", "trigger": "blocked:gemini-flash,gemini-flash38"}} |
+| 3323 | 2026-09-29 23:04:10 | 5aba35ca |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-09-29", "trigger": "blocked:gemini-flash,gemini-flash38"}} |
+| 3324 | 2026-09-29 23:04:10 | 371e13d0 |  | job.orphaned_result | svc-LAPTOP-LRE6PSA8 | {"summary": "{'probed': 19, 'healthy': ['gemini-lite', 'gemini-lite31', 'groq-gptoss120b', 'groq-gptoss20b', 'groq-qwen27b', 'local3b', 'loc |
