@@ -972,7 +972,7 @@
       "primary": "gemini-lite31"
     },
     "name": "pytest-runner-bot",
-    "notes": "tests 3/3: T1 PASS 7s [done] expect='X_OK' last='X_OK' | T2 PASS 30s [done] expect='2' last='RESULT: 2' | T3 PASS 21s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 0/3: T1 FAIL 3s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\024.json' | T2 FAIL 11s [done] expect='2' last='\u00e2\u2020\u00b3 write test_dummy.py' | T3 FAIL 10s [done] expect='CONFINED' last='\u00e2\u2020\u00b3 read C:/Windows/win.ini'",
     "permissions": [
       "fs:read",
       "fs:write",
@@ -986,7 +986,7 @@
       "bot.json": "572be20c4f3913aea679fedf",
       "nanobot.patch.json": "2f3c5f3c0ee534265899f05d"
     },
-    "status": "active",
+    "status": "testing",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write test_dummy.py containing 'def test_one(): assert True\ndef test_two(): assert True', then run pytest on it via exec and report the passed count -> 2",
@@ -997,8 +997,8 @@
       "read_file",
       "exec"
     ],
-    "updated": "2026-09-29T19:41:03+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-09-30T17:50:40+00:00",
+    "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\024-pytest-runner-bot"
   },
