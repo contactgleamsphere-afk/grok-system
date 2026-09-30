@@ -2,12 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3069 | 2026-09-29 18:42:20 | 23ec7b81 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 3070 | 2026-09-29 18:42:30 | 30f205bc | 026 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 7s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\026.json' \| T2 FAIL 73s [done] expect='3' las |
-| 3071 | 2026-09-29 18:42:30 | 30f205bc | 026 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 7s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\026.json' \| T2 FAIL 73s [done] expect='3' las |
-| 3072 | 2026-09-29 18:42:30 | 30f205bc | 026 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 3073 | 2026-09-29 18:42:30 | c3aed36d | 026 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "026", "max_rounds": 2}} |
-| 3074 | 2026-09-29 18:42:30 | 30f205bc | 026 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "026", "status": "testing", "verified": "UNVERIFIED"}} |
 | 3075 | 2026-09-29 18:42:33 | 4da83d39 | 027 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3076 | 2026-09-29 18:42:56 | 4da83d39 | 027 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 8s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\027.json' \| T2 PASS 12s [done] expect='2' las |
 | 3077 | 2026-09-29 18:42:56 | 4da83d39 | 027 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 8s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\027.json' \| T2 PASS 12s [done] expect='2' las |
@@ -402,3 +396,9 @@
 | 3466 | 2026-09-30 18:20:58 | 914578dc | 025 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "025", "monitor_of": "496e3afd58764673a6b80d4e1d7f4792", "day": "2026-09-30"}} |
 | 3467 | 2026-09-30 18:20:58 | 496e3afd |  | monitor.fanout | svc-LAPTOP-LRE6PSA8 | {"bots": ["001", "006", "007", "008", "009", "011", "012", "013", "014", "016", "017", "018", "024", "025"], "jobs": ["fefc49ba", "907da6a5" |
 | 3468 | 2026-09-30 18:20:58 | 496e3afd |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 3469 | 2026-09-30 18:21:02 | 907da6a5 | 006 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3470 | 2026-09-30 18:21:47 | 907da6a5 | 006 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 6s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\006.json' \| T2 PASS 14s [done] expect='2' las |
+| 3471 | 2026-09-30 18:21:47 | 907da6a5 | 006 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 6s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\006.json' \| T2 PASS 14s [done] expect='2' las |
+| 3472 | 2026-09-30 18:21:47 | 907da6a5 | 006 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
+| 3473 | 2026-09-30 18:21:47 | 6f03a51b | 006 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "006", "max_rounds": 2}} |
+| 3474 | 2026-09-30 18:21:47 | 907da6a5 | 006 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "006", "status": "testing", "verified": "UNVERIFIED"}} |

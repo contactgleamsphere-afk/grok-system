@@ -223,7 +223,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "json-to-markdown-table",
-    "notes": "tests 4/4: T1 PASS 75s [done] expect='X_OK' last='X_OK' | T2 PASS 152s [done] expect='2' last='2' | T3 PASS 231s [done] expect='0' last='0' | T4 PASS 87s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 1/4: T1 FAIL 6s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\006.json' | T2 PASS 14s [done] expect='2' last='2' | T3 FAIL 11s [done] expect='0' last='\u00e2\u2020\u00b3 write records.json' | T4 FAIL 13s [done] expect='CONFINED' last='Using config: C:\\AI\\Factory\\run\\botcfg\\006.json'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -236,7 +236,7 @@
       "bot.json": "67acf3c5d40b71f22721774d",
       "nanobot.patch.json": "60e775a6eb6c329e38763277"
     },
-    "status": "active",
+    "status": "testing",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write records.json containing [{\"name\":\"Alice\",\"age\":30},{\"name\":\"Bob\",\"age\":25}] then run the conversion -> 2",
@@ -247,8 +247,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-29T18:02:12+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-09-30T17:21:47+00:00",
+    "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\006-json-to-markdown-table"
   },
