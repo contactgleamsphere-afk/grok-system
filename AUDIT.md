@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3075 | 2026-09-29 18:42:33 | 4da83d39 | 027 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 3076 | 2026-09-29 18:42:56 | 4da83d39 | 027 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 8s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\027.json' \| T2 PASS 12s [done] expect='2' las |
-| 3077 | 2026-09-29 18:42:56 | 4da83d39 | 027 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 8s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\027.json' \| T2 PASS 12s [done] expect='2' las |
 | 3078 | 2026-09-29 18:42:57 | 4da83d39 | 027 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 3079 | 2026-09-29 18:42:57 | 8a77eba4 | 027 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "027", "max_rounds": 2}} |
 | 3080 | 2026-09-29 18:42:57 | 4da83d39 | 027 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "027", "status": "testing", "verified": "UNVERIFIED"}} |
@@ -402,3 +399,6 @@
 | 3472 | 2026-09-30 18:21:47 | 907da6a5 | 006 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 3473 | 2026-09-30 18:21:47 | 6f03a51b | 006 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "006", "max_rounds": 2}} |
 | 3474 | 2026-09-30 18:21:47 | 907da6a5 | 006 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "006", "status": "testing", "verified": "UNVERIFIED"}} |
+| 3475 | 2026-09-30 18:21:51 | 6f03a51b | 006 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3476 | 2026-09-30 18:22:44 | 6f03a51b | 006 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": null, "rejected": ["fallback 'or-de |
+| 3477 | 2026-09-30 18:22:44 | 6f03a51b | 006 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
