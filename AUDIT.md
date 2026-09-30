@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3364 | 2026-09-29 23:28:29 | 2c510b7c | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 34s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 61s [done] report expect='FACTORY' cmd=True \| T3 PASS 57s [d |
-| 3365 | 2026-09-29 23:28:29 | 52d5ecd7 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "73c0022bd5074aad890aa36856ac76d0", "after_quota": "2c510b7c1d1340deb36a866b9ff16 |
 | 3366 | 2026-09-29 23:28:29 | 2c510b7c | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 3367 | 2026-09-29 23:28:33 | 6629b411 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3368 | 2026-09-29 23:34:47 | 02a7996c | 028 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": "2/4", "rejected": null}, {"round": |
@@ -402,3 +400,5 @@
 | 3761 | 2026-10-01 00:20:55 | bc7ae9ef |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 3762 | 2026-10-01 00:20:58 | ed026db8 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3763 | 2026-10-01 00:20:58 | ed026db8 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 3764 | 2026-10-01 00:21:01 | bfe4d02a |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3765 | 2026-10-01 00:21:01 | bfe4d02a |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
