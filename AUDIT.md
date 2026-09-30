@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 2994 | 2026-09-29 18:19:26 | 0f19ad75 | 007 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 34s [done] expect='X_OK' last='\u00e2\u2020\u00b3 read memory/history.jsonl' \| T2 PASS 42s [done] expect='2' last='2' \ |
-| 2995 | 2026-09-29 18:19:26 | 0f19ad75 | 007 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 2996 | 2026-09-29 18:19:26 | 38b3cc11 | 007 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "007", "max_rounds": 2}} |
 | 2997 | 2026-09-29 18:19:26 | 0f19ad75 | 007 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "007", "status": "testing", "verified": "UNVERIFIED"}} |
 | 2998 | 2026-09-29 18:19:33 | 38b3cc11 | 007 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 2999 | 2026-09-29 18:20:29 | 96e43656 | 008 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='X_OK' last='X_OK' \| T2 PASS 88s [done] expect='apple' last='RESULT: apple' \| T3 PASS 92s [done] exp |
@@ -402,3 +399,6 @@
 | 3391 | 2026-09-30 00:21:19 | e4d5e8a7 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 72s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 101s [done] report expect='FACTORY' cmd=True \| T3 PASS 56s [ |
 | 3392 | 2026-09-30 00:21:19 | b3bbf646 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "e4d5e8a7dc2c4284bd938037afce9ad9", "after_quota": "e4d5e8a7dc2c4284bd938037afce9 |
 | 3393 | 2026-09-30 00:21:19 | e4d5e8a7 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 3394 | 2026-09-30 01:03:54 | 75453770 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3395 | 2026-09-30 01:03:54 | 72396f63 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-30T02"}} |
+| 3396 | 2026-09-30 01:03:54 | 75453770 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
