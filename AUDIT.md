@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3090 | 2026-09-29 18:45:27 | 23ec7b81 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 3091 | 2026-09-29 18:45:27 | ebcd50e4 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "53c3678652324baaa481371161004062", "retry_of": "23ec7b81970a48b0af75726582c5f75 |
-| 3092 | 2026-09-29 18:45:27 | 23ec7b81 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 3093 | 2026-09-29 18:45:30 | 8615298f | 023 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3094 | 2026-09-29 18:45:53 | e717ddc1 | 005 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 15s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\005.json' \| T2 FAIL 12s [done] expect='1' la |
 | 3095 | 2026-09-29 18:45:53 | e717ddc1 | 005 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 15s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\005.json' \| T2 FAIL 12s [done] expect='1' la |
@@ -402,3 +399,6 @@
 | 3487 | 2026-09-30 18:24:30 | 01c504a5 | 007 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 3488 | 2026-09-30 18:24:30 | b98297bb | 007 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "007", "max_rounds": 2}} |
 | 3489 | 2026-09-30 18:24:30 | 01c504a5 | 007 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "007", "status": "testing", "verified": "UNVERIFIED"}} |
+| 3490 | 2026-09-30 18:24:33 | b98297bb | 007 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3491 | 2026-09-30 18:25:16 | b98297bb | 007 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": null, "rejected": ["fallback 'or-de |
+| 3492 | 2026-09-30 18:25:16 | b98297bb | 007 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
