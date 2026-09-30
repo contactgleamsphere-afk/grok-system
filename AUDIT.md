@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3179 | 2026-09-29 19:14:04 | 46a02802 | 017 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "017", "retest_of": "e70a2e86354842e5bf3f27c193a033e0", "after_quota": "e70a2e86354842e5bf3f27c193a03 |
-| 3180 | 2026-09-29 19:14:04 | e70a2e86 | 017 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "017", "status": "active", "verified": "VERIFIED"}} |
-| 3181 | 2026-09-29 19:14:08 | 665ef041 | 019 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 3182 | 2026-09-29 19:14:35 | 665ef041 | 019 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 4s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\019.json' \| T2 FAIL 11s [done] expect='1' las |
 | 3183 | 2026-09-29 19:14:35 | 665ef041 | 019 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 4s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\019.json' \| T2 FAIL 11s [done] expect='1' las |
 | 3184 | 2026-09-29 19:14:35 | 665ef041 | 019 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 3185 | 2026-09-29 19:14:35 | 70dc72a1 | 019 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "019", "max_rounds": 2}} |
@@ -402,3 +398,7 @@
 | 3576 | 2026-09-30 18:55:23 | cafa3a07 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 3577 | 2026-09-30 18:55:23 | 9a330171 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "c6ebd328452848dd8bc03064b97b6ff1", "retry_of": "cafa3a07ae52474485cee614ae5cdd2 |
 | 3578 | 2026-09-30 18:55:23 | cafa3a07 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 3579 | 2026-09-30 18:55:26 | 791d6548 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3580 | 2026-09-30 18:55:29 | 409eb9fc | 014 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3581 | 2026-09-30 18:56:21 | 409eb9fc | 014 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": null, "rejected": ["fallback 'or-li |
+| 3582 | 2026-09-30 18:56:21 | 409eb9fc | 014 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |

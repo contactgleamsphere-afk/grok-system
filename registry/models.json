@@ -393,9 +393,9 @@
         "latency_s": 0.52,
         "note": "D-086: 20:17Z sweep discarded (local network outage)",
         "ok": false,
-        "quota_kind": "tpm",
-        "quota_seen": "2026-09-30T17:34:03",
-        "quota_until": 1790789703.12034
+        "quota_kind": "tpd",
+        "quota_seen": "2026-09-30T17:56:17",
+        "quota_until": 1790794577.8822753
       }
     },
     "location": "remote",
@@ -405,7 +405,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-30T17:34:03+00:00",
+    "updated": "2026-09-30T17:56:17+00:00",
     "verified": "VERIFIED"
   },
   "groq-gptoss20b": {
