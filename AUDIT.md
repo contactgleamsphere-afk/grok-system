@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3010 | 2026-09-29 18:26:06 | 8eec6c54 | 012 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 3011 | 2026-09-29 18:26:16 | e6462e61 | 011 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 22s [done] expect='X_OK' last='RESULT: X_OK' \| T2 PASS 54s [done] expect='2' last='2' \| T3 PASS 58s [done] expect='3'  |
-| 3012 | 2026-09-29 18:26:16 | e6462e61 | 011 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 22s [done] expect='X_OK' last='RESULT: X_OK' \| T2 PASS 54s [done] expect='2' last='2' \| T3 PASS 58s [done] expect='3'  |
-| 3013 | 2026-09-29 18:26:16 | e6462e61 | 011 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "011", "status": "active", "verified": "VERIFIED"}} |
 | 3014 | 2026-09-29 18:26:20 | 0969955b | 013 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3015 | 2026-09-29 18:28:37 | 8eec6c54 | 012 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 16s [done] expect='X_OK' last='X_OK' \| T2 PASS 74s [done] expect='60' last='RESULT: Summed amount column to 60.' \| T3  |
 | 3016 | 2026-09-29 18:28:37 | 8eec6c54 | 012 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 16s [done] expect='X_OK' last='X_OK' \| T2 PASS 74s [done] expect='60' last='RESULT: Summed amount column to 60.' \| T3  |
@@ -402,3 +398,7 @@
 | 3407 | 2026-09-30 01:42:07 | 52d5ecd7 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 29s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 51s [done] report expect='FACTORY' cmd=True \| T3 PASS 73s [d |
 | 3408 | 2026-09-30 01:42:07 | 0f1be090 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "73c0022bd5074aad890aa36856ac76d0", "after_quota": "52d5ecd7495d417b9cb725c82f51d |
 | 3409 | 2026-09-30 01:42:07 | 52d5ecd7 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 3410 | 2026-09-30 01:49:56 | 738502df | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3411 | 2026-09-30 02:03:58 | 72396f63 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3412 | 2026-09-30 02:03:58 | 953093ab |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-09-30T03"}} |
+| 3413 | 2026-09-30 02:03:58 | 72396f63 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
