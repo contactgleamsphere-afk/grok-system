@@ -30,8 +30,8 @@
       "health": {
         "failures": 0,
         "last_outcome": "ok",
-        "last_probe": "2026-09-30T18:07:31",
-        "latency_s": 3.79,
+        "last_probe": "2026-09-30T19:07:31",
+        "latency_s": 3.18,
         "note": "D-086: 20:17Z sweep discarded (local network outage)",
         "ok": true,
         "reason": "3 consecutive errors: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"this model is currently experiencing high demand. spikes in demand are usually temporary. please try again late"
@@ -46,8 +46,8 @@
     "provider": "gemini",
     "ram_gb": null,
     "tokens_per_sec": null,
-    "tool_call_score": 0.6224000000000001,
-    "updated": "2026-09-30T18:09:02+00:00",
+    "tool_call_score": 0.6979200000000001,
+    "updated": "2026-09-30T19:09:21+00:00",
     "verified": "VERIFIED"
   },
   "gemini-flash36": {
@@ -81,8 +81,8 @@
       "health": {
         "failures": 0,
         "last_outcome": "ok",
-        "last_probe": "2026-09-30T18:07:31",
-        "latency_s": 3.47,
+        "last_probe": "2026-09-30T19:07:31",
+        "latency_s": 2.53,
         "note": "D-086: 20:17Z sweep discarded (local network outage)",
         "ok": true,
         "reason": "tool_call_score decayed below 0.3"
@@ -97,8 +97,8 @@
     "provider": "gemini",
     "ram_gb": null,
     "tokens_per_sec": null,
-    "tool_call_score": 0.552,
-    "updated": "2026-09-30T18:09:02+00:00",
+    "tool_call_score": 0.6416000000000001,
+    "updated": "2026-09-30T19:09:21+00:00",
     "verified": "VERIFIED"
   },
   "gemini-flash38": {
@@ -130,12 +130,12 @@
         }
       ],
       "health": {
-        "failures": 0,
-        "last_outcome": "ok",
-        "last_probe": "2026-09-30T18:07:31",
+        "failures": 1,
+        "last_outcome": "error",
+        "last_probe": "2026-09-30T19:07:31",
         "latency_s": 8.09,
         "note": "D-086: 20:17Z sweep discarded (local network outage)",
-        "ok": true,
+        "ok": false,
         "reason": "3 consecutive errors: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"this model is currently experiencing high demand. spikes in demand are usually temporary. please try again late"
       },
       "latency_s": "2.4",
@@ -149,7 +149,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-30T18:09:02+00:00",
+    "updated": "2026-09-30T19:09:21+00:00",
     "verified": "VERIFIED"
   },
   "gemini-gemini-flash-lite-latest": {
@@ -181,12 +181,13 @@
       ],
       "health": {
         "failures": 0,
-        "last_outcome": "ok",
-        "last_probe": "2026-09-30T18:07:31",
+        "last_outcome": "quota",
+        "last_probe": "2026-09-30T19:07:31",
         "latency_s": 8.41,
-        "ok": true,
+        "ok": false,
         "probation": 1,
         "quota_seen": "2026-09-29T18:23:28",
+        "quota_until": 1790796151.3524494,
         "reason": "failed probation: error"
       },
       "rpd_scope": "gemini free tier (see SIGNUP)"
@@ -198,7 +199,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 0.9997028943905717,
-    "updated": "2026-09-30T18:09:02+00:00",
+    "updated": "2026-09-30T19:09:21+00:00",
     "verified": "VERIFIED"
   },
   "gemini-gemma26b": {
@@ -231,8 +232,8 @@
       "health": {
         "failures": 0,
         "last_outcome": "ok",
-        "last_probe": "2026-09-30T18:07:31",
-        "latency_s": 36.14,
+        "last_probe": "2026-09-30T19:07:31",
+        "latency_s": 17.54,
         "note": "D-086: 20:17Z sweep discarded (local network outage)",
         "ok": true
       },
@@ -247,7 +248,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-30T18:09:02+00:00",
+    "updated": "2026-09-30T19:09:21+00:00",
     "verified": "VERIFIED"
   },
   "gemini-lite": {
@@ -280,10 +281,11 @@
       ],
       "health": {
         "failures": 0,
-        "last_outcome": "ok",
-        "last_probe": "2026-09-30T18:07:31",
+        "last_outcome": "quota",
+        "last_probe": "2026-09-30T19:07:31",
         "latency_s": 11.17,
-        "ok": true
+        "ok": false,
+        "quota_until": 1790796151.3524494
       },
       "latency_s": "0.7-1.4",
       "rpd": 20,
@@ -296,7 +298,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-30T18:09:02+00:00",
+    "updated": "2026-09-30T19:09:21+00:00",
     "verified": "VERIFIED"
   },
   "gemini-lite31": {
@@ -330,8 +332,8 @@
       "health": {
         "failures": 0,
         "last_outcome": "ok",
-        "last_probe": "2026-09-30T18:07:31",
-        "latency_s": 6.96,
+        "last_probe": "2026-09-30T19:07:31",
+        "latency_s": 0.92,
         "note": "D-086: 20:17Z sweep discarded (local network outage)",
         "ok": true
       },
@@ -346,7 +348,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-30T18:09:02+00:00",
+    "updated": "2026-09-30T19:09:21+00:00",
     "verified": "VERIFIED"
   },
   "groq-gptoss120b": {
@@ -389,13 +391,11 @@
       "health": {
         "failures": 0,
         "last_outcome": "ok",
-        "last_probe": "2026-09-30T18:07:31",
-        "latency_s": 1.93,
+        "last_probe": "2026-09-30T19:07:31",
+        "latency_s": 0.74,
         "note": "D-086: 20:17Z sweep discarded (local network outage)",
-        "ok": false,
-        "quota_kind": "tpd",
-        "quota_seen": "2026-09-30T17:56:17",
-        "quota_until": 1790794577.8822753
+        "ok": true,
+        "quota_seen": "2026-09-30T17:56:17"
       }
     },
     "location": "remote",
@@ -405,7 +405,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-30T18:09:02+00:00",
+    "updated": "2026-09-30T19:09:21+00:00",
     "verified": "VERIFIED"
   },
   "groq-gptoss20b": {
@@ -439,8 +439,8 @@
       "health": {
         "failures": 0,
         "last_outcome": "ok",
-        "last_probe": "2026-09-30T18:07:31",
-        "latency_s": 1.56,
+        "last_probe": "2026-09-30T19:07:31",
+        "latency_s": 0.46,
         "ok": true,
         "quota_seen": "2026-09-29T18:27:46"
       }
@@ -452,7 +452,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-30T18:09:02+00:00",
+    "updated": "2026-09-30T19:09:21+00:00",
     "verified": "VERIFIED"
   },
   "groq-qwen27b": {
@@ -486,8 +486,8 @@
       "health": {
         "failures": 0,
         "last_outcome": "ok",
-        "last_probe": "2026-09-30T18:07:31",
-        "latency_s": 1.02,
+        "last_probe": "2026-09-30T19:07:31",
+        "latency_s": 0.35,
         "note": "D-086: 20:17Z sweep discarded (local network outage)",
         "ok": true,
         "quota_seen": "2026-09-22T22:28:40"
@@ -499,8 +499,8 @@
     "provider": "groq",
     "ram_gb": null,
     "tokens_per_sec": null,
-    "tool_call_score": 0.9999996168761152,
-    "updated": "2026-09-30T18:09:02+00:00",
+    "tool_call_score": 0.9999996935008921,
+    "updated": "2026-09-30T19:09:21+00:00",
     "verified": "VERIFIED"
   },
   "local3b": {
@@ -516,7 +516,7 @@
       "health": {
         "failures": 0,
         "last_outcome": "ok",
-        "last_probe": "2026-09-30T18:07:31",
+        "last_probe": "2026-09-30T19:07:31",
         "latency_s": null,
         "ok": true
       }
@@ -527,8 +527,8 @@
     "provider": "ollama",
     "ram_gb": 2.0,
     "tokens_per_sec": 11.85,
-    "tool_call_score": 0.9999990192028541,
-    "updated": "2026-09-30T18:09:02+00:00",
+    "tool_call_score": 0.9999992153622832,
+    "updated": "2026-09-30T19:09:21+00:00",
     "verified": "VERIFIED"
   },
   "local4b": {
@@ -545,7 +545,7 @@
       "health": {
         "failures": 0,
         "last_outcome": "ok",
-        "last_probe": "2026-09-30T18:07:31",
+        "last_probe": "2026-09-30T19:07:31",
         "latency_s": null,
         "ok": true
       }
@@ -556,8 +556,8 @@
     "provider": "ollama",
     "ram_gb": 3.0,
     "tokens_per_sec": 9.19,
-    "tool_call_score": 0.9999990192028541,
-    "updated": "2026-09-30T18:09:02+00:00",
+    "tool_call_score": 0.9999992153622832,
+    "updated": "2026-09-30T19:09:21+00:00",
     "verified": "VERIFIED"
   },
   "or-ling-30-flash-fin": {
@@ -592,7 +592,7 @@
         "failures": 0,
         "first_gone": "2026-09-29T17:01:48",
         "last_outcome": "gone",
-        "last_probe": "2026-09-30T18:07:31",
+        "last_probe": "2026-09-30T19:07:31",
         "latency_s": 0.81,
         "ok": false,
         "probation": 2,
@@ -607,7 +607,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 0.9956765443577245,
-    "updated": "2026-09-30T18:09:02+00:00",
+    "updated": "2026-09-30T19:09:21+00:00",
     "verified": "BLOCKED"
   },
   "or-ling-30-flash-sante": {
@@ -640,8 +640,8 @@
       "health": {
         "failures": 0,
         "last_outcome": "ok",
-        "last_probe": "2026-09-30T18:07:31",
-        "latency_s": 2.68,
+        "last_probe": "2026-09-30T19:07:31",
+        "latency_s": 0.99,
         "ok": true,
         "probation": 2,
         "reason": "failed probation: error"
@@ -654,8 +654,8 @@
     "provider": "openrouter",
     "ram_gb": null,
     "tokens_per_sec": null,
-    "tool_call_score": 0.9996286179882146,
-    "updated": "2026-09-30T18:09:02+00:00",
+    "tool_call_score": 0.9997028943905717,
+    "updated": "2026-09-30T19:09:21+00:00",
     "verified": "VERIFIED"
   },
   "or-nemotron-35-lightning": {
@@ -688,8 +688,8 @@
       "health": {
         "failures": 0,
         "last_outcome": "ok",
-        "last_probe": "2026-09-30T18:07:31",
-        "latency_s": 2.63,
+        "last_probe": "2026-09-30T19:07:31",
+        "latency_s": 36.24,
         "ok": true,
         "probation": 2,
         "reason": "failed probation: error"
@@ -702,8 +702,8 @@
     "provider": "openrouter",
     "ram_gb": null,
     "tokens_per_sec": null,
-    "tool_call_score": 0.6240000000000001,
-    "updated": "2026-09-30T18:09:02+00:00",
+    "tool_call_score": 0.6992,
+    "updated": "2026-09-30T19:09:21+00:00",
     "verified": "VERIFIED"
   },
   "or-qwen27b": {
@@ -741,11 +741,11 @@
       "health": {
         "failures": 0,
         "last_outcome": "quota",
-        "last_probe": "2026-09-30T18:07:31",
+        "last_probe": "2026-09-30T19:07:31",
         "latency_s": 1.5,
         "note": "D-086: 20:17Z sweep discarded (local network outage)",
         "ok": false,
-        "quota_until": 1790792551.2197597
+        "quota_until": 1790796151.3524494
       },
       "rpd": 50,
       "rpd_scope": "account-wide across all :free models"
@@ -757,7 +757,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-30T18:09:02+00:00",
+    "updated": "2026-09-30T19:09:21+00:00",
     "verified": "VERIFIED"
   },
   "ovh-gptoss20b": {
