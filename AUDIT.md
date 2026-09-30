@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3246 | 2026-09-29 19:24:59 | 0656e7cc | 026 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 3247 | 2026-09-29 19:26:35 | 252a5b8d | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 13s [done] report expect='FACTORY' cmd=True \| T3 PASS 13s [do |
-| 3248 | 2026-09-29 19:26:35 | 252a5b8d | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 13s [done] report expect='FACTORY' cmd=True \| T3 PASS 13s [do |
-| 3249 | 2026-09-29 19:26:35 | 252a5b8d | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 3250 | 2026-09-29 19:26:35 | 176c95ca | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "33d3730f13e945aa8839588d7a0ec4b7", "retry_of": "252a5b8dab6d4dda9c57864ab31d7eb |
 | 3251 | 2026-09-29 19:26:35 | 252a5b8d | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 3252 | 2026-09-29 19:26:36 | 0656e7cc | 026 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": null, "rejected": ["fallback 'or-ne |
 | 3253 | 2026-09-29 19:26:36 | 0656e7cc | 026 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
@@ -402,3 +397,8 @@
 | 3643 | 2026-09-30 19:35:32 | a0a1b9ab | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 8s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 10s [done] report expect='FACTORY' cmd=True \| T3 PASS 11s [do |
 | 3644 | 2026-09-30 19:35:32 | 4fd160dc | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "a0a1b9ab216b4a118bb051444ec5ab5a", "after_quota": "a0a1b9ab216b4a118bb051444ec5a |
 | 3645 | 2026-09-30 19:35:32 | a0a1b9ab | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 3646 | 2026-09-30 19:35:36 | 502b64ce | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3647 | 2026-09-30 19:43:55 | 885a0ec2 | 028 | job.enqueued | master-001 | {"kind": "run", "payload": {"bot_id": "028", "task": "review the factory and count how many bots were created", "in": "C:\\AI\\Factory\\work |
+| 3648 | 2026-09-30 19:43:57 | 885a0ec2 | 028 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3649 | 2026-09-30 19:43:57 | 885a0ec2 | 028 | bot.ran | fast-LAPTOP-LRE6PSA8 | {"ok": false, "produced": null, "secs": null, "reply": "", "chain": null} |
+| 3650 | 2026-09-30 19:43:57 | 885a0ec2 | 028 | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: logic: run failed: bot 028 is testing, only active  |
