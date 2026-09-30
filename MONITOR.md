@@ -276,3 +276,4 @@
 | 2026-09-30 18:43 | 016 workspace-tidy-counter | 4/4 | active→active | - |
 | 2026-09-30 18:49 | 017 name-sorter | 3/4 (quota, inconclusive) | active→active | - |
 | 2026-09-30 18:49 | 014 error-log-analyzer | 2/4 | active→testing | - |
+| 2026-09-30 18:50 | 018 csv-country-totals | 0/4 (quota, inconclusive) | active→active | - |
