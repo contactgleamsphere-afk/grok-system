@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3124 | 2026-09-29 18:53:03 | 061a0266 | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 3125 | 2026-09-29 18:53:03 | a0577b9d | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "c6ebd328452848dd8bc03064b97b6ff1", "retry_of": "061a0266b60141249679d771b2f460a |
-| 3126 | 2026-09-29 18:53:03 | 061a0266 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 3127 | 2026-09-29 18:53:07 | 4d8b6f21 | 006 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3128 | 2026-09-29 18:57:11 | 9d53582f | 005 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": null, "rejected": ["fallback 'or-de |
 | 3129 | 2026-09-29 18:57:11 | 9d53582f | 005 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
 | 3130 | 2026-09-29 18:57:15 | 3b04ee67 | 007 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +398,7 @@
 | 3521 | 2026-09-30 18:33:31 | 7633df72 | 011 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='RESULT: X_OK' \| T2 PASS 71s [done] expect='2' last='2' \| T3 PASS 104s [done] expect='3' |
 | 3522 | 2026-09-30 18:33:31 | 7633df72 | 011 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] expect='X_OK' last='RESULT: X_OK' \| T2 PASS 71s [done] expect='2' last='2' \| T3 PASS 104s [done] expect='3' |
 | 3523 | 2026-09-30 18:33:31 | 7633df72 | 011 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "011", "status": "active", "verified": "VERIFIED"}} |
+| 3524 | 2026-09-30 18:33:35 | 8bb02e28 | 012 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3525 | 2026-09-30 18:35:37 | a119d185 | 009 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": "2/4", "rejected": null}, {"round": 2 |
+| 3526 | 2026-09-30 18:35:37 | a119d185 | 009 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 3527 | 2026-09-30 18:35:37 | a119d185 | 009 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "009", "name": "line-dedupe-bot", "status": "active", "verified": "VERIFIED"}} |

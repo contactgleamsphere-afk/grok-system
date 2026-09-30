@@ -394,8 +394,8 @@
         "note": "D-086: 20:17Z sweep discarded (local network outage)",
         "ok": false,
         "quota_kind": "tpm",
-        "quota_seen": "2026-09-30T17:22:40",
-        "quota_until": 1790789020.8197987
+        "quota_seen": "2026-09-30T17:34:03",
+        "quota_until": 1790789703.12034
       }
     },
     "location": "remote",
@@ -405,7 +405,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-09-30T17:22:40+00:00",
+    "updated": "2026-09-30T17:34:03+00:00",
     "verified": "VERIFIED"
   },
   "groq-gptoss20b": {
