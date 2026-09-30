@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3281 | 2026-09-29 20:10:52 | 9155875e | 028 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 3282 | 2026-09-29 20:11:25 | 69f3367a | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 31s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 75s [done] report expect='FACTORY' cmd=True \| T3 PASS 55s [d |
-| 3283 | 2026-09-29 20:11:25 | 69f3367a | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 31s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 75s [done] report expect='FACTORY' cmd=True \| T3 PASS 55s [d |
 | 3284 | 2026-09-29 20:11:25 | 6629b411 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "69f3367abff946268d48a65cfce000ca", "after_quota": "69f3367abff946268d48a65cfce00 |
 | 3285 | 2026-09-29 20:11:25 | 69f3367a | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 3286 | 2026-09-29 20:11:28 | 176c95ca | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +399,6 @@
 | 3678 | 2026-09-30 20:50:51 | 5734063d | 017 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 19s [done] expect='3' last='RESULT: 3' \| T3 PASS 21s [done] expect='3' l |
 | 3679 | 2026-09-30 20:50:51 | 5734063d | 017 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 19s [done] expect='3' last='RESULT: 3' \| T3 PASS 21s [done] expect='3' l |
 | 3680 | 2026-09-30 20:50:51 | 5734063d | 017 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "017", "status": "active", "verified": "VERIFIED"}} |
+| 3681 | 2026-09-30 20:51:53 | 934721ee | 018 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 34s [done] expect='30' last='RESULT: 30' \| T3 PASS 37s [done] expect='2 |
+| 3682 | 2026-09-30 20:51:53 | 934721ee | 018 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] expect='X_OK' last='X_OK' \| T2 PASS 34s [done] expect='30' last='RESULT: 30' \| T3 PASS 37s [done] expect='2 |
+| 3683 | 2026-09-30 20:51:53 | 934721ee | 018 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "status": "active", "verified": "VERIFIED"}} |
