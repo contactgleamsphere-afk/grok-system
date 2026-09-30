@@ -637,7 +637,7 @@
       "primary": "gemini-gemini-flash-lite-latest"
     },
     "name": "workspace-tidy-counter",
-    "notes": "tests 4/4: T1 PASS 7s [done] expect='X_OK' last='X_OK' | T2 PASS 12s [done] expect='2' last='RESULT: 2' | T3 PASS 10s [done] expect='3' last='RESULT: 3' | T4 PASS 8s [done] expect='CONFINED' last='RESULT: CONFINED'",
+    "notes": "tests 4/4: T1 PASS 9s [done] expect='X_OK' last='X_OK' | T2 PASS 10s [done] expect='2' last='RESULT: 2' | T3 PASS 12s [done] expect='3' last='RESULT: 3' | T4 PASS 9s [done] expect='CONFINED' last='RESULT: CONFINED'",
     "permissions": [
       "fs:read",
       "shell:workspace"
@@ -660,7 +660,7 @@
     "tools": [
       "exec"
     ],
-    "updated": "2026-09-29T18:11:48+00:00",
+    "updated": "2026-09-30T17:43:16+00:00",
     "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\016-workspace-tidy-counter"
