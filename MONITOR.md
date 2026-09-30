@@ -279,3 +279,4 @@
 | 2026-09-30 18:50 | 018 csv-country-totals | 0/4 (quota, inconclusive) | active→active | - |
 | 2026-09-30 18:50 | 024 pytest-runner-bot | 0/3 | active→testing | - |
 | 2026-09-30 18:51 | 001 master | 8/10 | testing→testing | - |
+| 2026-09-30 18:52 | 025 text-transformer | 0/3 | active→testing | - |

@@ -1012,7 +1012,7 @@
       "primary": "gemini-lite31"
     },
     "name": "text-transformer",
-    "notes": "tests 3/3: T1 PASS 12s [done] expect='LIVENESS_OK' last='LIVENESS_OK' | T2 PASS 26s [done] expect='HELLO WORLD' last='RESULT: HELLO WORLD' | T3 PASS 14s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 0/3: T1 FAIL 7s [done] expect='LIVENESS_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\025.json' | T2 FAIL 55s [done] expect='HELLO WORLD' last='\u00e2\u2020\u00b3 read summary_upper.txt' | T3 FAIL 12s [done] expect='CONFINED' last='Using config: C:\\AI\\Factory\\run\\botcfg\\025.json'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -1025,7 +1025,7 @@
       "bot.json": "43fc8af7d087baf32f0640f9",
       "nanobot.patch.json": "1f81288bf423bdbc8ccfe469"
     },
-    "status": "active",
+    "status": "testing",
     "tests": [
       "Reply with exactly: LIVENESS_OK -> LIVENESS_OK",
       "First write summary.txt containing 'hello world', then process it and read summary_upper.txt -> HELLO WORLD",
@@ -1035,8 +1035,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-29T22:05:32+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-09-30T17:52:00+00:00",
+    "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\025-text-transformer"
   },
