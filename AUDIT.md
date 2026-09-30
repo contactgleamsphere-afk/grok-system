@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3214 | 2026-09-29 19:18:17 | 0e05bf69 | 025 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "025", "retest_of": "ff9a530447274bf2ba7ea8a8c72da7f9", "after_quota": "ff9a530447274bf2ba7ea8a8c72da |
-| 3215 | 2026-09-29 19:18:17 | ff9a5304 | 025 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "025", "status": "testing", "verified": "UNVERIFIED"}} |
 | 3216 | 2026-09-29 19:18:20 | 8a363ecb | 026 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3217 | 2026-09-29 19:19:28 | 8a363ecb | 026 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 14s [done] expect='X_OK' last='with transport 'stdio'' \| T2 FAIL 10s [done] expect='3' last='with transport 'stdio'' \| |
 | 3218 | 2026-09-29 19:19:28 | 8a363ecb | 026 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 14s [done] expect='X_OK' last='with transport 'stdio'' \| T2 FAIL 10s [done] expect='3' last='with transport 'stdio'' \| |
@@ -402,3 +400,5 @@
 | 3611 | 2026-09-30 19:03:16 | 7e73f8b8 | 025 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3612 | 2026-09-30 19:04:24 | 7e73f8b8 | 025 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": null, "rejected": "instructions har |
 | 3613 | 2026-09-30 19:04:24 | 7e73f8b8 | 025 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: logic: spec/tests inconsistent, tests expect a lite |
+| 3614 | 2026-09-30 19:04:31 | a3db23b5 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3615 | 2026-09-30 19:04:31 | a3db23b5 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": []}} |
