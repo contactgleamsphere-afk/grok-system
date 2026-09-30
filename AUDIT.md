@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3357 | 2026-09-29 23:17:11 | edd55734 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 3358 | 2026-09-29 23:17:13 | 2c510b7c | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 3359 | 2026-09-29 23:17:15 | 24cabff1 | 027 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3360 | 2026-09-29 23:22:42 | 24cabff1 | 027 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": "1/3", "rejected": null}, {"round": |
 | 3361 | 2026-09-29 23:22:42 | 24cabff1 | 027 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
 | 3362 | 2026-09-29 23:22:46 | 02a7996c | 028 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +399,6 @@
 | 3754 | 2026-10-01 00:20:45 | 703054e7 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 3755 | 2026-10-01 00:20:47 | a2e2f56e |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3756 | 2026-10-01 00:20:48 | a2e2f56e |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 3757 | 2026-10-01 00:20:51 | 898aad60 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3758 | 2026-10-01 00:20:52 | 898aad60 |  | lane.rejected | svc-LAPTOP-LRE6PSA8 | {"model": "thinkingmachines/inkling-small:free", "reason": "probe auth: {\"error\":{\"message\":\"thinkingmachines/inkling-small:free is onl |
+| 3759 | 2026-10-01 00:20:52 | 898aad60 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
