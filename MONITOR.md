@@ -265,3 +265,4 @@
 | 2026-09-30 18:20 | 001 master | 9/10 | testing→testing | - |
 | 2026-09-30 18:21 | 006 json-to-markdown-table | 1/4 | active→testing | - |
 | 2026-09-30 18:24 | 001 master | 8/10 | testing→testing | - |
+| 2026-09-30 18:24 | 007 todo-extractor | 0/4 | active→testing | - |

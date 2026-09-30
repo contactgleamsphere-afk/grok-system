@@ -266,7 +266,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "todo-extractor",
-    "notes": "tests 4/4: T1 PASS 47s [done] expect='X_OK' last='X_OK' | T2 PASS 152s [done] expect='2' last='2' | T3 PASS 147s [done] expect='0' last='0' | T4 PASS 104s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 0/4: T1 FAIL 66s [done] expect='X_OK' last='\u00e2\u2020\u00b3 read notes.txt' | T2 FAIL 14s [done] expect='2' last='Using config: C:\\AI\\Factory\\run\\botcfg\\007.json' | T3 FAIL 8s [done] expect='0' last='Using config: C:\\AI\\Factory\\run\\botcfg\\007.json' | T4 FAIL 11s [done] expect='CONFINED' last='Using config: C:\\AI\\Factory\\run\\botcfg\\007.json'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -279,7 +279,7 @@
       "bot.json": "a8b6e3502f843de724927997",
       "nanobot.patch.json": "8019b2a6aeef8893e9b52118"
     },
-    "status": "active",
+    "status": "testing",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write notes.txt containing \"Line one\\nTODO fix bug\\nSome text\\nFIXME adjust UI\\nEnd\" then run the extractor -> 2",
@@ -290,8 +290,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-29T18:04:46+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-09-30T17:24:30+00:00",
+    "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\007-todo-extractor"
   },
