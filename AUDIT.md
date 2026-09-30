@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3216 | 2026-09-29 19:18:20 | 8a363ecb | 026 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 3217 | 2026-09-29 19:19:28 | 8a363ecb | 026 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 14s [done] expect='X_OK' last='with transport 'stdio'' \| T2 FAIL 10s [done] expect='3' last='with transport 'stdio'' \| |
 | 3218 | 2026-09-29 19:19:28 | 8a363ecb | 026 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 14s [done] expect='X_OK' last='with transport 'stdio'' \| T2 FAIL 10s [done] expect='3' last='with transport 'stdio'' \| |
 | 3219 | 2026-09-29 19:19:28 | 8a363ecb | 026 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 3220 | 2026-09-29 19:19:28 | 0656e7cc | 026 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "026", "max_rounds": 2}} |
@@ -402,3 +400,5 @@
 | 3613 | 2026-09-30 19:04:24 | 7e73f8b8 | 025 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: logic: spec/tests inconsistent, tests expect a lite |
 | 3614 | 2026-09-30 19:04:31 | a3db23b5 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3615 | 2026-09-30 19:04:31 | a3db23b5 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": []}} |
+| 3616 | 2026-09-30 19:04:36 | 5d740c8e |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3617 | 2026-09-30 19:04:41 | 5d740c8e |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "FactoryError: could not produce a valid spec after 3 attempts: |
