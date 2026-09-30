@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3207 | 2026-09-29 19:17:42 | 349839fb | 024 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 4s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\024.json' \| T2 FAIL 11s [done] expect='2' las |
-| 3208 | 2026-09-29 19:17:42 | 349839fb | 024 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 3209 | 2026-09-29 19:17:42 | 472caf57 | 024 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "024", "max_rounds": 2}} |
-| 3210 | 2026-09-29 19:17:42 | 349839fb | 024 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "024", "status": "testing", "verified": "UNVERIFIED"}} |
 | 3211 | 2026-09-29 19:17:46 | ff9a5304 | 025 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3212 | 2026-09-29 19:18:17 | ff9a5304 | 025 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='LIVENESS_OK' last='LIVENESS_OK' \| T2 FAIL 4s [done] expect='HELLO WORLD' last='Using config: C:\\AI\ |
 | 3213 | 2026-09-29 19:18:17 | ff9a5304 | 025 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] expect='LIVENESS_OK' last='LIVENESS_OK' \| T2 FAIL 4s [done] expect='HELLO WORLD' last='Using config: C:\\AI\ |
@@ -402,3 +398,7 @@
 | 3604 | 2026-09-30 19:02:17 | ab1e0d92 | 025 | bot.rearchitected | svc-LAPTOP-LRE6PSA8 | {"lane": "groq:openai/gpt-oss-20b", "tools": ["read_file", "write_file"], "permissions": ["fs:read", "fs:write"], "boundary_diff": {"model_p |
 | 3605 | 2026-09-30 19:02:17 | 2fef54b7 | 025 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "025", "retest_of": "ab1e0d9250fc4e02a44da9a933afd1a6", "rearchitected": true}} |
 | 3606 | 2026-09-30 19:02:17 | ab1e0d92 | 025 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "025", "pass": 1, "total": 4, "status": "testing"}} |
+| 3607 | 2026-09-30 19:02:25 | 2fef54b7 | 025 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3608 | 2026-09-30 19:03:11 | 2fef54b7 | 025 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 11s [done] expect='X_OK' last='X_OK' \| T2 FAIL 3s [done] expect='OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\ |
+| 3609 | 2026-09-30 19:03:11 | 7e73f8b8 | 025 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "025", "max_rounds": 2, "rearchitected": true}} |
+| 3610 | 2026-09-30 19:03:11 | 2fef54b7 | 025 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "025", "status": "testing", "verified": "UNVERIFIED"}} |
