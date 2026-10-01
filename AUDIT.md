@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3399 | 2026-09-30 01:04:20 | 29d58f6d |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-flash38", "gemini-gemma26b", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq- |
-| 3400 | 2026-09-30 01:17:14 | 3792493d | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 3401 | 2026-09-30 01:27:18 | 3792493d | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 50s [done] report expect='FACTORY' cmd=True \| T3 PASS 50s [d |
-| 3402 | 2026-09-30 01:27:18 | 3792493d | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 50s [done] report expect='FACTORY' cmd=True \| T3 PASS 50s [d |
 | 3403 | 2026-09-30 01:27:18 | 7da3d73a | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "a0577b9d22b54bf8ad00cd895bd0c6e7", "after_quota": "3792493d7f994c31b1591dcb89e3b |
 | 3404 | 2026-09-30 01:27:18 | 3792493d | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 3405 | 2026-09-30 01:28:31 | 52d5ecd7 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +398,7 @@
 | 3796 | 2026-10-01 01:20:44 | 0017d5c7 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3797 | 2026-10-01 01:20:44 | b863515d |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-01T02"}} |
 | 3798 | 2026-10-01 01:20:44 | 0017d5c7 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 3799 | 2026-10-01 01:20:46 | f9ec6a4c |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3800 | 2026-10-01 01:20:46 | f9ec6a4c |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 3801 | 2026-10-01 01:20:49 | f1a1a56c |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3802 | 2026-10-01 01:20:49 | f1a1a56c |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
