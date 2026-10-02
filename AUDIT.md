@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3551 | 2026-09-30 18:49:33 | b51dcb92 | 018 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 3552 | 2026-09-30 18:50:11 | b51dcb92 | 018 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 3s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\018.json' \| T2 FAIL 11s [done] expect='30' la |
-| 3553 | 2026-09-30 18:50:11 | b51dcb92 | 018 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 3s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\018.json' \| T2 FAIL 11s [done] expect='30' la |
 | 3554 | 2026-09-30 18:50:11 | 934721ee | 018 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "018", "retest_of": "b51dcb92fc6649559bb29d9d4fee3af3", "after_quota": "b51dcb92fc6649559bb29d9d4fee3 |
 | 3555 | 2026-09-30 18:50:11 | b51dcb92 | 018 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "status": "active", "verified": "VERIFIED"}} |
 | 3556 | 2026-09-30 18:50:15 | 6813ec37 | 024 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +399,6 @@
 | 3948 | 2026-10-02 14:59:07 | d12b9e5f | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 3949 | 2026-10-02 14:59:07 | 6fcb78cb | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "33d3730f13e945aa8839588d7a0ec4b7", "retry_of": "d12b9e5f468e4bbfbdbf71e6d015a13 |
 | 3950 | 2026-10-02 14:59:07 | d12b9e5f | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 3951 | 2026-10-02 14:59:10 | 44159f49 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3952 | 2026-10-02 14:59:27 | 747aafa5 | 017 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": null, "rejected": ["fallback 'or-li |
+| 3953 | 2026-10-02 14:59:27 | 747aafa5 | 017 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
