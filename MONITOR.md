@@ -319,3 +319,4 @@
 | 2026-10-02 15:00 | 018 csv-country-totals | 1/4 | active→testing | - |
 | 2026-10-02 15:02 | 001 master | 9/10 | testing→testing | - |
 | 2026-10-02 15:07 | 001 master | 9/10 | testing→testing | - |
+| 2026-10-02 18:42 | 012 csv-column-sum | 3/4 | active→testing | - |
