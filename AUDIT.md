@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3536 | 2026-09-30 18:42:35 | a3da1a8d | 016 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 3537 | 2026-09-30 18:43:16 | a3da1a8d | 016 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 10s [done] expect='2' last='RESULT: 2' \| T3 PASS 12s [done] expect='3' l |
-| 3538 | 2026-09-30 18:43:16 | a3da1a8d | 016 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 PASS 10s [done] expect='2' last='RESULT: 2' \| T3 PASS 12s [done] expect='3' l |
 | 3539 | 2026-09-30 18:43:16 | a3da1a8d | 016 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "016", "status": "active", "verified": "VERIFIED"}} |
 | 3540 | 2026-09-30 18:43:22 | 715b8f1a | 017 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3541 | 2026-09-30 18:49:23 | 715b8f1a | 017 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 8s [done] expect='X_OK' last='X_OK' \| T2 FAIL 4s [done] expect='3' last='Using config: C:\\AI\\Factory\\run\\botcfg\\01 |
@@ -402,3 +399,6 @@
 | 3933 | 2026-10-02 14:56:10 | 1fbba810 | 016 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 3934 | 2026-10-02 14:56:10 | 1e82a590 | 016 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "016", "max_rounds": 2}} |
 | 3935 | 2026-10-02 14:56:10 | 1fbba810 | 016 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "016", "status": "testing", "verified": "UNVERIFIED"}} |
+| 3936 | 2026-10-02 14:56:15 | 1e82a590 | 016 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3937 | 2026-10-02 14:56:50 | 1e82a590 | 016 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": null, "rejected": ["fallback 'or-ne |
+| 3938 | 2026-10-02 14:56:50 | 1e82a590 | 016 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
