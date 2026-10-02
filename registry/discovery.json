@@ -144,14 +144,14 @@
   "gemini:gemini-2.5-flash": {
    "verdict": "rejected",
    "reason": "probe gone: [{\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"this model models/gemini-2.5-fl",
-   "ts": 1790219271.116582,
-   "date": "2026-09-24"
+   "ts": 1790977319.4899218,
+   "date": "2026-10-02"
   },
   "gemini:gemini-flash-latest": {
-   "verdict": "rejected",
-   "reason": "probe error: [{\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"this model is currently experie",
-   "ts": 1790219271.116582,
-   "date": "2026-09-24"
+   "verdict": "approved",
+   "reason": "probe 2.24s loop 3.8s",
+   "ts": 1790977319.4899218,
+   "date": "2026-10-02"
   },
   "gemini:gemini-flash-lite-latest": {
    "verdict": "approved",
@@ -162,34 +162,34 @@
   "gemini:gemini-2.5-flash-lite": {
    "verdict": "rejected",
    "reason": "probe gone: [{\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"this model models/gemini-2.5-fl",
-   "ts": 1790219271.116582,
-   "date": "2026-09-24"
+   "ts": 1790977319.4899218,
+   "date": "2026-10-02"
   },
   "gemini:gemini-3-flash-preview": {
    "verdict": "rejected",
    "reason": "probe no_tool_call: ",
-   "ts": 1790219271.116582,
-   "date": "2026-09-24"
+   "ts": 1790977319.4899218,
+   "date": "2026-10-02"
   },
   "gemini:gemini-3.5-flash": {
    "verdict": "rejected",
    "reason": "probe no_tool_call: ",
-   "ts": 1790219271.116582,
-   "date": "2026-09-24"
+   "ts": 1790977319.4899218,
+   "date": "2026-10-02"
   },
   "gemini:gemini-omni-flash-preview": {
    "verdict": "deferred",
    "reason": "probe quota: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"you exceeded your current quota",
-   "ts": 1790810447.9015923,
-   "date": "2026-10-01",
-   "until": 1790832047.9015923
+   "ts": 1790977319.4899218,
+   "date": "2026-10-02",
+   "until": 1790998919.4899218
   },
   "provider-quota:gemini": {
    "verdict": "deferred",
    "reason": "daily free cap hit during discovery",
-   "ts": 1790810447.9015923,
-   "date": "2026-10-01",
-   "until": 1790832047.9015923
+   "ts": 1790977319.4899218,
+   "date": "2026-10-02",
+   "until": 1790998919.4899218
   },
   "openrouter:deepseek/deepseek-v4-flash-0731:free": {
    "verdict": "rejected",
