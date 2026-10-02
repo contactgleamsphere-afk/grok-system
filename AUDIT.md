@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3435 | 2026-09-30 18:10:31 | 1b7650d4 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "report", "payload": {"day": "2026-10-01"}} |
-| 3436 | 2026-09-30 18:10:31 | a3db23b5 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "bench", "payload": {"stale_only": true, "max": 2, "day": "2026-09-30"}} |
-| 3437 | 2026-09-30 18:10:31 | 5d740c8e |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "canary", "payload": {"day": "2026-09-30"}} |
-| 3438 | 2026-09-30 18:10:31 | 496e3afd |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "monitor", "payload": {"only": null, "day": "2026-09-30"}} |
-| 3439 | 2026-09-30 18:10:31 | d85823bb |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 3440 | 2026-09-30 18:17:07 | b3bbf646 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 14s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 67s [done] report expect='FACTORY' cmd=True \| T3 PASS 173s [ |
 | 3441 | 2026-09-30 18:17:07 | b3bbf646 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 14s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 67s [done] report expect='FACTORY' cmd=True \| T3 PASS 173s [ |
 | 3442 | 2026-09-30 18:17:07 | b3bbf646 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
@@ -402,3 +397,8 @@
 | 3832 | 2026-10-02 01:44:10 | fd5ae898 |  | job.readopted | svc-LAPTOP-LRE6PSA8 | {} |
 | 3833 | 2026-10-02 01:44:25 | fe6c7aed |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-gemma26b", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
 | 3834 | 2026-10-02 01:44:25 | fe6c7aed |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-l |
+| 3835 | 2026-10-02 01:44:30 | 130008d4 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3836 | 2026-10-02 01:44:30 | 9662e40c | 018 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "run", "payload": {"bot_id": "018", "task": "Sum order totals per country into totals.csv", "in": "C:\\AI\\Factory\\workspace\\inbo |
+| 3837 | 2026-10-02 01:44:30 |  | 018 | schedule.fired | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "fire": "2026-10-01T07:00", "job": "9662e40c"} |
+| 3838 | 2026-10-02 01:44:33 | 59cf05fb |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-02T02"}} |
+| 3839 | 2026-10-02 01:44:33 | 130008d4 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
