@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3585 | 2026-09-30 18:57:07 | f5648160 | 024 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
-| 3586 | 2026-09-30 18:57:12 | 42a8ce46 | 025 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 3587 | 2026-09-30 18:58:05 | 42a8ce46 | 025 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": null, "rejected": "instructions har |
 | 3588 | 2026-09-30 18:58:05 | ab1e0d92 | 025 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "rearchitect", "payload": {"bot_id": "025", "feedback": "logic: spec/tests inconsistent, tests expect a literal the instructions mu |
 | 3589 | 2026-09-30 18:58:05 | 42a8ce46 | 025 | bot.rearchitect_queued | svc-LAPTOP-LRE6PSA8 | {"reason": "logic: spec/tests inconsistent, tests expect a literal the instructions must mention (no passing candidate in 2 rounds)"} |
 | 3590 | 2026-09-30 18:58:05 | 42a8ce46 | 025 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: logic: spec/tests inconsistent, tests expect a lite |
@@ -402,3 +399,6 @@
 | 3982 | 2026-10-02 18:41:50 | 6ad0fa67 |  | job.readopted | svc-LAPTOP-LRE6PSA8 | {} |
 | 3983 | 2026-10-02 18:42:12 | 22bc8b7b |  | model.retired | fast-LAPTOP-LRE6PSA8 | {"model": "or-ling-30-flash-fin", "reason": "gone: {\"error\":{\"message\":\"this model is unavailable for free. the paid version "} |
 | 3984 | 2026-10-02 18:42:12 | 22bc8b7b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite |
+| 3985 | 2026-10-02 18:42:16 | 845fc841 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 3986 | 2026-10-02 18:42:16 | 019fdba2 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-02T19"}} |
+| 3987 | 2026-10-02 18:42:16 | 845fc841 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
