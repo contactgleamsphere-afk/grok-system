@@ -313,3 +313,4 @@
 | 2026-10-02 14:52 | 012 csv-column-sum | 0/4 (quota, inconclusive) | active→active | - |
 | 2026-10-02 14:54 | 013 log-error-filter | 0/4 | active→testing | - |
 | 2026-10-02 14:54 | 001 master | 9/10 | testing→testing | - |
+| 2026-10-02 14:56 | 016 workspace-tidy-counter | 2/4 | active→testing | - |
