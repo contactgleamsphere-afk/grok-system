@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3762 | 2026-10-01 00:20:58 | ed026db8 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 3763 | 2026-10-01 00:20:58 | ed026db8 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 3764 | 2026-10-01 00:21:01 | bfe4d02a |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3765 | 2026-10-01 00:21:01 | bfe4d02a |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 3766 | 2026-10-01 00:22:59 | 2a19c229 | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 33s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 58s [done] report expect='FACTORY' cmd=True \| T3 PASS 60s [d |
@@ -402,3 +400,5 @@
 | 4159 | 2026-10-02 22:42:51 | f9af908b |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": ["or-apodex-11-mini"]}} |
 | 4160 | 2026-10-02 22:42:54 | 65ecc914 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 4161 | 2026-10-02 22:42:54 | 65ecc914 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 4162 | 2026-10-02 22:42:58 | 7410941b |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 4163 | 2026-10-02 22:42:58 | 7410941b |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
