@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3769 | 2026-10-01 00:22:59 | 2a19c229 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 3770 | 2026-10-01 00:22:59 | af18c815 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 3771 | 2026-10-01 00:41:02 | af18c815 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 22s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 106s [done] report expect='FACTORY' cmd=True \| T3 PASS 83s [ |
 | 3772 | 2026-10-01 00:41:02 | af18c815 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 22s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 106s [done] report expect='FACTORY' cmd=True \| T3 PASS 83s [ |
 | 3773 | 2026-10-01 00:41:02 | fd5ae898 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "c86fde5b9f3249a696c69dd430ddd566", "after_quota": "af18c815cf914d408e37524aef2e1 |
 | 3774 | 2026-10-01 00:41:02 | af18c815 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
@@ -402,3 +399,6 @@
 | 4166 | 2026-10-02 22:43:05 | d313c567 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 4167 | 2026-10-02 22:44:19 | d313c567 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-flash-latest", "result": "2/4", "quota": 0, "secs": 72} |
 | 4168 | 2026-10-02 22:44:19 | d313c567 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["gemini-flash-latest", "2/4"]]}} |
+| 4169 | 2026-10-02 22:44:22 | 6ae91506 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 4170 | 2026-10-02 22:45:12 | 6ae91506 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-apodex-11-mini", "result": "4/4", "quota": 0, "secs": 49} |
+| 4171 | 2026-10-02 22:45:12 | 6ae91506 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["or-apodex-11-mini", "4/4"]]}} |
