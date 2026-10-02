@@ -50,15 +50,15 @@
   },
   "openrouter:dots-studio/dots-3-note-preview:free": {
    "verdict": "rejected",
-   "reason": "probe error: URLError",
-   "ts": 1790209494.1837013,
-   "date": "2026-09-24"
+   "reason": "loop: final answer ''",
+   "ts": 1790977349.552443,
+   "date": "2026-10-02"
   },
   "openrouter:liquid/lfm-2.5-2.6b:free": {
    "verdict": "rejected",
-   "reason": "loop: HTTP 429 {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"liquid/lfm-2.5-2.6b:free is temporarily rate",
-   "ts": 1790209494.1837013,
-   "date": "2026-09-24"
+   "reason": "loop: final answer ''",
+   "ts": 1790977349.552443,
+   "date": "2026-10-02"
   },
   "openrouter:nvidia/nemotron-3.5-lightning:free": {
    "verdict": "approved",
@@ -73,24 +73,23 @@
    "date": "2026-10-01"
   },
   "openrouter:poolside/laguna-s-2.1:free": {
-   "verdict": "deferred",
-   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
-   "ts": 1790810451.3133905,
-   "date": "2026-10-01",
-   "until": 1790832051.3133905
+   "verdict": "rejected",
+   "reason": "loop: did not call add",
+   "ts": 1790977349.552443,
+   "date": "2026-10-02"
   },
   "openrouter:thinkingmachines/inkling:free": {
    "verdict": "rejected",
    "reason": "probe auth: {\"error\":{\"message\":\"thinkingmachines/inkling:free is only available on agentic ",
-   "ts": 1790108680.3095658,
-   "date": "2026-09-22"
+   "ts": 1790977349.552443,
+   "date": "2026-10-02"
   },
   "openrouter:poolside/laguna-xs-2.1:free": {
    "verdict": "deferred",
-   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
-   "ts": 1790108680.3095658,
-   "date": "2026-09-22",
-   "until": 1790130280.3095658
+   "reason": "probe quota: {\"error\":{\"message\":\"provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"pool",
+   "ts": 1790977349.552443,
+   "date": "2026-10-02",
+   "until": 1790998949.552443
   },
   "openrouter:cohere/north-mini-code:free": {
    "verdict": "deferred",
@@ -137,9 +136,9 @@
   "provider-quota:openrouter": {
    "verdict": "deferred",
    "reason": "daily free cap hit during discovery",
-   "ts": 1790810451.3133905,
-   "date": "2026-10-01",
-   "until": 1790832051.3133905
+   "ts": 1790977349.552443,
+   "date": "2026-10-02",
+   "until": 1790998949.552443
   },
   "gemini:gemini-2.5-flash": {
    "verdict": "rejected",
@@ -196,6 +195,12 @@
    "reason": "retired after 3 days gone: gone: {\"error\":{\"message\":\"this model is unavailable for free. the paid version ",
    "ts": 1790331778.0917437,
    "date": "2026-09-25"
+  },
+  "openrouter:apodex/apodex-1.1-mini:free": {
+   "verdict": "approved",
+   "reason": "probe 2.05s loop 2.11s",
+   "ts": 1790977349.552443,
+   "date": "2026-10-02"
   }
  }
 }

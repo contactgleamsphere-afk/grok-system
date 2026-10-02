@@ -2,15 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3751 | 2026-10-01 00:20:41 | 0017d5c7 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-01T01"}} |
-| 3752 | 2026-10-01 00:20:41 | b762c8eb |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 3753 | 2026-10-01 00:20:44 | 703054e7 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 3754 | 2026-10-01 00:20:45 | 703054e7 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
-| 3755 | 2026-10-01 00:20:47 | a2e2f56e |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 3756 | 2026-10-01 00:20:48 | a2e2f56e |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
-| 3757 | 2026-10-01 00:20:51 | 898aad60 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 3758 | 2026-10-01 00:20:52 | 898aad60 |  | lane.rejected | svc-LAPTOP-LRE6PSA8 | {"model": "thinkingmachines/inkling-small:free", "reason": "probe auth: {\"error\":{\"message\":\"thinkingmachines/inkling-small:free is onl |
-| 3759 | 2026-10-01 00:20:52 | 898aad60 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 3760 | 2026-10-01 00:20:55 | bc7ae9ef |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3761 | 2026-10-01 00:20:55 | bc7ae9ef |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 3762 | 2026-10-01 00:20:58 | ed026db8 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +393,12 @@
 | 4148 | 2026-10-02 22:42:25 | ef59cb87 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 4149 | 2026-10-02 22:42:25 | a292b979 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-02T23"}} |
 | 4150 | 2026-10-02 22:42:25 | ef59cb87 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 4151 | 2026-10-02 22:42:29 | f9af908b |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 4152 | 2026-10-02 22:42:51 | f9af908b |  | lane.discovered | svc-LAPTOP-LRE6PSA8 | {"model": "apodex/apodex-1.1-mini:free", "reason": "probe 2.05s loop 2.11s", "provider": "openrouter"} |
+| 4153 | 2026-10-02 22:42:51 | f9af908b |  | lane.rejected | svc-LAPTOP-LRE6PSA8 | {"model": "dots-studio/dots-3-note-preview:free", "reason": "loop: final answer ''", "provider": "openrouter"} |
+| 4154 | 2026-10-02 22:42:51 | f9af908b |  | lane.rejected | svc-LAPTOP-LRE6PSA8 | {"model": "liquid/lfm-2.5-2.6b:free", "reason": "loop: final answer ''", "provider": "openrouter"} |
+| 4155 | 2026-10-02 22:42:51 | f9af908b |  | lane.rejected | svc-LAPTOP-LRE6PSA8 | {"model": "poolside/laguna-s-2.1:free", "reason": "loop: did not call add", "provider": "openrouter"} |
+| 4156 | 2026-10-02 22:42:51 | f9af908b |  | lane.rejected | svc-LAPTOP-LRE6PSA8 | {"model": "thinkingmachines/inkling:free", "reason": "probe auth: {\"error\":{\"message\":\"thinkingmachines/inkling:free is only available  |
+| 4157 | 2026-10-02 22:42:51 | f9af908b |  | config.presets | svc-LAPTOP-LRE6PSA8 | {"added": ["or-apodex-11-mini"]} |
+| 4158 | 2026-10-02 22:42:51 | 6ae91506 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "bench", "payload": {"lanes": ["or-apodex-11-mini"], "day": "2026-10-02"}} |
+| 4159 | 2026-10-02 22:42:51 | f9af908b |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": ["or-apodex-11-mini"]}} |

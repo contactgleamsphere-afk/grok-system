@@ -590,6 +590,34 @@
     "updated": "2026-10-02T21:41:51+00:00",
     "verified": "VERIFIED"
   },
+  "or-apodex-11-mini": {
+    "capabilities": [
+      "chat",
+      "tools"
+    ],
+    "context_window": 131072,
+    "cost_per_1k": 0.0,
+    "id": "or-apodex-11-mini",
+    "limits": {
+      "health": {
+        "last_outcome": "ok",
+        "last_probe": "2026-10-02T21:42:36",
+        "latency_s": 2.05,
+        "ok": true,
+        "probation": 2
+      },
+      "rpd_scope": "openrouter free tier shared 50/day"
+    },
+    "location": "remote",
+    "model": "apodex/apodex-1.1-mini:free",
+    "notes": "DISCOVERED 2026-10-02 by factory_discover: probe 2.05s, loop 2.11s. Probation: 2 clean hourly probes -> VERIFIED.",
+    "provider": "openrouter",
+    "ram_gb": null,
+    "tokens_per_sec": null,
+    "tool_call_score": 0.7,
+    "updated": "2026-10-02T21:42:36+00:00",
+    "verified": "INFERRED"
+  },
   "or-ling-30-flash-sante": {
     "capabilities": [
       "chat",
