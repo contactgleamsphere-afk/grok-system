@@ -43,10 +43,10 @@
    "date": "2026-09-24"
   },
   "openrouter:inclusionai/ling-3.0-flash-fin:free": {
-   "verdict": "approved",
-   "reason": "probe 1.71s loop 3.01s",
-   "ts": 1790209453.2989383,
-   "date": "2026-09-24"
+   "verdict": "rejected",
+   "reason": "retired after 3 days gone: gone: {\"error\":{\"message\":\"this model is unavailable for free. the paid version ",
+   "ts": 1790962889.5635102,
+   "date": "2026-10-02"
   },
   "openrouter:dots-studio/dots-3-note-preview:free": {
    "verdict": "rejected",
