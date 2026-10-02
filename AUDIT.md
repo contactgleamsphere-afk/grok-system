@@ -2,7 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3450 | 2026-09-30 18:20:53 | 7da3d73a | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 3451 | 2026-09-30 18:20:57 | 0f1be090 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3452 | 2026-09-30 18:20:58 | 496e3afd |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3453 | 2026-09-30 18:20:58 | fefc49ba | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "496e3afd58764673a6b80d4e1d7f4792", "day": "2026-09-30"}} |
@@ -402,3 +401,4 @@
 | 3847 | 2026-10-02 01:45:31 | d712cbbe |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "canary", "payload": {"day": "2026-10-02"}} |
 | 3848 | 2026-10-02 01:45:31 | df14302d |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "monitor", "payload": {"only": null, "day": "2026-10-02"}} |
 | 3849 | 2026-10-02 01:45:31 | 1b7650d4 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 3850 | 2026-10-02 01:47:31 | fd5ae898 | 001 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 1, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
