@@ -722,7 +722,7 @@
       "primary": "groq-gptoss120b"
     },
     "name": "csv-country-totals",
-    "notes": "tests 4/4: T1 PASS 10s [done] expect='X_OK' last='X_OK' | T2 PASS 34s [done] expect='30' last='RESULT: 30' | T3 PASS 37s [done] expect='200' last='RESULT: 200' | T4 PASS 18s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 1/4: T1 FAIL 10s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\018.json' | T2 FAIL 17s [done] expect='30' last='\u00e2\u2020\u00b3 read orders.csv' | T3 FAIL 20s [done] expect='200' last='\u00e2\u0153\u00bb Also need to write totals.csv with header country,total and' | T4 PASS 16s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -735,7 +735,7 @@
       "bot.json": "d770bdeb2053d9f499c41b2a",
       "nanobot.patch.json": "93d3e3bdc9c0a76824a251a0"
     },
-    "status": "active",
+    "status": "testing",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write orders.csv containing 'country,amount\\nUS,10\\nUS,20\\nUK,5' then read it, calculate totals per country, and write totals.csv. Reply with the total for US. -> 30",
@@ -746,8 +746,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-09-30T19:51:53+00:00",
-    "verified": "VERIFIED",
+    "updated": "2026-10-02T14:00:35+00:00",
+    "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\018-csv-country-totals"
   },
