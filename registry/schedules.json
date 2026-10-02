@@ -6,9 +6,9 @@
     "cron": "0 7 * * *",
     "enabled": true,
     "in": "C:\\AI\\Factory\\workspace\\inbox\\orders",
-    "last_fire": "2026-10-01T07:00",
-    "next": "2026-10-02T07:00",
-    "runs": 7,
+    "last_fire": "2026-10-02T07:00",
+    "next": "2026-10-03T07:00",
+    "runs": 8,
     "task": "Sum order totals per country into totals.csv"
   }
 }
