@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3916 | 2026-10-02 14:54:39 | 3338d776 | 013 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 8s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\013.json' \| T2 FAIL 14s [done] expect='1' las |
-| 3917 | 2026-10-02 14:54:39 | 3338d776 | 013 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 8s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\013.json' \| T2 FAIL 14s [done] expect='1' las |
-| 3918 | 2026-10-02 14:54:39 | 3338d776 | 013 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 3919 | 2026-10-02 14:54:39 | 03decd6e | 013 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "013", "max_rounds": 2}} |
 | 3920 | 2026-10-02 14:54:39 | 3338d776 | 013 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "013", "status": "testing", "verified": "UNVERIFIED"}} |
 | 3921 | 2026-10-02 14:54:44 | 03decd6e | 013 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3922 | 2026-10-02 14:54:53 | d6562839 | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 13s [done] report expect='FACTORY' cmd=True \| T3 PASS 13s [d |
@@ -402,3 +398,7 @@
 | 4313 | 2026-10-03 11:24:08 | a05c175f | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 4314 | 2026-10-03 11:24:08 | 9e73e71a | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "c6ebd328452848dd8bc03064b97b6ff1", "retry_of": "a05c175fc0634f378acd04b68d4eba0 |
 | 4315 | 2026-10-03 11:24:08 | a05c175f | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 4316 | 2026-10-03 11:24:12 | c1e911a5 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 4317 | 2026-10-03 11:24:22 | 39387973 | 030 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 34s [done] expect='X_OK' last='+ FullyQualifiedErrorId : NativeCommandError' \| T2 PASS 10s [done] expect='3' last='RESU |
+| 4318 | 2026-10-03 11:24:22 | 965aa88d | 030 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "030", "retest_of": "39387973a2c6440bab2350d11badb420"}} |
+| 4319 | 2026-10-03 11:24:22 | 39387973 | 030 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "030", "name": "weekly-self-review-bot-counter", "pass": 2, "total": 4, "status": "testing", "verified": "UNVERIFIED" |
