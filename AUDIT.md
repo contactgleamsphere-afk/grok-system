@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3860 | 2026-10-02 01:47:35 | 9a381a38 | 018 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "018", "monitor_of": "df14302d7564425b9a49f64f7d268591", "day": "2026-10-02"}} |
-| 3861 | 2026-10-02 01:47:35 | df14302d |  | monitor.fanout | svc-LAPTOP-LRE6PSA8 | {"bots": ["001", "009", "011", "012", "013", "016", "017", "018"], "jobs": ["4a92b32a", "a6892e23", "d8b0189e", "dd0512b5", "3338d776", "1fb |
-| 3862 | 2026-10-02 01:47:35 | df14302d |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 3863 | 2026-10-02 01:47:38 | a6892e23 | 009 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3864 | 2026-10-02 14:43:45 |  |  | factory.outage | fast-LAPTOP-LRE6PSA8 | {"gap_min": 776, "silent_since": "2026-10-02T01:47:38", "last_event": "job.claimed", "cause": "power loss / battery flat (kernel-power 41)", |
 | 3865 | 2026-10-02 14:43:45 |  |  | factory.outage | svc-LAPTOP-LRE6PSA8 | {"gap_min": 776, "silent_since": "2026-10-02T01:47:38", "last_event": "job.claimed", "cause": "power loss / battery flat (kernel-power 41)", |
@@ -402,3 +399,6 @@
 | 4257 | 2026-10-03 02:44:06 | 13e54a10 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "gemini-flash-latest", "outcome": "ok", "before": "INFERRED", "after": "VERIFIED", "detail": null} |
 | 4258 | 2026-10-03 02:44:06 | 13e54a10 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "gemini-flash36", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
 | 4259 | 2026-10-03 02:44:06 | 13e54a10 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash-latest", "gemini-flash36", "gemini-gemma26b", "groq-gptoss120b", "groq-gptoss20b", "g |
+| 4260 | 2026-10-03 02:44:11 | 1051fb63 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 4261 | 2026-10-03 02:44:12 | 3a2547ff |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-03T03"}} |
+| 4262 | 2026-10-03 02:44:12 | 1051fb63 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
