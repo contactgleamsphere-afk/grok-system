@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3822 | 2026-10-01 02:26:36 | 5a64e9db | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 3823 | 2026-10-01 02:26:37 | d95c367c | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 3824 | 2026-10-01 02:40:37 | d95c367c | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 22s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 94s [done] report expect='FACTORY' cmd=True \| T3 PASS 35s [d |
-| 3825 | 2026-10-01 02:40:37 | d95c367c | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 22s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 94s [done] report expect='FACTORY' cmd=True \| T3 PASS 35s [d |
-| 3826 | 2026-10-01 02:40:37 | 44159f49 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "f2538a50d0d74959a9284ddf41fe13dc", "after_quota": "d95c367c13a74737b7848bfa0ab8d |
 | 3827 | 2026-10-01 02:40:37 | d95c367c | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 3828 | 2026-10-01 02:41:05 | fd5ae898 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3829 | 2026-10-02 01:43:37 | fd5ae898 |  | job.lease_expired | fast-LAPTOP-LRE6PSA8 | {} |
@@ -402,3 +397,8 @@
 | 4219 | 2026-10-03 01:45:32 | c7a3b266 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "canary", "payload": {"day": "2026-10-03"}} |
 | 4220 | 2026-10-03 01:45:32 | 076d0055 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "monitor", "payload": {"only": null, "day": "2026-10-03"}} |
 | 4221 | 2026-10-03 01:45:32 | 99e5653e |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 4222 | 2026-10-03 01:45:36 | 076d0055 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 4223 | 2026-10-03 01:45:36 | 8cbe2fa9 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "076d00557198429696acd4c0a35af210", "day": "2026-10-03"}} |
+| 4224 | 2026-10-03 01:45:36 | 99f16adc | 029 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "029", "monitor_of": "076d00557198429696acd4c0a35af210", "day": "2026-10-03"}} |
+| 4225 | 2026-10-03 01:45:36 | 076d0055 |  | monitor.fanout | svc-LAPTOP-LRE6PSA8 | {"bots": ["001", "029"], "jobs": ["8cbe2fa9", "99f16adc"]} |
+| 4226 | 2026-10-03 01:45:36 | 076d0055 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
