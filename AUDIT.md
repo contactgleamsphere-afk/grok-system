@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3869 | 2026-10-02 14:43:45 | 22bc8b7b |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-02T15"}} |
-| 3870 | 2026-10-02 14:43:46 | 59cf05fb |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 3871 | 2026-10-02 14:43:46 | ae821249 | 018 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "run", "payload": {"bot_id": "018", "task": "Sum order totals per country into totals.csv", "in": "C:\\AI\\Factory\\workspace\\inbo |
-| 3872 | 2026-10-02 14:43:46 |  | 018 | schedule.fired | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "fire": "2026-10-02T07:00", "job": "ae821249"} |
 | 3873 | 2026-10-02 14:43:51 | 845fc841 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-02T15"}} |
 | 3874 | 2026-10-02 14:43:51 | 59cf05fb |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 3875 | 2026-10-02 14:43:56 | fd5ae898 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 2} |
@@ -402,3 +398,7 @@
 | 4266 | 2026-10-03 03:11:45 | b2875558 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 2} |
 | 4267 | 2026-10-03 03:30:30 | 076d0055 |  | job.dedup | nightly-task | {"kind": "monitor", "note": "slot already done"} |
 | 4268 | 2026-10-03 03:33:53 | b2875558 | 001 | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 2, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
+| 4269 | 2026-10-03 03:33:57 | c15ff76e | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 4270 | 2026-10-03 03:43:48 | 4c160338 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 4271 | 2026-10-03 03:43:49 | 2d46a8c5 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-03T04"}} |
+| 4272 | 2026-10-03 03:44:01 | 4c160338 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-gemma26b", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen27b", "local3b" |
