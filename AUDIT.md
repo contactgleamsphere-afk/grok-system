@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 4150 | 2026-10-02 22:42:25 | ef59cb87 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 4151 | 2026-10-02 22:42:29 | f9af908b |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 4152 | 2026-10-02 22:42:51 | f9af908b |  | lane.discovered | svc-LAPTOP-LRE6PSA8 | {"model": "apodex/apodex-1.1-mini:free", "reason": "probe 2.05s loop 2.11s", "provider": "openrouter"} |
 | 4153 | 2026-10-02 22:42:51 | f9af908b |  | lane.rejected | svc-LAPTOP-LRE6PSA8 | {"model": "dots-studio/dots-3-note-preview:free", "reason": "loop: final answer ''", "provider": "openrouter"} |
 | 4154 | 2026-10-02 22:42:51 | f9af908b |  | lane.rejected | svc-LAPTOP-LRE6PSA8 | {"model": "liquid/lfm-2.5-2.6b:free", "reason": "loop: final answer ''", "provider": "openrouter"} |
@@ -402,3 +400,5 @@
 | 4547 | 2026-10-03 19:12:16 | 5d0438a1 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 4548 | 2026-10-03 19:12:19 | 7b57e6cb |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 4549 | 2026-10-03 19:12:19 | 7b57e6cb |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 4550 | 2026-10-03 19:12:22 | 96ca3eae |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 4551 | 2026-10-03 19:12:22 | 96ca3eae |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
