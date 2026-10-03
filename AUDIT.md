@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 4146 | 2026-10-02 22:42:21 | d313c567 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "bench", "payload": {"lanes": ["gemini-flash-latest"], "day": "2026-10-02"}} |
-| 4147 | 2026-10-02 22:42:21 | 7d8ce118 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": ["gemini-flash-latest"]}} |
 | 4148 | 2026-10-02 22:42:25 | ef59cb87 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 4149 | 2026-10-02 22:42:25 | a292b979 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-02T23"}} |
 | 4150 | 2026-10-02 22:42:25 | ef59cb87 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
@@ -402,3 +400,5 @@
 | 4543 | 2026-10-03 19:12:12 |  | 018 | schedule.skipped | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
 | 4544 | 2026-10-03 19:12:12 | 2b1c3328 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-03T20"}} |
 | 4545 | 2026-10-03 19:12:12 | f5fee259 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 4546 | 2026-10-03 19:12:15 | 5d0438a1 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 4547 | 2026-10-03 19:12:16 | 5d0438a1 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
