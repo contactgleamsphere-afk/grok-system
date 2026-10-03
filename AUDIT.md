@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3808 | 2026-10-01 01:21:01 | 064b8a49 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 3809 | 2026-10-01 01:21:04 | 5a3049f7 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 3810 | 2026-10-01 01:21:04 | 5a3049f7 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 3811 | 2026-10-01 02:11:41 | 5a64e9db | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3812 | 2026-10-01 02:20:32 | 09b4b27c |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3813 | 2026-10-01 02:20:32 | fe6c7aed |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-01T03"}} |
 | 3814 | 2026-10-01 02:20:59 | 09b4b27c |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "gemini-flash", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
@@ -402,3 +398,7 @@
 | 4205 | 2026-10-03 01:34:05 | bd9b738b | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 38s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 50s [done] report expect='FACTORY' cmd=True \| T3 PASS 70s [d |
 | 4206 | 2026-10-03 01:34:05 | cc6074e6 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "fb0da05846d84df389ca213d3b687a2e", "after_quota": "bd9b738b8b3a405eb5f519a7afd84 |
 | 4207 | 2026-10-03 01:34:05 | bd9b738b | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 4208 | 2026-10-03 01:34:09 | 0c93124c | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 4209 | 2026-10-03 01:43:45 | 92c073df |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 4210 | 2026-10-03 01:43:45 | 13e54a10 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-03T02"}} |
+| 4211 | 2026-10-03 01:44:03 | 92c073df |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-gemma26b", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen27b", "local3b", |
