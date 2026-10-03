@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 4215 | 2026-10-03 01:45:31 | 99e5653e |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 4216 | 2026-10-03 01:45:32 | 99e5653e |  | audit.verified | svc-LAPTOP-LRE6PSA8 | {"rows": 4214, "hashed": 3462, "first_bad": null} |
 | 4217 | 2026-10-03 01:45:32 | 091fe87e |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "report", "payload": {"day": "2026-10-04"}} |
 | 4218 | 2026-10-03 01:45:32 | f9f92dd0 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "bench", "payload": {"stale_only": true, "max": 2, "day": "2026-10-03"}} |
 | 4219 | 2026-10-03 01:45:32 | c7a3b266 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "canary", "payload": {"day": "2026-10-03"}} |
@@ -402,3 +400,5 @@
 | 4612 | 2026-10-03 22:12:19 | 6960ee36 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-03T23"}} |
 | 4613 | 2026-10-03 22:12:19 | fdb14c2e |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 4614 | 2026-10-03 22:29:34 | dcf400b5 | 001 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 2, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
+| 4615 | 2026-10-03 22:29:37 | cd511712 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 2} |
+| 4616 | 2026-10-03 22:51:49 | cd511712 | 001 | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 2, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
