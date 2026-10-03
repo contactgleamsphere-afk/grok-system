@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 4053 | 2026-10-02 19:36:01 | 07f6c614 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "53c3678652324baaa481371161004062", "retry_of": "afc7408bc5ff46a2a6464f1c98cc6b4 |
-| 4054 | 2026-10-02 19:36:01 | afc7408b | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 4055 | 2026-10-02 19:36:05 | 7cee7421 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 4056 | 2026-10-02 19:41:31 | d9005eea |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 4057 | 2026-10-02 19:41:31 | f2351e2c |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-02T20"}} |
 | 4058 | 2026-10-02 19:42:04 | d9005eea |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-flash38", "gemini-gemma26b", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq- |
 | 4059 | 2026-10-02 19:42:18 | 019fdba2 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +398,7 @@
 | 4450 | 2026-10-03 16:10:58 | 6b090e08 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 4451 | 2026-10-03 16:11:03 | f4c035f5 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 4452 | 2026-10-03 16:11:40 | ae553c47 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash-latest", "gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemi |
+| 4453 | 2026-10-03 16:23:50 | f4c035f5 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 94s [done] report expect='FACTORY' cmd=True \| T3 PASS 69s [d |
+| 4454 | 2026-10-03 16:23:50 | f4c035f5 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 94s [done] report expect='FACTORY' cmd=True \| T3 PASS 69s [d |
+| 4455 | 2026-10-03 16:23:50 | 9bce9ff8 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "5b6778f745304b77970b63b5b66bcf37", "after_quota": "f4c035f524374f2b8d335e9cc62c8 |
+| 4456 | 2026-10-03 16:23:50 | f4c035f5 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
