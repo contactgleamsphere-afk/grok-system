@@ -236,8 +236,9 @@
         "latency_s": 9.37,
         "ok": false,
         "probation": 1,
-        "quota_seen": "2026-09-29T18:23:28",
-        "quota_until": 1790989125.517964,
+        "quota_kind": "tpm",
+        "quota_seen": "2026-10-03T01:00:27",
+        "quota_until": 1790990127.791584,
         "reason": "failed probation: error"
       },
       "rpd_scope": "gemini free tier (see SIGNUP)"
@@ -249,7 +250,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 0.9999026444339028,
-    "updated": "2026-10-03T00:44:03+00:00",
+    "updated": "2026-10-03T01:00:27+00:00",
     "verified": "VERIFIED"
   },
   "gemini-gemma26b": {
@@ -382,11 +383,14 @@
       ],
       "health": {
         "failures": 0,
-        "last_outcome": "ok",
+        "last_outcome": "quota",
         "last_probe": "2026-10-03T00:43:45",
         "latency_s": 2.92,
         "note": "D-086: 20:17Z sweep discarded (local network outage)",
-        "ok": true
+        "ok": false,
+        "quota_kind": "tpm",
+        "quota_seen": "2026-10-03T01:00:27",
+        "quota_until": 1790990127.0989006
       },
       "latency_s": "1.7",
       "rpd": 20,
@@ -399,7 +403,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-10-03T00:44:03+00:00",
+    "updated": "2026-10-03T01:00:27+00:00",
     "verified": "VERIFIED"
   },
   "groq-gptoss120b": {
@@ -441,12 +445,14 @@
       ],
       "health": {
         "failures": 0,
-        "last_outcome": "ok",
+        "last_outcome": "quota",
         "last_probe": "2026-10-03T00:43:45",
         "latency_s": 0.72,
         "note": "D-086: 20:17Z sweep discarded (local network outage)",
-        "ok": true,
-        "quota_seen": "2026-10-02T13:52:09"
+        "ok": false,
+        "quota_kind": "tpd",
+        "quota_seen": "2026-10-03T01:00:26",
+        "quota_until": 1790992826.377117
       }
     },
     "location": "remote",
@@ -456,7 +462,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-10-03T00:44:03+00:00",
+    "updated": "2026-10-03T01:00:26+00:00",
     "verified": "VERIFIED"
   },
   "groq-gptoss20b": {
@@ -489,11 +495,13 @@
       ],
       "health": {
         "failures": 0,
-        "last_outcome": "ok",
+        "last_outcome": "quota",
         "last_probe": "2026-10-03T00:43:45",
         "latency_s": 0.55,
-        "ok": true,
-        "quota_seen": "2026-09-29T18:27:46"
+        "ok": false,
+        "quota_kind": "tpm",
+        "quota_seen": "2026-10-03T01:00:25",
+        "quota_until": 1791030655.9687512
       }
     },
     "location": "remote",
@@ -503,7 +511,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-10-03T00:44:03+00:00",
+    "updated": "2026-10-03T01:00:25+00:00",
     "verified": "VERIFIED"
   },
   "groq-qwen27b": {
