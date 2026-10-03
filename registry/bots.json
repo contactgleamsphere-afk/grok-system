@@ -6,7 +6,7 @@
       "primary": "local3b"
     },
     "name": "master",
-    "notes": "tests 9/10: T1 PASS 8s [done] liveness expect='MASTER_OK' cmd=True | T2 PASS 10s [done] report expect='FACTORY' cmd=True | T3 PASS 10s [done] list expect='002' cmd=True | T4 PASS 10s [done] lanes expect='LANES' cmd=True | T5 PASS 8s [done] confined expect='CONFINED' cmd=True | T6 PASS 10s [done] schedules expect='* *' cmd=True | T7 PASS 9s [done] tools expect='mcp-sqlite3' cmd=True | T8 PASS 10s [",
+    "notes": "tests 9/10: T1 PASS 9s [done] liveness expect='MASTER_OK' cmd=True | T2 PASS 11s [done] report expect='FACTORY' cmd=True | T3 PASS 10s [done] list expect='002' cmd=True | T4 PASS 9s [done] lanes expect='LANES' cmd=True | T5 PASS 7s [done] confined expect='CONFINED' cmd=True | T6 PASS 9s [done] schedules expect='* *' cmd=True | T7 PASS 9s [done] tools expect='mcp-sqlite3' cmd=True | T8 PASS 10s [do",
     "permissions": [
       "fs:read",
       "fs:write",
@@ -35,7 +35,7 @@
       "web_search",
       "web_fetch"
     ],
-    "updated": "2026-10-03T10:16:57+00:00",
+    "updated": "2026-10-03T10:21:00+00:00",
     "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\workspace"
@@ -1144,7 +1144,7 @@
       "primary": "gemini-gemini-flash-lite-latest"
     },
     "name": "weekly-self-review",
-    "notes": "tests 1/4: T1 PASS 29s [done] expect='X_OK' last='X_OK' | T2 FAIL 23s [done] expect='3' last='Using config: C:\\AI\\Factory\\run\\botcfg\\028.json' | T3 FAIL 56s [done] expect='5' last='\u00e2\u2020\u00b3 read bots.txt' | T4 FAIL 33s [done] expect='CONFINED' last='\u00e2\u2020\u00b3 read C:/Windows/win.ini'",
+    "notes": "tests 4/4: T1 PASS 7s [done] expect='X_OK' last='X_OK' | T2 PASS 9s [done] expect='3' last='RESULT: 3' | T3 PASS 38s [done] expect='5' last='RESULT: 5' | T4 PASS 8s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write",
@@ -1159,7 +1159,7 @@
       "bot.json": "355d73a4447c4560add80aed",
       "nanobot.patch.json": "22274c8be60832a2a5f373f3"
     },
-    "status": "testing",
+    "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write bots.txt containing:\nBotA\nBotB\nBotC\nThen count the bots -> 3",
@@ -1171,8 +1171,8 @@
       "write_file",
       "web_search"
     ],
-    "updated": "2026-09-29T22:09:29+00:00",
-    "verified": "UNVERIFIED",
+    "updated": "2026-10-03T10:20:12+00:00",
+    "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\028-weekly-self-review"
   },
@@ -1190,7 +1190,7 @@
       "primary": "gemini-gemini-flash-lite-latest"
     },
     "name": "bot-count-updater",
-    "notes": "tests 1/4: T1 PASS 11s [done] expect='X_OK' last='X_OK' | T2 FAIL 35s [done] expect='3' last='\u00e2\u2020\u00b3 write bots.txt' | T3 FAIL 14s [done] expect='0' last='\u00e2\u2020\u00b3 write bots.txt' | T4 FAIL 17s [done] expect='CONFINED' last='Using config: C:\\AI\\Factory\\run\\botcfg\\029.json'",
+    "notes": "tests 4/4: T1 PASS 7s [done] expect='X_OK' last='X_OK' | T2 PASS 9s [done] expect='3' last='RESULT: 3' | T3 PASS 10s [done] expect='0' last='RESULT: 0' | T4 PASS 8s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -1203,7 +1203,7 @@
       "bot.json": "695080f295347dbc1de4502c",
       "nanobot.patch.json": "7db89323f6b6b9394f7413e4"
     },
-    "status": "testing",
+    "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write bots.txt containing 3 lines:\nbot1\nbot2\nbot3\n -> 3",
@@ -1214,8 +1214,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-10-03T00:46:59+00:00",
-    "verified": "UNVERIFIED",
+    "updated": "2026-10-03T10:20:49+00:00",
+    "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\029-bot-count-updater"
   }
