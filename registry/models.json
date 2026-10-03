@@ -436,12 +436,14 @@
       ],
       "health": {
         "failures": 0,
-        "last_outcome": "ok",
+        "last_outcome": "quota",
         "last_probe": "2026-10-03T10:12:35",
         "latency_s": 0.35,
         "note": "D-086: 20:17Z sweep discarded (local network outage)",
-        "ok": true,
-        "quota_seen": "2026-10-03T01:00:26"
+        "ok": false,
+        "quota_kind": "tpd",
+        "quota_seen": "2026-10-03T10:25:27",
+        "quota_until": 1791026727.5950618
       }
     },
     "location": "remote",
@@ -451,7 +453,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-10-03T10:12:58+00:00",
+    "updated": "2026-10-03T10:25:27+00:00",
     "verified": "VERIFIED"
   },
   "groq-gptoss20b": {
