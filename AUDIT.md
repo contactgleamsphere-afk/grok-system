@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 3841 | 2026-10-02 01:45:26 | 9662e40c | 018 | bot.ran | fast-LAPTOP-LRE6PSA8 | {"ok": true, "produced": ["totals.csv"], "secs": 41, "reply": "RESULT: success", "chain": "groq-gptoss120b"} |
-| 3842 | 2026-10-02 01:45:26 | 9662e40c | 018 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "018", "name": "run", "status": "ok totals.csv"}} |
 | 3843 | 2026-10-02 01:45:30 | 1b7650d4 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 3844 | 2026-10-02 01:45:31 | 1b7650d4 |  | audit.verified | fast-LAPTOP-LRE6PSA8 | {"rows": 3842, "hashed": 3090, "first_bad": null} |
 | 3845 | 2026-10-02 01:45:31 | 99e5653e |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "report", "payload": {"day": "2026-10-03"}} |
@@ -402,3 +400,5 @@
 | 4238 | 2026-10-03 01:47:04 | 70811e2d | 029 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 4239 | 2026-10-03 02:00:15 | 70811e2d | 029 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": "3/4", "rejected": null}, {"round": |
 | 4240 | 2026-10-03 02:00:15 | 70811e2d | 029 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
+| 4241 | 2026-10-03 02:00:18 | f9f92dd0 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 4242 | 2026-10-03 02:00:18 | f9f92dd0 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": []}} |
