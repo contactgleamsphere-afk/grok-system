@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 4373 | 2026-10-03 12:09:44 | eaaf77a7 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 4374 | 2026-10-03 12:12:36 | 6453139b |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 4375 | 2026-10-03 12:12:36 | 70c181a5 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-03T13"}} |
-| 4376 | 2026-10-03 12:12:57 | 6453139b |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash-latest", "gemini-flash38", "gemini-gemma26b", "gemini-lite31", "groq-gptoss120b", "gr |
 | 4377 | 2026-10-03 12:13:06 | 80da9646 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 4378 | 2026-10-03 12:13:06 |  | 018 | schedule.skipped | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
 | 4379 | 2026-10-03 12:13:07 | e7478817 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-03T13"}} |
@@ -402,3 +398,7 @@
 | 4770 | 2026-10-04 15:43:31 | 13c2fcc2 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 4771 | 2026-10-04 15:43:31 | 1344d1db |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-04T16"}} |
 | 4772 | 2026-10-04 15:44:11 | 13c2fcc2 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash-latest", "gemini-flash36", "gemini-flash38", "gemini-gemma26b", "gemini-lite31", "gro |
+| 4773 | 2026-10-04 15:44:19 | f643009e |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 4774 | 2026-10-04 15:44:19 |  | 018 | schedule.skipped | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
+| 4775 | 2026-10-04 15:44:20 | 7426515a |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-04T16"}} |
+| 4776 | 2026-10-04 15:44:20 | f643009e |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
