@@ -2,13 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 4235 | 2026-10-03 01:46:59 | 99f16adc | 029 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 4236 | 2026-10-03 01:46:59 | 70811e2d | 029 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "029", "max_rounds": 2}} |
-| 4237 | 2026-10-03 01:46:59 | 99f16adc | 029 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "029", "status": "testing", "verified": "UNVERIFIED"}} |
-| 4238 | 2026-10-03 01:47:04 | 70811e2d | 029 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 4239 | 2026-10-03 02:00:15 | 70811e2d | 029 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": "3/4", "rejected": null}, {"round": |
-| 4240 | 2026-10-03 02:00:15 | 70811e2d | 029 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
-| 4241 | 2026-10-03 02:00:18 | f9f92dd0 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 4242 | 2026-10-03 02:00:18 | f9f92dd0 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": []}} |
 | 4243 | 2026-10-03 02:00:22 | c7a3b266 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 4244 | 2026-10-03 02:00:54 | c7a3b266 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "FactoryError: could not produce a valid spec after 3 attempts: |
@@ -402,3 +395,10 @@
 | 4632 | 2026-10-04 13:43:18 | aa91a845 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "33d3730f13e945aa8839588d7a0ec4b7", "retry_of": "cd511712d59a4ac8a881a9cfe5d9986 |
 | 4633 | 2026-10-04 13:43:18 | cd511712 |  | job.readopted | fast-LAPTOP-LRE6PSA8 | {} |
 | 4634 | 2026-10-04 13:43:18 | cd511712 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 1, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 4635 | 2026-10-04 13:43:28 | 9452394f |  | job.lease_expired | fast-LAPTOP-LRE6PSA8 | {} |
+| 4636 | 2026-10-04 13:43:28 | eddcd50c |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 4637 | 2026-10-04 13:43:28 | 3d977ea8 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-04T14"}} |
+| 4638 | 2026-10-04 13:43:40 | e3e27be7 |  | job.enqueued | nightly-task | {"kind": "monitor", "payload": {"only": null, "day": "2026-10-04"}} |
+| 4639 | 2026-10-04 13:43:44 | 9452394f |  | job.readopted | svc-LAPTOP-LRE6PSA8 | {} |
+| 4640 | 2026-10-04 13:44:00 | eddcd50c |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "or-apodex-11-mini", "outcome": "ok", "before": "INFERRED", "after": "VERIFIED", "detail": null} |
+| 4641 | 2026-10-04 13:44:00 | eddcd50c |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash-latest", "gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemi |
