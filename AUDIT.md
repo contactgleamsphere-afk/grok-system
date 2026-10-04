@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 4555 | 2026-10-03 19:12:29 | 8bb50c87 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 4556 | 2026-10-03 19:12:32 | 10db6ef6 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 4557 | 2026-10-03 19:12:32 | 10db6ef6 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 4558 | 2026-10-03 19:15:54 | 28936172 | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 37s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 76s [done] report expect='FACTORY' cmd=True \| T3 PASS 71s [d |
 | 4559 | 2026-10-03 19:15:54 | 28936172 | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 37s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 76s [done] report expect='FACTORY' cmd=True \| T3 PASS 71s [d |
@@ -402,3 +400,5 @@
 | 4952 | 2026-10-04 22:44:04 | 17090594 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash-latest", "gemini-flash38", "gemini-gemma26b", "gemini-lite31", "groq-gptoss120b", "gr |
 | 4953 | 2026-10-04 22:44:07 | 6856fd73 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 4954 | 2026-10-04 22:44:07 | 6856fd73 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 4955 | 2026-10-04 22:44:10 | 66cc5cf1 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 4956 | 2026-10-04 22:44:10 | 66cc5cf1 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
