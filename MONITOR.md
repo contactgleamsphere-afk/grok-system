@@ -381,3 +381,4 @@
 | 2026-10-03 21:04 | 001 master | 9/10 (quota, inconclusive) | testing→testing | - |
 | 2026-10-03 21:23 | 001 master | 9/10 (quota, inconclusive) | testing→testing | - |
 | 2026-10-04 13:43 | 001 master | 1/10 | testing→testing | - |
+| 2026-10-04 13:49 | 028 weekly-self-review | 2/4 | active→testing | - |
