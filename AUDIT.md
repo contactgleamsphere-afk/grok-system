@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 4267 | 2026-10-03 03:30:30 | 076d0055 |  | job.dedup | nightly-task | {"kind": "monitor", "note": "slot already done"} |
-| 4268 | 2026-10-03 03:33:53 | b2875558 | 001 | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 2, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
-| 4269 | 2026-10-03 03:33:57 | c15ff76e | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 4270 | 2026-10-03 03:43:48 | 4c160338 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 4271 | 2026-10-03 03:43:49 | 2d46a8c5 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-03T04"}} |
 | 4272 | 2026-10-03 03:44:01 | 4c160338 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-gemma26b", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen27b", "local3b" |
 | 4273 | 2026-10-03 03:44:16 | 3a2547ff |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +398,7 @@
 | 4664 | 2026-10-04 13:49:25 | cd8d97ae | 028 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 4665 | 2026-10-04 13:49:25 | 24eeae92 | 028 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "028", "max_rounds": 2}} |
 | 4666 | 2026-10-04 13:49:25 | cd8d97ae | 028 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "028", "status": "testing", "verified": "UNVERIFIED"}} |
+| 4667 | 2026-10-04 13:49:29 | 24eeae92 | 028 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 4668 | 2026-10-04 13:52:52 | 24eeae92 | 028 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": "3/4", "rejected": null}, {"round": 2 |
+| 4669 | 2026-10-04 13:52:52 | 24eeae92 | 028 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 4670 | 2026-10-04 13:52:52 | 24eeae92 | 028 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "028", "name": "weekly-self-review", "status": "active", "verified": "VERIFIED"}} |
