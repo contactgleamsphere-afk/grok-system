@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 4443 | 2026-10-03 14:22:51 | 1811ab9e | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "eaaf77a7b4ff439c830c6b7949a76355", "after_quota": "7791cfd117e5456da042251bfa430 |
-| 4444 | 2026-10-03 14:22:51 | 7791cfd1 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 4445 | 2026-10-03 16:10:49 | ae553c47 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 4446 | 2026-10-03 16:10:50 | 6b090e08 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 4447 | 2026-10-03 16:10:51 | c9049357 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-03T17"}} |
 | 4448 | 2026-10-03 16:10:51 |  | 018 | schedule.skipped | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
 | 4449 | 2026-10-03 16:10:58 | 9b82e36b |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-03T17"}} |
@@ -402,3 +398,7 @@
 | 4840 | 2026-10-04 18:43:36 | 77064141 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-04T19"}} |
 | 4841 | 2026-10-04 18:43:38 | f20f93d1 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 4842 | 2026-10-04 18:43:53 | 7d9282f3 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash-latest", "gemini-flash36", "gemini-flash38", "gemini-gemma26b", "gemini-lite31", "gro |
+| 4843 | 2026-10-04 18:44:42 | a500471e |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 4844 | 2026-10-04 18:44:42 |  | 018 | schedule.skipped | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
+| 4845 | 2026-10-04 18:44:42 | 9522cede |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-04T19"}} |
+| 4846 | 2026-10-04 18:44:42 | a500471e |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
