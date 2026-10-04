@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 4497 | 2026-10-03 17:11:42 | dfffb806 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 4498 | 2026-10-03 17:11:42 | dfffb806 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 4499 | 2026-10-03 17:13:58 | c4ba12f8 | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 38s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 71s [done] report expect='FACTORY' cmd=True \| T3 PASS 68s [d |
 | 4500 | 2026-10-03 17:13:58 | c4ba12f8 | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 38s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 71s [done] report expect='FACTORY' cmd=True \| T3 PASS 68s [d |
 | 4501 | 2026-10-03 17:13:58 | bdd006b0 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "52cdfc8326cb4d02890da99fe7ba0b4c", "after_quota": "c4ba12f8869b4bc7b98cb6549eccb |
@@ -402,3 +400,5 @@
 | 4894 | 2026-10-04 20:44:09 | 8594c049 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 4895 | 2026-10-04 20:44:12 | 596c673f |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 4896 | 2026-10-04 20:44:12 | 596c673f |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 4897 | 2026-10-04 20:44:15 | 08388440 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 4898 | 2026-10-04 20:44:15 | 08388440 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
