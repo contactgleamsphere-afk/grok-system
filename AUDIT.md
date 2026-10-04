@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 4300 | 2026-10-03 11:16:57 | cc6074e6 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 4301 | 2026-10-03 11:16:57 | f5bc1e3c | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 4302 | 2026-10-03 11:21:00 | f5bc1e3c | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 11s [done] report expect='FACTORY' cmd=True \| T3 PASS 10s [do |
 | 4303 | 2026-10-03 11:21:00 | f5bc1e3c | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 11s [done] report expect='FACTORY' cmd=True \| T3 PASS 10s [do |
 | 4304 | 2026-10-03 11:21:00 | f5bc1e3c | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
@@ -402,3 +400,5 @@
 | 4697 | 2026-10-04 13:59:27 | f5e51726 | 030 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
 | 4698 | 2026-10-04 13:59:32 | cf0d36ff |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 4699 | 2026-10-04 13:59:32 | cf0d36ff |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": []}} |
+| 4700 | 2026-10-04 13:59:36 | 21de43e4 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 4701 | 2026-10-04 13:59:40 | 21de43e4 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "FactoryError: could not produce a valid spec after 3 attempts: |
