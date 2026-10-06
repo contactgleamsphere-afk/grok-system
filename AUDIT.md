@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 4965 | 2026-10-04 22:44:52 | 69f13025 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 4966 | 2026-10-04 22:44:52 |  | 018 | schedule.skipped | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
-| 4967 | 2026-10-04 22:44:52 | 0d82a8f2 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-04T23"}} |
-| 4968 | 2026-10-04 22:44:52 | 69f13025 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 4969 | 2026-10-04 22:57:05 | 9e805040 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 4970 | 2026-10-04 23:13:07 | 9e805040 | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 29s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 74s [done] report expect='FACTORY' cmd=True \| T3 PASS 69s [d |
 | 4971 | 2026-10-04 23:13:07 | 9e805040 | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 29s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 74s [done] report expect='FACTORY' cmd=True \| T3 PASS 69s [d |
@@ -402,3 +398,7 @@
 | 5362 | 2026-10-06 20:52:28 | 5410d886 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 5363 | 2026-10-06 20:52:28 | 1c85b500 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-06T21"}} |
 | 5364 | 2026-10-06 20:52:46 | 5410d886 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash38", "gemini-gemma26b", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen27b", "local3b", "local4b"], "c |
+| 5365 | 2026-10-06 20:54:00 | 90ce8b53 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 5366 | 2026-10-06 20:54:00 |  | 018 | schedule.skipped | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
+| 5367 | 2026-10-06 20:54:01 | 4ce09cb7 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-06T21"}} |
+| 5368 | 2026-10-06 20:54:01 | 90ce8b53 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
