@@ -258,12 +258,12 @@
     "id": "gemini-gemma26b",
     "limits": {
       "bench": {
-        "at": "2026-09-22T01:16:21",
-        "pass": 3,
+        "at": "2026-10-06T13:01:05",
+        "pass": 5,
         "ref": "009",
-        "runs": 1,
-        "secs": 73,
-        "total": 4
+        "runs": 2,
+        "secs": 65,
+        "total": 6
       },
       "bench_runs": [
         {
@@ -272,6 +272,14 @@
           "ref": "009",
           "secs": 73,
           "total": 4
+        },
+        {
+          "at": "2026-10-06T13:01:05",
+          "pass": 2,
+          "quota": 2,
+          "ref": "009",
+          "secs": 57,
+          "total": 2
         }
       ],
       "health": {
@@ -294,7 +302,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-10-06T11:53:22+00:00",
+    "updated": "2026-10-06T12:01:05+00:00",
     "verified": "VERIFIED"
   },
   "gemini-lite": {
@@ -513,12 +521,12 @@
     "id": "groq-qwen27b",
     "limits": {
       "bench": {
-        "at": "2026-09-22T01:18:49",
-        "pass": 2,
+        "at": "2026-10-06T13:03:30",
+        "pass": 4,
         "ref": "009",
-        "runs": 1,
-        "secs": 147,
-        "total": 4
+        "runs": 2,
+        "secs": 107,
+        "total": 8
       },
       "bench_runs": [
         {
@@ -526,6 +534,14 @@
           "pass": 2,
           "ref": "009",
           "secs": 147,
+          "total": 4
+        },
+        {
+          "at": "2026-10-06T13:03:30",
+          "pass": 2,
+          "quota": 0,
+          "ref": "009",
+          "secs": 68,
           "total": 4
         }
       ],
@@ -546,7 +562,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 0.9999999999674076,
-    "updated": "2026-10-06T11:53:23+00:00",
+    "updated": "2026-10-06T12:03:30+00:00",
     "verified": "VERIFIED"
   },
   "local3b": {

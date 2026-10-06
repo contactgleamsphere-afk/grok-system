@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 4659 | 2026-10-04 13:48:39 | e3e27be7 |  | monitor.fanout | svc-LAPTOP-LRE6PSA8 | {"bots": ["001", "028", "029", "030"], "jobs": ["3a6cb779", "cd8d97ae", "1a0a33c6", "10c3b87f"]} |
-| 4660 | 2026-10-04 13:48:39 | e3e27be7 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 4661 | 2026-10-04 13:48:43 | cd8d97ae | 028 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 4662 | 2026-10-04 13:49:25 | cd8d97ae | 028 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 5s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\028.json' \| T2 PASS 17s [done] expect='3' las |
 | 4663 | 2026-10-04 13:49:25 | cd8d97ae | 028 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 5s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\028.json' \| T2 PASS 17s [done] expect='3' las |
 | 4664 | 2026-10-04 13:49:25 | cd8d97ae | 028 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 4665 | 2026-10-04 13:49:25 | 24eeae92 | 028 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "028", "max_rounds": 2}} |
@@ -402,3 +398,7 @@
 | 5056 | 2026-10-06 13:00:59 | 013d3a09 | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 5057 | 2026-10-06 13:00:59 | 368a661a | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "df14302d7564425b9a49f64f7d268591", "retry_of": "013d3a09bccb43969d75b3b5dfee0bc |
 | 5058 | 2026-10-06 13:00:59 | 013d3a09 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 5059 | 2026-10-06 13:01:04 | 44c3b1a8 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 5060 | 2026-10-06 13:03:30 | 5cd5456d |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-gemma26b", "result": "2/4", "quota": 0, "secs": 57} |
+| 5061 | 2026-10-06 13:03:30 | 5cd5456d |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "groq-qwen27b", "result": "2/4", "quota": 0, "secs": 68} |
+| 5062 | 2026-10-06 13:03:30 | 5cd5456d |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["gemini-gemma26b", "2/4"], ["groq-qwen27b", "2/4"]]}} |
