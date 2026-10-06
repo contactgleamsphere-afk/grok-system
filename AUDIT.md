@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 4802 | 2026-10-04 16:44:21 | 7426515a |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 4803 | 2026-10-04 16:44:21 |  | 018 | schedule.skipped | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
 | 4804 | 2026-10-04 16:44:21 | bf698996 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-04T17"}} |
 | 4805 | 2026-10-04 16:44:21 | 7426515a |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 4806 | 2026-10-04 16:54:25 | 0fcbde87 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +400,5 @@
 | 5199 | 2026-10-06 15:52:43 | 024aa1df |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 5200 | 2026-10-06 15:52:48 | ee737074 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 5201 | 2026-10-06 15:52:48 | ee737074 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 5202 | 2026-10-06 15:52:53 | 51997579 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 5203 | 2026-10-06 15:52:53 | 51997579 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
