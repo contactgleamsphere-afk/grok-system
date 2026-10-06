@@ -2,7 +2,7 @@
 
 | id | name | status | verified | chain | tools | last test |
 |---|---|---|---|---|---|---|
-| 001 | master | testing | UNVERIFIED | local3b | exec, read_file, write_file, web_search, web_fetch | tests 9/10: T1 PASS 25s [done] liveness expect='MASTER_OK' cmd=True | T2 PASS 60 |
+| 001 | master | testing | UNVERIFIED | local3b | exec, read_file, write_file, web_search, web_fetch | tests 9/10: T1 PASS 25s [done] liveness expect='MASTER_OK' cmd=True | T2 PASS 16 |
 | 002 | research-scout | testing | UNVERIFIED | groq-gptoss20b > gemini-lite > gemini-flash > gemini-flash38 > or-deepseek > gemini-lite31 > groq-qwen27b > local4b | web_search, web_fetch, read_file | tests 1/2: T1 PASS 21s [done] expect='SCOUT_OK' last='SCOUT_OK' | T2 FAIL 23s [d |
 | 003 | code-smith | testing | UNVERIFIED | gemini-gemini-flash-lite-latest > gemini-lite31 > or-ling-30-flash-sante > groq-gptoss120b > or-ling-30-flash-fin > groq-gptoss20b > local3b | write_file, exec | tests 1/4: T1 FAIL 8s [done] expect='X_OK' last='Using config: C:\AI\Factory\run |
 | 004 | changelog-writer | testing | UNVERIFIED | groq-gptoss120b > gemini-flash > gemini-flash38 > groq-gptoss20b > gemini-lite > local4b | read_file, write_file | tests 1/4: T1 FAIL 19s [done] expect='CHANGELOG_OK' last='Using config: C:\AI\Fa |
@@ -34,3 +34,4 @@
 | 030 | weekly-self-review-bot-counter | testing | UNVERIFIED | gemini-gemini-flash-lite-latest > gemini-lite31 > groq-gptoss20b > local3b | read_file, write_file | tests 2/4: T1 PASS 14s [done] expect='X_OK' last='X_OK' | T2 PASS 16s [done] exp |
 | 031 | weekly-self-review | active | VERIFIED | gemini-gemini-flash-lite-latest > or-apodex-11-mini > gemini-lite31 > or-ling-30-flash-sante > groq-gptoss120b > groq-gptoss20b > local3b | read_file, write_file | tests 4/4: T1 PASS 12s [done] expect='X_OK' last='X_OK' | T2 PASS 13s [done] exp |
 | 032 | weekly-self-review | testing | UNVERIFIED | gemini-gemini-flash-lite-latest > or-apodex-11-mini > gemini-lite31 > or-ling-30-flash-sante > groq-gptoss120b > groq-gptoss20b > local3b | read_file, write_file, web_search, web_fetch | tests 1/4: T1 FAIL 16s [done] expect='X_OK' last='Using config: C:\AI\Factory\ru |
+| 033 | weekly-selfreview-count-bots | active | VERIFIED | gemini-gemini-flash-lite-latest > or-apodex-11-mini > gemini-lite31 > or-ling-30-flash-sante > groq-gptoss120b > groq-gptoss20b > local3b | read_file, write_file | tests 4/4: T1 PASS 11s [done] expect='X_OK' last='X_OK' | T2 PASS 13s [done] exp |
