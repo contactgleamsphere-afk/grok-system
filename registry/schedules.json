@@ -1,4 +1,16 @@
 {
+  "3d638bf2": {
+    "actor": "master-001",
+    "bot_id": "028",
+    "created": "2026-10-06T13:25:58",
+    "cron": "0 7 * * 1",
+    "enabled": true,
+    "in": null,
+    "last_fire": null,
+    "next": "2026-10-12T07:00",
+    "runs": 0,
+    "task": "Weekly self-review counting bots created"
+  },
   "5b4504d1": {
     "actor": "master-001",
     "bot_id": "018",
@@ -16,7 +28,7 @@
     "bot_id": "030",
     "created": "2026-10-03T11:48:53",
     "cron": "0 7 * * 1",
-    "enabled": true,
+    "enabled": false,
     "in": null,
     "last_fire": null,
     "next": "2026-10-05T07:00",
