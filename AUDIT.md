@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 4887 | 2026-10-04 20:43:55 | ad981b46 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-10-04", "trigger": "blocked:gemini-flash36"}} |
-| 4888 | 2026-10-04 20:43:55 | 506575ae |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash-latest", "gemini-flash38", "gemini-gemma26b", "gemini-lite31", "groq-gptoss120b", "gr |
 | 4889 | 2026-10-04 20:43:59 | f7bdefcb |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 4890 | 2026-10-04 20:43:59 | f7bdefcb |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 4891 | 2026-10-04 20:44:02 | a7ebec03 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +400,5 @@
 | 5284 | 2026-10-06 17:53:52 | d7038ac8 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 5285 | 2026-10-06 17:53:55 | dab76f62 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 5286 | 2026-10-06 17:53:56 | dab76f62 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 5287 | 2026-10-06 17:54:00 | 60bb558d |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 5288 | 2026-10-06 17:54:00 | 60bb558d |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
