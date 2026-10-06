@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 4613 | 2026-10-03 22:12:19 | fdb14c2e |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 4614 | 2026-10-03 22:29:34 | dcf400b5 | 001 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 2, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
-| 4615 | 2026-10-03 22:29:37 | cd511712 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 2} |
-| 4616 | 2026-10-03 22:51:49 | cd511712 | 001 | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 2, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
-| 4617 | 2026-10-03 22:51:50 | dcf400b5 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 3} |
 | 4618 | 2026-10-03 23:11:08 | b2e299d3 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 4619 | 2026-10-03 23:11:08 | eddcd50c |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-04T00"}} |
 | 4620 | 2026-10-03 23:11:39 | b2e299d3 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-gemma26b", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen27b", "local3b" |
@@ -402,3 +397,8 @@
 | 5010 | 2026-10-06 12:53:23 | a5b1d157 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-10-06", "trigger": "blocked:or-qwen27b"}} |
 | 5011 | 2026-10-06 12:53:23 | bd4700e5 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-10-06", "trigger": "blocked:or-qwen27b"}} |
 | 5012 | 2026-10-06 12:53:23 | fb30cd9a |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-li |
+| 5013 | 2026-10-06 12:53:29 | 0ee8fcfb |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 5014 | 2026-10-06 12:53:29 |  | 018 | schedule.skipped | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
+| 5015 | 2026-10-06 12:53:29 |  | 030 | schedule.skipped | fast-LAPTOP-LRE6PSA8 | {"sid": "e98fb290", "reason": "bot testing"} |
+| 5016 | 2026-10-06 12:53:30 | 53d3779f |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-06T13"}} |
+| 5017 | 2026-10-06 12:53:30 | 0ee8fcfb |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
