@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 4649 | 2026-10-04 13:44:10 | cf0d36ff |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "bench", "payload": {"stale_only": true, "max": 2, "day": "2026-10-04"}} |
-| 4650 | 2026-10-04 13:44:10 | 21de43e4 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "canary", "payload": {"day": "2026-10-04"}} |
-| 4651 | 2026-10-04 13:44:10 | 091fe87e |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 4652 | 2026-10-04 13:48:35 | 9452394f | 001 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 1, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
 | 4653 | 2026-10-04 13:48:35 | 29eba64b | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 4654 | 2026-10-04 13:48:39 | e3e27be7 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 4655 | 2026-10-04 13:48:39 | 3a6cb779 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "e3e27be7486c486399ca49575cec8d90", "day": "2026-10-04"}} |
@@ -402,3 +398,7 @@
 | 5046 | 2026-10-06 12:57:33 | fd9a18b0 | 028 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 5047 | 2026-10-06 12:57:33 | c49654c3 | 028 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "028", "max_rounds": 2}} |
 | 5048 | 2026-10-06 12:57:33 | fd9a18b0 | 028 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "028", "status": "testing", "verified": "UNVERIFIED"}} |
+| 5049 | 2026-10-06 12:57:38 | c49654c3 | 028 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 5050 | 2026-10-06 13:00:01 | c49654c3 | 028 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-120b", "sandbox": "4/4", "rejected": null}], "boundary |
+| 5051 | 2026-10-06 13:00:01 | c49654c3 | 028 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 5052 | 2026-10-06 13:00:01 | c49654c3 | 028 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "028", "name": "weekly-self-review", "status": "active", "verified": "VERIFIED"}} |
