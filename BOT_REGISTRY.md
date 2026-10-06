@@ -2,7 +2,7 @@
 
 | id | name | status | verified | chain | tools | last test |
 |---|---|---|---|---|---|---|
-| 001 | master | testing | UNVERIFIED | local3b | exec, read_file, write_file, web_search, web_fetch | tests 9/10: T1 PASS 25s [done] liveness expect='MASTER_OK' cmd=True | T2 PASS 16 |
+| 001 | master | testing | UNVERIFIED | local3b | exec, read_file, write_file, web_search, web_fetch | tests 9/10: T1 PASS 9s [done] liveness expect='MASTER_OK' cmd=True | T2 PASS 12s |
 | 002 | research-scout | testing | UNVERIFIED | groq-gptoss20b > gemini-lite > gemini-flash > gemini-flash38 > or-deepseek > gemini-lite31 > groq-qwen27b > local4b | web_search, web_fetch, read_file | tests 1/2: T1 PASS 21s [done] expect='SCOUT_OK' last='SCOUT_OK' | T2 FAIL 23s [d |
 | 003 | code-smith | testing | UNVERIFIED | gemini-gemini-flash-lite-latest > gemini-lite31 > or-ling-30-flash-sante > groq-gptoss120b > or-ling-30-flash-fin > groq-gptoss20b > local3b | write_file, exec | tests 1/4: T1 FAIL 8s [done] expect='X_OK' last='Using config: C:\AI\Factory\run |
 | 004 | changelog-writer | testing | UNVERIFIED | groq-gptoss120b > gemini-flash > gemini-flash38 > groq-gptoss20b > gemini-lite > local4b | read_file, write_file | tests 1/4: T1 FAIL 19s [done] expect='CHANGELOG_OK' last='Using config: C:\AI\Fa |
