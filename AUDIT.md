@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 5008 | 2026-10-06 12:53:23 | 0bb335ec |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "openrouter", "day": "2026-10-06", "trigger": "blocked:or-qwen27b"}} |
-| 5009 | 2026-10-06 12:53:23 | 06f0973f |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "cerebras", "day": "2026-10-06", "trigger": "blocked:or-qwen27b"}} |
-| 5010 | 2026-10-06 12:53:23 | a5b1d157 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-10-06", "trigger": "blocked:or-qwen27b"}} |
 | 5011 | 2026-10-06 12:53:23 | bd4700e5 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-10-06", "trigger": "blocked:or-qwen27b"}} |
 | 5012 | 2026-10-06 12:53:23 | fb30cd9a |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-li |
 | 5013 | 2026-10-06 12:53:29 | 0ee8fcfb |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +399,6 @@
 | 5405 | 2026-10-07 15:25:44 | ca675b53 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 5406 | 2026-10-07 15:25:44 | ca675b53 |  | owner.needed | svc-LAPTOP-LRE6PSA8 | {"provider": "nvidia", "reason": "set NVIDIA_API_KEY (User env) after signing up: https://build.nvidia.com (free ~40 rpm, tool-capable model |
 | 5407 | 2026-10-07 15:25:44 | ca675b53 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 5408 | 2026-10-07 15:25:48 | d498f52c |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 5409 | 2026-10-07 15:25:48 | d498f52c |  | owner.needed | svc-LAPTOP-LRE6PSA8 | {"provider": "mistral", "reason": "set MISTRAL_API_KEY (User env) after signing up: https://console.mistral.ai (Experiment free tier)"} |
+| 5410 | 2026-10-07 15:25:48 | d498f52c |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |

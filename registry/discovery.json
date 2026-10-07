@@ -33,8 +33,8 @@
   "provider:mistral": {
    "verdict": "needs_owner",
    "reason": "set MISTRAL_API_KEY (User env) after signing up: https://console.mistral.ai (Experiment free tier)",
-   "ts": 1790719475.058372,
-   "date": "2026-09-29"
+   "ts": 1791383148.668635,
+   "date": "2026-10-07"
   },
   "openrouter:inclusionai/ling-3.0-flash-sante:free": {
    "verdict": "approved",
