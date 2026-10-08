@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 5226 | 2026-10-06 16:53:05 | 48fc3c01 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash-latest", "outcome": "error", "before": "VERIFIED", "after": "BLOCKED", "detail": "[{\n  \"error\": {\n    \"code\":  |
-| 5227 | 2026-10-06 16:53:05 | 8e877c8d |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "groq", "day": "2026-10-06", "trigger": "blocked:gemini-flash-latest"}} |
-| 5228 | 2026-10-06 16:53:05 | 739dd74c |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "gemini", "day": "2026-10-06", "trigger": "blocked:gemini-flash-latest"}} |
-| 5229 | 2026-10-06 16:53:05 | 74dcb2a5 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "openrouter", "day": "2026-10-06", "trigger": "blocked:gemini-flash-latest"}} |
 | 5230 | 2026-10-06 16:53:05 | e59c0b07 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "cerebras", "day": "2026-10-06", "trigger": "blocked:gemini-flash-latest"}} |
 | 5231 | 2026-10-06 16:53:05 | a3f68afa |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-10-06", "trigger": "blocked:gemini-flash-latest"}} |
 | 5232 | 2026-10-06 16:53:05 | afd7e099 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-10-06", "trigger": "blocked:gemini-flash-latest"}} |
@@ -402,3 +398,7 @@
 | 5623 | 2026-10-08 14:14:42 | 26fa5dd7 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-08T15"}} |
 | 5624 | 2026-10-08 14:16:13 | a87fa102 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "gemini-flash-latest", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
 | 5625 | 2026-10-08 14:16:13 | a87fa102 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash-latest", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gem |
+| 5626 | 2026-10-08 14:16:18 | fb879817 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 5627 | 2026-10-08 14:16:18 |  | 018 | schedule.skipped | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
+| 5628 | 2026-10-08 14:16:18 | ccc89ce0 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-08T15"}} |
+| 5629 | 2026-10-08 14:16:18 | fb879817 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
