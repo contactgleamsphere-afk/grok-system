@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 5159 | 2026-10-06 14:44:00 | 5497f756 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 5160 | 2026-10-06 14:44:01 | df24e745 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 5161 | 2026-10-06 14:52:15 | ecf3b4fe |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 5162 | 2026-10-06 14:52:15 | d9f18eed |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-06T15"}} |
-| 5163 | 2026-10-06 14:52:39 | ecf3b4fe |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-gemma26b", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen27b", "local3b", |
 | 5164 | 2026-10-06 14:53:39 | de7e0c02 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 5165 | 2026-10-06 14:53:39 |  | 018 | schedule.skipped | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
 | 5166 | 2026-10-06 14:53:40 | 074d01d0 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-06T15"}} |
@@ -402,3 +397,8 @@
 | 5556 | 2026-10-08 11:27:19 |  | 018 | schedule.skipped | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
 | 5557 | 2026-10-08 11:27:20 | 5e96235c |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-08T12"}} |
 | 5558 | 2026-10-08 11:27:20 | 968f7eaa |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 5559 | 2026-10-08 11:27:24 | 4f8bd296 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 5560 | 2026-10-08 11:27:24 | 824fed7b |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-08T12"}} |
+| 5561 | 2026-10-08 11:28:08 | 4f8bd296 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash36", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
+| 5562 | 2026-10-08 11:28:08 | 4f8bd296 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash38", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
+| 5563 | 2026-10-08 11:28:08 | 4f8bd296 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-l |
