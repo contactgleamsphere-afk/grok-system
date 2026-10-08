@@ -460,3 +460,4 @@
 | 2026-10-07 15:48 | 031 weekly-self-review | 2/4 | active→testing | - |
 | 2026-10-07 15:54 | 001 master | 8/10 (quota, inconclusive) | testing→testing | - |
 | 2026-10-08 10:31 | 028 weekly-self-review | 3/4 | active→testing | - |
+| 2026-10-08 10:34 | 033 weekly-selfreview-count-bots | 3/4 | active→testing | - |
