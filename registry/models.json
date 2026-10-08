@@ -527,11 +527,13 @@
       ],
       "health": {
         "failures": 0,
-        "last_outcome": "ok",
+        "last_outcome": "quota",
         "last_probe": "2026-10-08T14:14:43",
         "latency_s": 0.81,
-        "ok": true,
-        "quota_seen": "2026-10-03T01:00:25"
+        "ok": false,
+        "quota_kind": "tpm",
+        "quota_seen": "2026-10-08T14:43:08",
+        "quota_until": 1791470648.8687167
       }
     },
     "location": "remote",
@@ -541,7 +543,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-10-08T14:15:50+00:00",
+    "updated": "2026-10-08T14:43:08+00:00",
     "verified": "VERIFIED"
   },
   "groq-qwen27b": {
