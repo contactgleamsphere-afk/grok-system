@@ -1263,9 +1263,7 @@
     "id": "031",
     "model_policy": {
       "fallbacks": [
-        "or-apodex-11-mini",
         "gemini-lite31",
-        "or-ling-30-flash-sante",
         "groq-gptoss120b",
         "groq-gptoss20b",
         "local3b"
@@ -1273,7 +1271,7 @@
       "primary": "gemini-gemini-flash-lite-latest"
     },
     "name": "weekly-self-review",
-    "notes": "tests 3/4: T1 PASS 9s [done] expect='X_OK' last='X_OK' | T2 FAIL 26s [done] expect='3' last='\u00e2\u2020\u00b3 write bots.log' | T3 PASS 25s [done] expect='2' last='RESULT: 2' | T4 PASS 10s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: repair round 2 via groq:openai/gpt-oss-120b: T1 PASS 11s [done] expect='X_OK' last='X_OK' | T2 PASS 11s [done] expect='3' last='RESULT: 3' | T3 PASS 11s [done] expect='2' last='RESULT: 2' | T4 PASS 16s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -1281,12 +1279,12 @@
     "purpose": "Generate a weekly self\u2011review for the AI Factory by counting how many bots were created during the week.",
     "schedules": [],
     "seal": {
-      "AGENTS.md": "4ff984038b7a65f3f65b35b8",
-      "SOUL.md": "1cba4168b18f6ffd9903e19c",
-      "bot.json": "c06773b519b99b1ccf0abd84",
-      "nanobot.patch.json": "62304fc1b9dbad4f4f691a54"
+      "AGENTS.md": "86912407300173d755331e30",
+      "SOUL.md": "1b7f883fb8a8907e6b187469",
+      "bot.json": "a6fd751277de606ef9c2e139",
+      "nanobot.patch.json": "3c6e6e851fa9ab8c03496e9f"
     },
-    "status": "testing",
+    "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write bots.log containing:\nbotA\nbotB\nbotC\nThen count the lines in bots.log and output the count -> 3",
@@ -1297,8 +1295,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-10-08T14:37:45+00:00",
-    "verified": "UNVERIFIED",
+    "updated": "2026-10-08T14:40:34+00:00",
+    "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\031-weekly-self-review"
   },
