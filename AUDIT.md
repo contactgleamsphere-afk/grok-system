@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 5122 | 2026-10-06 13:38:27 | d8b9793d | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 5123 | 2026-10-06 13:38:27 | df24e745 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "076d00557198429696acd4c0a35af210", "retry_of": "d8b9793d2a3649a6acb99f50c0dd1d0 |
-| 5124 | 2026-10-06 13:38:27 | d8b9793d | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 5125 | 2026-10-06 13:40:31 | 1da3fd71 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 5126 | 2026-10-06 13:45:48 | 1da3fd71 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 12s [done] report expect='FACTORY' cmd=True \| T3 PASS 14s [d |
 | 5127 | 2026-10-06 13:45:48 | 1da3fd71 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 10s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 12s [done] report expect='FACTORY' cmd=True \| T3 PASS 14s [d |
 | 5128 | 2026-10-06 13:45:48 | 1da3fd71 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
@@ -402,3 +398,7 @@
 | 5519 | 2026-10-08 10:37:37 | 328c36fa | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 5520 | 2026-10-08 10:37:37 | 6de94a7d | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "df14302d7564425b9a49f64f7d268591", "retry_of": "328c36fa74be43a294a2a569f11df46 |
 | 5521 | 2026-10-08 10:37:37 | 328c36fa | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 5522 | 2026-10-08 10:37:42 | 8083faff | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 2} |
+| 5523 | 2026-10-08 10:38:32 | 4bf074c7 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-gemini-flash-lite-latest", "result": "1/4", "quota": 0, "secs": 46} |
+| 5524 | 2026-10-08 10:38:32 | 4bf074c7 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-lite", "result": "2/4", "quota": 0, "secs": 34} |
+| 5525 | 2026-10-08 10:38:32 | 4bf074c7 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["gemini-gemini-flash-lite-latest", "1/4"], ["gemini-lite", "2/4"]]}} |
