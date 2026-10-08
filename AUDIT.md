@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 5112 | 2026-10-06 13:30:16 | 6878b5df | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 5113 | 2026-10-06 13:30:59 | 368a661a | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 5114 | 2026-10-06 13:34:24 | 368a661a | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 12s [done] report expect='FACTORY' cmd=True \| T3 PASS 13s [do |
-| 5115 | 2026-10-06 13:34:24 | 368a661a | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 12s [done] report expect='FACTORY' cmd=True \| T3 PASS 13s [do |
 | 5116 | 2026-10-06 13:34:24 | 368a661a | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 5117 | 2026-10-06 13:34:24 | 5497f756 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "df14302d7564425b9a49f64f7d268591", "retry_of": "368a661ab4684a1d827d48ab89bcf02 |
 | 5118 | 2026-10-06 13:34:24 | 368a661a | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
@@ -402,3 +398,7 @@
 | 5509 | 2026-10-08 10:34:55 | d49e60c4 | 033 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 5510 | 2026-10-08 10:34:55 | cfae58f1 | 033 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "033", "max_rounds": 2}} |
 | 5511 | 2026-10-08 10:34:55 | d49e60c4 | 033 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "033", "status": "testing", "verified": "UNVERIFIED"}} |
+| 5512 | 2026-10-08 10:35:00 | cfae58f1 | 033 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 5513 | 2026-10-08 10:35:50 | cfae58f1 | 033 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
+| 5514 | 2026-10-08 10:35:50 | cfae58f1 | 033 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
+| 5515 | 2026-10-08 10:35:50 | cfae58f1 | 033 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "033", "status": "active"}} |

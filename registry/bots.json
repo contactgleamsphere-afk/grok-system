@@ -1363,7 +1363,7 @@
       "primary": "gemini-gemini-flash-lite-latest"
     },
     "name": "weekly-selfreview-count-bots",
-    "notes": "tests 3/4: T1 FAIL 3s [done] expect='X_OK' last='' | T2 PASS 12s [done] expect='2' last='RESULT: 2' | T3 PASS 32s [done] expect='0' last='RESULT: 0' | T4 PASS 11s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: repair re-verify 2026-10-08: T1 PASS 10s [done] expect='X_OK' last='X_OK' | T2 PASS 13s [done] expect='2' last='RESULT: 2' | T3 PASS 13s [done] expect='0' last='RESULT: 0' | T4 PASS 13s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -1376,7 +1376,7 @@
       "bot.json": "37d7c32d90994eea41df08f5",
       "nanobot.patch.json": "63f50b146b2a7da9bc09c7e5"
     },
-    "status": "testing",
+    "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write activity.log containing:\nBOT_CREATED: AlphaBot\nBOT_CREATED: BetaBot\nUser logged in.\nThen read the file and output the count of bots created -> 2",
@@ -1387,8 +1387,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-10-08T09:34:55+00:00",
-    "verified": "UNVERIFIED",
+    "updated": "2026-10-08T09:35:50+00:00",
+    "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\033-weekly-selfreview-count-bots"
   }
