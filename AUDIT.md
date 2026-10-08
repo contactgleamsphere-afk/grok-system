@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 5093 | 2026-10-06 13:22:27 | bb3451e5 | 032 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "032", "retest_of": "f3c99a58d98d402bad7277c34736f3db"}} |
-| 5094 | 2026-10-06 13:22:27 | f3c99a58 | 032 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "032", "name": "weekly-self-review", "pass": 2, "total": 4, "status": "testing", "verified": "UNVERIFIED"}} |
 | 5095 | 2026-10-06 13:22:32 | bb3451e5 | 032 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 5096 | 2026-10-06 13:24:13 | bb3451e5 | 032 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 16s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\032.json' \| T2 FAIL 34s [done] expect='3' la |
 | 5097 | 2026-10-06 13:24:13 | 52cb5c42 | 032 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "032", "max_rounds": 2, "rearchitected": false}} |
@@ -402,3 +400,5 @@
 | 5490 | 2026-10-08 10:30:25 | 126cc7a1 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 5491 | 2026-10-08 10:30:29 | 43f9ec82 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 5492 | 2026-10-08 10:30:29 | 43f9ec82 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 5493 | 2026-10-08 10:30:34 | bdb9b692 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 5494 | 2026-10-08 10:30:34 | bdb9b692 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
