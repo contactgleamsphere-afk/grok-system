@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 5279 | 2026-10-06 17:53:48 | ac3fc65d |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-10-06", "trigger": "blocked:gemini-flash"}} |
-| 5280 | 2026-10-06 17:53:48 | 90523c21 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash-latest", "gemini-gemma26b", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen27b", "lo |
-| 5281 | 2026-10-06 17:53:52 | d7038ac8 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 5282 | 2026-10-06 17:53:52 |  | 018 | schedule.skipped | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
 | 5283 | 2026-10-06 17:53:52 | 70f255b2 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-06T18"}} |
 | 5284 | 2026-10-06 17:53:52 | d7038ac8 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 5285 | 2026-10-06 17:53:55 | dab76f62 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +398,7 @@
 | 5676 | 2026-10-08 15:40:34 | bb74df66 | 031 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": "3/4", "rejected": null}, {"round": 2 |
 | 5677 | 2026-10-08 15:40:34 | bb74df66 | 031 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 5678 | 2026-10-08 15:40:34 | bb74df66 | 031 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "031", "name": "weekly-self-review", "status": "active", "verified": "VERIFIED"}} |
+| 5679 | 2026-10-08 15:40:38 | 6e4e327a |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 5680 | 2026-10-08 15:43:02 | 6e4e327a |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-lite31", "result": "0/4", "quota": 0, "secs": 33} |
+| 5681 | 2026-10-08 15:43:02 | 6e4e327a |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "groq-gptoss120b", "result": "1/4", "quota": 3, "secs": 34} |
+| 5682 | 2026-10-08 15:43:02 | 6e4e327a |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["gemini-lite31", "0/4"], ["groq-gptoss120b", "1/4 q3"]]}} |

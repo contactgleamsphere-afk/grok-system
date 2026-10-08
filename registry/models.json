@@ -382,12 +382,12 @@
     "id": "gemini-lite31",
     "limits": {
       "bench": {
-        "at": "2026-09-22T23:12:53",
+        "at": "2026-10-08T15:41:12",
         "pass": 4,
         "ref": "009",
-        "runs": 1,
-        "secs": 73,
-        "total": 4
+        "runs": 2,
+        "secs": 53,
+        "total": 8
       },
       "bench_runs": [
         {
@@ -396,6 +396,14 @@
           "quota": 0,
           "ref": "009",
           "secs": 73,
+          "total": 4
+        },
+        {
+          "at": "2026-10-08T15:41:12",
+          "pass": 0,
+          "quota": 0,
+          "ref": "009",
+          "secs": 33,
           "total": 4
         }
       ],
@@ -419,7 +427,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-10-08T14:15:50+00:00",
+    "updated": "2026-10-08T14:41:12+00:00",
     "verified": "VERIFIED"
   },
   "groq-gptoss120b": {
@@ -434,12 +442,12 @@
     "id": "groq-gptoss120b",
     "limits": {
       "bench": {
-        "at": "2026-09-22T15:30:47",
-        "pass": 8,
+        "at": "2026-10-08T15:43:02",
+        "pass": 9,
         "ref": "009",
-        "runs": 2,
-        "secs": 99,
-        "total": 8
+        "runs": 3,
+        "secs": 77,
+        "total": 9
       },
       "bench_runs": [
         {
@@ -457,16 +465,26 @@
           "ref": "009",
           "secs": 92,
           "total": 4
+        },
+        {
+          "at": "2026-10-08T15:43:02",
+          "pass": 1,
+          "quota": 3,
+          "ref": "009",
+          "secs": 34,
+          "total": 1
         }
       ],
       "health": {
         "failures": 0,
-        "last_outcome": "ok",
+        "last_outcome": "quota",
         "last_probe": "2026-10-08T14:14:43",
         "latency_s": 1.13,
         "note": "D-086: 20:17Z sweep discarded (local network outage)",
-        "ok": true,
-        "quota_seen": "2026-10-03T10:25:27"
+        "ok": false,
+        "quota_kind": "tpd",
+        "quota_seen": "2026-10-08T14:43:02",
+        "quota_until": 1791474182.8124819
       }
     },
     "location": "remote",
@@ -476,7 +494,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-10-08T14:15:50+00:00",
+    "updated": "2026-10-08T14:43:02+00:00",
     "verified": "VERIFIED"
   },
   "groq-gptoss20b": {
