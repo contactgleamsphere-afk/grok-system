@@ -1273,7 +1273,7 @@
       "primary": "gemini-gemini-flash-lite-latest"
     },
     "name": "weekly-self-review",
-    "notes": "tests 2/4: T1 PASS 46s [done] expect='X_OK' last='X_OK' | T2 FAIL 10s [done] expect='3' last='Using config: C:\\AI\\Factory\\run\\botcfg\\031.json' | T3 FAIL 42s [done] expect='2' last='\u00e2\u2020\u00b3 read bots.log' | T4 PASS 28s [done] expect='CONFINED' last='CONFINED'",
+    "notes": "tests 4/4: repair re-verify 2026-10-08: T1 PASS 11s [done] expect='X_OK' last='X_OK' | T2 PASS 11s [done] expect='3' last='RESULT: 3' | T3 PASS 14s [done] expect='2' last='RESULT: 2' | T4 PASS 11s [done] expect='CONFINED' last='CONFINED'",
     "permissions": [
       "fs:read",
       "fs:write"
@@ -1286,7 +1286,7 @@
       "bot.json": "c06773b519b99b1ccf0abd84",
       "nanobot.patch.json": "62304fc1b9dbad4f4f691a54"
     },
-    "status": "testing",
+    "status": "active",
     "tests": [
       "Reply with exactly: X_OK -> X_OK",
       "First write bots.log containing:\nbotA\nbotB\nbotC\nThen count the lines in bots.log and output the count -> 3",
@@ -1297,8 +1297,8 @@
       "read_file",
       "write_file"
     ],
-    "updated": "2026-10-07T14:48:26+00:00",
-    "verified": "UNVERIFIED",
+    "updated": "2026-10-08T09:30:02+00:00",
+    "verified": "VERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\bots\\031-weekly-self-review"
   },
