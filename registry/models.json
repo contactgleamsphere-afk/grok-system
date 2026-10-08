@@ -212,12 +212,12 @@
     "id": "gemini-gemini-flash-lite-latest",
     "limits": {
       "bench": {
-        "at": "2026-09-24T04:08:56",
-        "pass": 4,
+        "at": "2026-10-08T10:36:41",
+        "pass": 5,
         "ref": "009",
-        "runs": 1,
-        "secs": 42,
-        "total": 4
+        "runs": 2,
+        "secs": 44,
+        "total": 8
       },
       "bench_runs": [
         {
@@ -226,6 +226,14 @@
           "quota": 0,
           "ref": "009",
           "secs": 42,
+          "total": 4
+        },
+        {
+          "at": "2026-10-08T10:36:41",
+          "pass": 1,
+          "quota": 0,
+          "ref": "009",
+          "secs": 46,
           "total": 4
         }
       ],
@@ -248,7 +256,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 0.9999744788224811,
-    "updated": "2026-10-08T09:29:09+00:00",
+    "updated": "2026-10-08T09:36:41+00:00",
     "verified": "VERIFIED"
   },
   "gemini-gemma26b": {
