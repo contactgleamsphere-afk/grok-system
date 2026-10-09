@@ -1,8 +1,8 @@
-# FACTORY STATUS — 2026-10-08T15:36:01
+# FACTORY STATUS — 2026-10-09T20:06:13
 
 **Worker:** running — last worker activity 0 min ago
 
-**Bots:** 1/33 active   **Queue:** {"cancelled": 42, "done": 1079, "failed": 3, "paused": 45, "queued": 9, "running": 2}   **Healthy lanes:** gemini-flash, gemini-gemini-flash-lite-latest, gemini-gemma26b, gemini-lite, gemini-lite31, groq-gptoss120b, groq-gptoss20b, groq-qwen27b, local3b, local4b
+**Bots:** 1/33 active   **Queue:** {"cancelled": 42, "done": 1163, "failed": 3, "paused": 46, "queued": 11, "running": 2}   **Healthy lanes:** gemini-flash, gemini-flash-latest, gemini-flash38, gemini-gemini-flash-lite-latest, gemini-gemma26b, gemini-lite, gemini-lite31, groq-gptoss120b, groq-gptoss20b, groq-qwen27b, local3b, local4b
 
 ## Needs attention
 - FACTORY CANARY FAILED at 1791452368.39757 (lane groq:openai/gpt-oss-120b): the factory itself, not a bot, is broken — see AUDIT factory.canary
@@ -51,6 +51,7 @@
 - job f5e51726 repair paused (logic)
 - job 52cb5c42 repair paused (logic)
 - job b0d01597 repair paused (logic)
+- job 0d3cdbe7 canary paused (security)
 - bot 002 research-scout is testing
 - bot 003 code-smith is testing
 - bot 004 changelog-writer is testing
@@ -81,7 +82,8 @@
 - bot 032 weekly-self-review is testing
 - bot 033 weekly-selfreview-count-bots is testing
 - 1 retired / 1 paused bots (see Bots table)
-- lane or-qwen27b BLOCKED: gone: {"error":{"message":"this model is unavailable for free. the paid version 
+- lane gemini-flash36 BLOCKED: tool_call_score decayed below 0.3
+- lane or-ling-30-flash-sante BLOCKED: gone: {"error":{"message":"this model is unavailable for free. the paid version 
 - ACTION REQUIRED (owner): provider:cerebras — set CEREBRAS_API_KEY (User env) after signing up: https://cloud.cerebras.ai (free tier ~1M tokens/day)
 - ACTION REQUIRED (owner): provider:nvidia — set NVIDIA_API_KEY (User env) after signing up: https://build.nvidia.com (free ~40 rpm, tool-capable models)
 - ACTION REQUIRED (owner): provider:mistral — set MISTRAL_API_KEY (User env) after signing up: https://console.mistral.ai (Experiment free tier)
@@ -128,76 +130,97 @@
 ## Jobs (24h)
 | id | kind | state | att | class | bot | objective |
 |---|---|---|---|---|---|---|
-| 989112db | test | done | 1 | - | 001 |  |
-| 8083faff | test | done | 2 | transient | 001 |  |
-| 41a32998 | test | done | 1 | - | 001 |  |
-| e294457f | test | done | 1 | - | 001 |  |
-| 1b5eae2b | test | done | 1 | - | 001 |  |
-| 3200a504 | test | done | 1 | - | 001 |  |
-| 35b91d1a | tick | done | 1 | - | - |  |
-| 762a5e34 | probe | done | 1 | - | - |  |
-| 328c36fa | test | done | 1 | - | 001 |  |
-| 0490db0c | report | running | 1 | - | - |  |
-| 4bf074c7 | bench | done | 1 | - | - |  |
-| 06d62a7e | canary | done | 1 | - | - |  |
-| f174fbc6 | monitor | done | 1 | - | - |  |
-| dc90fd03 | test | done | 1 | - | 001 |  |
-| ee508172 | test | done | 1 | - | 028 |  |
-| 996de8af | test | done | 1 | - | 031 |  |
-| d49e60c4 | test | done | 1 | - | 033 |  |
-| 704fa219 | test | done | 1 | - | 028 |  |
-| 7e51672b | repair | done | 2 | transient | 031 |  |
-| 4f69d4cc | test | done | 1 | - | 001 |  |
-| 968f7eaa | tick | done | 1 | - | - |  |
-| 4f8bd296 | probe | done | 1 | - | - |  |
-| 6ddd2e39 | discover | done | 1 | - | - |  |
-| 9bc6b6a7 | discover | done | 1 | - | - |  |
-| a9c07bd0 | discover | done | 1 | - | - |  |
-| 126cc7a1 | discover | done | 1 | - | - |  |
-| 43f9ec82 | discover | done | 1 | - | - |  |
-| bdb9b692 | discover | done | 1 | - | - |  |
-| b0d01597 | repair | paused | 1 | logic | 028 |  |
-| cfae58f1 | repair | done | 1 | - | 033 |  |
-| 6de94a7d | test | done | 1 | - | 001 |  |
-| 9931daef | test | done | 1 | - | 001 |  |
-| ff352cca | test | done | 1 | - | 001 |  |
-| a4a72581 | test | done | 1 | - | 001 |  |
-| 689553c7 | test | done | 1 | - | 001 |  |
-| 14ae23f3 | test | done | 1 | - | 001 |  |
-| 5e96235c | tick | done | 1 | - | - |  |
-| 824fed7b | probe | done | 1 | - | - |  |
-| 7b9fb063 | test | done | 1 | - | 001 |  |
-| 2cc11256 | test | done | 1 | - | 001 |  |
-| 3d2ef52e | test | done | 1 | - | 001 |  |
-| 7719fcdd | test | done | 1 | - | 001 |  |
-| a87fa102 | probe | done | 1 | - | - |  |
-| fb879817 | tick | done | 1 | - | - |  |
-| 52fb8506 | test | running | 1 | - | 001 |  |
-| 41b0fd08 | test | queued | 0 | - | 001 |  |
-| 000c654f | test | queued | 0 | - | 001 |  |
-| 7e3d1eac | test | queued | 0 | - | 001 |  |
-| cbca7d55 | test | queued | 0 | - | 001 |  |
-| a8dfa785 | test | done | 1 | - | 001 |  |
-| 26fa5dd7 | probe | done | 1 | - | - |  |
-| ccc89ce0 | tick | done | 1 | - | - |  |
-| dcbd97eb | test | queued | 0 | - | 001 |  |
-| 62d550ce | test | queued | 0 | - | 001 |  |
-| fae47e4f | test | queued | 0 | - | 001 |  |
-| cd0d50e3 | probe | queued | 0 | - | - |  |
-| 98c3fb4d | tick | queued | 0 | - | - |  |
+| dcbd97eb | test | done | 1 | - | 001 |  |
+| 62d550ce | test | done | 1 | - | 001 |  |
+| fae47e4f | test | done | 1 | - | 001 |  |
+| d8bda1e9 | report | running | 1 | - | - |  |
+| ab79dd5a | test | done | 1 | - | 001 |  |
+| b55e8b34 | test | done | 1 | - | 001 |  |
+| c13e8ff5 | test | done | 1 | - | 001 |  |
+| 1eb9c40f | test | done | 2 | transient | 001 |  |
+| 0e8ffbf4 | probe | done | 1 | - | - |  |
+| 844700b5 | tick | done | 1 | - | - |  |
+| 24b6cef5 | test | done | 1 | - | 001 |  |
+| 9e61efc1 | test | done | 1 | - | 001 |  |
+| 5a5b85cd | probe | done | 1 | - | - |  |
+| 22c977d6 | probe | done | 1 | - | - |  |
+| df9532da | tick | done | 1 | - | - |  |
+| cb68d6f7 | probe | done | 1 | - | - |  |
+| c440dca6 | monitor | done | 1 | - | - |  |
+| 1e285eb7 | discover | done | 1 | - | - |  |
+| 6a778c96 | discover | done | 1 | - | - |  |
+| 7003d4dd | discover | done | 1 | - | - |  |
+| c742c756 | discover | done | 1 | - | - |  |
+| 7259ef61 | discover | done | 1 | - | - |  |
+| 6a251af6 | discover | done | 1 | - | - |  |
+| be435166 | test | done | 1 | - | 001 |  |
+| 43e06b9c | test | done | 1 | - | 031 |  |
+| ab5d1062 | test | done | 1 | - | 001 |  |
+| 9aa0054e | test | done | 1 | - | 001 |  |
+| 32fc3cea | test | done | 1 | - | 001 |  |
+| a3c0bdb6 | test | done | 1 | - | 001 |  |
+| 7a5370a7 | tick | done | 1 | - | - |  |
+| 2bf3f44f | probe | done | 1 | - | - |  |
+| 88ac2dd8 | test | done | 1 | - | 001 |  |
+| 8453fea8 | test | done | 1 | - | 001 |  |
+| 219a2f98 | test | done | 2 | transient | 001 |  |
+| 3048facf | test | running | 2 | transient | 001 |  |
+| cf5fe0c5 | test | queued | 0 | - | 001 |  |
+| 1f4dcd39 | test | queued | 0 | - | 001 |  |
+| 8f5a6c18 | tick | done | 1 | - | - |  |
+| f8c017c1 | probe | done | 1 | - | - |  |
+| 35e93443 | discover | done | 1 | - | - |  |
+| 7deaadb5 | discover | done | 1 | - | - |  |
+| 08611fe2 | discover | done | 1 | - | - |  |
+| 532fd488 | discover | done | 1 | - | - |  |
+| 8acb0163 | discover | done | 1 | - | - |  |
+| f3dbc5c1 | discover | done | 1 | - | - |  |
+| b24ff203 | test | queued | 0 | - | 001 |  |
+| 5fd9d18c | test | done | 1 | - | 001 |  |
+| d64d5f43 | test | queued | 0 | - | 001 |  |
+| f6a97e54 | tick | done | 1 | - | - |  |
+| 3b16ced2 | probe | done | 1 | - | - |  |
+| 6e21e735 | test | queued | 0 | - | 001 |  |
+| 909d4e4b | test | queued | 0 | - | 001 |  |
+| d9e6e57e | test | queued | 0 | - | 001 |  |
+| d13e7377 | test | queued | 0 | - | 001 |  |
+| f9604c42 | tick | done | 1 | - | - |  |
+| 03b06039 | probe | done | 1 | - | - |  |
+| 6b52f660 | probe | done | 1 | - | - |  |
+| ff999b86 | probe | done | 1 | - | - |  |
+| 29c2f4f1 | probe | done | 1 | - | - |  |
+| 675ecaff | probe | done | 1 | - | - |  |
+| fc108045 | probe | done | 1 | - | - |  |
+| 5bf7d78e | probe | done | 1 | - | - |  |
+| d2e1729a | test | queued | 0 | - | 001 |  |
+| 549088bf | tick | done | 1 | - | - |  |
+| e6aca474 | probe | done | 1 | - | - |  |
+| c29eaa2f | discover | done | 1 | - | - |  |
+| 33a31532 | discover | done | 1 | - | - |  |
+| e936f60b | discover | done | 1 | - | - |  |
+| 39daa754 | discover | done | 1 | - | - |  |
+| 31ae098a | discover | done | 1 | - | - |  |
+| f5737aa7 | discover | done | 1 | - | - |  |
+| 87def55d | tick | queued | 0 | - | - |  |
+| a6976a83 | probe | queued | 0 | - | - |  |
+| cd4c40bf | discover | done | 1 | - | - |  |
+| 5d58fd62 | discover | done | 1 | - | - |  |
+| 9611c951 | discover | done | 1 | - | - |  |
+| 2b21b01f | discover | done | 1 | - | - |  |
+| 9f3b0120 | discover | done | 1 | - | - |  |
+| 4311cd1f | discover | done | 1 | - | - |  |
 
 ## Lane quality (D-050, reference suite, rolling window)
 | lane | score | secs | runs |
 |---|---|---|---|
 | or-apodex-11-mini | 4/4 | 49 | 1 |
-| gemini-lite31 | 4/4 | 73 | 1 |
+| groq-gptoss120b | 9/9 | 77 | 3 |
 | or-ling-30-flash-sante | 4/4 | 89 | 1 |
-| groq-gptoss120b | 8/8 | 99 | 2 |
 | groq-gptoss20b | 4/4 | 106 | 1 |
 | or-nemotron-35-lightning | 2/2 | 564 | 1 |
 | gemini-gemma26b | 5/6 | 65 | 2 |
-| or-qwen27b | 2/3 | 58 | 1 |
 | gemini-gemini-flash-lite-latest | 5/8 | 44 | 2 |
+| gemini-lite31 | 4/8 | 53 | 2 |
 | gemini-flash36 | 2/4 | 63 | 1 |
 | gemini-flash-latest | 2/4 | 72 | 1 |
 | groq-qwen27b | 4/8 | 107 | 2 |
@@ -208,23 +231,22 @@
 ## Lanes
 | id | provider | state | latency s |
 |---|---|---|---|
-| gemini-flash | gemini | ok | 6.73 |
-| gemini-flash-latest | gemini | error | 8.98 |
-| gemini-flash36 | gemini | error | 2.04 |
-| gemini-flash38 | gemini | error | 1.85 |
-| gemini-gemini-flash-lite-latest | gemini | ok | 0.9 |
-| gemini-gemma26b | gemini | ok | 1.56 |
-| gemini-lite | gemini | ok | 0.92 |
-| gemini-lite31 | gemini | ok | 11.98 |
-| groq-gptoss120b | groq | ok | 1.13 |
-| groq-gptoss20b | groq | ok | 0.81 |
-| groq-qwen27b | groq | ok | 0.52 |
+| gemini-flash | gemini | ok | 6.23 |
+| gemini-flash-latest | gemini | ok | 3.28 |
+| gemini-flash36 | gemini | BLOCKED | 3.25 |
+| gemini-flash38 | gemini | ok | 4.1 |
+| gemini-gemini-flash-lite-latest | gemini | ok | 1.43 |
+| gemini-gemma26b | gemini | ok | 2.88 |
+| gemini-lite | gemini | ok | 1.93 |
+| gemini-lite31 | gemini | ok | 1.76 |
+| groq-gptoss120b | groq | ok | 1.82 |
+| groq-gptoss20b | groq | ok | 1.38 |
+| groq-qwen27b | groq | ok | 1.89 |
 | local3b | ollama | ok | - |
 | local4b | ollama | ok | - |
-| or-apodex-11-mini | openrouter | cooldown | 1.44 |
-| or-ling-30-flash-sante | openrouter | cooldown | 1.78 |
-| or-nemotron-35-lightning | openrouter | cooldown | 1.84 |
-| or-qwen27b | openrouter | BLOCKED | 3.69 |
+| or-apodex-11-mini | openrouter | cooldown | 2.35 |
+| or-ling-30-flash-sante | openrouter | BLOCKED | 1.78 |
+| or-nemotron-35-lightning | openrouter | cooldown | 4.7 |
 | ovh-gptoss20b | custom | BLOCKED | - |
 | ovh-llama70b | custom | BLOCKED | - |
 | ovh-mistral24b | custom | BLOCKED | - |
