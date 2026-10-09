@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 5486 | 2026-10-08 10:30:19 | a9c07bd0 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 5487 | 2026-10-08 10:30:21 | a9c07bd0 |  | lane.rejected | svc-LAPTOP-LRE6PSA8 | {"model": "thinkingmachines/inkling-small:free", "reason": "probe auth: {\"error\":{\"message\":\"thinkingmachines/inkling-small:free is onl |
-| 5488 | 2026-10-08 10:30:21 | a9c07bd0 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 5489 | 2026-10-08 10:30:25 | 126cc7a1 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 5490 | 2026-10-08 10:30:25 | 126cc7a1 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 5491 | 2026-10-08 10:30:29 | 43f9ec82 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +399,6 @@
 | 5883 | 2026-10-09 07:30:59 |  | 018 | schedule.skipped | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
 | 5884 | 2026-10-09 07:31:00 | f6a97e54 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-09T08"}} |
 | 5885 | 2026-10-09 07:31:00 | 8f5a6c18 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 5886 | 2026-10-09 07:31:04 | f8c017c1 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 5887 | 2026-10-09 07:31:04 | 3b16ced2 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-09T08"}} |
+| 5888 | 2026-10-09 07:31:29 | f8c017c1 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash-latest", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "groq-g |
