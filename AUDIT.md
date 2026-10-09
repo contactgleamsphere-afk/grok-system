@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 5745 | 2026-10-09 04:31:11 | c440dca6 |  | job.enqueued | nightly-task | {"kind": "monitor", "payload": {"only": null, "day": "2026-10-09"}} |
-| 5746 | 2026-10-09 04:31:27 | 5a5b85cd |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "gemini-flash36", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
-| 5747 | 2026-10-09 04:31:27 | 5a5b85cd |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "or-ling-30-flash-sante", "outcome": "gone", "before": "VERIFIED", "after": "BLOCKED", "detail": "{\"error\":{\"message\":\"this m |
-| 5748 | 2026-10-09 04:31:27 | 1e285eb7 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "groq", "day": "2026-10-09", "trigger": "blocked:or-ling-30-flash-sante"}} |
 | 5749 | 2026-10-09 04:31:27 | 6a778c96 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "gemini", "day": "2026-10-09", "trigger": "blocked:or-ling-30-flash-sante"}} |
 | 5750 | 2026-10-09 04:31:27 | 7003d4dd |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "openrouter", "day": "2026-10-09", "trigger": "blocked:or-ling-30-flash-sante"}} |
 | 5751 | 2026-10-09 04:31:27 | c742c756 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "cerebras", "day": "2026-10-09", "trigger": "blocked:or-ling-30-flash-sante"}} |
@@ -402,3 +398,7 @@
 | 6142 | 2026-10-10 00:05:10 | f23e2d50 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-10-10", "trigger": "blocked:gemini-flash36"}} |
 | 6143 | 2026-10-10 00:05:10 | 7e972e6f |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-10-10", "trigger": "blocked:gemini-flash36"}} |
 | 6144 | 2026-10-10 00:05:10 | 97b8924c |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss1 |
+| 6145 | 2026-10-10 00:05:11 | 37e608b8 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 6146 | 2026-10-10 00:05:12 | 37e608b8 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 6147 | 2026-10-10 00:05:14 | c8ab344c |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 6148 | 2026-10-10 00:05:14 | c8ab344c |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
