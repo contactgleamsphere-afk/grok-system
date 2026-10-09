@@ -201,6 +201,12 @@
    "reason": "probe 2.05s loop 2.11s",
    "ts": 1790977349.552443,
    "date": "2026-10-02"
+  },
+  "openrouter:qwen/qwen3.8-27b:free": {
+   "verdict": "rejected",
+   "reason": "retired after 3 days gone: gone: {\"error\":{\"message\":\"this model is unavailable for free. the paid version ",
+   "ts": 1791560793.319838,
+   "date": "2026-10-09"
   }
  }
 }
