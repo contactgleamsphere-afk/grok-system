@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 5454 | 2026-10-07 15:48:26 | 7e51672b | 031 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "031", "max_rounds": 2}} |
-| 5455 | 2026-10-07 15:48:26 | 996de8af | 031 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "031", "status": "testing", "verified": "UNVERIFIED"}} |
 | 5456 | 2026-10-07 15:48:32 | 7e51672b | 031 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 5457 | 2026-10-07 15:54:19 | 989112db | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 35s [done] report expect='FACTORY' cmd=True \| T3 PASS 117s [ |
 | 5458 | 2026-10-07 15:54:19 | 989112db | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 35s [done] report expect='FACTORY' cmd=True \| T3 PASS 117s [ |
@@ -402,3 +400,5 @@
 | 5851 | 2026-10-09 06:31:41 | 8acb0163 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-10-09", "trigger": "blocked:gemini-flash36"}} |
 | 5852 | 2026-10-09 06:31:41 | f3dbc5c1 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-10-09", "trigger": "blocked:gemini-flash36"}} |
 | 5853 | 2026-10-09 06:31:41 | 2bf3f44f |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash-latest", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gem |
+| 5854 | 2026-10-09 06:31:45 | 35e93443 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 5855 | 2026-10-09 06:31:46 | 35e93443 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
