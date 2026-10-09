@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 5402 | 2026-10-07 15:25:40 | 4b8b103b |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 5403 | 2026-10-07 15:25:40 | 4b8b103b |  | owner.needed | svc-LAPTOP-LRE6PSA8 | {"provider": "cerebras", "reason": "set CEREBRAS_API_KEY (User env) after signing up: https://cloud.cerebras.ai (free tier ~1M tokens/day)"} |
-| 5404 | 2026-10-07 15:25:40 | 4b8b103b |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 5405 | 2026-10-07 15:25:44 | ca675b53 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 5406 | 2026-10-07 15:25:44 | ca675b53 |  | owner.needed | svc-LAPTOP-LRE6PSA8 | {"provider": "nvidia", "reason": "set NVIDIA_API_KEY (User env) after signing up: https://build.nvidia.com (free ~40 rpm, tool-capable model |
 | 5407 | 2026-10-07 15:25:44 | ca675b53 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 5408 | 2026-10-07 15:25:48 | d498f52c |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 5409 | 2026-10-07 15:25:48 | d498f52c |  | owner.needed | svc-LAPTOP-LRE6PSA8 | {"provider": "mistral", "reason": "set MISTRAL_API_KEY (User env) after signing up: https://console.mistral.ai (Experiment free tier)"} |
@@ -402,3 +397,8 @@
 | 5799 | 2026-10-09 05:20:32 | fae47e4f | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 32s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 64s [done] report expect='FACTORY' cmd=True \| T3 PASS 89s [d |
 | 5800 | 2026-10-09 05:20:32 | a3c0bdb6 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "a8dfa7853d6241f1ab5469b02c857c1b", "after_quota": "fae47e4f98064fd1a8eef45bffd62 |
 | 5801 | 2026-10-09 05:20:32 | fae47e4f | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 5802 | 2026-10-09 05:20:35 | ab5d1062 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 5803 | 2026-10-09 05:30:52 | df9532da |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 5804 | 2026-10-09 05:30:52 |  | 018 | schedule.skipped | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
+| 5805 | 2026-10-09 05:30:52 | 7a5370a7 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-09T06"}} |
+| 5806 | 2026-10-09 05:30:52 | df9532da |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
