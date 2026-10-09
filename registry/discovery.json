@@ -179,16 +179,16 @@
   "gemini:gemini-omni-flash-preview": {
    "verdict": "deferred",
    "reason": "probe quota: [{\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"you exceeded your current quota",
-   "ts": 1791451813.563598,
-   "date": "2026-10-08",
-   "until": 1791473413.563598
+   "ts": 1791516699.8828316,
+   "date": "2026-10-09",
+   "until": 1791538299.8828316
   },
   "provider-quota:gemini": {
    "verdict": "deferred",
    "reason": "daily free cap hit during discovery",
-   "ts": 1791451813.563598,
-   "date": "2026-10-08",
-   "until": 1791473413.563598
+   "ts": 1791516699.8828316,
+   "date": "2026-10-09",
+   "until": 1791538299.8828316
   },
   "openrouter:deepseek/deepseek-v4-flash-0731:free": {
    "verdict": "rejected",
