@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 5657 | 2026-10-08 15:36:01 | 76b09e82 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "monitor", "payload": {"only": null, "day": "2026-10-08"}} |
-| 5658 | 2026-10-08 15:36:01 | 0490db0c |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 5659 | 2026-10-08 15:36:20 | 52fb8506 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 34s [done] report expect='FACTORY' cmd=True \| T3 PASS 36s [d |
-| 5660 | 2026-10-08 15:36:20 | 52fb8506 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 13s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 34s [done] report expect='FACTORY' cmd=True \| T3 PASS 36s [d |
 | 5661 | 2026-10-08 15:36:20 | ab79dd5a | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "df24e745ca8143daad1c58a7c3f21ddd", "after_quota": "52fb85060a9a4515ace70d6a081a2 |
 | 5662 | 2026-10-08 15:36:20 | 52fb8506 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 5663 | 2026-10-08 15:36:21 | 41b0fd08 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +398,7 @@
 | 6054 | 2026-10-09 21:22:40 | b24ff203 | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 42s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 66s [done] report expect='FACTORY' cmd=True \| T3 PASS 66s [d |
 | 6055 | 2026-10-09 21:22:40 | 23700797 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "b55e8b342b7b4b37acedb240a933539f", "after_quota": "b24ff203ae844f19bff123d0eba97 |
 | 6056 | 2026-10-09 21:22:40 | b24ff203 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 6057 | 2026-10-09 21:22:44 | d64d5f43 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 6058 | 2026-10-09 21:36:52 | d64d5f43 |  | job.lease_expired | fast-LAPTOP-LRE6PSA8 | {} |
+| 6059 | 2026-10-09 21:36:52 | d64d5f43 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 2} |
+| 6060 | 2026-10-09 21:46:47 | d64d5f43 | 001 | job.orphaned_result | svc-LAPTOP-LRE6PSA8 | {"error": "Command '['powershell', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', 'C:\\\\AI\\\\Factory\\\\repo\\\\scripts\\\\windows\\ |
