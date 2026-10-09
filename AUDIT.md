@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 5726 | 2026-10-08 16:21:53 | cbca7d55 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 5727 | 2026-10-08 16:42:53 | cbca7d55 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 55s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 122s [done] report expect='FACTORY' cmd=True \| T3 PASS 118s  |
-| 5728 | 2026-10-08 16:42:53 | cbca7d55 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 55s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 122s [done] report expect='FACTORY' cmd=True \| T3 PASS 118s  |
-| 5729 | 2026-10-08 16:42:53 | 9e61efc1 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "40f8cb60c2554b72ab00e23f2a9503aa", "after_quota": "cbca7d55439b4199ac30acf800de6 |
-| 5730 | 2026-10-08 16:42:53 | cbca7d55 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 5731 | 2026-10-08 16:42:55 | 1eb9c40f | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 5732 | 2026-10-08 17:48:20 | 1eb9c40f |  | job.lease_expired | svc-LAPTOP-LRE6PSA8 | {} |
 | 5733 | 2026-10-08 17:48:20 | 0e8ffbf4 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +397,8 @@
 | 6123 | 2026-10-09 23:44:05 | 7b939e15 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 74s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 79s [done] report expect='FACTORY' cmd=True \| T3 PASS 73s [d |
 | 6124 | 2026-10-09 23:44:05 | e87b6b40 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "40f8cb60c2554b72ab00e23f2a9503aa", "after_quota": "7b939e1502824fbd91f70a48cf80f |
 | 6125 | 2026-10-09 23:44:05 | 7b939e15 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 6126 | 2026-10-09 23:44:09 | 23700797 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 6127 | 2026-10-09 23:55:52 | 23700797 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 26s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 51s [done] report expect='FACTORY' cmd=True \| T3 PASS 56s [d |
+| 6128 | 2026-10-09 23:55:52 | 23700797 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 26s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 51s [done] report expect='FACTORY' cmd=True \| T3 PASS 56s [d |
+| 6129 | 2026-10-09 23:55:52 | b6f952f7 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "b55e8b342b7b4b37acedb240a933539f", "after_quota": "23700797a5cf486f955701314690b |
+| 6130 | 2026-10-09 23:55:52 | 23700797 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
