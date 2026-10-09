@@ -87,9 +87,9 @@
   "openrouter:poolside/laguna-xs-2.1:free": {
    "verdict": "deferred",
    "reason": "probe quota: {\"error\":{\"message\":\"provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"pool",
-   "ts": 1791451819.4103992,
-   "date": "2026-10-08",
-   "until": 1791473419.4103992
+   "ts": 1791516712.5928352,
+   "date": "2026-10-09",
+   "until": 1791538312.5928352
   },
   "openrouter:cohere/north-mini-code:free": {
    "verdict": "deferred",
@@ -136,9 +136,9 @@
   "provider-quota:openrouter": {
    "verdict": "deferred",
    "reason": "daily free cap hit during discovery",
-   "ts": 1791451819.4103992,
-   "date": "2026-10-08",
-   "until": 1791473419.4103992
+   "ts": 1791516712.5928352,
+   "date": "2026-10-09",
+   "until": 1791538312.5928352
   },
   "gemini:gemini-2.5-flash": {
    "verdict": "rejected",
