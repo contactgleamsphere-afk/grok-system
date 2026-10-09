@@ -10,12 +10,12 @@
     "id": "gemini-flash",
     "limits": {
       "bench": {
-        "at": "2026-09-25T00:02:14",
-        "pass": 2,
+        "at": "2026-10-09T20:09:15",
+        "pass": 3,
         "ref": "009",
-        "runs": 1,
-        "secs": 180,
-        "total": 4
+        "runs": 2,
+        "secs": 177,
+        "total": 8
       },
       "bench_runs": [
         {
@@ -24,6 +24,14 @@
           "quota": 0,
           "ref": "009",
           "secs": 180,
+          "total": 4
+        },
+        {
+          "at": "2026-10-09T20:09:15",
+          "pass": 1,
+          "quota": 0,
+          "ref": "009",
+          "secs": 175,
           "total": 4
         }
       ],
@@ -47,7 +55,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 0.9999868425603331,
-    "updated": "2026-10-09T19:04:44+00:00",
+    "updated": "2026-10-09T19:09:15+00:00",
     "verified": "VERIFIED"
   },
   "gemini-flash-latest": {
@@ -160,12 +168,12 @@
     "id": "gemini-flash38",
     "limits": {
       "bench": {
-        "at": "2026-09-24T02:24:57",
-        "pass": 2,
+        "at": "2026-10-09T20:15:18",
+        "pass": 3,
         "ref": "009",
-        "runs": 1,
-        "secs": 128,
-        "total": 4
+        "runs": 2,
+        "secs": 207,
+        "total": 8
       },
       "bench_runs": [
         {
@@ -174,6 +182,14 @@
           "quota": 0,
           "ref": "009",
           "secs": 128,
+          "total": 4
+        },
+        {
+          "at": "2026-10-09T20:15:18",
+          "pass": 1,
+          "quota": 0,
+          "ref": "009",
+          "secs": 286,
           "total": 4
         }
       ],
@@ -197,7 +213,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-10-09T19:04:44+00:00",
+    "updated": "2026-10-09T19:15:18+00:00",
     "verified": "VERIFIED"
   },
   "gemini-gemini-flash-lite-latest": {

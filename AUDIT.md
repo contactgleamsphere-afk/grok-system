@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 5619 | 2026-10-08 14:11:52 | a8dfa785 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "33d3730f13e945aa8839588d7a0ec4b7", "retry_of": "2cc11256b2a64dc18f80c8589e8537d |
-| 5620 | 2026-10-08 14:11:52 | 2cc11256 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 8, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 5621 | 2026-10-08 14:11:56 | 3d2ef52e | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 5622 | 2026-10-08 14:14:42 | a87fa102 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 5623 | 2026-10-08 14:14:42 | 26fa5dd7 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-08T15"}} |
 | 5624 | 2026-10-08 14:16:13 | a87fa102 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "gemini-flash-latest", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
 | 5625 | 2026-10-08 14:16:13 | a87fa102 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash-latest", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gem |
@@ -402,3 +398,7 @@
 | 6016 | 2026-10-09 20:06:13 | d8bda1e9 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 6017 | 2026-10-09 20:06:19 | 862feac2 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 6018 | 2026-10-09 20:07:09 | 3048facf | 001 | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 2, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
+| 6019 | 2026-10-09 20:07:16 | d2e1729a | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 6020 | 2026-10-09 20:15:18 | 862feac2 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-flash", "result": "1/4", "quota": 0, "secs": 175} |
+| 6021 | 2026-10-09 20:15:18 | 862feac2 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "gemini-flash38", "result": "1/4", "quota": 0, "secs": 286} |
+| 6022 | 2026-10-09 20:15:18 | 862feac2 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["gemini-flash", "1/4"], ["gemini-flash38", "1/4"]]}} |
