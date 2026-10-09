@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 5671 | 2026-10-08 15:37:45 | 1985bef5 | 031 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 9s [done] expect='X_OK' last='X_OK' \| T2 FAIL 26s [done] expect='3' last='\u00e2\u2020\u00b3 write bots.log' \| T3 PASS |
-| 5672 | 2026-10-08 15:37:45 | 1985bef5 | 031 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 5673 | 2026-10-08 15:37:45 | bb74df66 | 031 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "031", "max_rounds": 2}} |
-| 5674 | 2026-10-08 15:37:45 | 1985bef5 | 031 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "031", "status": "testing", "verified": "UNVERIFIED"}} |
 | 5675 | 2026-10-08 15:37:49 | bb74df66 | 031 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 5676 | 2026-10-08 15:40:34 | bb74df66 | 031 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-20b", "sandbox": "3/4", "rejected": null}, {"round": 2 |
 | 5677 | 2026-10-08 15:40:34 | bb74df66 | 031 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
@@ -402,3 +398,7 @@
 | 6068 | 2026-10-09 22:04:18 |  | 018 | schedule.skipped | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
 | 6069 | 2026-10-09 22:04:19 | bfd8b8ea |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-09T23"}} |
 | 6070 | 2026-10-09 22:04:19 | 14031ed8 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 6071 | 2026-10-09 22:04:23 | bb314448 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 6072 | 2026-10-09 22:04:23 | 838c36cb |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-09T23"}} |
+| 6073 | 2026-10-09 22:05:07 | bb314448 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "gemini-flash36", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
+| 6074 | 2026-10-09 22:05:07 | bb314448 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash36", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite |
