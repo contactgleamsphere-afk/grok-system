@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 5895 | 2026-10-09 07:47:52 | 5fd9d18c | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 31s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 58s [done] report expect='FACTORY' cmd=True \| T3 PASS 74s [d |
-| 5896 | 2026-10-09 07:47:52 | 909d4e4b | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "5fd9d18c4aa1414aafe3e0fba01dde29", "after_quota": "5fd9d18c4aa1414aafe3e0fba01dd |
-| 5897 | 2026-10-09 07:47:52 | 5fd9d18c | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 5898 | 2026-10-09 07:47:56 | 88ac2dd8 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 5899 | 2026-10-09 08:00:04 | 88ac2dd8 | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 48s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 58s [done] report expect='FACTORY' cmd=True \| T3 PASS 63s [d |
 | 5900 | 2026-10-09 08:00:04 | 88ac2dd8 | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 48s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 58s [done] report expect='FACTORY' cmd=True \| T3 PASS 63s [d |
 | 5901 | 2026-10-09 08:00:04 | d9e6e57e | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "ab5d10624c564c16b855f074ef29fa09", "after_quota": "88ac2dd830324a22b756fed00ec9d |
@@ -402,3 +398,7 @@
 | 6292 | 2026-10-10 04:05:04 |  | 018 | schedule.skipped | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
 | 6293 | 2026-10-10 04:05:05 | 071b50f9 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-10T05"}} |
 | 6294 | 2026-10-10 04:05:05 | e712583d |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 6295 | 2026-10-10 04:10:37 | 3276a941 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 25s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 51s [done] report expect='FACTORY' cmd=True \| T3 PASS 55s [d |
+| 6296 | 2026-10-10 04:10:37 | 3276a941 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 25s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 51s [done] report expect='FACTORY' cmd=True \| T3 PASS 55s [d |
+| 6297 | 2026-10-10 04:10:37 | 2027168a | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "8affd9ea9584421dbd15aa5168a98c50", "after_quota": "3276a9413fb344b48aa6b9f70c716 |
+| 6298 | 2026-10-10 04:10:37 | 3276a941 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
