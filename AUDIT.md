@@ -2,12 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 6251 | 2026-10-10 03:04:41 | af260709 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 6252 | 2026-10-10 03:04:41 | c76da1c9 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-10T04"}} |
-| 6253 | 2026-10-10 03:04:41 | e712583d |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-10T04"}} |
-| 6254 | 2026-10-10 03:04:41 | c2019829 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 6255 | 2026-10-10 03:04:51 | af260709 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "gemini-flash36", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
-| 6256 | 2026-10-10 03:04:51 | af260709 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptos |
 | 6257 | 2026-10-10 03:12:39 | 3992735d | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 6258 | 2026-10-10 03:24:19 | 3992735d | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 29s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 64s [done] report expect='FACTORY' cmd=True \| T3 PASS 70s [d |
 | 6259 | 2026-10-10 03:24:19 | 3992735d | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 29s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 64s [done] report expect='FACTORY' cmd=True \| T3 PASS 70s [d |
@@ -402,3 +396,9 @@
 | 6648 | 2026-10-10 20:54:33 | 4a9c47e6 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 6649 | 2026-10-10 20:54:47 | 8db99bfe |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 6650 | 2026-10-10 20:54:48 | 8db99bfe |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 6651 | 2026-10-10 20:55:06 | ef09c4af |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 6652 | 2026-10-10 20:55:07 | ef09c4af |  | audit.verified | svc-LAPTOP-LRE6PSA8 | {"rows": 6650, "hashed": 5898, "first_bad": null} |
+| 6653 | 2026-10-10 20:55:08 | b3cfc47e |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "report", "payload": {"day": "2026-10-11"}} |
+| 6654 | 2026-10-10 20:55:08 | ec5d9d28 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "bench", "payload": {"stale_only": true, "max": 2, "day": "2026-10-10"}} |
+| 6655 | 2026-10-10 20:55:08 | b6c2d434 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "canary", "payload": {"day": "2026-10-10"}} |
+| 6656 | 2026-10-10 20:55:08 | ef09c4af |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
