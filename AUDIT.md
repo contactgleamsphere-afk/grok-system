@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 6329 | 2026-10-10 05:05:08 | 8c5240d0 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gpto |
-| 6330 | 2026-10-10 05:05:11 | 071b50f9 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 6331 | 2026-10-10 05:05:11 |  | 018 | schedule.skipped | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
 | 6332 | 2026-10-10 05:05:12 | d94dd50c |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-10T06"}} |
 | 6333 | 2026-10-10 05:05:12 | 071b50f9 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
@@ -402,3 +400,5 @@
 | 6726 | 2026-10-10 22:54:07 | 54816e1a |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 6727 | 2026-10-10 22:54:11 | 9cd31a05 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 6728 | 2026-10-10 22:54:12 | 9cd31a05 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 6729 | 2026-10-10 22:54:18 | 8cac52fc |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 6730 | 2026-10-10 22:54:18 | 8cac52fc |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
