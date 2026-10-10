@@ -525,12 +525,12 @@
     "id": "groq-gptoss20b",
     "limits": {
       "bench": {
-        "at": "2026-09-22T15:33:49",
-        "pass": 4,
+        "at": "2026-10-10T20:57:57",
+        "pass": 7,
         "ref": "009",
-        "runs": 1,
-        "secs": 106,
-        "total": 4
+        "runs": 2,
+        "secs": 127,
+        "total": 8
       },
       "bench_runs": [
         {
@@ -539,6 +539,14 @@
           "quota": 0,
           "ref": "009",
           "secs": 106,
+          "total": 4
+        },
+        {
+          "at": "2026-10-10T20:57:57",
+          "pass": 3,
+          "quota": 0,
+          "ref": "009",
+          "secs": 148,
           "total": 4
         }
       ],
@@ -558,7 +566,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 1.0,
-    "updated": "2026-10-10T19:53:27+00:00",
+    "updated": "2026-10-10T19:57:57+00:00",
     "verified": "VERIFIED"
   },
   "groq-qwen27b": {
