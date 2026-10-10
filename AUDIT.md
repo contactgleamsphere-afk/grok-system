@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 5946 | 2026-10-09 10:07:04 | 219a2f98 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 2, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 5947 | 2026-10-09 10:07:05 | 3048facf | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 2} |
 | 5948 | 2026-10-09 10:13:23 | 5bf7d78e |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 5949 | 2026-10-09 10:13:23 | fc108045 |  | job.dedup | svc-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
 | 5950 | 2026-10-09 10:14:01 | 5bf7d78e |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "gemini-flash36", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
@@ -402,3 +400,5 @@
 | 6343 | 2026-10-10 05:05:35 | fe03e6c1 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 6344 | 2026-10-10 05:05:38 | c8eb4400 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 6345 | 2026-10-10 05:05:38 | c8eb4400 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 6346 | 2026-10-10 05:05:44 | f32db6d3 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 6347 | 2026-10-10 05:05:44 | f32db6d3 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
