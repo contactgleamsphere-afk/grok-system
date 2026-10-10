@@ -49,10 +49,11 @@
    "date": "2026-10-02"
   },
   "openrouter:dots-studio/dots-3-note-preview:free": {
-   "verdict": "rejected",
-   "reason": "loop: final answer ''",
-   "ts": 1790977349.552443,
-   "date": "2026-10-02"
+   "verdict": "deferred",
+   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
+   "ts": 1791605132.4139628,
+   "date": "2026-10-10",
+   "until": 1791626732.4139628
   },
   "openrouter:liquid/lfm-2.5-2.6b:free": {
    "verdict": "rejected",
@@ -136,9 +137,9 @@
   "provider-quota:openrouter": {
    "verdict": "deferred",
    "reason": "daily free cap hit during discovery",
-   "ts": 1791572706.5385926,
-   "date": "2026-10-09",
-   "until": 1791594306.5385926
+   "ts": 1791605132.4139628,
+   "date": "2026-10-10",
+   "until": 1791626732.4139628
   },
   "gemini:gemini-2.5-flash": {
    "verdict": "rejected",

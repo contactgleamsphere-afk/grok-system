@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 5942 | 2026-10-09 10:07:04 | 219a2f98 | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 50s [done] liveness expect='MASTER_OK' cmd=True \| T2 FAIL 102s [done] report expect='FACTORY' cmd=False \| T3 FAIL 153s |
-| 5943 | 2026-10-09 10:07:04 | 219a2f98 | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 50s [done] liveness expect='MASTER_OK' cmd=True \| T2 FAIL 102s [done] report expect='FACTORY' cmd=False \| T3 FAIL 153s |
 | 5944 | 2026-10-09 10:07:04 | 219a2f98 | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 5945 | 2026-10-09 10:07:04 | d2e1729a | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "076d00557198429696acd4c0a35af210", "retry_of": "219a2f98f6f04bb3b405b78d566c516 |
 | 5946 | 2026-10-09 10:07:04 | 219a2f98 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 2, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
@@ -402,3 +400,5 @@
 | 6339 | 2026-10-10 05:05:29 | 5e1d815b |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-3-flash-preview", "reason": "probe no_tool_call: ", "provider": "gemini"} |
 | 6340 | 2026-10-10 05:05:29 | 5e1d815b |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-3.5-flash", "reason": "loop: final answer '4'", "provider": "gemini"} |
 | 6341 | 2026-10-10 05:05:29 | 5e1d815b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 6342 | 2026-10-10 05:05:32 | fe03e6c1 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 6343 | 2026-10-10 05:05:35 | fe03e6c1 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
