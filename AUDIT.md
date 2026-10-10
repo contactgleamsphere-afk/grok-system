@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 5930 | 2026-10-09 09:48:10 | 3048facf | 001 | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 1, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
-| 5931 | 2026-10-09 09:48:10 | 219a2f98 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 2} |
-| 5932 | 2026-10-09 09:53:20 | 29c2f4f1 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 5933 | 2026-10-09 09:53:20 | 03b06039 |  | job.dedup | svc-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
 | 5934 | 2026-10-09 09:53:20 | 29c2f4f1 |  | probe.network_down | svc-LAPTOP-LRE6PSA8 | {"detail": "all 15 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
 | 5935 | 2026-10-09 09:53:20 | 675ecaff |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-09T08-retry-retry-retry-retry", "retry_of": "29c2f4f1914a40ff95bd81695431a112"}} |
 | 5936 | 2026-10-09 09:53:20 | 29c2f4f1 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
@@ -402,3 +398,7 @@
 | 6327 | 2026-10-10 05:05:08 | f32db6d3 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-10-10", "trigger": "blocked:gemini-flash36"}} |
 | 6328 | 2026-10-10 05:05:08 | 0cefaaa1 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-10-10", "trigger": "blocked:gemini-flash36"}} |
 | 6329 | 2026-10-10 05:05:08 | 8c5240d0 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gpto |
+| 6330 | 2026-10-10 05:05:11 | 071b50f9 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 6331 | 2026-10-10 05:05:11 |  | 018 | schedule.skipped | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
+| 6332 | 2026-10-10 05:05:12 | d94dd50c |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-10T06"}} |
+| 6333 | 2026-10-10 05:05:12 | 071b50f9 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
