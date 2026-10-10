@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 6263 | 2026-10-10 03:30:16 | 43103e8f |  | job.enqueued | nightly-task | {"kind": "monitor", "payload": {"only": null, "day": "2026-10-10"}} |
-| 6264 | 2026-10-10 03:30:17 | 43103e8f |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 6265 | 2026-10-10 03:30:17 | 061e6085 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "43103e8f79ba46789af203ddbfb9e1ab", "day": "2026-10-10"}} |
-| 6266 | 2026-10-10 03:30:17 | d539c4b2 | 031 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "031", "monitor_of": "43103e8f79ba46789af203ddbfb9e1ab", "day": "2026-10-10"}} |
 | 6267 | 2026-10-10 03:30:17 | 43103e8f |  | monitor.fanout | svc-LAPTOP-LRE6PSA8 | {"bots": ["001", "031"], "jobs": ["061e6085", "d539c4b2"]} |
 | 6268 | 2026-10-10 03:30:17 | 43103e8f |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 6269 | 2026-10-10 03:30:22 | d539c4b2 | 031 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +398,7 @@
 | 6660 | 2026-10-10 20:58:05 | b6c2d434 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 6661 | 2026-10-10 20:58:11 | b6c2d434 |  | security.violation | svc-LAPTOP-LRE6PSA8 | {"error": "architect kept requesting permissions outside the allowance ['fs:read'] for: 'Count the lines in a text file the user names in th |
 | 6662 | 2026-10-10 20:58:11 | b6c2d434 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "security: architect kept requesting permissions outside the al |
+| 6663 | 2026-10-10 20:58:38 | 4564a182 | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 33s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 64s [done] report expect='FACTORY' cmd=True \| T3 PASS 79s [d |
+| 6664 | 2026-10-10 20:58:38 | 4564a182 | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 33s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 64s [done] report expect='FACTORY' cmd=True \| T3 PASS 79s [d |
+| 6665 | 2026-10-10 20:58:38 | 35dbb3af | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "8affd9ea9584421dbd15aa5168a98c50", "after_quota": "4564a182f9bc4dbbb80cb7a8c59ad |
+| 6666 | 2026-10-10 20:58:38 | 4564a182 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 8, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
