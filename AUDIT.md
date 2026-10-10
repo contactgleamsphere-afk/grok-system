@@ -2,12 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 5936 | 2026-10-09 09:53:20 | 29c2f4f1 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 5937 | 2026-10-09 10:03:21 | 675ecaff |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 5938 | 2026-10-09 10:03:21 | fc108045 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-09T11"}} |
-| 5939 | 2026-10-09 10:03:22 | 675ecaff |  | probe.network_down | svc-LAPTOP-LRE6PSA8 | {"detail": "all 15 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
-| 5940 | 2026-10-09 10:03:22 | 5bf7d78e |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-09T08-retry-retry-retry-retry-retry", "retry_of": "675ecaff3d7240728583eacb53de20 |
-| 5941 | 2026-10-09 10:03:22 | 675ecaff |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 5942 | 2026-10-09 10:07:04 | 219a2f98 | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 50s [done] liveness expect='MASTER_OK' cmd=True \| T2 FAIL 102s [done] report expect='FACTORY' cmd=False \| T3 FAIL 153s |
 | 5943 | 2026-10-09 10:07:04 | 219a2f98 | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 50s [done] liveness expect='MASTER_OK' cmd=True \| T2 FAIL 102s [done] report expect='FACTORY' cmd=False \| T3 FAIL 153s |
 | 5944 | 2026-10-09 10:07:04 | 219a2f98 | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
@@ -402,3 +396,9 @@
 | 6333 | 2026-10-10 05:05:12 | 071b50f9 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 6334 | 2026-10-10 05:05:15 | a48e4687 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 6335 | 2026-10-10 05:05:15 | a48e4687 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 6336 | 2026-10-10 05:05:19 | 5e1d815b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 6337 | 2026-10-10 05:05:29 | 5e1d815b |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-2.5-flash", "reason": "probe gone: [{\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"this model models/gemini-2.5 |
+| 6338 | 2026-10-10 05:05:29 | 5e1d815b |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-2.5-flash-lite", "reason": "probe gone: [{\n  \"error\": {\n    \"code\": 404,\n    \"message\": \"this model models/gemin |
+| 6339 | 2026-10-10 05:05:29 | 5e1d815b |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-3-flash-preview", "reason": "probe no_tool_call: ", "provider": "gemini"} |
+| 6340 | 2026-10-10 05:05:29 | 5e1d815b |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-3.5-flash", "reason": "loop: final answer '4'", "provider": "gemini"} |
+| 6341 | 2026-10-10 05:05:29 | 5e1d815b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
