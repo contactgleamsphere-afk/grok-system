@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 6105 | 2026-10-09 23:04:25 | cceb6137 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 47s [done] report expect='FACTORY' cmd=True \| T3 PASS 61s [d |
-| 6106 | 2026-10-09 23:04:25 | 8f7a3355 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "d2e1729a75cc4dd499e5716e334fcec1", "after_quota": "cceb6137a7634b06b39cdccafea38 |
-| 6107 | 2026-10-09 23:04:25 | cceb6137 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 6108 | 2026-10-09 23:04:29 | 838c36cb |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 6109 | 2026-10-09 23:04:29 | 97b8924c |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-10T00"}} |
 | 6110 | 2026-10-09 23:04:37 | 7effb335 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 6111 | 2026-10-09 23:05:05 | 838c36cb |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptos |
@@ -402,3 +398,7 @@
 | 6502 | 2026-10-10 10:00:59 | d3b68c25 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 35s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 68s [done] report expect='FACTORY' cmd=True \| T3 PASS 64s [d |
 | 6503 | 2026-10-10 10:00:59 | bd883a1c | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "5fd9d18c4aa1414aafe3e0fba01dde29", "after_quota": "d3b68c2577c14972852d0ea025612 |
 | 6504 | 2026-10-10 10:00:59 | d3b68c25 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 6505 | 2026-10-10 10:01:01 | c4c5255a | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 6506 | 2026-10-10 10:05:00 | db0dc424 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 6507 | 2026-10-10 10:05:00 | 535c72d8 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-10T11"}} |
+| 6508 | 2026-10-10 10:07:42 | db0dc424 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptos |
