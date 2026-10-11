@@ -2,7 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 6695 | 2026-10-10 21:55:55 | 29b0b257 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "41923cc5baaa4b7ba7c14909b7abe137", "after_quota": "fb6ec68dadbc4396a6f969849a28f |
 | 6696 | 2026-10-10 21:55:55 | fb6ec68d | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 6697 | 2026-10-10 21:55:58 | 4b767e3a | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 6698 | 2026-10-10 22:09:59 | 4b767e3a | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 35s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 62s [done] report expect='FACTORY' cmd=True \| T3 PASS 69s [d |
@@ -402,3 +401,4 @@
 | 7092 | 2026-10-11 14:43:49 |  | 018 | schedule.skipped | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
 | 7093 | 2026-10-11 14:43:52 | 10c6da9c |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-11T15"}} |
 | 7094 | 2026-10-11 14:43:52 | 959cea0b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 7095 | 2026-10-11 14:44:28 | 4563587c | 001 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 1, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
