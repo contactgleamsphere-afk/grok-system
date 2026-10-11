@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 6727 | 2026-10-10 22:54:11 | 9cd31a05 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 6728 | 2026-10-10 22:54:12 | 9cd31a05 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
-| 6729 | 2026-10-10 22:54:18 | 8cac52fc |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 6730 | 2026-10-10 22:54:18 | 8cac52fc |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 6731 | 2026-10-10 22:54:22 | 280b06d2 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 6732 | 2026-10-10 22:54:22 | 280b06d2 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 6733 | 2026-10-10 22:54:28 | 4291f80f |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +398,7 @@
 | 7124 | 2026-10-11 17:14:30 | dcd599f1 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 25s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 53s [done] report expect='FACTORY' cmd=True \| T3 PASS 59s [d |
 | 7125 | 2026-10-11 17:14:30 | 0594097a | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "fe371a05201e499c9cc16d620128e678", "after_quota": "dcd599f1b44a497bbe3d37042ae45 |
 | 7126 | 2026-10-11 17:14:30 | dcd599f1 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 7127 | 2026-10-11 17:14:34 | ea36c3ba | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7128 | 2026-10-11 17:21:55 | 0b1124ec |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7129 | 2026-10-11 17:21:55 | a0e8ce38 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-11T18"}} |
+| 7130 | 2026-10-11 17:22:14 | 0b1124ec |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash-latest", "gemini-flash36", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gem |
