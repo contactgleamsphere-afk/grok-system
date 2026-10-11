@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 6385 | 2026-10-10 06:12:52 | 1f94ebc9 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "17403fafae114f329b45eb4032a3c599", "after_quota": "7bb1cb35907b4923af39d6295c3bb |
-| 6386 | 2026-10-10 06:12:52 | 7bb1cb35 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 6387 | 2026-10-10 06:12:53 | 2027168a | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 6388 | 2026-10-10 06:24:19 | 2027168a | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 26s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 54s [done] report expect='FACTORY' cmd=True \| T3 PASS 66s [d |
 | 6389 | 2026-10-10 06:24:19 | 2027168a | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 26s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 54s [done] report expect='FACTORY' cmd=True \| T3 PASS 66s [d |
 | 6390 | 2026-10-10 06:24:19 | 6a2167e7 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "8affd9ea9584421dbd15aa5168a98c50", "after_quota": "2027168a53a44d39bb6dd177e34ca |
@@ -402,3 +399,6 @@
 | 6782 | 2026-10-11 01:55:45 |  | 018 | schedule.skipped | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
 | 6783 | 2026-10-11 01:55:47 | 1871d280 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-11T02"}} |
 | 6784 | 2026-10-11 01:55:47 | 74ab1d27 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 6785 | 2026-10-11 01:55:49 | f0e1ed32 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 6786 | 2026-10-11 01:55:50 | cc02da07 |  | job.readopted | fast-LAPTOP-LRE6PSA8 | {} |
+| 6787 | 2026-10-11 01:57:58 | cc02da07 | 001 | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 1, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
