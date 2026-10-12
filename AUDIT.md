@@ -2,12 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 6870 | 2026-10-11 03:55:56 | 6f4506ec |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 6871 | 2026-10-11 03:55:57 | 6f4506ec |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
-| 6872 | 2026-10-11 03:56:00 | ca865945 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 6873 | 2026-10-11 03:56:00 |  | 018 | schedule.skipped | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
-| 6874 | 2026-10-11 03:56:00 | c52204df |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-11T04"}} |
-| 6875 | 2026-10-11 03:56:00 | ca865945 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 6876 | 2026-10-11 03:56:03 | 5a0786b6 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 6877 | 2026-10-11 03:56:04 | 5a0786b6 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 6878 | 2026-10-11 03:56:07 | 87387045 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +396,9 @@
 | 7267 | 2026-10-13 00:07:24 | 38a82f20 | 031 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7268 | 2026-10-13 00:07:33 | 38a82f20 | 031 | bot.ran | fast-LAPTOP-LRE6PSA8 | {"ok": true, "produced": ["bots.log"], "secs": 9, "reply": "RESULT: 0", "chain": "gemini-gemini-flash-lite-latest"} |
 | 7269 | 2026-10-13 00:07:33 | 38a82f20 | 031 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "031", "name": "run", "status": "ok bots.log"}} |
+| 7270 | 2026-10-13 00:07:36 | b3cfc47e |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7271 | 2026-10-13 00:07:36 | b3cfc47e |  | audit.verified | fast-LAPTOP-LRE6PSA8 | {"rows": 7269, "hashed": 6517, "first_bad": null} |
+| 7272 | 2026-10-13 00:07:36 | 55933f61 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "report", "payload": {"day": "2026-10-14"}} |
+| 7273 | 2026-10-13 00:07:36 | 408aa9ea |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "bench", "payload": {"stale_only": true, "max": 2, "day": "2026-10-13"}} |
+| 7274 | 2026-10-13 00:07:36 | 0c642780 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "canary", "payload": {"day": "2026-10-13"}} |
+| 7275 | 2026-10-13 00:07:36 | b3cfc47e |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |

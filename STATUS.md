@@ -1,8 +1,8 @@
-# FACTORY STATUS — 2026-10-10T20:55:08
+# FACTORY STATUS — 2026-10-13T00:07:36
 
 **Worker:** running — last worker activity 0 min ago
 
-**Bots:** 1/33 active   **Queue:** {"cancelled": 42, "done": 1304, "failed": 3, "paused": 46, "queued": 12, "running": 2}   **Healthy lanes:** gemini-gemini-flash-lite-latest, gemini-lite, gemini-lite31, groq-gptoss120b, groq-gptoss20b, groq-qwen27b, local3b, local4b
+**Bots:** 1/33 active   **Queue:** {"cancelled": 42, "done": 1439, "failed": 3, "paused": 47, "queued": 15, "running": 2}   **Healthy lanes:** gemini-gemini-flash-lite-latest, gemini-gemma26b, gemini-lite, gemini-lite31, groq-gptoss120b, groq-gptoss20b, groq-qwen27b, local3b, local4b, or-apodex-11-mini, or-lfm-25-26b, or-nemotron-3-ultra-550b-a55b, or-nemotron-35-lightning
 
 ## Needs attention
 - job 5d14608a test paused (logic)
@@ -51,6 +51,7 @@
 - job 52cb5c42 repair paused (logic)
 - job b0d01597 repair paused (logic)
 - job 0d3cdbe7 canary paused (security)
+- job b6c2d434 canary paused (security)
 - bot 002 research-scout is testing
 - bot 003 code-smith is testing
 - bot 004 changelog-writer is testing
@@ -81,10 +82,9 @@
 - bot 032 weekly-self-review is testing
 - bot 033 weekly-selfreview-count-bots is testing
 - 1 retired / 1 paused bots (see Bots table)
-- lane gemini-flash BLOCKED: 3 consecutive errors: URLError
-- lane gemini-flash-latest BLOCKED: 3 consecutive errors: URLError
-- lane gemini-flash38 BLOCKED: 3 consecutive errors: [{ "error": { "code": 503, "message": "this model is curre
-- lane or-ling-30-flash-sante BLOCKED: gone: {"error":{"message":"this model is unavailable for free. the paid version 
+- lane gemini-flash BLOCKED: 3 consecutive errors: TimeoutError
+- lane gemini-flash-latest BLOCKED: 3 consecutive errors: TimeoutError
+- lane gemini-flash36 BLOCKED: tool_call_score decayed below 0.3
 - ACTION REQUIRED (owner): provider:cerebras — set CEREBRAS_API_KEY (User env) after signing up: https://cloud.cerebras.ai (free tier ~1M tokens/day)
 - ACTION REQUIRED (owner): provider:nvidia — set NVIDIA_API_KEY (User env) after signing up: https://build.nvidia.com (free ~40 rpm, tool-capable models)
 - ACTION REQUIRED (owner): provider:mistral — set MISTRAL_API_KEY (User env) after signing up: https://console.mistral.ai (Experiment free tier)
@@ -131,165 +131,30 @@
 ## Jobs (24h)
 | id | kind | state | att | class | bot | objective |
 |---|---|---|---|---|---|---|
-| cf5fe0c5 | test | done | 1 | - | 001 |  |
-| 1f4dcd39 | test | done | 1 | - | 001 |  |
-| b24ff203 | test | done | 1 | - | 001 |  |
-| d64d5f43 | test | done | 2 | - | 001 |  |
-| 6e21e735 | test | done | 1 | - | 001 |  |
-| 909d4e4b | test | done | 1 | - | 001 |  |
-| d9e6e57e | test | done | 1 | - | 001 |  |
-| d13e7377 | test | done | 1 | - | 001 |  |
-| 87def55d | tick | done | 1 | - | - |  |
-| a6976a83 | probe | done | 1 | - | - |  |
-| ef09c4af | report | running | 1 | - | - |  |
-| cceb6137 | test | done | 1 | - | 001 |  |
-| 7effb335 | test | done | 1 | - | 001 |  |
-| 082d548a | test | done | 1 | - | 001 |  |
-| 14031ed8 | tick | done | 1 | - | - |  |
-| bb314448 | probe | done | 1 | - | - |  |
-| 7b939e15 | test | done | 1 | - | 001 |  |
-| 23700797 | test | done | 1 | - | 001 |  |
-| 63b3b071 | test | done | 1 | - | 001 |  |
-| bfd8b8ea | tick | done | 1 | - | - |  |
-| 838c36cb | probe | done | 1 | - | - |  |
-| fac9e34b | test | done | 1 | - | 001 |  |
-| 2f157f08 | test | done | 1 | - | 001 |  |
-| 7e4ce7d2 | test | done | 1 | - | 001 |  |
-| 18a1cfe8 | test | done | 1 | - | 001 |  |
-| 6472c8da | test | done | 1 | - | 001 |  |
-| 8a1e233b | tick | done | 1 | - | - |  |
-| 8f7a3355 | test | done | 1 | - | 001 |  |
-| 97b8924c | probe | done | 1 | - | - |  |
-| 6284f181 | test | done | 1 | - | 001 |  |
-| 95313df2 | test | done | 1 | - | 001 |  |
-| e87b6b40 | test | done | 1 | - | 001 |  |
-| b6f952f7 | test | done | 1 | - | 001 |  |
-| 38ffcb70 | tick | done | 1 | - | - |  |
-| 6757cbd5 | probe | done | 1 | - | - |  |
-| 37e608b8 | discover | done | 1 | - | - |  |
-| c8ab344c | discover | done | 1 | - | - |  |
-| 283647a6 | discover | done | 1 | - | - |  |
-| 06a2063f | discover | done | 1 | - | - |  |
-| f23e2d50 | discover | done | 1 | - | - |  |
-| 7e972e6f | discover | done | 1 | - | - |  |
-| 8cec1d2e | test | done | 1 | - | 001 |  |
-| 96662f05 | test | done | 1 | - | 001 |  |
-| d362fb80 | test | done | 1 | - | 001 |  |
-| 8affd9ea | test | done | 1 | - | 001 |  |
-| 139734ae | test | done | 1 | - | 001 |  |
-| 95cedfc7 | tick | done | 1 | - | - |  |
-| 30a0c9b0 | probe | done | 1 | - | - |  |
-| 3992735d | test | done | 1 | - | 001 |  |
-| 50d208b3 | test | done | 1 | - | 001 |  |
-| dd4de290 | test | done | 1 | - | 001 |  |
-| 3276a941 | test | done | 1 | - | 001 |  |
-| b0b40d7c | test | done | 1 | - | 001 |  |
-| c2019829 | tick | done | 1 | - | - |  |
-| af260709 | probe | done | 1 | - | - |  |
-| 6c6f3109 | test | done | 1 | - | 001 |  |
-| a8cf88c3 | test | done | 1 | - | 001 |  |
-| 28520876 | test | done | 1 | - | 001 |  |
-| e780eed9 | test | done | 1 | - | 001 |  |
-| b7c3fc31 | test | done | 1 | - | 001 |  |
-| c76da1c9 | probe | done | 1 | - | - |  |
-| e712583d | tick | done | 1 | - | - |  |
-| 54df4cbc | test | done | 1 | - | 001 |  |
-| 43103e8f | monitor | done | 1 | - | - |  |
-| 061e6085 | test | done | 1 | - | 001 |  |
-| d539c4b2 | test | done | 1 | - | 031 |  |
-| 9574aaa8 | test | done | 1 | - | 001 |  |
-| f4fb2409 | test | done | 1 | - | 001 |  |
-| 7bb1cb35 | test | done | 1 | - | 001 |  |
-| 8c5240d0 | probe | done | 1 | - | - |  |
-| 071b50f9 | tick | done | 1 | - | - |  |
-| 2027168a | test | done | 1 | - | 001 |  |
-| db955230 | test | done | 1 | - | 001 |  |
-| 4a8210eb | test | done | 1 | - | 001 |  |
-| ceb0fb9b | test | done | 1 | - | 001 |  |
-| db4d01a3 | test | done | 1 | - | 001 |  |
-| 37c2acb5 | probe | done | 1 | - | - |  |
-| a48e4687 | discover | done | 1 | - | - |  |
-| 5e1d815b | discover | done | 1 | - | - |  |
-| fe03e6c1 | discover | done | 1 | - | - |  |
-| c8eb4400 | discover | done | 1 | - | - |  |
-| f32db6d3 | discover | done | 1 | - | - |  |
-| 0cefaaa1 | discover | done | 1 | - | - |  |
-| d94dd50c | tick | done | 1 | - | - |  |
-| 77817a90 | test | done | 1 | - | 001 |  |
-| d679b7bf | test | done | 1 | - | 001 |  |
-| d1accb4c | test | done | 1 | - | 001 |  |
-| cef62a54 | test | done | 1 | - | 001 |  |
-| cda951d6 | test | done | 1 | - | 001 |  |
-| d69fdeca | probe | done | 1 | - | - |  |
-| 41b1bbc5 | tick | done | 1 | - | - |  |
-| 1f94ebc9 | test | done | 1 | - | 001 |  |
-| 6a2167e7 | test | done | 1 | - | 001 |  |
-| e82a74fd | test | done | 1 | - | 001 |  |
-| a52ea0f4 | test | done | 1 | - | 001 |  |
-| ef30c6f9 | test | done | 1 | - | 001 |  |
-| cc4cabf9 | probe | done | 1 | - | - |  |
-| b9792fae | tick | done | 1 | - | - |  |
-| 7e36d324 | test | done | 1 | - | 001 |  |
-| d3b68c25 | test | done | 1 | - | 001 |  |
-| c4c5255a | test | done | 1 | - | 001 |  |
-| 785be7a5 | test | done | 1 | - | 001 |  |
-| c6d15792 | test | done | 1 | - | 001 |  |
-| e59d3ee1 | probe | done | 1 | - | - |  |
-| 09f71473 | tick | done | 1 | - | - |  |
-| 062a8aee | test | done | 1 | - | 001 |  |
-| 4024cc05 | test | done | 1 | - | 001 |  |
-| 9fa0690f | test | done | 1 | - | 001 |  |
-| 762af7bd | test | done | 1 | - | 001 |  |
-| f6da4a4f | test | done | 1 | - | 001 |  |
-| db0dc424 | probe | done | 1 | - | - |  |
-| d66ae928 | tick | done | 1 | - | - |  |
-| bed3e3bf | test | done | 1 | - | 001 |  |
-| 2b0a19fb | test | done | 1 | - | 001 |  |
-| da8fad42 | test | done | 1 | - | 001 |  |
-| 269b8228 | test | done | 1 | - | 001 |  |
-| bd883a1c | test | done | 2 | transient | 001 |  |
-| 535c72d8 | probe | done | 1 | - | - |  |
-| 15bc7352 | tick | done | 1 | - | - |  |
-| e2c8f4f7 | test | done | 1 | - | 001 |  |
-| b2fa28e0 | test | done | 1 | - | 001 |  |
-| 7351a137 | test | done | 1 | - | 001 |  |
-| 4564a182 | test | running | 1 | - | 001 |  |
-| b44a5f67 | probe | done | 1 | - | - |  |
-| 23b996a2 | tick | done | 1 | - | - |  |
-| 116f3576 | test | queued | 0 | - | 001 |  |
-| 75addaf6 | test | queued | 0 | - | 001 |  |
-| dfd3bb9f | test | queued | 0 | - | 001 |  |
-| fb6ec68d | test | queued | 0 | - | 001 |  |
-| 6ea5960b | probe | done | 1 | - | - |  |
-| 4b767e3a | test | queued | 0 | - | 001 |  |
-| c0a9dca8 | tick | done | 1 | - | - |  |
-| 414e6008 | test | queued | 0 | - | 001 |  |
-| 7abed604 | probe | done | 1 | - | - |  |
-| 77689686 | tick | done | 1 | - | - |  |
-| a5c9b224 | test | done | 1 | - | 001 |  |
-| c7674e54 | test | queued | 0 | - | 001 |  |
-| 0b885e07 | test | queued | 0 | - | 001 |  |
-| 869cedaf | probe | done | 1 | - | - |  |
-| 7b78cead | tick | done | 1 | - | - |  |
-| 86c060e1 | test | queued | 0 | - | 001 |  |
-| b1757974 | test | queued | 0 | - | 001 |  |
-| 09cc209d | probe | queued | 0 | - | - |  |
-| e7010275 | discover | done | 1 | - | - |  |
-| a6a00628 | discover | done | 1 | - | - |  |
-| 3a91933d | discover | done | 1 | - | - |  |
-| f730a766 | discover | done | 1 | - | - |  |
-| 4a9c47e6 | discover | done | 1 | - | - |  |
-| 8db99bfe | discover | done | 1 | - | - |  |
-| 5731c7cb | tick | queued | 0 | - | - |  |
+| b3cfc47e | report | running | 1 | - | - |  |
+| cef764b9 | test | running | 1 | - | 001 |  |
+| e13dee01 | probe | done | 1 | - | - |  |
+| 68b63fd1 | tick | done | 1 | - | - |  |
+| 56cb34df | probe | done | 1 | - | - |  |
+| 38a82f20 | run | done | 1 | - | 031 |  |
+| 5700db87 | tick | queued | 0 | - | - |  |
+| 48445198 | probe | queued | 0 | - | - |  |
+| 93c7b416 | monitor | queued | 0 | - | - |  |
+| 23f004fa | discover | done | 1 | - | - |  |
+| 848c22cd | discover | done | 1 | - | - |  |
+| 96a4497b | discover | done | 1 | - | - |  |
+| 9b61a867 | discover | done | 1 | - | - |  |
+| edae1f0a | discover | done | 1 | - | - |  |
+| 2510d211 | discover | done | 1 | - | - |  |
+| aeec9e45 | bench | queued | 0 | - | - |  |
 
 ## Lane quality (D-050, reference suite, rolling window)
 | lane | score | secs | runs |
 |---|---|---|---|
 | or-apodex-11-mini | 4/4 | 49 | 1 |
 | groq-gptoss120b | 9/9 | 77 | 3 |
-| or-ling-30-flash-sante | 4/4 | 89 | 1 |
-| groq-gptoss20b | 4/4 | 106 | 1 |
 | or-nemotron-35-lightning | 2/2 | 564 | 1 |
+| groq-gptoss20b | 7/8 | 127 | 2 |
 | gemini-gemma26b | 5/6 | 65 | 2 |
 | gemini-gemini-flash-lite-latest | 5/8 | 44 | 2 |
 | gemini-lite31 | 4/8 | 53 | 2 |
@@ -303,22 +168,23 @@
 ## Lanes
 | id | provider | state | latency s |
 |---|---|---|---|
-| gemini-flash | gemini | BLOCKED | 11.47 |
-| gemini-flash-latest | gemini | BLOCKED | 6.5 |
-| gemini-flash36 | gemini | error | 2.0 |
-| gemini-flash38 | gemini | BLOCKED | 6.25 |
-| gemini-gemini-flash-lite-latest | gemini | ok | 0.93 |
-| gemini-gemma26b | gemini | error | 1.36 |
-| gemini-lite | gemini | ok | 0.86 |
-| gemini-lite31 | gemini | ok | 5.7 |
-| groq-gptoss120b | groq | ok | 1.03 |
-| groq-gptoss20b | groq | ok | 0.68 |
-| groq-qwen27b | groq | ok | 0.57 |
+| gemini-flash | gemini | BLOCKED | 6.97 |
+| gemini-flash-latest | gemini | BLOCKED | 5.32 |
+| gemini-flash36 | gemini | BLOCKED | 2.15 |
+| gemini-flash38 | gemini | error | 19.36 |
+| gemini-gemini-flash-lite-latest | gemini | ok | 0.49 |
+| gemini-gemma26b | gemini | ok | 0.83 |
+| gemini-lite | gemini | ok | 0.46 |
+| gemini-lite31 | gemini | ok | 0.81 |
+| groq-gptoss120b | groq | ok | 0.47 |
+| groq-gptoss20b | groq | ok | 0.46 |
+| groq-qwen27b | groq | ok | 0.2 |
 | local3b | ollama | ok | - |
 | local4b | ollama | ok | - |
-| or-apodex-11-mini | openrouter | cooldown | 1.63 |
-| or-ling-30-flash-sante | openrouter | BLOCKED | 1.78 |
-| or-nemotron-35-lightning | openrouter | cooldown | 2.18 |
+| or-apodex-11-mini | openrouter | ok | 1.15 |
+| or-lfm-25-26b | openrouter | ok | 0.92 |
+| or-nemotron-3-ultra-550b-a55b | openrouter | ok | 4.95 |
+| or-nemotron-35-lightning | openrouter | ok | 0.79 |
 | ovh-gptoss20b | custom | BLOCKED | - |
 | ovh-llama70b | custom | BLOCKED | - |
 | ovh-mistral24b | custom | BLOCKED | - |
