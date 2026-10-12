@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 6896 | 2026-10-11 04:30:53 | 7241e219 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "139734ae344e49089147d3f47942ffc6", "after_quota": "9ce5ad7bf25f4eeeaffe2d92d9de1 |
-| 6897 | 2026-10-11 04:30:53 | 9ce5ad7b | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 6898 | 2026-10-11 04:30:55 | 1f7039b7 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 6899 | 2026-10-11 04:42:53 | 1f7039b7 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 31s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 55s [done] report expect='FACTORY' cmd=True \| T3 PASS 70s [d |
 | 6900 | 2026-10-11 04:42:53 | 1f7039b7 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 31s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 55s [done] report expect='FACTORY' cmd=True \| T3 PASS 70s [d |
 | 6901 | 2026-10-11 04:42:53 | f3e3352b | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "41923cc5baaa4b7ba7c14909b7abe137", "after_quota": "1f7039b7cfea4594a44159cfca22e |
@@ -402,3 +399,6 @@
 | 7293 | 2026-10-13 00:31:43 | ef10c05d | 031 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 7s [done] expect='X_OK' last='X_OK' \| T2 PASS 8s [done] expect='3' last='RESULT: 3' \| T3 PASS 8s [done] expect='2' las |
 | 7294 | 2026-10-13 00:31:43 | ef10c05d | 031 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 7s [done] expect='X_OK' last='X_OK' \| T2 PASS 8s [done] expect='3' last='RESULT: 3' \| T3 PASS 8s [done] expect='2' las |
 | 7295 | 2026-10-13 00:31:43 | ef10c05d | 031 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "031", "status": "active", "verified": "VERIFIED"}} |
+| 7296 | 2026-10-13 00:31:45 | 408aa9ea |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7297 | 2026-10-13 00:32:35 | 408aa9ea |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-nemotron-35-lightning", "result": "0/4", "quota": 3, "secs": 49} |
+| 7298 | 2026-10-13 00:32:35 | 408aa9ea |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["or-nemotron-35-lightning", "0/4 q3"]]}} |

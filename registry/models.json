@@ -837,6 +837,11 @@
         "secs": 564,
         "total": 2
       },
+      "bench_last_inconclusive": {
+        "at": "2026-10-13T00:32:35",
+        "quota": 4,
+        "total": 4
+      },
       "bench_runs": [
         {
           "at": "2026-09-24T01:43:02",
@@ -865,7 +870,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 0.9815282046533633,
-    "updated": "2026-10-12T23:06:19+00:00",
+    "updated": "2026-10-12T23:32:35+00:00",
     "verified": "VERIFIED"
   },
   "ovh-gptoss20b": {
