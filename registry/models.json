@@ -728,6 +728,62 @@
     "updated": "2026-10-12T23:06:19+00:00",
     "verified": "VERIFIED"
   },
+  "or-lfm-25-26b": {
+    "capabilities": [
+      "chat",
+      "tools"
+    ],
+    "context_window": 65536,
+    "cost_per_1k": 0.0,
+    "id": "or-lfm-25-26b",
+    "limits": {
+      "health": {
+        "last_outcome": "ok",
+        "last_probe": "2026-10-12T23:06:37",
+        "latency_s": 0.92,
+        "ok": true,
+        "probation": 2
+      },
+      "rpd_scope": "openrouter free tier shared 50/day"
+    },
+    "location": "remote",
+    "model": "liquid/lfm-2.5-2.6b:free",
+    "notes": "DISCOVERED 2026-10-13 by factory_discover: probe 0.92s, loop 1.39s. Probation: 2 clean hourly probes -> VERIFIED.",
+    "provider": "openrouter",
+    "ram_gb": null,
+    "tokens_per_sec": null,
+    "tool_call_score": 0.7,
+    "updated": "2026-10-12T23:06:37+00:00",
+    "verified": "INFERRED"
+  },
+  "or-nemotron-3-ultra-550b-a55b": {
+    "capabilities": [
+      "chat",
+      "tools"
+    ],
+    "context_window": 131072,
+    "cost_per_1k": 0.0,
+    "id": "or-nemotron-3-ultra-550b-a55b",
+    "limits": {
+      "health": {
+        "last_outcome": "ok",
+        "last_probe": "2026-10-12T23:07:13",
+        "latency_s": 4.95,
+        "ok": true,
+        "probation": 2
+      },
+      "rpd_scope": "openrouter free tier shared 50/day"
+    },
+    "location": "remote",
+    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "notes": "DISCOVERED 2026-10-13 by factory_discover: probe 4.95s, loop 24.78s. Probation: 2 clean hourly probes -> VERIFIED.",
+    "provider": "openrouter",
+    "ram_gb": null,
+    "tokens_per_sec": null,
+    "tool_call_score": 0.7,
+    "updated": "2026-10-12T23:07:13+00:00",
+    "verified": "INFERRED"
+  },
   "or-nemotron-35-lightning": {
     "capabilities": [
       "chat",

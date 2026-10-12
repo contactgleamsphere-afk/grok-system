@@ -49,17 +49,16 @@
    "date": "2026-10-02"
   },
   "openrouter:dots-studio/dots-3-note-preview:free": {
-   "verdict": "deferred",
-   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
-   "ts": 1791687363.6713934,
-   "date": "2026-10-11",
-   "until": 1791708963.6713934
-  },
-  "openrouter:liquid/lfm-2.5-2.6b:free": {
    "verdict": "rejected",
    "reason": "loop: final answer ''",
-   "ts": 1790977349.552443,
-   "date": "2026-10-02"
+   "ts": 1791846388.7863119,
+   "date": "2026-10-13"
+  },
+  "openrouter:liquid/lfm-2.5-2.6b:free": {
+   "verdict": "approved",
+   "reason": "probe 0.92s loop 1.39s",
+   "ts": 1791846388.7863119,
+   "date": "2026-10-13"
   },
   "openrouter:nvidia/nemotron-3.5-lightning:free": {
    "verdict": "approved",
@@ -76,35 +75,32 @@
   "openrouter:poolside/laguna-s-2.1:free": {
    "verdict": "rejected",
    "reason": "loop: did not call add",
-   "ts": 1790977349.552443,
-   "date": "2026-10-02"
+   "ts": 1791846388.7863119,
+   "date": "2026-10-13"
   },
   "openrouter:thinkingmachines/inkling:free": {
    "verdict": "rejected",
    "reason": "probe auth: {\"error\":{\"message\":\"thinkingmachines/inkling:free is only available on agentic ",
-   "ts": 1790977349.552443,
-   "date": "2026-10-02"
+   "ts": 1791846388.7863119,
+   "date": "2026-10-13"
   },
   "openrouter:poolside/laguna-xs-2.1:free": {
-   "verdict": "deferred",
-   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
-   "ts": 1791572706.5385926,
-   "date": "2026-10-09",
-   "until": 1791594306.5385926
+   "verdict": "rejected",
+   "reason": "loop: HTTP 429 {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"poolside/laguna-xs-2.1:free is temporarily r",
+   "ts": 1791846388.7863119,
+   "date": "2026-10-13"
   },
   "openrouter:cohere/north-mini-code:free": {
-   "verdict": "deferred",
-   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
-   "ts": 1790108680.3095658,
-   "date": "2026-09-22",
-   "until": 1790130280.3095658
+   "verdict": "rejected",
+   "reason": "probe no_tool_call: ",
+   "ts": 1791846388.7863119,
+   "date": "2026-10-13"
   },
   "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free": {
-   "verdict": "deferred",
-   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
-   "ts": 1790108680.3095658,
-   "date": "2026-09-22",
-   "until": 1790130280.3095658
+   "verdict": "approved",
+   "reason": "probe 4.95s loop 24.78s",
+   "ts": 1791846388.7863119,
+   "date": "2026-10-13"
   },
   "openrouter:nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": {
    "verdict": "deferred",
