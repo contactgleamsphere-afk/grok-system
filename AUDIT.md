@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 6846 | 2026-10-11 03:31:53 | 05dbd693 | 031 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "031", "retest_of": "f73eab2fa56d400f92a706f35b25d869", "after_quota": "f73eab2fa56d400f92a706f35b25d |
-| 6847 | 2026-10-11 03:31:53 | f73eab2f | 031 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "031", "status": "active", "verified": "VERIFIED"}} |
 | 6848 | 2026-10-11 03:42:41 | fba5e31f | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 42s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 68s [done] report expect='FACTORY' cmd=True \| T3 PASS 65s [d |
 | 6849 | 2026-10-11 03:42:41 | fba5e31f | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 42s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 68s [done] report expect='FACTORY' cmd=True \| T3 PASS 65s [d |
 | 6850 | 2026-10-11 03:42:41 | 926fd491 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "17403fafae114f329b45eb4032a3c599", "after_quota": "fba5e31f135848278879bf4ec6d1d |
@@ -402,3 +400,5 @@
 | 7243 | 2026-10-13 00:06:19 | edae1f0a |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-10-13", "trigger": "blocked:gemini-flash,gemini-flash-latest,gemini-flas |
 | 7244 | 2026-10-13 00:06:19 | 2510d211 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-10-13", "trigger": "blocked:gemini-flash,gemini-flash-latest,gemini-fla |
 | 7245 | 2026-10-13 00:06:19 | 56cb34df |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gpto |
+| 7246 | 2026-10-13 00:06:22 | 23f004fa |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7247 | 2026-10-13 00:06:23 | 23f004fa |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
