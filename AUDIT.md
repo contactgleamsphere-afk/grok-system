@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 6899 | 2026-10-11 04:42:53 | 1f7039b7 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 31s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 55s [done] report expect='FACTORY' cmd=True \| T3 PASS 70s [d |
-| 6900 | 2026-10-11 04:42:53 | 1f7039b7 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 31s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 55s [done] report expect='FACTORY' cmd=True \| T3 PASS 70s [d |
 | 6901 | 2026-10-11 04:42:53 | f3e3352b | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "41923cc5baaa4b7ba7c14909b7abe137", "after_quota": "1f7039b7cfea4594a44159cfca22e |
 | 6902 | 2026-10-11 04:42:53 | 1f7039b7 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 6903 | 2026-10-11 04:42:57 | f62aa317 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +400,5 @@
 | 7296 | 2026-10-13 00:31:45 | 408aa9ea |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7297 | 2026-10-13 00:32:35 | 408aa9ea |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-nemotron-35-lightning", "result": "0/4", "quota": 3, "secs": 49} |
 | 7298 | 2026-10-13 00:32:35 | 408aa9ea |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["or-nemotron-35-lightning", "0/4 q3"]]}} |
+| 7299 | 2026-10-13 00:32:38 | 0c642780 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7300 | 2026-10-13 00:32:41 | 0c642780 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "FactoryError: could not produce a valid spec after 3 attempts: |
