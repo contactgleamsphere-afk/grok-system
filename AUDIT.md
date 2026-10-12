@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 6877 | 2026-10-11 03:56:04 | 5a0786b6 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
-| 6878 | 2026-10-11 03:56:07 | 87387045 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 6879 | 2026-10-11 03:56:07 | 87387045 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 6880 | 2026-10-11 03:56:10 | 5aade554 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 6881 | 2026-10-11 03:56:10 | 5aade554 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 6882 | 2026-10-11 03:56:14 | 071541d0 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 6883 | 2026-10-11 03:56:14 | 071541d0 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 6884 | 2026-10-11 04:06:43 | 1c8e370f | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 30s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 55s [done] report expect='FACTORY' cmd=True \| T3 PASS 62s [d |
@@ -402,3 +397,8 @@
 | 7274 | 2026-10-13 00:07:36 | 0c642780 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "canary", "payload": {"day": "2026-10-13"}} |
 | 7275 | 2026-10-13 00:07:36 | b3cfc47e |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 7276 | 2026-10-13 00:16:21 | cef764b9 | 001 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 1, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
+| 7277 | 2026-10-13 00:16:24 | 5e3cb81d | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7278 | 2026-10-13 00:28:13 | 5e3cb81d | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 20s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 23s [done] report expect='FACTORY' cmd=True \| T3 PASS 61s [d |
+| 7279 | 2026-10-13 00:28:13 | 5e3cb81d | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 20s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 23s [done] report expect='FACTORY' cmd=True \| T3 PASS 61s [d |
+| 7280 | 2026-10-13 00:28:13 | 35fdd956 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "5e3cb81dcaef415aa193471d2cd92af9", "after_quota": "5e3cb81dcaef415aa193471d2cd92 |
+| 7281 | 2026-10-13 00:28:13 | 5e3cb81d | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
