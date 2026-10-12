@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 6888 | 2026-10-11 04:06:43 | 433b41a9 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 6889 | 2026-10-11 04:18:16 | 433b41a9 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 32s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 55s [done] report expect='FACTORY' cmd=True \| T3 PASS 71s [d |
-| 6890 | 2026-10-11 04:18:16 | 433b41a9 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 32s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 55s [done] report expect='FACTORY' cmd=True \| T3 PASS 71s [d |
-| 6891 | 2026-10-11 04:18:16 | 0689a1f2 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "062a8aeee53a43b2acb9a934d07fbf4b", "after_quota": "433b41a9deae41a6ae270d85c83e0 |
 | 6892 | 2026-10-11 04:18:16 | 433b41a9 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 6893 | 2026-10-11 04:18:18 | 9ce5ad7b | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 6894 | 2026-10-11 04:30:53 | 9ce5ad7b | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 41s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 57s [done] report expect='FACTORY' cmd=True \| T3 PASS 60s [d |
@@ -402,3 +398,7 @@
 | 7285 | 2026-10-13 00:28:15 | ef10c05d | 031 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "031", "monitor_of": "93c7b41641d741fd9f8715d1023433fe", "day": "2026-10-13"}} |
 | 7286 | 2026-10-13 00:28:15 | 93c7b416 |  | monitor.fanout | svc-LAPTOP-LRE6PSA8 | {"bots": ["001", "031"], "jobs": ["f9b10c1e", "ef10c05d"]} |
 | 7287 | 2026-10-13 00:28:15 | 93c7b416 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 7288 | 2026-10-13 00:28:18 | aeec9e45 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7289 | 2026-10-13 00:31:08 | aeec9e45 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-lfm-25-26b", "result": "3/4", "quota": 0, "secs": 31} |
+| 7290 | 2026-10-13 00:31:08 | aeec9e45 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-nemotron-3-ultra-550b-a55b", "result": "4/4", "quota": 0, "secs": 62} |
+| 7291 | 2026-10-13 00:31:08 | aeec9e45 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["or-lfm-25-26b", "3/4"], ["or-nemotron-3-ultra-550b-a55b", "4/4"]]}} |
