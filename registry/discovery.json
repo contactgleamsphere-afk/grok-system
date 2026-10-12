@@ -37,10 +37,10 @@
    "date": "2026-10-07"
   },
   "openrouter:inclusionai/ling-3.0-flash-sante:free": {
-   "verdict": "approved",
-   "reason": "probe 1.22s loop 3.94s",
-   "ts": 1790209453.2989383,
-   "date": "2026-09-24"
+   "verdict": "rejected",
+   "reason": "retired after 3 days gone: gone: {\"error\":{\"message\":\"this model is unavailable for free. the paid version ",
+   "ts": 1791846284.6288152,
+   "date": "2026-10-13"
   },
   "openrouter:inclusionai/ling-3.0-flash-fin:free": {
    "verdict": "rejected",
