@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 6966 | 2026-10-11 05:55:43 | 416d19ce |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 6967 | 2026-10-11 05:55:43 | 416d19ce |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 6968 | 2026-10-11 05:55:46 | 42acc990 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 6969 | 2026-10-11 05:55:46 | 42acc990 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 6970 | 2026-10-11 05:55:49 | 88d5c990 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 6971 | 2026-10-11 05:55:49 | 88d5c990 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 6972 | 2026-10-11 05:55:52 | 7ebb4e0c |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 6973 | 2026-10-11 05:55:52 | 7ebb4e0c |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
@@ -402,3 +397,8 @@
 | 7363 | 2026-10-13 02:36:55 | edc88e8d | 001 | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 2, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
 | 7364 | 2026-10-13 02:37:00 | edafcea5 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 2} |
 | 7365 | 2026-10-13 02:59:10 | edafcea5 | 001 | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 2, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
+| 7366 | 2026-10-13 02:59:14 | edc88e8d | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 3} |
+| 7367 | 2026-10-13 03:04:46 | 457a314b |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7368 | 2026-10-13 03:04:46 |  | 018 | schedule.skipped | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
+| 7369 | 2026-10-13 03:04:46 | 0a51ed8f |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-13T04"}} |
+| 7370 | 2026-10-13 03:04:46 | 457a314b |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
