@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7136 | 2026-10-11 17:25:31 | ea36c3ba | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 25s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 54s [done] report expect='FACTORY' cmd=True \| T3 PASS 68s [d |
-| 7137 | 2026-10-11 17:25:31 | 7731f537 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "b55e8b342b7b4b37acedb240a933539f", "after_quota": "ea36c3ba63dd462e83fb917f85da0 |
-| 7138 | 2026-10-11 17:25:31 | ea36c3ba | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 7139 | 2026-10-11 17:25:32 | 2849fd50 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7140 | 2026-10-11 17:36:54 | 2849fd50 | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 26s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 53s [done] report expect='FACTORY' cmd=True \| T3 PASS 68s [d |
 | 7141 | 2026-10-11 17:36:54 | 2849fd50 | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 26s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 53s [done] report expect='FACTORY' cmd=True \| T3 PASS 68s [d |
@@ -402,3 +399,6 @@
 | 7533 | 2026-10-13 08:04:55 |  | 018 | schedule.skipped | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
 | 7534 | 2026-10-13 08:04:55 | 98037d6a |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-13T09"}} |
 | 7535 | 2026-10-13 08:04:55 | 09fc9827 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 7536 | 2026-10-13 08:05:08 | b70aa8c0 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7537 | 2026-10-13 08:05:08 | adcba1c4 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-13T09"}} |
+| 7538 | 2026-10-13 08:07:32 | b70aa8c0 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-gemini-flash-lite-latest", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen2 |
