@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 6940 | 2026-10-11 05:42:47 | df7e22b9 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "9aa0054ee0124b40bb21b2daef2bc049", "after_quota": "ba222abd7ddb496383e0700f44b2d |
-| 6941 | 2026-10-11 05:42:47 | ba222abd | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 6942 | 2026-10-11 05:42:50 | 926fd491 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 6943 | 2026-10-11 05:42:50 | ed2020a0 | 031 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 6944 | 2026-10-11 05:43:58 | ed2020a0 | 031 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": true, "status": "active", "rounds": [], "boundary_diff": {}} |
 | 6945 | 2026-10-11 05:43:58 | ed2020a0 | 031 | bot.promoted | svc-LAPTOP-LRE6PSA8 | {"to": "active"} |
 | 6946 | 2026-10-11 05:43:58 | ed2020a0 | 031 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "031", "status": "active"}} |
@@ -402,3 +398,7 @@
 | 7337 | 2026-10-13 01:06:12 | b0781bd8 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 7338 | 2026-10-13 01:06:15 | ebab5a2a |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7339 | 2026-10-13 01:06:15 | ebab5a2a |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 7340 | 2026-10-13 01:11:54 | 84bb3b09 | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 37s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 70s [done] report expect='FACTORY' cmd=True \| T3 PASS 68s [d |
+| 7341 | 2026-10-13 01:11:54 | 84bb3b09 | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 37s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 70s [done] report expect='FACTORY' cmd=True \| T3 PASS 68s [d |
+| 7342 | 2026-10-13 01:11:54 | 0ec74895 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "17403fafae114f329b45eb4032a3c599", "after_quota": "84bb3b09d6bd4e0c8f2ffb85a2253 |
+| 7343 | 2026-10-13 01:11:54 | 84bb3b09 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 8, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
