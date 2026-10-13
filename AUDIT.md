@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7176 | 2026-10-11 18:36:41 | 2fe7d6b0 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 7177 | 2026-10-11 18:50:29 | 2fe7d6b0 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 26s [done] liveness expect='MASTER_OK' cmd=True \| T2 FAIL 50s [done] report expect='FACTORY' cmd=False \| T3 PASS 132s  |
-| 7178 | 2026-10-11 18:50:29 | 2fe7d6b0 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 26s [done] liveness expect='MASTER_OK' cmd=True \| T2 FAIL 50s [done] report expect='FACTORY' cmd=False \| T3 PASS 132s  |
-| 7179 | 2026-10-11 18:50:29 | 2fe7d6b0 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 7180 | 2026-10-11 18:50:29 | 58e2c099 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "33d3730f13e945aa8839588d7a0ec4b7", "retry_of": "2fe7d6b08e8d48fdb38eea10a85ffe3 |
 | 7181 | 2026-10-11 18:50:29 | 2fe7d6b0 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 8, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 7182 | 2026-10-11 18:50:32 | ac1a9ae3 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7183 | 2026-10-11 19:02:50 | ac1a9ae3 | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 27s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 66s [done] report expect='FACTORY' cmd=True \| T3 PASS 72s [d |
@@ -402,3 +397,8 @@
 | 7573 | 2026-10-13 15:07:44 | 19c838c2 | 001 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 1, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
 | 7574 | 2026-10-13 15:07:47 | 6cc17c4a | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 2} |
 | 7575 | 2026-10-13 15:29:55 | 6cc17c4a | 001 | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 2, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
+| 7576 | 2026-10-13 15:29:55 | 19c838c2 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 2} |
+| 7577 | 2026-10-13 15:35:32 | d894a64c |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7578 | 2026-10-13 15:35:32 |  | 018 | schedule.skipped | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
+| 7579 | 2026-10-13 15:35:33 | 9d8bd63f |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-13T16"}} |
+| 7580 | 2026-10-13 15:35:33 | d894a64c |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
