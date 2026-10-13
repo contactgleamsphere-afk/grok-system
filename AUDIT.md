@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 6934 | 2026-10-11 05:32:51 | 05dbd693 | 031 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 4s [done] expect='X_OK' last='' \| T2 PASS 18s [done] expect='3' last='RESULT: 3' \| T3 PASS 16s [done] expect='2' last= |
-| 6935 | 2026-10-11 05:32:51 | 05dbd693 | 031 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 6936 | 2026-10-11 05:32:51 | ed2020a0 | 031 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "031", "max_rounds": 2}} |
 | 6937 | 2026-10-11 05:32:51 | 05dbd693 | 031 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "031", "status": "testing", "verified": "UNVERIFIED"}} |
 | 6938 | 2026-10-11 05:42:47 | ba222abd | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 29s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 56s [done] report expect='FACTORY' cmd=True \| T3 PASS 63s [d |
@@ -402,3 +400,5 @@
 | 7331 | 2026-10-13 01:05:54 | b7bd0932 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7332 | 2026-10-13 01:06:06 | b7bd0932 |  | lane.rejected | svc-LAPTOP-LRE6PSA8 | {"model": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free", "reason": "loop: KeyError", "provider": "openrouter"} |
 | 7333 | 2026-10-13 01:06:06 | b7bd0932 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 7334 | 2026-10-13 01:06:10 | c1ee42b2 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7335 | 2026-10-13 01:06:10 | c1ee42b2 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
