@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7299 | 2026-10-13 00:32:38 | 0c642780 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 7300 | 2026-10-13 00:32:41 | 0c642780 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "FactoryError: could not produce a valid spec after 3 attempts: |
 | 7301 | 2026-10-13 00:41:50 | cef764b9 | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 7s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 37s [done] report expect='FACTORY' cmd=True \| T3 PASS 53s [do |
 | 7302 | 2026-10-13 00:41:50 | cef764b9 | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 7s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 37s [done] report expect='FACTORY' cmd=True \| T3 PASS 53s [do |
 | 7303 | 2026-10-13 00:41:50 | f876d821 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "5fd9d18c4aa1414aafe3e0fba01dde29", "after_quota": "cef764b9ad334d26b799e1eef0992 |
@@ -402,3 +400,5 @@
 | 7696 | 2026-10-13 17:37:49 | 0954e62b |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 7697 | 2026-10-13 17:37:53 | f3f6b49b |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7698 | 2026-10-13 17:37:53 | f3f6b49b |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 7699 | 2026-10-13 17:37:58 | a01d44d1 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7700 | 2026-10-13 17:37:58 | a01d44d1 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
