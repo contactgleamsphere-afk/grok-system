@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 6929 | 2026-10-11 05:30:32 | adaf4c56 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "5fd9d18c4aa1414aafe3e0fba01dde29", "after_quota": "058d6b65ffe7426b84a6a70c40b31 |
-| 6930 | 2026-10-11 05:30:32 | 058d6b65 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 6931 | 2026-10-11 05:30:35 | ba222abd | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 6932 | 2026-10-11 05:31:56 | 05dbd693 | 031 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 6933 | 2026-10-11 05:32:51 | 05dbd693 | 031 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 4s [done] expect='X_OK' last='' \| T2 PASS 18s [done] expect='3' last='RESULT: 3' \| T3 PASS 16s [done] expect='2' last= |
@@ -402,3 +400,5 @@
 | 7326 | 2026-10-13 01:05:45 | 48445198 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash-latest", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq- |
 | 7327 | 2026-10-13 01:05:48 | 1a8fb940 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7328 | 2026-10-13 01:05:48 | 1a8fb940 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 7329 | 2026-10-13 01:05:51 | 9b803416 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7330 | 2026-10-13 01:05:51 | 9b803416 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
