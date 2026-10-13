@@ -6,7 +6,7 @@
       "primary": "local3b"
     },
     "name": "master",
-    "notes": "tests 2/10: T1 PASS 45s [done] liveness expect='MASTER_OK' cmd=True | T2 FAIL 56s [done] report expect='FACTORY' cmd=False | T3 FAIL 174s [done] list expect='002' cmd=False | T4 FAIL 72s [done] lanes expect='LANES' cmd=False | T5 FAIL 108s [done] confined expect='CONFINED' cmd=True | T6 FAIL 155s [done] schedules expect='* *' cmd=True | T7 FAIL 139s [done] tools expect='mcp-sqlite3' cmd=True | T8 ",
+    "notes": "tests 2/10: T1 PASS 47s [done] liveness expect='MASTER_OK' cmd=True | T2 FAIL 93s [done] report expect='FACTORY' cmd=False | T3 FAIL 252s [TIMEOUT] list expect='002' cmd=False | T4 FAIL 72s [done] lanes expect='LANES' cmd=False | T5 FAIL 140s [done] confined expect='CONFINED' cmd=True | T6 FAIL 133s [done] schedules expect='* *' cmd=True | T7 FAIL 134s [done] tools expect='mcp-sqlite3' cmd=True | ",
     "permissions": [
       "fs:read",
       "fs:write",
@@ -35,7 +35,7 @@
       "web_search",
       "web_fetch"
     ],
-    "updated": "2026-10-13T15:45:10+00:00",
+    "updated": "2026-10-13T16:04:12+00:00",
     "verified": "UNVERIFIED",
     "version": "0.1.0",
     "workspace": "C:\\AI\\Factory\\workspace"
