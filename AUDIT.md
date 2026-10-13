@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7247 | 2026-10-13 00:06:23 | 23f004fa |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
-| 7248 | 2026-10-13 00:06:25 | 848c22cd |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 7249 | 2026-10-13 00:06:25 | 848c22cd |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
-| 7250 | 2026-10-13 00:06:28 | 96a4497b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7251 | 2026-10-13 00:07:13 | 96a4497b |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "dots-studio/dots-3-note-preview:free", "reason": "loop: final answer ''", "provider": "openrouter"} |
 | 7252 | 2026-10-13 00:07:13 | 96a4497b |  | lane.discovered | fast-LAPTOP-LRE6PSA8 | {"model": "liquid/lfm-2.5-2.6b:free", "reason": "probe 0.92s loop 1.39s", "provider": "openrouter"} |
 | 7253 | 2026-10-13 00:07:13 | 96a4497b |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "poolside/laguna-s-2.1:free", "reason": "loop: did not call add", "provider": "openrouter"} |
@@ -402,3 +398,7 @@
 | 7644 | 2026-10-13 16:37:36 | 5dab72ed |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 7645 | 2026-10-13 16:37:41 | b8e6a152 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7646 | 2026-10-13 16:37:41 | b8e6a152 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 7647 | 2026-10-13 16:37:47 | 10206006 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7648 | 2026-10-13 16:37:47 | 77c04c86 | 031 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "031", "monitor_of": "10206006ad0f4d95bfaf0875ad326c16", "day": "2026-10-13"}} |
+| 7649 | 2026-10-13 16:37:47 | 10206006 |  | monitor.fanout | svc-LAPTOP-LRE6PSA8 | {"bots": ["031"], "jobs": ["77c04c86"]} |
+| 7650 | 2026-10-13 16:37:47 | 10206006 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
