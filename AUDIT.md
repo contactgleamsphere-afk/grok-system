@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7235 | 2026-10-13 00:06:19 | 56cb34df |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash", "outcome": "error", "before": "VERIFIED", "after": "BLOCKED", "detail": "TimeoutError"} |
-| 7236 | 2026-10-13 00:06:19 | 56cb34df |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash-latest", "outcome": "error", "before": "VERIFIED", "after": "BLOCKED", "detail": "TimeoutError"} |
 | 7237 | 2026-10-13 00:06:19 | 56cb34df |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash36", "outcome": "no_tool_call", "before": "VERIFIED", "after": "BLOCKED", "detail": null} |
 | 7238 | 2026-10-13 00:06:19 | 56cb34df |  | model.retired | fast-LAPTOP-LRE6PSA8 | {"model": "or-ling-30-flash-sante", "reason": "gone: {\"error\":{\"message\":\"this model is unavailable for free. the paid version "} |
 | 7239 | 2026-10-13 00:06:19 | 23f004fa |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "groq", "day": "2026-10-13", "trigger": "blocked:gemini-flash,gemini-flash-latest,gemini-flash3 |
@@ -402,3 +400,5 @@
 | 7632 | 2026-10-13 16:37:02 | 10206006 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "monitor", "payload": {"only": ["031"], "day": "2026-10-13", "canary_for": ["gemini-gemini-flash-lite-latest"]}} |
 | 7633 | 2026-10-13 16:37:02 | ce3c1fa8 |  | monitor.canary | svc-LAPTOP-LRE6PSA8 | {"lanes": ["gemini-gemini-flash-lite-latest"], "bots": ["031"]} |
 | 7634 | 2026-10-13 16:37:02 | ce3c1fa8 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-gemma26b", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen27b", "local3b", "local4b"], "ch |
+| 7635 | 2026-10-13 16:37:08 | 5006ba9b |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7636 | 2026-10-13 16:37:09 | 5006ba9b |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
