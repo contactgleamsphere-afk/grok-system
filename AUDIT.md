@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7251 | 2026-10-13 00:07:13 | 96a4497b |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "dots-studio/dots-3-note-preview:free", "reason": "loop: final answer ''", "provider": "openrouter"} |
-| 7252 | 2026-10-13 00:07:13 | 96a4497b |  | lane.discovered | fast-LAPTOP-LRE6PSA8 | {"model": "liquid/lfm-2.5-2.6b:free", "reason": "probe 0.92s loop 1.39s", "provider": "openrouter"} |
-| 7253 | 2026-10-13 00:07:13 | 96a4497b |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "poolside/laguna-s-2.1:free", "reason": "loop: did not call add", "provider": "openrouter"} |
-| 7254 | 2026-10-13 00:07:13 | 96a4497b |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "thinkingmachines/inkling:free", "reason": "probe auth: {\"error\":{\"message\":\"thinkingmachines/inkling:free is only available  |
-| 7255 | 2026-10-13 00:07:13 | 96a4497b |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "poolside/laguna-xs-2.1:free", "reason": "loop: HTTP 429 {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metada |
 | 7256 | 2026-10-13 00:07:13 | 96a4497b |  | lane.rejected | fast-LAPTOP-LRE6PSA8 | {"model": "cohere/north-mini-code:free", "reason": "probe no_tool_call: ", "provider": "openrouter"} |
 | 7257 | 2026-10-13 00:07:13 | 96a4497b |  | lane.discovered | fast-LAPTOP-LRE6PSA8 | {"model": "nvidia/nemotron-3-ultra-550b-a55b:free", "reason": "probe 4.95s loop 24.78s", "provider": "openrouter"} |
 | 7258 | 2026-10-13 00:07:13 | 96a4497b |  | config.presets | fast-LAPTOP-LRE6PSA8 | {"added": ["or-lfm-25-26b", "or-nemotron-3-ultra-550b-a55b"]} |
@@ -402,3 +397,8 @@
 | 7648 | 2026-10-13 16:37:47 | 77c04c86 | 031 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "031", "monitor_of": "10206006ad0f4d95bfaf0875ad326c16", "day": "2026-10-13"}} |
 | 7649 | 2026-10-13 16:37:47 | 10206006 |  | monitor.fanout | svc-LAPTOP-LRE6PSA8 | {"bots": ["031"], "jobs": ["77c04c86"]} |
 | 7650 | 2026-10-13 16:37:47 | 10206006 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 7651 | 2026-10-13 16:37:51 | 77c04c86 | 031 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7652 | 2026-10-13 16:41:55 | 77c04c86 | 031 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 62s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\031.json' \| T2 PASS 47s [done] expect='3' la |
+| 7653 | 2026-10-13 16:41:55 | 77c04c86 | 031 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 FAIL 62s [done] expect='X_OK' last='Using config: C:\\AI\\Factory\\run\\botcfg\\031.json' \| T2 PASS 47s [done] expect='3' la |
+| 7654 | 2026-10-13 16:41:55 | 142dd6d7 | 031 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "031", "retest_of": "77c04c86b66e451886358ec35ff7d8d3", "after_quota": "77c04c86b66e451886358ec35ff7d |
+| 7655 | 2026-10-13 16:41:55 | 77c04c86 | 031 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "031", "status": "active", "verified": "VERIFIED"}} |
