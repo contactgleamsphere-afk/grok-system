@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7068 | 2026-10-11 08:56:23 | 959cea0b |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-11T09"}} |
-| 7069 | 2026-10-11 08:56:23 | b2f3be5b |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 7070 | 2026-10-11 08:58:38 | 08a97ba0 | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 117s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 62s [done] report expect='FACTORY' cmd=True \| T3 PASS 76s [ |
 | 7071 | 2026-10-11 08:58:38 | 08a97ba0 | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 117s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 62s [done] report expect='FACTORY' cmd=True \| T3 PASS 76s [ |
 | 7072 | 2026-10-11 08:58:38 | b232befe | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "062a8aeee53a43b2acb9a934d07fbf4b", "after_quota": "08a97ba0442e45998f7957477af29 |
 | 7073 | 2026-10-11 08:58:38 | 08a97ba0 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
@@ -402,3 +399,6 @@
 | 7465 | 2026-10-13 06:04:49 |  | 018 | schedule.skipped | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
 | 7466 | 2026-10-13 06:04:49 | 74b22dd1 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-13T07"}} |
 | 7467 | 2026-10-13 06:04:49 | 7e0bf6cd |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 7468 | 2026-10-13 06:05:02 | a4edddc0 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7469 | 2026-10-13 06:05:02 | 9d43f9c9 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-13T07"}} |
+| 7470 | 2026-10-13 06:05:27 | a4edddc0 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite |
