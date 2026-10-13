@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7100 | 2026-10-11 16:21:15 | d66ccc47 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 7101 | 2026-10-11 16:21:54 | 0b1124ec |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-11T17"}} |
-| 7102 | 2026-10-11 16:22:27 | 46dd4d1a |  | job.readopted | fast-LAPTOP-LRE6PSA8 | {} |
-| 7103 | 2026-10-11 16:22:45 | d66ccc47 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash36", "gemini-gemini-flash-lite-latest", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gptos |
-| 7104 | 2026-10-11 16:22:58 | 10c6da9c |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7105 | 2026-10-11 16:22:58 |  | 018 | schedule.skipped | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
 | 7106 | 2026-10-11 16:22:59 | b7f9b8eb |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-11T17"}} |
 | 7107 | 2026-10-11 16:22:59 | 10c6da9c |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
@@ -402,3 +397,8 @@
 | 7497 | 2026-10-13 07:01:38 | 8e562932 | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 7498 | 2026-10-13 07:01:38 | f5cc5dd0 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "b9848c6f9e244793b86bd8b0a5d38f4c", "retry_of": "8e5629324bbf477eb54f2f7cb14deb4 |
 | 7499 | 2026-10-13 07:01:38 | 8e562932 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 3, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 7500 | 2026-10-13 07:01:39 | b2abcb78 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7501 | 2026-10-13 07:04:51 | 74b22dd1 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7502 | 2026-10-13 07:04:51 |  | 018 | schedule.skipped | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
+| 7503 | 2026-10-13 07:04:52 | 09fc9827 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-13T08"}} |
+| 7504 | 2026-10-13 07:04:52 | 74b22dd1 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
