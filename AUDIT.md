@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7295 | 2026-10-13 00:31:43 | ef10c05d | 031 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "031", "status": "active", "verified": "VERIFIED"}} |
-| 7296 | 2026-10-13 00:31:45 | 408aa9ea |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7297 | 2026-10-13 00:32:35 | 408aa9ea |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-nemotron-35-lightning", "result": "0/4", "quota": 3, "secs": 49} |
 | 7298 | 2026-10-13 00:32:35 | 408aa9ea |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["or-nemotron-35-lightning", "0/4 q3"]]}} |
 | 7299 | 2026-10-13 00:32:38 | 0c642780 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +400,5 @@
 | 7692 | 2026-10-13 17:37:41 | 270c471a |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 7693 | 2026-10-13 17:37:45 | f5d56718 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7694 | 2026-10-13 17:37:45 | f5d56718 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 7695 | 2026-10-13 17:37:49 | 0954e62b |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7696 | 2026-10-13 17:37:49 | 0954e62b |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
