@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7167 | 2026-10-11 18:23:42 | 16d3872d | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 26s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 71s [done] report expect='FACTORY' cmd=True \| T3 PASS 76s [d |
-| 7168 | 2026-10-11 18:23:42 | 16d3872d | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 26s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 71s [done] report expect='FACTORY' cmd=True \| T3 PASS 76s [d |
 | 7169 | 2026-10-11 18:23:42 | edafcea5 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "c6d15792faef4854ae2126211a52cb62", "after_quota": "16d3872d175f46ccb08a1b623aee5 |
 | 7170 | 2026-10-11 18:23:42 | 16d3872d | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 7171 | 2026-10-11 18:23:45 | b232befe | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +400,5 @@
 | 7564 | 2026-10-13 14:35:34 | adcba1c4 |  | probe.network_down | fast-LAPTOP-LRE6PSA8 | {"detail": "all 15 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
 | 7565 | 2026-10-13 14:35:34 | 0b5cb79d |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-13T09-retry", "retry_of": "adcba1c438f4473983c3e42be24d9523"}} |
 | 7566 | 2026-10-13 14:35:35 | adcba1c4 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 7567 | 2026-10-13 14:35:54 | 6cc17c4a |  | job.readopted | svc-LAPTOP-LRE6PSA8 | {} |
+| 7568 | 2026-10-13 14:45:31 | 6cc17c4a | 001 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 1, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
