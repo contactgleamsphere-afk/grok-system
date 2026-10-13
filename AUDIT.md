@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7289 | 2026-10-13 00:31:08 | aeec9e45 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-lfm-25-26b", "result": "3/4", "quota": 0, "secs": 31} |
-| 7290 | 2026-10-13 00:31:08 | aeec9e45 |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-nemotron-3-ultra-550b-a55b", "result": "4/4", "quota": 0, "secs": 62} |
 | 7291 | 2026-10-13 00:31:08 | aeec9e45 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["or-lfm-25-26b", "3/4"], ["or-nemotron-3-ultra-550b-a55b", "4/4"]]}} |
 | 7292 | 2026-10-13 00:31:11 | ef10c05d | 031 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7293 | 2026-10-13 00:31:43 | ef10c05d | 031 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 7s [done] expect='X_OK' last='X_OK' \| T2 PASS 8s [done] expect='3' last='RESULT: 3' \| T3 PASS 8s [done] expect='2' las |
@@ -402,3 +400,5 @@
 | 7686 | 2026-10-13 17:37:30 | f3f6b49b |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-10-13", "trigger": "blocked:gemini-lite"}} |
 | 7687 | 2026-10-13 17:37:30 | a01d44d1 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-10-13", "trigger": "blocked:gemini-lite"}} |
 | 7688 | 2026-10-13 17:37:30 | c031edb4 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-gemini-flash-lite-latest", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen27b", "local3b", "local4b"], "cha |
+| 7689 | 2026-10-13 17:37:35 | 9d2bb420 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7690 | 2026-10-13 17:37:36 | 9d2bb420 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
