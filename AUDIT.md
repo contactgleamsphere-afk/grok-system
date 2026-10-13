@@ -2,7 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7173 | 2026-10-11 18:36:38 | b232befe | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 25s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 51s [done] report expect='FACTORY' cmd=True \| T3 PASS 82s [d |
 | 7174 | 2026-10-11 18:36:38 | 5524de8c | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "062a8aeee53a43b2acb9a934d07fbf4b", "after_quota": "b232befeb5ce4130851904988eedd |
 | 7175 | 2026-10-11 18:36:38 | b232befe | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 7176 | 2026-10-11 18:36:41 | 2fe7d6b0 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +401,4 @@
 | 7570 | 2026-10-13 14:45:36 | 9f2509a2 |  | job.dedup | fast-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
 | 7571 | 2026-10-13 14:45:36 | 19c838c2 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7572 | 2026-10-13 14:47:25 | 0b5cb79d |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen27b", "local3b", "local4b"], "change |
+| 7573 | 2026-10-13 15:07:44 | 19c838c2 | 001 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 1, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
