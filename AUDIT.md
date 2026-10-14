@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7349 | 2026-10-13 01:29:54 | edc88e8d | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 7350 | 2026-10-13 01:52:07 | edc88e8d | 001 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 1, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
-| 7351 | 2026-10-13 01:52:08 | edafcea5 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 7352 | 2026-10-13 02:04:44 | 4e2eedaf |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 7353 | 2026-10-13 02:04:44 |  | 018 | schedule.skipped | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
 | 7354 | 2026-10-13 02:04:45 | 457a314b |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-13T03"}} |
 | 7355 | 2026-10-13 02:04:45 | 4e2eedaf |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 7356 | 2026-10-13 02:04:50 | 9641e7c2 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +397,8 @@
 | 7746 | 2026-10-14 03:33:45 | 0842ece4 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-14T04"}} |
 | 7747 | 2026-10-14 03:33:45 | f691e0dc |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-14T04"}} |
 | 7748 | 2026-10-14 03:33:45 | 0c4d053e |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 7749 | 2026-10-14 03:33:52 | 1b2d61cb | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 2} |
+| 7750 | 2026-10-14 03:34:33 | 4f12ad4a |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash-latest", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
+| 7751 | 2026-10-14 03:34:33 | 4f12ad4a |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash38", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
+| 7752 | 2026-10-14 03:34:33 | 4f12ad4a |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-lite", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
+| 7753 | 2026-10-14 03:34:33 | 4f12ad4a |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash-latest", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemi |
