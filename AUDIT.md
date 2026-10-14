@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7702 | 2026-10-14 02:24:52 |  | 018 | schedule.skipped | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
-| 7703 | 2026-10-14 02:25:00 | 0c4d053e |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-14T03"}} |
-| 7704 | 2026-10-14 02:25:00 | ce49c72e |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 7705 | 2026-10-14 02:25:06 | 86bed3db |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7706 | 2026-10-14 02:25:06 | 4f12ad4a |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-14T03"}} |
 | 7707 | 2026-10-14 02:25:20 | 1b2d61cb | 001 | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 1, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
 | 7708 | 2026-10-14 02:25:24 | 9c35778b | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +398,7 @@
 | 8099 | 2026-10-14 13:37:13 |  | 018 | schedule.skipped | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
 | 8100 | 2026-10-14 13:37:14 | a728264b |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-14T14"}} |
 | 8101 | 2026-10-14 13:37:14 | aafdd71b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 8102 | 2026-10-14 13:45:53 | e1bba806 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 37s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 77s [done] report expect='FACTORY' cmd=True \| T3 PASS 84s [d |
+| 8103 | 2026-10-14 13:45:53 | e1bba806 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 37s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 77s [done] report expect='FACTORY' cmd=True \| T3 PASS 84s [d |
+| 8104 | 2026-10-14 13:45:53 | da5c605f | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "fe371a05201e499c9cc16d620128e678", "after_quota": "e1bba8061cf241ed9aa389e507b80 |
+| 8105 | 2026-10-14 13:45:53 | e1bba806 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
