@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7813 | 2026-10-14 04:49:43 | b8338b41 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 7814 | 2026-10-14 05:08:35 | b8338b41 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 42s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 192s [done] report expect='FACTORY' cmd=True \| T3 FAIL 254s  |
-| 7815 | 2026-10-14 05:08:35 | b8338b41 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 42s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 192s [done] report expect='FACTORY' cmd=True \| T3 FAIL 254s  |
 | 7816 | 2026-10-14 05:08:35 | 529d6be2 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "fe371a05201e499c9cc16d620128e678", "after_quota": "b8338b416ed342d38d69e8de9299b |
 | 7817 | 2026-10-14 05:08:35 | b8338b41 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 8, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 7818 | 2026-10-14 05:08:39 | 30e36894 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +399,6 @@
 | 8210 | 2026-10-14 17:35:04 | 5844091f |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8211 | 2026-10-14 17:35:05 | 5844091f |  | owner.needed | fast-LAPTOP-LRE6PSA8 | {"provider": "nvidia", "reason": "set NVIDIA_API_KEY (User env) after signing up: https://build.nvidia.com (free ~40 rpm, tool-capable model |
 | 8212 | 2026-10-14 17:35:05 | 5844091f |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 8213 | 2026-10-14 17:35:08 | 3eeb0a9d |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8214 | 2026-10-14 17:35:08 | 3eeb0a9d |  | owner.needed | fast-LAPTOP-LRE6PSA8 | {"provider": "mistral", "reason": "set MISTRAL_API_KEY (User env) after signing up: https://console.mistral.ai (Experiment free tier)"} |
+| 8215 | 2026-10-14 17:35:08 | 3eeb0a9d |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
