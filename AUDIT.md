@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7807 | 2026-10-14 04:35:43 | bb3c72b9 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 7808 | 2026-10-14 04:35:46 | 4940d9aa | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 7809 | 2026-10-14 04:49:39 | 4940d9aa | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 40s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 69s [done] report expect='FACTORY' cmd=True \| T3 PASS 73s [d |
 | 7810 | 2026-10-14 04:49:39 | 4940d9aa | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 40s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 69s [done] report expect='FACTORY' cmd=True \| T3 PASS 73s [d |
 | 7811 | 2026-10-14 04:49:39 | ceb330c7 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "4940d9aa166d426aadfe8f833d27143c", "after_quota": "4940d9aa166d426aadfe8f833d271 |
 | 7812 | 2026-10-14 04:49:39 | 4940d9aa | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
@@ -402,3 +399,6 @@
 | 8204 | 2026-10-14 17:34:53 | 24975f92 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 8205 | 2026-10-14 17:34:56 | 34c4e275 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8206 | 2026-10-14 17:34:58 | 34c4e275 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 8207 | 2026-10-14 17:35:01 | 18de3bfd |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8208 | 2026-10-14 17:35:01 | 18de3bfd |  | owner.needed | fast-LAPTOP-LRE6PSA8 | {"provider": "cerebras", "reason": "set CEREBRAS_API_KEY (User env) after signing up: https://cloud.cerebras.ai (free tier ~1M tokens/day)"} |
+| 8209 | 2026-10-14 17:35:01 | 18de3bfd |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
