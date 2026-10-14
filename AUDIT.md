@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7621 | 2026-10-13 16:35:38 | 72c80422 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-13T17"}} |
-| 7622 | 2026-10-13 16:35:38 | 9d8bd63f |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 7623 | 2026-10-13 16:35:42 | ce3c1fa8 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 7624 | 2026-10-13 16:35:42 | c031edb4 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-13T17"}} |
 | 7625 | 2026-10-13 16:37:02 | ce3c1fa8 |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "gemini-gemini-flash-lite-latest", "outcome": "error", "before": "VERIFIED", "after": "BLOCKED", "detail": "TimeoutError"} |
 | 7626 | 2026-10-13 16:37:02 | 5006ba9b |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "groq", "day": "2026-10-13", "trigger": "blocked:gemini-gemini-flash-lite-latest"}} |
 | 7627 | 2026-10-13 16:37:02 | 274f4799 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "gemini", "day": "2026-10-13", "trigger": "blocked:gemini-gemini-flash-lite-latest"}} |
@@ -402,3 +398,7 @@
 | 8018 | 2026-10-14 11:37:03 |  | 018 | schedule.skipped | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
 | 8019 | 2026-10-14 11:37:04 | b22e199f |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-14T12"}} |
 | 8020 | 2026-10-14 11:37:04 | c027b3b0 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 8021 | 2026-10-14 11:42:41 | a8403e44 | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 64s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 63s [done] report expect='FACTORY' cmd=True \| T3 PASS 64s [d |
+| 8022 | 2026-10-14 11:42:41 | a8403e44 | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 64s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 63s [done] report expect='FACTORY' cmd=True \| T3 PASS 64s [d |
+| 8023 | 2026-10-14 11:42:41 | 09eb4142 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "30e368943ffb4b7a92841d88069a53ca", "after_quota": "a8403e44fa1241c1a34f5e964472b |
+| 8024 | 2026-10-14 11:42:41 | a8403e44 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
