@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7376 | 2026-10-13 03:20:01 | edc88e8d | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 7377 | 2026-10-13 03:20:01 | 698180d8 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "df14302d7564425b9a49f64f7d268591", "retry_of": "edc88e8dcadb4650816d3d495b5c5ea |
-| 7378 | 2026-10-13 03:20:02 | edc88e8d | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 1, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 7379 | 2026-10-13 03:20:06 | edafcea5 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 3} |
 | 7380 | 2026-10-13 03:42:15 | edafcea5 | 001 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "failed", "attempt": 3, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
 | 7381 | 2026-10-13 03:42:18 | 5524de8c | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +399,6 @@
 | 7773 | 2026-10-14 03:41:21 | abdd8333 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 7774 | 2026-10-14 03:41:24 | 1a261d95 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7775 | 2026-10-14 03:41:24 | 1a261d95 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": []}} |
+| 7776 | 2026-10-14 03:41:27 | ba4e59ac |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7777 | 2026-10-14 03:41:47 | ba4e59ac |  | factory.canary | svc-LAPTOP-LRE6PSA8 | {"verdict": "FAIL", "lane": "groq:openai/gpt-oss-20b", "chain": ["groq-gptoss20b", "gemini-gemma26b", "local3b"], "result": "T1 FAIL 2s [don |
+| 7778 | 2026-10-14 03:41:47 | ba4e59ac |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"pass": 1, "total": 2}} |
