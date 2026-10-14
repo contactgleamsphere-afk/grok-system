@@ -2,7 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7765 | 2026-10-14 03:39:00 | 1b2d61cb | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 7766 | 2026-10-14 03:39:02 | 9c35778b | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 2} |
 | 7767 | 2026-10-14 03:39:04 | 14978851 | 031 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 2} |
 | 7768 | 2026-10-14 03:41:17 | 14978851 | 031 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-120b", "sandbox": null, "rejected": ["fallback 'or-l |
@@ -402,3 +401,4 @@
 | 8162 | 2026-10-14 15:37:21 |  | 018 | schedule.skipped | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
 | 8163 | 2026-10-14 15:37:21 | a4f7d49b |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-14T16"}} |
 | 8164 | 2026-10-14 15:37:21 | 2cbc59ff |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 8165 | 2026-10-14 15:42:11 | 7b2aa9f9 | 001 | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 2, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
