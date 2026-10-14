@@ -111,9 +111,9 @@
   "openrouter:google/gemma-4-26b-a4b-it:free": {
    "verdict": "deferred",
    "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
-   "ts": 1791966945.842692,
+   "ts": 1791995696.792693,
    "date": "2026-10-14",
-   "until": 1791988545.842692
+   "until": 1792017296.792693
   },
   "openrouter:google/gemma-4-31b-it:free": {
    "verdict": "deferred",
@@ -132,9 +132,9 @@
   "provider-quota:openrouter": {
    "verdict": "deferred",
    "reason": "daily free cap hit during discovery",
-   "ts": 1791966945.842692,
+   "ts": 1791995696.792693,
    "date": "2026-10-14",
-   "until": 1791988545.842692
+   "until": 1792017296.792693
   },
   "gemini:gemini-2.5-flash": {
    "verdict": "rejected",
