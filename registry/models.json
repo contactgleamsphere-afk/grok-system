@@ -762,11 +762,13 @@
       ],
       "health": {
         "failures": 0,
-        "last_outcome": "ok",
+        "last_outcome": "quota",
         "last_probe": "2026-10-14T02:33:45",
         "latency_s": 0.9,
-        "ok": true,
-        "quota_seen": "2026-10-12T23:32:39"
+        "ok": false,
+        "quota_kind": "tpd",
+        "quota_seen": "2026-10-14T02:41:16",
+        "quota_until": 1791949276.8874025
       },
       "rpd_scope": "openrouter free tier shared 50/day"
     },
@@ -777,7 +779,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 0.8464,
-    "updated": "2026-10-14T02:34:33+00:00",
+    "updated": "2026-10-14T02:41:16+00:00",
     "verified": "VERIFIED"
   },
   "or-nemotron-3-ultra-550b-a55b": {
@@ -809,11 +811,13 @@
       ],
       "health": {
         "failures": 0,
-        "last_outcome": "ok",
+        "last_outcome": "quota",
         "last_probe": "2026-10-14T02:33:45",
         "latency_s": 2.7,
-        "ok": true,
-        "quota_seen": "2026-10-12T23:32:39"
+        "ok": false,
+        "quota_kind": "tpd",
+        "quota_seen": "2026-10-14T02:41:17",
+        "quota_until": 1791949277.3217413
       },
       "rpd_scope": "openrouter free tier shared 50/day"
     },
@@ -824,7 +828,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 0.8464,
-    "updated": "2026-10-14T02:34:33+00:00",
+    "updated": "2026-10-14T02:41:17+00:00",
     "verified": "VERIFIED"
   },
   "or-nemotron-35-lightning": {
@@ -861,12 +865,14 @@
       ],
       "health": {
         "failures": 0,
-        "last_outcome": "ok",
+        "last_outcome": "quota",
         "last_probe": "2026-10-14T02:33:45",
         "latency_s": 1.62,
-        "ok": true,
+        "ok": false,
         "probation": 2,
-        "quota_seen": "2026-10-12T23:32:39",
+        "quota_kind": "tpd",
+        "quota_seen": "2026-10-14T02:41:17",
+        "quota_until": 1791949277.0755186,
         "reason": "failed probation: error"
       },
       "rpd_scope": "openrouter free tier shared 50/day"
@@ -878,7 +884,7 @@
     "ram_gb": null,
     "tokens_per_sec": null,
     "tool_call_score": 0.9905424407825221,
-    "updated": "2026-10-14T02:34:33+00:00",
+    "updated": "2026-10-14T02:41:17+00:00",
     "verified": "VERIFIED"
   },
   "ovh-gptoss20b": {

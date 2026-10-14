@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7366 | 2026-10-13 02:59:14 | edc88e8d | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 3} |
-| 7367 | 2026-10-13 03:04:46 | 457a314b |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 7368 | 2026-10-13 03:04:46 |  | 018 | schedule.skipped | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
-| 7369 | 2026-10-13 03:04:46 | 0a51ed8f |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-13T04"}} |
 | 7370 | 2026-10-13 03:04:46 | 457a314b |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 7371 | 2026-10-13 03:04:55 | fbaa4432 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7372 | 2026-10-13 03:04:55 | 6db6e081 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-13T04"}} |
@@ -402,3 +398,7 @@
 | 7763 | 2026-10-14 03:39:00 | 1b2d61cb | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 7764 | 2026-10-14 03:39:00 | bb3c72b9 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "df14302d7564425b9a49f64f7d268591", "retry_of": "1b2d61cb68e94cd6b45ef925e051a48 |
 | 7765 | 2026-10-14 03:39:00 | 1b2d61cb | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 7766 | 2026-10-14 03:39:02 | 9c35778b | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 2} |
+| 7767 | 2026-10-14 03:39:04 | 14978851 | 031 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 2} |
+| 7768 | 2026-10-14 03:41:17 | 14978851 | 031 | bot.repair | svc-LAPTOP-LRE6PSA8 | {"ok": false, "status": "testing", "rounds": [{"round": 1, "lane": "groq:openai/gpt-oss-120b", "sandbox": null, "rejected": ["fallback 'or-l |
+| 7769 | 2026-10-14 03:41:17 | 14978851 | 031 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 2, "error": "FactoryError: no passing candidate in 2 rounds\nTraceback (most r |
