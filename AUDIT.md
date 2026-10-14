@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7816 | 2026-10-14 05:08:35 | 529d6be2 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "fe371a05201e499c9cc16d620128e678", "after_quota": "b8338b416ed342d38d69e8de9299b |
-| 7817 | 2026-10-14 05:08:35 | b8338b41 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 8, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 7818 | 2026-10-14 05:08:39 | 30e36894 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 7819 | 2026-10-14 05:23:14 | 30e36894 | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 43s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 71s [done] report expect='FACTORY' cmd=True \| T3 PASS 92s [d |
-| 7820 | 2026-10-14 05:23:14 | 30e36894 | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 43s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 71s [done] report expect='FACTORY' cmd=True \| T3 PASS 92s [d |
 | 7821 | 2026-10-14 05:23:14 | a8403e44 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "30e368943ffb4b7a92841d88069a53ca", "after_quota": "30e368943ffb4b7a92841d88069a5 |
 | 7822 | 2026-10-14 05:23:14 | 30e36894 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 7823 | 2026-10-14 05:23:16 | 5efdb56b | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +397,8 @@
 | 8213 | 2026-10-14 17:35:08 | 3eeb0a9d |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8214 | 2026-10-14 17:35:08 | 3eeb0a9d |  | owner.needed | fast-LAPTOP-LRE6PSA8 | {"provider": "mistral", "reason": "set MISTRAL_API_KEY (User env) after signing up: https://console.mistral.ai (Experiment free tier)"} |
 | 8215 | 2026-10-14 17:35:08 | 3eeb0a9d |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 8216 | 2026-10-15 00:24:26 | 50c9dc64 |  | job.lease_expired | fast-LAPTOP-LRE6PSA8 | {} |
+| 8217 | 2026-10-15 00:24:26 | fca5af08 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8218 | 2026-10-15 00:24:28 |  | 018 | schedule.skipped | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
+| 8219 | 2026-10-15 00:25:02 | 6bae1547 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-15T01"}} |
+| 8220 | 2026-10-15 00:25:02 | fca5af08 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
