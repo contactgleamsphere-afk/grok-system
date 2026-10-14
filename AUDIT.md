@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7739 | 2026-10-14 03:33:44 |  |  | factory.outage | fast-LAPTOP-LRE6PSA8 | {"gap_min": 62, "silent_since": "2026-10-14T02:31:03", "last_event": "job.claimed", "cause": "power loss / battery flat (kernel-power 41)",  |
-| 7740 | 2026-10-14 03:33:44 |  |  | factory.outage | svc-LAPTOP-LRE6PSA8 | {"gap_min": 62, "silent_since": "2026-10-14T02:31:03", "last_event": "job.claimed", "cause": "power loss / battery flat (kernel-power 41)",  |
 | 7741 | 2026-10-14 03:33:44 | 9c35778b |  | job.lease_expired | svc-LAPTOP-LRE6PSA8 | {} |
 | 7742 | 2026-10-14 03:33:44 | 14978851 |  | job.lease_expired | svc-LAPTOP-LRE6PSA8 | {} |
 | 7743 | 2026-10-14 03:33:44 | 0c4d053e |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +400,5 @@
 | 8136 | 2026-10-14 14:35:07 | 34c379e2 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 8137 | 2026-10-14 14:35:12 | fa941204 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8138 | 2026-10-14 14:35:12 | fa941204 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 8139 | 2026-10-14 14:35:17 | 3078a88f |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8140 | 2026-10-14 14:35:17 | 3078a88f |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
