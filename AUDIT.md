@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7438 | 2026-10-13 05:05:41 | 439d408a |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 7439 | 2026-10-13 05:05:41 | 439d408a |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 7440 | 2026-10-13 05:16:08 | b3ab4afa | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 39s [done] liveness expect='MASTER_OK' cmd=True \| T2 FAIL 75s [done] report expect='FACTORY' cmd=False \| T3 FAIL 77s [ |
 | 7441 | 2026-10-13 05:16:08 | b3ab4afa | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 39s [done] liveness expect='MASTER_OK' cmd=True \| T2 FAIL 75s [done] report expect='FACTORY' cmd=False \| T3 FAIL 77s [ |
 | 7442 | 2026-10-13 05:16:08 | b3ab4afa | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
@@ -402,3 +400,5 @@
 | 7835 | 2026-10-14 05:34:16 |  | 018 | schedule.skipped | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
 | 7836 | 2026-10-14 05:34:17 | 9b9bd998 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-14T06"}} |
 | 7837 | 2026-10-14 05:34:17 | 7d2fff1e |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 7838 | 2026-10-14 05:34:25 | d137fed9 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7839 | 2026-10-14 05:34:26 | d137fed9 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
