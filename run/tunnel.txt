@@ -1,2 +1,2 @@
-https://vendor-terminology-plains-jerry.trycloudflare.com
-2026-10-14T02:25:25.8166438+01:00
+https://api.trycloudflare.com
+2026-10-14T03:03:44.0396947+01:00
