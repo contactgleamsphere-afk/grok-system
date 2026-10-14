@@ -27,8 +27,8 @@
   "provider:nvidia": {
    "verdict": "needs_owner",
    "reason": "set NVIDIA_API_KEY (User env) after signing up: https://build.nvidia.com (free ~40 rpm, tool-capable models)",
-   "ts": 1791383144.8343163,
-   "date": "2026-10-07"
+   "ts": 1791995705.004441,
+   "date": "2026-10-14"
   },
   "provider:mistral": {
    "verdict": "needs_owner",
