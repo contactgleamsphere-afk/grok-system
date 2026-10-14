@@ -2,17 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7423 | 2026-10-13 05:05:16 | 3a9b2f5b |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "openrouter", "day": "2026-10-13", "trigger": "blocked:gemini-flash36"}} |
-| 7424 | 2026-10-13 05:05:16 | 507de104 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "cerebras", "day": "2026-10-13", "trigger": "blocked:gemini-flash36"}} |
-| 7425 | 2026-10-13 05:05:16 | 888a2931 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-10-13", "trigger": "blocked:gemini-flash36"}} |
-| 7426 | 2026-10-13 05:05:16 | 439d408a |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-10-13", "trigger": "blocked:gemini-flash36"}} |
-| 7427 | 2026-10-13 05:05:16 | 5427a0cf |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gpto |
-| 7428 | 2026-10-13 05:05:24 | 2fe26cd9 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 7429 | 2026-10-13 05:05:24 | 2fe26cd9 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
-| 7430 | 2026-10-13 05:05:27 | f8633ff8 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 7431 | 2026-10-13 05:05:28 | f8633ff8 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 7432 | 2026-10-13 05:05:31 | 3a9b2f5b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 7433 | 2026-10-13 05:05:31 | 3a9b2f5b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 7434 | 2026-10-13 05:05:34 | 507de104 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7435 | 2026-10-13 05:05:34 | 507de104 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 7436 | 2026-10-13 05:05:37 | 888a2931 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +391,14 @@
 | 7820 | 2026-10-14 05:23:14 | 30e36894 | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 43s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 71s [done] report expect='FACTORY' cmd=True \| T3 PASS 92s [d |
 | 7821 | 2026-10-14 05:23:14 | a8403e44 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "30e368943ffb4b7a92841d88069a53ca", "after_quota": "30e368943ffb4b7a92841d88069a5 |
 | 7822 | 2026-10-14 05:23:14 | 30e36894 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 7823 | 2026-10-14 05:23:16 | 5efdb56b | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7824 | 2026-10-14 05:33:49 | 74e50336 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7825 | 2026-10-14 05:33:49 | 51e35987 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-14T06"}} |
+| 7826 | 2026-10-14 05:34:12 | 74e50336 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash", "outcome": "error", "before": "VERIFIED", "after": "BLOCKED", "detail": "[{\n  \"error\": {\n    \"code\": 503,\n  |
+| 7827 | 2026-10-14 05:34:12 | d137fed9 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "groq", "day": "2026-10-14", "trigger": "blocked:gemini-flash"}} |
+| 7828 | 2026-10-14 05:34:12 | f89523e1 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "gemini", "day": "2026-10-14", "trigger": "blocked:gemini-flash"}} |
+| 7829 | 2026-10-14 05:34:12 | 297ff9e5 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "openrouter", "day": "2026-10-14", "trigger": "blocked:gemini-flash"}} |
+| 7830 | 2026-10-14 05:34:12 | 121a8faf |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "cerebras", "day": "2026-10-14", "trigger": "blocked:gemini-flash"}} |
+| 7831 | 2026-10-14 05:34:12 | e9160798 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-10-14", "trigger": "blocked:gemini-flash"}} |
+| 7832 | 2026-10-14 05:34:12 | b9d990b5 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-10-14", "trigger": "blocked:gemini-flash"}} |
+| 7833 | 2026-10-14 05:34:12 | 74e50336 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-gemini-flash-lite-latest", "gemini-lite", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen27b", "local3b", " |
