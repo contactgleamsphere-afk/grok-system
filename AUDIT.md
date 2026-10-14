@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7580 | 2026-10-13 15:35:33 | d894a64c |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 7581 | 2026-10-13 15:35:38 | 9f2509a2 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7582 | 2026-10-13 15:35:38 | ce3c1fa8 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-13T16"}} |
 | 7583 | 2026-10-13 15:37:23 | 9f2509a2 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash", "outcome": "error", "before": "VERIFIED", "after": "BLOCKED", "detail": "TimeoutError"} |
 | 7584 | 2026-10-13 15:37:23 | 9f2509a2 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash-latest", "outcome": "error", "before": "VERIFIED", "after": "BLOCKED", "detail": "[{\n  \"error\": {\n    \"code\":  |
@@ -402,3 +400,5 @@
 | 7977 | 2026-10-14 10:35:38 | a11fa142 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 7978 | 2026-10-14 10:35:42 | 8594b03c |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7979 | 2026-10-14 10:35:42 | 8594b03c |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 7980 | 2026-10-14 10:35:49 | f20d577e |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7981 | 2026-10-14 10:35:49 | f20d577e |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
