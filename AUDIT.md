@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7735 | 2026-10-14 02:30:56 | 142dd6d7 | 031 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 7736 | 2026-10-14 02:30:56 | 14978851 | 031 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "repair", "payload": {"bot_id": "031", "max_rounds": 2}} |
 | 7737 | 2026-10-14 02:30:56 | 142dd6d7 | 031 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "031", "status": "testing", "verified": "UNVERIFIED"}} |
 | 7738 | 2026-10-14 02:31:03 | 14978851 | 031 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7739 | 2026-10-14 03:33:44 |  |  | factory.outage | fast-LAPTOP-LRE6PSA8 | {"gap_min": 62, "silent_since": "2026-10-14T02:31:03", "last_event": "job.claimed", "cause": "power loss / battery flat (kernel-power 41)",  |
@@ -402,3 +400,5 @@
 | 8132 | 2026-10-14 14:35:00 | 4f89b711 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gpto |
 | 8133 | 2026-10-14 14:35:03 | 6dbe6573 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8134 | 2026-10-14 14:35:04 | 6dbe6573 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 8135 | 2026-10-14 14:35:07 | 34c379e2 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8136 | 2026-10-14 14:35:07 | 34c379e2 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
