@@ -2,7 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7450 | 2026-10-13 05:32:49 | d6343b48 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 3, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 7451 | 2026-10-13 05:32:52 | d94c7611 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7452 | 2026-10-13 05:46:58 | d94c7611 | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 38s [done] liveness expect='MASTER_OK' cmd=True \| T2 FAIL 75s [done] report expect='FACTORY' cmd=False \| T3 FAIL 166s  |
 | 7453 | 2026-10-13 05:46:58 | d94c7611 | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 38s [done] liveness expect='MASTER_OK' cmd=True \| T2 FAIL 75s [done] report expect='FACTORY' cmd=False \| T3 FAIL 166s  |
@@ -402,3 +401,4 @@
 | 7847 | 2026-10-14 05:34:40 | e9160798 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 7848 | 2026-10-14 05:34:43 | b9d990b5 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7849 | 2026-10-14 05:34:43 | b9d990b5 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 7850 | 2026-10-14 05:45:29 | 5efdb56b | 001 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 1, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
