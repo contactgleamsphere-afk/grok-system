@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7589 | 2026-10-13 15:37:23 | f17649df |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "cerebras", "day": "2026-10-13", "trigger": "blocked:gemini-flash,gemini-flash-latest,gemini-fl |
-| 7590 | 2026-10-13 15:37:23 | 77dbdc5d |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-10-13", "trigger": "blocked:gemini-flash,gemini-flash-latest,gemini-flas |
-| 7591 | 2026-10-13 15:37:23 | 7a51debf |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-10-13", "trigger": "blocked:gemini-flash,gemini-flash-latest,gemini-fla |
-| 7592 | 2026-10-13 15:37:23 | 9f2509a2 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-gemma26b", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen27b", "local3b", "local4b"], "changed": [["gemini |
-| 7593 | 2026-10-13 15:37:29 | 8a38358b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7594 | 2026-10-13 15:37:30 | 8a38358b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 7595 | 2026-10-13 15:37:36 | e3e7478f |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7596 | 2026-10-13 15:37:38 | e3e7478f |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
@@ -402,3 +397,8 @@
 | 7986 | 2026-10-14 10:36:05 | 91e0d319 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7987 | 2026-10-14 10:36:05 | 91e0d319 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 7988 | 2026-10-14 10:36:42 | 0ec74895 | 001 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "failed", "attempt": 3, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
+| 7989 | 2026-10-14 10:36:45 | ae80d13a | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7990 | 2026-10-14 10:37:01 | 851644e8 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 7991 | 2026-10-14 10:37:01 |  | 018 | schedule.skipped | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
+| 7992 | 2026-10-14 10:37:01 | c027b3b0 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-14T11"}} |
+| 7993 | 2026-10-14 10:37:01 | 851644e8 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
