@@ -2,12 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7875 | 2026-10-14 06:34:39 | aa27e63c |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 7876 | 2026-10-14 06:34:39 | aa27e63c |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 7877 | 2026-10-14 06:34:43 | c4376025 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 7878 | 2026-10-14 06:34:43 | c4376025 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 7879 | 2026-10-14 06:34:46 | 3d55d0ca |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 7880 | 2026-10-14 06:34:46 | 3d55d0ca |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 7881 | 2026-10-14 06:34:50 | 6380611a |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7882 | 2026-10-14 06:34:50 | 6380611a |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 7883 | 2026-10-14 06:52:25 | a6414b9b | 001 | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 2, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
@@ -402,3 +396,9 @@
 | 8272 | 2026-10-15 01:54:17 | 85478d12 | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 40s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 72s [done] report expect='FACTORY' cmd=True \| T3 PASS 76s [d |
 | 8273 | 2026-10-15 01:54:17 | 9a8bdecc | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "85478d125abc4bb78d1345ebc19d14e0", "after_quota": "85478d125abc4bb78d1345ebc19d1 |
 | 8274 | 2026-10-15 01:54:17 | 85478d12 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 8275 | 2026-10-15 01:54:18 | 46b621a3 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8276 | 2026-10-15 02:11:11 | 46b621a3 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "    + FullyQualifiedErrorId : 2106,PSSessionStateBroken", "status": "testing", "inconclusive": false, "quota": 0} |
+| 8277 | 2026-10-15 02:11:11 | 46b621a3 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "    + FullyQualifiedErrorId : 2106,PSSessionStateBroken", "after": "testing", "inconclusive": false, "quota": 0} |
+| 8278 | 2026-10-15 02:11:11 | 46b621a3 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
+| 8279 | 2026-10-15 02:11:11 | 32a6272c | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "43103e8f79ba46789af203ddbfb9e1ab", "retry_of": "46b621a381ec4013b70feba12270b2f |
+| 8280 | 2026-10-15 02:11:11 | 46b621a3 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
