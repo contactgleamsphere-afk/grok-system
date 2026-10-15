@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7961 | 2026-10-14 10:14:30 | f876d821 | 001 | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "failed", "attempt": 3, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
-| 7962 | 2026-10-14 10:14:31 | 0ec74895 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 3} |
-| 7963 | 2026-10-14 10:34:05 | 0cbb7165 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7964 | 2026-10-14 10:34:05 | 15b6a9ef |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-14T11"}} |
 | 7965 | 2026-10-14 10:35:34 | 0cbb7165 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
 | 7966 | 2026-10-14 10:35:34 | 0cbb7165 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash-latest", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
@@ -402,3 +399,6 @@
 | 8358 | 2026-10-15 12:11:44 | c9dfc3fe |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 8359 | 2026-10-15 12:11:52 | 3acc64d6 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8360 | 2026-10-15 12:11:54 | 3acc64d6 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 8361 | 2026-10-15 12:11:59 | 518116a9 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8362 | 2026-10-15 12:12:00 | 518116a9 |  | lane.rejected | svc-LAPTOP-LRE6PSA8 | {"model": "thinkingmachines/inkling-small:free", "reason": "probe auth: {\"error\":{\"message\":\"thinkingmachines/inkling-small:free is onl |
+| 8363 | 2026-10-15 12:12:00 | 518116a9 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
