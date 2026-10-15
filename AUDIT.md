@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7886 | 2026-10-14 07:11:56 | 5efdb56b | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 12s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 71s [done] report expect='FACTORY' cmd=True \| T3 PASS 75s [d |
-| 7887 | 2026-10-14 07:11:56 | 5efdb56b | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
-| 7888 | 2026-10-14 07:11:56 | 773c8a3b | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "df14302d7564425b9a49f64f7d268591", "retry_of": "5efdb56bee7e4b39a17a58573ececd2 |
-| 7889 | 2026-10-14 07:11:56 | 5efdb56b | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 8, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 7890 | 2026-10-14 07:11:57 | a6414b9b | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 3} |
 | 7891 | 2026-10-14 07:30:54 | a6414b9b | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 36s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 209s [done] report expect='FACTORY' cmd=True \| T3 PASS 153s  |
 | 7892 | 2026-10-14 07:30:54 | a6414b9b | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 36s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 209s [done] report expect='FACTORY' cmd=True \| T3 PASS 153s  |
@@ -402,3 +398,7 @@
 | 8283 | 2026-10-15 02:25:09 |  | 018 | schedule.skipped | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
 | 8284 | 2026-10-15 02:25:09 | 244fedab |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-15T03"}} |
 | 8285 | 2026-10-15 02:25:09 | 15ff8e1a |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 8286 | 2026-10-15 02:25:15 | f8b3662d |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8287 | 2026-10-15 02:25:15 | 205c15fe |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-15T03"}} |
+| 8288 | 2026-10-15 02:25:39 | f8b3662d |  | model.health | svc-LAPTOP-LRE6PSA8 | {"model": "gemini-flash-latest", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
+| 8289 | 2026-10-15 02:25:39 | f8b3662d |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash-latest", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini |
