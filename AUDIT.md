@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7923 | 2026-10-14 08:36:57 |  | 018 | schedule.skipped | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
-| 7924 | 2026-10-14 08:36:58 | 5831bd8f |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-14T09"}} |
 | 7925 | 2026-10-14 08:36:58 | 83ce1d18 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 7926 | 2026-10-14 08:45:30 | f876d821 | 001 | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 1, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
 | 7927 | 2026-10-14 08:45:32 | 0ec74895 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +400,5 @@
 | 8320 | 2026-10-15 10:10:38 | 09327984 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 8321 | 2026-10-15 10:10:43 | 7c8d99c3 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8322 | 2026-10-15 10:10:43 | 7c8d99c3 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": []}} |
+| 8323 | 2026-10-15 10:10:48 | 5890e6f6 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8324 | 2026-10-15 10:10:52 | 5890e6f6 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "security", "next_state": "paused", "attempt": 1, "error": "FactoryError: could not produce a valid spec after 3 attempts: |
