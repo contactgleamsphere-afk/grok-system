@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7968 | 2026-10-14 10:35:34 | 0cbb7165 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-gemma26b", "outcome": "error", "before": "VERIFIED", "after": "BLOCKED", "detail": "TimeoutError"} |
-| 7969 | 2026-10-14 10:35:34 | a11fa142 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "groq", "day": "2026-10-14", "trigger": "blocked:gemini-gemma26b"}} |
 | 7970 | 2026-10-14 10:35:34 | 8594b03c |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "gemini", "day": "2026-10-14", "trigger": "blocked:gemini-gemma26b"}} |
 | 7971 | 2026-10-14 10:35:34 | f20d577e |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "openrouter", "day": "2026-10-14", "trigger": "blocked:gemini-gemma26b"}} |
 | 7972 | 2026-10-14 10:35:34 | 11758c44 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "cerebras", "day": "2026-10-14", "trigger": "blocked:gemini-gemma26b"}} |
@@ -402,3 +400,5 @@
 | 8365 | 2026-10-15 12:12:03 | f17a6f90 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 8366 | 2026-10-15 12:12:07 | 0a3c68da |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8367 | 2026-10-15 12:12:07 | 0a3c68da |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 8368 | 2026-10-15 12:12:11 | 972fa658 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8369 | 2026-10-15 12:12:11 | 972fa658 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
