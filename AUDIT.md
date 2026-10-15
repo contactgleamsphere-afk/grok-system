@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7844 | 2026-10-14 05:34:36 | 121a8faf |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 7845 | 2026-10-14 05:34:36 | 121a8faf |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 7846 | 2026-10-14 05:34:39 | e9160798 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 7847 | 2026-10-14 05:34:40 | e9160798 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 7848 | 2026-10-14 05:34:43 | b9d990b5 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7849 | 2026-10-14 05:34:43 | b9d990b5 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 7850 | 2026-10-14 05:45:29 | 5efdb56b | 001 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 1, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
@@ -402,3 +398,7 @@
 | 8241 | 2026-10-15 01:03:39 | 50c9dc64 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 8242 | 2026-10-15 01:03:39 | 85478d12 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "abdd8333716b46e4b457f3e3406bd86a", "retry_of": "50c9dc64785044cf90eda416f7d1828 |
 | 8243 | 2026-10-15 01:03:39 | 50c9dc64 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 8244 | 2026-10-15 01:03:42 | 891f375d | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8245 | 2026-10-15 01:06:45 | 762d9d2c |  | job.enqueued | master-001 | {"kind": "discover", "payload": {"provider": "openrouter", "day": "2026-10-15", "trigger": "manual"}} |
+| 8246 | 2026-10-15 01:06:50 | 762d9d2c |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8247 | 2026-10-15 01:06:51 | 762d9d2c |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
