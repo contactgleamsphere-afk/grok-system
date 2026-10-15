@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7964 | 2026-10-14 10:34:05 | 15b6a9ef |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-14T11"}} |
-| 7965 | 2026-10-14 10:35:34 | 0cbb7165 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
 | 7966 | 2026-10-14 10:35:34 | 0cbb7165 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash-latest", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
 | 7967 | 2026-10-14 10:35:34 | 0cbb7165 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash38", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
 | 7968 | 2026-10-14 10:35:34 | 0cbb7165 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-gemma26b", "outcome": "error", "before": "VERIFIED", "after": "BLOCKED", "detail": "TimeoutError"} |
@@ -402,3 +400,5 @@
 | 8361 | 2026-10-15 12:11:59 | 518116a9 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8362 | 2026-10-15 12:12:00 | 518116a9 |  | lane.rejected | svc-LAPTOP-LRE6PSA8 | {"model": "thinkingmachines/inkling-small:free", "reason": "probe auth: {\"error\":{\"message\":\"thinkingmachines/inkling-small:free is onl |
 | 8363 | 2026-10-15 12:12:00 | 518116a9 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 8364 | 2026-10-15 12:12:03 | f17a6f90 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8365 | 2026-10-15 12:12:03 | f17a6f90 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
