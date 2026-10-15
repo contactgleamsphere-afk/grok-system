@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7942 | 2026-10-14 09:35:32 | cd310974 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-gemini-flash-lite-latest", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen2 |
-| 7943 | 2026-10-14 09:35:36 | 5be59b08 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 7944 | 2026-10-14 09:35:36 | 5be59b08 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
-| 7945 | 2026-10-14 09:35:40 | 31c84008 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 7946 | 2026-10-14 09:35:41 | 31c84008 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 7947 | 2026-10-14 09:35:45 | 8022dedc |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 7948 | 2026-10-14 09:35:47 | 8022dedc |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 7949 | 2026-10-14 09:35:54 | f95d33a3 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +397,8 @@
 | 8339 | 2026-10-15 11:36:53 | 4e456ff7 | 001 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 2, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
 | 8340 | 2026-10-15 11:36:58 | 32a6272c | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 3} |
 | 8341 | 2026-10-15 11:59:13 | 32a6272c | 001 | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "failed", "attempt": 3, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
+| 8342 | 2026-10-15 11:59:17 | 4e456ff7 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 3} |
+| 8343 | 2026-10-15 12:09:04 | d17f8621 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8344 | 2026-10-15 12:09:05 |  | 018 | schedule.skipped | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
+| 8345 | 2026-10-15 12:09:05 | 9af46346 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-15T13"}} |
+| 8346 | 2026-10-15 12:09:05 | d17f8621 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
