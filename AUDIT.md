@@ -2,7 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 7937 | 2026-10-14 09:35:31 | 31c84008 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "gemini", "day": "2026-10-14", "trigger": "blocked:gemini-flash,gemini-flash-latest"}} |
 | 7938 | 2026-10-14 09:35:31 | 8022dedc |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "openrouter", "day": "2026-10-14", "trigger": "blocked:gemini-flash,gemini-flash-latest"}} |
 | 7939 | 2026-10-14 09:35:32 | f95d33a3 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "cerebras", "day": "2026-10-14", "trigger": "blocked:gemini-flash,gemini-flash-latest"}} |
 | 7940 | 2026-10-14 09:35:32 | 210293d1 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-10-14", "trigger": "blocked:gemini-flash,gemini-flash-latest"}} |
@@ -402,3 +401,4 @@
 | 8334 | 2026-10-15 11:09:09 | 832ce531 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8335 | 2026-10-15 11:09:09 | f9ac8cc5 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-15T12"}} |
 | 8336 | 2026-10-15 11:10:25 | 832ce531 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash-latest", "gemini-gemini-flash-lite-latest", "gemini-lite", "gemini-lite31", "groq-gpt |
+| 8337 | 2026-10-15 11:14:39 | 32a6272c | 001 | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 2, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
