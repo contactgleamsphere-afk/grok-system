@@ -2,12 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 8032 | 2026-10-14 12:09:41 | e80bcd61 | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 38s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 63s [done] report expect='FACTORY' cmd=True \| T3 PASS 65s [d |
-| 8033 | 2026-10-14 12:09:41 | 3a1cba65 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "773c8a3bd76049e6b5a24b3e92ea65fc", "after_quota": "e80bcd61bc2740b287cad448df24c |
-| 8034 | 2026-10-14 12:09:41 | e80bcd61 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 8035 | 2026-10-14 12:09:45 | 214b4c30 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 8036 | 2026-10-14 12:22:22 | 214b4c30 | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 38s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 66s [done] report expect='FACTORY' cmd=True \| T3 PASS 65s [d |
-| 8037 | 2026-10-14 12:22:22 | 214b4c30 | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 38s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 66s [done] report expect='FACTORY' cmd=True \| T3 PASS 65s [d |
 | 8038 | 2026-10-14 12:22:22 | da38a03e | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "fefd132857c64f0d981f48b23770a2c5", "after_quota": "214b4c30943d442ea13acbef0cb9b |
 | 8039 | 2026-10-14 12:22:22 | 214b4c30 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 8040 | 2026-10-14 12:22:25 | f9b10c1e | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +396,9 @@
 | 8429 | 2026-10-16 11:01:40 | f90c1262 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 8430 | 2026-10-16 11:01:40 | 8732a69d | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "1c1bcdfb30db4c05870f61a3c116427f", "retry_of": "f90c1262bfb44daf8d2e80463508745 |
 | 8431 | 2026-10-16 11:01:40 | f90c1262 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 7, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 8432 | 2026-10-16 11:01:42 | a69dc170 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8433 | 2026-10-16 11:03:43 | fd795f3b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8434 | 2026-10-16 11:03:43 | 9db99607 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-16T12"}} |
+| 8435 | 2026-10-16 11:03:44 | fd795f3b |  | probe.network_down | fast-LAPTOP-LRE6PSA8 | {"detail": "all 15 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
+| 8436 | 2026-10-16 11:03:44 | 2c9358fc |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-15T14-retry-retry", "retry_of": "fd795f3b66dc488dae80070137305439"}} |
+| 8437 | 2026-10-16 11:03:44 | fd795f3b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
