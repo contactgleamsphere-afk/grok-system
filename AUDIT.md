@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 8096 | 2026-10-14 13:35:45 | 399e426d |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 8097 | 2026-10-14 13:35:45 | 399e426d |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 8098 | 2026-10-14 13:37:13 | aafdd71b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 8099 | 2026-10-14 13:37:13 |  | 018 | schedule.skipped | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
-| 8100 | 2026-10-14 13:37:14 | a728264b |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-14T14"}} |
 | 8101 | 2026-10-14 13:37:14 | aafdd71b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 8102 | 2026-10-14 13:45:53 | e1bba806 | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 37s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 77s [done] report expect='FACTORY' cmd=True \| T3 PASS 84s [d |
 | 8103 | 2026-10-14 13:45:53 | e1bba806 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 37s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 77s [done] report expect='FACTORY' cmd=True \| T3 PASS 84s [d |
@@ -402,3 +397,8 @@
 | 8493 | 2026-10-16 12:40:41 | 4c528adb |  | probe.network_down | svc-LAPTOP-LRE6PSA8 | {"detail": "all 15 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
 | 8494 | 2026-10-16 12:40:41 | 0387ef84 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-16T11-retry-retry", "retry_of": "4c528adb787f4eedb76b4fa4f710b62a"}} |
 | 8495 | 2026-10-16 12:40:41 | 4c528adb |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 8496 | 2026-10-16 12:40:42 | 37bfd506 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8497 | 2026-10-16 12:40:42 | 69ca9d83 |  | job.dedup | svc-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
+| 8498 | 2026-10-16 12:40:43 | 37bfd506 |  | probe.network_down | svc-LAPTOP-LRE6PSA8 | {"detail": "all 15 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
+| 8499 | 2026-10-16 12:40:43 | 01175374 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-16T12-retry-retry", "retry_of": "37bfd5068ed04321bfc24cbfe1c8a0bf"}} |
+| 8500 | 2026-10-16 12:40:43 | 37bfd506 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
