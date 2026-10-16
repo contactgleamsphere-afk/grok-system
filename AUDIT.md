@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 8208 | 2026-10-14 17:35:01 | 18de3bfd |  | owner.needed | fast-LAPTOP-LRE6PSA8 | {"provider": "cerebras", "reason": "set CEREBRAS_API_KEY (User env) after signing up: https://cloud.cerebras.ai (free tier ~1M tokens/day)"} |
-| 8209 | 2026-10-14 17:35:01 | 18de3bfd |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 8210 | 2026-10-14 17:35:04 | 5844091f |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 8211 | 2026-10-14 17:35:05 | 5844091f |  | owner.needed | fast-LAPTOP-LRE6PSA8 | {"provider": "nvidia", "reason": "set NVIDIA_API_KEY (User env) after signing up: https://build.nvidia.com (free ~40 rpm, tool-capable model |
-| 8212 | 2026-10-14 17:35:05 | 5844091f |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 8213 | 2026-10-14 17:35:08 | 3eeb0a9d |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8214 | 2026-10-14 17:35:08 | 3eeb0a9d |  | owner.needed | fast-LAPTOP-LRE6PSA8 | {"provider": "mistral", "reason": "set MISTRAL_API_KEY (User env) after signing up: https://console.mistral.ai (Experiment free tier)"} |
 | 8215 | 2026-10-14 17:35:08 | 3eeb0a9d |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
@@ -402,3 +397,8 @@
 | 8605 | 2026-10-16 13:32:57 |  | 018 | schedule.skipped | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
 | 8606 | 2026-10-16 13:32:57 | c5de0e2e |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-16T14"}} |
 | 8607 | 2026-10-16 13:32:57 | 49c1f9c7 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 8608 | 2026-10-16 13:34:50 | 37ba78fb | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 11s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 24s [done] report expect='FACTORY' cmd=True \| T3 FAIL 31s [d |
+| 8609 | 2026-10-16 13:34:50 | 37ba78fb | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 11s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 24s [done] report expect='FACTORY' cmd=True \| T3 FAIL 31s [d |
+| 8610 | 2026-10-16 13:34:50 | 37ba78fb | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
+| 8611 | 2026-10-16 13:34:50 | 87ae8433 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "1c1bcdfb30db4c05870f61a3c116427f", "retry_of": "37ba78fb5501443ba7a860b9f565ce3 |
+| 8612 | 2026-10-16 13:34:50 | 37ba78fb | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 8, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
