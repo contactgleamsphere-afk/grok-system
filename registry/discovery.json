@@ -110,10 +110,10 @@
   },
   "openrouter:google/gemma-4-26b-a4b-it:free": {
    "verdict": "deferred",
-   "reason": "probe quota: {\"error\":{\"message\":\"rate limit exceeded: free-models-per-day. add 10 credits to",
-   "ts": 1792062719.098539,
-   "date": "2026-10-15",
-   "until": 1792084319.098539
+   "reason": "probe quota: {\"error\":{\"message\":\"provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"goog",
+   "ts": 1792152362.0371819,
+   "date": "2026-10-16",
+   "until": 1792173962.0371819
   },
   "openrouter:google/gemma-4-31b-it:free": {
    "verdict": "deferred",
@@ -132,9 +132,9 @@
   "provider-quota:openrouter": {
    "verdict": "deferred",
    "reason": "daily free cap hit during discovery",
-   "ts": 1792062719.098539,
-   "date": "2026-10-15",
-   "until": 1792084319.098539
+   "ts": 1792152362.0371819,
+   "date": "2026-10-16",
+   "until": 1792173962.0371819
   },
   "gemini:gemini-2.5-flash": {
    "verdict": "rejected",
@@ -203,6 +203,12 @@
    "reason": "retired after 3 days gone: gone: {\"error\":{\"message\":\"this model is unavailable for free. the paid version ",
    "ts": 1791560793.319838,
    "date": "2026-10-09"
+  },
+  "openrouter:nvidia/nemotron-3.5-super-vl:free": {
+   "verdict": "approved",
+   "reason": "probe 1.65s loop 2.48s",
+   "ts": 1792152362.0371819,
+   "date": "2026-10-16"
   }
  }
 }

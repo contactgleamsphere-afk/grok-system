@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 8149 | 2026-10-14 14:35:39 | 7b2aa9f9 | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 8150 | 2026-10-14 14:37:17 | a728264b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 8151 | 2026-10-14 14:37:17 |  | 018 | schedule.skipped | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
-| 8152 | 2026-10-14 14:37:18 | 2cbc59ff |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-14T15"}} |
-| 8153 | 2026-10-14 14:37:18 | a728264b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 8154 | 2026-10-14 14:57:47 | 7b2aa9f9 | 001 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 1, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
 | 8155 | 2026-10-14 14:57:50 | 421c497d | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8156 | 2026-10-14 15:19:57 | 421c497d | 001 | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 1, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
@@ -402,3 +397,8 @@
 | 8546 | 2026-10-16 13:05:49 | 09c2f6de |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 8547 | 2026-10-16 13:05:53 | d5eb2432 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8548 | 2026-10-16 13:05:54 | d5eb2432 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
+| 8549 | 2026-10-16 13:06:02 | f5d5b555 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8550 | 2026-10-16 13:06:07 | f5d5b555 |  | lane.discovered | svc-LAPTOP-LRE6PSA8 | {"model": "nvidia/nemotron-3.5-super-vl:free", "reason": "probe 1.65s loop 2.48s", "provider": "openrouter"} |
+| 8551 | 2026-10-16 13:06:07 | f5d5b555 |  | config.presets | svc-LAPTOP-LRE6PSA8 | {"added": ["or-nemotron-35-super-vl"]} |
+| 8552 | 2026-10-16 13:06:08 | 95f4a23c |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "bench", "payload": {"lanes": ["or-nemotron-35-super-vl"], "day": "2026-10-16"}} |
+| 8553 | 2026-10-16 13:06:08 | f5d5b555 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": ["or-nemotron-35-super-vl"]}} |
