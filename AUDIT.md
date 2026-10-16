@@ -2,12 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 8049 | 2026-10-14 12:35:20 | e2869fda | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 8050 | 2026-10-14 12:37:08 | b22e199f |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 8051 | 2026-10-14 12:37:08 |  | 018 | schedule.skipped | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
-| 8052 | 2026-10-14 12:37:09 | aafdd71b |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-14T13"}} |
-| 8053 | 2026-10-14 12:37:09 | b22e199f |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
-| 8054 | 2026-10-14 12:47:51 | e2869fda | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 40s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 90s [done] report expect='FACTORY' cmd=True \| T3 PASS 68s [d |
 | 8055 | 2026-10-14 12:47:51 | e2869fda | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 40s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 90s [done] report expect='FACTORY' cmd=True \| T3 PASS 68s [d |
 | 8056 | 2026-10-14 12:47:51 | 421c497d | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "e2869fda5a2d4e378949f05aa52924a5", "after_quota": "e2869fda5a2d4e378949f05aa5292 |
 | 8057 | 2026-10-14 12:47:51 | e2869fda | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
@@ -402,3 +396,9 @@
 | 8446 | 2026-10-16 11:23:51 | 74de9a9c |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-15T14-retry-retry-retry-retry", "retry_of": "2a6af73e60ec4d68abce25f1f73d56e9"}} |
 | 8447 | 2026-10-16 11:23:51 | 2a6af73e |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 8448 | 2026-10-16 11:23:55 | a69dc170 | 001 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 1, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
+| 8449 | 2026-10-16 11:23:57 | 9a8bdecc | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8450 | 2026-10-16 11:33:53 | 74de9a9c |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8451 | 2026-10-16 11:33:53 | 9db99607 |  | job.dedup | fast-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
+| 8452 | 2026-10-16 11:33:54 | 74de9a9c |  | probe.network_down | fast-LAPTOP-LRE6PSA8 | {"detail": "all 15 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
+| 8453 | 2026-10-16 11:33:54 | 3a052695 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-15T14-retry-retry-retry-retry-retry", "retry_of": "74de9a9c02544063b72507a71d3446 |
+| 8454 | 2026-10-16 11:33:54 | 74de9a9c |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
