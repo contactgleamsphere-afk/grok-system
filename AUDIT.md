@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 8086 | 2026-10-14 13:35:26 | 62ccdabf |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 8087 | 2026-10-14 13:35:27 | 62ccdabf |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
-| 8088 | 2026-10-14 13:35:31 | fb75b79c |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 8089 | 2026-10-14 13:35:31 | fb75b79c |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 8090 | 2026-10-14 13:35:34 | 44a008e3 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8091 | 2026-10-14 13:35:34 | 44a008e3 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 8092 | 2026-10-14 13:35:37 | 6ab593b5 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8093 | 2026-10-14 13:35:37 | 6ab593b5 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
@@ -402,3 +397,8 @@
 | 8483 | 2026-10-16 12:34:02 | b4f33739 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": []}} |
 | 8484 | 2026-10-16 12:34:03 | 48ca0b76 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8485 | 2026-10-16 12:34:03 | 48ca0b76 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "RuntimeError: all lanes failed: groq:openai/gpt-oss-120b URLError |
+| 8486 | 2026-10-16 12:40:34 | 8e8fa6b1 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8487 | 2026-10-16 12:40:34 | 69ca9d83 |  | job.dedup | svc-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
+| 8488 | 2026-10-16 12:40:35 | 8e8fa6b1 |  | probe.network_down | svc-LAPTOP-LRE6PSA8 | {"detail": "all 15 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
+| 8489 | 2026-10-16 12:40:35 | dde421c1 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-15T14-retry-retry-retry-retry-retry-retry-retry", "retry_of": "8e8fa6b1c571428cb2 |
+| 8490 | 2026-10-16 12:40:35 | 8e8fa6b1 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
