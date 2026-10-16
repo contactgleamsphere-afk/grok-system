@@ -1,2 +1,2 @@
-https://projected-hat-become-sam.trycloudflare.com
-2026-10-15T10:09:28.9814014+01:00
+https://api.trycloudflare.com
+2026-10-16T12:50:24.2704445+01:00
