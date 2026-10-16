@@ -2,12 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 8213 | 2026-10-14 17:35:08 | 3eeb0a9d |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 8214 | 2026-10-14 17:35:08 | 3eeb0a9d |  | owner.needed | fast-LAPTOP-LRE6PSA8 | {"provider": "mistral", "reason": "set MISTRAL_API_KEY (User env) after signing up: https://console.mistral.ai (Experiment free tier)"} |
-| 8215 | 2026-10-14 17:35:08 | 3eeb0a9d |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 8216 | 2026-10-15 00:24:26 | 50c9dc64 |  | job.lease_expired | fast-LAPTOP-LRE6PSA8 | {} |
-| 8217 | 2026-10-15 00:24:26 | fca5af08 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 8218 | 2026-10-15 00:24:28 |  | 018 | schedule.skipped | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
 | 8219 | 2026-10-15 00:25:02 | 6bae1547 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-15T01"}} |
 | 8220 | 2026-10-15 00:25:02 | fca5af08 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 8221 | 2026-10-15 00:25:04 | 50c9dc64 |  | job.readopted | svc-LAPTOP-LRE6PSA8 | {} |
@@ -402,3 +396,9 @@
 | 8610 | 2026-10-16 13:34:50 | 37ba78fb | 001 | bot.demoted | fast-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 8611 | 2026-10-16 13:34:50 | 87ae8433 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "1c1bcdfb30db4c05870f61a3c116427f", "retry_of": "37ba78fb5501443ba7a860b9f565ce3 |
 | 8612 | 2026-10-16 13:34:50 | 37ba78fb | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 8, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 8613 | 2026-10-16 13:34:51 | a462b20c | 001 | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8614 | 2026-10-16 13:40:30 | a462b20c | 001 | bot.tested | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 31s [done] report expect='FACTORY' cmd=True \| T3 PASS 78s [d |
+| 8615 | 2026-10-16 13:40:30 | a462b20c | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 15s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 31s [done] report expect='FACTORY' cmd=True \| T3 PASS 78s [d |
+| 8616 | 2026-10-16 13:40:30 | a462b20c | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
+| 8617 | 2026-10-16 13:40:30 | e3ffdfc0 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "76b09e8217e8440b9a0f1bc14f76a1be", "retry_of": "a462b20cc07148189a287578f661cc5 |
+| 8618 | 2026-10-16 13:40:30 | a462b20c | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
