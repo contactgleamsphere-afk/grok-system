@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 8091 | 2026-10-14 13:35:34 | 44a008e3 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 8092 | 2026-10-14 13:35:37 | 6ab593b5 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 8093 | 2026-10-14 13:35:37 | 6ab593b5 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 8094 | 2026-10-14 13:35:41 | 2062104d |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 8095 | 2026-10-14 13:35:41 | 2062104d |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 8096 | 2026-10-14 13:35:45 | 399e426d |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8097 | 2026-10-14 13:35:45 | 399e426d |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 8098 | 2026-10-14 13:37:13 | aafdd71b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +397,8 @@
 | 8488 | 2026-10-16 12:40:35 | 8e8fa6b1 |  | probe.network_down | svc-LAPTOP-LRE6PSA8 | {"detail": "all 15 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
 | 8489 | 2026-10-16 12:40:35 | dde421c1 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-15T14-retry-retry-retry-retry-retry-retry-retry", "retry_of": "8e8fa6b1c571428cb2 |
 | 8490 | 2026-10-16 12:40:35 | 8e8fa6b1 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 8491 | 2026-10-16 12:40:41 | 4c528adb |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8492 | 2026-10-16 12:40:41 | 69ca9d83 |  | job.dedup | svc-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
+| 8493 | 2026-10-16 12:40:41 | 4c528adb |  | probe.network_down | svc-LAPTOP-LRE6PSA8 | {"detail": "all 15 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
+| 8494 | 2026-10-16 12:40:41 | 0387ef84 |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-16T11-retry-retry", "retry_of": "4c528adb787f4eedb76b4fa4f710b62a"}} |
+| 8495 | 2026-10-16 12:40:41 | 4c528adb |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
