@@ -2,7 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 8048 | 2026-10-14 12:35:19 | f9b10c1e | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
 | 8049 | 2026-10-14 12:35:20 | e2869fda | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8050 | 2026-10-14 12:37:08 | b22e199f |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8051 | 2026-10-14 12:37:08 |  | 018 | schedule.skipped | svc-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
@@ -402,3 +401,4 @@
 | 8445 | 2026-10-16 11:23:51 | 2a6af73e |  | probe.network_down | fast-LAPTOP-LRE6PSA8 | {"detail": "all 15 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
 | 8446 | 2026-10-16 11:23:51 | 74de9a9c |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-15T14-retry-retry-retry-retry", "retry_of": "2a6af73e60ec4d68abce25f1f73d56e9"}} |
 | 8447 | 2026-10-16 11:23:51 | 2a6af73e |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 8448 | 2026-10-16 11:23:55 | a69dc170 | 001 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 1, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
