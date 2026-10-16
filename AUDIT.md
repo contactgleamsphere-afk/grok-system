@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 8154 | 2026-10-14 14:57:47 | 7b2aa9f9 | 001 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 1, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
-| 8155 | 2026-10-14 14:57:50 | 421c497d | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8156 | 2026-10-14 15:19:57 | 421c497d | 001 | job.failed | fast-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 1, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
 | 8157 | 2026-10-14 15:20:02 | 7b2aa9f9 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 2} |
 | 8158 | 2026-10-14 15:34:23 | 12211cd8 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +400,5 @@
 | 8551 | 2026-10-16 13:06:07 | f5d5b555 |  | config.presets | svc-LAPTOP-LRE6PSA8 | {"added": ["or-nemotron-35-super-vl"]} |
 | 8552 | 2026-10-16 13:06:08 | 95f4a23c |  | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "bench", "payload": {"lanes": ["or-nemotron-35-super-vl"], "day": "2026-10-16"}} |
 | 8553 | 2026-10-16 13:06:08 | f5d5b555 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": ["or-nemotron-35-super-vl"]}} |
+| 8554 | 2026-10-16 13:06:11 | 2ef6b3f7 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8555 | 2026-10-16 13:06:11 | 2ef6b3f7 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
