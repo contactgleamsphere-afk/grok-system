@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 8065 | 2026-10-14 13:18:20 | e32c1507 | 001 | bot.monitored | svc-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 35s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 62s [done] report expect='FACTORY' cmd=True \| T3 PASS 62s [d |
-| 8066 | 2026-10-14 13:18:20 | 891f375d | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "1c048b97a00941b4a0a2a31b29aec1c6", "after_quota": "e32c1507c64c446b881fbdf6e1404 |
-| 8067 | 2026-10-14 13:18:20 | e32c1507 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
-| 8068 | 2026-10-14 13:18:21 | f0a7add9 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 8069 | 2026-10-14 13:32:28 | f0a7add9 | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 35s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 68s [done] report expect='FACTORY' cmd=True \| T3 PASS 170s [ |
 | 8070 | 2026-10-14 13:32:28 | f0a7add9 | 001 | bot.monitored | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 35s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 68s [done] report expect='FACTORY' cmd=True \| T3 PASS 170s [ |
 | 8071 | 2026-10-14 13:32:28 | e8402ec9 | 001 | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "retest_of": "4940d9aa166d426aadfe8f833d27143c", "after_quota": "f0a7add91e2640c48072f3baef839 |
 | 8072 | 2026-10-14 13:32:28 | f0a7add9 | 001 | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 9, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
@@ -402,3 +397,8 @@
 | 8462 | 2026-10-16 12:30:35 |  | 018 | schedule.skipped | fast-LAPTOP-LRE6PSA8 | {"sid": "5b4504d1", "reason": "bot testing"} |
 | 8463 | 2026-10-16 12:30:36 | 49c1f9c7 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "tick", "payload": {"hour": "2026-10-16T13"}} |
 | 8464 | 2026-10-16 12:30:36 | bdeb9e25 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 8465 | 2026-10-16 12:30:37 | 414a8f1b |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8466 | 2026-10-16 12:30:37 | 69ca9d83 |  | job.dedup | fast-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
+| 8467 | 2026-10-16 12:30:37 | 414a8f1b |  | probe.network_down | fast-LAPTOP-LRE6PSA8 | {"detail": "all 15 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
+| 8468 | 2026-10-16 12:30:37 | 4c528adb |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-16T11-retry", "retry_of": "414a8f1bf90a4eddadbf60bee1d12e33"}} |
+| 8469 | 2026-10-16 12:30:37 | 414a8f1b |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
