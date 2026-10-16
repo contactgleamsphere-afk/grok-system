@@ -2,11 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 8133 | 2026-10-14 14:35:03 | 6dbe6573 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 8134 | 2026-10-14 14:35:04 | 6dbe6573 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
-| 8135 | 2026-10-14 14:35:07 | 34c379e2 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 8136 | 2026-10-14 14:35:07 | 34c379e2 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
-| 8137 | 2026-10-14 14:35:12 | fa941204 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8138 | 2026-10-14 14:35:12 | fa941204 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 8139 | 2026-10-14 14:35:17 | 3078a88f |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8140 | 2026-10-14 14:35:17 | 3078a88f |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
@@ -402,3 +397,8 @@
 | 8530 | 2026-10-16 13:03:10 | 20951e9d |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-10-16", "trigger": "blocked:gemini-flash-latest"}} |
 | 8531 | 2026-10-16 13:03:10 | 083eafec |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-10-16", "trigger": "blocked:gemini-flash-latest"}} |
 | 8532 | 2026-10-16 13:03:10 | ac5b49ba |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gpto |
+| 8533 | 2026-10-16 13:03:15 | 043066e1 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8534 | 2026-10-16 13:03:15 | 689cc06f |  | job.dedup | fast-LAPTOP-LRE6PSA8 | {"kind": "probe"} |
+| 8535 | 2026-10-16 13:05:28 | 043066e1 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash-latest", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
+| 8536 | 2026-10-16 13:05:28 | 043066e1 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash38", "outcome": "ok", "before": "BLOCKED", "after": "VERIFIED", "detail": null} |
+| 8537 | 2026-10-16 13:05:28 | 043066e1 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-flash", "gemini-flash-latest", "gemini-flash38", "gemini-gemini-flash-lite-latest", "gemini-gemma26b", "gem |
