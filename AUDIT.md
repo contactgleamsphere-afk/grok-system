@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 8191 | 2026-10-14 17:34:30 | b26f40de |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 8192 | 2026-10-14 17:34:30 | 8bdeddda |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-14T18"}} |
-| 8193 | 2026-10-14 17:34:44 | b26f40de |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-lite31", "outcome": "error", "before": "VERIFIED", "after": "BLOCKED", "detail": "[{\n  \"error\": {\n    \"code\": 503,\n |
-| 8194 | 2026-10-14 17:34:44 | 6c9b4839 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "groq", "day": "2026-10-14", "trigger": "blocked:gemini-lite31"}} |
 | 8195 | 2026-10-14 17:34:44 | 24975f92 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "gemini", "day": "2026-10-14", "trigger": "blocked:gemini-lite31"}} |
 | 8196 | 2026-10-14 17:34:44 | 34c4e275 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "openrouter", "day": "2026-10-14", "trigger": "blocked:gemini-lite31"}} |
 | 8197 | 2026-10-14 17:34:44 | 18de3bfd |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "cerebras", "day": "2026-10-14", "trigger": "blocked:gemini-lite31"}} |
@@ -402,3 +398,7 @@
 | 8588 | 2026-10-16 13:21:04 | 0d697328 | 001 | bot.demoted | svc-LAPTOP-LRE6PSA8 | {"to": "testing"} |
 | 8589 | 2026-10-16 13:21:04 | 1a389171 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "33d3730f13e945aa8839588d7a0ec4b7", "retry_of": "0d6973285ff94507b0a7a2d2b896b90 |
 | 8590 | 2026-10-16 13:21:04 | 0d697328 | 001 | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"bot_id": "001", "pass": 8, "total": 10, "status": "testing", "verified": "UNVERIFIED"}} |
+| 8591 | 2026-10-16 13:21:05 | 1f853053 | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8592 | 2026-10-16 13:21:08 | 95f4a23c |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8593 | 2026-10-16 13:21:56 | 95f4a23c |  | lane.benchmarked | svc-LAPTOP-LRE6PSA8 | {"lane": "or-nemotron-35-super-vl", "result": "2/4", "quota": 0, "secs": 47} |
+| 8594 | 2026-10-16 13:21:56 | 95f4a23c |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": [["or-nemotron-35-super-vl", "2/4"]]}} |
