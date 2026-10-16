@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 8244 | 2026-10-15 01:03:42 | 891f375d | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
-| 8245 | 2026-10-15 01:06:45 | 762d9d2c |  | job.enqueued | master-001 | {"kind": "discover", "payload": {"provider": "openrouter", "day": "2026-10-15", "trigger": "manual"}} |
 | 8246 | 2026-10-15 01:06:50 | 762d9d2c |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8247 | 2026-10-15 01:06:51 | 762d9d2c |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 8248 | 2026-10-15 01:13:33 | 891f375d | 001 | bot.tested | fast-LAPTOP-LRE6PSA8 | {"result": "T1 PASS 16s [done] liveness expect='MASTER_OK' cmd=True \| T2 PASS 36s [done] report expect='FACTORY' cmd=True \| T3 FAIL 51s [d |
@@ -402,3 +400,5 @@
 | 8641 | 2026-10-16 14:01:33 | f3f3d785 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
 | 8642 | 2026-10-16 14:01:38 | 48f9c965 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8643 | 2026-10-16 14:01:38 | 48f9c965 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
+| 8644 | 2026-10-16 14:01:42 | d47f4cb7 |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8645 | 2026-10-16 14:01:42 | d47f4cb7 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": null}} |
