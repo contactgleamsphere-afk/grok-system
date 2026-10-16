@@ -2,8 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 8084 | 2026-10-14 13:35:23 | 399e426d |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-10-14", "trigger": "blocked:gemini-flash-latest,gemini-flash36,gemini-f |
-| 8085 | 2026-10-14 13:35:23 | 72f87ba6 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"healthy": ["gemini-gemini-flash-lite-latest", "gemini-lite", "gemini-lite31", "groq-gptoss120b", "groq-gptoss20b", "groq-qwen2 |
 | 8086 | 2026-10-14 13:35:26 | 62ccdabf |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8087 | 2026-10-14 13:35:27 | 62ccdabf |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {"added": []}} |
 | 8088 | 2026-10-14 13:35:31 | fb75b79c |  | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
@@ -402,3 +400,5 @@
 | 8481 | 2026-10-16 12:34:02 | 4a6927b6 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
 | 8482 | 2026-10-16 12:34:02 | b4f33739 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8483 | 2026-10-16 12:34:02 | b4f33739 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {"benchmarked": []}} |
+| 8484 | 2026-10-16 12:34:03 | 48ca0b76 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8485 | 2026-10-16 12:34:03 | 48ca0b76 |  | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "logic", "next_state": "paused", "attempt": 1, "error": "RuntimeError: all lanes failed: groq:openai/gpt-oss-120b URLError |
