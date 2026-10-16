@@ -2,10 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 8078 | 2026-10-14 13:35:23 | 72f87ba6 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash38", "outcome": "error", "before": "VERIFIED", "after": "BLOCKED", "detail": "[{\n  \"error\": {\n    \"code\": 503,\ |
-| 8079 | 2026-10-14 13:35:23 | 62ccdabf |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "groq", "day": "2026-10-14", "trigger": "blocked:gemini-flash-latest,gemini-flash36,gemini-flas |
-| 8080 | 2026-10-14 13:35:23 | fb75b79c |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "gemini", "day": "2026-10-14", "trigger": "blocked:gemini-flash-latest,gemini-flash36,gemini-fl |
-| 8081 | 2026-10-14 13:35:23 | 44a008e3 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "openrouter", "day": "2026-10-14", "trigger": "blocked:gemini-flash-latest,gemini-flash36,gemin |
 | 8082 | 2026-10-14 13:35:23 | 6ab593b5 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "cerebras", "day": "2026-10-14", "trigger": "blocked:gemini-flash-latest,gemini-flash36,gemini- |
 | 8083 | 2026-10-14 13:35:23 | 2062104d |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "nvidia", "day": "2026-10-14", "trigger": "blocked:gemini-flash-latest,gemini-flash36,gemini-fl |
 | 8084 | 2026-10-14 13:35:23 | 399e426d |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "mistral", "day": "2026-10-14", "trigger": "blocked:gemini-flash-latest,gemini-flash36,gemini-f |
@@ -402,3 +398,7 @@
 | 8475 | 2026-10-16 12:30:39 | 8732a69d | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
 | 8476 | 2026-10-16 12:31:03 | 9a8bdecc |  | job.readopted | svc-LAPTOP-LRE6PSA8 | {} |
 | 8477 | 2026-10-16 12:34:00 | 9a8bdecc | 001 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 1, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
+| 8478 | 2026-10-16 12:34:02 | 4a6927b6 |  | job.claimed | svc-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8479 | 2026-10-16 12:34:02 | 49f1b187 | 001 | job.enqueued | svc-LAPTOP-LRE6PSA8 | {"kind": "test", "payload": {"bot_id": "001", "monitor_of": "4a6927b6447747a1b4c4217776261da0", "day": "2026-10-16"}} |
+| 8480 | 2026-10-16 12:34:02 | 4a6927b6 |  | monitor.fanout | svc-LAPTOP-LRE6PSA8 | {"bots": ["001"], "jobs": ["49f1b187"]} |
+| 8481 | 2026-10-16 12:34:02 | 4a6927b6 |  | job.done | svc-LAPTOP-LRE6PSA8 | {"summary": {}} |
