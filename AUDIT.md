@@ -2,9 +2,6 @@
 
 | seq | time | job | bot | event | actor | detail |
 |---|---|---|---|---|---|---|
-| 8075 | 2026-10-14 13:34:17 | 4f89b711 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-14T14"}} |
-| 8076 | 2026-10-14 13:35:23 | 72f87ba6 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash-latest", "outcome": "error", "before": "VERIFIED", "after": "BLOCKED", "detail": "[{\n  \"error\": {\n    \"code\":  |
-| 8077 | 2026-10-14 13:35:23 | 72f87ba6 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash36", "outcome": "no_tool_call", "before": "VERIFIED", "after": "BLOCKED", "detail": null} |
 | 8078 | 2026-10-14 13:35:23 | 72f87ba6 |  | model.health | fast-LAPTOP-LRE6PSA8 | {"model": "gemini-flash38", "outcome": "error", "before": "VERIFIED", "after": "BLOCKED", "detail": "[{\n  \"error\": {\n    \"code\": 503,\ |
 | 8079 | 2026-10-14 13:35:23 | 62ccdabf |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "groq", "day": "2026-10-14", "trigger": "blocked:gemini-flash-latest,gemini-flash36,gemini-flas |
 | 8080 | 2026-10-14 13:35:23 | fb75b79c |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "discover", "payload": {"provider": "gemini", "day": "2026-10-14", "trigger": "blocked:gemini-flash-latest,gemini-flash36,gemini-fl |
@@ -402,3 +399,6 @@
 | 8472 | 2026-10-16 12:30:39 | 9db99607 |  | probe.network_down | fast-LAPTOP-LRE6PSA8 | {"detail": "all 15 remote lanes across 3 providers errored in one sweep -> local network outage, health untouched"} |
 | 8473 | 2026-10-16 12:30:39 | 37bfd506 |  | job.enqueued | fast-LAPTOP-LRE6PSA8 | {"kind": "probe", "payload": {"only": [], "hour": "2026-10-16T12-retry", "retry_of": "9db99607a4e140faaf7313be762ee49d"}} |
 | 8474 | 2026-10-16 12:30:39 | 9db99607 |  | job.done | fast-LAPTOP-LRE6PSA8 | {"summary": {}} |
+| 8475 | 2026-10-16 12:30:39 | 8732a69d | 001 | job.claimed | fast-LAPTOP-LRE6PSA8 | {"attempt": 1} |
+| 8476 | 2026-10-16 12:31:03 | 9a8bdecc |  | job.readopted | svc-LAPTOP-LRE6PSA8 | {} |
+| 8477 | 2026-10-16 12:34:00 | 9a8bdecc | 001 | job.failed | svc-LAPTOP-LRE6PSA8 | {"failure_class": "transient", "next_state": "queued", "attempt": 1, "error": "TimeoutExpired: Command '['powershell', '-NoProfile', '-Execu |
